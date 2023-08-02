@@ -4,8 +4,8 @@ description: Learn how to manage SQL Server on Azure VMs in the Azure portal by 
 author: bluefooted
 ms.author: pamela
 ms.reviewer: mathoma
-ms.date: 12/19/2024
 ms.service: azure-vm-sql-server
+ms.date: 01/28/2024
 ms.subservice: management
 ms.topic: how-to
 tags: azure-resource-manager
@@ -13,7 +13,7 @@ tags: azure-resource-manager
 # Manage SQL Server VMs by using the Azure portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In the [Azure portal](https://portal.azure.com), the [**SQL virtual machines**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) resource is an independent management service to manage SQL Server on Azure Virtual Machines (VMs) that have been registered with the SQL Server IaaS Agent extension. You can use the resource to view all of your SQL Server VMs simultaneously and modify settings dedicated to SQL Server: 
+In the [Azure portal](https://portal.azure.com), the [**SQL virtual machines**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) resource is an independent management service to manage SQL Server on Azure Virtual Machines (VMs) that have been registered with the [SQL Server IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md). You can use the resource to view all of your SQL Server VMs simultaneously and modify settings dedicated to SQL Server: 
 
 :::image type="content" source="./media/manage-sql-vm-portal/sql-vm-manage.png" alt-text="Screenshot of accessing the SQL virtual machines resource in the Azure portal.":::
 
@@ -102,7 +102,11 @@ Use the **Backups** page of the SQL virtual machines resource to choose between 
 
 Regardless of which backup solution you choose, you can use the **Backups** page to configure your backup settings, such as the retention period, backup storage location, encryption, whether or not to back up system databases, and a backup schedule. 
 
-## High availability
+## Modernization Advisor (preview)
+
+The [Modernization Advisor (Preview)](../modernization-advisor.md) assesses your SQL Server workload to identify cost-saving or performance optimizations you may gain by migrating to Azure SQL Managed Instance. This feature is currently in preview. 
+
+## High availability (preview)
 
 Once you've configured your [availability group by using the Azure portal](availability-group-azure-portal-configure.md), use the **High Availability** page of the SQL virtual machines resource to monitor the health of your existing Always On availability group. 
 

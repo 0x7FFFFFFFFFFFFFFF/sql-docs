@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, mathoma
-ms.date: 01/24/2024
+ms.date: 01/28/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -42,6 +42,7 @@ The following table lists the features of Azure SQL Managed Instance that are cu
 |[JSON native data type](/sql/t-sql/data-types/json-data-type) | The new **JSON** native data type is currently in preview. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). Your SQL managed instance must be configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy).|
 |[JSON aggregate functions](/sql/relational-databases/json/json-data-sql-server#json-data-from-aggregates) | Two new **JSON** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` enable construction of JSON objects or arrays based on an aggregate from SQL data. Your SQL managed instance must be configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy). For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). |
 |[Microsoft Entra nonunique name support](../database/authentication-microsoft-entra-create-users-with-nonunique-names.md) |  The [CREATE USER](/sql/t-sql/statements/create-user-transact-sql) Transact-SQL (T-SQL) syntax has been extended to include `WITH OBJECT_ID` to support creating Microsoft Entra logins and users in Azure SQL Managed Instance that have nonunique names. |
+|[Modernization Advisor](../virtual-machines/modernization-advisor.md) | Use the Modernization Advisor in the Azure portal to help you determine if migrating to Azure SQL Managed Instance from a SQL Server VM saves you money or optimizes performance. |
 |[Native Windows principals](native-windows-principals.md) | Use the new **Windows** authentication metadata mode to allow Windows authentication or Microsoft Entra authentication (using a Windows principal metadata) with Azure SQL Managed Instance. |
 |[Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) | An architectural upgrade of the General Purpose service tier that uses managed disks for greater resource flexibility, and improved performance while maintaining the same baseline cost as the General Purpose service tier.  |
 |[SDK-style SQL project](/sql/azure-data-studio/extensions/sql-database-project-extension-sdk-style-projects) | Use [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql) for SDK-style SQL projects in the SQL Database Projects extension in Azure Data Studio or Visual Studio Code. SDK-style SQL projects are especially advantageous for applications shipped through pipelines or built in cross-platform environments.|
@@ -98,6 +99,8 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 | Changes | Details |
 | --- | --- |
 | **SQL Insights retired** | SQL Insights has been retired and is no longer available. Use [database watcher](../database-watcher-overview.md) or another monitoring solution to monitor Azure SQL Managed Instance. |
+| **Modernization Advisor preview** | Use the **Modernization Advisor** in the Azure portal for your SQL Server on Azure VM to determine if you can save on cost or optimize your performance by migrating your workload to Azure SQL Managed Instance. This feature is currently in preview. Review [Modernization Advisor](../virtual-machines/modernization-advisor.md) to learn more. |
+
 
 ### November 2024
 

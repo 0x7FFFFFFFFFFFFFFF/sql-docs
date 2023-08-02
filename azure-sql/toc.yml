@@ -1607,6 +1607,8 @@
         href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
       - name: SQL IaaS Agent extension
         href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
+      - name: Modernization Advisor
+        href: virtual-machines/modernization-advisor.md
     - name: Quickstarts
       items:
       - name: Portal

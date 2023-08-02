@@ -4,9 +4,8 @@ description: Learn about the new features for and improvements to SQL Server on 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, mathoma, dpless
-ms.date: 01/24/2025
+ms.date: 01/28/2025
 ms.service: azure-vm-sql-server
-ms.subservice: service-overview
 ms.topic: whats-new
 ms.custom:
 - ignite-2024
@@ -27,6 +26,7 @@ For updates made in previous years, see the [What's new archive](doc-changes-upd
 
 [!INCLUDE [entra-id](../../includes/entra-id.md)]
 
+
 ## Preview
 
 The following table lists the features of SQL Server on Azure VMs that are currently in preview.
@@ -38,6 +38,7 @@ The following table lists the features of SQL Server on Azure VMs that are curre
 | --- | --- |
 | [FCI with Azure Elastic SAN](failover-cluster-instance-azure-elastic-san-manually-configure.md) | Deploy your SQL Server failover cluster instance (FCI) by using an Azure Elastic SAN. |
 | [I/O Analysis](storage-performance-analysis.md) | Use the Azure portal to identify performance issues with your SQL Server workloads from exceeding virtual machine and data disk limits. | 
+| [Modernization Advisor](../modernization-advisor.md) | Use the Modernization Advisor in the Azure portal to help you determine if migrating to Azure SQL Managed Instance saves you money or optimizes performance. |
 | [Premium SSD v2 in the Azure portal](storage-configuration-premium-ssd-v2.md) | Deploy your SQL Server on Azure VM with Premium SSD v2 disks in the Azure portal for improved throughput and performance. |  
 
 ## General availability (GA)
@@ -62,6 +63,7 @@ Learn about significant changes to the SQL Server on Azure VMs documentation. Fo
 | Changes | Details |
 | --- | --- |
 | **Managed identity support for SQL Server 2022 on Azure VM** | Starting with SQL Server 2022 Cumulative Update 17 (CU17), managed identities are supported for SQL Server on Azure VMs (Windows only). Users can now [back up to and restore SQL Server on Azure VM databases from Azure Blob storage](backup-restore-to-url-using-managed-identities.md), and utilize [EKM with AKV and Managed HSM on SQL Server on Azure VMs](managed-identity-extensible-key-management.md). |
+| **Modernization Advisor preview** | Use the **Modernization Advisor** in the Azure portal for your SQL Server on Azure VM to determine if you can save on cost or optimize your performance by migrating your workload to Azure SQL Managed Instance. This feature is currently in preview. Review [Modernization Advisor](../modernization-advisor.md) to learn more. |
 | **SQL Insights retired** | SQL Insights has been retired and is no longer available. Consider using [SCOM managed instance](/azure/azure-monitor/scom-manage-instance/overview) with the [SQL Server management pack](/system-center/scom/sql-server-management-pack-monitoring-configuration) or another monitoring solution to monitor SQL Server on Azure VMs. |
 
 
