@@ -43,7 +43,7 @@ Database watcher automatically grants the default rule identity required access 
 Otherwise, a user with the **Owner** assignment must grant the following access to the default alert rule identity selected for a watcher:
 
 1. The **Reader** role on the Azure Data Explorer cluster. For more information, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
-1. The **Viewer** role on the Azure Data Explorer database. For more information, see [Role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer).
+1. The **Viewer** role on the Azure Data Explorer database. For more information, see [Role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true).
 
 If you change the default alert rule identity for a watcher, the new identity is used for any new alert rule you create from a template. To change the identity for an existing alert rule, see [Configure alert rule details](/azure/azure-monitor/alerts/alerts-create-log-alert-rule#configure-alert-rule-details).
 
@@ -83,7 +83,7 @@ To create an alert rule from a template:
     >
     > To ensure that a new alert rule is created, use a unique alert rule name.
 
-1. Select **Next**, and optionally select one or more action groups. If you do not select an action group and the alert fires, you see the fired alert on the Azure Monitor **Alerts** page in the Azure portal, but do not receive a notification. For more information and to learn how to create an action group, see [Action groups](/azure/azure-monitor/alerts/action-groups).
+1. Select **Next**, and optionally select one or more action groups. If you don't select an action group and the alert fires, you see the fired alert on the Azure Monitor **Alerts** page in the Azure portal, but don't receive a notification. For more information and to learn how to create an action group, see [Action groups](/azure/azure-monitor/alerts/action-groups).
 1. Select **Next** or **Review + create**. Once validation completes, review the details and select **Create**.
 
 ## Manage alert rules
@@ -96,7 +96,7 @@ For more information, see [Manage alert rules](/azure/azure-monitor/alerts/alert
 
 ## Work with alerts
 
-When an alert rule fires, it creates an instance of an alert. The actions in the action groups you added to the alert rule are executed. For example, you receive a notification that an alert has fired. The alert stays in the **Fired** state until a future execution of the alert rule detects that the condition is no longer present and changes the alert state to **Resolved**. At that point, you receive another notification that the alert is resolved. For more information, see [Stateful alerts](/azure/azure-monitor/alerts/alerts-overview#stateful-alerts).
+When an alert rule fires, it creates an instance of an alert. The actions in the action groups you added to the alert rule are executed. For example, you receive a notification that an alert fired. The alert stays in the **Fired** state until a future execution of the alert rule detects that the condition is no longer present and changes the alert state to **Resolved**. At that point, you receive another notification that the alert is resolved. For more information, see [Stateful alerts](/azure/azure-monitor/alerts/alerts-overview#stateful-alerts).
 
 When an alert fires or is resolved, and if you added an action group configured to send email notifications, you receive an email for each SQL target where the alert condition occurs. For example, if an alert rule detects that CPU utilization is above the threshold on two SQL managed instances, you receive two separate emails.
 
@@ -104,9 +104,9 @@ You can see all alert instances and their state on the Azure Monitor **Alerts** 
 
 ## Limitations
 
-- Database watcher alerts are not available when the data store uses Real-Time Analytics in Microsoft Fabric, or a free Azure Data Explorer cluster.
-- Azure log search alerts on Azure Data Explorer do not support 1-minute alert evaluation frequency.
-- Azure log search alerts on Azure Data Explorer are not supported when public access to the Azure Data Explorer cluster is disabled.
+- Database watcher alerts aren't available when the data store uses Real-Time Analytics in Microsoft Fabric, or a free Azure Data Explorer cluster.
+- Azure log search alerts on Azure Data Explorer don't support 1-minute alert evaluation frequency.
+- Azure log search alerts on Azure Data Explorer aren't supported when public access to the Azure Data Explorer cluster is disabled.
 
 ## Related content
 
