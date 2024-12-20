@@ -62,8 +62,8 @@ The following tables describe currently available alert rule templates for each 
 | Workload patterns | Blocked requests | 1 - Error | 5 minutes | Alerts if there is a minimum number of blocked requests in a database that have been waiting longer than a certain duration. |
 | Workload patterns | Deadlock spike | 3 - Informational | 5 minutes | Alerts if the number of deadlocks in a database has spiked over a threshold. |
 | Workload patterns | Lock wait spike | 2 - Warning | 5 minutes | Alerts if the cumulative wait time for locks in a database has spiked over a threshold. |
-| Workload patterns | Memory wait spike | 2 - Warning | 5 minutes | Alerts if the cumulative wait time for memory in a database has spiked over a threshold. |
-| Workload patterns | Network IO wait spike | 2 - Warning | 5 minutes | Alerts if the cumulative wait time for network IO in a database has spiked over a threshold. |
+| Workload patterns | Memory wait spike | 3 - Informational | 5 minutes | Alerts if the cumulative wait time for memory in a database has spiked over a threshold. |
+| Workload patterns | Network IO wait spike | 3 - Informational | 5 minutes | Alerts if the cumulative wait time for network IO in a database has spiked over a threshold. |
 | Workload patterns | Request rate drop | 3 - Informational | 5 minutes | Alerts if the request rate in a database has dropped significantly. |
 | Workload patterns | Request timeout spike | 1 - Error | 5 minutes | Alerts if the number of request (query) timeouts and cancelations in a database has spiked over a threshold. |
 | Workload patterns | User error spike | 3 - Informational | 5 minutes | Alerts if the number of user errors in a database has spiked over a threshold. |
@@ -80,8 +80,8 @@ The following tables describe currently available alert rule templates for each 
 | Workload patterns | Blocked process spike | 2 - Warning | 5 minutes | Alerts if the number of blocked processes across all databases in an elastic pool has spiked over a threshold. |
 | Workload patterns | Deadlock spike | 3 - Informational | 5 minutes | Alerts if the number of deadlocks across all databases in an elastic pool has spiked over a threshold. |
 | Workload patterns | Lock wait spike | 2 - Warning | 5 minutes | Alerts if the cumulative wait time for locks across all databases in an elastic pool has spiked over a threshold. |
-| Workload patterns | Memory wait spike | 2 - Warning | 5 minutes | Alerts if the cumulative wait time for memory across all databases in an elastic pool has spiked over a threshold. |
-| Workload patterns | Network IO wait spike | 2 - Warning | 5 minutes | Alerts if the cumulative wait time for network IO across all databases in an elastic pool has spiked over a threshold. |
+| Workload patterns | Memory wait spike | 3 - Informational | 5 minutes | Alerts if the cumulative wait time for memory across all databases in an elastic pool has spiked over a threshold. |
+| Workload patterns | Network IO wait spike | 3 - Informational | 5 minutes | Alerts if the cumulative wait time for network IO across all databases in an elastic pool has spiked over a threshold. |
 | Workload patterns | Request timeout spike | 1 - Error | 5 minutes | Alerts if the number of request (query) timeouts and cancelations across all databases in an elastic pool has spiked over a threshold. |
 | Workload patterns | User error spike | 3 - Informational | 5 minutes | Alerts if the number of user errors across all databases in an elastic pool has spiked over a threshold. |
 
@@ -95,15 +95,15 @@ The following tables describe currently available alert rule templates for each 
 | Resource usage | High CPU utilization | 3 - Informational | 5 minutes | Alerts if instance CPU utilization exceeds a threshold. |
 | Resource usage | High worker utilization | 2 - Warning | 5 minutes | Alerts if instance worker utilization exceeds a threshold. |
 | Resource usage | Low database data storage | 3 - Informational | 30 minutes | Alerts if the used data storage in a database is close to the maximum database size, and the data growth rate is high. |
-| Resource usage | Low database transaction log storage | 2 - Warning | 5 minutes | Alerts if the used transaction log storage in a database is high, and the log growth rate is also high. |
+| Resource usage | Low database transaction log storage | 1 - Error | 5 minutes | Alerts if the used transaction log storage in a database is high, and the log growth rate is also high. |
 | Resource usage | Low instance storage | 2 - Warning | 30 minutes | Alerts if the used storage on an instance is close to the maximum instance storage size, and the storage growth rate is high. |
 | Resource usage | Out-of-memory events | 3 - Informational | 5 minutes | Alerts if there are any out-of-memory events on an instance. |
 | Workload patterns | Blocked process spike | 2 - Warning | 5 minutes | Alerts if the number of blocked processes on an instance has spiked over a threshold. |
 | Workload patterns | Blocked requests | 1 - Error | 5 minutes | Alerts if there is a minimum number of blocked requests on an instance that have been waiting longer than a certain duration. |
 | Workload patterns | Deadlock spike | 3 - Informational | 5 minutes | Alerts if the number of deadlocks on an instance has spiked over a threshold. |
 | Workload patterns | Lock wait spike | 2 - Warning | 5 minutes | Alerts if the cumulative wait time for locks on an instance has spiked over a threshold. |
-| Workload patterns | Memory wait spike | 2 - Warning | 5 minutes | Alerts if the cumulative wait time for memory on an instance has spiked over a threshold. |
-| Workload patterns | Network IO wait spike | 2 - Warning | 5 minutes | Alerts if the cumulative wait time for network IO on an instance has spiked over a threshold. |
+| Workload patterns | Memory wait spike | 3 - Informational | 5 minutes | Alerts if the cumulative wait time for memory on an instance has spiked over a threshold. |
+| Workload patterns | Network IO wait spike | 3 - Informational | 5 minutes | Alerts if the cumulative wait time for network IO on an instance has spiked over a threshold. |
 | Workload patterns | Request rate drop | 3 - Informational | 5 minutes | Alerts if the request rate on an instance has dropped significantly. |
 | Workload patterns | Request timeout spike | 1 - Error | 5 minutes | Alerts if the number of request (query) timeouts and cancelations on an instance has spiked over a threshold. |
 | Workload patterns | User error spike | 3 - Informational | 5 minutes | Alerts if the number of user errors on an instance has spiked over a threshold. |
