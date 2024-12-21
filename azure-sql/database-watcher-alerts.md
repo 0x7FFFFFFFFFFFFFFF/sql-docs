@@ -19,7 +19,7 @@ monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 
 After you [create and configure](database-watcher-manage.md) a watcher, you can use [Azure Monitor Alerts](/azure/azure-monitor/alerts/alerts-overview) to receive notifications about high resource usage, notable workload patterns, and other conditions across your Azure SQL estate that might require action. To do this, you use a [log search alert rule](/azure/azure-monitor/alerts/alerts-create-log-alert-rule) that queries the data in the data store of a watcher.
 
-Database watcher lets you create alert rules from predefined templates. Once an alert rule is created from a template, it behaves just like any other alert rule in Azure Monitor Alerts. You can use all capabilities of Azure alerting such as notifications sent via email, SMS, and phone, integration with ITSM products, webhooks, event hubs, and more. You can customize alert rules created from database watcher templates or create your own alert rules.
+Database watcher lets you create alert rules from predefined templates. Once an alert rule is created from a template, you can use and manage it just like any other alert rule in Azure Monitor Alerts. You can use all capabilities of Azure alerting such as notifications sent via email, SMS, and phone, integration with ITSM products, webhooks, event hubs, and more. You can customize alert rules created from database watcher templates or create your own alert rules.
 
 To learn more about Azure Monitor Alerts, see:
 
@@ -115,6 +115,11 @@ The following tables describe currently available alert rule templates for each 
 
 ---
 
+> [!TIP]
+> You might not need to use all provided templates. Consider your requirements and review template descriptions before creating alert rules.
+>
+> Unnecessary alert rules increase the load on your Azure Data Explorer cluster and the monthly cost of alerts.
+
 ### Add default alert rule identity
 
 Each alert rule you create must have a managed identity that has access to the data store. To follow the principle of least privilege, this identity must be different from the [watcher identity](database-watcher-manage.md#modify-watcher-identity).
@@ -147,13 +152,13 @@ To create an alert rule from a template:
     > When creating an alert rule, make sure to select the SQL target type that matches the type of SQL targets you added to your watcher. If you monitor multiple types of SQL targets, you need to create separate alert rules for each SQL target type.
 1. Select **Create alert rule**.
 1. Select the Azure subscription, resource group, name, region, severity, and evaluation frequency for the alert rule. We recommend that the region of the alert rule matches the region of the Azure Data Explorer cluster used as the data store for the watcher.
-    > [!NOTE]
+    > [!CAUTION]
     >
-    > If an alert rule with the same name already exists in the same subscription, resource group, and region, it is *replaced* by the alert rule created from the template.
-    >
-    > If an alert rule with the same name already exists in the same subscription and resource group, but is in a different region, deployment validation fails.
-    >
-    > To ensure that a new alert rule is created, use a unique alert rule name.
+    > If an alert rule with the same name already exists in the same subscription, resource group, and region, it is *replaced* by the alert rule created from the template. Any alert rule customizations you might have made are lost.
+
+    If an alert rule with the same name already exists in the same subscription and resource group, but is in a different region, deployment validation fails.
+    
+    To ensure that a new alert rule is created, use a unique alert rule name.
 1. Select **Next**, and optionally select one or more action groups. If you don't select an action group and the alert fires, you see the fired alert on the Azure Monitor **Alerts** page in the Azure portal, but don't receive a notification. For more information and to learn how to create an action group, see [Action groups](/azure/azure-monitor/alerts/action-groups).
 1. Select **Next** or **Review + create**. Once validation completes, review the details and select **Create**.
 

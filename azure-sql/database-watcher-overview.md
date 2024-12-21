@@ -21,7 +21,7 @@ monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 
 Database watcher is a managed monitoring solution for database services in the Azure SQL family. It supports [Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/) and [Azure SQL Managed Instance](https://azure.microsoft.com/products/azure-sql/managed-instance/).
 
-Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Monitoring data from the databases, elastic pools, and SQL managed instances you select is [collected](database-watcher-data.md#data-collection) into a central data store in your Azure subscription. [Dashboards](#dashboards) in Azure portal provide a single-pane-of-glass view of your Azure SQL estate and a detailed view of each database, elastic pool, and SQL managed instance. You can create [alerts] to receive notifications about conditions across your Azure SQL estate that require attention.
+Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Monitoring data from the databases, elastic pools, and SQL managed instances you select is [collected](database-watcher-data.md#data-collection) into a central data store in your Azure subscription. [Dashboards](#dashboards) in Azure portal provide a single-pane-of-glass view of your Azure SQL estate and a detailed view of each database, elastic pool, and SQL managed instance. [Alerts](database-watcher-alerts.md) send you notifications when database conditions across your Azure SQL estate might require attention.
 
 :::image type="content" border="false" source="media/database-watcher-overview/database-watcher-overview-diagram.svg" alt-text="Diagram showing database watcher components and data flow from monitored resources to watcher to data store to Azure portal dashboards.":::
 
@@ -56,13 +56,13 @@ Database watcher costs are incurred by its individual components, as follows:
 |:--|:--|:--|
 | Watchers | **Free** | |
 | Dashboards | **Free** | |
-| Azure Data Explorer cluster\* | [Pricing details](https://azure.microsoft.com/pricing/details/data-explorer) | The optimal cluster SKU depends on the number of monitoring targets and the cluster query workload. For cluster sizing considerations, see [Manage Azure Data Explorer cluster](database-watcher-manage.md#manage-data-store). |
+| Azure Data Explorer cluster <sup>1</sup> | [Pricing details](https://azure.microsoft.com/pricing/details/data-explorer) | The optimal cluster SKU depends on the number of monitoring targets and the cluster query workload. For cluster sizing considerations, see [Manage Azure Data Explorer cluster](database-watcher-manage.md#manage-data-store). |
 | Real-Time Analytics in Microsoft Fabric | Included in the Power BI Premium workspace consumption model. Billing per use. | Use either Azure Data Explorer or Real-Time Analytics. Only one of these offerings is required. |
 | A vault in Azure Key Vault | [Pricing details](https://azure.microsoft.com/pricing/details/key-vault/) | Required only if the optional SQL authentication is used instead of the default Microsoft Entra authentication. |
 | Azure network bandwidth | [Pricing details](https://azure.microsoft.com/pricing/details/bandwidth/) | Cost is not incurred if a watcher, its targets, and its data store are deployed in the same Azure region. |
-| Alerts | [Pricing details](https://azure.microsoft.com/pricing/details/monitor) | Database watcher uses Log Alerts. Monthly price is variable and depends on the number of alert rules you create, the number of SQL targets that generate alerts, and the evaluation frequency of each alert rule. |
+| Alerts | [Pricing details](https://azure.microsoft.com/pricing/details/monitor) | Database watcher uses Log Alerts. Monthly price is variable and depends on the number of alert rules you create, the number of SQL targets that have generated alerts during the month, and the evaluation frequency of each alert rule. |
 
-\*You can use a [free Azure Data Explorer cluster](/azure/data-explorer/start-for-free) when a service level agreement is not required and when query performance and storage requirements are satisfied by the free cluster capacity specifications. The free cluster trial period is for a year and can be extended automatically.
+<sup>1</sup> You can use a [free Azure Data Explorer cluster](/azure/data-explorer/start-for-free) when a service level agreement is not required and when query performance and storage requirements are satisfied by the free cluster capacity specifications. The free cluster trial period is for a year and can be extended automatically.
 
 There is no charge per monitored Azure SQL resource or per user, making database watcher an inexpensive monitoring solution for larger Azure SQL environments and larger teams.
 
