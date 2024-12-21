@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Examples of analytical queries that use database watcher monitoring data
 author: dimitri-furman
 ms.author: dfurman
-ms.date: 07/10/2024
+ms.date: 12/20/2024
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: how-to
@@ -1662,5 +1662,6 @@ ORDER BY wait_time_ms_per_sec DESC;
 - [Monitor Azure SQL workloads with database watcher (preview)](database-watcher-overview.md)
 - [Quickstart: Create a database watcher to monitor Azure SQL (preview)](database-watcher-quickstart.md)
 - [Create and configure a database watcher (preview)](database-watcher-manage.md)
+- [Database watcher alerts (preview)](database-watcher-alerts.md)
 - [Database watcher FAQ](database-watcher-faq.yml)
 - [Kusto Query Language learning resources](/azure/data-explorer/kql-learning-resources)

@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: A detailed description of alerts in database watcher
 author: dimitri-furman
 ms.author: dfurman
-ms.date: 12/19/2024
+ms.date: 12/20/2024
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -29,6 +29,8 @@ To learn more about Azure Monitor Alerts, see:
 - [Manage alert rules](/azure/azure-monitor/alerts/alerts-manage-alert-rules)
 - [Best practices for Azure Monitor alerts](/azure/azure-monitor/best-practices-alerts)
 
+To learn about limitations that apply to alerts in database watcher, see [Limitations](database-watcher-overview.md#limitations).
+
 ## Alert rule templates
 
 You can find alert rule templates for common alert conditions on the **Alerts** page of a watcher.
@@ -47,9 +49,12 @@ If you created alert rules from a template in the past and see that a newer temp
 
 The following tables describe currently available alert rule templates for each SQL target type.
 
+> [!NOTE]
+> During preview, alert rule templates might be added and removed.
+
 # [SQL database](#tab/sqldb)
 
-| Category | Name | Severity | Frequency| Description |
+| Category | Name | Severity | Frequency | Description |
 |:--|:--|:--|:--|:--|
 | Availability | Failed connectivity probes | 2 - Warning | 5 minutes | Alerts if the number of failed connectivity probes exceeds a threshold. |
 | Availability | Geo-replication not healthy | 1 - Error | 5 minutes | Alerts if data replication to geo-replicas might be lagging or is interrupted. |
@@ -70,7 +75,7 @@ The following tables describe currently available alert rule templates for each 
 
 # [SQL elastic pool](#tab/sqlep)
 
-| Category | Name | Severity | Frequency| Description |
+| Category | Name | Severity | Frequency | Description |
 |:--|:--|:--|:--|:--|
 | Resource usage | High CPU utilization | 3 - Informational | 5 minutes | Alerts if either elastic pool or instance CPU utilization exceeds a threshold. |
 | Resource usage | High worker utilization | 2 - Warning | 5 minutes | Alerts if worker utilization in an elastic pool exceeds a threshold. |
@@ -87,7 +92,7 @@ The following tables describe currently available alert rule templates for each 
 
 # [SQL managed instance](#tab/sqlmi)
 
-| Category | Name | Severity | Frequency| Description |
+| Category | Name | Severity | Frequency | Description |
 |:--|:--|:--|:--|:--|
 | Administrative | Failed SQL Agent jobs | 2 - Warning | 5 minutes | Alerts if there are any failed SQL Agent jobs. |
 | Availability | Failed connectivity probes | 2 - Warning | 5 minutes | Alerts if the number of failed connectivity probes exceeds a threshold. |
@@ -169,12 +174,6 @@ The alert stays in the **Fired** state until a future execution of the alert rul
 When an alert fires or is resolved, and if you added an action group configured to send email notifications, you receive an email for each SQL target where the alert condition occurs. For example, if an alert rule detects that CPU utilization is high on two SQL managed instances, you receive two separate emails.
 
 You can see all alert instances and their state on the Azure Monitor **Alerts** page in the Azure portal. You can add filters to focus on the alerts for specific Azure SQL resources or resource types. For more information, see [Manage alert instances](/azure/azure-monitor/alerts/alerts-manage-alert-instances).
-
-## Limitations
-
-- Database watcher alerts aren't available when the data store uses Real-Time Analytics in Microsoft Fabric, or a free Azure Data Explorer cluster.
-- Azure log search alerts on Azure Data Explorer don't support 1-minute alert evaluation frequency.
-- Azure log search alerts on Azure Data Explorer aren't supported when public access to the Azure Data Explorer cluster is disabled.
 
 ## Related content
 

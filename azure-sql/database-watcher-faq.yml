@@ -5,7 +5,7 @@ metadata:
   description: Frequently asked questions about database watcher for Azure SQL
   author: dimitri-furman
   ms.author: dfurman
-  ms.date: 11/11/2024
+  ms.date: 12/20/2024
   ms.reviewer: wiassaf
   ms.service: azure-sql
   ms.subservice: monitoring
@@ -46,7 +46,7 @@ sections:
       - question: |
           Does database watcher support alerts?
         answer: |
-          Not at this time. For planned improvements to database watcher, see the roadmap section in the database watcher [preview announcement](https://aka.ms/dbwatcher-preview-announcement).
+          Yes. You can create Azure Monitor alert rules for common alert conditions from a set of predefined templates and customize them to your needs. For more information, see [Database watcher alerts](database-watcher-alerts.md).
 
       - question: |
           How much does it cost?
@@ -172,4 +172,5 @@ additionalContent: |
   - [Create and configure a database watcher](database-watcher-manage.md)
   - [Database watcher data collection and datasets](database-watcher-data.md)
   - [Analyze database watcher monitoring data](database-watcher-analyze.md)
-  
+  - [Database watcher alerts](database-watcher-alerts.md)
+

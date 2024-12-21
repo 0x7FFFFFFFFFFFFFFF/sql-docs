@@ -5,7 +5,7 @@ description: Learn how to create a new database watcher to monitor an Azure SQL 
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf
-ms.date: 04/08/2024
+ms.date: 12/20/2024
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: quickstart
@@ -113,4 +113,5 @@ For a more detailed description of database watcher setup and configuration, see
 - [Create and configure a database watcher (preview)](database-watcher-manage.md)
 - [Database watcher data collection and datasets (preview)](database-watcher-data.md)
 - [Analyze database watcher monitoring data (preview)](database-watcher-analyze.md)
+- [Database watcher alerts (preview)](database-watcher-alerts.md)
 - [Database watcher FAQ](database-watcher-faq.yml)

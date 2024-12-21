@@ -5,7 +5,7 @@ description: Setup and configuration details for database watcher
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf
-ms.date: 12/18/2024
+ms.date: 12/20/2024
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: how-to
@@ -29,6 +29,8 @@ To see how you can create and configure a database watcher with [Bicep](/azure/a
 
 To manage database watchers programmatically, see the database watcher [REST API](/rest/api/databasewatcher) documentation.
 
+After you create and configure a watcher following the steps in this article, you can use Azure Monitor alerts. For more information, see [Database watcher alerts](database-watcher-alerts.md).
+
 > [!NOTE]
 > Database watcher is currently in preview.
 
@@ -44,6 +46,7 @@ To use database watcher, the following prerequisites are required.
 
 - The `Microsoft.DatabaseWatcher`, `Microsoft.Kusto`, and `Microsoft.Network` resource providers must be registered in your Azure subscription.
     - To use SQL authentication for connections to your Azure SQL resources, the `Microsoft.KeyVault` resource provider must be registered as well. See [Additional configuration to use SQL authentication](#additional-configuration-to-use-sql-authentication).
+    - To create alert rules, the `Microsoft.Insights` resource provider must be registered as well.
 
   Resource provider registration is automatic if you have the **Owner** or **Contributor** [RBAC](/azure/role-based-access-control/overview) role membership at the subscription level. Otherwise, a user in one of these roles must register resource providers before you can create and configure a watcher. For more information, see [Register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
 
@@ -666,4 +669,5 @@ Considerations for **separate data stores**:
 - [Monitor Azure SQL workloads with database watcher (preview)](database-watcher-overview.md)
 - [Database watcher data collection and datasets (preview)](database-watcher-data.md)
 - [Analyze database watcher monitoring data (preview)](database-watcher-analyze.md)
+- [Database watcher alerts (preview)](database-watcher-alerts.md)
 - [Database watcher FAQ](database-watcher-faq.yml)
