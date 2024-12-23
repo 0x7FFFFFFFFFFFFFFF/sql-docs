@@ -1,7 +1,7 @@
 ---
 title: Database watcher alerts
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: A detailed description of alerts in database watcher
+description: A detailed description of Azure Monitor Alerts in database watcher
 author: dimitri-furman
 ms.author: dfurman
 ms.date: 12/20/2024
@@ -17,9 +17,9 @@ monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 
 [!INCLUDE [sqldb-sqlmi](./includes/appliesto-sqldb-sqlmi.md)]
 
-After you [create and configure](database-watcher-manage.md) a watcher, you can use [Azure Monitor Alerts](/azure/azure-monitor/alerts/alerts-overview) to receive notifications about high resource usage, notable workload patterns, and other conditions across your Azure SQL estate that might require action. To do this, you use a [log search alert rule](/azure/azure-monitor/alerts/alerts-create-log-alert-rule) that queries the data in the data store of a watcher.
+After you [create and configure](database-watcher-manage.md) a watcher, you can set up [Azure Monitor Alerts](/azure/azure-monitor/alerts/alerts-overview) to receive notifications about high resource usage, notable workload patterns, and other conditions across your Azure SQL estate that might require attention. To do this, you create a [log search alert rule](/azure/azure-monitor/alerts/alerts-create-log-alert-rule) that queries the data store of a watcher on a schedule.
 
-Database watcher lets you create alert rules from predefined templates. Once an alert rule is created from a template, you can use and manage it just like any other alert rule in Azure Monitor Alerts. You can use all capabilities of Azure alerting such as notifications sent via email, SMS, and phone, integration with ITSM products, webhooks, event hubs, and more. You can customize alert rules created from database watcher templates or create your own alert rules.
+To help you create alert rules, database watcher includes templates for common alert conditions. Once an alert rule is created from a database watcher template, you can manage it just like any other alert rule in Azure Monitor Alerts. You can use all capabilities of Azure alerting, including notifications sent via email, SMS, and phone, integration with ITSM products, webhooks, event hubs, and more. You can customize alert rules created from database watcher templates, or create your own alert rules.
 
 To learn more about Azure Monitor Alerts, see:
 
@@ -33,7 +33,7 @@ To learn about limitations that apply to alerts in database watcher, see [Limita
 
 ## Alert rule templates
 
-You can find alert rule templates for common alert conditions on the **Alerts** page of a watcher.
+You can find all available alert rule templates on the **Alerts** page of a watcher.
 
 A template defines the following alert rule properties:
 
@@ -43,14 +43,14 @@ A template defines the following alert rule properties:
 - Evaluation frequency
 - A KQL query to execute in the data store to evaluate the alert rule
 
-Over time, existing templates might be modified, and new templates might be added based on customer [feedback](database-watcher-overview.md#send-feedback). Each template on the **Alerts** page of a watcher has a version in the **year-month-day.number** format to let you see when it was last modified.
+Over time, existing templates might be modified, and new templates might be added in response to customer [feedback](database-watcher-overview.md#send-feedback). Each template on the **Alerts** page of a watcher has a version in the **year-month-day.number** format to let you see when it was last modified.
 
-If you created alert rules from a template in the past and see that a newer template is available, you can recreate alert rules from the newer template to take advantage of fixes and improvements in the alert rule definition.
+If you created an alert rule from a template in the past and see that a newer template is available, you can recreate the rule from the newer template to take advantage of fixes and improvements in the alert rule definition.
 
 The following tables describe currently available alert rule templates for each SQL target type.
 
 > [!NOTE]
-> During preview, alert rule templates might be added and removed.
+> During preview, alert rule templates might be added, modified, and removed.
 
 # [SQL database](#tab/sqldb)
 
@@ -116,29 +116,29 @@ The following tables describe currently available alert rule templates for each 
 ---
 
 > [!TIP]
-> You might not need to use all provided templates. Consider your requirements and review template descriptions before creating alert rules.
+> You might not need to use all included templates. Review template descriptions and consider your requirements before creating alert rules.
 >
 > Unnecessary alert rules increase the load on your Azure Data Explorer cluster and the monthly cost of alerts.
 
 ### Add default alert rule identity
 
-Each alert rule you create must have a managed identity that has access to the data store. To follow the principle of least privilege, this identity must be different from the [watcher identity](database-watcher-manage.md#modify-watcher-identity).
+Each alert rule needs to have a managed identity to access the data store. Before you can create alert rules from templates, you must configure the default alert rule identity for the watcher using the following steps.
 
-Before you can create alert rules from templates, you must create and configure the default alert rule identity for the watcher using the following one-time steps. Database watcher will assign this identity to any new alert rule it creates from a template.
+To follow the principle of least privilege, this identity must be different from the [watcher identity](database-watcher-manage.md#modify-watcher-identity).
 
-1. Create a new user assigned identity. For more information, see [Create a user assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity).
+1. [Create a user assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity), or find an existing user assigned identity to use.
 1. In the Azure portal, navigate to your watcher and select the **Alerts** page.
 1. Select **Manage alert rule identity**, and select **Add**.
-1. Find the user assigned identity you created, and select **Add**, and select **Close**.
+1. Find the user assigned identity from step one, select **Add**, and select **Close**.
 
-Database watcher automatically grants the default rule identity required access to the data store if the current user has the **Owner** RBAC role assignment on the Azure Data Explorer cluster hosting the data store.
+Database watcher automatically assigns the identity you select to each new alert rule. It also grants the identity access to the data store if the current user has the **Owner** RBAC role assignment on the Azure Data Explorer cluster hosting the data store.
 
-Otherwise, a user with the **Owner** assignment must grant the following access to the default alert rule identity selected for a watcher:
+Otherwise, a user with the **Owner** assignment on the Azure Data Explorer cluster must grant the following access to the default alert rule identity selected for a watcher:
 
 - The **Reader** role on the Azure Data Explorer cluster. For more information, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 - The **Viewer** role on the Azure Data Explorer database. For more information, see [Role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true).
 
-If you change the default alert rule identity for a watcher, the new identity is used for any new alert rule you create using a template. To change the identity for an existing alert rule, see [Configure alert rule details](/azure/azure-monitor/alerts/alerts-create-log-alert-rule#configure-alert-rule-details).
+If you change the default alert rule identity of a watcher, the new identity is used for any new alert rule you create using a template. To change the identity of an existing alert rule, see [Configure alert rule details](/azure/azure-monitor/alerts/alerts-create-log-alert-rule#configure-alert-rule-details).
 
 ### Create an alert rule from a template
 
@@ -156,10 +156,10 @@ To create an alert rule from a template:
     >
     > If an alert rule with the same name already exists in the same subscription, resource group, and region, it is *replaced* by the alert rule created from the template. Any alert rule customizations you might have made are lost.
 
-    If an alert rule with the same name already exists in the same subscription and resource group, but is in a different region, deployment validation fails.
+    If an alert rule with the same name already exists in the same subscription and resource group, but is in a different region, deployment validation fails and the alert rule is not created.
     
     To ensure that a new alert rule is created, use a unique alert rule name.
-1. Select **Next**, and optionally select one or more action groups. If you don't select an action group and the alert fires, you see the fired alert on the Azure Monitor **Alerts** page in the Azure portal, but don't receive a notification. For more information and to learn how to create an action group, see [Action groups](/azure/azure-monitor/alerts/action-groups).
+1. Select **Next**, and optionally select one or more action groups. If you don't select an action group, you see a fired alert on the Azure Monitor **Alerts** page in the Azure portal, but don't receive a notification. For more information and to learn how to create an action group, see [Action groups](/azure/azure-monitor/alerts/action-groups).
 1. Select **Next** or **Review + create**. Once validation completes, review the details and select **Create**.
 
 ## Manage alert rules
@@ -170,11 +170,11 @@ In the Azure portal, navigate to **Monitor**, **Alerts**, **Alert rules**, and s
 
 For more information, see [Manage alert rules](/azure/azure-monitor/alerts/alerts-manage-alert-rules) and [Configure alert rule details](/azure/azure-monitor/alerts/alerts-create-log-alert-rule#configure-alert-rule-details).
 
-## Work with alerts
+## Work with database watcher alerts
 
-When an alert rule fires, it creates an instance of an alert. The actions in the action groups you added to the alert rule are executed. For example, you receive a notification that an alert fired.
+When an alert rule fires, it creates an instance of an alert. If the alert rule has any action groups, their actions are executed. For example, you receive a notification that an alert fired.
 
-The alert stays in the **Fired** state until a future execution of the alert rule detects that the condition is no longer present and changes the alert state to **Resolved**. At that point, you receive another notification that the alert is resolved. For more information, see [Stateful alerts](/azure/azure-monitor/alerts/alerts-overview#stateful-alerts).
+The alert stays in the **Fired** state until a periodic execution of the alert rule detects that the condition is no longer present and changes the alert state to **Resolved**. At that point, you receive another notification that the alert is resolved. For more information, see [Stateful alerts](/azure/azure-monitor/alerts/alerts-overview#stateful-alerts).
 
 When an alert fires or is resolved, and if you added an action group configured to send email notifications, you receive an email for each SQL target where the alert condition occurs. For example, if an alert rule detects that CPU utilization is high on two SQL managed instances, you receive two separate emails.
 

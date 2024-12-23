@@ -46,7 +46,7 @@ sections:
       - question: |
           Does database watcher support alerts?
         answer: |
-          Yes. You can create Azure Monitor alert rules for common alert conditions from a set of predefined templates and customize them to your needs. For more information, see [Database watcher alerts](database-watcher-alerts.md).
+          Yes. You can create Azure Monitor alert rules from included templates and customize them to your needs. For more information, see [Database watcher alerts](database-watcher-alerts.md).
 
       - question: |
           How much does it cost?
