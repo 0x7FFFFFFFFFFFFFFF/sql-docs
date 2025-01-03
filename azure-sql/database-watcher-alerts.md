@@ -122,11 +122,12 @@ The following tables describe currently available alert rule templates for each 
 
 ### Add default alert rule identity
 
-Each alert rule needs to have a managed identity to access the data store. Before you can create alert rules from templates, you must configure the default alert rule identity for the watcher using the following steps.
+To access the data store, each log search alert rule needs to have a managed identity. Before you can create alert rules from database watcher templates, you must configure the default alert rule identity for the watcher using the following steps.
 
-To follow the principle of least privilege, this identity must be different from the [watcher identity](database-watcher-manage.md#modify-watcher-identity).
+> [!IMPORTANT]
+> To follow the principle of least privilege, use a separate identity for alert rules. Do not reuse the [watcher identity](database-watcher-manage.md#modify-watcher-identity).
 
-1. [Create a user assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity), or find an existing user assigned identity to use.
+1. [Create a user assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity), or find an existing user assigned identity with the required access.
 1. In the Azure portal, navigate to your watcher and select the **Alerts** page.
 1. Select **Manage alert rule identity**, and select **Add**.
 1. Find the user assigned identity from step one, select **Add**, and select **Close**.
@@ -142,7 +143,7 @@ If you change the default alert rule identity of a watcher, the new identity is 
 
 ### Create an alert rule from a template
 
-To create an alert rule from a template:
+To create an alert rule from a database watcher template:
 
 1. On the **Alerts** page of a watcher, find the template you want to use. Templates are grouped by category, such as **Resource usage**, **Workload patterns**, etc.
     > [!IMPORTANT]
@@ -154,7 +155,7 @@ To create an alert rule from a template:
 1. Select the Azure subscription, resource group, name, region, severity, and evaluation frequency for the alert rule. We recommend that the region of the alert rule matches the region of the Azure Data Explorer cluster used as the data store for the watcher.
     > [!CAUTION]
     >
-    > If an alert rule with the same name already exists in the same subscription, resource group, and region, it is *replaced* by the alert rule created from the template. Any alert rule customizations you might have made are lost.
+    > If an alert rule with the same name already exists in the same subscription, resource group, and region, it is *replaced* by the alert rule created from the template. Any alert rule customizations you might have made are replaced with the template values.
 
     If an alert rule with the same name already exists in the same subscription and resource group, but is in a different region, deployment validation fails and the alert rule is not created.
     
