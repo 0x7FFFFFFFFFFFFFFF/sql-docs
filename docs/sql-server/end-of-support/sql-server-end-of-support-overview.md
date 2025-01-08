@@ -1,9 +1,9 @@
 ---
 title: "End of support options"
-description: Learn about the different options available for SQL Server products that reach end of support, including SQL Server 2012.
+description: Learn about the different options available for SQL Server products that reach end of support, including SQL Server 2012 and 2014.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 04/26/2024
+ms.date: 01/02/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: conceptual
@@ -36,6 +36,7 @@ Once your [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] reaches the
 For more information, guidance, and tools to plan and automate your upgrade or migration, see:
 
 - [SQL Server 2012 end of support](/lifecycle/products/microsoft-sql-server-2012)
+- [SQL Server 2014 end of support](/lifecycle/products/sql-server-2014)
 - [What are Extended Security Updates for SQL Server?](sql-server-extended-security-updates.md)
 - [Extended Security Updates: Frequently asked questions](extended-security-updates-frequently-asked-questions.md)
 
@@ -45,7 +46,7 @@ This table provides migration options for a [!INCLUDE [ssnoversion-md](../../inc
 | --- | --- |
 | **Modernize to Azure** | |
 | Move to PaaS with Azure SQL Managed Instance | **Lift-and-shift** to SQL Managed Instance for fully managed services that always run on evergreen features. In other words, the end of End of Support. |
-| Move to IaaS with SQL Server on Azure VM | **Upgrade** to latest SQL Server on Azure VMs, or **move "as-is"** with SQL Server 2012, and get 3 years of Extended Security Updates for free. |
+| Move to IaaS with SQL Server on Azure VM | **Upgrade** to latest SQL Server on Azure VMs, or **move "as-is"** with [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] and [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)], and get 3 years of Extended Security Updates for free. |
 | Move to Azure VMware Solution | **Move "as-is"** with SQL Server out of extended support, and get 3 years of Extended Security Updates for free. |
 | **Modernize on-premises** | |
 | Upgrade on-premises | **Upgrade** to the latest versions of SQL Server and Windows Server. |
@@ -199,7 +200,7 @@ Another option is to migrate your workload to an [Azure Virtual Machine running 
 
 - **Manageability**: You still have to manage both [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and operating system software.
 - **Networking**: You have to configure the virtual machine to integrate with your networking and Active Directory infrastructure, which is an added layer of complexity.
-- **Shared storage FCI**: Azure virtual machines only support failover cluster instances using Storage Spaces Direct or Premium File Shares, and don't support a failover cluster instance using shared storage. As such, Azure virtual machines only support failover cluster instances when using Windows Server 2012 or greater.
+- **Shared storage FCI**: Azure virtual machines only support failover cluster instances using Storage Spaces Direct or Premium File Shares, and don't support a failover cluster instance using shared storage. As such, Azure virtual machines only support failover cluster instances when using Windows Server 2012 and later versions.
 - **Scalability downtime**: You have downtime while changing the CPU and storage resources.
 - **Size limitation**: Although the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance can support as many databases as needed, the cumulative total of all databases for a single instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is 256 TB, as opposed to 524 PB for an on-premises [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 

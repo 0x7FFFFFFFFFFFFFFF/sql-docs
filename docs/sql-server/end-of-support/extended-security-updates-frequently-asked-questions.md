@@ -3,7 +3,7 @@ title: "Extended Security Updates FAQ"
 description: Frequently asked questions about using Azure Arc to get extended security updates for your end-of-support and end-of-life SQL Server products, such as SQL Server 2012 and SQL Server 2014.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/02/2024
+ms.date: 01/01/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: conceptual
@@ -37,7 +37,7 @@ Enterprise, Datacenter, Standard, Web, and Workgroup editions of [!INCLUDE [ssSQ
 
 #### What happens when the edition is changed?
 
-When an instance edition is downgraded from Enterprise Edition  to Standard Edition on the same machine, the billing meter automatically switches from enterprise to standard both for IP and ESU. For ESU there won't be another bill-back. However, there will be no refund of the original EE bill-back.
+When an instance edition is downgraded from Enterprise Edition to Standard Edition on the same machine, the billing meter automatically switches from enterprise to standard both for IP and ESU. For ESU there won't be another bill-back. However, there will be no refund of the original EE bill-back.
 
 #### When is the Extended Security Updates offer available?
 
@@ -215,7 +215,11 @@ While you can sign up at any time, you're charged for ESUs from the beginning of
 
 Microsoft isn't extending [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and [!INCLUDE [winserver2008-md](../../includes/winserver2008-md.md)] Extended Security Updates. Support for [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and [!INCLUDE [sql2008r2-md](../../includes/sql2008r2-md.md)] in Azure ended on July 9, 2023, and these servers need to be upgraded to maintain support.
 
-Customers using Windows Server on Azure, will have until January 14, 2024 to upgrade to a supported release.
+Customers using Windows Server on Azure, had until January 14, 2024 to upgrade to a supported release.
+
+#### Can I subscribe to asynchronous notifications about the published Extended Security Updates?
+
+The [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Extended Security Updates are included in the [Security Update Guide](https://msrc.microsoft.com/update-guide/) published by the Microsoft Security Response Center (MSRC). Customers can subscribe to the RSS feed, use automation services like IFTTT to create automated actions, or subscribe to direct email notifications from that page.
 
 ## Related content
 

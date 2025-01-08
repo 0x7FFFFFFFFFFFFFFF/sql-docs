@@ -36,4 +36,4 @@ For more information about security features available in [!INCLUDE [ssnoversion
 
 - [Walkthrough for the security features of SQL Server on Linux](sql-server-linux-security-get-started.md)
 - [Configure SQL Server on Linux with the mssql-conf tool](sql-server-linux-configure-mssql-conf.md)
-- [Editions and supported features of [!INCLUDE [sssql22](../includes/sssql22-md.md)] on Linux](sql-server-linux-editions-and-components-2022.md)
+- [Editions and supported features of SQL Server 2022 on Linux](sql-server-linux-editions-and-components-2022.md)

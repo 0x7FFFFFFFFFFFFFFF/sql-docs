@@ -4,7 +4,7 @@ description: Find out how to compare and synchronize the data from two databases
 author: markingmyname
 ms.author: maghan
 ms.reviewer: vanto
-ms.date: 09/17/2024
+ms.date: 12/23/2024
 ms.service: sql
 ms.subservice: ssdt
 ms.topic: conceptual
@@ -14,7 +14,7 @@ f1_keywords:
   - "sql.data.tools.datacompare.connection.objectselection.f1"
 ---
 
-# How to: Compare and Synchronize the Data of Two Databases
+# How to: Compare and Synchronize the Data of Two Databases with SQL Server Data Tools
 
 You can compare the data that is contained in two databases. The databases that you compare are known as the *source* and the *target*.
 
@@ -34,7 +34,7 @@ For more information, see [Compare and Synchronize Data in One or More Tables wi
 > [!NOTE]  
 > You can also compare the *schema* of two databases or of two versions of the same database. For more information, see [How to: Use Schema Compare to Compare Different Database Definitions](../ssdt/how-to-use-schema-compare-to-compare-different-database-definitions.md).
 
-## <a id="CompareDatabaseData"></a> Compare Database Data
+<a id="CompareDatabaseData"></a>
 
 ### Compare data by using the new data comparison wizard
 
@@ -64,7 +64,7 @@ For more information, see [Compare and Synchronize Data in One or More Tables wi
 
     When the comparison is finished, you can view the data differences between the two databases. You can also update part or all the data in the target database to match the data in the source database.
 
-### Compare data by using the Visual Studio automation model
+### Compare data with the Visual Studio automation model
 
 1. Open the **View** menu, point to **Other Windows**, and select **Command Window**.
 
@@ -80,7 +80,7 @@ For more information, see [Compare and Synchronize Data in One or More Tables wi
 
     The data in the specified source and target databases are compared. The results appear in a Data Compare session. For more information about how to view results or synchronize the data, see [Viewing Data Differences](#ViewDifferences) and [Synchronizing Database Data](#Synchronize).
 
-## <a id="ViewDifferences"></a> View Data Differences
+<a id="ViewDifferences"></a>
 
 After you compare the data in two databases, Data Compare lists each *database object* that you compared and its status. You can also view results for the records within each object, grouped by status. For more information about the status designations, see [Compare and Synchronize Data in One or More Tables with Data in a Reference Database](compare-and-synchronize-data-in-tables-with-data-in-reference-database.md).
 
@@ -96,7 +96,7 @@ After you view the differences, you can update the target to match the source fo
 
     - To view results for records within a particular object, select the object in the main results pane, and then select a tab in the records view pane. Each tab displays all records within that object that have a particular status: different, only in source, only in target, and identical. Data appears by record and column.
 
-## <a id="Synchronize"></a> Synchronize Database Data
+<a id="Synchronize"></a>
 
 After you compare the data in two databases, you can synchronize them by updating all or part of the target to match the source. You can compare the data in two kinds of database objects: tables and views.
 

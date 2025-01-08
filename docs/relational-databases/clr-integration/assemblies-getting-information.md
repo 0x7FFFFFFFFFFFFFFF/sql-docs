@@ -1,9 +1,9 @@
 ---
-title: "Get information about assemblies"
+title: "Get Information About Assemblies"
 description: Learn how to get information about assemblies using catalog views and functions.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/02/2024
+ms.date: 12/27/2024
 ms.service: sql
 ms.topic: "reference"
 helpviewer_keywords:
@@ -30,5 +30,5 @@ The following catalog views and functions can be queried for metadata about Comm
 ## Related content
 
 - [Assemblies (Database Engine)](assemblies-database-engine.md)
-- [Designing assemblies](assemblies-designing.md)
-- [Implementing assemblies](assemblies-implementing.md)
+- [Design assemblies](assemblies-designing.md)
+- [Implement assemblies](assemblies-implementing.md)

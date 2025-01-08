@@ -34,7 +34,7 @@ helpviewer_keywords:
 
 This article provides details of features supported by the various editions of [!INCLUDE [sssql19](../includes/sssql19-md.md)] on Linux.
 
-For editions and supported features of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows, see [Editions and supported features of SQL Server 2019](../sql-server/editions-and-components-of-sql-server-2019.md). For more information on what's new in [!INCLUDE [sssql19](../includes/sssql19-md.md)] on Windows, see [What's new in [!INCLUDE [sql-server-2019](../includes/sssql19-md.md)]](../sql-server/what-s-new-in-sql-server-2019.md).
+For editions and supported features of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows, see [Editions and supported features of SQL Server 2019](../sql-server/editions-and-components-of-sql-server-2019.md). For more information on what's new in [!INCLUDE [sssql19](../includes/sssql19-md.md)] on Windows, see [What's new in SQL Server 2019](../sql-server/what-s-new-in-sql-server-2019.md).
 
 Installation requirements vary based on your application needs. The different editions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] accommodate the unique performance, runtime, and price requirements of organizations and individuals. The [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] components that you install also depend on your specific requirements. The following sections help you understand how to make the best choice among the editions and components available in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
@@ -234,6 +234,6 @@ The following features and services aren't available for [!INCLUDE [sssql19](../
 
 ## Related content
 
-- [What's new in [!INCLUDE [sql-server-2019](../includes/sssql19-md.md)]](../sql-server/what-s-new-in-sql-server-2019.md)
+- [What's new in SQL Server 2019](../sql-server/what-s-new-in-sql-server-2019.md)
 - [SQL Server installation guide](../database-engine/install-windows/install-sql-server.md)
 - [SQL Server technical documentation](../sql-server/index.yml)

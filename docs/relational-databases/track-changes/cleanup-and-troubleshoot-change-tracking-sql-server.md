@@ -78,7 +78,7 @@ Identify side tables that have a large backlog of expired records, which need mi
 1. Run the following dynamic Transact-SQL (T-SQL) query, which generates the query to get the expired row count of side tables. Replace the value of `<invalid_version>` in the query with the value obtained in the previous step.
 
    ```sql
-   SELECT 'SELECT ''' + QUOTENAME(name) + ''', count(*) FROM [sys].' + QUOTENAME(name)
+   SELECT 'SELECT ''' + QUOTENAME(name) + ''', COUNT_BIG(*) FROM [sys].' + QUOTENAME(name)
        + ' WHERE sys_change_xdes_id IN (SELECT xdes_id FROM sys.syscommittab ssct WHERE ssct.commit_ts <= <invalid_version>) UNION'
    FROM sys.internal_tables
    WHERE internal_type = 209;
@@ -115,7 +115,7 @@ Use the following T-SQL code snippet by substituting parameter templates with ap
 
   ```sql
   SELECT '<internal_table_name>',
-      COUNT(*)
+      COUNT_BIG(*)
   FROM sys.<internal_table_name>
   WHERE sys_change_xdes_id IN (
           SELECT xdes_id
@@ -137,7 +137,7 @@ Use the following T-SQL code snippet by substituting parameter templates with ap
 - Find the number of active rows in the side table by executing the following query:
 
   ```sql
-  SELECT '<internal_table_name>', COUNT(*) FROM sys.<internal_table_name> WHERE sys_change_xdes_id
+  SELECT '<internal_table_name>', COUNT_BIG(*) FROM sys.<internal_table_name> WHERE sys_change_xdes_id
   IN (SELECT xdes_id FROM sys.syscommittab ssct WHERE ssct.commit_ts > <cleanup_version>);
   ```
 

@@ -15,8 +15,8 @@
     items:
     - name: Azure Hybrid Benefit
       href: azure-hybrid-benefit.md
-    - name: Reserved capacity
-      href: database/reserved-capacity-overview.md
+    - name: Reservations
+      href: database/reservations-discount-overview.md
 
   - name: Shared concepts
     items:

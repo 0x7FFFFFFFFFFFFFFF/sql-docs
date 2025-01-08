@@ -30,7 +30,6 @@ The following diagram shows the conceptual layout of the virtual cluster:
 
 :::image type="content" source="media/virtual-cluster-architecture/sql-managed-instance-virtual-cluster-architecture.png" border="false" alt-text="Diagram that shows the virtual cluster architecture for Azure SQL Managed Instance.":::
 
-
 ## Role in management operations
 
 The role of the virtual cluster in [management operations](management-operations-overview.md) is to find appropriate compute resources for the operation, as well as manage the resources within the cluster, such as the virtual machines that create the instance, and the virtual machine groups.  Management operations include creating new instances, as well as deleting, or modifying the configuration of, existing instances. The virtual cluster expands, shrinks, or deletes existing virtual machine groups, or creates new virtual machine groups, depending on the operation.
@@ -70,11 +69,9 @@ When determining an appropriate size for the subnet where you'll deploy your man
 
 To learn more, see [determine required subnet size and range for Azure SQL Managed Instance](vnet-subnet-determine-size.md).
 
-
 ## DNS synchronization
 
 The virtual cluster synchronizes DNS server settings changes in a virtual network that hosts existing SQL managed instances. The virtual cluster triggers the synchronization and propagates it to the instances inside the cluster. For more information, see [resolve private domain names in Azure SQL Managed Instance](resolve-private-domain-names.md).
-
 
 ## Delete a subnet after deleting an Azure SQL Managed Instance
 
@@ -85,7 +82,6 @@ Before deleting a subnet used for SQL managed instances, the subnet needs to be 
 > - Deleting a virtual cluster is a [long-running operation that can last up to 1.5 hours](management-operations-overview.md). The virtual cluster will still be visible in the portal until deleting the virtual cluster completes.
 
 In rare circumstances, creating an instance fails and results in an empty virtual cluster. Additionally, since you can cancel [creating an instance](management-operations-cancel.md), it's possible for a virtual cluster to be deployed with instances in a failed to deploy state. Empty virtual clusters, or clusters with instances that have failed to deploy, are automatically removed in the background, and there are no charges associated with these clusters. 
-
 
 ## Next steps
 

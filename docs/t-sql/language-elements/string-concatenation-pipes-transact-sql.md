@@ -1,10 +1,10 @@
 ---
-title: "|| (String concatenation) (Transact-SQL)"
+title: "|| (String Concatenation) (Transact-SQL)"
 description: "Use || to concatenate two or more character or binary strings, columns, or a combination of strings and column names into one expression (a string operator)."
 author: abhimantiwari
 ms.author: abhtiwar
 ms.reviewer: randolphwest, wiassaf, umajay
-ms.date: 06/03/2024
+ms.date: 01/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -24,9 +24,9 @@ monikerRange: "=azuresqldb-current || =fabric"
 
 # || (String concatenation) (Transact-SQL)
 
-[!INCLUDE [asdb-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
+[!INCLUDE [asdb-asmi-fabricsqldb](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]
 
-The `||` pipes operator in a string expression concatenates two or more character or binary strings, columns, or a combination of strings and column names into one expression (a string operator). For example, `SELECT 'SQL ' || 'Server';` returns `SQL Server`.
+The `||` pipes operator in a string expression concatenates two or more character or binary strings, columns, or a combination of strings and column names into one expression (a string operator). For example, `SELECT 'SQL ' || 'Server';` returns `SQL Server`. The `||` operator follows the ANSI SQL standard for concatenating strings. In SQL Server you can also do string concatenation using `+` operator and the `CONCAT()` function.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -47,6 +47,16 @@ Any valid [expression](expressions-transact-sql.md) of any one of the data types
 Returns the data type of the argument with the highest precedence. For more information, see [Data type precedence](../data-types/data-type-precedence-transact-sql.md).
 
 ## Remarks
+
+Some benefits of using the ANSI string concatenation syntax include:
+
+- Portability: Using the ANSI standard `||` operator for string concatenation ensures that your SQL code is portable across different database systems. This means that you can run the same SQL queries on various database platforms without modification.
+
+- Consistency: Adhering to the ANSI standard promotes consistency in your SQL code, making it easier to read and maintain, especially when working in environments with multiple database systems.
+
+- Interoperability: The ANSI standard is widely recognized and supported by most SQL-compliant database systems, enhancing interoperability between different systems and tools.
+
+### String truncation behavior
 
 If the result of the concatenation of strings exceeds the limit of 8,000 bytes, the result is truncated. However, if at least one of the strings concatenated is a large value type, truncation doesn't occur.
 
@@ -181,13 +191,14 @@ y
 
 - [&#124;&#124;= (Compound assignment) (Transact-SQL)](compound-assignment-pipes-transact-sql.md)
 - [+ (String concatenation) (Transact-SQL)](string-concatenation-transact-sql.md)
+- [CONCAT (Transact-SQL)](../functions/concat-transact-sql.md)
 - [+= (String Concatenation Assignment) (Transact-SQL)](string-concatenation-equal-transact-sql.md)
 - [ALTER DATABASE (Transact-SQL)](../statements/alter-database-transact-sql.md)
 - [CAST and CONVERT (Transact-SQL)](../functions/cast-and-convert-transact-sql.md)
 - [Data type conversion (Database Engine)](../data-types/data-type-conversion-database-engine.md)
 - [Data types (Transact-SQL)](../data-types/data-types-transact-sql.md)
 - [Expressions (Transact-SQL)](expressions-transact-sql.md)
-- [Built-in Functions (Transact-SQL)](../functions/functions.md)
+- [What are the SQL database functions?](../functions/functions.md)
 - [Operators (Transact-SQL)](operators-transact-sql.md)
 - [SELECT (Transact-SQL)](../queries/select-transact-sql.md)
 - [SET Statements (Transact-SQL)](../statements/set-statements-transact-sql.md)

@@ -5,7 +5,7 @@ description: Setup and configuration details for database watcher
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf
-ms.date: 12/20/2024
+ms.date: 01/07/2024
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: how-to
@@ -19,13 +19,15 @@ monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 
 [!INCLUDE [sqldb-sqlmi](./includes/appliesto-sqldb-sqlmi.md)]
 
-This article contains detailed steps to create, configure, and start a database watcher in the Azure portal for Azure SQL Database and Azure SQL Managed Instance. 
+This article contains detailed steps to create, configure, and start a database watcher in the Azure portal for Azure SQL Database and Azure SQL Managed Instance.
 
 Database watcher does not require you to deploy and maintain any monitoring agents or other monitoring infrastructure. You can enable in-depth database monitoring of your Azure SQL resources in minutes.
 
 For a simplified step-by-step example to create and configure a database watcher, see [Quickstart: Create a database watcher to monitor Azure SQL](database-watcher-quickstart.md).
 
-To see how you can create and configure a database watcher with [Bicep](/azure/azure-resource-manager/bicep/overview) or an ARM template, see the [Create a database watcher](/samples/azure/azure-quickstart-templates/create-watcher/) code sample.
+To see how you can create and configure a database watcher with [Bicep](/azure/azure-resource-manager/bicep/overview) or an [ARM template](/azure/azure-resource-manager/templates/syntax), see the [Create a database watcher](/samples/azure/azure-quickstart-templates/create-watcher/) code sample.
+
+To define watchers using Infrastructure as Code ([Bicep](/azure/azure-resource-manager/bicep/overview), [ARM templates](/azure/azure-resource-manager/templates/syntax), [Terraform AzAPI](/azure/developer/terraform/overview-azapi-provider)), see the [Azure resource reference](/azure/templates/microsoft.databasewatcher/watchers) documentation.
 
 To manage database watchers programmatically, see the database watcher [REST API](/rest/api/databasewatcher) documentation.
 
@@ -38,9 +40,9 @@ After you create and configure a watcher following the steps in this article, yo
 
 To use database watcher, the following prerequisites are required.
 
-- You'll need an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/). You need to be a member of the **Contributor** role or the **Owner** role for the subscription or a resource group to be able to create resources.
+- You need an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/). You need to be a member of the **Contributor** role or the **Owner** role for the subscription or a resource group to be able to create resources.
 
-- To configure and start a database watcher, you'll need an existing SQL target: an Azure SQL database, elastic pool, or SQL managed instance.
+- To configure and start a database watcher, you need an existing SQL target: an Azure SQL database, elastic pool, or SQL managed instance.
     - If you don't already have an Azure SQL database created, visit [Quickstart: Create a single database](database/single-database-create-quickstart.md). Look for the option to use your offer to [try Azure SQL Database for free (preview)](database/free-offer.md).
     - Alternatively, [Try Azure SQL Managed Instance for free (preview)](managed-instance/free-offer.md).
 
@@ -88,7 +90,7 @@ To use database watcher, the following prerequisites are required.
         1. Create a new database or use an existing database.
 
         > [!NOTE]
-        > Any existing database you select **must be empty**, or must be a database that you have previously used as a database watcher data store. Selecting a database that contains any objects not created by database watcher is not supported.
+        > Any existing database you select **must be empty**, or must be a database that you previously used as a database watcher data store. Selecting a database that contains any objects not created by database watcher is not supported.
 
     - Or, you can skip adding a data store at this time and add it later. A data store is required to start the watcher.
 
@@ -161,7 +163,7 @@ You must create managed [private endpoints](/azure/private-link/private-endpoint
 
 > [!NOTE]
 >
-> Database watcher requires its own managed private endpoints to connect to Azure resources. Any private endpoint that might already exist for an Azure SQL logical server, a SQL managed instance, an Azure Data Explorer cluster, or a key vault cannot be used by a watcher.
+> Database watcher requires its own managed private endpoints to connect to Azure resources. A watcher cannot use any private endpoint that might already exist for an Azure SQL logical server, a SQL managed instance, an Azure Data Explorer cluster, or a key vault.
 
 To create a managed private endpoint for a watcher:
 
@@ -191,7 +193,7 @@ To create a managed private endpoint for a watcher:
 1. Select **Create**. It can take a few minutes to create a private endpoint. A private endpoint is created once its provisioning state changes from **Accepted** or **Running** to **Succeeded**. Refresh the view to see the current provisioning state.
 
     > [!IMPORTANT]
-    > The private endpoint is created in the **Pending** state. It must be approved by the resource owner before database watcher can use it to connect to the resource.
+    > The private endpoint is created in the **Pending** state. The resource owner must approve the private endpoint before database watcher can use it to connect to the resource.
     >
     > To let resource owners control network connectivity, database watcher private endpoints are not approved automatically.
 
@@ -292,7 +294,7 @@ To allow a watcher to collect SQL monitoring data, you need to execute a T-SQL s
 - To execute the script in Azure SQL Database, you need server administrator access to the logical server containing databases and elastic pools you want to monitor.
     - In Azure SQL Database, you only need to execute the script once per logical server for every watcher you create. This grants the watcher access to all existing and new databases and elastic pools on that server.
 
-- To execute the script in Azure SQL Managed Instance, you need to be a member of either `sysadmin` or `securityadmin` server role, or have the `CONTROL` server permission on the SQL managed instance.
+- To execute the script in Azure SQL Managed Instance, you need to be a member of either `sysadmin` or `securityadmin` server role, or have the `CONTROL SERVER` permission on the SQL managed instance.
     - In Azure SQL Managed Instance, you need to execute the script on each instance you want to monitor.
 
 1. Navigate to the watcher in Azure portal, select **SQL targets**, select one of the **Grant access** links to open the T-SQL script, and copy the script. Make sure to choose the correct link for your target type and the authentication type you want to use.
@@ -302,13 +304,13 @@ To allow a watcher to collect SQL monitoring data, you need to execute a T-SQL s
 
 1. In SQL Server Management Studio, Azure Data Studio, or any other SQL client tool, open a new query window and connect it to the `master` database on an Azure SQL logical server containing the target, or to the `master` database on a SQL managed instance target.
 
-1. Paste and execute the T-SQL script to grant access to the watcher. The script creates a login that the watcher will use to connect, and grants specific, limited permissions to collect monitoring data.
+1. Paste and execute the T-SQL script to grant access to the watcher. The script creates a login that the watcher uses to connect, and grants specific, limited permissions to collect monitoring data.
 
     1. If you use a Microsoft Entra authentication script, and the watcher uses the system assigned managed identity, the watcher must be already created when you execute the script. If the watcher will use a user assigned managed identity, you can execute the script before or after the watcher is created.
     
     You must be connected with Microsoft Entra authentication when executing the T-SQL access scripts that grant access to a managed identity.
 
-If you add new targets to a watcher later, you need to grant access to these targets in a similar fashion unless these targets are on a logical server where access has already been granted.
+If you add new targets to a watcher later, you need to grant access to these targets in a similar fashion unless these targets are on a logical server where access was already granted.
 
 ### Grant access to SQL targets with T-SQL scripts
 
@@ -343,7 +345,7 @@ This script creates a Microsoft Entra (formerly known as Azure Active Directory)
 
 If the watcher uses the system assigned managed identity, you must use the watcher name as the login name. If the watcher uses a user assigned managed identity, you must use the display name of the identity as the login name.
 
-The script must be executed in the `master` database on the managed instance. You must be logged in using a Microsoft Entra authentication login that is a member of either `sysadmin` or `securityadmin` server role, or has the `CONTROL` server permission.
+The script must be executed in the `master` database on the managed instance. You must be logged in using a Microsoft Entra authentication login that is a member of either `sysadmin` or `securityadmin` server role, or has the `CONTROL SERVER` permission.
 
 ```sql
 USE master;
@@ -393,7 +395,7 @@ ALTER SERVER ROLE ##MS_DatabaseConnector## ADD MEMBER [login-name-placeholder];
 
 This script creates a SQL authentication login on a SQL managed instance. It grants the login the necessary and sufficient permissions to collect monitoring data from the instance.
 
-The script must be executed in the `master` database on the instance, using a login that is a member of either `sysadmin` or `securityadmin` server role, or has the `CONTROL` server permission.
+The script must be executed in the `master` database on the instance, using a login that is a member of either `sysadmin` or `securityadmin` server role, or has the `CONTROL SERVER` permission.
 
 ```sql
 USE master;
@@ -489,7 +491,7 @@ Instead of using Azure portal, you can also grant access to the database using a
     |:--|:--|
     | `adx-database-name-placeholder` | The name of a database on an Azure Data Explorer cluster or in Real-Time Analytics. |
     | `identity-principal-id-placeholder` | The **principal ID** value of a managed identity (a GUID), found on the **Identity** page of the watcher. If the system assigned identity is enabled, use its **principal ID** value. Otherwise, use the **principal ID** value of the user assigned identity.|
-    | `tenant-primary-domain-placeholder` | The domain name of the Microsoft Entra ID tenant of the watcher managed identity. Find this on the Microsoft Entra ID **Overview** page in the Azure portal. Instead of tenant primary domain, the **Tenant ID** GUID value can be used as well.</br></br>This part of the command is required if you use a database in Real-Time Analytics or on a free Azure Data Explorer cluster.</br></br>The domain name or tenant ID value (and the preceding semicolon) can be omitted for a database on an Azure Data Explorer cluster because the cluster is always in the same Microsoft Entra ID tenant as the watcher managed identity. |
+    | `tenant-primary-domain-placeholder` | The domain name of the Microsoft Entra ID tenant of the watcher managed identity. Find this on the Microsoft Entra ID **Overview** page in the Azure portal. Instead of tenant primary domain, the **Tenant ID** GUID value can be used as well. </br></br>This part of the command is required if you use a database in Real-Time Analytics or on a free Azure Data Explorer cluster. </br></br>The domain name or tenant ID value (and the preceding semicolon) can be omitted for a database on an Azure Data Explorer cluster because the cluster is always in the same Microsoft Entra ID tenant as the watcher managed identity. |
 
     For example:
 

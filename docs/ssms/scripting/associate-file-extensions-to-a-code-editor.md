@@ -1,9 +1,9 @@
 ---
 title: "Associate File Extensions to a Code Editor"
-description: Learn how to associate a file extension to a specific code editor so that when you double-click a file with the extension it is opened by the associated editor.
+description: Learn how to associate a file extension to a specific code editor so that when you double-click a file with the extension it's opened by the associated editor.
 author: markingmyname
 ms.author: maghan
-ms.date: "03/01/2017"
+ms.date: 12/26/2024
 ms.service: sql
 ms.subservice: ssms
 ms.topic: conceptual
@@ -11,42 +11,42 @@ helpviewer_keywords:
   - "file extensions [SQL Server]"
   - "associating file extensions [SQL Server]"
   - "Query Editor [SQL Server Management Studio], associating file extensions"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ai-usage: ai-assisted
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# Associate File Extensions to a Code Editor
 
-[!INCLUDE[SQL Server Azure SQL Database Synapse Analytics PDW](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+# Associate file extensions to a code editor
 
-Associating file extensions to a specific code editor allows you to open a file with the appropriate SQL Server Management Studio code editor when you double-click a file in Windows Explorer. The extensions commonly used by [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)], such as .sql and .mdx, are associated during installation. New file extensions must also be associated to [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)] in the file system. You can use this feature to open files created with other editors, or to open files you have renamed, such as backups of .sql files that were renamed .bak.  
-  
- There are two steps in the process. First associate the extension with [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)], and then associate the extension with a specific code editor.  
-  
-### To associate a new file extension with SQL Server Management Studio  
-  
-1.  On the **Start** menu, point to **All Programs**, point to **Accessories**, and then click **Windows Explorer**.  
-  
-2.  In Windows Explorer, on the **Tools** menu, click **Folder Options**.  
-  
-3.  In the **Folder Options** dialog box, on the **File Types** tab, click **New**.  
-  
-4.  In the **Create New Extension** dialog box, in the **File Extension** box, type the new file extension that you want to associate, and then click **OK**. Do not start the extension with a period.  
-  
-5.  In the **Registered file** types box, click on your new extension, and then click **Change**.  
-  
-6.  In the **Open With** dialog box, click **SSMS - SQL Server Management Studio**, and then click **OK**.  
-  
-7.  Click **Close** to close the **Folder Options** dialog box, and then close Windows Explorer.  
-  
-### To associate a new file extension with a code editor in SQL Server Management Studio  
-  
-1.  In SQL Server Management Studio, from the **Tools** menu, click **Options**.  
-  
-2.  In the **Options** dialog box, click **Text Editor**, and then click **File Extension**.  
-  
-3.  In the **Extension** box, type your new file extension.  
-  
-4.  In the **Editor** box, click the code editor that you wish to use to open this file type, click **Add**, and then click **OK**.  
-  
-## See Also  
- [Ssms Utility](../ssms-utility.md)  
-  
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+
+Associating file extensions to a specific code editor allows you to open a file with the appropriate SQL Server Management Studio code editor when you double-click a file in Windows Explorer. The extensions commonly used by [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)], such as .sql and .mdx, are associated during installation. New file extensions must also be associated to [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)] in the file system. You can use this feature to open files created with other editors, or to open files you have renamed, such as backups of .sql files that were renamed .bak.
+
+There are two steps in the process. First associate the extension with [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)], and then associate the extension with a specific code editor.
+
+## To associate a new file extension with SQL Server Management Studio
+
+1. **Open Windows Settings**: Select the Start menu and select **Settings**.
+
+1. **Navigate to Default Apps**: In the **Settings** window, select **Apps**, then select **Default apps**.
+
+1. **Choose Default Apps by File Type**: Scroll down and Select **Choose default apps by file type**.
+
+1. **Find Your File Extension**: Locate the file extension you want to associate (for example, .sql).
+
+1. **Set SSMS as Default**: Select the current default app and select SQL Server Management Studio from the list.
+
+1. **Configure within SSMS**: Open SSMS, go to **Tools** > **Options**, and under **Text Editor**, specify the editor for the new extension if necessary.
+
+## To associate a new file extension with a code editor in SQL Server Management Studio
+
+1. In SQL Server Management Studio, from the **Tools** menu, select **Options**.
+
+1. In the **Options** dialog box, select **Text Editor**, and then select **File Extension**.
+
+1. In the **Extension** box, type your new file extension.
+
+1. In the **Editor** box, select the code editor that you wish to use to open this file type, select **Add**, and then select **OK**.
+
+## Related content
+
+- [Ssms Utility](../ssms-utility.md)

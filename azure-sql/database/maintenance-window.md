@@ -126,7 +126,7 @@ The following table is for databases that are not [zone-redundant](high-availabi
 | South Africa North | | Yes | Yes |
 | South Central US | Yes | Yes | Yes |
 | South India | | Yes | Yes |
-| Southeast Asia | | Yes | Yes |
+| Southeast Asia | Yes | Yes | Yes |
 | Switzerland North | | Yes | Yes |
 | UAE North | | Yes | Yes |
 | UK South | Yes | Yes | Yes |
@@ -154,7 +154,7 @@ The following table is for [zone-redundant](high-availability-sla-local-zone-red
 | Japan East | | | Yes |
 | North Europe |  Yes | Yes | Yes |
 | South Central US  | | | Yes |
-| Southeast Asia | | |  Yes |
+| Southeast Asia | Yes | Yes |  Yes |
 | UK South | Yes | Yes | Yes |
 | West Europe |  Yes | Yes | Yes |
 | West US 2 | | | Yes |

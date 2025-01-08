@@ -43,7 +43,7 @@ November 2024 brings the following capabilities:
 - Update pool configuration settings (such as compute size, license, properties) by using PowerShell or the Azure CLI. 
 - Support for premium-series hardware.
 - Move an instance in and out of the pool by using PowerShell or the Azure CLI. 
-- Instance pool support for [reserved capacity pricing](#reserved-capacity-pricing). 
+- Instance pool support for [reservations pricing](#reservations-pricing). 
 
 ## Architecture
 
@@ -128,9 +128,9 @@ For full instance pool pricing details, refer to the *instance pools* section on
 > [!NOTE]
 > Instance pools created on [subscriptions eligible for the dev-test benefit](https://azure.microsoft.com/pricing/dev-test/) automatically receive discounted rates of up to 55 percent on Azure SQL Managed Instance.
 
-### Reserved capacity pricing
+### Reservations pricing
 
-[Reserved capacity](../database/reserved-capacity-overview.md) lets you save on compute cost by providing a deep discount when you reserve the price of resources for a predetermined period. You can now allocate reserved capacity to an instance pool, which creates the most cost-effective way to run multiple instances. 
+[Azure Reservations](../database/reservations-discount-overview.md) lets you save on compute cost by providing a deep discount when you reserve the price of resources for a predetermined period. You can now allocate reservations to an instance pool, which creates the most cost-effective way to run multiple instances. 
 
 ## Limitations
 

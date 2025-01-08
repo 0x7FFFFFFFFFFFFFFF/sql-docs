@@ -31,6 +31,8 @@ To change [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Authenticat
 
 SQL Server Configuration Manager is the tool designed and authorized to change the settings of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] services. Changing a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] service by using the Windows Service Control Manager (**services.msc**) application doesn't always change all of the necessary settings and might prevent the service from functioning properly. However, in a clustered environment, after changing the password on the active node by using SQL Server Configuration Manager, you must change the password on the passive node by using the Service Control Manager.
 
+It's also possible to automate password management through [group-managed service accounts](configure-windows-service-accounts-and-permissions.md#GMSA).
+
 ## Permissions
 
 You must be an administrator of the computer to change the password used by a service.

@@ -784,6 +784,10 @@ Parser version 1.0 is available for backward compatibility only, and should be u
 > [!NOTE]  
 > When COPY INTO is used with compressed CSV files or files with UTF-16 encoding, COPY INTO automatically switches to PARSER_VERSION 1.0, without user action required. For multi-character terminators on FIELDTERMINATOR or ROWTERMINATOR, the COPY INTO statement will fail. Use PARSER_VERSION = '1.0' if multi-character separators are needed.
 
+## Permissions
+
+The COPY command requires a minimum **CONTRIBUTOR role** at the workspace level, or alternatively, the **VIEWER** role at the workspace level plus **ADMINISTER DATABASE BULK OPERATIONS** database permission and **INSERT** permission on the table objects.
+
 ## Remarks
 
 The COPY statement accepts only UTF-8 and UTF-16 valid characters for row data and command parameters. Source files or parameters (such as ROW TERMINATOR or FIELD TERMINATOR) that use invalid characters may be interpreted incorrectly by the COPY statement and cause unexpected results such as data corruption, or other failures. Make sure your source files and parameters are UTF-8 or UTF-16 compliant before you invoke the COPY statement.  

@@ -37,7 +37,7 @@ If you encounter an issue when updating, try deleting the Visual Studio Installe
 
 1. Delete the Visual Studio Installer folder. Typically, the folder path is `C:\Program Files (x86)\Microsoft Visual Studio\Installer`.
 
-1. Run the SSMS bootstrapper. You might find the bootstrapper in your *Downloads* folder with a file name `vs_ssms.exe`. Or, you can download the bootstrapper from the [installation page](install.md) for SSMS. Then, run the executable to reset your installation metadata.
+1. Run the SSMS bootstrapper. You might find the bootstrapper in your *Downloads* folder with a file name `vs_SSMS.exe`. Or, you can download the bootstrapper from the [installation page](install.md) for SSMS. Then, run the executable to reset your installation metadata.
 
 1. Try to install or update SSMS again. If the installer continues to fail, report the problem to support.
 
@@ -63,7 +63,7 @@ As a last resort, you can remove all SSMS installation files and product informa
 
 1. Remove all with [InstallCleanup.exe](uninstall.md#remove-all-with-installcleanupexe).
 
-1. Rerun the SSMS bootstrapper. You might find the bootstrapper in your Downloads folder with a file name `vs_ssms_.exe`. Or, you can download the bootstrapper from the [installation page](install.md).
+1. Rerun the SSMS bootstrapper. You might find the bootstrapper in your Downloads folder with a file name `vs_SSMS.exe`. Or, you can download the bootstrapper from the [installation page](install.md).
 
 1. Try to reinstall SSMS.
 

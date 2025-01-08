@@ -71,7 +71,7 @@ The **Expensive Queries** reports are reset when [!INCLUDE[ssNoVersion](../../in
 
 
 > [!NOTE]
-> The Performance Dashboard was first released as a standalone download for [SQL Server 2005](https://techcommunity.microsoft.com/t5/SQL-Server-Support/SQL-Server-2005-Performance-Dashboard-Reports/ba-p/315415), and later updated for [SQL Server 2012](https://www.microsoft.com/download/details.aspx?id=29063). While the SQL Server Management Studio report renderer does not support clipboard access to text contained in the reports, the text can be accessed via the standalone reports.  Download the standlone reports if you need to copy query text from the reports.
+> While the SQL Server Management Studio report renderer does not support clipboard access to text contained in the reports, the text can be accessed via the standalone reports.  Download the standlone reports if you need to copy query text from the reports.
 
 ## Permissions  
 On [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], requires `VIEW SERVER STATE` and `ALTER TRACE` permissions. 

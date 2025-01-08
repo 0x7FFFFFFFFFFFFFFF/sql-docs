@@ -1,9 +1,9 @@
 ---
-title: "Designing assemblies"
+title: "Designing Assemblies"
 description: This article describes factors to consider when you design an assembly to host on SQL Server, including packaging, managing, and restrictions on assemblies.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/02/2024
+ms.date: 12/27/2024
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -11,7 +11,7 @@ helpviewer_keywords:
   - "designing assemblies [SQL Server]"
   - "assemblies [CLR integration], designing"
 ---
-# Designing assemblies
+# Design assemblies
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -27,7 +27,7 @@ An assembly can contain functionality for more than one [!INCLUDE [ssNoVersion](
 
 When you're packaging code into assembly, consider:
 
-- CLR user-defined types and indexes that depend on CLR user-defined functions can cause persisted data to be in the database that depends on the assembly. Modifying the code of an assembly is frequently more complex when there's persisted data that depends on the assembly in the database. Therefore, it's better to separate code on which persisted data dependencies rely (such as user-defined types and indexes using user-defined functions) from code that doesn't have these persisted data dependencies. For more information, see [Implementing assemblies](assemblies-implementing.md) and [ALTER ASSEMBLY (Transact-SQL)](../../t-sql/statements/alter-assembly-transact-sql.md).
+- CLR user-defined types and indexes that depend on CLR user-defined functions can cause persisted data to be in the database that depends on the assembly. Modifying the code of an assembly is frequently more complex when there's persisted data that depends on the assembly in the database. Therefore, it's better to separate code on which persisted data dependencies rely (such as user-defined types and indexes using user-defined functions) from code that doesn't have these persisted data dependencies. For more information, see [Implement assemblies](assemblies-implementing.md) and [ALTER ASSEMBLY](../../t-sql/statements/alter-assembly-transact-sql.md).
 
 - If a piece of managed code requires higher permission, it's better to separate that code into a separate assembly from code that doesn't require higher permission.
 
@@ -51,11 +51,11 @@ SAFE and `EXTERNAL_ACCESS` assemblies can contain only code that is verifiably t
 
 `UNSAFE` gives assemblies unrestricted access to resources, both within and outside [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Code that is running from within an `UNSAFE` assembly can call unmanaged code.
 
-Also, specifying `UNSAFE` allows for the code in the assembly to perform operations that are considered type-unsafe by the CLR verifier. These operations can potentially access memory buffers in the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] process space in an uncontrolled manner. `UNSAFE` assemblies can also potentially subvert the security system of either [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or the common language runtime. UNSAFE permissions should be granted only to highly trusted assemblies by experienced developers or administrators. Only members of the **sysadmin** fixed server role can create `UNSAFE` assemblies.
+Also, specifying `UNSAFE` allows for the code in the assembly to perform operations that are considered type-unsafe by the CLR verifier. These operations can potentially access memory buffers in the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] process space in an uncontrolled manner. `UNSAFE` assemblies can also potentially subvert the security system of either [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or the common language runtime. `UNSAFE` permissions should be granted only to highly trusted assemblies by experienced developers or administrators. Only members of the **sysadmin** fixed server role can create `UNSAFE` assemblies.
 
 ## Restrictions on assemblies
 
-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] puts certain restrictions on managed code in assemblies to make sure that they can run in a reliable and scalable manner. This means that certain operations that can compromise the robustness of the server aren't permitted in SAFE and `EXTERNAL_ACCESS` assemblies.
+[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] puts certain restrictions on managed code in assemblies to make sure that they can run in a reliable and scalable manner. This means that certain operations that can compromise the robustness of the server aren't permitted in `SAFE` and `EXTERNAL_ACCESS` assemblies.
 
 ### Disallowed custom attributes
 
@@ -83,42 +83,27 @@ System.Security.UnverifiableCodeAttribute
 
 ### Disallowed .NET Framework APIs
 
-Any [!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] API that is annotated with one of the disallowed `HostProtectionAttributes` can't be called from `SAFE` and `EXTERNAL_ACCESS` assemblies.
+Any [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] API that is annotated with one of the disallowed `HostProtectionAttributes` can't be called from `SAFE` and `EXTERNAL_ACCESS` assemblies.
 
 ```csharp
-eSelfAffectingProcessMgmt
-eSelfAffectingThreading
-eSynchronization
-eSharedState
-eExternalProcessMgmt
-eExternalThreading
-eSecurityInfrastructure
-eMayLeakOnAbort
-eUI
+HostProtectionAttribute.SelfAffectingProcessMgmt
+HostProtectionAttribute.SelfAffectingThreading
+HostProtectionAttribute.Synchronization
+HostProtectionAttribute.SharedState
+HostProtectionAttribute.ExternalProcessMgmt
+HostProtectionAttribute.ExternalThreading
+HostProtectionAttribute.SecurityInfrastructure
+HostProtectionAttribute.MayLeakOnAbort
+HostProtectionAttribute.UI
 ```
 
 ### Supported .NET Framework assemblies
 
 Any assembly that is referenced by your custom assembly must be loaded into [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] by using `CREATE ASSEMBLY`. The following [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] assemblies are already loaded into [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and, therefore, can be referenced by custom assemblies without having to use `CREATE ASSEMBLY`.
 
-- `CustomMarshalers.dll`
-- `Microsoft.VisualBasic.dll`
-- `Microsoft.VisualC.dll`
-- `mscorlib.dll`
-- `System.dll`
-- `System.Configuration.dll`
-- `System.Core.dll`
-- `System.Data.dll`
-- `System.Data.OracleClient.dll`
-- `System.Data.SqlXml.dll`
-- `System.Deployment.dll`
-- `System.Security.dll`
-- `System.Transactions.dll`
-- `System.Web.Services.dll`
-- `system.Xml.dll`
-- `System.Xml.Linq.dll`
+[!INCLUDE [clr-integration-namespaces](../includes/clr-integration-namespaces.md)]
 
 ## Related content
 
 - [Assemblies (Database Engine)](assemblies-database-engine.md)
-- [CLR Integration Security](security/clr-integration-security.md)
+- [CLR integration security](security/clr-integration-security.md)

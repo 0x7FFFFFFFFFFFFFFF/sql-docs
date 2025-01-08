@@ -8,7 +8,7 @@ ms.topic: include
 | :--- | :--- | :--- | :--- |
 | 18002 | 20 | Yes | Exception happened when running extended stored procedure '%.\*ls' in the library '%.\*ls'. SQL Server is terminating process %d. Exception type: %ls; Exception code: 0x%lx. To generate a minidump, create an xevent session using the dump routine event with the create dump action. |
 | 18052 | 16 | No | Error: %d, Severity: %d, State: %d. |
-| 18053 | 16 | No | Error: %d, Severity: %d, State: %d. (Params:%ls). The error is printed in terse mode because there was error during formatting. Tracing, ETW, notifications etc are skipped. |
+| [18053](../mssqlserver-18053-database-engine-error.md) | 16 | No | Error: %d, Severity: %d, State: %d. (Params:%ls). The error is printed in terse mode because there was error during formatting. Tracing, ETW, notifications etc are skipped. |
 | 18054 | 16 | Yes | Error %d, severity %d, state %d was raised, but no message with that error number was found in sys.messages. If error is larger than 50000, make sure the user-defined message is added using sp_addmessage. |
 | 18055 | 20 | Yes | Exception %d, %d occurred when the server tried to reset connection %d. Because the server cannot recover from the failure to reset the connection, the connection has been dropped. Please contact Microsoft technical support. |
 | 18056 | 20 | Yes | The client was unable to reuse a session with SPID %d, which had been reset for connection pooling. The failure ID is %d. This error may have been caused by an earlier operation failing. Check the error logs for failed operations immediately before this error message. |

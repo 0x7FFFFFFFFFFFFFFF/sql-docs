@@ -556,6 +556,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path_from_root": "/azure-sql/database/reserved-capacity-overview.md",
+      "redirect_url": "/azure/azure-sql/database/reservations-discount-overview",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/azure-sql/database/scripts/auditing-threat-detection-cli.md",
       "redirect_url": "/azure/defender-for-cloud/defender-for-sql-introduction",
       "redirect_document_id": false

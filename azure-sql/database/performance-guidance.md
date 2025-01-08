@@ -4,8 +4,8 @@ titleSuffix: Azure SQL Database
 description: Learn about tuning database applications and databases for performance in Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: wiassaf, mathoma
-ms.date: 12/05/2024
+ms.reviewer: mathoma
+ms.date: 01/06/2025
 ms.service: azure-sql-database
 ms.subservice: performance
 ms.topic: conceptual
@@ -253,7 +253,7 @@ If a workload has a set of repeating queries, often it makes sense to capture an
 
 To reduce the overhead of creating frequent application connections in Azure SQL Database, connection pooling is available in data providers. Connection pooling is enabled in ADO.NET by default, for example. Connection pooling allows an application to reuse connections and minimize the overhead of establishing new ones. 
 
-Connection pooling can improve throughput, reduce latency, and enhance the overall performance of your database workloads. Keep in mind these best practices:
+Connection pooling can improve throughput, reduce latency, and enhance the overall performance of your database workloads. When using built-in authentication mechanisms, drivers manage tokens and token renewal internally. Keep in mind these best practices:
 
 - Configure connection pool settings, such as maximum connections, connection timeouts, or connection lifetime, based on your workload's concurrency and latency requirements. For more information, refer to data provider documentation.
    - [ADO.NET connection pooling](/sql/connect/ado-net/connection-pooling?view=azuresqldb-current&preserve-view=true)
@@ -261,9 +261,15 @@ Connection pooling can improve throughput, reduce latency, and enhance the overa
    - [JDBC connection pooling](/sql/connect/jdbc/using-connection-pooling?view=azuresqldb-current&preserve-view=true)
    - [PHP connection pooling](/sql/connect/php/connection-pooling-microsoft-drivers-for-php-for-sql-server?view=azuresqldb-current&preserve-view=true)
 
-- Cloud applications should implement [retry logic](develop-overview.md#resiliency) to handle transient connectivity failures gracefully. Learn more about how to design [retry logic for transient errors](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors). 
+- Cloud applications should implement [retry logic](develop-overview.md#resiliency) to handle transient connectivity failures gracefully. Learn more about how to design [retry logic for transient errors](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).
 
-- [Monitor Azure SQL Database](monitoring-sql-database-azure-monitor.md) connection performance and resource usage to identify bottlenecks, such as excessive idle connections or insufficient pool limits, and adjust configurations accordingly. Consider using [database watcher](../database-watcher-overview.md) or [Azure Monitor](monitoring-metrics-alerts.md).
+- Token-based authentication mechanisms, such as Microsoft Entra ID authentication, must generate fresh tokens upon expiration. Physical connections in pools with expired tokens must be closed and new physical connections created. To optimize the time it takes to create physical connections that use token-based authentication:
+  - **Implement proactive, asynchronous token renewal:** The first connection `Open()` to get a new token may require a short delay to obtain a new Entra ID token. For many applications, this delay is negligible and no reconfiguration is necessary. If you choose to have your application manage tokens, obtain new access tokens *before* expiration and ensure they are cached. This can minimize the delay of token acquisition during physical connection creation. Performing token renewal proactively moves the short delay to a non-user process. 
+  - **Adjust token lifetimes:** [Configure token expiration policies in Microsoft Entra ID](/entra/identity/conditional-access/howto-conditional-access-session-lifetime) to be at least the expected lifetime of logical connections in your application. While not necessary, adjusting token expiration helps balances security with the performance overhead of re-creating physical connections.
+
+- [Monitor Azure SQL Database](monitoring-sql-database-azure-monitor.md) connection performance and resource usage to identify bottlenecks, such as excessive idle connections or insufficient pool limits, and adjust configurations accordingly. Use [Microsoft Entra ID logs](/entra/identity/monitoring-health/concept-sign-ins) to track token expiration errors and ensure token lifetimes are appropriately configured. Consider using [Database Watcher](../database-watcher-overview.md) or [Azure Monitor](monitoring-metrics-alerts.md) where applicable.
+
+
 
 ## Best practices for very large database architectures in Azure SQL Database
 

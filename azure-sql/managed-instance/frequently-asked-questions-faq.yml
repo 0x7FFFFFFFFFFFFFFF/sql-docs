@@ -129,7 +129,7 @@ sections:
 
   - name: Free SQL Managed Instance offer
     questions:
-      - question: What if I don't see the banner and **Apply Offer** button?
+      - question: What if I don't see the banner and "Apply Offer" button?
         answer: |
           It's possible your subscription isn't eligible for the [free SQL Managed Instance](free-offer.md#prerequisites). Otherwise, there's a limit of one free instance per subscription. You need to remove an existing free instance to create another one. If you have recently deleted your free instance, it can take up to one hour for the free offer banner to reappear.
 
@@ -225,6 +225,16 @@ sections:
       - question: My query duration is too long. How can I analyze wait statistics on my managed instance?
         answer: |
           See [Analyzing wait statistics on SQL Managed Instance](/archive/blogs/sqlserverstorageengine/analyzing-wait-statistics-on-managed-instance). Wait statistics are information that might help you understand why the query duration is long and identify the queries that are waiting for something in database engine.
+      
+      - question: How to address `MSSQLSERVER_833` error in SQL Managed Instance?
+        answer: |
+          `MSSQLSERVER_833` indicates that an I/O request took longer than 15 seconds to complete. This error in Azure SQL Managed Instance is related to overall infrastructure conditions, and not the workload. In cloud environments, and systems that utilize remote storage, there are multiple architectural layers that impact a single I/O request. This behavior is expected and a known limitation of the service that typically results from transient networking issues, or Azure storage resources becoming temporarily unavailable. The system usually recovers without intervention.
+          
+          This occurrence is rare, and does not impact the average latency of I/O requests to remote storage. Depending on the workload or thread that initiates the I/O request, customers might observe SQL command timeouts and increased latency in specific scenarios, while others are unlikely to experience any impact at all. For example, not all long-running I/O requests block operations, such as, for instance, read-ahead page access is often unaffected.
+          
+          Using the [Next-gen General Purpose service tier upgrade](service-tiers-next-gen-general-purpose-use.md) (currently in public preview) can help mitigate this issue, as it improves performance and reliability at no additional cost. Customers are encouraged to explore it for enhanced service quality.
+          
+          If this error occurs persistently, consider reviewing workload patterns, storage performance, and networking configurations. Additionally, consider using the Business Critical service tier as it's designed for applications with low I/O latency requirements.
 
   - name: Monitoring, Metrics and Alerts
     questions:
@@ -481,12 +491,12 @@ sections:
         answer: |
           You can save costs with the Azure SQL benefits in the following ways:
           -    Maximize existing investments in on-premises licenses and save up to 55 percent with [Azure Hybrid Benefit](../azure-hybrid-benefit.md?tabs=azure-powershell). 
-          -    Commit to a reservation for compute resources and save up to 33 percent with [Reserved Instance Benefit](../database/reserved-capacity-overview.md). Combine this with Azure Hybrid benefit for savings up to 82 percent. 
+          -    Commit to a reservation for compute resources and save up to 33 percent with [Azure Reservations](../database/reservations-discount-overview.md) benefit. Combine this with Azure Hybrid benefit for savings up to 82 percent. 
           -    Save up to 55 percent versus list prices with [Azure Dev/Test Pricing Benefit](https://azure.microsoft.com/pricing/dev-test/) that offers discounted rates for your ongoing development and testing workloads.
 
       - question: Who is eligible for Reserved Instance benefit?
         answer: |
-          To be eligible for reserved Instance benefit, your subscription type must be an enterprise agreement (offer numbers: MS-AZR-0017P or MS-AZR-0148P) or an individual agreement with pay-as-you-go pricing (offer numbers: MS-AZR-0003P or MS-AZR-0023P). For more information about reservations, see [Reserved Instance Benefit](../database/reserved-capacity-overview.md).
+          To be eligible for reserved Instance benefit, your subscription type must be an enterprise agreement (offer numbers: MS-AZR-0017P or MS-AZR-0148P) or an individual agreement with pay-as-you-go pricing (offer numbers: MS-AZR-0003P or MS-AZR-0023P). For more information about reservations, see [Azure Reservations](../database/reservations-discount-overview.md).
 
       - question: Is it possible to cancel, exchange, or refund reservations?
         answer: |
@@ -599,7 +609,7 @@ sections:
 
       - question: My instance isn't able to use features introduced by the November 2022 feature wave. Why?
         answer: |
-          The feature wave is available to instances in [eligible subnets](doc-changes-updates-release-notes-whats-new.md#november-2022-feature-wave). If you don't see new features, it's likely the subnet that contains your SQL managed instance isn't eligible as it's still in the enrollment process. Instances in subnets not enrolled in the wave continue to see the Feature Wave page in the Azure Portal.
+          The feature wave is available to instances in [eligible subnets](doc-changes-updates-release-notes-whats-new.md#november-2022-feature-wave). If you don't see new features, it's likely the subnet that contains your SQL managed instance isn't eligible as it's still in the enrollment process. Instances in subnets not enrolled in the wave continue to see the Feature Wave page in the Azure portal.
 
   - name: Next-gen General Purpose service tier upgrade
     questions:

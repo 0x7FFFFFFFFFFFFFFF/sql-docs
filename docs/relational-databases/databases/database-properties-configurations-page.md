@@ -4,12 +4,12 @@ description: "Learn how to use the Configurations tab in the Database Properties
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest, erinstellato 
-ms.date: 12/02/2024
+ms.date: 01/07/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
 f1_keywords:
-  - "sql13.swb.databaseproperties.options.f1"
+  - "sql13.swb.databaseproperties.configurations.f1"
 ---
 # Database Properties (Configurations page)
 

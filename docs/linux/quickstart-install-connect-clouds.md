@@ -32,6 +32,7 @@ In this quickstart, you install [!INCLUDE [ssnoversion-md](../includes/ssnoversi
    - [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
    - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
    - [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)
+   - [Quickstart: Install SQL Server and create a database on WSL2](quickstart-install-connect-wsl-2.md)
 1. Configure for remote connections:
    - Open the [Amazon EC2 console]( https://console.aws.amazon.com/ec2/)
    - In the navigation pane, choose **Security Groups**.

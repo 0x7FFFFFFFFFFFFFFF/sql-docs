@@ -1,9 +1,9 @@
 ---
 title: "NEWID (Transact-SQL)"
-description: "NEWID (Transact-SQL)"
+description: "NEWID creates a unique value of type uniqueidentifier."
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: "07/29/2017"
+ms.date: 12/19/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -31,9 +31,6 @@ Creates a unique value of type **uniqueidentifier**.
 ```syntaxsql 
 NEWID ( )  
 ```  
-  
-> [!NOTE]
-> Not supported in Azure Synapse serverless pools.
 
 ## Return Types
  **uniqueidentifier**  
@@ -60,13 +57,13 @@ Value of @myid is: 6F9619FF-8B86-D011-B42D-00C04FC964FF
 ```  
   
 > [!NOTE]  
->  The value returned by NEWID is different for each computer. This number is shown only for illustration.  
+>  The value returned by `NEWID()` is different for each computer. This number is shown only for illustration.  
   
 ### B. Using NEWID in a CREATE TABLE statement  
   
 **Applies to**:  [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
   
- The following example creates the `cust` table with a **uniqueidentifier** data type, and uses NEWID to fill the table with a default value. In assigning the default value of `NEWID()`, each new and existing row has a unique value for the `CustomerID` column.  
+ The following example creates the `cust` table with a **uniqueidentifier** data type, and uses `NEWID()` to fill the table with a default value. In assigning the default value of `NEWID()`, each new and existing row has a unique value for the `CustomerID` column.  
   
 ```sql
 -- Creating a table using NEWID for uniqueidentifier data type.  
@@ -124,15 +121,15 @@ ORDER BY NEWID()
 GO
 ```
 
-  
-## See Also  
- [NEWSEQUENTIALID &#40;Transact-SQL&#41;](../../t-sql/functions/newsequentialid-transact-sql.md)   
- [ALTER TABLE &#40;Transact-SQL&#41;](../../t-sql/statements/alter-table-transact-sql.md)   
- [CAST and CONVERT &#40;Transact-SQL&#41;](../../t-sql/functions/cast-and-convert-transact-sql.md)   
- [CREATE TABLE &#40;Transact-SQL&#41;](../../t-sql/statements/create-table-transact-sql.md)   
- [Data Types &#40;Transact-SQL&#41;](../../t-sql/data-types/data-types-transact-sql.md)   
- [System Functions &#40;Transact-SQL&#41;](../../relational-databases/system-functions/system-functions-category-transact-sql.md)   
- [uniqueidentifier &#40;Transact-SQL&#41;](../../t-sql/data-types/uniqueidentifier-transact-sql.md)   
- [Sequence Numbers](../../relational-databases/sequence-numbers/sequence-numbers.md)  
+## Related content
+
+- [NEWSEQUENTIALID &#40;Transact-SQL&#41;](../../t-sql/functions/newsequentialid-transact-sql.md)   
+- [ALTER TABLE &#40;Transact-SQL&#41;](../../t-sql/statements/alter-table-transact-sql.md)   
+- [CAST and CONVERT &#40;Transact-SQL&#41;](../../t-sql/functions/cast-and-convert-transact-sql.md)   
+- [CREATE TABLE &#40;Transact-SQL&#41;](../../t-sql/statements/create-table-transact-sql.md)   
+- [Data Types &#40;Transact-SQL&#41;](../../t-sql/data-types/data-types-transact-sql.md)   
+- [System Functions &#40;Transact-SQL&#41;](../../relational-databases/system-functions/system-functions-category-transact-sql.md)   
+- [uniqueidentifier &#40;Transact-SQL&#41;](../../t-sql/data-types/uniqueidentifier-transact-sql.md)   
+- [Sequence Numbers](../../relational-databases/sequence-numbers/sequence-numbers.md)  
   
   

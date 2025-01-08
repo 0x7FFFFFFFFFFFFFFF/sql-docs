@@ -1,16 +1,16 @@
 ---
-title: Implementing assemblies
+title: Implementing Assemblies
 description: Learn how to work with assemblies hosted on SQL Server, including how to create/modify assemblies, drop or enable/disable assemblies, and manage versions.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/02/2024
+ms.date: 12/27/2024
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
 helpviewer_keywords:
   - "assemblies [CLR integration], implementing"
 ---
-# Implementing assemblies
+# Implement assemblies
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
@@ -23,23 +23,23 @@ This article provides information about the following areas to help you implemen
 
 ## Create assemblies
 
-Assemblies are created in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] by using the [!INCLUDE [tsql](../../includes/tsql-md.md)] `CREATE ASSEMBLY` statement, or in the [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] by using the Assembly Assisted Editor. Additionally, deploying a SQL Server Project in [!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [vsprvs](../../includes/vsprvs-md.md)] registers an assembly in the database that was specified for the project. For more information, see [Deploying CLR Database Objects](deploying-clr-database-objects.md).
+Assemblies are created in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] by using the [!INCLUDE [tsql](../../includes/tsql-md.md)] `CREATE ASSEMBLY` statement, or in the [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] by using the Assembly Assisted Editor. Additionally, deploying a SQL Server Project in [!INCLUDE [vsprvs](../../includes/vsprvs-md.md)] registers an assembly in the database that was specified for the project. For more information, see [Deploy CLR database objects](deploying-clr-database-objects.md).
 
 - With Transact-SQL: [CREATE ASSEMBLY (Transact-SQL)](../../t-sql/statements/create-assembly-transact-sql.md)
-- With SQL Server Management Studio: [Assemblies - Properties](assemblies-properties.md)
+- With SQL Server Management Studio: [Assembly properties](assemblies-properties.md)
 
 ## Modify assemblies
 
 Assemblies are modified in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] by using the [!INCLUDE [tsql](../../includes/tsql-md.md)] `ALTER ASSEMBLY` statement or in [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] by using the Assembly Assisted Editor.
 
 - With Transact-SQL: [ALTER ASSEMBLY (Transact-SQL)](../../t-sql/statements/alter-assembly-transact-sql.md)
-- With SQL Server Management Studio: [Assemblies - Properties](assemblies-properties.md)
+- With SQL Server Management Studio: [Assembly properties](assemblies-properties.md)
 
 You can modify an assembly when you want to perform the following actions:
 
 - Change the implementation of the assembly by uploading a newer version of the binaries of the assembly. For more information, see [Manage assembly versions](#manage-assembly-versions) later in this article.
 
-- Change the permission set of the assembly. For more information, see [Designing assemblies](assemblies-designing.md).
+- Change the permission set of the assembly. For more information, see [Design assemblies](assemblies-designing.md).
 
 - Change the visibility of the assembly. Visible assemblies are available for referencing in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Nonvisible assemblies aren't available, even if they're uploaded in the database. By default, assemblies uploaded to an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] are visible.
 
@@ -58,7 +58,7 @@ For more information, see [sp_configure](../system-stored-procedures/sp-configur
 
 ## Manage assembly versions
 
-When an assembly is uploaded to an instance [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], the assembly is stored and managed within the database system catalogs. Any changes made to the definition of the assembly in the [!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] should be propagated to the assembly that is stored in the database catalog.
+When an assembly is uploaded to an instance [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], the assembly is stored and managed within the database system catalogs. Any changes made to the definition of the assembly in the [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] should be propagated to the assembly that is stored in the database catalog.
 
 When you have to modify an assembly, you must issue an `ALTER ASSEMBLY` statement to update the assembly in the database. This statement updates the assembly to the latest copy of [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] modules holding its implementation.
 

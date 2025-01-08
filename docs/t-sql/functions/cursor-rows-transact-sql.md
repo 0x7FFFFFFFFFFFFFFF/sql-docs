@@ -4,7 +4,7 @@ description: "@@CURSOR_ROWS returns the number of qualifying rows currently in t
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/06/2024
+ms.date: 01/02/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -61,13 +61,17 @@ GO
 SELECT @@CURSOR_ROWS;
 
 DECLARE Name_Cursor CURSOR
-FOR
-SELECT LastName, @@CURSOR_ROWS
-FROM Person.Person;
+    FOR SELECT LastName, @@CURSOR_ROWS
+        FROM Person.Person;
+
 OPEN Name_Cursor;
+
 FETCH NEXT FROM Name_Cursor;
+
 SELECT @@CURSOR_ROWS;
+
 CLOSE Name_Cursor;
+
 DEALLOCATE Name_Cursor;
 GO
 ```

@@ -28,13 +28,13 @@ helpviewer_keywords:
   - "editions [SQL Server], about edition options"
   - "Setup [SQL Server]"
 ---
-# Editions and supported features of [!INCLUDE [sssql22](../includes/sssql22-md.md)] on Linux
+# Editions and supported features of SQL Server 2022 on Linux
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
 This article provides details of features supported by the various editions of [!INCLUDE [sssql22](../includes/sssql22-md.md)] on Linux.
 
-For editions and supported features of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows, see [Editions and supported features of SQL Server 2022](../sql-server/editions-and-components-of-sql-server-2022.md). For more information on what's new in [!INCLUDE [sssql22](../includes/sssql22-md.md)] on Windows, see [What's new in [!INCLUDE [sql-server-2022](../includes/sssql22-md.md)]](../sql-server/what-s-new-in-sql-server-2022.md).
+For editions and supported features of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows, see [Editions and supported features of SQL Server 2022](../sql-server/editions-and-components-of-sql-server-2022.md). For more information on what's new in [!INCLUDE [sssql22](../includes/sssql22-md.md)] on Windows, see [What's new in SQL Server 2022](../sql-server/what-s-new-in-sql-server-2022.md).
 
 Installation requirements vary based on your application needs. The different editions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] accommodate the unique performance, runtime, and price requirements of organizations and individuals. The [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] components that you install also depend on your specific requirements. The following sections help you understand how to make the best choice among the editions and components available in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 

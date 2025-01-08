@@ -152,7 +152,7 @@ FROM DimEmployee;
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
 
 ```output
--17
+17
 ```
 
 ### E. Return the negative of a column

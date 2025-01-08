@@ -2262,21 +2262,21 @@ items:
         href: relational-databases/clr-integration-data-access-in-process-ado-net/sqlpipe-object.md
       - name: SqlTriggerContext Object
         href: relational-databases/clr-integration-data-access-in-process-ado-net/sqltriggercontext-object.md
-    - name: User-Defined Functions
+    - name: User-defined functions
       href: relational-databases/clr-integration-database-objects-user-defined-functions/clr-user-defined-functions.md
       items:
-      - name: Scalar-Valued
+      - name: Scalar-valued
         href: relational-databases/clr-integration-database-objects-user-defined-functions/clr-scalar-valued-functions.md
-      - name: Table-Valued
+      - name: Table-valued
         href: relational-databases/clr-integration-database-objects-user-defined-functions/clr-table-valued-functions.md
-      - name: User-Defined Aggregates
+      - name: User-defined aggregates
         href: relational-databases/clr-integration-database-objects-user-defined-functions/clr-user-defined-aggregates.md
         items:
         - name: Requirements
           href: relational-databases/clr-integration-database-objects-user-defined-functions/clr-user-defined-aggregates-requirements.md
-        - name: Invoking Functions
+        - name: Invoking functions
           href: relational-databases/clr-integration-database-objects-user-defined-functions/clr-user-defined-aggregate-invoking-functions.md
-    - name: User-Defined Types
+    - name: User-defined types
       href: relational-databases/clr-integration-database-objects-user-defined-types/clr-user-defined-types.md
       items:
       - name: Create
@@ -2291,18 +2291,18 @@ items:
       - name: Working with
         href: relational-databases/clr-integration-database-objects-user-defined-types/working-with-user-defined-types-in-sql-server.md
         items:
-        - name: Defining UDT Tables & Columns
+        - name: Defining UDT tables & columns
           href: relational-databases/clr-integration-database-objects-user-defined-types/working-with-user-defined-types-defining-udt-tables-and-columns.md
-        - name: Manipulating UDT Data
+        - name: Manipulating UDT data
           href: relational-databases/clr-integration-database-objects-user-defined-types/working-with-user-defined-types-manipulating-udt-data.md
       - name: Accessing in ADO.NET
         href: relational-databases/clr-integration-database-objects-user-defined-types/accessing-user-defined-types-in-ado-net.md
         items:
-        - name: Retrieving UDT Data
+        - name: Retrieving UDT data
           href: relational-databases/clr-integration-database-objects-user-defined-types/accessing-user-defined-types-retrieving-udt-data.md
-        - name: Updating UDT Columns with DataAdapters
+        - name: Updating UDT columns with DataAdapters
           href: relational-databases/clr-integration-database-objects-user-defined-types/accessing-user-defined-types-updating-udt-columns-with-dataadapters.md
-    - name: Integration & Transactions
+    - name: Integration & transactions
       href: relational-databases/clr-integration-data-access-transactions/clr-integration-and-transactions.md
       items:
       - name: Transaction Promotion
@@ -2378,20 +2378,20 @@ items:
         href: relational-databases/clr-integration/debugging-clr-database-objects.md
       - name: Deploy
         href: relational-databases/clr-integration/deploying-clr-database-objects.md
-      - name: Monitoring & Troubleshooting
+      - name: Monitoring & troubleshooting
         href: relational-databases/clr-integration/monitoring-and-troubleshooting-managed-database-objects.md
-      - name: Data Access from CLR Database Objects
+      - name: Data access from CLR database objects
         href: relational-databases/clr-integration/data-access/data-access-from-clr-database-objects.md
-      - name: Data Types in the .NET Framework
+      - name: Data types in the .NET Framework
         href: relational-databases/clr-integration-database-objects-types-net-framework/sql-server-data-types-in-the-net-framework.md
         items:
         - name: Collation & data types
           href: relational-databases/clr-integration-database-objects-types-net-framework/collation-and-clr-integration-data-types.md
-        - name: Large Object (LOB) Parameters
+        - name: Large object (LOB) parameters
           href: relational-databases/clr-integration-database-objects-types-net-framework/handling-large-object-lob-parameters-in-the-clr.md
         - name: Mapping parameter data
           href: relational-databases/clr-integration-database-objects-types-net-framework/mapping-clr-parameter-data.md
-        - name: Nullability & three-value logic Comparisons
+        - name: Nullability & three-value logic comparisons
           href: relational-databases/clr-integration-database-objects-types-net-framework/nullability-and-three-value-logic-comparisons.md
   - name: Extended stored procedures
     items:
@@ -7006,29 +7006,31 @@ items:
     - name: Resource governor
       href: relational-databases/resource-governor/resource-governor.md
       items:
+      - name: Configuration examples and best practices
+        href: relational-databases/resource-governor/resource-governor-walkthrough.md
       - name: Enable
         href: relational-databases/resource-governor/enable-resource-governor.md
       - name: Disable
         href: relational-databases/resource-governor/disable-resource-governor.md
-      - name: Configure Resource Governor Using a Template
+      - name: Configure resource governor using a template
         href: relational-databases/resource-governor/configure-resource-governor-using-a-template.md
-      - name: View Resource Governor Properties
+      - name: View resource governor properties
         href: relational-databases/resource-governor/view-resource-governor-properties.md
-      - name: Resource Pool
+      - name: Resource pool
         href: relational-databases/resource-governor/resource-governor-resource-pool.md
         items:
         - name: Create
           href: relational-databases/resource-governor/create-a-resource-pool.md
-        - name: Change  Settings
+        - name: Modify
           href: relational-databases/resource-governor/change-resource-pool-settings.md
         - name: Delete
           href: relational-databases/resource-governor/delete-a-resource-pool.md
-      - name: Workload Group
+      - name: Workload group
         href: relational-databases/resource-governor/resource-governor-workload-group.md
         items:
         - name: Create
           href: relational-databases/resource-governor/create-a-workload-group.md
-        - name: Change  Settings
+        - name: Modify
           href: relational-databases/resource-governor/change-workload-group-settings.md
         - name: Move
           href: relational-databases/resource-governor/move-a-workload-group.md
@@ -7036,9 +7038,6 @@ items:
           href: relational-databases/resource-governor/delete-a-workload-group.md
       - name: Classifier function
         href: relational-databases/resource-governor/resource-governor-classifier-function.md
-        items:
-        - name: Create & Test a Classifier User-Defined Function
-          href: relational-databases/resource-governor/create-and-test-a-classifier-user-defined-function.md
     - name: Statistics
       href: relational-databases/statistics/statistics.md
       items:
@@ -10113,6 +10112,8 @@ items:
       href: linux/quickstart-install-connect-suse.md
     - name: Install and connect (Ubuntu)
       href: linux/quickstart-install-connect-ubuntu.md
+    - name: Install and connect (WSL2)
+      href: linux/quickstart-install-connect-wsl-2.md
     - name: Run and connect (containers)
       href: linux/quickstart-install-connect-docker.md
     - name: Deploy SQL Server container cluster
@@ -11713,6 +11714,8 @@ items:
         items:
         - name: Overview
           href: relational-databases/errors-events/database-engine-events-and-errors-18000-to-18999.md
+        - name: 18053
+          href: relational-databases/errors-events/mssqlserver-18053-database-engine-error.md
         - name: 18210
           href: relational-databases/errors-events/mssqlserver-18210-database-engine-error.md
         - name: 18264

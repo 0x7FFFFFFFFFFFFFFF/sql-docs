@@ -5,7 +5,7 @@ metadata:
   description: Frequently asked questions about database watcher for Azure SQL
   author: dimitri-furman
   ms.author: dfurman
-  ms.date: 12/20/2024
+  ms.date: 01/07/2024
   ms.reviewer: wiassaf
   ms.service: azure-sql
   ms.subservice: monitoring
@@ -69,8 +69,8 @@ sections:
   - name: Watcher
     questions:
       - question: |
-          Can I create and configure a watcher using Bicep or an ARM template?
-        answer: Yes. See [Create a database watcher](/samples/azure/azure-quickstart-templates/create-watcher/) for an example you can customize to your needs.
+          Can I create and configure a watcher using Bicep, an ARM template, or Terraform?
+        answer: Yes. See [Create a database watcher](/samples/azure/azure-quickstart-templates/create-watcher/) for Bicep and ARM template examples you can customize to your needs. See [Azure resource reference](/azure/templates/microsoft.databasewatcher/watchers) documentation for Bicep, ARM template, and Terraform resource definitions.
 
       - question: |
           Can I create and configure a watcher with PowerShell or Azure CLI?

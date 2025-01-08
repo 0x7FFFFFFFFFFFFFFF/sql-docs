@@ -14,8 +14,8 @@ ms.topic: conceptual
 [!INCLUDE[Driver_PHP_Download](../../includes/driver_php_download.md)]
 
 - Identify which version of the PHP driver you will use, based on your environment, as noted here:  [System Requirements for the Microsoft Drivers for PHP for SQL Server](system-requirements-for-the-php-sql-driver.md)
-- Download and install applicable PHP Driver here: [Download Microsoft PHP Driver](https://www.microsoft.com/download/details.aspx?id=20098)
-- Download and install applicable ODBC Driver here:  [Download ODBC Driver for SQL Server](../odbc/download-odbc-driver-for-sql-server.md)
+- Download and install applicable PHP Driver here: [Microsoft Drivers for PHP for SQL Server](microsoft-php-driver-for-sql-server.md#download)
+- Download and install applicable ODBC Driver here: [Download ODBC Driver for SQL Server](../odbc/download-odbc-driver-for-sql-server.md)
 - Configure the PHP driver and web server for your specific operating system:
 
 ## Windows

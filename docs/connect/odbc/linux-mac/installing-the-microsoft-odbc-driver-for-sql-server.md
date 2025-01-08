@@ -3,7 +3,7 @@ title: Install the Microsoft ODBC driver for SQL Server (Linux)
 description: Learn how to install the Microsoft ODBC Driver for SQL Server on Linux clients to enable database connectivity.
 author: David-Engel
 ms.author: davidengel
-ms.date: 12/11/2024
+ms.date: 12/18/2024
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -61,26 +61,18 @@ sudo apk add --allow-untrusted mssql-tools18_18.4.1.1-1_$architecture.apk
 ### [Debian](#tab/debian18-install)
 
 ```bash
-#Debian 9-11
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+if ! [[ "9 10 11 12" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+then
+    echo "Debian $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
+    exit;
+fi
 
-# Debian 12
-curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
-
-#Download appropriate package for the OS version
-#Choose only ONE of the following, corresponding to your OS version
-
-#Debian 9
-curl https://packages.microsoft.com/config/debian/9/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
-
-#Debian 10
-curl https://packages.microsoft.com/config/debian/10/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
-
-#Debian 11
-curl https://packages.microsoft.com/config/debian/11/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
-
-#Debian 12
-curl https://packages.microsoft.com/config/debian/12/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/debian/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.deb
+# Install the package
+sudo dpkg -i packages-microsoft-prod.deb
+# Delete the file
+rm packages-microsoft-prod.deb
 
 sudo apt-get update
 sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18
@@ -97,43 +89,21 @@ sudo apt-get install -y libgssapi-krb5-2
 > [!NOTE]  
 > You can substitute setting the environment variable `ACCEPT_EULA` with setting the debconf variable `msodbcsql/ACCEPT_EULA` instead: `echo msodbcsql18 msodbcsql/ACCEPT_EULA boolean true | sudo debconf-set-selections`
 
-#### Error: The following signatures couldn't be verified because the public key is not available
-
-**Symptom**
-
-You get an error while running `apt-get update` similar to the following text:
-
-```output
-W: GPG error: https://packages.microsoft.com/debian/12/prod bookworm InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY EB3E94ADBE1229CF
-E: The repository 'https://packages.microsoft.com/debian/12/prod bookworm InRelease' is not signed.
-N: Updating from such a repository can't be done securely, and is therefore disabled by default.
-N: See apt-secure(8) manpage for repository creation and user configuration details.
-```
-
-**Resolution**
-
-Once you download the `/etc/apt/sources.list.d/mssql-release.list` file, edit it to remove the `signed-by` value.
-
-- **Old:** `deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/debian/12/prod bookworm main`
-
-- **New:** `deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/debian/12/prod bookworm main`
-
-Run `sudo apt-get update` and continue the installation from there.
-
 ### [RHEL and Oracle Linux](#tab/redhat18-install)
 
 ```bash
-#Download appropriate package for the OS version
-#Choose only ONE of the following, corresponding to your OS version
+if ! [[ "7 8 9" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+then
+    echo "RHEL $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
+    exit;
+fi
 
-#RHEL 7 and Oracle Linux 7
-curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/mssql-release.repo
-
-#RHEL 8 and Oracle Linux 8
-curl https://packages.microsoft.com/config/rhel/8/prod.repo | sudo tee /etc/yum.repos.d/mssql-release.repo
-
-#RHEL 9
-curl https://packages.microsoft.com/config/rhel/9/prod.repo | sudo tee /etc/yum.repos.d/mssql-release.repo
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/rhel/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
+# Install the package
+sudo yum install packages-microsoft-prod.rpm
+# Delete the file
+rm packages-microsoft-prod.rpm
 
 sudo yum remove unixODBC-utf16 unixODBC-utf16-devel #to avoid conflicts
 sudo ACCEPT_EULA=Y yum install -y msodbcsql18
@@ -148,20 +118,20 @@ sudo yum install -y unixODBC-devel
 ### [SLES](#tab/suse18-install)
 
 ```bash
-curl -O https://packages.microsoft.com/keys/microsoft.asc
-sudo rpm --import microsoft.asc
+if ! [[ "12 15" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+then
+    echo "SLES $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
+    exit;
+fi
 
-#Download appropriate package for the OS version
-#Choose only ONE of the following, corresponding to your OS version
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/sles/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
+# Install the package
+sudo zypper install packages-microsoft-prod.rpm
+# Delete the file
+rm packages-microsoft-prod.rpm
 
-#SLES 12
-sudo zypper ar https://packages.microsoft.com/config/sles/12/prod.repo
-
-#SLES 15
-sudo zypper ar https://packages.microsoft.com/config/sles/15/prod.repo
-#(Only for driver 17.3 and below)
-sudo SUSEConnect -p sle-module-legacy/15/x86_64
-
+sudo zypper update
 sudo ACCEPT_EULA=Y zypper install -y msodbcsql18
 # optional: for bcp and sqlcmd
 sudo ACCEPT_EULA=Y zypper install -y mssql-tools18
@@ -174,20 +144,18 @@ sudo zypper install -y unixODBC-devel
 ### [Ubuntu](#tab/ubuntu18-install)
 
 ```bash
-if ! [[ "18.04 20.04 22.04 23.04 24.04" == *"$(lsb_release -rs)"* ]];
+if ! [[ "18.04 20.04 22.04 24.04" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
 then
-    echo "Ubuntu $(lsb_release -rs) is not currently supported.";
+    echo "Ubuntu $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2) is not currently supported.";
     exit;
 fi
 
-# Add the signature to trust the Microsoft repo
-# For Ubuntu versions < 24.04 
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
-# For Ubuntu versions >= 24.04
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
-
-# Add repo to apt sources
-curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/ubuntu/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)/packages-microsoft-prod.deb
+# Install the package
+sudo dpkg -i packages-microsoft-prod.deb
+# Delete the file
+rm packages-microsoft-prod.deb
 
 # Install the driver
 sudo apt-get update
@@ -225,19 +193,19 @@ The following sections explain how to install the Microsoft ODBC driver 17 from 
 
 ```bash
 #Download the desired package(s)
-curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.10.5.1-1_amd64.apk
+curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.10.6.1-1_amd64.apk
 curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.10.1.1-1_amd64.apk
 
 #(Optional) Verify signature, if 'gpg' is missing install it using 'apk add gnupg':
-curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.10.5.1-1_amd64.sig
+curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.10.6.1-1_amd64.sig
 curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.10.1.1-1_amd64.sig
 
 curl https://packages.microsoft.com/keys/microsoft.asc  | gpg --import -
-gpg --verify msodbcsql17_17.10.5.1-1_amd64.sig msodbcsql17_17.10.5.1-1_amd64.apk
+gpg --verify msodbcsql17_17.10.6.1-1_amd64.sig msodbcsql17_17.10.6.1-1_amd64.apk
 gpg --verify mssql-tools_17.10.1.1-1_amd64.sig mssql-tools_17.10.1.1-1_amd64.apk
 
 #Install the package(s)
-sudo apk add --allow-untrusted msodbcsql17_17.10.5.1-1_amd64.apk
+sudo apk add --allow-untrusted msodbcsql17_17.10.6.1-1_amd64.apk
 sudo apk add --allow-untrusted mssql-tools_17.10.1.1-1_amd64.apk
 ```
 
@@ -247,25 +215,18 @@ sudo apk add --allow-untrusted mssql-tools_17.10.1.1-1_amd64.apk
 ### [Debian](#tab/debian17-install)
 
 ```bash
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+if ! [[ "8 9 10 11 12" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+then
+    echo "Debian $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
+    exit;
+fi
 
-# Debian 12
-curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
-
-#Download appropriate package for the OS version
-#Choose only ONE of the following, corresponding to your OS version
-
-#Debian 9
-curl https://packages.microsoft.com/config/debian/9/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
-
-#Debian 10
-curl https://packages.microsoft.com/config/debian/10/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
-
-#Debian 11
-curl https://packages.microsoft.com/config/debian/11/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
-
-#Debian 12
-curl https://packages.microsoft.com/config/debian/12/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/debian/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.deb
+# Install the package
+sudo dpkg -i packages-microsoft-prod.deb
+# Delete the file
+rm packages-microsoft-prod.deb
 
 sudo apt-get update
 sudo ACCEPT_EULA=Y apt-get install -y msodbcsql17
@@ -285,17 +246,18 @@ sudo apt-get install -y libgssapi-krb5-2
 ### [RHEL and Oracle Linux](#tab/redhat17-install)
 
 ```bash
-#Download appropriate package for the OS version
-#Choose only ONE of the following, corresponding to your OS version
+if ! [[ "6 7 8 9" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+then
+    echo "RHEL $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
+    exit;
+fi
 
-#RHEL 7 and Oracle Linux 7
-curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/mssql-release.repo
-
-#RHEL 8 and Oracle Linux 8
-curl https://packages.microsoft.com/config/rhel/8/prod.repo | sudo tee /etc/yum.repos.d/mssql-release.repo
-
-#RHEL 9
-curl https://packages.microsoft.com/config/rhel/9/prod.repo | sudo tee /etc/yum.repos.d/mssql-release.repo
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/rhel/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
+# Install the package
+sudo yum install packages-microsoft-prod.rpm
+# Delete the file
+rm packages-microsoft-prod.rpm
 
 sudo yum remove unixODBC-utf16 unixODBC-utf16-devel #to avoid conflicts
 sudo ACCEPT_EULA=Y yum install -y msodbcsql17
@@ -310,20 +272,23 @@ sudo yum install -y unixODBC-devel
 ### [SLES](#tab/suse17-install)
 
 ```bash
-curl -O https://packages.microsoft.com/keys/microsoft.asc
-sudo rpm --import microsoft.asc
+if ! [[ "11 12 15" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+then
+    echo "SLES $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
+    exit;
+fi
 
-#Download appropriate package for the OS version
-#Choose only ONE of the following, corresponding to your OS version
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/sles/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
+# Install the package
+sudo zypper install packages-microsoft-prod.rpm
+# Delete the file
+rm packages-microsoft-prod.rpm
 
-#SLES 12
-sudo zypper ar https://packages.microsoft.com/config/sles/12/prod.repo
+# If you need driver 17.3 or below on SLES 15, you also need to run:
+# sudo SUSEConnect -p sle-module-legacy/15/x86_64
 
-#SLES 15
-sudo zypper ar https://packages.microsoft.com/config/sles/15/prod.repo
-#(Only for driver 17.3 and below)
-sudo SUSEConnect -p sle-module-legacy/15/x86_64
-
+sudo zypper update
 sudo ACCEPT_EULA=Y zypper install -y msodbcsql17
 # optional: for bcp and sqlcmd
 sudo ACCEPT_EULA=Y zypper install -y mssql-tools
@@ -336,15 +301,18 @@ sudo zypper install -y unixODBC-devel
 ### [Ubuntu](#tab/ubuntu17-install)
 
 ```bash
-if ! [[ "16.04 18.04 20.04 22.04" == *"$(lsb_release -rs)"* ]];
+if ! [[ "14.04 16.04 18.04 20.04 22.04" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
 then
-    echo "Ubuntu $(lsb_release -rs) is not currently supported.";
+    echo "Ubuntu $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2) is not currently supported.";
     exit;
 fi
 
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
-
-curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/ubuntu/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)/packages-microsoft-prod.deb
+# Install the package
+sudo dpkg -i packages-microsoft-prod.deb
+# Delete the file
+rm packages-microsoft-prod.deb
 
 sudo apt-get update
 sudo ACCEPT_EULA=Y apt-get install -y msodbcsql17
@@ -368,8 +336,19 @@ The following sections explain how to install the Microsoft ODBC driver 13.1 fro
 ### [Debian 8](#tab/debian8-install)
 
 ```bash
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
-curl https://packages.microsoft.com/config/debian/8/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+if ! [[ "8" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+then
+    echo "Debian $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
+    exit;
+fi
+
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/debian/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.deb
+# Install the package
+sudo dpkg -i packages-microsoft-prod.deb
+# Delete the file
+rm packages-microsoft-prod.deb
+
 sudo apt-get update
 sudo ACCEPT_EULA=Y apt-get install msodbcsql
 # optional: for bcp and sqlcmd
@@ -383,7 +362,19 @@ sudo apt-get install unixodbc-dev
 ### [RHEL 7](#tab/redhat7-install)
 
 ```bash
-curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/mssql-release.repo
+if ! [[ "6 7" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+then
+    echo "RHEL $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
+    exit;
+fi
+
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/rhel/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
+# Install the package
+sudo yum install packages-microsoft-prod.rpm
+# Delete the file
+rm packages-microsoft-prod.rpm
+
 sudo yum remove unixODBC-utf16 unixODBC-utf16-devel #to avoid conflicts
 sudo ACCEPT_EULA=Y yum install msodbcsql
 # optional: for bcp and sqlcmd
@@ -397,7 +388,19 @@ sudo yum install unixODBC-devel
 ### [SLES 12](#tab/suse12-install)
 
 ```bash
-sudo zypper ar https://packages.microsoft.com/config/sles/12/prod.repo
+if ! [[ "11 12" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+then
+    echo "SLES $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
+    exit;
+fi
+
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/sles/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
+# Install the package
+sudo zypper install packages-microsoft-prod.rpm
+# Delete the file
+rm packages-microsoft-prod.rpm
+
 sudo ACCEPT_EULA=Y zypper install msodbcsql
 # optional: for bcp and sqlcmd
 sudo ACCEPT_EULA=Y zypper install mssql-tools
@@ -410,8 +413,19 @@ sudo zypper install unixODBC-devel
 ### [Ubuntu 16.04](#tab/ubuntu16-install)
 
 ```bash
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
-curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+if ! [[ "14.04 16.04" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
+then
+    echo "Ubuntu $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2) is not currently supported.";
+    exit;
+fi
+
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/ubuntu/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)/packages-microsoft-prod.deb
+# Install the package
+sudo dpkg -i packages-microsoft-prod.deb
+# Delete the file
+rm packages-microsoft-prod.deb
+
 sudo apt-get update
 sudo ACCEPT_EULA=Y apt-get install msodbcsql
 # optional: for bcp and sqlcmd
@@ -431,7 +445,19 @@ The following sections explain how to install the Microsoft ODBC driver 13 from 
 ### [RHEL 7 (ODBC 13)](#tab/redhat7-13-install)
 
 ```bash
-curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/mssql-release.repo
+if ! [[ "6 7" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+then
+    echo "RHEL $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
+    exit;
+fi
+
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/rhel/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
+# Install the package
+sudo yum install packages-microsoft-prod.rpm
+# Delete the file
+rm packages-microsoft-prod.rpm
+
 sudo yum update
 sudo yum remove unixODBC #to avoid conflicts
 sudo ACCEPT_EULA=Y yum install msodbcsql-13.0.1.0-1 mssql-tools-14.0.2.0-1
@@ -444,8 +470,19 @@ sudo ln -sfn /opt/mssql-tools/bin/bcp-13.0.1.0 /usr/bin/bcp
 ### [Ubuntu 16.04 (ODBC 13)](#tab/ubuntu16-13-install)
 
 ```bash
-curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
-curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
+if ! [[ "14.04 16.04" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
+then
+    echo "Ubuntu $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2) is not currently supported.";
+    exit;
+fi
+
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/ubuntu/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)/packages-microsoft-prod.deb
+# Install the package
+sudo dpkg -i packages-microsoft-prod.deb
+# Delete the file
+rm packages-microsoft-prod.deb
+
 sudo apt-get update
 sudo ACCEPT_EULA=Y apt-get install msodbcsql=13.0.1.0-1 mssql-tools=14.0.2.0-1
 sudo apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
@@ -457,7 +494,19 @@ sudo ln -sfn /opt/mssql-tools/bin/bcp-13.0.1.0 /usr/bin/bcp
 ### [SLES 12 (ODBC 13)](#tab/suse12-13-install)
 
 ```bash
-sudo zypper ar https://packages.microsoft.com/config/sles/12/prod.repo
+if ! [[ "11 12" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+then
+    echo "SLES $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
+    exit;
+fi
+
+# Download the package to configure the Microsoft repo
+curl -sSL -O https://packages.microsoft.com/config/sles/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
+# Install the package
+sudo zypper install packages-microsoft-prod.rpm
+# Delete the file
+rm packages-microsoft-prod.rpm
+
 sudo zypper update
 sudo ACCEPT_EULA=Y zypper install msodbcsql-13.0.1.0-1 mssql-tools-14.0.2.0-1
 sudo zypper install unixODBC-utf16-devel

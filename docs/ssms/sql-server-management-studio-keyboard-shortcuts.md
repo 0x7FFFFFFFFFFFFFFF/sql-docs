@@ -198,7 +198,7 @@ All shortcuts aren't implemented in all types of code editors.
 | Open a new query with current connection | CTRL+N |
 | Open database in Object Explorer | ALT+F8 |
 | Specify values for template parameters | CTRL+SHIFT+M |
-| Run the selected portion of the query editor or the entire query editor if nothing is selected | F5<br /><br />or<br />CTRL+SHIFT+E |
+| Run the selected portion of the query editor or the entire query editor if nothing is selected | F5 |
 | Parse the selected portion of the query editor or the entire query editor if nothing is selected | CTRL+F5 |
 | Display the estimated execution plan | CTRL+SHIFT+ALT+L |
 | Cancel the executing query | ALT+BREAK |

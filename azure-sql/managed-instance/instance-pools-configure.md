@@ -566,7 +566,7 @@ Instances in a pool have the following limitations:
     - [Failover groups](failover-group-sql-mi.md). [Failover rights](failover-group-standby-replica-how-to-configure.md) aren't available to instances in a pool.
     - [Start/Stop](instance-stop-start-how-to.md).
     - [Zone Redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability).
-    - [Reserved capacity](../database/reserved-capacity-overview.md) instance pricing isn't available.
+    - [Azure Reservations](../database/reservations-discount-overview.md) instance pricing isn't available.
 
 ## Support requests
 

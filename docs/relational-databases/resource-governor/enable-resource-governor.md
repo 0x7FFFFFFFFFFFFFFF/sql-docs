@@ -1,73 +1,79 @@
 ---
-title: "Enable Resource Governor"
-description: Learn how to enable the Resource Governor by using either SQL Server Management Studio or Transact-SQL. You must have the CONTROL SERVER permission.
+title: Enable Resource Governor
+description: Learn how to enable resource governor using either SQL Server Management Studio or Transact-SQL.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: "03/04/2017"
+ms.reviewer: dfurman
+ms.date: 01/02/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Resource Governor, enabling"
+monikerRange: ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
 ---
-# Enable Resource Governor
+
+# Enable resource governor
+
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
-  The Resource Governor is turned off by default. You can enable the Resource Governor by using either [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or Transact-SQL.  
-  
--   **Before you begin:**  [Limitations and Restrictions](#LimitationsRestrictions), [Permissions](#Permissions)  
-  
--   **To enable Resource Governor, using:**  [Object Explorer](#RGOnObjEx), [Resource Governor Properties](#RGOnProp), [Transact-SQL](#RGOnTSQL)  
-  
-##  <a name="BeforeYouBegin"></a> Before You Begin  
- Enabling the resource governor has the following results:  
-  
--   The classifier function is run for new connections so that their workloads can be assigned to workload groups.  
-  
--   The resource limits that are specified in the Resource Governor configuration are honored and enforced.  
-  
--   Requests that existed before enabling Resource Governor are affected by any configuration changes that were made when the Resource Governor was disabled.  
-  
-###  <a name="LimitationsRestrictions"></a> Limitations and Restrictions  
- You cannot use the **ALTER RESOURCE GOVERNOR** statement to enable Resource Governor when in a user transaction.  
-  
-###  <a name="Permissions"></a> Permissions  
- Enabling the Resource Governor requires CONTROL SERVER permission.  
-  
-##  <a name="RGOnObjEx"></a> Enable Resource Governor Using Object Explorer  
- **To enable the Resource Governor by using Object Explorer**  
-  
-1.  In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and recursively expand the **Management** node down to **Resource Governor**.  
-  
-2.  Right-click **Resource Governor**, and then click **Enable**.  
-  
-##  <a name="RGOnProp"></a> Enable Resource Governor Using Resource Governor Properties  
- **To enable the Resource Governor by using the Resource Governor Properties page**  
-  
-1.  In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and recursively expand the **Management** node down to **Resource Governor**.  
-  
-2.  Right-click **Resource Governor** and then click **Properties**, this opens the **Resource Governor Properties** page.  
-  
-3.  Click the **Enable Resource Governor** check box, and then click **OK**.  
-  
-##  <a name="RGOnTSQL"></a> Enable Resource Governor Using Transact-SQL  
- **To enable the Resource Governor by using Transact-SQL**  
-  
-1.  Run the **ALTER RESOURCE GOVERNOR RECONFIGURE** statement.  
-  
-### Example (Transact-SQL)  
- The following example enables the Resource Governor.  
-  
-```  
-ALTER RESOURCE GOVERNOR RECONFIGURE;  
-GO  
-```  
-  
-## See Also  
- [Resource Governor](../../relational-databases/resource-governor/resource-governor.md)   
- [Disable Resource Governor](../../relational-databases/resource-governor/disable-resource-governor.md)   
- [Resource Governor Resource Pool](../../relational-databases/resource-governor/resource-governor-resource-pool.md)   
- [Resource Governor Workload Group](../../relational-databases/resource-governor/resource-governor-workload-group.md)   
- [Resource Governor Classifier Function](../../relational-databases/resource-governor/resource-governor-classifier-function.md)   
- [ALTER RESOURCE GOVERNOR &#40;Transact-SQL&#41;](../../t-sql/statements/alter-resource-governor-transact-sql.md)  
-  
-  
+
+Resource governor is turned off by default. You can enable resource governor using either [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)].
+
+Enabling resource governor has the following results:
+
+- The classifier function is executed for new connections so that workloads can be assigned to workload groups.
+- The resource limits that are specified in resource governor configuration are honored and enforced.
+
+<a id="LimitationsRestrictions"></a>
+
+### Limitations
+
+You can't use the `ALTER RESOURCE GOVERNOR` statement as part of a user transaction.
+
+<a id="Permissions"></a>
+
+### Permissions
+
+Enabling resource governor requires the `CONTROL SERVER` permission.
+
+<a id="RGOnObjEx"></a>
+
+## Enable resource governor using Object Explorer in SQL Server Management Studio
+
+To enable resource governor using Object Explorer in [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+
+1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and expand the **Management** node down to **Resource Governor**.
+1. From the **Resource Governor** context menu, select **Enable**.
+
+<a id="RGOnProp"></a>
+
+## Enable resource governor using resource governor properties
+
+To enable resource governor by using the resource governor properties page:
+
+1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and expand the **Management** node down to **Resource Governor**.
+1. From the **Resource Governor** context menu, select **Properties**.
+1. Select the **Enable Resource Governor** check box and select **OK**.
+
+<a id="RGOnTSQL"></a>
+
+## Enable resource governor using Transact-SQL
+
+To enable resource governor using [!INCLUDE[tsql](../../includes/tsql-md.md)], execute the `ALTER RESOURCE GOVERNOR RECONFIGURE` statement.
+
+### Example
+
+The following example enables resource governor and makes all prior resource governor configuration changes effective.
+
+```sql
+ALTER RESOURCE GOVERNOR RECONFIGURE;
+```
+
+## Related content
+
+- [Resource governor](resource-governor.md)
+- [Enable resource governor](enable-resource-governor.md)
+- [Resource governor resource pool](resource-governor-resource-pool.md)
+- [Resource governor workload group](resource-governor-workload-group.md)
+- [Resource governor classifier function](resource-governor-classifier-function.md)
+- [ALTER RESOURCE GOVERNOR](../../t-sql/statements/alter-resource-governor-transact-sql.md)

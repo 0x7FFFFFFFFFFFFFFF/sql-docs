@@ -1,76 +1,68 @@
 ---
-title: "Change Workload Group Settings"
-description: Learn how to change workload group settings of the default and user-defined workload groups by using SQL Server Management Studio or Transact-SQL.
+title: Change Workload Group Settings
+description: Learn how to change workload group settings of the default and user-defined workload groups using SQL Server Management Studio or Transact-SQL.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: "03/06/2017"
+ms.reviewer: dfurman
+ms.date: 01/02/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "workload groups [SQL Server], alter"
   - "Resource Governor, workload group alter"
+monikerRange: ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
 ---
-# Change Workload Group Settings
+
+# Change workload group settings
+
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
-  You can change workload group settings by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)].  
-  
--   **Before you begin:**  [Limitations and Restrictions](#LimitationsRestrictions), [Permissions](#Permissions)  
-  
--   **To change the settings for a workload group, using:**  [SQL Server Management Studio](#ChgWGProp), [Transact-SQL](#ChgWGTSQL)  
-  
-## Before You Begin  
-  
-###  <a name="LimitationsRestrictions"></a> Limitations and Restrictions  
- You can change the settings of the default workload group and user-defined workload groups.  
-  
- **REQUEST_MAX_MEMORY_GRANT_PERCENT**  
-  
- The memory consumed by index creation on a non-aligned partitioned table is proportional to the number of partitions involved. If the total required memory exceeds the per-query limit, (REQUEST_MAX_MEMORY_GRANT_PERCENT) imposed by the workload group setting, this index creation may fail. Because the default workload group allows a query to exceed the per-query limit with the minimum required memory to start for SQL Server 2005 compatibility, the user may be able to run the same index creation in the default workload group, if the default resource pool has enough total memory configured to run such a query.  
-  
- Index creation is allowed to use more memory workspace than initially granted for performance. This special handling is supported by Resource Governor, however, the initial grant and any additional memory grant are limited by the workload group and resource pool settings.  
-  
-###  <a name="Permissions"></a> Permissions  
- Changing workload group settings requires CONTROL SERVER permission.  
-  
-##  <a name="ChgWGProp"></a> Change Workload Group Settings Using SQL Server Management Studio  
- **To change workload group settings by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]**  
-  
-1.  In Object Explorer, recursively expand the **Management** node down to and including the **Workload Groups** folder that contains the workload group to be modified.  
-  
-2.  Right-click the workload group to be modified, and then click **Properties**.  
-  
-3.  In the **Resource Governor Properties** page, select the row for the workload group in the **Workload groups for resource pool** grid if it is not automatically selected.  
-  
-4.  Click or double-click the cells in the row to be changed, and enter the new values.  
-  
-5.  To save the changes, click **OK**  
-  
-##  <a name="ChgWGTSQL"></a> Change Workload Group Settings Using Transact-SQL  
- **To change workload group settings by using Transact-SQL**  
-  
-1.  Run the ALTER WORKLOAD GROUP statement specifying the property values to be changed.  
-  
-2.  Run the ALTER RESOURCE GOVERNOR RECONFIGURE statement.  
-  
-### Example (Transact-SQL)  
- The following example changes the max memory grant percent setting for the workload group named `groupAdhoc`.  
-  
-```  
-ALTER WORKLOAD GROUP groupAdhoc  
-WITH (REQUEST_MAX_MEMORY_GRANT_PERCENT = 30);  
-GO  
-ALTER RESOURCE GOVERNOR RECONFIGURE;  
-GO  
-```  
-  
-## See Also  
- [Resource Governor](../../relational-databases/resource-governor/resource-governor.md)   
- [Create a Workload Group](../../relational-databases/resource-governor/create-a-workload-group.md)   
- [Create a Resource Pool](../../relational-databases/resource-governor/create-a-resource-pool.md)   
- [Change Resource Pool Settings](../../relational-databases/resource-governor/change-resource-pool-settings.md)   
- [ALTER WORKLOAD GROUP &#40;Transact-SQL&#41;](../../t-sql/statements/alter-workload-group-transact-sql.md)   
- [ALTER RESOURCE POOL &#40;Transact-SQL&#41;](../../t-sql/statements/alter-resource-pool-transact-sql.md)   
- [ALTER RESOURCE GOVERNOR &#40;Transact-SQL&#41;](../../t-sql/statements/alter-resource-governor-transact-sql.md)  
-  
-  
+
+You can change workload group settings by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)].
+
+<a id="Permissions"></a>
+
+## Permissions
+
+Changing workload group settings requires the `CONTROL SERVER` permission.
+
+<a id="ChgWGProp"></a>
+
+## Change workload group settings using SQL Server Management Studio
+
+To change workload group settings using [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+
+1. In Object Explorer, expand the **Management** node down to and including the **Workload Groups** folder that contains the workload group to be modified.
+1. Use the context menu for the workload group to be modified, and select **Properties**.
+1. In the **Resource Governor Properties** page, select the row for the workload group in the **Workload groups for resource pool** grid.
+1. Select the cells in the row to be changed, and enter new values.
+1. To save the changes, select **OK**.
+
+<a id="ChgWGTSQL"></a>
+
+## Change workload group settings using Transact-SQL
+
+To change workload group settings using [!INCLUDE[tsql](../../includes/tsql-md.md)]:
+
+1. Execute the [ALTER WORKLOAD GROUP](../../t-sql/statements/alter-workload-group-transact-sql.md) statement specifying the values to be changed.
+1. Execute the `ALTER RESOURCE GOVERNOR RECONFIGURE` statement for the changes to take effect.
+
+### Example
+
+The following example changes the max memory grant percent setting for the workload group named `groupAdhoc` and makes the new configuration effective.
+
+```sql
+ALTER WORKLOAD GROUP groupAdhoc WITH (REQUEST_MAX_MEMORY_GRANT_PERCENT = 30);
+
+ALTER RESOURCE GOVERNOR RECONFIGURE;
+```
+
+## Related content
+
+- [Resource governor](resource-governor.md)
+- [Create a workload group](create-a-workload-group.md)
+- [Create a resource pool](create-a-resource-pool.md)
+- [Change resource pool settings](change-resource-pool-settings.md)
+- [ALTER WORKLOAD GROUP](../../t-sql/statements/alter-workload-group-transact-sql.md)
+- [ALTER RESOURCE POOL](../../t-sql/statements/alter-resource-pool-transact-sql.md)
+- [ALTER RESOURCE GOVERNOR](../../t-sql/statements/alter-resource-governor-transact-sql.md)

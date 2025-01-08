@@ -4,7 +4,7 @@ description: The native JSON data type provides advantages for storing JSON data
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest, jovanpop
-ms.date: 09/12/2024
+ms.date: 01/07/2025
 ms.service: sql
 ms.topic: reference
 ms.custom:
@@ -79,6 +79,8 @@ Explicit conversion using `CAST` or `CONVERT` from the **json** type can be done
 
 The **json** type can't be used with the **sql_variant** type or assigned to a **sql_variant** variable or column. This restriction similar to **varchar(max)**, **varbinary(max)**, **nvarchar(max)**, **xml**, and CLR-based data types.
 
+You can convert existing columns, like a **varchar(max)** column to **json** using `ALTER TABLE`. Similar to the **xml** data type, you cannot convert a **json** column to any of the string or binary types using `ALTER TABLE`.
+
 For more information, see [Data type conversion](data-type-conversion-database-engine.md).
 
 ## Compatibility
@@ -89,13 +91,13 @@ Currently, the [bcp](../../tools/bcp-utility.md) tool's native format contains t
 
 Creation of alias type using `CREATE TYPE` for the **json** type isn't allowed. This is same behavior as **xml** type.
 
-Using `SELECT ... INTO` with the JSON type will create a table with the JSON type.
+Using `SELECT ... INTO` with the JSON type creates a table with the JSON type.
 
 ## Limitations
 
 - The behavior of `CAST ( ... AS JSON)` returns a **json** type, but the [sp_describe_first_result_set](../../relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql.md) system stored procedure doesn't correct return the **json** data type. Therefore, many data access clients and driver will see a **varchar** or **nvarchar** data type.
-  - Currently, TDS >= 7.4 (with UTF-8) support will see **varchar(max)** with `Latin_General_100_bin2_utf8`.
-  - Currently, TDS < 7.4 support will see **nvarchar(max)** with database collation.
+  - Currently, TDS >= 7.4 (with UTF-8) sees **varchar(max)** with `Latin_General_100_bin2_utf8`.
+  - Currently, TDS < 7.4 sees **nvarchar(max)** with database collation.
 
 - Currently, the `OPENJSON()` function doesn't accept the **json** type, currently that is an implicit conversion. Explicitly convert to **nvarchar(max)** first.
 

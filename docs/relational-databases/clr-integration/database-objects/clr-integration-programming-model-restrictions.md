@@ -1,9 +1,9 @@
 ---
-title: CLR integration programming model restrictions
+title: CLR Integration Programming Model Restrictions
 description: SQL Server performs code checks on managed database objects when first registered using CREATE ASSEMBLY and at runtime.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/17/2024
+ms.date: 12/27/2024
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -21,7 +21,7 @@ When you build a managed stored procedure or other managed database object, [!IN
 
 These code checks provide flexibility for registering third-party assemblies especially, so that an assembly isn't blocked where there's *unsafe* code designed to run in a client environment, but would never be executed in the hosted common language runtime (CLR). The requirements that the managed code must meet depend on whether the assembly is registered as `SAFE`, `EXTERNAL_ACCESS`, or `UNSAFE`. `SAFE` is the strictest security level.
 
-In addition to restrictions being placed on the managed code assemblies, there are also code security permissions that are granted. The CLR supports a security model called code access security (CAS) for managed code. In this model, permissions are granted to assemblies based on the identity of the code. `SAFE`, `EXTERNAL_ACCESS`, and `UNSAFE` assemblies have different CAS permissions. For more information, see [CLR Integration Code Access Security](../security/clr-integration-code-access-security.md).
+In addition to restrictions being placed on the managed code assemblies, there are also code security permissions that are granted. The CLR supports a security model called code access security (CAS) for managed code. In this model, permissions are granted to assemblies based on the identity of the code. `SAFE`, `EXTERNAL_ACCESS`, and `UNSAFE` assemblies have different CAS permissions. For more information, see [CLR integration Code Access Security](../security/clr-integration-code-access-security.md).
 
 If the [publisher policy](/dotnet/framework/configure-apps/how-to-create-a-publisher-policy) is set, `CREATE ASSEMBLY` fails.
 
@@ -35,7 +35,7 @@ All referenced assemblies must meet one or more of the following criteria:
 
 - The assembly is already registered in the database.
 
-- The assembly is one of the supported assemblies. For more information, see [Supported .NET Framework Libraries](supported-net-framework-libraries.md).
+- The assembly is one of the supported assemblies. For more information, see [Supported .NET Framework libraries](supported-net-framework-libraries.md).
 
 - You're using `CREATE ASSEMBLY FROM <location>`, and all the referenced assemblies and their dependencies are available in `<location>`.
 
@@ -96,7 +96,7 @@ All types and methods annotated with the following host protection attribute (HP
 - `MayLeakOnAbort`
 - `UI`
 
-For more information about HPAs and a list of disallowed types and members in the supported assemblies, see [Host Protection Attributes and CLR Integration Programming](../../clr-integration-security-host-protection-attributes/host-protection-attributes-and-clr-integration-programming.md).
+For more information about HPAs and a list of disallowed types and members in the supported assemblies, see [Host protection attributes and CLR integration programming](../../clr-integration-security-host-protection-attributes/host-protection-attributes-and-clr-integration-programming.md).
 
 ### SAFE
 
@@ -104,7 +104,7 @@ All `EXTERNAL_ACCESS` conditions are checked.
 
 ## Related content
 
-- [Supported .NET Framework Libraries](supported-net-framework-libraries.md)
-- [CLR Integration Code Access Security](../security/clr-integration-code-access-security.md)
-- [Host Protection Attributes and CLR Integration Programming](../../clr-integration-security-host-protection-attributes/host-protection-attributes-and-clr-integration-programming.md)
-- [Creating an Assembly](../assemblies/creating-an-assembly.md)
+- [Supported .NET Framework libraries](supported-net-framework-libraries.md)
+- [CLR integration Code Access Security](../security/clr-integration-code-access-security.md)
+- [Host protection attributes and CLR integration programming](../../clr-integration-security-host-protection-attributes/host-protection-attributes-and-clr-integration-programming.md)
+- [Create an assembly](../assemblies/creating-an-assembly.md)

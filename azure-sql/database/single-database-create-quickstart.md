@@ -106,9 +106,6 @@ The Azure CLI code blocks in this section create a resource group, server, singl
 
 First, install the latest [Azure CLI](/cli/azure/install-azure-cli-windows).
 
-> [!NOTE]
-> To simplify the database creation process, can also use the [az sql up](/cli/azure/sql#az-sql-up) command to create a database and all of its associated resources with a single command. This includes the resource group, server name, server location, database name, and login information. The database is created with a default pricing tier of General Purpose, Provisioned, standard-series (Gen5), 2 vCores.
-
 [!INCLUDE [quickstarts-free-trial-note](../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](~/../azure-sql/reusable-content/azure-cli/azure-cli-prepare-your-environment-h3.md)]

@@ -1,9 +1,9 @@
 ---
-title: "Data Access from CLR Database Objects"
+title: Data Access From CLR Database Objects
 description: CLR routines can access data from within a CLR database object by using the .NET Framework Data Provider for SQL Server, also referred to as SqlClient.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: "03/14/2017"
+ms.date: 12/27/2024
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -21,29 +21,22 @@ helpviewer_keywords:
   - "SqlClient provider"
   - "in-process data access providers [CLR integration]"
 ---
-# Data Access from CLR Database Objects
+# Data access from CLR database objects
+
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
-  A common language runtime (CLR) routine may easily access data stored in the instance of [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] in which it runs, as well as data stored in remote instances. Which particular data the routine can access is determined by the user context in which the code is running. Access data from within a CLR database object by using the .NET Framework Data Provider for [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)], also referred to as **SqlClient**. This is the same provider used by developers accessing [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] data from managed client and middle-tier applications. Because of this, you can leverage your knowledge of ADO.NET and **SqlClient** in client and middle-tier applications.  
-  
-> [!NOTE]  
->  User-defined type methods and user-defined functions are not allowed to perform data access by default. You must set the **DataAccess** property of **SqlMethodAttribute** or **SqlFunctionAttribute** to **DataAccessKind.Read** to enable read-only data access from user-defined type (UDT) methods or user-defined functions. Data modification operations are not allowed from UDTs or user-defined functions, and throws exceptions at execution time if attempted.  
-  
- This section discusses only the specific functional and behavioral differences when accessing data from within a CLR database object. For more information about the features and functionality of ADO.NET, see the ADO.NET documentation included in the .NET Framework SDK.  
-  
- The following table lists the topics in this section.  
-  
- [Context Connection](../../../relational-databases/clr-integration/data-access/context-connection.md)  
- Describes the context connection to SQL Server.  
-  
- [Impersonation and Credentials for Connections](../../../relational-databases/clr-integration/data-access/impersonation-and-credentials-for-connections.md)  
- Describes impersonating connections and connection credentials.  
-  
- [SQL Server In-Process Specific Extensions to ADO.NET](../../../relational-databases/clr-integration-data-access-in-process-ado-net/sql-server-in-process-specific-extensions-to-ado-net.md)  
- Discusses the in-process specific **SqlPipe**, **SqlContext**, **SqlTriggerContext**, and **SqlDataRecord** objects.  
-  
- [CLR Integration and Transactions](../../../relational-databases/clr-integration-data-access-transactions/clr-integration-and-transactions.md)  
- Describes how the new transaction framework provided in the System.Transactions namespace integrates with ADO.NET and [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] CLR integration.  
-  
- [XML Serialization from CLR Database Objects](/dotnet/standard/serialization/introducing-xml-serialization)  
- Explains how to enable XML serialization scenarios of CLR database objects inside [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)].  
-  
+
+A common language runtime (CLR) routine might easily access data stored in the instance of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] in which it runs, and data stored in remote instances. The user context in which the code runs, determines the particular data the routine can access. Access data from within a CLR database object by using the .NET Framework Data Provider for [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)], also referred to as `SqlClient`. This is the same provider used by developers accessing [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] data from managed client and middle-tier applications. Because of this, you can use your knowledge of ADO.NET and `SqlClient` in client and middle-tier applications.
+
+User-defined type methods and user-defined functions aren't allowed to perform data access by default. You must set the `DataAccess` property of `SqlMethodAttribute` or `SqlFunctionAttribute` to `DataAccessKind.Read` to enable read-only data access from user-defined type (UDT) methods or user-defined functions. Data modification operations aren't allowed from UDTs or user-defined functions, and throw exceptions at execution time if attempted.
+
+This section discusses only the specific functional and behavioral differences when accessing data from within a CLR database object. For more information about the features and functionality of ADO.NET, see the ADO.NET documentation included in the .NET Framework SDK.
+
+The following table lists the articles in this section.
+
+| Article | Description |
+| --- | --- |
+| [Context connection](context-connection.md) | Describes the context connection to SQL Server. |
+| [Impersonation and credentials for connections](impersonation-and-credentials-for-connections.md) | Describes impersonating connections and connection credentials. |
+| [SQL Server in-process specific extensions to ADO.NET](../../clr-integration-data-access-in-process-ado-net/sql-server-in-process-specific-extensions-to-ado-net.md) | Discusses the in-process specific `SqlPipe`, `SqlContext`, `SqlTriggerContext`, and `SqlDataRecord` objects. |
+| [CLR integration and transactions](../../clr-integration-data-access-transactions/clr-integration-and-transactions.md) | Describes how the new transaction framework provided in the System.Transactions namespace integrates with ADO.NET and [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] CLR integration. |
+| [XML Serialization from CLR Database Objects](/dotnet/standard/serialization/introducing-xml-serialization) | Explains how to enable XML serialization scenarios of CLR database objects inside [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. |

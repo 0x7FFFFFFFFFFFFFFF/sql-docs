@@ -28,6 +28,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-current||=azuresqldb-mi-current||=azure-sqldw-latest||>=aps-pdw-2016||=fabric"
 ---
+
 # ALTER DATABASE (Transact-SQL)
 
 Modifies certain configuration options of a database.

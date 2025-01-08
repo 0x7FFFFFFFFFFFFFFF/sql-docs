@@ -1,21 +1,23 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/15/2022
+ms.reviewer: dfurman
+ms.date: 01/01/2025
 ms.service: sql
 ms.topic: include
 ---
-Changes an existing Resource Governor workload group configuration, and optionally assigns it to a Resource Governor resource pool.
 
-> [!NOTE]  
-> For Azure SQL Managed Instance, you must be in the context of the `master` database to alter Resource Governor configuration.
+Changes an existing resource governor workload group configuration, and optionally assigns it to a different resource governor resource pool.
+
+> [!NOTE]
+> For Azure SQL Managed Instance, you must be in the context of the `master` database to modify resource governor configuration.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../language-elements/transact-sql-syntax-conventions-transact-sql.md).
 
 ## Syntax
 
 ```syntaxsql
-ALTER WORKLOAD GROUP { group_name | "default" }
+ALTER WORKLOAD GROUP { group_name | [default] }
 [ WITH
     ([ IMPORTANCE = { LOW | MEDIUM | HIGH } ]
       [ [ , ] REQUEST_MAX_MEMORY_GRANT_PERCENT = value ]
@@ -24,149 +26,147 @@ ALTER WORKLOAD GROUP { group_name | "default" }
       [ [ , ] MAX_DOP = value ]
       [ [ , ] GROUP_MAX_REQUESTS = value ] )
 ]
-[ USING { pool_name | "default" } ]
+[ USING { pool_name | [default] } ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### *group_name* | "default"
+#### *group_name* | [default]
 
-The name of an existing user-defined workload group or the Resource Governor default workload group. Resource Governor creates the "default" and internal groups when [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] is installed.
+The name of an existing user-defined workload group or the resource governor built-in `default` workload group.
 
-The option "default" must be enclosed by quotation marks (`""`) or brackets (`[]`) when used with `ALTER WORKLOAD GROUP` to avoid conflict with DEFAULT, which is a system reserved word. For more information, see [Database Identifiers](../../relational-databases/databases/database-identifiers.md).
+`default` must be in brackets (`[]`) or quotation marks (`""`) when used with `ALTER WORKLOAD GROUP` to avoid a conflict with `DEFAULT`, which is a system reserved word. For more information, see [Database identifiers](../../relational-databases/databases/database-identifiers.md).
 
-Predefined workload groups and resource pools all use lowercase names, such as "default". This should be taken into account for servers that use case-sensitive collation. Servers with case-insensitive collation, such as `SQL_Latin1_General_CP1_CI_AS`, will treat `"default"` and `"Default"` as the same.
+Built-in resource pools and workload groups use all lowercase names, such as `default`. Use the lower case `default` on servers that use a case-sensitive collation. Servers with case-insensitive collation treat `default`, `Default`, and `DEFAULT` as the same value.
 
 #### IMPORTANCE = { LOW | MEDIUM | HIGH }
 
-Specifies the relative importance of a request in the workload group. Importance is one of the following:
+Specifies the relative importance of a request in the workload group. The default value is `MEDIUM`.
 
-- LOW
-- MEDIUM (default)
-- HIGH
-
-Internally, each importance setting is stored as a number that is used for calculations.
-
-IMPORTANCE is local to the resource pool; workload groups of different importance inside the same resource pool affect each other, but don't affect workload groups in another resource pool.
+`IMPORTANCE` is local to the resource pool that contains the workload group. Workload groups of different importance inside the same resource pool affect each other, but don't affect workload groups in other resource pools.
 
 #### REQUEST_MAX_MEMORY_GRANT_PERCENT = *value*
 
-Specifies the maximum amount of memory that a single request can take from the pool. *value* is a percentage relative to the resource pool size specified by MAX_MEMORY_PERCENT. The default value is 25. The amount specified only refers to query execution grant memory.
+Specifies the maximum amount of query workspace memory that a single request can take from the pool. *value* is a percentage of the resource pool size defined by `MAX_MEMORY_PERCENT`. Default value is 25.
 
-*value* is an **int** up to [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and the allowed range is from 1 through 100. Starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], the value is a **float** data type and the allowed range is from 0 through 100.
+In [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and older, *value* is an integer and the allowed range is from 1 through 100.
 
-> [!IMPORTANT]  
-> Setting *value* to 0 prevents queries with SORT and HASH JOIN operations in user-defined workload groups from running.
+Starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], the value can be fractional using the `float` data type. The allowed range is from 0 through 100.
+
+> [!IMPORTANT]
+> The amount specified only refers to query workspace memory obtained via query memory grants.
 >
-> It is not recommended to set *value* greater than 70 because the server may be unable to set aside enough free memory if other concurrent queries are running. This may eventually lead to query time-out error 8645.
-
-If the query memory requirements exceed the limit that is specified by this parameter, the server does the following:
-
-- For user-defined workload groups, the server tries to reduce the query degree of parallelism until the memory requirement falls under the limit, or until the degree of parallelism equals 1. If the query memory requirement is still greater than the limit, error 8657 occurs.
-- For internal and default workload groups, the server permits the query to obtain the required memory.
-
-Both cases are subject to [time-out error 8645](../../relational-databases/errors-events/mssqlserver-8645-database-engine-error.md) if the server has insufficient physical memory.
+> It is not recommended to set *value* too large (for example, greater than 70) because the server may be unable to set aside enough free memory for other concurrent queries. This can lead to a memory grant timeout [error 8645](../../relational-databases/errors-events/mssqlserver-8645-database-engine-error.md).
+>
+> Setting *value* to 0 or a small value might prevent queries with operators that require workspace memory, such as `sort` and `hash`, from running in user-defined workload groups. If the query memory requirements exceed the limit defined by this parameter, the following behavior occurs:
+>
+> - For user-defined workload groups, the server tries to reduce the degree of parallelism (DOP) of the request (query) until the memory requirement falls under the limit, or until DOP equals 1. If the query memory requirement is still greater than the limit, error 8657 occurs and the query fails.
+> - For the `internal` and `default` workload groups, the server permits the query to obtain the required memory.
+>
+> In either case, [error 8645](../../relational-databases/errors-events/mssqlserver-8645-database-engine-error.md) might occur if the server has insufficient physical memory.
 
 #### REQUEST_MAX_CPU_TIME_SEC = *value*
 
-Specifies the maximum amount of CPU time, in seconds, that a request can use. *value* must be 0 or a positive integer. The default setting for *value* is 0, which means unlimited. By default, Resource Governor won't prevent a request from continuing if the maximum time is exceeded. However, an event will be generated. For more information, see [CPU Threshold Exceeded Event Class](../../relational-databases/event-classes/cpu-threshold-exceeded-event-class.md).
+Specifies the maximum amount of CPU time, in seconds, that a request can use. *value* must be 0 or a positive integer. The default setting for *value* is 0, which means unlimited.
 
-Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP2 and [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] CU3, and using [trace flag 2422](../database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf2422), Resource Governor will abort a request when the maximum time is exceeded.
+By default, resource governor doesn't prevent a request from continuing if the maximum time is exceeded. However, an event is generated. For more information, see [CPU Threshold Exceeded Event Class](../../relational-databases/event-classes/cpu-threshold-exceeded-event-class.md).
+
+Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP2 and [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] CU3, and using [trace flag 2422](../database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf2422), resource governor aborts a request when the maximum CPU time is exceeded.
 
 #### REQUEST_MEMORY_GRANT_TIMEOUT_SEC = *value*
 
-Specifies the maximum time, in seconds, that a query can wait for memory grant (work buffer memory) to become available.
+Specifies the maximum time, in seconds, that a query can wait for a memory grant from the query workspace memory to become available. *value* must be 0 or a positive integer. The default setting for *value*, 0, uses an internal calculation based on query cost to determine the maximum time.
 
-A query doesn't always fail when memory grant time-out is reached. A query will only fail if there are too many concurrent queries running. Otherwise, the query may only get the minimum memory grant, resulting in reduced query performance.
-
-*value* must be a positive integer. The default setting for *value*, 0, uses an internal calculation based on query cost to determine the maximum time.
+A query doesn't always fail when a memory grant timeout is reached. A query only fails if there are too many concurrent queries running. Otherwise, the query might only get the minimum memory grant, resulting in reduced query performance.
 
 #### MAX_DOP = *value*
 
-Specifies the maximum degree of parallelism (DOP) for parallel requests. *value* must be 0 or a positive integer, 1 though 255. When *value* is 0, the server chooses the max degree of parallelism. This is the default and recommended setting.
+Specifies the maximum degree of parallelism (`MAXDOP`) for parallel query execution. The allowed range for *value* is from 0 through 64. The default setting for *value*, 0, uses the global setting.
 
-The actual value that the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] sets for MAX_DOP by might be less than the specified value. The final value is determined by the formula min(255, *number of CPUs)*.
-
-> [!CAUTION]  
-> Changing MAX_DOP can adversely affect a server's performance. If you must change MAX_DOP, we recommend that it be set to a value that is less than or equal to the maximum number of hardware schedulers that are present in a single NUMA node. We recommend that you do not set MAX_DOP to a value greater than 8.
-
-MAX_DOP is handled as follows:
-
-- MAX_DOP as a query hint is honored as long as it doesn't exceed workload group MAX_DOP.
-
-- MAX_DOP as a query hint always overrides sp_configure 'max degree of parallelism'.
-
-- Workload group MAX_DOP overrides sp_configure 'max degree of parallelism'.
-
-- If the query is marked as serial `(MAX_DOP = 1)` at compile time, it can't be changed back to parallel at run time regardless of the workload group or sp_configure setting.
-
-After DOP is configured, it can only be lowered on grant memory pressure. Workload group reconfiguration isn't visible while waiting in the grant memory queue.
+For more information, see [MAXDOP](#maxdop).
 
 #### GROUP_MAX_REQUESTS = *value*
 
-Specifies the maximum number of simultaneous requests that are allowed to execute in the workload group. *value* must be 0 or a positive integer. The default setting for *value*, 0, allows unlimited requests. When the maximum concurrent requests are reached, a user in that group can sign in, but is placed in a wait state until concurrent requests are dropped below the value specified.
+Specifies the maximum number of simultaneous requests that are allowed to execute in the workload group. *value* must be 0 or a positive integer. The default setting for *value* is 0, and allows unlimited requests. When the maximum concurrent requests are reached, a session in that group can be created, but is placed in a wait state until the number of concurrent requests drops below the value specified.
 
-#### USING { *pool_name* | "default" }
+#### USING { *pool_name* | [default] }
 
-Associates the workload group with the user-defined resource pool identified by *pool_name*, which in effect puts the workload group in the resource pool. If *pool_name* isn't provided or if the USING argument isn't used, the workload group is put in the predefined Resource Governor default pool.
+Associates the workload group with the user-defined resource pool identified by *pool_name*, or with the `default` resource pool. If *pool_name* isn't provided, or if the `USING` argument isn't specified, the workload group is associated with the built-in `default` pool.
 
-The option "default" is case-sensitive and must be enclosed by quotation marks (`""`) or brackets (`[]`) when used with `ALTER WORKLOAD GROUP` to avoid conflict with DEFAULT, which is a system reserved word. For more information, see [Database Identifiers](../../relational-databases/databases/database-identifiers.md).
+`default` is a reserved word and when specified in `USING`, must be enclosed in brackets (`[]`) or quotation marks (`""`).
+
+Built-in resource pools and workload groups use all lowercase names, such as `default`. Use the lower case `default` on servers that use a case-sensitive collation. Servers with case-insensitive collation treat `default`, `Default`, and `DEFAULT` as the same value.
 
 ## Remarks
 
-`ALTER WORKLOAD GROUP` is allowed on the default group.
+`ALTER WORKLOAD GROUP` is allowed on the `default` workload group, but not on the `internal` group.
 
-Changes to the workload group configuration don't take effect until after `ALTER RESOURCE GOVERNOR RECONFIGURE` is executed. When changing a plan affecting setting, the new setting will only take effect in previously cached plans after executing `DBCC FREEPROCCACHE (*pool_name*)`, where *pool_name* is the name of a Resource Governor resource pool on which the workload group is associated with.
+Changes to the workload group configuration don't take effect until after `ALTER RESOURCE GOVERNOR RECONFIGURE` is executed.
 
-- If changing MAX_DOP to 1, executing `DBCC FREEPROCCACHE` isn't required because parallel plans can run in serial mode. However, it may not be as efficient as a plan compiled as a serial plan.
+For more information, see [Resource governor](../../relational-databases/resource-governor/resource-governor.md) and [Resource governor workload group](../../relational-databases/resource-governor/resource-governor-workload-group.md).
 
-- If changing MAX_DOP from 1 to 0 or a value greater than 1, executing `DBCC FREEPROCCACHE` isn't required. However, serial plans can't run in parallel, so clearing the respective cache will allow new plans to potentially be compiled using parallelism.
+### MAXDOP
 
-> [!CAUTION]  
-> Clearing cached plans from a resource pool that is associated with more than one workload group will affect all workload groups with the user-defined resource pool identified by *pool_name*.
+For a given query, effective `MAXDOP` is determined as follows:
 
-When executing DDL statements, you should be familiar with Resource Governor states. For more information, see [Resource Governor](../../relational-databases/resource-governor/resource-governor.md).
+- `MAXDOP` as a query hint is honored as long as it doesn't exceed the workload group `MAX_DOP` setting.
+- `MAXDOP` as a query hint always overrides the `max degree of parallelism` server configuration. For more information, see [Server configuration: max degree of parallelism](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md).
+- Workload group `MAX_DOP` overrides the `max degree of parallelism` server configuration and the `MAXDOP` [database scoped configuration](../statements/alter-database-scoped-configuration-transact-sql.md).
 
-`REQUEST_MEMORY_GRANT_PERCENT`: In [!INCLUDE [ssversion2005-md](../../includes/ssversion2005-md.md)], index creation is allowed to use more workspace memory than initially granted for improved performance. This special handling is supported by Resource Governor in later versions, however, the initial grant and any additional memory grant are limited by resource pool and workload group settings.
+The `MAXDOP` limit is set per [task](../../relational-databases/system-dynamic-management-views/sys-dm-os-tasks-transact-sql.md). It isn't a per [request](../../relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql.md) or per query limit. During an execution of a parallel query, a single request can spawn multiple tasks that are assigned to a [scheduler](../../relational-databases/system-dynamic-management-views/sys-dm-os-tasks-transact-sql.md). For more information, see the [Thread and task architecture guide](../../relational-databases/thread-and-task-architecture-guide.md).
 
-#### Index creation on a partitioned table
+When a query is marked as serial at compile time (`MAXDOP = 1`), it can't execute with parallelism at run time regardless of the workload group or server configuration setting. After `MAXDOP` is determined for a query, it can only be lowered due to memory pressure. Workload group reconfiguration does not affect queries waiting in the memory grant queue.
 
-The memory consumed by index creation on non-aligned partitioned table is proportional to the number of partitions involved.  If the total required memory exceeds the per-query limit (`REQUEST_MAX_MEMORY_GRANT_PERCENT`) imposed by the Resource Governor workload group setting, this index creation may fail to execute. Because the "default" workload group allows a query to exceed the per-query limit with the minimum required memory to start for [!INCLUDE [ssversion2005-md](../../includes/ssversion2005-md.md)] compatibility, the user may be able to run the same index creation in "default" workload group, if the "default" resource pool has enough total memory configured to run such query.
+### Cached plans
+
+When you change a plan affecting setting such as `MAX_DOP`, the new setting takes effect in previously cached plans only after executing `DBCC FREEPROCCACHE (<pool_name>)`, where `<pool_name>` is the name of a resource governor resource pool used by the current workload group.
+
+- If changing `MAX_DOP` to 1, executing `DBCC FREEPROCCACHE` isn't required because parallel plans can run in serial mode. However, such a plan might be less efficient than a plan compiled as a serial plan.
+- If changing `MAX_DOP` from 1 to 0 or a value greater than 1,executing `DBCC FREEPROCCACHE` isn't required. However, serial plans can't run in parallel, so clearing the respective cache allows new plans to potentially be compiled using parallelism.
+
+> [!WARNING]
+> Clearing cached plans from a resource pool that is associated with more than one workload group affects all workload groups using the user-defined resource pool identified by `<pool_name>`.
+
+### Index creation
+
+For performance reasons, index creation is allowed to use more memory workspace than initially granted. Resource governor supports this special handling. However, the initial grant and any additional memory grants are limited by the workload group and resource pool settings.
+
+The memory consumed to create a nonaligned index on a partitioned table is proportional to the number of partitions involved. If the total required memory exceeds the per-query limit enforced by the `REQUEST_MAX_MEMORY_GRANT_PERCENT` workload group setting, index creation might fail. Because the `default` workload group allows a query to exceed the per-query limit with the minimum required memory to start for backward compatibility, you might be able to create the same index using the `default` workload group if the `default` resource pool has enough total memory.
 
 ## Permissions
 
-Requires `CONTROL SERVER` permission.
+Requires the `CONTROL SERVER` permission.
 
 ## Examples
 
 The following example shows how to change the importance of requests in the default group from `MEDIUM` to `LOW`.
 
 ```sql
-ALTER WORKLOAD GROUP "default"
+ALTER WORKLOAD GROUP [default]
 WITH (IMPORTANCE = LOW);
-GO
+
 ALTER RESOURCE GOVERNOR RECONFIGURE;
-GO
 ```
 
-The following example shows how to move a workload group from the pool that it's in, to the default pool.
+The following example shows how to move a workload group from the pool that it's currently into the `default` pool.
 
 ```sql
 ALTER WORKLOAD GROUP adHoc
 USING [default];
-GO
+
 ALTER RESOURCE GOVERNOR RECONFIGURE;
-GO
 ```
 
-## See also
+## Related content
 
-- [Resource Governor](../../relational-databases/resource-governor/resource-governor.md)
-- [CREATE WORKLOAD GROUP (Transact-SQL)](../statements/create-workload-group-transact-sql.md)
-- [CREATE WORKLOAD GROUP (Transact-SQL)](../statements/create-workload-group-transact-sql.md)
-- [DROP WORKLOAD GROUP (Transact-SQL)](../statements/drop-workload-group-transact-sql.md)
-- [CREATE RESOURCE POOL (Transact-SQL)](../statements/create-resource-pool-transact-sql.md)
-- [ALTER RESOURCE POOL (Transact-SQL)](../statements/alter-resource-pool-transact-sql.md)
-- [DROP RESOURCE POOL (Transact-SQL)](../statements/drop-resource-pool-transact-sql.md)
-- [ALTER RESOURCE GOVERNOR (Transact-SQL)](../statements/alter-resource-governor-transact-sql.md)
+- [Resource governor](../../relational-databases/resource-governor/resource-governor.md)
+- [Resource governor workload group](../../relational-databases/resource-governor/resource-governor-workload-group.md)
+- [Create a workload group](../../relational-databases/resource-governor/create-a-workload-group.md)
+- [Move a workload group](../../relational-databases/resource-governor/move-a-workload-group.md)
+- [CREATE WORKLOAD GROUP](../statements/create-workload-group-transact-sql.md)
+- [DROP WORKLOAD GROUP](../statements/drop-workload-group-transact-sql.md)
+- [CREATE RESOURCE POOL](../statements/create-resource-pool-transact-sql.md)
+- [ALTER RESOURCE POOL](../statements/alter-resource-pool-transact-sql.md)
+- [DROP RESOURCE POOL](../statements/drop-resource-pool-transact-sql.md)
+- [ALTER RESOURCE GOVERNOR](../statements/alter-resource-governor-transact-sql.md)

@@ -4,7 +4,7 @@ description: Learn how to store and restore automated backups for Azure SQL Data
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dinethi, mathoma
-ms.date: 10/12/2023
+ms.date: 01/06/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -169,6 +169,9 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ServerName $serverName -Database
 ## View backups and restore from a backup
 
 View the backups that are retained for a specific database with an LTR policy, and restore from those backups.
+
+> [!NOTE]
+> If the logical server has been deleted, use Azure CLI or PowerShell commands to view and restore LTR backups.
 
 # [Portal](#tab/portal)
 

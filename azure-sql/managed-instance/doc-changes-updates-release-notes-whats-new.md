@@ -104,7 +104,7 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 | Changes | Details |
 | --- | --- |
 |**Free instance offer updates** | The free offer has a few new updates, such as dramatically simplifying the upgrade of your free instance to a paid version, and viewing how many free vCore hours remain for the month. Additionally, the free offer is now available in another nine subscription types. This feature is still in preview. Review [Free offer](free-offer.md#whats-new) to learn more. |
-|**Instance pools GA** | Save on costs and share resources between multiple instances in a pool within a single virtual machine. A convenient and cost-efficient way to migrate smaller SQL Server instances to the cloud, and the only way to deploy a 2-vCore managed instance. And now, with reserved capacity support, you can save significantly more on your compute by allocating your reserved capacity to an instance pool. Instance pools are now generally available. Review [Instance pools](instance-pools-overview.md) to learn more.  |
+|**Instance pools GA** | Save on costs and share resources between multiple instances in a pool within a single virtual machine. A convenient and cost-efficient way to migrate smaller SQL Server instances to the cloud, and the only way to deploy a 2-vCore managed instance. And now, with [reservations support](../database/reservations-discount-overview.md), you can save significantly more on your compute by allocating your reservations to an instance pool. Instance pools are now generally available. Review [Instance pools](instance-pools-overview.md) to learn more.  |
 
 
 ### October 2024 

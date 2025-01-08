@@ -4,7 +4,7 @@ description: JSON_MODIFY updates the value of a property in a JSON string and re
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop, randolphwest
-ms.date: 11/04/2024
+ms.date: 01/07/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -71,7 +71,7 @@ A JSON path expression that specifies the property to update.
 
 The new value for the property specified by *path*.
 
-The new value must be **varchar**, **nvarchar**, or **text**.
+The new value must be **varchar**, **nvarchar**, **char**, **tinyint**, **smallint**, **int**, **bigint**, **bit**, **decimal**/**numeric**, or **real**/**float**. The **text** data type is not supported.
 
 In lax mode, `JSON_MODIFY` deletes the specified key if the new value is `NULL`.
 
@@ -92,7 +92,7 @@ The following table compares the behavior of `JSON_MODIFY` in lax mode and in st
 | `NOT NULL` | Yes | Update the existing value. | Update the existing value. |
 | `NOT NULL` | No | Try to create a new key-value pair on the specified path.<br /><br />This might fail. For example, if you specify the path `$.user.setting.theme`, `JSON_MODIFY` doesn't insert the key `theme` if the `$.user` or `$.user.settings` objects don't exist, or if settings is an array or a scalar value. | Error - INVALID_PROPERTY |
 | `NULL` | Yes | Delete the existing property. | Set the existing value to null. |
-| `NULL` | No | No action. The first argument is returned as the result. | Error - INVALID_PROPERTY |
+| `NULL` | No | No action. The first argument is returned as the result. | Error - `INVALID_PROPERTY` |
 
 In lax mode, `JSON_MODIFY` tries to create a new key:value pair, but in some cases it might fail.
 

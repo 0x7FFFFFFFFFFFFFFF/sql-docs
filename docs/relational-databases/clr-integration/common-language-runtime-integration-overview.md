@@ -1,9 +1,9 @@
 ---
-title: "Common language runtime (CLR) overview"
+title: "Common Language Runtime (CLR) Overview"
 description: CLR integration with SQL Server allows you to implement some functionalities using any .NET Framework language as SQL Server server-side modules.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/02/2024
+ms.date: 12/27/2024
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -22,9 +22,11 @@ helpviewer_keywords:
 
 [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and [Azure SQL Managed Instance](/azure/sql-database/sql-database-managed-instance-index) enable you to implement some of the functionalities with .NET languages using the native common language runtime (CLR) integration as SQL Server server-side modules (procedures, functions, and triggers). The CLR supplies managed code with services such as cross-language integration, code access security, object lifetime management, and debugging and profiling support.
 
-For [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] users and application developers, CLR integration means that you can write stored procedures, triggers, user-defined types, user-defined functions (scalar and table valued), and user-defined aggregate functions using any .NET Framework language, including Visual Basic .NET and Visual C#. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] includes the .NET Framework version 4 preinstalled.
+For [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] users and application developers, CLR integration means that you can write stored procedures, triggers, user-defined types, user-defined functions (scalar and table valued), and user-defined aggregate functions using any .NET Framework language, including [!INCLUDE [c-sharp-md](../../includes/c-sharp-md.md)] [!INCLUDE [visual-basic-md](../../includes/visual-basic-md.md)] .NET. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] includes the .NET Framework version 4 preinstalled.
 
 This 6-minute video shows you how to use CLR in Azure SQL Managed Instance:
+
+&nbsp;
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Its-just-SQL-CLR-in-Azure-SQL-Database-Managed-Instance/player?WT.mc_id=dataexposed-c9-niner]
 
@@ -42,20 +44,20 @@ CLR Integration enables you to implement complex features that are available in 
 
 - **Ability to define data types and aggregate functions.** User-defined types and user-defined aggregates are two new managed database objects that expand the storage and querying capabilities of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
-- **Streamlined development through a standardized environment.** Database development is integrated into future releases of the [!INCLUDE [msCoName](../../includes/msconame-md.md)] Visual Studio .NET development environment. Developers use the same tools for developing and debugging database objects and scripts as they use to write middle-tier or client-tier .NET Framework components and services.
+- **Streamlined development through a standardized environment.** Database development is integrated into future releases of the Visual Studio .NET development environment. Developers use the same tools for developing and debugging database objects and scripts as they use to write middle-tier or client-tier .NET Framework components and services.
 
 - **Potential for improved performance and scalability.** In many situations, the .NET Framework language compilation and execution models deliver improved performance over Transact-SQL.
 
-[SQL Server Language Extensions](../../language-extensions/language-extensions-overview.md) provide an alternative execution environment for runtimes close to the database engine. For a discussion of the differences between SQL CLR and SQL language extensions, see [Compare SQL Server Language Extensions to SQL CLR](../../language-extensions/concepts/compare-extensibility-to-clr.md).
+[SQL Server Language Extensions](../../language-extensions/language-extensions-overview.md) provide an alternative execution environment for runtimes close to the Database Engine. For a discussion of the differences between SQL CLR and SQL language extensions, see [Compare SQL Server Language Extensions to SQL CLR](../../language-extensions/concepts/compare-extensibility-to-clr.md).
 
 The following table lists the articles in this section.
 
 | Article | Description |
 | --- | --- |
 | [CLR integration overview](clr-integration-overview.md) | Describes the kinds of objects that can be built using CLR integration. Also reviews the requirements for building database objects using CLR integration. |
-| [CLR integration - What's new](clr-integration-what-s-new.md) | Describes the new features in this release. |
-| [CLR integration Architecture - CLR hosted environment](clr-integration-architecture-clr-hosted-environment.md) | Describes the design goals of CLR integration. |
-| [Enabling CLR integration](clr-integration-enabling.md) | Describes how to enable CLR integration. |
+| [What's new in CLR integration?](clr-integration-what-s-new.md) | Describes the new features in this release. |
+| [CLR integration architecture - CLR hosted environment](clr-integration-architecture-clr-hosted-environment.md) | Describes the design goals of CLR integration. |
+| [Enable CLR integration](clr-integration-enabling.md) | Describes how to enable CLR integration. |
 
 ## Related content
 

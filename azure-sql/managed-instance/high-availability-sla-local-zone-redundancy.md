@@ -33,7 +33,7 @@ By default, Azure SQL Managed Instance achieves *availability* through local red
 
 - Customer initiated [management operations](management-operations-overview.md) that result in a brief downtime
 - Service maintenance operations
-- Issues and datacenter outages with the:
+- Issues and data center outages with the:
     - Rack where the machines that power your service are running.
     - Physical machine that hosts the VM that runs the SQL database engine.
     - Virtual machine that runs the SQL database engine
@@ -46,8 +46,7 @@ However, to minimize impact to your data in the event of an outage to an entire 
 
 High availability increases the reliability of your service by protecting you from impact on the: 
 
-- Availability zone that forms the datacenter
-
+- Availability zone that forms the data center
 
 There are two different availability architectural models based on the service tier: 
 

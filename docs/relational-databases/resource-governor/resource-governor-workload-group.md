@@ -1,9 +1,10 @@
 ---
-title: "Resource Governor Workload Group"
-description: In the SQL Server Resource Governor, a workload group is a container for session requests that have similar classification criteria.
+title: Resource Governor Workload Group
+description: Resource governor uses a workload group as a container for requests that are subject to common policies.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: "03/14/2017"
+ms.reviewer: dfurman
+ms.date: 01/02/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -11,41 +12,55 @@ helpviewer_keywords:
   - "Resource Governor, workload group"
   - "workload groups [SQL Server]"
   - "workload groups [SQL Server], overview"
+monikerRange: ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
 ---
-# Resource Governor Workload Group
+
+# Resource governor workload group
+
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
-  In the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Resource Governor, a workload group serves as a container for session requests that have similar classification criteria. A workload allows for aggregate monitoring of the sessions, and defines policies for the sessions. Each workload group is in a resource pool, which represents a subset of the physical resources of an instance of the [!INCLUDE[ssDE](../../includes/ssde-md.md)]. When a session is started, the Resource Governor classifier assigns the session to a specific workload group, and the session must run using the policies assigned to the workload group and the resources defined for the resource pool.  
-  
-## Workload Group Concepts  
- A workload group serves as a container for session requests that are similar according to the classification criteria that are applied to each request. A workload group allows the aggregate monitoring of resource consumption and the application of a uniform policy to all the requests in the group. A group defines the policies for its members.  
-  
-> [!NOTE]  
->  User-defined workload groups can be moved from one resource pool to another.  
-  
- Resource Governor predefines two workload groups: the internal group and the default group. A user cannot change anything classified as an internal group, but can monitor it. Requests are classified into the default group when the following conditions exist:  
-  
--   There are no criteria to classify a request.  
-  
--   There is an attempt to classify the request into a non-existent group.  
-  
--   There is a general classification failure.  
-  
- Resource Governor also provides DDL statements for creating, changing, and dropping workload groups.  
-  
-## Workload Group Tasks  
-  
-|Task Description|Topic|  
-|----------------------|-----------|  
-|Describes how to create a workload group.|[Create a Workload Group](../../relational-databases/resource-governor/create-a-workload-group.md)|  
-|Describes how to change workload group settings.|[Change Workload Group Settings](../../relational-databases/resource-governor/change-workload-group-settings.md)|  
-|Describes how to delete a workload group.|[Delete a Workload Group](../../relational-databases/resource-governor/delete-a-workload-group.md)|  
-  
-## See Also  
- [Resource Governor](../../relational-databases/resource-governor/resource-governor.md)   
- [Enable Resource Governor](../../relational-databases/resource-governor/enable-resource-governor.md)   
- [Resource Governor Resource Pool](../../relational-databases/resource-governor/resource-governor-resource-pool.md)   
- [Resource Governor Classifier Function](../../relational-databases/resource-governor/resource-governor-classifier-function.md)   
- [Configure Resource Governor Using a Template](../../relational-databases/resource-governor/configure-resource-governor-using-a-template.md)   
- [View Resource Governor Properties](../../relational-databases/resource-governor/view-resource-governor-properties.md)  
-  
-  
+
+A resource governor workload group is a container for requests that are subject to common policies. A workload group supports aggregate monitoring of the sessions and requests, and defines request policies. Each workload group is in a [resource pool](resource-governor-resource-pool.md), which represents a subset of the physical resources of a [!INCLUDE[ssDE](../../includes/ssde-md.md)] instance.
+
+When a session is started, it is classified into a specific workload group. Workload group policies govern the requests executing on a session. Requests use the resources from the underlying resource pool.
+
+## Workload group concepts
+
+A workload group serves as a container for sessions that are similar according to the classification criteria applied to each session. A workload group allows the aggregate monitoring of resource consumption and the use of common policies to all requests in the group. For example, you can limit the degree of parallelism or the maximum size of a memory grant for each query executing in a workload group.
+
+Resource governor has two built-in workload groups: the `internal` group and the `default` group. You can't change the classification policies of the `internal` group, but you can monitor it.
+
+Sessions are classified into the `default` group if:
+
+- A [classifier function](resource-governor-classifier-function.md) doesn't exist.
+- There is an attempt to classify the session into a nonexistent group.
+- There is a general classification failure.
+
+## Workload group tasks
+
+Resource pools can govern a variety of system resources. For more information, see [CREATE WORKLOAD GROUP](../../t-sql/statements/create-workload-group-transact-sql.md).
+
+For more samples and a complete walkthrough, see [Tutorial: Resource governor configuration examples and best practices](resource-governor-walkthrough.md).
+
+| Task description | Article |
+|:--|:--|
+| Create a workload group | [Create a workload group](create-a-workload-group.md) |
+| Change workload group settings | [Change workload group settings](change-workload-group-settings.md) |
+| Delete a workload group | [Delete a workload group](delete-a-workload-group.md) |
+| Move a workload group | [Move a workload group](move-a-workload-group.md) |
+
+Resource governor provides DDL statements for creating, modifying, and deleting workload groups.
+
+For more information, including the policies that can be specified for a workload group, see:
+
+- [CREATE WORKLOAD GROUP](../../t-sql/statements/create-workload-group-transact-sql.md)
+- [ALTER WORKLOAD GROUP](../../t-sql/statements/alter-workload-group-transact-sql.md)
+- [DROP WORKLOAD GROUP](../../t-sql/statements/drop-workload-group-transact-sql.md)
+
+## Related content
+
+- [Resource governor](resource-governor.md)
+- [Enable resource governor](enable-resource-governor.md)
+- [Resource governor resource pool](resource-governor-resource-pool.md)
+- [Resource governor classifier function](resource-governor-classifier-function.md)
+- [Configure resource governor using a template](configure-resource-governor-using-a-template.md)
+- [View and modify resource governor properties](view-resource-governor-properties.md)

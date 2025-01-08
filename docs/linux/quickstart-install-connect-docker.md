@@ -122,7 +122,7 @@ For the bash commands in this article, `sudo` is used. If you don't want to use 
 
 ## [CLI](#tab/cli)
 
-### Pull the container from the registry
+### Pull the container image from the registry
 
 Pull the [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] Linux container image from the Microsoft Container Registry.
 
@@ -593,7 +593,7 @@ For the bash commands in this article, `sudo` is used. If you don't want to use 
 
 ## [CLI](#tab/cli)
 
-### Pull the container from the registry
+### Pull the container image from the registry
 
 Pull the [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Linux container image from the Microsoft Container Registry.
 

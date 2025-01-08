@@ -265,7 +265,7 @@ For the most current instructions, refer to the official documentation provided 
 | --- | --- |
 | **RHEL 8** | [Discovering and joining an AD Domain using SSSD](https://docs.redhat.com/documentation/red_hat_enterprise_linux/8/html-single/integrating_rhel_systems_directly_with_windows_active_directory/index#connecting-rhel-systems-directly-to-ad-using-sssd_integrating-rhel-systems-directly-with-active-directory) |
 | **RHEL 9** | [Discovering and joining an AD Domain using SSSD](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/html-single/integrating_rhel_systems_directly_with_windows_active_directory/index#overview-of-direct-integration-using-sssd_connecting-rhel-systems-directly-to-ad-using-sssd) |
-| **SLES** | [Join AD using realmd on SUSE Linux Enterprise Server 15](https://www.suse.com/support/kb/doc/?id=000021263) |
+| **SLES** | [Joining Active Directory using Windows domain membership](https://documentation.suse.com/sles/15-SP6/html/SLES-all/cha-security-ad.html#sec-security-ad-winbind) |
 | **Ubuntu** | [How to set up SSSD with Active Directory](https://ubuntu.com/server/docs/how-to-set-up-sssd-with-active-directory) |
 
 Use the following steps to join a [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] host to an Active Directory domain:

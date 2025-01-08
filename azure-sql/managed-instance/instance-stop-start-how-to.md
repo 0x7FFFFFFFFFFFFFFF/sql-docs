@@ -77,11 +77,11 @@ Stopped instances don't get billed for vCores and the SQL license, they're charg
 
 The [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md) is applied per resource. If your instance is using the Azure Hybrid Benefit to save on licensing costs, to apply that benefit to another resource when the instance is in a stopped state, you must first disable AHB on the instance, and then stop the instance. Similarly, after you restart the instance, you have to reenable AHB on it to apply the licensing benefit.
 
-### Reserved instance pricing
+### Reservation pricing
 
-[Reserved instance pricing (reserved capacity)](../database/reserved-capacity-overview.md) is applied for the vCores and hours emitted. When an instance that's eligible for reserved pricing is stopped, reserved pricing is automatically redirected to another instance, if one exists. You can use the stop and start feature to _overprovision_ reserved instance pricing.
+[Azure Reservation](../database/reservations-discount-overview.md) is applied for the vCores and hours emitted. When an instance that's eligible for reserved pricing is stopped, reserved pricing is automatically redirected to another instance, if one exists. You can use the stop and start feature to _overprovision_ reserved instance pricing.
 
-For example, let's say that you've purchased a managed instance with a reserved capacity of 16 vCores. You can run two instances with 8 vCores each from 1 PM to 2 PM, stop both instances, and then run two different instances with 8 vCores each from 2 PM to 3 PM. This approach would consume your 16 vCore limit for each hour, spread among four instances in total.
+For example, let's say that you've purchased a managed instance with a reservation for 16 vCores. You can run two instances with 8 vCores each from 1 PM to 2 PM, stop both instances, and then run two different instances with 8 vCores each from 2 PM to 3 PM. This approach would consume your 16 vCore limit for each hour, spread among four instances in total.
 
 Reservation discounts are offered on a ["use it or lose it"](/azure/cost-management-billing/reservations/understand-reservation-charges) basis. That is, if you don't have matching resources for a specified hour, the reservation quantity for that hour is lost. Unused reserved hours can't be carried forward.
 

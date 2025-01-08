@@ -22,9 +22,9 @@ monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15"
 
 The new capabilities for [SQL Server Language Extensions](language-extensions-overview.md) in [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] and later versions are described in this article. For more information, review the following articles.
 
-- [What's new in [!INCLUDE [sql-server-2019](../includes/sssql19-md.md)]](../sql-server/what-s-new-in-sql-server-2019.md)
-- [What's new in [!INCLUDE [sql-server-2022](../includes/sssql22-md.md)]](../sql-server/what-s-new-in-sql-server-2022.md)
-- [[!INCLUDE [SQL Server 2019](../includes/sssql19-md.md)] release notes](../sql-server/sql-server-2019-release-notes.md)
+- [What's new in SQL Server 2019](../sql-server/what-s-new-in-sql-server-2019.md)
+- [What's new in SQL Server 2022](../sql-server/what-s-new-in-sql-server-2022.md)
+- [SQL Server 2019 release notes](../sql-server/sql-server-2019-release-notes.md)
 - [SQL Server 2022 release notes](../sql-server/sql-server-2022-release-notes.md)
 
 ### Language extensions available

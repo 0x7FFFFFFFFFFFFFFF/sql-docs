@@ -3,7 +3,7 @@ title: "LAG (Transact-SQL)"
 description: "LAG (Transact-SQL)"
 author: markingmyname
 ms.author: maghan
-ms.date: 07/26/2023
+ms.date: 12/23/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -45,7 +45,7 @@ LAG (scalar_expression [ , offset ] [ , default ] ) [ IGNORE NULLS | RESPECT NUL
   
 #### [ IGNORE NULLS | RESPECT NULLS ]
 
-**Applies to**: SQL Server (starting with [!INCLUDE[sssql22](../../includes/sssql22-md.md)]), Azure SQL Database, Azure SQL Managed Instance, [!INCLUDE[ssazurede-md](../../includes/ssazurede-md.md)]
+**Applies to**: [!INCLUDE [sssql22](../../includes/sssql22-md.md)] and later versions, Azure SQL Database, Azure SQL Managed Instance, and [!INCLUDE[ssazurede-md](../../includes/ssazurede-md.md)]
 
 IGNORE NULLS - Ignore null values in the dataset when computing the first value over a partition.
 

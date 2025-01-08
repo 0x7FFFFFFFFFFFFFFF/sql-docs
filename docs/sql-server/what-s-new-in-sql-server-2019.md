@@ -12,7 +12,7 @@ ms.custom:
   - intro-whats-new
 monikerRange: ">= sql-server-2016"
 ---
-# What's new in [!INCLUDE [sql-server-2019](../includes/sssql19-md.md)]
+# What's new in SQL Server 2019
 
 [!INCLUDE [sqlserver](../includes/applies-to-version/sqlserver.md)]
 

@@ -262,9 +262,9 @@ To remove a standby replica with the REST API, use the [Replication Links - Dele
 
    After geo-replication is removed, the standby database becomes a regular standalone database, and starts incurring licensing costs.
 
--  Can I get [reserved capacity](reserved-capacity-overview.md) benefits for the standby replica?
+-  Can I get a [reservation](reservations-discount-overview.md) benefits for the standby replica?
 
-   Yes. Reserved capacity pricing is fully compatible with the standby replica.
+   Yes. Reservation pricing is fully compatible with the standby replica.
 
 - Can I designate a replica for standby when I'm creating a new failover group, or adding databases to it?
 

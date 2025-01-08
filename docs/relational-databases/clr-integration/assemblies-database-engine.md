@@ -3,7 +3,7 @@ title: "Assemblies (Database Engine)"
 description: A SQL Server instance can host assemblies that deploy functions, procedures, triggers, and user-defined aggregates and types written in a CLR language.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/02/2024
+ms.date: 12/27/2024
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -24,9 +24,9 @@ An assembly in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is an 
 
 - **CLR functions.** For more information, see [Create CLR functions](../user-defined-functions/create-clr-functions.md).
 
-- **CLR stored procedures.** For more information, see [CLR Stored Procedures](/dotnet/framework/data/adonet/sql/clr-stored-procedures).
+- **CLR stored procedures.** For more information, see [CLR stored procedures](/dotnet/framework/data/adonet/sql/clr-stored-procedures).
 
-- **CLR triggers.** For more information, see [Create CLR Triggers](../triggers/create-clr-triggers.md).
+- **CLR triggers.** For more information, see [Create CLR triggers](../triggers/create-clr-triggers.md).
 
 - User-defined aggregate functions. For more information, see [Create user-defined aggregates](../user-defined-functions/create-user-defined-aggregates.md).
 
@@ -46,8 +46,8 @@ Assemblies perform the following functions in [!INCLUDE [ssNoVersion](../../incl
 
 | Article | Description |
 | --- | --- |
-| [Designing assemblies](assemblies-designing.md) | Explains what you have to consider before creating an assembly. This includes packaging assemblies, code access permissions, and other restrictions. |
-| [Implementing assemblies](assemblies-implementing.md) | Explains how to create and drop assemblies, how and when to modify assemblies, and how to retrieve metadata about assemblies. |
+| [Design assemblies](assemblies-designing.md) | Explains what you have to consider before creating an assembly. This includes packaging assemblies, code access permissions, and other restrictions. |
+| [Implement assemblies](assemblies-implementing.md) | Explains how to create and drop assemblies, how and when to modify assemblies, and how to retrieve metadata about assemblies. |
 | [Get information about assemblies](assemblies-getting-information.md) | Lists the catalog views and functions that can be queried for metadata about assemblies. |
 
 ## Related content

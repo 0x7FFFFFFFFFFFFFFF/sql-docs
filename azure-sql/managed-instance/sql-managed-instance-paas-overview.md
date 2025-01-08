@@ -57,7 +57,7 @@ The following table provides key capabilities of Azure SQL Managed Instance:
 
 | **PaaS benefits** | **Business continuity** |
 | --- | --- |
-| No purchasing or managing hardware<br />No management overhead to manage underlying infrastructure<br />Quick provisioning and service scaling<br />Automated patching and version upgrade<br />You can [stop and start](instance-stop-start-how-to.md) the instance to save on costs<br />Integration with other PaaS data services | 99.99% uptime SLA<br />Built-in [high availability](high-availability-sla-local-zone-redundancy.md)<br />[Overview of the Managed Instance link](managed-instance-link-feature-overview.md)<br />Data protected with [automated backups](automated-backups-overview.md)<br />Customer configurable backup retention period<br />User-initiated [backups](/sql/t-sql/statements/backup-transact-sql?preserve-view=true&view=azuresqldb-mi-current) that can be [restored to SQL Server 2022](restore-database-to-sql-server.md)<br />[Point-in-time database restore](../database/recovery-using-backups.md#point-in-time-restore) capability |
+| No purchasing or managing hardware<br />No management overhead to manage underlying infrastructure<br />Quick provisioning and service scaling<br />Automated patching and version upgrade<br />You can [stop and start](instance-stop-start-how-to.md) the instance to save on costs<br />Integration with other PaaS data services | 99.99% uptime SLA<br />Built-in [high availability through zone redundancy](high-availability-sla-local-zone-redundancy.md)<br />[Overview of the Managed Instance link](managed-instance-link-feature-overview.md)<br />Data protected with [automated backups](automated-backups-overview.md)<br />Customer configurable backup retention period<br />User-initiated [backups](/sql/t-sql/statements/backup-transact-sql?preserve-view=true&view=azuresqldb-mi-current) that can be [restored to SQL Server 2022](restore-database-to-sql-server.md)<br />[Point-in-time database restore](../database/recovery-using-backups.md#point-in-time-restore) capability |
 | **Security and compliance** | **Management** |
 | Isolated environment ([Connectivity architecture for Azure SQL Managed Instance](connectivity-architecture-overview.md), single tenant service, dedicated compute and storage)<br />Adheres to the same compliance standards as Azure SQL Database<br />[Transparent data encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br />[Use Microsoft Entra authentication](../database/authentication-aad-overview.md), single sign-on support<br />[Microsoft Entra server principals (logins)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)<br />[What is Windows Authentication for Microsoft Entra principals on Azure SQL Managed Instance?](winauth-azuread-overview.md)<br />[Get started with Azure SQL Managed Instance auditing](auditing-configure.md)<br />[Configure Advanced Threat Protection in Azure SQL Managed Instance](threat-detection-configure.md) | Azure Resource Manager API for automating service provisioning and scaling<br />Azure portal functionality for manual service provisioning and scaling<br />Data Migration Service |
 
@@ -176,8 +176,8 @@ As with any Azure service, when you use Azure SQL Managed Instance, you are bill
 SQL Managed Instance offers several ways to save on costs:
 
 - **Azure Hybrid Benefit**: If you have Software Assurance, you can use the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) to save up to 55% on licensing costs. The Azure Hybrid Benefit for SQL Server allows you to use your on-premises SQL Server licenses to run Azure SQL Managed Instance at a reduced rate.
-- **Reserved capacity**: You can save up to 80% on costs by purchasing [reserved capacity](../database/reserved-capacity-overview.md) for SQL Managed Instance. 
-- **Instance pools**: If you have multiple managed instances, you can save on costs by using [instance pools](instance-pools-overview.md), which also support [reserved capacity](instance-pools-overview.md#reserved-capacity-pricing).
+- **Azure Reservations**: You can save up to 80% on costs by purchasing [reservations](../database/reservations-discount-overview.md) for SQL Managed Instance. 
+- **Instance pools**: If you have multiple managed instances, you can save on costs by using [instance pools](instance-pools-overview.md), which also support [reservations](instance-pools-overview.md#reservations-pricing).
 - **Instance stop and start**: You can [stop and start](instance-stop-start-how-to.md) your managed instance to save on costs. When you stop your instance, you only pay for storage, and you can restart it at any time.
 - **Free DR replica**: You can save on licensing costs by designating a secondary replica for [disaster recovery (DR) only](business-continuity-high-availability-disaster-recover-hadr-overview.md#license-free-dr-replicas). 
 
@@ -201,6 +201,10 @@ SQL Managed Instance is available in two service tiers:
 
 - **General Purpose**: Designed for applications with typical performance and I/O latency requirements. You can use the upgraded [Next-gen General Purpose service tier (preview)](service-tiers-next-gen-general-purpose-use.md) for improved performance metrics, and greater resource flexibility.
 - **Business Critical**: Designed for applications with low I/O latency requirements and minimal impact of underlying maintenance operations on the workload.
+
+## High availability
+
+[!INCLUDE [high-availability-through-zone-redundancy](../includes/sql-managed-instance/high-availability-through-zone-redundancy.md)]
 
 ## Management operations
 

@@ -1,9 +1,9 @@
 ---
-title: Overview of CLR integration
+title: Overview of CLR Integration
 description: SQL Server hosting CLR is called CLR integration. Authoring in managed code can improve performance. SQL Server uses CAS to help secure managed code.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/02/2024
+ms.date: 12/27/2024
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -20,7 +20,7 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
-The common language runtime (CLR) is the heart of the Microsoft .NET Framework and provides the execution environment for all .NET Framework code. Code that runs within the CLR is referred to as *managed code*. The CLR provides various functions and services required for program execution, including just-in-time (JIT) compilation, allocating and managing memory, enforcing type safety, exception handling, thread management, and security. For more information, see [.NET Framework development guide](/dotnet/framework/development-guide).
+The common language runtime (CLR) is the heart of the [!INCLUDE [dnprdnshort-md](../../includes/dnprdnshort-md.md)] and provides the execution environment for all [!INCLUDE [dnprdnshort-md](../../includes/dnprdnshort-md.md)] code. Code that runs within the CLR is referred to as *managed code*. The CLR provides various functions and services required for program execution, including just-in-time (JIT) compilation, allocating and managing memory, enforcing type safety, exception handling, thread management, and security. For more information, see [.NET Framework development guide](/dotnet/framework/development-guide).
 
 > [!NOTE]  
 > For more information about using the new .NET with [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Language Extensions, see [How to call the .NET runtime in SQL Server Language Extensions](../../language-extensions/how-to/call-c-sharp-from-sql.md).
@@ -39,10 +39,10 @@ In [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and earlier versions, C
 
 [!INCLUDE [visual-basic-md](../../includes/visual-basic-md.md)] and [!INCLUDE [c-sharp-md](../../includes/c-sharp-md.md)] offer object-oriented capabilities such as encapsulation, inheritance, and polymorphism. Related code can now be easily organized into classes and namespaces. When you're working with large amounts of server code, these capabilities allow you to more easily organize and maintain your code.
 
-Managed code is better suited than [!INCLUDE [tsql](../../includes/tsql-md.md)] for calculations and complicated execution logic, and features extensive support for many complex tasks, including string handling and regular expressions. With the functionality found in the .NET Framework library, you have access to thousands of prebuilt classes and routines. These classes can be easily accessed from any stored procedure, trigger, or user defined function. The base class library (BCL) includes classes that provide functionality for string manipulation, advanced math operations, file access, cryptography, and more.
+Managed code is better suited than [!INCLUDE [tsql](../../includes/tsql-md.md)] for calculations and complicated execution logic, and features extensive support for many complex tasks, including string handling and regular expressions. With the functionality found in the [!INCLUDE [dnprdnshort-md](../../includes/dnprdnshort-md.md)], you have access to thousands of prebuilt classes and routines. These classes can be easily accessed from any stored procedure, trigger, or user defined function. The base class library (BCL) includes classes that provide functionality for string manipulation, advanced math operations, file access, cryptography, and more.
 
 > [!NOTE]  
-> While many of these classes are available for use from within CLR code in [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], those that aren't appropriate for server-side use (for example, windowing classes), aren't available. For more information, see [Supported .NET Framework Libraries](database-objects/supported-net-framework-libraries.md).
+> While many of these classes are available for use from within CLR code in [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], those that aren't appropriate for server-side use (for example, windowing classes), aren't available. For more information, see [Supported .NET Framework libraries](database-objects/supported-net-framework-libraries.md).
 
 One of the benefits of managed code is type safety, or the assurance that code accesses types only in well-defined, permissible ways. Before managed code is executed, the CLR verifies that the code is safe. For example, the code is checked to ensure that no memory is read that wasn't previously written. The CLR can also help ensure that code doesn't manipulate unmanaged memory.
 
@@ -50,7 +50,7 @@ CLR integration offers the potential for improved performance. For information, 
 
 ## Choose between Transact-SQL and managed code
 
-When you write stored procedures, triggers, and user-defined functions, you must decide whether to use traditional [!INCLUDE [tsql](../../includes/tsql-md.md)], or a .NET Framework language such as [!INCLUDE [visual-basic-md](../../includes/visual-basic-md.md)] or [!INCLUDE [c-sharp-md](../../includes/c-sharp-md.md)]. Use [!INCLUDE [tsql](../../includes/tsql-md.md)] when the code mostly performs data access with little or no procedural logic. Use managed code for CPU-intensive functions and procedures that feature complex logic, or when you want to make use of the BCL of the .NET Framework.
+When you write stored procedures, triggers, and user-defined functions, you must decide whether to use traditional [!INCLUDE [tsql](../../includes/tsql-md.md)], or a [!INCLUDE [dnprdnshort-md](../../includes/dnprdnshort-md.md)] language such as [!INCLUDE [visual-basic-md](../../includes/visual-basic-md.md)] or [!INCLUDE [c-sharp-md](../../includes/c-sharp-md.md)]. Use [!INCLUDE [tsql](../../includes/tsql-md.md)] when the code mostly performs data access with little or no procedural logic. Use managed code for CPU-intensive functions and procedures that feature complex logic, or when you want to make use of the BCL of the [!INCLUDE [dnprdnshort-md](../../includes/dnprdnshort-md.md)].
 
 ### Choose between execution in the server and execution in the client
 
@@ -63,7 +63,7 @@ Extended stored procedures can be built to perform functionality not possible wi
 ## Related content
 
 - [.NET Framework installation guide](/dotnet/framework/install/)
-- [CLR Integration Architecture - CLR Hosted Environment](clr-integration-architecture-clr-hosted-environment.md)
-- [Data Access from CLR Database Objects](data-access/data-access-from-clr-database-objects.md)
+- [CLR integration architecture - CLR hosted environment](clr-integration-architecture-clr-hosted-environment.md)
+- [Data access from CLR database objects](data-access/data-access-from-clr-database-objects.md)
 - [Get started with CLR integration](database-objects/getting-started-with-clr-integration.md)
 - [How to call the .NET runtime in SQL Server Language Extensions](../../language-extensions/how-to/call-c-sharp-from-sql.md)

@@ -5,7 +5,7 @@ description: Learn about automated backups for Hyperscale databases in Azure SQL
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dinethi, mathoma, danil, randolphwest, 
-ms.date: 10/04/2023
+ms.date: 12/30/2024
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: conceptual
@@ -83,7 +83,7 @@ Backup storage consumption for a Hyperscale database depends on the retention pe
 
 Hyperscale backup storage cost depends on the choice of region and backup storage redundancy. It also depends on the workload type.
 
-Write-heavy workloads are more likely to change data pages frequently, which results in larger storage snapshots. Such workloads also generate more transaction logs, contributing to the overall backup costs. Backup storage is charged based on gigabytes consumed per month. For pricing details, see the [Azure SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/single/) page.
+Write-heavy workloads are more likely to change data pages frequently, which results in larger storage snapshots. Such workloads also generate more transaction logs, contributing to the overall backup costs. Backup storage is charged based on gigabytes consumed per month. The backup storage amount equal to the database size is provided at no extra charge. For pricing details, see the [Azure SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/single/) page.
 
 For Hyperscale, billable backup storage is calculated as follows:
 

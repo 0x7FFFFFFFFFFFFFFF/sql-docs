@@ -1600,7 +1600,8 @@
   href: ../integration-services/load-data-to-sql-database-with-ssis.md
 - name: Load data to Azure Synapse Analytics
   href: ../integration-services/load-data-to-sql-data-warehouse.md
-
+- name: Load data from or into Oracle database
+  href: ../integration-services/load-data-to-from-oracle-generic.md
 
 
 - name: Change Data Capture

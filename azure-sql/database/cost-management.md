@@ -141,7 +141,7 @@ You can also [export your cost data](/azure/cost-management-billing/costs/tutori
 
 Azure SQL Database also enables you to scale resources up or down to control costs based on your application needs. For details, see [Dynamically scale database resources](scale-resources.md).
 
-Save money by committing to a reservation for compute resources for one to three years. For details, see [Save costs for resources with reserved capacity](reserved-capacity-overview.md).
+Save money by committing to a reservation for compute resources for one to three years. For details, see [Save costs for resources with Azure Reservations](reservations-discount-overview.md).
 
 ## Next steps
 

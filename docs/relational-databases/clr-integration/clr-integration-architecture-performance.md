@@ -1,9 +1,9 @@
 ---
-title: "Performance of CLR integration architecture"
+title: "Performance of CLR Integration Architecture"
 description: This article discusses design choices for Microsoft SQL Server integration with the .NET Framework CLR, including the compilation process and performance.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/02/2024
+ms.date: 12/27/2024
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -16,11 +16,11 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
-This article discusses some of the design choices that enhance the performance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] integration with the [!INCLUDE [msCoName](../../includes/msconame-md.md)] .NET Framework common language runtime (CLR).
+This article discusses some of the design choices that enhance the performance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] integration with the [!INCLUDE [dnprdnshort-md](../../includes/dnprdnshort-md.md)] common language runtime (CLR).
 
 ## The compilation process
 
-During compilation of SQL expressions, when a reference to a managed routine is encountered, a [!INCLUDE [msCoName](../../includes/msconame-md.md)] intermediate language (MSIL) stub is generated. This stub includes code to marshal the routine parameters from [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to the CLR, invoke the function, and return the result. This "glue" code is based on the type of parameter and on parameter direction (in, out, or reference).
+During compilation of SQL expressions, when a reference to a managed routine is encountered, a common intermediate language (CIL) stub is generated. This stub includes code to marshal the routine parameters from [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to the CLR, invoke the function, and return the result. This *glue* code is based on the type of parameter and on parameter direction (*in*, *out*, or *reference*).
 
 The glue code enables type-specific optimizations and ensures efficient enforcement of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] semantics, such as nullability, constraining facets, by-value, and standard exception handling. By generating code for the exact types of the arguments, you avoid type coercion or wrapper object creation costs (called "boxing") across the invocation boundary.
 
@@ -54,11 +54,11 @@ When [!INCLUDE [tsql](../../includes/tsql-md.md)] cursors must traverse data tha
 
 ### String data
 
-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] character data, such as **varchar**, can be of the type SqlString or SqlChars in managed functions. SqlString variables create an instance of the entire value into memory. SqlChars variables provide a streaming interface that can be used to achieve better performance and scalability by not creating an instance of the entire value into memory. This becomes important for large object (LOB) data. Additionally, server XML data can be accessed through a streaming interface returned by `SqlXml.CreateReader()`.
+[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] character data, such as **varchar**, can be of the type `SqlString` or `SqlChars` in managed functions. `SqlString` variables create an instance of the entire value into memory. `SqlChars` variables provide a streaming interface that can be used to achieve better performance and scalability by not creating an instance of the entire value into memory. This becomes important for large object (LOB) data. Additionally, server XML data can be accessed through a streaming interface returned by `SqlXml.CreateReader()`.
 
 ### CLR vs. extended stored procedures
 
-The `Microsoft.SqlServer.Server` application programming interfaces (APIs) that allow managed procedures to send result sets back to the client perform better than the Open Data Services (ODS) APIs used by extended stored procedures. Furthermore, the System.Data.SqlServer APIs support data types such as **xml**, **varchar(max)**, **nvarchar(max)**, and **varbinary(max)**, introduced in [!INCLUDE [ssVersion2005](../../includes/ssversion2005-md.md)], while the ODS APIs haven't been extended to support the new data types.
+The `Microsoft.SqlServer.Server` application programming interfaces (APIs) that allow managed procedures to send result sets back to the client perform better than the Open Data Services (ODS) APIs used by extended stored procedures. Furthermore, the `System.Data.SqlServer` APIs support data types such as **xml**, **varchar(max)**, **nvarchar(max)**, and **varbinary(max)**, while the ODS APIs haven't been extended to support these data types.
 
 With managed code, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] manages use of resources such as memory, threads, and synchronization. This is because the managed APIs that expose these resources are implemented on top of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] resource manager. Conversely, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] has no view or control over the resource usage of the extended stored procedure. For example, if an extended stored procedure consumes too much CPU or memory resources, there's no way to detect or control this with [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. With managed code, however, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] can detect that a given thread hasn't yielded for a long period of time, and then force the task to yield so that other work can be scheduled. So, using managed code provides for better scalability and system resource usage.
 
@@ -69,7 +69,7 @@ Managed code might incur extra overhead necessary to maintain the execution envi
 
 ### Native serialization for user-defined types
 
-User-defined types (UDTs) are designed as an extensibility mechanism for the scalar type system. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] implements a serialization format for UDTs called `Format.Native`. During compilation, the structure of the type is examined to generate MSIL that is customized for that particular type definition.
+User-defined types (UDTs) are designed as an extensibility mechanism for the scalar type system. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] implements a serialization format for UDTs called `Format.Native`. During compilation, the structure of the type is examined to generate CIL that is customized for that particular type definition.
 
 Native serialization is the default implementation for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. User-defined serialization invokes a method defined by the type author to do the serialization. `Format.Native` serialization should be used when possible for best performance.
 
@@ -79,9 +79,9 @@ Relational operations, such as sorting and comparing UDTs, operate directly on t
 
 Normalization has two benefits:
 
-- it makes the comparison operation considerably less expensive by avoiding the construction of the type instance and the method invocation overhead
+- It makes the comparison operation considerably less expensive by avoiding the construction of the type instance and the method invocation overhead.
 
-- it creates a binary domain for the UDT, enabling the construction of histograms, indexes, and histograms for values of the type.
+- It creates a binary domain for the UDT, enabling the construction of histograms, indexes, and histograms for values of the type.
 
 So, normalized UDTs have a similar performance profile to the native built-in types for operations that don't involve method invocation.
 
@@ -91,4 +91,4 @@ In order for managed garbage collection to perform and scale well in [!INCLUDE [
 
 ## Related content
 
-- [CLR User-Defined Types](../clr-integration-database-objects-user-defined-types/clr-user-defined-types.md)
+- [CLR user-defined types](../clr-integration-database-objects-user-defined-types/clr-user-defined-types.md)

@@ -4,7 +4,7 @@ description: CREATE EXTERNAL TABLE (Transact-SQL) creates an external table.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: hudequei
-ms.date: 07/11/2023
+ms.date: 01/07/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -114,7 +114,7 @@ The column definitions, including the data types and number of columns, must mat
 
 Specifies the folder or the file path and file name for the actual data in Hadoop or Azure Blob Storage. Additionally, S3-compatible object storage is supported starting in [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)]). The location starts from the root folder. The root folder is the data location specified in the external data source.
 
-In SQL Server, the CREATE EXTERNAL TABLE statement creates the path and folder if it doesn't already exist. You can then use INSERT INTO to export data from a local SQL Server table to the external data source. For more information, see [PolyBase Queries](../../relational-databases/polybase/polybase-queries.md).
+In SQL Server, the `CREATE EXTERNAL TABLE` statement creates the path and folder if it doesn't already exist. You can then use INSERT INTO to export data from a local SQL Server table to the external data source. For more information, see [PolyBase Queries](../../relational-databases/polybase/polybase-queries.md).
 
 If you specify LOCATION to be a folder, a PolyBase query that selects from the external table will retrieve files from the folder and all of its subfolders. Just like Hadoop, PolyBase doesn't return hidden folders. It also doesn't return files for which the file name begins with an underline (_) or a period (.).
 
@@ -170,7 +170,7 @@ This attribute is required when you specify REJECT_TYPE = percentage. It determi
 
 The *reject_sample_value* parameter must be an integer between 0 and 2,147,483,647.
 
-For example, if REJECT_SAMPLE_VALUE = 1000, PolyBase will calculate the percentage of failed rows after it has attempted to import 1000 rows from the external data file. If the percentage of failed rows is less than *reject_value*, PolyBase will attempt to retrieve another 1000 rows. It continues to recalculate the percentage of failed rows after it attempts to import each additional 1000 rows.
+For example, if REJECT_SAMPLE_VALUE = 1000, PolyBase will calculate the percentage of failed rows after it has attempted to import 1000 rows from the external data file. If the percentage of failed rows is less than *reject_value*, PolyBase attempts to retrieve another 1,000 rows. It continues to recalculate the percentage of failed rows after it attempts to import each additional 1,000 rows.
 
 > [!NOTE]  
 > Since PolyBase computes the percentage of failed rows at intervals, the actual percentage of failed rows can exceed *reject_value*.
@@ -180,7 +180,7 @@ Example:
 This example shows how the three REJECT options interact with each other. For example, if REJECT_TYPE = percentage, REJECT_VALUE = 30, and REJECT_SAMPLE_VALUE = 100, the following scenario could occur:
 
 - PolyBase attempts to retrieve the first 100 rows; 25 fail and 75 succeed.
-- Percent of failed rows is calculated as 25%, which is less than the reject value of 30%. As a result, PolyBase will continue retrieving data from the external data source.
+- Percent of failed rows is calculated as 25%, which is less than the reject value of 30%. As a result, PolyBase continues retrieving data from the external data source.
 - PolyBase attempts to load the next 100 rows; this time 25 rows succeed and 75 rows fail.
 - Percent of failed rows is recalculated as 50%. The percentage of failed rows has exceeded the 30% reject value.
 - The PolyBase query fails with 50% rejected rows after attempting to return the first 200 rows. Notice that matching rows have been returned before the PolyBase query detects the reject threshold has been exceeded.
@@ -191,9 +191,9 @@ This example shows how the three REJECT options interact with each other. For ex
 
 Specifies the directory within the External Data Source that the rejected rows and the corresponding error file should be written.
 
-If the specified path doesn't exist, PolyBase will create one on your behalf. A child directory is created with the name "\_rejectedrows". The "\_" character ensures that the directory is escaped for other data processing unless explicitly named in the location parameter. Within this directory, there's a folder created based on the time of load submission in the format `YearMonthDay -HourMinuteSecond` (Ex. `20230330-173205`). In this folder, two types of files are written, the _reason file and the data file. This option can be used only with external data sources where TYPE = HADOOP and for external tables using DELIMITEDTEXT FORMAT_TYPE. For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md#type---hadoop--blob_storage--1) and [CREATE EXTERNAL FILE FORMAT](create-external-file-format-transact-sql.md).
+If the specified path doesn't exist, PolyBase creates one on your behalf. A child directory is created with the name `_rejectedrows`. The `_` character ensures that the directory is escaped for other data processing unless explicitly named in the location parameter. Within this directory, there's a folder created based on the time of load submission in the format `YearMonthDay -HourMinuteSecond` (Ex. `20230330-173205`). In this folder, two types of files are written, the _reason file and the data file. This option can be used only with external data sources where `TYPE = HADOOP` and for external tables using `DELIMITEDTEXT` `FORMAT_TYPE`. For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md#type---hadoop--blob_storage--1) and [CREATE EXTERNAL FILE FORMAT](create-external-file-format-transact-sql.md).
 
-The reason files and the data files both have the queryID associated with the CTAS statement. Because the data and the reason are in separate files, corresponding files have a matching suffix.
+The reason files and the data files both have the `queryID` associated with the CTAS statement. Because the data and the reason are in separate files, corresponding files have a matching suffix.
 
 ## Permissions
 
@@ -205,7 +205,7 @@ Requires these user permissions:
 - **ALTER ANY EXTERNAL FILE FORMAT** (only applies to Hadoop and Azure Storage external data sources)
 - **CONTROL DATABASE** (only applies to Hadoop and Azure Storage external data sources)
 
-Note, the remote login specified in the DATABASE SCOPED CREDENTIAL used in the CREATE EXTERNAL TABLE command must have read permission for the path/table/collection on the external data source specified in the LOCATION parameter. If you're planning to use this EXTERNAL TABLE to export data to a Hadoop or Azure Storage external data source, then the login specified must have write permission on the path specified in LOCATION. Note that Hadoop is not currently supported in [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)].
+Note, the remote login specified in the DATABASE SCOPED CREDENTIAL used in the `CREATE EXTERNAL TABLE` command must have **Read** permission for the path/table/collection on the external data source specified in the LOCATION parameter. If you're planning to use this EXTERNAL TABLE to export data to a Hadoop or Azure Storage external data source, then the login specified must have write permission on the path specified in LOCATION. Note that Hadoop is not supported in [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)].
 
 For Azure Blob Storage, when configuring the access keys and shared access signature (SAS) in the Azure portal, the Azure Blob Storage or ADLS Gen2 storage accounts, configure the **Allowed permissions** to grant at least **Read** and **Write** permissions. **List** permission might also be required when searching across folders. You must also select both **Container** and **Object** as the allowed resource types.
 
@@ -214,7 +214,7 @@ For Azure Blob Storage, when configuring the access keys and shared access signa
 
 ## Error handling
 
-While executing the CREATE EXTERNAL TABLE statement, PolyBase attempts to connect to the external data source. If the attempt to connect fails, the statement will fail and the external table won't be created. It can take a minute or more for the command to fail since PolyBase retries the connection before eventually failing the query.
+While executing the `CREATE EXTERNAL TABLE` statement, PolyBase attempts to connect to the external data source. If the attempt to connect fails, the statement will fail and the external table won't be created. It can take a minute or more for the command to fail since PolyBase retries the connection before eventually failing the query.
 
 ## Remarks
 
@@ -258,13 +258,13 @@ PolyBase in SQL Server 2016 has a row width limit of 32 KB based on the maximum 
 
 The following data types cannot be used in PolyBase external tables:
 
-- `geography`
-- `geometry`
-- `hierarchyid`
-- `image`
-- `text`
-- `nText`
-- `xml`
+- **geography**
+- **geometry**
+- **hierarchyid**
+- **image**
+- **text**
+- **ntext**
+- **xml**
 - Any user-defined type
 
 ### Data source specific limitations
@@ -289,7 +289,7 @@ The data files for an external table are stored in Hadoop or Azure Blob Storage.
 
 ### A. Create an external table with data in text-delimited format
 
-This example shows all the steps required to create an external table that has data formatted in text-delimited files. It defines an external data source *mydatasource* and an external file format *myfileformat*. These database-level objects are then referenced in the CREATE EXTERNAL TABLE statement. For more information, see [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
+This example shows all the steps required to create an external table that has data formatted in text-delimited files. It defines an external data source `mydatasource` and an external file format `myfileformat`. These database-level objects are then referenced in the `CREATE EXTERNAL TABLE` statement. For more information, see [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mydatasource
@@ -319,7 +319,7 @@ WITH (
 
 ### B. Create an external table with data in RCFile format
 
-This example shows all the steps required to create an external table that has data formatted as RCFiles. It defines an external data source *mydatasource_rc* and an external file format *myfileformat_rc*. These database-level objects are then referenced in the CREATE EXTERNAL TABLE statement. For more information, see [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
+This example shows all the steps required to create an external table that has data formatted as RCFiles. It defines an external data source `mydatasource_rc` and an external file format `myfileformat_rc`. These database-level objects are then referenced in the `CREATE EXTERNAL TABLE` statement. For more information, see [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mydatasource_rc
@@ -350,7 +350,7 @@ WITH (
 
 ### C. Create an external table with data in ORC format
 
-This example shows all the steps required to create an external table that has data formatted as ORC files. It defines an external data source *mydatasource_orc* and an external file format *myfileformat_orc*. These database-level objects are then referenced in the CREATE EXTERNAL TABLE statement. For more information, see [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
+This example shows all the steps required to create an external table that has data formatted as ORC files. It defines an external data source *mydatasource_orc* and an external file format *myfileformat_orc*. These database-level objects are then referenced in the `CREATE EXTERNAL TABLE` statement. For more information, see [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mydatasource_orc
@@ -707,7 +707,7 @@ The one to three-part name of the table to create. For an external table, SQL st
 CREATE EXTERNAL TABLE supports the ability to configure column name, data type, nullability, and collation. You can't use the DEFAULT CONSTRAINT on external tables.
 
 > [!NOTE]  
-> `Text`, `nText` and `XML` are not supported data types for columns in external tables for Azure SQL Database.
+> The **text**, **ntext**, **xml**, and **json** data types are not supported for columns in external tables for Azure SQL Database.
 
 The column definitions, including the data types and number of columns, must match the data in the external files. If there's a mismatch, the file rows will be rejected when querying the actual data.
 
@@ -742,7 +742,7 @@ Users with access to the external table automatically gain access to the underly
 
 ## Error handling
 
-While executing the CREATE EXTERNAL TABLE statement, if the attempt to connect fails, the statement will fail and the external table won't be created. It can take a minute or more for the command to fail since SQL Database retries the connection before eventually failing the query.
+While executing the `CREATE EXTERNAL TABLE` statement, if the attempt to connect fails, the statement will fail and the external table won't be created. It can take a minute or more for the command to fail since SQL Database retries the connection before eventually failing the query.
 
 ## Remarks
 
@@ -765,7 +765,7 @@ You can create multiple external tables that each reference different external d
   - [Dynamic Data Masking](../../relational-databases/security/dynamic-data-masking.md) on external table columns.
   - Cursors are not supported for external tables in Azure SQL Database.
 
-- **Only literal predicates**: Only literal predicates defined in a query can be pushed down to the external data source. This is unlike linked servers and accessing where predicates determined during query execution can be used, that is, when used in conjunction with a nested loop in a query plan. This will often lead to the whole external table being copied locally and then joined.
+- **Only literal predicates**: Only literal predicates defined in a query can be pushed down to the external data source. This is unlike linked servers and accessing where predicates determined during query execution can be used, that is, when used with a nested loop in a query plan. This will often lead to the whole external table being copied locally and then joined.
 
    In the following example, if `External.Orders` is an external table and `Customer` is a local table, the query copies the entire external table locally because the predicate needed isn't known at compile time.
 
@@ -789,13 +789,13 @@ You can create multiple external tables that each reference different external d
 
 The following data types cannot be used in PolyBase external tables:
 
-- `geography`
-- `geometry`
-- `hierarchyid`
-- `image`
-- `text`
-- `nText`
-- `xml`
+- **geography**
+- **geometry**
+- **hierarchyid**
+- **image**
+- **text**
+- **ntext**
+- **xml**
 - Any user-defined type
 
 ## Locking
@@ -948,7 +948,7 @@ The one to three-part name of the table to create. For an external table, only t
 CREATE EXTERNAL TABLE supports the ability to configure column name, data type, nullability, and collation. You can't use the DEFAULT CONSTRAINT on external tables.
 
 > [!NOTE]  
-> Deprecated data types `text`, `ntext` and `XML` are not supported data types for columns in external tables for Synapse Analytics.
+> The data types **text**, **ntext**, and **xml** are not supported data types for columns in external tables for Synapse Analytics.
 
 - When reading delimited files, the column definitions, including the data types and number of columns, must match the data in the external files. If there's a mismatch, the file rows will be rejected when querying the actual data.
 - When reading from Parquet files, you can specify only the columns you want to read and skip the rest.
@@ -963,7 +963,7 @@ In the following image example, if `LOCATION='/webdata/'`, a PolyBase query will
 
 :::image type="content" source="media/create-external-table-transact-sql/aps-polybase-folder-traversal.png" alt-text="A diagram of folders and file data for external tables.":::
 
-Unlike Hadoop external tables, native external tables don't return subfolders unless you specify `/**` at the end of path. In this example, if `LOCATION='/webdata/'`, a serverless SQL pool query, will return rows from mydata.txt. It won't return mydata2.txt and mydata3.txt because they're located in a subfolder. Hadoop tables will return all files within any sub-folder.
+Unlike Hadoop external tables, native external tables don't return subfolders unless you specify `/**` at the end of path. In this example, if `LOCATION='/webdata/'`, a serverless SQL pool query, will return rows from mydata.txt. It won't return mydata2.txt and mydata3.txt because they're located in a subfolder. Hadoop tables will return all files within any subfolder.
 
 Both Hadoop and native external tables will skip the files with the names that begin with an underline (_) or a period (.).
 
@@ -1021,7 +1021,7 @@ This attribute is required when you specify REJECT_TYPE = percentage. It determi
 
 The *reject_sample_value* parameter must be an integer between 0 and 2,147,483,647.
 
-For example, if REJECT_SAMPLE_VALUE = 1000, PolyBase will calculate the percentage of failed rows after it has attempted to import 1000 rows from the external data file. If the percentage of failed rows is less than *reject_value*, PolyBase will attempt to retrieve another 1000 rows. It continues to recalculate the percentage of failed rows after it attempts to import each additional 1000 rows.
+For example, if REJECT_SAMPLE_VALUE = 1000, PolyBase will calculate the percentage of failed rows after it has attempted to import 1000 rows from the external data file. If the percentage of failed rows is less than *reject_value*, PolyBase attempts to retrieve another 1,000 rows. It continues to recalculate the percentage of failed rows after it attempts to import each additional 1,000 rows.
 
 > [!NOTE]  
 > Since PolyBase computes the percentage of failed rows at intervals, the actual percentage of failed rows can exceed *reject_value*.
@@ -1031,7 +1031,7 @@ Example:
 This example shows how the three REJECT options interact with each other. For example, if REJECT_TYPE = percentage, REJECT_VALUE = 30, and REJECT_SAMPLE_VALUE = 100, the following scenario could occur:
 
 - PolyBase attempts to retrieve the first 100 rows; 25 fail and 75 succeed.
-- Percent of failed rows is calculated as 25%, which is less than the reject value of 30%. As a result, PolyBase will continue retrieving data from the external data source.
+- Percent of failed rows is calculated as 25%, which is less than the reject value of 30%. As a result, PolyBase continues retrieving data from the external data source.
 - PolyBase attempts to load the next 100 rows; this time 25 rows succeed and 75 rows fail.
 - Percent of failed rows is recalculated as 50%. The percentage of failed rows has exceeded the 30% reject value.
 - The PolyBase query fails with 50% rejected rows after attempting to return the first 200 rows. Notice that matching rows have been returned before the PolyBase query detects the reject threshold has been exceeded.
@@ -1042,7 +1042,7 @@ Specifies the directory within the External Data Source that the rejected rows a
 
 If the specified path doesn't exist, it will be created. A child directory is created with the name `_rejectedrows`. The `_` character ensures that the directory is escaped for other data processing unless explicitly named in the location parameter. 
 
-- In serverless SQL pools, the path is `YearMonthDay_HourMinuteSecond_StatementID`. You can use statement id to correlate folder with query that generated it.
+- In serverless SQL pools, the path is `YearMonthDay_HourMinuteSecond_StatementID`. You can use `statementID` to correlate folder with query that generated it.
 - In dedicated SQL pools, the path created is based on the time of load submission in the format `YearMonthDay -HourMinuteSecond`, for example `20180330-173205`. 
 
 In this folder, two types of files are written, the `_reason` file and the data file. 
@@ -1058,7 +1058,7 @@ In serverless SQL pools, the `error.json` file contains a JSON array with encoun
 | Error     | Reason why row is rejected.                                  |
 | Row       | Rejected row ordinal number in file.                         |
 | Column    | Rejected column ordinal number.                              |
-| Value     | Rejected column value. If the value is larger than 100 characters, only the first 100 characters will be displayed. |
+| Value     | Rejected column value. If the value is larger than 100 characters, only the first 100 characters are displayed. |
 | File      | Path to file that row belongs to.                            |
 
 ## Permissions
@@ -1080,7 +1080,7 @@ Note, the login that creates the external data source must have permission to re
 
 ## Error handling
 
-While executing the CREATE EXTERNAL TABLE statement, PolyBase attempts to connect to the external data source. If the attempt to connect fails, the statement will fail and the external table won't be created. It can take a minute or more for the command to fail since PolyBase retries the connection before eventually failing the query.
+While executing the `CREATE EXTERNAL TABLE` statement, PolyBase attempts to connect to the external data source. If the attempt to connect fails, the statement fails and the external table won't be created. It can take a minute or more for the command to fail since PolyBase retries the connection before eventually failing the query.
 
 ## Remarks
 
@@ -1092,7 +1092,7 @@ PolyBase can push some of the query computation to Hadoop to improve query perfo
 
 You can create many external tables that reference the same or different external data sources.
 
-Pay attention to source data using the UTF-8 collation. For any source data using the UTF-8 collation, you must manually provide a non-UTF-8 collation each UTF-8 column in the CREATE EXTERNAL TABLE statement. This is because UTF-8 support does not extend to external tables. When you attempt to create an external table with a UTF-8 collation, you will receive an `Unsupported collation` error message. If the external table's database collation is a UTF-8 collation, external table creation will fail unless you provide an explicit non-UTF-8 column collation, for example, `[UTF8_column] varchar(128) COLLATE LATIN1_GENERAL_100_CI_AS_KS_WS NOT NULL,`.
+Pay attention to source data using the UTF-8 collation. For any source data using the UTF-8 collation, you must manually provide a non-UTF-8 collation each UTF-8 column in the `CREATE EXTERNAL TABLE` statement. This is because UTF-8 support does not extend to external tables. When you attempt to create an external table with a UTF-8 collation, you will receive an `Unsupported collation` error message. If the external table's database collation is a UTF-8 collation, external table creation will fail unless you provide an explicit non-UTF-8 column collation, for example, `[UTF8_column] varchar(128) COLLATE LATIN1_GENERAL_100_CI_AS_KS_WS NOT NULL,`.
 
 Serverless and dedicated SQL pools in Azure Synapse Analytics use different code bases for data virtualization. Serverless SQL pools support a native data virtualization technology. Dedicated SQL pools support both native and PolyBase data virtualization. PolyBase data virtualization is used when the EXTERNAL DATA SOURCE is created with `TYPE=HADOOP`.
 
@@ -1116,7 +1116,7 @@ Constructs and operations not supported:
 
 ### Query limitations
 
-It is recommended to not exceed no more than 30k files per folder. When too many files are referenced, a Java Virtual Machine (JVM) out-of-memory exception might occur or performance may degrade.
+It is recommended to not exceed no more than 30k files per folder. When too many files are referenced, a Java Virtual Machine (JVM) out-of-memory exception might occur or performance can degrade.
 
 ### Table width limitations
 
@@ -1126,13 +1126,13 @@ PolyBase in Azure Data Warehouse has a row width limit of 1 MB based on the maxi
 
 The following data types cannot be used in PolyBase external tables:
 
-- `geography`
-- `geometry`
-- `hierarchyid`
-- `image`
-- `text`
-- `nText`
-- `xml`
+- **geography**
+- **geometry**
+- **hierarchyid**
+- **image**
+- **text**
+- **ntext**
+- **xml**
 - Any user-defined type
 
 ## Locking
@@ -1352,7 +1352,7 @@ This attribute is required when you specify REJECT_TYPE = percentage. It determi
 
 The *reject_sample_value* parameter must be an integer between 0 and 2,147,483,647.
 
-For example, if REJECT_SAMPLE_VALUE = 1000, PolyBase will calculate the percentage of failed rows after it has attempted to import 1000 rows from the external data file. If the percentage of failed rows is less than *reject_value*, PolyBase will attempt to retrieve another 1000 rows. It continues to recalculate the percentage of failed rows after it attempts to import each additional 1000 rows.
+For example, if REJECT_SAMPLE_VALUE = 1000, PolyBase will calculate the percentage of failed rows after it has attempted to import 1000 rows from the external data file. If the percentage of failed rows is less than *reject_value*, PolyBase attempts to retrieve another 1,000 rows. It continues to recalculate the percentage of failed rows after it attempts to import each additional 1,000 rows.
 
 > [!NOTE]  
 > Since PolyBase computes the percentage of failed rows at intervals, the actual percentage of failed rows can exceed *reject_value*.
@@ -1384,7 +1384,7 @@ Note, the login that creates the external data source must have permission to re
 
 ## Error handling
 
-While executing the CREATE EXTERNAL TABLE statement, PolyBase attempts to connect to the external data source. If the attempt to connect fails, the statement will fail and the external table won't be created. It can take a minute or more for the command to fail since PolyBase retries the connection before eventually failing the query.
+While executing the `CREATE EXTERNAL TABLE` statement, PolyBase attempts to connect to the external data source. If the attempt to connect fails, the statement will fail and the external table won't be created. It can take a minute or more for the command to fail since PolyBase retries the connection before eventually failing the query.
 
 ## Remarks
 
@@ -1428,13 +1428,13 @@ In Azure Synapse Analytics, this limitation has been raised to 1 MB.
 
 The following data types cannot be used in PolyBase external tables:
 
-- `geography`
-- `geometry`
-- `hierarchyid`
-- `image`
-- `text`
-- `nText`
-- `xml`
+- **geography**
+- **geometry**
+- **hierarchyid**
+- **image**
+- **text**
+- **ntext**
+- **xml**
 - Any user-defined type
 
 ## Locking
@@ -1545,7 +1545,7 @@ The one to three-part name of the table to create. For an external table, only t
 
 CREATE EXTERNAL TABLE supports the ability to configure column name, data type, nullability, and collation. You can't use the DEFAULT CONSTRAINT on external tables.
 
-The column definitions, including the data types and number of columns, must match the data in the external files. If there's a mismatch, the file rows will be rejected when querying the actual data.
+The column definitions, including the data types and number of columns, must match the data in the external files. If there's a mismatch, the file rows are rejected when querying the actual data.
 
 #### LOCATION = '*folder_or_filepath*'
 
@@ -1619,13 +1619,14 @@ The row width limit of 1 MB is based on the maximum size of a single valid row b
 
 The following data types cannot be used in external tables in [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)]:
 
-- `geography`
-- `geometry`
-- `hierarchyid`
-- `image`
-- `text`
-- `nText`
-- `xml`
+- **geography**
+- **geometry**
+- **hierarchyid**
+- **image**
+- **text**
+- **ntext**
+- **xml**
+- **json**
 - Any user-defined type
 
 ## Locking

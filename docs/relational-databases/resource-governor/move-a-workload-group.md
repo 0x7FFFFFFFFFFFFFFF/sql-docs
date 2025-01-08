@@ -1,76 +1,83 @@
 ---
-title: "Move a Workload Group"
-description: Learn how to move a Resource Governor workload group to a different resource pool by using either SQL Server Management Studio or Transact-SQL.
+title: Move a Workload Group
+description: Learn how to move a resource governor workload group to a different resource pool by using either SQL Server Management Studio or Transact-SQL.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: "03/03/2017"
+ms.reviewer: dfurman
+ms.date: 01/02/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.rg.properties_moveworkloadgroup.f1"
 helpviewer_keywords:
   - "workload groups [SQL Server], move"
   - "Resource Governor, workload group move"
+monikerRange: ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
 ---
-# Move a Workload Group
+
+# Move a workload group
+
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
-  You can move a Resource Governor workload group to a different resource pool by using either [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or Transact-SQL.  
-  
--   **Before you begin:**  [Limitations and Restrictions](#LimitationsRestrictions), [Permissions](#Permissions)  
-  
--   **To move a workload group, using:**  [SQL Server Management Studio](#MoveWGSSMS), [Transact-SQL](#MoveWGTSQL)  
-  
-##  <a name="BeforeYouBegin"></a> Before You Begin  
- You cannot move a workload group if there is a pending Resource Governor configuration operation.  
-  
-###  <a name="LimitationsRestrictions"></a> Limitations and Restrictions  
- You cannot move a workload group if there is a pending Resource Governor configuration operation. You can determine whether there is a configuration pending by querying the [sys.dm_resource_governor_configuration &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-resource-governor-configuration-transact-sql.md) dynamic management view to get the current status of is_configuration_pending.  
-  
-###  <a name="Permissions"></a> Permissions  
- Moving a workload group requires CONTROL SERVER permission.  
-  
-##  <a name="MoveWGSSMS"></a> Move a Workload Group Using SQL Server Management Studio  
- **To move a workload group by using [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)]**  
-  
-1.  In Object Explorer, recursively expand the **Management** node down to **Resource Governor**.  
-  
-2.  Right-click **Resource Governor** and then click **Properties**, this opens the **Resource Governor Properties** page.  
-  
-3.  In the **Resource Pools** window, click the resource pool containing the workload group to be moved. The **Workload Groups** window now lists the workload groups in that resource pool.  
-  
-4.  In the **Workload Groups** window, right-click the right arrow to the left of the workload group to be moved, and click **Move to**. This displays a **Move Workload Group** window.  
-  
-5.  Available resource pools are displayed in the window. Click the name of the resource pool that you want to move the workload group to, and then click **OK** to carry out this action.  
-  
-6.  This action is not completed until after you click **OK**. When you click **OK**, the ALTER RESOURCE GOVERNOR RECONFIGURE statement is executed.  
-  
-7.  If the create or reconfigure operation fails for the resource pool or workload group, a summary error message appears below the title of the property page. To see a detailed error message, click the down arrow on the error message.  
-  
-##  <a name="MoveWGTSQL"></a> Move a Workload Group Using Transact-SQL  
- **To move a workload group by using Transact-SQL**  
-  
-1.  Run the **ALTER WORKLOAD GROUP** statement specifying the name of the workload group to be moved and the resource pool to which it should be moved.  
-  
-2.  Run the **ALTER RESOURCE GOVERNOR RECONFIGURE** statement.  
-  
-### Example (Transact-SQL)  
- The following example moves a workload group named `groupAdhoc` to the default resource pool.  
-  
-```  
-ALTER WORKLOAD GROUP groupAdhoc  
-USING [default];  
-GO  
-ALTER RESOURCE GOVERNOR RECONFIGURE;  
-GO  
-```  
-  
-## See Also  
- [Resource Governor](../../relational-databases/resource-governor/resource-governor.md)   
- [Enable Resource Governor](../../relational-databases/resource-governor/enable-resource-governor.md)   
- [Create a Resource Pool](../../relational-databases/resource-governor/create-a-resource-pool.md)   
- [Create a Workload Group](../../relational-databases/resource-governor/create-a-workload-group.md)   
- [ALTER WORKLOAD GROUP &#40;Transact-SQL&#41;](../../t-sql/statements/alter-workload-group-transact-sql.md)   
- [ALTER RESOURCE GOVERNOR &#40;Transact-SQL&#41;](../../t-sql/statements/alter-resource-governor-transact-sql.md)  
-  
-  
+
+You can move a resource governor workload group to a different resource pool by using either [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)].
+
+You can't move a workload group if there's a pending resource governor configuration operation.
+
+<a id="LimitationsRestrictions"></a>
+
+### Limitations
+
+- You can't move a workload group if there's a pending resource governor configuration operation. You can determine whether there's a configuration pending by querying the [sys.dm_resource_governor_configuration](../system-dynamic-management-views/sys-dm-resource-governor-configuration-transact-sql.md) dynamic management view to get the current value of the `is_configuration_pending` column.
+- If a workload group contains active sessions, moving it to a different resource pool fails when the `ALTER RESOURCE GOVERNOR RECONFIGURE` statement is executed to apply the change. To avoid this problem, you can take one of the following actions:
+  - Wait until all sessions in the affected group disconnect, and then execute the `ALTER RESOURCE GOVERNOR RECONFIGURE` statement.
+  - Explicitly stop sessions in the affected group by using the [KILL](../../t-sql/language-elements/kill-transact-sql.md) T-SQL command, and then execute the `ALTER RESOURCE GOVERNOR RECONFIGURE` statement. If you decide that you don't want to explicitly stop sessions, move the group to the original resource pool.
+  - Restart the server. When the server restarts, a moved group uses the new resource pool assignment.
+
+<a id="Permissions"></a>
+
+### Permissions
+
+Moving a workload group requires the `CONTROL SERVER` permission.
+
+<a id="MoveWGSSMS"></a>
+
+## Move a workload group using SQL Server Management Studio
+
+To move a workload group by using [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+
+1. In Object Explorer, expand the **Management** node down to **Resource Governor**.
+1. Open the **Resource Governor** context menu and select **Properties**. This opens the **Resource Governor Properties** page.
+1. In the **Resource Pools** grid, select the resource pool containing the workload group to be moved. The **Workload Groups** grid now lists the workload groups in that resource pool.
+1. In the **Workload Groups** grid, open the context menu for the workload group to be moved, and select **Move to**. This opens a **Move Workload Group** window.
+1. Available resource pools are displayed in the window. Select the resource pool that you want to move the workload group to, and select **OK**.
+1. Select **OK** to execute the `ALTER RESOURCE GOVERNOR RECONFIGURE` statement.
+1. If the create or reconfigure operation fails for the resource pool or workload group, a summary error message appears below the title of the property page. To see a detailed error message, select the down arrow on the error message.
+
+<a id="MoveWGTSQL"></a>
+
+## Move a workload group using Transact-SQL
+
+To move a workload group by using [!INCLUDE[tsql](../../includes/tsql-md.md)]:
+
+1. Execute the [ALTER WORKLOAD GROUP](../../t-sql/statements/alter-workload-group-transact-sql.md) statement specifying the name of the workload group to be moved and the resource pool to which it should be moved.
+1. Execute the `ALTER RESOURCE GOVERNOR RECONFIGURE` statement.
+
+### Example
+
+The following example moves a workload group named `groupAdhoc` to the `default` resource pool.
+
+```sql
+ALTER WORKLOAD GROUP groupAdhoc USING [default];
+
+ALTER RESOURCE GOVERNOR RECONFIGURE;
+```
+
+## Related content
+
+- [Resource governor](resource-governor.md)
+- [Enable resource governor](enable-resource-governor.md)
+- [Create a resource pool](create-a-resource-pool.md)
+- [Create a workload group](create-a-workload-group.md)
+- [ALTER WORKLOAD GROUP](../../t-sql/statements/alter-workload-group-transact-sql.md)
+- [ALTER RESOURCE GOVERNOR](../../t-sql/statements/alter-resource-governor-transact-sql.md)

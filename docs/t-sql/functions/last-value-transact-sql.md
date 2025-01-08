@@ -4,7 +4,7 @@ description: Returns the last value in an ordered set of values.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: kendalv, randolphwest
-ms.date: 01/04/2024
+ms.date: 12/23/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -41,7 +41,7 @@ The value to be returned. *scalar_expression* can be a column, subquery, or othe
 
 #### [ IGNORE NULLS | RESPECT NULLS ] **
 
-**Applies to**: SQL Server (starting with [!INCLUDE [sssql22](../../includes/sssql22-md.md)]), Azure SQL Database, Azure SQL Managed Instance, [!INCLUDE [ssazurede-md](../../includes/ssazurede-md.md)]
+**Applies to**: [!INCLUDE [sssql22](../../includes/sssql22-md.md)] and later versions, Azure SQL Database, Azure SQL Managed Instance, and [!INCLUDE [ssazurede-md](../../includes/ssazurede-md.md)]
 
 `IGNORE NULLS` - Ignore null values in the dataset when computing the last value over a partition.
 

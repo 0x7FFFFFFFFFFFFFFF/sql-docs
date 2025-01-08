@@ -4,7 +4,7 @@ description: JSON_PATH_EXISTS tests whether a specified SQL/JSON path exists in 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest, umajay, jovanpop
-ms.date: 12/16/2024
+ms.date: 01/07/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -49,7 +49,7 @@ The `JSON_PATH_EXISTS` function doesn't return errors.
 
 ### Example 1
 
-The following example returns 1 since the input JSON string contains the specified SQL/JSON path.
+The following example returns 1 since the input JSON string contains the specified SQL/JSON path. This example uses a nested path where the key is present in another object.
 
 ```sql
 DECLARE @jsonInfo AS NVARCHAR (MAX);

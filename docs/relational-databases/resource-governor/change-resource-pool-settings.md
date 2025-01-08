@@ -1,76 +1,80 @@
 ---
-title: "Change Resource Pool Settings"
-description: Learn how to change resource pool settings by using SQL Server Management Studio or Transact-SQL. You must have the CONTROL SERVER permission.
+title: Change Resource Pool Settings
+description: Learn how to change resource pool settings using SQL Server Management Studio or Transact-SQL.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: "03/17/2016"
+ms.reviewer: dfurman
+ms.date: 01/02/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Resource Governor, resource pool alter"
   - "resource pools [SQL Server], alter"
+monikerRange: ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
 ---
-# Change Resource Pool Settings
+
+# Change resource pool settings
+
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
-  You can change resource pool settings by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)].  
-  
--   **Before you begin:**  [Limitations and Restrictions](#LimitationsRestrictions), [Permissions](#Permissions)  
-  
--   **To change the settings for a resource pool, using:**  [SQL Server Management Studio](#ChgRPProp), [Transact-SQL](#ChgRPTSQL)  
-  
-##  <a name="BeforeYouBegin"></a> Before You Begin  
-  
-###  <a name="LimitationsRestrictions"></a> Limitations and Restrictions  
- The maximum CPU percentage must be equal to or higher than the minimum CPU percentage. The maximum memory percentage must be equal to or higher than the minimum memory percentage.  
-  
- The sums of the minimum CPU percentages and minimum memory percentages for all resource pools must not exceed 100.  
-  
-###  <a name="Permissions"></a> Permissions  
- Changing resource pool settings requires CONTROL SERVER permission.  
-  
-##  <a name="ChgRPProp"></a> Change Resource Pool Settings Using SQL Server Management Studio  
- **To change resource pool settings by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]**  
-  
-1.  In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and recursively expand the **Management** node down to and including **Resource Pools**.  
-  
-2.  Right-click the resource pool to be modified, and then click **Properties**.  
-  
-3.  In the **Resource Governor Properties** page, select the row for the resource pool in the **Resource pools** grid if it is not automatically selected.  
-  
-4.  Click or double-click the cells in the row to be changed, and enter the new values.  
-  
-5.  To save the changes, click **OK**  
+You can change resource pool settings by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)].
 
-##  <a name="ChgRPTSQL"></a> Change Resource Pool Settings Using Transact-SQL  
- **To change resource pool settings by using [!INCLUDE[tsql](../../includes/tsql-md.md)]**  
-  
-1.  Run the **ALTER RESOURCE POOL** or **ALTER EXTERNAL RESOURCE POOL** statement specifying the property values to be changed.  
-  
-2.  Run the **ALTER RESOURCE GOVERNOR RECONFIGURE** statement.  
-  
-### Example (Transact-SQL)  
- The following example changes the max CPU percentage setting for the resource pool named `poolAdhoc`.  
-  
-```  
-ALTER RESOURCE POOL poolAdhoc  
-WITH (MAX_CPU_PERCENT = 25);  
-GO  
-ALTER RESOURCE GOVERNOR RECONFIGURE;  
-GO  
-```  
-  
-## See Also  
- [Resource Governor](../../relational-databases/resource-governor/resource-governor.md)   
- [Enable Resource Governor](../../relational-databases/resource-governor/enable-resource-governor.md)   
- [Create a Resource Pool](../../relational-databases/resource-governor/create-a-resource-pool.md)   
- [Delete a Resource Pool](../../relational-databases/resource-governor/delete-a-resource-pool.md)   
- [Resource Governor Workload Group](../../relational-databases/resource-governor/resource-governor-workload-group.md)   
- [Resource Governor Classifier Function](../../relational-databases/resource-governor/resource-governor-classifier-function.md)   
- [ALTER RESOURCE POOL &#40;Transact-SQL&#41;](../../t-sql/statements/alter-resource-pool-transact-sql.md)   
- [ALTER RESOURCE GOVERNOR &#40;Transact-SQL&#41;](../../t-sql/statements/alter-resource-governor-transact-sql.md)   
- [CREATE EXTERNAL RESOURCE POOL &#40;Transact-SQL&#41;](../../t-sql/statements/create-external-resource-pool-transact-sql.md)   
- [ALTER EXTERNAL RESOURCE POOL &#40;Transact-SQL&#41;](../../t-sql/statements/alter-external-resource-pool-transact-sql.md)  
-  
-  
+<a id="BeforeYouBegin"></a>
+
+<a id="LimitationsRestrictions"></a>
+
+### Limitations
+
+- The maximum CPU percentage must be equal to or higher than the minimum CPU percentage. The maximum memory percentage must be equal to or higher than the minimum memory percentage.
+- The sums of the minimum CPU percentages and minimum memory percentages for all resource pools must not exceed 100.
+
+<a id="Permissions"></a>
+
+### Permissions
+
+Changing resource pool settings requires the `CONTROL SERVER` permission.
+
+<a id="ChgRPProp"></a>
+
+## Change resource pool settings using SQL Server Management Studio
+
+To change resource pool settings using [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+
+1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and expand the **Management** node down to and including **Resource Pools**.
+1. Use the context menu for the resource pool to be modified, and select **Properties**.
+1. In the **Resource Governor Properties** page, select the row for the resource pool in the **Resource pools** grid.
+1. Select the cells in the row to be changed, and enter new values.
+1. To save the changes, select **OK**
+
+<a id="ChgRPTSQL"></a>
+
+## Change resource pool settings using Transact-SQL
+
+To change resource pool settings using [!INCLUDE[tsql](../../includes/tsql-md.md)]:
+
+1. Execute the [ALTER RESOURCE POOL](../../t-sql/statements/alter-resource-pool-transact-sql.md) or [ALTER EXTERNAL RESOURCE POOL](../../t-sql/statements/alter-external-resource-pool-transact-sql.md) statement specifying the values to be changed.
+1. Execute the `ALTER RESOURCE GOVERNOR RECONFIGURE` statement for the changes to take effect.
+
+### Example
+
+The following example changes the max CPU percentage setting for the resource pool named `poolAdhoc` and makes the new configuration effective.
+
+```sql
+ALTER RESOURCE POOL poolAdhoc WITH (MAX_CPU_PERCENT = 25);
+
+ALTER RESOURCE GOVERNOR RECONFIGURE;
+```
+
+## Related content
+
+- [Resource governor](resource-governor.md)
+- [Enable resource governor](enable-resource-governor.md)
+- [Create a resource pool](create-a-resource-pool.md)
+- [Delete a resource pool](delete-a-resource-pool.md)
+- [Resource governor workload group](resource-governor-workload-group.md)
+- [Resource governor classifier function](resource-governor-classifier-function.md)
+- [ALTER RESOURCE POOL](../../t-sql/statements/alter-resource-pool-transact-sql.md)
+- [ALTER RESOURCE GOVERNOR](../../t-sql/statements/alter-resource-governor-transact-sql.md)
+- [CREATE EXTERNAL RESOURCE POOL](../../t-sql/statements/create-external-resource-pool-transact-sql.md)
+- [ALTER EXTERNAL RESOURCE POOL](../../t-sql/statements/alter-external-resource-pool-transact-sql.md)

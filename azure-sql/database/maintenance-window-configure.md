@@ -228,6 +228,9 @@ The following steps set the maintenance window on an existing database or elasti
 
    :::image type="content" source="media/maintenance-window-configure/maintenance.png" alt-text="Screenshot from the Azure portal of the SQL database Maintenance page." lightbox="media/maintenance-window-configure/maintenance.png":::
  
+> [!NOTE]
+> The **Maintenance** page is only available for databases and elastic pools that support maintenance window configuration. If the page is not available, the database or pool does not support maintenance window configuration.
+
 # [PowerShell](#tab/azure-powershell)
 
 #### Set the maintenance window for an existing database

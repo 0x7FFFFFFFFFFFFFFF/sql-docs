@@ -284,7 +284,7 @@ To use Microsoft Entra authentication with Azure SQL, you need the following min
 - SQL Server Data Tools for Visual Studio 2015, version 14.0.60311.1 (April 2016) or later
 - **.NET Framework Data Provider for SqlServer**, minimum version .NET Framework 4.6
 - Beginning with version 15.0.1, [sqlcmd utility](/sql/tools/sqlcmd-utility) and [bcp utility](/sql/tools/bcp-utility) support Active Directory Interactive authentication with multifactor authentication.
-- [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) supports Microsoft Entra authentication. Also, see [Setting the Connection Properties](/sql/connect/jdbc/setting-the-connection-properties).
+- [Microsoft JDBC Driver 6.0 for SQL Server](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) supports Microsoft Entra authentication. Also, see [Setting the Connection Properties](/sql/connect/jdbc/setting-the-connection-properties).
 
 ## Connect with Microsoft Entra to Azure SQL resources
 

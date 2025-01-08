@@ -28,12 +28,12 @@ helpviewer_keywords:
  The policy is in a healthy state when at least one secondary replica is automatic failover ready.
   
 ## Possible Causes  
- The availability group is not ready for automatic failover. The primary replica is configured for automatic failover; however, the secondary replica is not ready for automatic failover. The secondary replica that is configured for automatic failover might be unavailable or its data synchronization state is currently not SYNCHRONIZED.  
+ The availability group is not ready for [automatic failover](failover-and-failover-modes-always-on-availability-groups.md#AutomaticFailover). The primary replica is configured for automatic failover; however, the secondary replica is not ready for automatic failover. The secondary replica that is configured for automatic failover might be unavailable or its [data synchronization state is currently not SYNCHRONIZED](data-synchronization-state-of-some-availability-database-is-not-healthy.md).  
   
 ## Possible Solutions  
  Following are possible solutions for this issue:  
   
--   Verify that at least one secondary replica is configured as automatic failover. If there is not a secondary replica configured as automatic failover, update the configuration of a secondary replica to be the automatic failover target with synchronous commit.  
+-   Verify that at least one secondary replica is configured as [automatic failover](failover-and-failover-modes-always-on-availability-groups.md#EnableAutoFo). If there is not a secondary replica configured as automatic failover, update the configuration of a secondary replica to be the automatic failover target with synchronous commit.  
   
 -   Use the policy to verify that the data is in a synchronization state and the automatic failover target is SYNCHRONIZED, and then resolve the issue at the availability replica.  
   

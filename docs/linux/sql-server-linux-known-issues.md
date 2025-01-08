@@ -248,5 +248,5 @@ For Ubuntu 22.04, you should reach out to Canonical directly for the exact steps
 ## Related content
 
 - [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md)
-- [Editions and supported features of [!INCLUDE [sssql22](../includes/sssql22-md.md)] on Linux](sql-server-linux-editions-and-components-2022.md)
+- [Editions and supported features of SQL Server 2022 on Linux](sql-server-linux-editions-and-components-2022.md)
 - [Troubleshoot SQL Server on Linux](sql-server-linux-troubleshooting-guide.md)

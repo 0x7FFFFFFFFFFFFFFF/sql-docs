@@ -4,7 +4,7 @@ titleSuffix: "Azure Synapse Analytics, Analytics Platform System (PDW), Microsof
 description: "Permissions: GRANT, DENY, REVOKE (Azure Synapse Analytics, Analytics Platform System (PDW), Microsoft Fabric)"
 author: VanMSFT
 ms.author: vanto
-ms.date: 04/25/2023
+ms.date: 01/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -234,13 +234,7 @@ REVOKE
   
 -   REFERENCES  
   
- For a definition of each type of permission, see [Permissions (Database Engine)](../../relational-databases/security/permissions-database-engine.md).  
-  
-### Chart of Permissions  
- All permissions are graphically represented on this poster. This is the easiest way to see nested hierarchy of permissions. For example the **ALTER ON LOGIN** permission can be granted by itself, but it is also included if a login is granted the **CONTROL** permission on that login, or if a login is granted the **ALTER ANY LOGIN** permission.  
-  
- ![APS security permissions poster](../../t-sql/statements/media/aps-security-perms-poster.png "APS security permissions poster")  
-  
+ For a definition of each type of permission, see [Permissions (Database Engine)](../../relational-databases/security/permissions-database-engine.md).   
   
 ## Default Permissions  
  The following list describes the default permissions:  

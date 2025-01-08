@@ -11,7 +11,7 @@ metadata:
   author: WilliamDAssafMSFT
   ms.author: wiassaf
   ms.reviewer: dfurman, mathoma, dinethi
-  ms.date: 11/19/2024
+  ms.date: 12/27/2024
 title: Azure SQL Database Hyperscale FAQ
 summary: |
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -19,7 +19,7 @@ summary: |
   This article provides answers to frequently asked questions for customers considering a database in the Azure SQL Database Hyperscale service tier, referred to as just Hyperscale in the remainder of this FAQ. This article describes the scenarios that Hyperscale supports and the features that are compatible with Hyperscale.
   
   - This FAQ is intended for readers who have a brief understanding of the Hyperscale service tier and are looking to have their specific questions and concerns answered.
-  - This FAQ isn't meant to be a guidebook or answer questions on how to use a Hyperscale database. For an introduction to Hyperscale, we recommend you refer to the [Azure SQL Database Hyperscale](service-tier-hyperscale.md) documentation.
+  - This FAQ isn't meant to be a guidebook or answer questions on how to use a Hyperscale database. For an introduction to Hyperscale, see [Azure SQL Database Hyperscale](service-tier-hyperscale.md).
   
 
 sections:
@@ -28,12 +28,12 @@ sections:
       - question: |
           What is a Hyperscale database?
         answer: |
-          A Hyperscale database is a database in SQL Database that is backed by the Hyperscale [scale-out storage technology](hyperscale-architecture.md). A Hyperscale database supports up to 128 TB of data and provides high throughput and performance, as well as rapid scaling to adapt to the workload requirements. Connectivity, query processing, database engine features, and so on, work like any other database in Azure SQL Database.
+          A Hyperscale database is a database in Azure SQL Database that is backed by the Hyperscale [scale-out storage technology](hyperscale-architecture.md). A Hyperscale database supports up to 128 TB of data and provides high throughput and performance, as well as rapid scaling to adapt to the workload requirements. Connectivity, query processing, database engine features, and so on, work like in any other database in Azure SQL Database.
 
       - question: |
-          What resource types and purchasing models support Hyperscale?
+          What compute tiers and purchasing models support Hyperscale?
         answer: |
-          The Hyperscale service tier is only available for single databases using the vCore-based purchasing model in Azure SQL Database. It is not available in the DTU-based purchasing model.
+          The Hyperscale service tier is available for single databases (both provisioned and serverless) and for elastic pools using the vCore-based purchasing model. It is not available in the DTU-based purchasing model.
 
       - question: |
           How does the Hyperscale service tier differ from the General Purpose and Business Critical service tiers?
@@ -43,16 +43,18 @@ sections:
       - question: |
           Who should use the Hyperscale service tier?
         answer: |
-          The Hyperscale service tier is for all customers looking for higher performance and availability, fast backup and restores, fast storage, and compute scalability. This includes customers who are starting out small and growing, those running large mission-critical databases, those who are moving to the cloud to modernize their applications and customers who are already using other service tiers in Azure SQL Database. With Hyperscale, you get:
+          The Hyperscale service tier is for all customers looking for higher performance and availability, fast backup and restores, fast storage, and compute scalability. This includes customers who are starting out small and growing, those running large mission-critical databases, those who are moving to the cloud to modernize their applications and customers who are already using other service tiers in Azure SQL Database.
           
-          - Database size that can grow from 10 GB up to 128 TB.
-          - Compute vCore resources from 2 vCores up to 128 vCores          
+          With Hyperscale, you get:
+          
+          - Database size that can grow from 10 GB up to 128 TB, irrespective of the compute size.
+          - Compute vCore resources from 2 vCores up to 128 vCores.
           - Fast database backups regardless of database size (backups are based on storage snapshots).
           - Fast database restores regardless of database size (restores are from storage snapshots).
-          - Higher log throughput regardless of database size and the number of vCores.
+          - Higher transaction log throughput regardless of database size and the number of vCores.
           - Read Scale-out using one or more read-only replicas, used for offloading read-only workloads or as hot standby databases.
           - Rapid scaling up of compute, in constant time, to be more powerful to accommodate the heavy workload and then scale down, in constant time. Scaling operations take single-digit minutes for provisioned compute, and less than a second for serverless compute, regardless of database size.
-          - The option to pay for what you use with serverless compute, where compute is billed based on usage. 
+          - The option to pay for what you use with serverless compute, where compute is billed based on usage.
 
       - question: |
           What regions currently support Hyperscale?
@@ -76,9 +78,9 @@ sections:
           
           - **Scaling Up/Down**
           
-            With Hyperscale, you can scale up the primary compute size in terms of resources like CPU and memory, and then scale down, in constant time. Because the storage is remote, scaling up and scaling down isn't a size of data operation.
+            With Hyperscale, you can scale up the primary compute size in terms of resources like CPU and memory, and then scale down, in constant time. Because the storage is remote, scaling up and scaling down isn't a size-of-data operation.
 
-            Support for [serverless compute](serverless-tier-overview.md) provides automatic scale-up and scale-down, and compute is billed based on usage.
+            Support for [serverless compute](serverless-tier-overview.md) provides automatic scale-up and scale-down and compute billing based on usage.
 
           - **Scaling In/Out**
           
@@ -90,7 +92,7 @@ sections:
   - name: Deep dive questions
     questions:
       - question: |
-          Can I mix Hyperscale and single databases in a single server?
+          Can I mix Hyperscale and non-Hyperscale databases on the same SQL logical server?
         answer: |
           Yes, you can.
 
@@ -102,13 +104,14 @@ sections:
       - question: |
           What transaction isolation level is the default in a Hyperscale database?
         answer: |
-          On the primary replica, the default transaction isolation level is RCSI (Read Committed Snapshot Isolation). On the Read Scale-out secondary replicas, the default isolation level is Snapshot. This is the same as in any other Azure SQL database.
+          On the primary replica, the default transaction isolation level is `READ COMMITTED` with the `READ_COMMITTED_SNAPSHOT` database option (RCSI) enabled. On the secondary replicas, the isolation level is `SNAPSHOT`. This is the same as in any other Azure SQL database.
 
       - question: |
           Can I bring my on-premises or IaaS SQL Server license to Hyperscale?
         answer: |
           With the new, simplified pricing in effect since December 15, 2023, the price of compute has been reduced for newly created Hyperscale databases, all serverless Hyperscale databases, and all Hyperscale elastic pools. With the new, simplified pricing, there is no need to apply Azure Hybrid Benefit (AHB) to obtain equivalent savings. Azure Hybrid Benefit (AHB) can only be applied to older (created before December 15, 2023) Hyperscale single databases with provisioned compute. For those older databases, AHB is only applicable until December 2026, after which those databases will also be billed as per the new, simplified pricing.
-          For more information, see [Hyperscale pricing blog](https://aka.ms/hsignite2023) and [Azure SQL Database Hyperscale – lower, simplified pricing!](https://aka.ms/hsprice2023).
+
+          For more information, see [Hyperscale pricing blog](https://aka.ms/hsignite2023) and [Azure SQL Database Hyperscale - lower, simplified pricing](https://aka.ms/hsprice2023).
           
       - question: |
           What kind of workloads is Hyperscale designed for?
@@ -144,27 +147,27 @@ sections:
       - question: |
           How many Read Scale-out replicas are supported?
         answer: |
-          You can scale the number of HA secondary replicas between 0 and 4 using [Azure portal](https://portal.azure.com) or [REST API](/rest/api/sql/databases/create-or-update). Additionally, you can create up to 30 [named replicas](service-tier-hyperscale-replicas.md#named-replica) for many read scale-out scenarios.
+          You can scale the number of HA secondary replicas between 0 and 4 using [Azure portal](https://portal.azure.com) or [REST API](/rest/api/sql/databases/create-or-update). Additionally, you can create up to 30 [named replicas](service-tier-hyperscale-replicas.md#named-replica) for many read scale-out scenarios. Each named replica can have up to 4 HA secondary replicas.
           
       - question: |
           For high availability, do I need to provision additional compute replicas?
         answer: |
-          In Hyperscale databases, data resiliency is provided at the storage level. You only need one replica (the primary) to provide resiliency. When the compute replica is down, a new replica is created automatically with no data loss.
+          In Hyperscale databases, data resiliency is provided at the storage level. You only need one replica (the primary) to provide resiliency. If the compute replica fails or is under maintenance, a new replica is created automatically with no data loss.
           
-          However, if there's only the primary replica, it can take a minute or two to create a new replica after failover, vs. seconds in the case when an HA secondary replica is available. The new replica will have cold caches initially, which can result in higher storage latency and reduced query performance immediately after failover.
+          However, if there's only the primary replica, it can take a minute or two to create a new replica, vs. seconds in the case when an HA secondary replica is available. The new replica will have cold caches initially, which can result in higher storage latency and reduced query performance immediately after failover.
           
-          For mission-critical apps that require high availability with minimal failover impact, you should provision at least one HA secondary replica to ensure a hot standby replica is available to serve as a failover target.
+          For mission-critical applications that require high availability with minimal failover impact, you should provision at least one HA secondary replica to ensure a hot standby replica is available to serve as a failover target.
           
   - name: Data size and storage questions
     questions:
       - question: |
           What is the maximum database size supported with Hyperscale?
-        answer: The maximum size of a single Hyperscale database is currently 128 TB. The maximum size of a database in a Hyperscale elastic pool is currently 100 TB.
+        answer: The maximum size of a single Hyperscale database is currently 128 TB, irrespective of compute size. The maximum size of a database in a Hyperscale elastic pool is currently 100 TB.
 
       - question: |
           What is the size of the transaction log with Hyperscale?
         answer: |
-          In Hyperscale, the transaction log is practically infinite, with a restriction that the active portion of the log cannot exceed 1 TB. The active portion of the log can grow because of long-running transactions, or because of [Change Data Capture](change-data-capture-overview.md?view=azuresql-db&preserve-view=true) processing not keeping up with the rate of data change. Avoid unnecessarily long and large transactions to stay below this limit. Other than this restriction, you don't need to worry about running out of log space on a system that has high log throughput. However, log generation rate might be throttled for continuous aggressively writing workloads. The peak sustained log generation rate is 100 MB/s. 
+          In Hyperscale, the transaction log is practically infinite, with a restriction that the active portion of the log cannot exceed 1 TB. The active portion of the log can grow because of long-running transactions, or because of [Change Data Capture](change-data-capture-overview.md?view=azuresql-db&preserve-view=true) processing not keeping up with the rate of data change. Avoid unnecessarily long and large transactions to stay below this limit. Other than this restriction, you don't need to worry about running out of log space on a system that has high log throughput. However, log generation rate might be reduced for continuous aggressively writing workloads. The peak sustained log generation rate is 100 MB/s.
           
           Log generation rate of 150 MB/s is available as an opt-in preview feature. For more information and to opt-in to 150 MB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
 
@@ -180,7 +183,7 @@ sections:
 
       - question: |
           What is the smallest database size that Hyperscale supports?
-        answer: 10 GB. A Hyperscale database is created with a starting size of 10 GB and grows as needed in 10-GB chunks. 
+        answer: 10 GB. A Hyperscale database is created with a starting size of 10 GB and grows as needed.
 
       - question: |
           In what increments does my database size grow?
@@ -210,7 +213,7 @@ sections:
       - question: |
           Is data compression supported?
         answer: |
-          Yes, just like in any other Azure SQL DB database. This includes row, page, and columnstore compression.
+          Yes, just like in any other Azure SQL DB database. This includes row, page, and columnstore [compression](/sql/relational-databases/data-compression/data-compression).
 
       - question: |
           If I have a huge table, is table data spread out across multiple data files?
@@ -222,7 +225,7 @@ sections:
       - question: |
           Can I move my existing databases in Azure SQL Database to the Hyperscale service tier?
         answer: |
-          Yes. You can move your existing databases in Azure SQL Database to Hyperscale. For proofs of concept (POCs), we recommend you make a copy of your database and migrate the copy to Hyperscale. 
+          Yes. For proofs of concept (POCs), we recommend you make a copy of your database and migrate the copy to Hyperscale. 
 
           The time required to move an existing database to Hyperscale consists of the time to copy data, and the time to replay the changes made in the source database while copying data. The data copy time is proportional to data size. The time to replay changes is shorter if the move is done during a period of low write activity.
 
@@ -233,7 +236,7 @@ sections:
       - question: |
           Can I move my Hyperscale databases to other service tiers?
         answer: |
-          If you have previously migrated an existing Azure SQL Database to the Hyperscale service tier, you can reverse migrate it to the General Purpose service tier within 45 days of the original migration to Hyperscale. If you wish to migrate the database to another service tier, such as Business Critical, first reverse migrate to the General Purpose service tier, then modify the service tier. Reverse migration is a size of data operation.
+          If you have previously migrated an existing Azure SQL Database to the Hyperscale service tier, you can reverse migrate it to the General Purpose service tier within 45 days of the original migration to Hyperscale. If you wish to migrate the database to another service tier, such as Business Critical, first reverse migrate to the General Purpose service tier, then modify the service tier. Reverse migration is a size-of-data operation.
 
           Databases created in the Hyperscale service tier can't be moved to other service tiers.
           
@@ -242,10 +245,10 @@ sections:
       - question: |
           Do I lose any functionality or capabilities after migration to the Hyperscale service tier?
         answer: |
-          Yes. Some Azure SQL Database features are not supported in Hyperscale yet. If some of these features are enabled for your database, migration to Hyperscale could be blocked, or these features will stop working after migration. We expect these limitations to be temporary. For details, see [Known limitations](service-tier-hyperscale.md#known-limitations).
+          Yes. Some Azure SQL Database features are not supported in Hyperscale. If some of these features are enabled for your database, migration to Hyperscale could be blocked, or these features stop working after migration. For details, see [Known limitations](service-tier-hyperscale.md#known-limitations).
 
       - question: |
-          Can I move my on-premises SQL Server database, or my SQL Server database in a cloud virtual machine, to Hyperscale?
+          Can I move my on-premises SQL Server database, or my SQL Server database in a cloud virtual machine to Hyperscale?
         answer: |
           Yes. You can use many existing migration technologies to migrate to Hyperscale, including transactional replication, and any other data movement technologies (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS). See also the [Azure Database Migration Service](/azure/dms/dms-overview), which supports many migration scenarios.
           
@@ -257,7 +260,7 @@ sections:
       - question: |
           How much time would it take to bring in X amount of data to Hyperscale?
         answer: |
-          Hyperscale is capable of consuming 100 MB/s of new/changed data, but the time needed to move data into databases in Azure SQL Database is also affected by available network throughput, source read speed and the target database service level objective. Log generation rate of 150 MB/s is available as an opt-in preview feature. For more information and to opt-in to 150 MB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
+          Hyperscale is capable of consuming 100 MB/s of new/changed data, but the time needed to move data into databases in Azure SQL Database is also affected by available network throughput, source read speed, the type of load (bulk vs row-by-row), and the target database service level objective. Log generation rate of 150 MB/s is available as an opt-in preview feature. For more information and to opt-in to 150 MB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
 
       - question: |
           Can I read data from blob storage and do a fast load (like Polybase in Azure Synapse Analytics)?
@@ -266,12 +269,12 @@ sections:
           
           It is also possible to bulk read data from Azure Blob store using BULK INSERT or OPENROWSET: [Examples of Bulk Access to Data in Azure Blob Storage](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=azuresql-db&preserve-view=true#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
           
-          Simple recovery or bulk logging model is not supported in Hyperscale. Full recovery model is required to provide high availability and point-in-time recovery. However, Hyperscale log architecture provides better data ingest rate compared to other Azure SQL Database service tiers.
+          Simple or bulk logged recovery models are not supported in Hyperscale. Full recovery model is required to provide high availability and point-in-time recovery. However, Hyperscale log architecture provides better data ingest rate compared to other Azure SQL Database service tiers.
           
       - question: |
           Does Hyperscale allow provisioning multiple nodes for parallel ingesting of large amounts of data?
         answer: |
-          No. Hyperscale is a symmetric multi-processing (SMP) architecture and is not a massively parallel processing (MPP) or a multi-master architecture. You can only create multiple replicas to scale out read-only workloads.
+          No. Hyperscale is a symmetric multi-processing (SMP) architecture and is not a massively parallel processing (MPP) or a multi-master architecture. You can create multiple replicas to scale out read-only workloads.
 
       - question: |
           Does Hyperscale support migration from other data sources such as Amazon Aurora, MySQL, PostgreSQL, Oracle, DB2, and other database platforms?
@@ -303,7 +306,7 @@ sections:
       - question: |
           How often are database backups taken?
         answer: |
-          There are no traditional full, differential, and transaction log backups for Hyperscale databases. Instead, there are regular storage snapshots of data files, with a separate snapshot cadence for each file. The generated transaction log is retained as-is for the configured retention period. At restore time, relevant transaction log records are applied to restored storage snapshots. Regardless of snapshot cadence, this results in a transactionally consistent database without any data loss as of the specified point in time within the retention period. In effect, database backup in Hyperscale is continuous.
+          There are no traditional full, differential, and transaction log backups for Hyperscale databases. Instead, there are regular storage snapshots of data files, with a separate snapshot cadence for each file. The generated transaction log is retained as-is for the configured retention period. At restore time, relevant transaction log records are applied to restored storage snapshots. Regardless of snapshot cadence, this results in a transactionally consistent database as of the specified point in time within the retention period, without any data loss. In effect, database backup in Hyperscale is continuous.
 
       - question: |
           Does Hyperscale support point-in-time restore?
@@ -313,7 +316,7 @@ sections:
       - question: |
           What is the Recovery Point Objective (RPO)/Recovery Time Objective (RTO) for database restore in Hyperscale?
         answer: |
-          The RPO for point-in-time restore is 0 min. Most point-in-time restore operations complete within 60 minutes regardless of database size. Restore time can be longer for larger databases, and if the database experienced significant write activity before and up to the restore point in time. Changing the [storage redundancy](hyperscale-automated-backups-overview.md#data-and-backup-storage-redundancy) when issuing a restore can result in longer restore times as the restore is size of data and hence the time will be proportional to the database size.
+          The RPO for point-in-time restore is 0 min. Most point-in-time restore operations complete within 60 minutes regardless of database size. Restore time can be longer for larger databases, and if the database experienced significant write activity before and up to the restore point in time. Issuing a restore after a recent change of [storage redundancy](hyperscale-automated-backups-overview.md#data-and-backup-storage-redundancy) might result in longer restore times because the restore can be a size-of-data operation in that case, and the restore time might be proportional to the database size.
 
       - question: |
           Does database backup affect compute performance on my primary or secondary replicas?
@@ -323,17 +326,17 @@ sections:
       - question: |
           Can I perform geo-restore with a Hyperscale database?
         answer: |
-          Yes. Geo-restore is fully supported if geo-redundant storage is used. This is the default for new databases. Unlike point-in-time restore, geo-restore requires a size-of-data operation. Data files are copied in parallel, so the duration of this operation depends primarily on the size of the largest file in the database, rather than on total database size. Geo-restore time will be significantly shorter if the database is restored in the Azure region that is [paired](/azure/reliability/cross-region-replication-azure) with the region of the source database.
+          Yes. Geo-restore is fully supported if geo-redundant or geo-zone-redundant storage is used. Geo-redundant storage is the default for new databases. Unlike point-in-time restore, geo-restore requires a size-of-data operation. Data files are copied in parallel, so the duration of this operation depends primarily on the size of the largest file in the database, rather than on total database size. Geo-restore time will be significantly shorter if the database is restored in the Azure region that is [paired](/azure/reliability/cross-region-replication-azure) with the region of the source database.
           
       - question: |
-          Can I set up geo-replication with a Hyperscale database?
+          Can I set up geo-replication or use failover groups with a Hyperscale database?
         answer: |
-          Yes. [Geo-replication](active-geo-replication-overview.md) can be set up for Hyperscale databases.
+          Yes. [Geo-replication](active-geo-replication-overview.md) and [failover groups](failover-group-sql-db.md) can be set up for Hyperscale databases.
 
       - question: |
           Can I take a Hyperscale database backup and restore it to my on-premises server, or on SQL Server in a VM?
         answer: |
-          No. The storage format for Hyperscale databases is different from any released version of SQL Server, and you don't control backups or have access to them. To take your data out of a Hyperscale database, you can extract data using any data movement technologies, that is, Azure Data Factory, Azure Databricks, SSIS, etc.
+          No. The storage format for Hyperscale databases is different from any released version of SQL Server, and you don't control backups or have access to them. To take your data out of a Hyperscale database, you can extract data using any data movement technologies such as Azure Data Factory, Azure Databricks, SSIS, etc.
 
       - question: |
           Will I be charged for backup storage costs in Hyperscale?
@@ -343,12 +346,12 @@ sections:
       - question: |
           How can I measure backup storage size in my Hyperscale database?
         answer: |
-          Details on how to measure backup storage size are captured in [Automated Backups](hyperscale-automated-backups-overview.md#data-and-backup-storage-redundancy).
+          For details on how to measure backup storage size, see [Automated Backups](hyperscale-automated-backups-overview.md#data-and-backup-storage-redundancy).
 
       - question: |
           How do I know what my backup bill will be?
         answer: |
-          To determine your backup storage bill, backup storage size is calculated periodically, and multiplied by the backup storage rate and the number of hours since the last calculation. To estimate your backup bill for a time period, multiply the billable backup storage size for every hour of the period by the backup storage rate, and add up all hourly amounts. To query relevant Azure Monitor metrics for multiple hourly intervals programmatically, use Azure Monitor [REST API](/azure/azure-monitor/essentials/rest-api-walkthrough). Backup billing in the [serverless compute tier](serverless-tier-overview.md) is the same as in the provisioned compute tier. 
+          To determine your backup storage bill, backup storage size is calculated periodically, and multiplied by the backup storage rate and the number of hours since the last calculation. To estimate your backup bill for a time period, multiply the billable backup storage size for every hour of the period by the backup storage rate, and add up all hourly amounts. To query relevant Azure Monitor metrics for multiple hourly intervals programmatically, use Azure Monitor [REST API](/azure/azure-monitor/essentials/rest-api-walkthrough). Backup billing in the [serverless compute tier](serverless-tier-overview.md) is the same as in the provisioned compute tier.
 
       - question: |
           How will my workload influence my backup storage costs?
@@ -358,24 +361,24 @@ sections:
       - question: |
           How can I minimize backup storage costs?
         answer: |
-          Details on how to minimize the backup storage costs are captured in [Automated Backups](hyperscale-automated-backups-overview.md#reduce-backup-storage-consumption).
+          For details on how to minimize the backup storage costs, see [Automated Backups](hyperscale-automated-backups-overview.md#reduce-backup-storage-consumption).
 
       - question: |
-          Can I geo-restore my Hyperscale database to another service tier, or vice-versa? 
+          Can I geo-restore my Hyperscale database to another service tier, or vice-versa?
         answer: |
-          Currently, non-Hyperscale service tiers (Standard/Premium/General Purpose/Business Critical) backups cannot be geo-restored into a Hyperscale service tier and vice-versa. To convert a non-Hyperscale database to a Hyperscale database, change the service tier after a restore.
+          Currently, non-Hyperscale service tiers (Basic/Standard/Premium/General Purpose/Business Critical) backups cannot be geo-restored into a Hyperscale service tier and vice-versa. To convert a non-Hyperscale database to a Hyperscale database, change the service tier after a restore.
 
   - name: Performance questions
     questions:
       - question: |
           How much write throughput can I push in a Hyperscale database?
         answer: |
-          Transaction log throughput cap is set to 100 MB/s for any Hyperscale compute size. The ability to achieve this rate depends on multiple factors, including but not limited to workload type, client configuration and performance, and having sufficient compute capacity on the primary compute replica to produce log records at this rate. Log generation rate of 150 MB/s is available as an opt-in preview feature. For more information and to opt-in to 150 MB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
+          Transaction log throughput limit is 100 MB/s for any Hyperscale compute size. The ability to achieve this rate depends on multiple factors, including but not limited to workload type, client configuration and performance, and having sufficient compute capacity on the primary compute replica to produce log records at this rate. Log generation rate of 150 MB/s is available as an opt-in preview feature. For more information and to opt-in to 150 MB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
 
       - question: |
           How many IOPS do I get on the largest compute?
         answer: |
-          IOPS and IO latency will vary depending on the workload patterns. If the data being accessed is cached in RBPEX on the compute replica, you will see similar IO performance as in Business Critical or Premium service tiers.
+          IOPS and IO latency will vary depending on the workload patterns. If the data being accessed is cached in local SSD storage on the compute replica, you will see similar IO performance as in Business Critical or Premium service tiers.
 
       - question: |
           Does my throughput get affected by backups?
@@ -385,29 +388,27 @@ sections:
       - question: |
           Does my throughput get affected as I provision additional compute replicas?
         answer: |
-          Because the storage is shared and there is no direct physical replication happening between primary and secondary compute replicas, the throughput on the primary replica will not be directly affected by adding secondary replicas. However, continuous and aggressive write workloads might be throttled on the primary to allow log apply on secondary replicas and page servers to catch up. This avoids poor read performance on secondary replicas and long recovery after failover to an HA secondary replica.
+          Because the storage is shared and there is no direct physical replication happening between primary and secondary compute replicas, the throughput on the primary replica isn't directly affected by adding secondary replicas. However, the log rate for continuous and aggressive write workloads might be limited on the primary to allow log apply on secondary replicas and page servers to catch up. This avoids poor read performance on secondary replicas and long recovery after failover to an HA secondary replica.
 
       - question: |
-          Is Hyperscale well suited for resource-intensive, long-running queries, and transactions?
+          Is Hyperscale well suited for resource-intensive, long-running queries and transactions?
         answer: |
-          Yes. However, just like in other Azure SQL DB databases, connections might be terminated by very infrequent transient errors, which can abort long-running queries and roll back transactions. One cause of transient errors is when the system quickly shifts the database to a different compute node to ensure continued compute and storage resource availability, or to perform planned maintenance. Most of these reconfiguration events finish in less than 10 seconds. Applications that connect to your database should be built to expect and tolerate these infrequent transient errors by implementing retry logic. Additionally, consider configuring a [maintenance window](maintenance-window.md) that matches your workload schedule to avoid transient errors due to planned maintenance.
+          Yes. However, just like in other Azure SQL databases, connections might be terminated by very infrequent transient errors, which can abort long-running queries and roll back transactions. One cause of transient errors is when the system quickly shifts the database to a different compute node to ensure continued compute and storage resource availability, or to perform planned maintenance. Most of these reconfiguration events finish in less than 10 seconds. Applications that connect to your database should be built to expect and tolerate these infrequent transient errors by implementing retry logic. Additionally, consider configuring a [maintenance window](maintenance-window.md) that matches your workload schedule to avoid transient errors due to planned maintenance.
 
       - question: |
           How do I diagnose and troubleshoot performance problems in a Hyperscale database?
         answer: |
-          For most performance problems, particularly those not rooted in storage performance, common SQL diagnostic and troubleshooting steps apply. For Hyperscale-specific storage diagnostics, see [SQL Hyperscale performance troubleshooting diagnostics](hyperscale-performance-diagnostics.md).
+          For most performance problems, particularly those not rooted in storage performance, common MSSQL diagnostic and troubleshooting steps apply. For Hyperscale-specific storage diagnostics, see [SQL Hyperscale performance troubleshooting diagnostics](hyperscale-performance-diagnostics.md).
       
       - question: |
-          How does the maximum memory limit in serverless compare to provisioned compute? 
+          How does the maximum memory limit in serverless compare to provisioned compute?
         answer:  | 
-          The maximum amount of memory that a serverless database can scale up is 3 GB/vCore times the maximum number of vCores configured as compared to more than 5 GB/vCore times the same number of vCores in provisioned compute. Review [serverless Hyperscale resource limits](resource-limits-vcore-single-databases.md#hyperscale---serverless-compute---standard-series-gen5) for details. 
- 
- 
- 
+          The maximum amount of memory that a serverless database can scale up is 3 GB/vCore times the maximum number of vCores configured as compared to more than 5 GB/vCore times the same number of vCores in provisioned compute. Review [serverless Hyperscale resource limits](resource-limits-vcore-single-databases.md#hyperscale---serverless-compute---standard-series-gen5) for details.
+
   - name: Scalability questions
     questions:
       - question: |
-          How long would it take to scale up and down a compute replica?
+          How long does it take to scale a compute replica up or down?
         answer: |
           Scaling up or down in the provisioned compute tier typically takes up to 2 minutes, regardless of data size. In the serverless compute tier, where compute is automatically scaled based on workload demand, the scaling time is typically subsecond, but can occasionally take as long as when scaling provisioned compute.
 
@@ -427,9 +428,9 @@ sections:
           Scaling in provisioned compute is performed by the end user. Automatic scaling in serverless compute is performed by the service.
 
       - question: |
-          Does the size of my tempdb database and RBPEX cache also grow as the compute is scaled up?
+          Does the size of my tempdb database and compute SSD cache cache also grow as the compute is scaled up?
         answer: |
-          Yes. The `tempdb` database and [RBPEX cache](service-tier-hyperscale.md#distributed-functions-architecture) size on compute nodes scale up automatically as the number of cores is increased. For details, see [Hyperscale storage and compute sizes](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5).
+          Yes. The `tempdb` database and [compute SSD cache](service-tier-hyperscale.md#distributed-functions-architecture) size on compute nodes scale up automatically as the number of cores is increased. For details, see [Hyperscale storage and compute sizes](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5).
           
       - question: |
           Can I provision multiple primary compute replicas, such as a multi-master system, where multiple primary compute heads can drive a higher level of concurrency?
@@ -471,7 +472,7 @@ sections:
       - question: |
           Can I scale up/down HA secondary replicas independently of the primary replica?
         answer: |
-          Not in the provisioned compute tier. HA secondary replicas are used as high availability failover targets, so they need to have the same configuration as the primary to provide expected performance after failover. In serverless, the compute is scaled automatically for each HA replica based on its individual workload demand. Each HA secondary can still autoscale to the configured max cores to accommodate its post-failover role. [Named replicas](service-tier-hyperscale-replicas.md#named-replica) provide the ability to scale each replica independently.
+          Not in the provisioned compute tier. HA secondary replicas are used as high availability failover targets, so they need to have the same configuration as the primary to provide expected performance after failover. In serverless, the compute is scaled automatically for each HA replica based on its individual workload demand. Each HA secondary can still autoscale to the configured max cores to accommodate its post-failover role. [Named replicas](service-tier-hyperscale-replicas.md#named-replica) provide the ability to scale each named replica independently.
 
       - question: |
           Do I get different tempdb sizing for my primary compute and my HA secondary replicas?
@@ -481,17 +482,17 @@ sections:
       - question: |
           Can I add indexes and views on my secondary compute replicas?
         answer: |
-          No. Hyperscale database compute replicas share storage, meaning that all compute replicas see the same tables, indexes, and other database objects. If you want additional indexes optimized for reads on secondary, you must add them on the primary. You can still create temporary tables (table names prefixed with # or ##) on each secondary replica to store temporary data. Temporary tables are read-write.
+          No. Hyperscale database compute replicas share storage, meaning that all compute replicas see the same tables, indexes, and other database objects. If you want additional indexes optimized for reads on secondary, you must add them on the primary. You can still create temporary tables (table names prefixed with # or ##) on each secondary replica to store temporary data in the `tempdb` database. Temporary tables are read-write.
 
       - question: |
           How much delay is there between the primary and secondary compute replicas?
         answer: |
-          Data latency from the time a transaction is committed on the primary to the time it is readable on a secondary depends on the current log generation rate, transaction size, load on the replica, and other factors. Typical data latency for small transactions is in tens of milliseconds, however there's no upper bound on data latency. Data on a given secondary replica is always transactionally consistent, thus larger transactions take longer to propagate. However, at a given point in time data latency and database state might be different for different secondary replicas. Workloads that need to read committed data immediately should run on the primary replica.
+          Data latency from the time a transaction is committed on the primary to the time it is readable on a secondary depends on the current log generation rate, transaction size, load on the replica, and other factors. Typical data latency for small transactions is in tens of milliseconds, however there's no upper bound on data latency. Data on a given secondary replica is always transactionally consistent, thus larger transactions take longer to propagate. At a given point in time data latency and database state might be different for different secondary replicas. Workloads that need to read committed data immediately should run on the primary replica.
 
       - question: |
           Can a named replica be used as a failover target?
         answer: |
-          No, named replicas cannot be used as failover targets for the primary replica. Add HA replicas for that purpose.
+          No, named replicas cannot be used as failover targets for the primary replica. Add HA replicas for the primrary replica for that purpose.
 
       - question: |
           How can I distribute a read-only workload across my named replicas?
@@ -501,41 +502,50 @@ sections:
       - question: |
           Can a named replica be in a region different from the region of the primary replica?
         answer: |
-          No, as named replicas use the same page servers of the primary replica, they must be in the same region.
+          No, as named replicas use the same page servers of the primary replica, they must be in the same region. However, if you created a geo-replica for the primary replica in a different region, you can create named replicas for the geo-replica.
 
       - question: |
           Can a named replica impact availability or performance of the primary replica?
         answer: |
-          A named replica cannot impact the availability of the primary replica. Named replicas, under normal circumstances, are unlikely to impact the primary's performance, but it can happen if there are intensive workloads running. Just like an HA replica, a named replica is kept in sync with the primary via the transaction log service. If a named replica, for any reason, is not able to consume the transaction logs fast enough, it will start asking the primary replica to slow down (throttle) its log generation, so that it can catch up. While this behavior won't impact the primary's availability, it can impact performance of write workloads on the primary. To avoid this situation, make sure that your named replicas have enough resource headroom – mainly CPU – to process transaction log without delay. For example, if the primary is processing numerous data changes, it is recommended to have named replicas with at least the same Service Level Objective as the primary to avoid saturating CPU on the replicas, and thus forcing the primary to slow down.
+          A named replica cannot impact the availability of the primary replica. Named replicas, under normal circumstances, are unlikely to impact the primary's performance, but it can happen if there are intensive workloads running. Just like an HA replica, a named replica is kept in sync with the primary via the transaction log service. If a named replica, for any reason, is not able to consume transaction log fast enough, it starts asking the primary replica to reduce its log generation rate, so that it can catch up. While this behavior doesn't impact the primary's availability, it can impact performance of write workloads on the primary. To avoid this situation, make sure that your named replicas have enough resource headroom - mainly CPU - to process transaction log without delay. For example, if the primary is processing numerous data changes, it is recommended to have named replicas with at least the same compute size as the primary to avoid saturating CPU on the replicas and forcing the primary to slow down.
 
       - question: |
           What happens to named replicas if the primary replica is unavailable, for example, because of planned maintenance?
         answer: |
-          Named replicas will still be available for read-only access, as usual.
+          Named replicas are still available for read-only access, as usual.
 
       - question: |
           How can I improve availability of named replicas?
         answer: |
-          By default, named replicas don't have any HA replicas of their own. A failover of a named replica requires creating a new replica first, which typically takes about 1-2 minutes. However, named replicas can also benefit from higher availability and shorter failovers provided by HA replicas. To add HA replicas for a named replica, you can use the parameter `ha-replicas` with [AZ CLI](/cli/azure/sql/db/replica#az_sql_db_replica_create), or the parameter `HighAvailabilityReplicaCount` with [PowerShell](/powershell/module/az.sql/set-azsqldatabase), or the `highAvailabilityReplicaCount` property with [REST API](/rest/api/sql/databases/create-or-update). The number of HA replicas can be set during the creation of a named replica and can be changed – only via AZ CLI, PowerShell, or REST API – anytime after the named replica has been created. Pricing of HA replicas for named replicas is the same of HA replicas for regular Hyperscale databases.
+          By default, named replicas don't have any HA replicas of their own. A failover of a named replica requires creating a new replica first, which typically takes about 1-2 minutes. However, named replicas can also benefit from higher availability and shorter failovers provided by HA replicas. You can add HA replicas for a named replica in the Azure portal, or using the parameter `ha-replicas` with [AZ CLI](/cli/azure/sql/db/replica#az_sql_db_replica_create), or the parameter `HighAvailabilityReplicaCount` with [PowerShell](/powershell/module/az.sql/set-azsqldatabase), or the `highAvailabilityReplicaCount` property with [REST API](/rest/api/sql/databases/create-or-update). The number of HA replicas can be set during the creation of a named replica and can be changed anytime after the named replica has been created. Pricing of HA replicas for named replicas is the same of HA replicas for primary replicas.
     
       - question: |
-          If Always Encrypted is enabled on Hyperscale database, will rotating the Column Master Key (CMK) on the primary database also update the key on named replica and high availability secondary replicas?
+          If Always Encrypted is enabled on Hyperscale database, will rotating the Column Master Key (CMK) on the primary database also update the key on secondary replicas?
 
         answer: |
-          Yes. The [Column Master Key](/sql/t-sql/statements/create-column-master-key-transact-sql?view=azuresqldb-current&preserve-view=true) is stored in the user database and can be validated by executing the query `SELECT * FROM sys.column_master_keys`. Named replicas and high availability secondary replicas read data from the same page servers/storage layer as the primary Hyperscale database. Both types of replicas are synchronized with the primary Hyperscale database via the log service. A key change is considered a transaction and is automatically replicated to the named replica and high availability secondary replica.
+          Yes. The [Column Master Key](/sql/t-sql/statements/create-column-master-key-transact-sql?view=azuresqldb-current&preserve-view=true) is stored in the user database and can be validated by executing the query `SELECT * FROM sys.column_master_keys`. Named replicas and high availability secondary replicas read data from the same page servers/storage layer as the primary Hyperscale database. Both types of replicas are synchronized with the primary Hyperscale database via the log service. A key change is considered a transaction and is automatically replicated to all secondary replicas.
 
       - question: |
-          For a Hyperscale Database, can I determine the name of a named replica associated with a `replica_id` from `sys.dm_database_replica_states`?
+          Can I determine the name of a named replica associated with a value in the replica_id column in sys.dm_database_replica_states?
 
         answer: |
-          The `DATABASEPROPERTYEX()` function, when executed within the context of a named replica, can map the `replica_id` to its corresponding named replica. However, it’s currently not feasible to link the `replica_id` to its respective named replica for each record in the `sys.dm_database_replica_states` dynamic management view when queried from the primary replica. The following example query can be run within a named replica’s context to identify the replica name, replica ID, and the synchronization details.
+          Not when you query `sys.dm_database_replica_states` on the primary replica. However, you can connect to a named replica to determine its replica ID and other details using the following sample query:
 
           ```sql
-            SELECT replica_id, DB_NAME() AS 'Database/Replica name', 
-            synchronization_state_desc, log_send_queue_size/1024.0/1024.0 AS log_send_queue_size_gb,
-            last_sent_time, last_received_time, last_commit_time, secondary_lag_seconds
+            SELECT replica_id,
+                   DB_NAME() AS named_replica_database_name,
+                   synchronization_state_desc,
+                   log_send_queue_size / 1024.0 / 1024.0 AS log_send_queue_size_gb,
+                   last_sent_time,
+                   last_received_time,
+                   last_commit_time,
+                   redo_queue_size / 1024.0 / 1024.0 AS redo_queue_size_gb,
+                   redo_rate,
+                   secondary_lag_seconds
             FROM sys.dm_database_replica_states
-            WHERE replica_id = DATABASEPROPERTYEX(DB_NAME(),'REPLICAID');
+            WHERE is_local = 1
+                  AND
+                  replica_id = DATABASEPROPERTYEX(DB_NAME(), 'ReplicaID');
           ```
 
 additionalContent: |

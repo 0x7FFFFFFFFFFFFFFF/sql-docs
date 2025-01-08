@@ -3,7 +3,7 @@ title: "DROP WORKLOAD GROUP (Transact-SQL)"
 description: DROP WORKLOAD GROUP (Transact-SQL)
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 01/10/2020
+ms.date: 01/02/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -14,7 +14,7 @@ helpviewer_keywords:
   - "DROP WORKLOAD GROUP statement"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest||=azuresqldb-mi-current"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =azuresqldb-mi-current"
 ---
 # DROP WORKLOAD GROUP (Transact-SQL)
 
@@ -38,7 +38,7 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest||
 
 ## SQL Server and SQL Managed Instance
 
-[!INCLUDE [DROP WORKLOAD GROUP](../../includes/drop-workload-group.md)]
+[!INCLUDE [DROP WORKLOAD GROUP](../../t-sql/includes/drop-workload-group.md)]
   
 ::: moniker-end
 ::: moniker range="=azuresqldb-mi-current"
@@ -57,9 +57,9 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest||
 
 &nbsp;
 
-##  SQL Server and SQL Managed Instance
+## SQL Server and SQL Managed Instance
 
-[!INCLUDE [DROP WORKLOAD GROUP](../../includes/drop-workload-group.md)]
+[!INCLUDE [DROP WORKLOAD GROUP](../../t-sql/includes/drop-workload-group.md)]
 
 ::: moniker-end
 ::: moniker range="=azure-sqldw-latest"
@@ -78,7 +78,7 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest||
 
 &nbsp;
 
-## Azure Synapse Analytics 
+## Azure Synapse Analytics
 
 Drops a workload group.  Once the statement completes, the settings are in effect.
 
@@ -116,10 +116,10 @@ SELECT c.name as classifier_name
 
 Requires CONTROL DATABASE permission
 
-## See also
+## Related content
 
-- [CREATE WORKLOAD GROUP &#40;Transact-SQL&#41;](../../t-sql/statements/create-workload-group-transact-sql.md)
-- [ALTER WORKLOAD GROUP &#40;Transact-SQL&#41;](../../t-sql/statements/alter-workload-group-transact-sql.md)
+- [CREATE WORKLOAD GROUP (Transact-SQL)](create-workload-group-transact-sql.md)
+- [ALTER WORKLOAD GROUP (Transact-SQL)](alter-workload-group-transact-sql.md)
 - [sys.workload_management_workload_groups](../../relational-databases/system-catalog-views/sys-workload-management-workload-groups-transact-sql.md)
 - [sys.dm_workload_management_workload_groups_stats](../../relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql.md)
 - [Quickstart: Configure workload isolation using T-SQL](/azure/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)
