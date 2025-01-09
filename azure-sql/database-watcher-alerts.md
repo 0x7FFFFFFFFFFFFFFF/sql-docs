@@ -35,9 +35,17 @@ To learn about limitations that apply to alerts in database watcher, see [Limita
 
 When working with Azure Monitor Alerts in database watcher, it is important to understand commonly used terms:
 
-- **Alert rule** is an Azure resource in Azure Monitor Alerts that defines alerting logic such as the frequency of evaluation, severity, KQL query, etc. Alert rule also tracks alert history.
-- An **Alert** occurs when an evaluation of an alert rule KQL query triggers the logic to fire an alert. For example, the query determines that a CPU threshold has been exceeded.
-- **Alert rule template** is a blueprint of an alert rule that is built into database watcher. An alert rule template defines the following alert rule properties:
+- **Alert rule**
+
+    An Azure resource in Azure Monitor Alerts that defines alerting logic such as the frequency of evaluation, severity, KQL query, etc. Alert rule also tracks alert history.
+
+- **Alert**
+
+    Occurs when an evaluation of an alert rule KQL query triggers the logic to fire an alert. For example, the query determines that a CPU threshold has been exceeded.
+
+- **Alert rule template**
+
+    A blueprint of an alert rule that is built into database watcher. An alert rule template defines the following alert rule properties:
     - Name
     - Description
     - Severity
