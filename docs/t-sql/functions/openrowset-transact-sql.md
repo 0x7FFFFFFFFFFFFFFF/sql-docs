@@ -3,8 +3,8 @@ title: "OPENROWSET (Transact-SQL)"
 description: "OPENROWSET includes all connection information that is required to access remote data from an OLE DB data source."
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: randolphwest, hudequei, wiassaf, nzagorac
-ms.date: 06/06/2024
+ms.reviewer: randolphwest, hudequei, wiassaf, nzagorac, jovanpop
+ms.date: 02/12/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -22,9 +22,11 @@ helpviewer_keywords:
   - "ad hoc connection information"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017"
+monikerRange: "=azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric"
 ---
 # OPENROWSET (Transact-SQL)
+
+::: moniker range="=azuresqldb-mi-current||>=sql-server-2016||>=sql-server-linux-2017"
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
@@ -34,8 +36,9 @@ Includes all connection information that is required to access remote data from 
 
 Many examples in this article only apply to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] only. Details and links to similar examples on other platforms:
 
-- Azure SQL Database only supports reading from Azure Blob Storage.
+- For Microsoft Fabric Warehouse syntax, [select Fabric in the version drop down](openrowset-transact-sql.md?view=fabric&preserve-view=true).
 - For examples on [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], see [Query data sources using OPENROWSET](/azure/azure-sql/managed-instance/data-virtualization-overview#query-data-sources-using-openrowset).
+- Azure SQL Database only supports reading from Azure Blob Storage.
 - For information and examples with serverless SQL pools in Azure Synapse, see [How to use OPENROWSET using serverless SQL pool in Azure Synapse Analytics](/azure/synapse-analytics/sql/develop-openrowset).
 - Dedicated SQL pools in Azure Synapse don't support the `OPENROWSET` function.
 
@@ -573,7 +576,9 @@ SELECT * FROM OPENROWSET(
 
 For complete `OPENROWSET` examples including configuring the credential and external data source, see [Examples of bulk access to data in Azure Blob Storage](../../relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage.md).
 
-### <a id="j-importing-into-a-table-from-a-file-stored-on-azure-blob-storage"></a> J. Import into a table from a file stored on Azure Blob Storage
+<a id="j-importing-into-a-table-from-a-file-stored-on-azure-blob-storage"></a>
+
+### J. Import into a table from a file stored on Azure Blob Storage
 
 The following example shows how to use the `OPENROWSET` command to load data from a csv file in an Azure Blob storage location on which you created the SAS key. The Azure Blob storage location is configured as an external data source. This requires a database scoped credential using a shared access signature that is encrypted using a master key in the user database.
 
@@ -731,3 +736,237 @@ For more examples that show using `INSERT...SELECT * FROM OPENROWSET(BULK...)`, 
 - [sp_serveroption (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-serveroption-transact-sql.md)
 - [UPDATE (Transact-SQL)](../queries/update-transact-sql.md)
 - [WHERE (Transact-SQL)](../queries/where-transact-sql.md)
+
+::: moniker-end
+
+::: moniker range="=fabric"
+
+[!INCLUDE [FabricDW](../../includes/applies-to-version/fabric-dw.md)]
+
+The T-SQL `OPENROWSET` function reads a content of a file in Azure Data Lake storage. You can read text/CSV or Parquet file formats.
+
+The `OPENROWSET` function reads data from a file and returns it as a rowset. The `OPENROWSET` function can be referenced in the `FROM` clause of a query as if it were a table name.
+
+>[!NOTE]
+> The `OPENROWSET` function is currently in **preview** for Microsoft Fabric. 
+
+This article applies only to [!INCLUDE [fabric](../../includes/fabric.md)] [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]. There are functional differences between the OPENROWSET function in Fabric Warehouse and SQL analytics endpoint items.
+
+Details and links to similar examples on other platforms:
+
+- For SQL Server syntax, [select your version of SQL Server in the version drop down](openrowset-transact-sql.md?view=sql-server-ver16&preserve-view=true).
+- For examples on [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], see [Query data sources using OPENROWSET](/azure/azure-sql/managed-instance/data-virtualization-overview#query-data-sources-using-openrowset).
+- Azure SQL Database only supports reading from Azure Blob Storage.
+- For information and examples with serverless SQL pools in Azure Synapse, see [How to use OPENROWSET using serverless SQL pool in Azure Synapse Analytics](/azure/synapse-analytics/sql/develop-openrowset).
+- Dedicated SQL pools in Azure Synapse don't support the `OPENROWSET` function.
+
+## Syntax
+
+```syntaxsql
+SELECT <columns>
+FROM OPENROWSET(
+    BULK 'https://<storage>.blob.core.windows.net/path/folder1=*/folder2=*/filename.parquet'
+    [, FORMAT = ('PARQUET' | 'CSV') ]
+    
+    -- Text formatting options
+    [, DATAFILETYPE = {'char' | 'widechar' }     ]
+    [, CODEPAGE = {'ACP' | 'OEM' | 'raw' | '<code_page>' } ]
+
+    -- Text/CSV formatting options
+    [, ROWTERMINATOR = 'row_terminator' ]
+    [, FIELDTERMINATOR =  'field_terminator' ]
+    [, FIELDQUOTE = 'string_delimiter' ]
+    [, ESCAPECHAR = 'escape_char' ]
+    [, HEADER_ROW = [true|false] ]
+    [, FIRSTROW = first_row ]
+    [, LASTROW = last_row ]
+
+    -- execution options
+    [, ROWS_PER_BATCH=number_of_rows]
+) 
+[
+    WITH (  ( <column_name> <sql_datatype> [ '<column_path>' | <column_ordinal> ] )+ )
+]
+AS <alias>
+```
+
+## Arguments
+
+#### BULK 'data_file'
+
+The URI of the data file(s) whose data is to be read and returned as row set. The URI can reference Azure Data Lake storage or Azure Blob storage.
+
+The URI can contain * character representing any sequence of characters and enables the OPENROWSET to match the URI with the pattern.
+
+### BULK input file format options
+
+#### FORMAT = { 'CSV' | 'PARQUET' }
+
+Specifies the format of the referenced file. If the file extension in the path with .csv, .parquet, or .parq, the `FORMAT` option doesn't need to be specified. For example:
+
+```sql
+SELECT *
+FROM OPENROWSET(
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.parquet'
+    FORMAT = N'CSV') AS cars;
+```
+
+#### DATAFILETYPE = { 'char' | 'widechar' }
+
+Specifies that `OPENROWSET(BULK)` should read single-byte(ASCII, UTF8) or multi-byte (UTF16) file content.
+
+|DATAFILETYPE value|All data represented in:|
+|------------------------|------------------------------|
+| **char** (default) |Character format.<br /><br />For more information, see [Use Character Format to Import or Export Data](../../relational-databases/import-export/use-character-format-to-import-or-export-data-sql-server.md).|
+| **widechar** |Unicode characters.<br /><br />For more information, see [Use Unicode Character Format to Import or Export Data](../../relational-databases/import-export/use-unicode-character-format-to-import-or-export-data-sql-server.md).|
+
+#### CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | '*code_page*' }
+
+Specifies the code page of the data in the data file. `CODEPAGE` is relevant only if the data contains **char**, **varchar**, or **text** columns with character values more than 127 or less than 32.
+
+| CODEPAGE value | Description |
+| --- | --- |
+| `ACP` | Converts columns of **char**, **varchar**, or **text** data type from the ANSI/[!INCLUDE [msCoName](../../includes/msconame-md.md)] Windows code page (ISO 1252) to the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] code page. |
+| `OEM` (default) | Converts columns of **char**, **varchar**, or **text** data type from the system OEM code page to the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] code page. |
+| `RAW` | No conversion occurs from one code page to another. This is the fastest option. |
+| `code_page` | Indicates the source code page on which the character data in the data file is encoded; for example, 850.<br /><br />**Important** Versions before [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] don't support code page 65001 (UTF-8 encoding). |
+
+### Text/CSV formatting options
+
+#### ROWTERMINATOR = '*row_terminator*'
+
+Specifies the row terminator to be used for **char** and **widechar** data files. The default row terminator is `\r\n` (newline character). For more information, see [Specify Field and Row Terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
+
+#### FIELDTERMINATOR = '*field_terminator*'
+
+Specifies the field terminator to be used for **char** and **widechar** data files. The default field terminator is `\t` (tab character). For more information, see [Specify Field and Row Terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
+
+#### FIELDQUOTE = '*field_quote*'
+
+Specifies a character that is used as the quote character in the CSV file. If not specified, the quote character (`"`) is used as the quote character as defined in the [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180) standard.
+
+#### ESCAPE_CHAR = 'char'
+
+Specifies the character in the file that is used to escape itself and all delimiter values in the file. If the escape character is followed by a value other than itself, or any of the delimiter values, the escape character is dropped when reading the value.
+
+The ESCAPECHAR parameter will be applied regardless of whether the FIELDQUOTE is or isn't enabled. It won't be used to escape the quoting character. The quoting character must be escaped with another quoting character. Quoting character can appear within column value only if value is encapsulated with quoting characters.
+
+#### HEADER_ROW = { TRUE | FALSE }
+
+Specifies whether a CSV file contains header row. Default is FALSE. Supported in PARSER_VERSION='2.0'. If TRUE, the column names will be read from the first row according to FIRSTROW argument. If TRUE and schema is specified using WITH, binding of column names will be done by column name, not ordinal positions.
+
+#### FIRSTROW = *first_row*
+
+Specifies the number of the first row to load. The default is 1. This indicates the first row in the specified data file. The row numbers are determined by counting the row terminators. `FIRSTROW` is 1-based.
+
+#### LASTROW = *last_row*
+
+Specifies the number of the last row to load. The default is 0. This indicates the last row in the specified data file.
+
+### Execution options
+
+#### ROWS_PER_BATCH = *rows_per_batch*
+
+Specifies the approximate number of rows of data in the data file. This value should be of the same order as the actual number of rows.
+
+By default, `ROWS_PER_BATCH` is estimated based on file characteristics (number of files, file sizes, size of the returned data types). Specifying `ROWS_PER_BATCH = 0` is the same as omitting `ROWS_PER_BATCH`.
+
+### WITH Schema
+
+The `WITH` schema specifies the columns that define the result set of the `OPENROWSET` function. It includes column definitions for every column that will be returned as a result and outlines the mapping rules that bind the underlying file columns to the columns in the result set.
+
+#### <column_name>
+
+The name of the column that will be returned in the result rowset. The data for this column is read from the underlying file column with the same name, unless overridden by `<column_path>` or `<column_ordinal>`.
+
+#### <column_type>
+
+The T-SQL type of the column in the result set. The values from the underlying file are converted to this type when `OPENROWSET` returns the results.
+
+#### <column_path>
+
+A dot-separated path (for example `$.description.location.lat`) used to reference nested fields in complex types like Parquet.
+
+#### <column_ordinal>
+
+A number representing the physical index of the column that will be mapped to the column in the `WITH` clause.
+
+## Remarks
+
+The features supported in the current preview are summarized in the table:
+
+| Feature         | Supported | Not available |
+|-----------------|-----------|----------------------|
+| **File formats**| Parquet, CSV   | Delta, Azure Cosmos DB |
+| **Authentication**| EntraID passthrough, public storage | SAS/SAK, SPN, Managed access |
+| **Storage**     | Azure Blob Storage, Azure Data Lake Storage | OneLake |
+| **Options**     | Only full absolute URI in `OPENROWSET`  | `DATA_SOURCE` |
+| **Partitioning**| You can use the `filepath()` function in a query. |  |
+
+## Examples
+
+### Read a parquet file from a Azure Blob Storage
+
+In the following example you can see how to read 100 rows from a Parquet file:
+
+```sql
+SELECT TOP 100 * 
+FROM OPENROWSET(
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.parquet'
+) AS data;
+```
+
+### Read a custom CSV file
+
+In the following example you can see how to read rows from a CSV file with a header row and explicitly specified terminator characters that are separating rows and fields:
+
+```sql
+SELECT *
+FROM OPENROWSET(
+BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv',
+ HEADER_ROW = TRUE,
+ ROW_TERMINATOR = '\n',
+ FIELD_TERMINATOR = ',') 
+AS data;
+```
+
+### Specify the file column schema while reading a file
+
+In the following example you can see how to explicitly specify the schema of row that will be returned as a result of the OPENROWSET function:
+
+```sql
+SELECT *
+FROM OPENROWSET(
+BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.parquet') 
+WITH (
+        updated DATE
+        ,confirmed INT
+        ,deaths INT
+        ,iso2 VARCHAR(8000)
+        ,iso3 VARCHAR(8000)
+        ) AS covid_data;
+```
+
+<a id="reading-partitioned-data-sets"></a>
+
+### Read partitioned data sets
+
+In the following example you can see how to use the `filepath()` function to read the parts of URI from the matched file path:
+
+```sql
+SELECT TOP 10 
+  files.filepath(2) AS area
+, files.*
+FROM OPENROWSET(
+BULK 'https://synapseaisolutionsa.blob.core.windows.net/public/NYC_Property_Sales_Dataset/*_*.csv',
+ HEADER_ROW = TRUE) 
+AS files
+WHERE files.filepath(1) = '2009';
+```
+
+## Related content
+
+- [Specify Field and Row Terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md)
+
+
+::: moniker-end
