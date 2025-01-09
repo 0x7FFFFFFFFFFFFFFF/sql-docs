@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: A detailed description of Azure Monitor Alerts in database watcher
 author: dimitri-furman
 ms.author: dfurman
-ms.date: 12/20/2024
+ms.date: 01/08/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -31,17 +31,22 @@ To learn more about Azure Monitor Alerts, see:
 
 To learn about limitations that apply to alerts in database watcher, see [Limitations](database-watcher-overview.md#limitations).
 
+## Glossary
+
+When working with Azure Monitor Alerts in database watcher, it is important to understand commonly used terms:
+
+- **Alert rule** is an Azure resource in Azure Monitor Alerts that defines alerting logic such as the frequency of evaluation, severity, KQL query, etc. Alert rule also tracks alert history.
+- An **Alert** occurs when an evaluation of an alert rule KQL query triggers the logic to fire an alert. For example, the query determines that a CPU threshold has been exceeded.
+- **Alert rule template** is a blueprint of an alert rule that is built into database watcher. An alert rule template defines the following alert rule properties:
+    - Name
+    - Description
+    - Severity
+    - Evaluation frequency
+    - A KQL query to execute in the data store to evaluate the alert rule
+
 ## Alert rule templates
 
 You can find all available alert rule templates on the **Alerts** page of a watcher.
-
-A template defines the following alert rule properties:
-
-- Name
-- Description
-- Severity
-- Evaluation frequency
-- A KQL query to execute in the data store to evaluate the alert rule
 
 Over time, existing templates might be modified, and new templates might be added in response to customer [feedback](database-watcher-overview.md#send-feedback). Each template on the **Alerts** page of a watcher has a version in the **year-month-day.number** format to let you see when it was last modified.
 
@@ -165,7 +170,7 @@ To create an alert rule from a database watcher template:
 
 ## Manage alert rules
 
-After an alert rule is created, you can manage it just like any other alert rule in Azure Monitor Alerts. For example, you can change alert rule name, description, severity, evaluation frequency, and add or remove action groups. You can also edit the KQL query to adjust alert thresholds, exclude certain SQL targets from alerting, or make the alert rule work only for specific SQL targets.
+After an alert rule is created, you can manage it just like any other alert rule in Azure Monitor Alerts. For example, you can change alert rule description, severity, evaluation frequency, and add or remove action groups. You can also edit the KQL query to adjust alert thresholds, exclude certain SQL targets from alerting, or make the alert rule work only for specific SQL targets.
 
 In the Azure portal, navigate to **Monitor**, **Alerts**, **Alert rules**, and select an alert rule. You can edit the rule, duplicate it, disable it temporarily, or delete it permanently.
 
