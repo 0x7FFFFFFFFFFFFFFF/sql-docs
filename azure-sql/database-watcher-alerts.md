@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: A detailed description of Azure Monitor Alerts in database watcher
 author: dimitri-furman
 ms.author: dfurman
-ms.date: 01/08/2025
+ms.date: 01/13/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -107,7 +107,7 @@ The following tables describe currently available alert rule templates for each 
 
 | Category | Name | Severity | Frequency | Description |
 |:--|:--|:--|:--|:--|
-| Administrative | Failed SQL Agent jobs | 2 - Warning | 5 minutes | Alerts if there are any failed SQL Agent jobs. |
+| Administrative | Failed SQL Agent jobs | 2 - Warning | 5 minutes | Alerts for each failed SQL Agent job. |
 | Availability | Failed connectivity probes | 2 - Warning | 5 minutes | Alerts if the number of failed connectivity probes exceeds a threshold. |
 | Availability | Geo-replication not healthy | 1 - Error | 5 minutes | Alerts if data replication to geo-replicas might be lagging or is interrupted. |
 | Resource usage | High CPU utilization | 3 - Informational | 5 minutes | Alerts if instance CPU utilization exceeds a threshold. |
