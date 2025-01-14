@@ -368,7 +368,7 @@ The `BULK INSERT` statement has different options in different platforms. The di
 |---------------|------------|
 | Data source | Local path, Network path (UNC), or Azure Storage | Azure Storage | Azure Storage | 
 | Source authentication | Windows authentication, SAS | Microsoft Entra ID, SAS token, managed identity | Microsoft Entra ID |
-| Unsupported options | `*` wildcards in path | `*` wildcards in path | `DATA_SOURCE`, `FORMATFILE_DATA_SOURCE`, `ERRORFILE_DATA_SOURCE` |
+| Unsupported options | `*` wildcards in path | `*` wildcards in path | `DATA_SOURCE`, `FORMATFILE_DATA_SOURCE`, `ERRORFILE`, `ERRORFILE_DATA_SOURCE` |
 
 For a comparison of the BULK INSERT statement, the `INSERT ... SELECT * FROM OPENROWSET(BULK...)` statement, and the `bcp` command, see [Bulk Import and Export of Data](../../relational-databases/import-export/bulk-import-and-export-of-data-sql-server.md).
 
