@@ -54,9 +54,9 @@ When working with Azure Monitor Alerts in database watcher, it is important to u
 
 ## Alert rule templates
 
-You can find all available alert rule templates on the **Alerts** page of a watcher.
+You can find all available alert rule templates on the **Alert templates** page of a watcher.
 
-Over time, existing templates might be modified, and new templates might be added in response to customer [feedback](database-watcher-overview.md#send-feedback). Each template on the **Alerts** page of a watcher has a version in the **year-month-day.number** format to let you see when it was last modified.
+Over time, existing templates might be modified, and new templates might be added in response to customer [feedback](database-watcher-overview.md#send-feedback). Each template on the **Alert templates** page of a watcher has a version in the **year-month-day.number** format to let you see when it was last modified.
 
 If you created an alert rule from a template in the past and see that a newer template is available, you can recreate the rule from the newer template to take advantage of fixes and improvements in the alert rule definition.
 
@@ -141,7 +141,7 @@ To access the data store, each log search alert rule needs to have a managed ide
 > To follow the principle of least privilege, use a separate identity for alert rules. Do not reuse the [watcher identity](database-watcher-manage.md#modify-watcher-identity).
 
 1. [Create a user assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity), or find an existing user assigned identity with the required access.
-1. In the Azure portal, navigate to your watcher and select the **Alerts** page.
+1. In the Azure portal, navigate to your watcher and select the **Alert templates** page.
 1. Select **Manage alert rule identity**, and select **Add**.
 1. Find the user assigned identity from step one, select **Add**, and select **Close**.
 
@@ -158,7 +158,7 @@ If you change the default alert rule identity of a watcher, the new identity is 
 
 To create an alert rule from a database watcher template:
 
-1. On the **Alerts** page of a watcher, find the template you want to use. Templates are grouped by category, such as **Resource usage**, **Workload patterns**, etc.
+1. On the **Alert templates** page of a watcher, find the template you want to use. Templates are grouped by category, such as **Resource usage**, **Workload patterns**, etc.
     > [!IMPORTANT]
     >
     > There are different templates for different SQL target types. For example, there is a different **High CPU utilization** template for SQL database, SQL elastic pool, and SQL managed instance.
