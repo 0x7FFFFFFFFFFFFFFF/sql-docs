@@ -17,7 +17,7 @@ dev_langs:
 ---
 # MSdistpublishers (Transact-SQL)
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
-  The **MSdistpublishers** table contains one row for each remote Publisher supported by the local Distributor. This table is stored in the **msdb** database.  
+  The **MSdistpublishers** table contains one row for each Publisher supported by the Distributor. This table is stored in the **msdb** database on the Distributor.  
   
 |Column name|Data type|Description|  
 |-----------------|---------------|-----------------|  
