@@ -130,7 +130,7 @@ Fabric Warehouse supports `*` wildcards that can match any character in the URI,
 
 ```sql
 BULK INSERT bing_covid_19_data
-FROM 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/*.csv)';
+FROM 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/*.csv';
 ```
 
 #### BATCHSIZE = *batch_size*
