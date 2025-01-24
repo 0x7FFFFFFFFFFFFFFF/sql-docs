@@ -1,11 +1,11 @@
 ---
-title: Server configuration options
+title: Server Configuration Options
 titleSuffix: SQL Server, Azure SQL Managed Instance
 description: Find out how to manage and optimize SQL Server and Azure SQL Managed Instance resources. View available configuration options, possible settings, default values, and restart requirements.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, dfurman
-ms.date: 02/03/2025
+ms.date: 02/06/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -128,6 +128,7 @@ The following table lists all available configuration options, the range of poss
 | [disallow results from triggers](disallow-results-from-triggers-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
 | [EKM provider enabled](ekm-provider-enabled-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
 | [external scripts enabled](external-scripts-enabled-server-configuration-option.md) (SC) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions | Yes |
+| [external xtp dll gen util enabled](../../relational-databases/in-memory-oltp/create-in-memory-oltp-app-control-managed-installer.md#what-is-hkdllgen) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] CU 17 and later versions | Yes |
 | [filestream access level](filestream-access-level-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `2`<br />**Default**: `0` | Yes | No |
 | [fill factor (%)](configure-the-fill-factor-server-configuration-option.md) (A, RR) | **Minimum**: `0`<br />**Maximum**: `100`<br />**Default**: `0` | Yes | No |
 | [ft crawl bandwidth (max)](ft-crawl-bandwidth-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `32767`<br />**Default**: `100` | Yes | Yes |
