@@ -159,7 +159,7 @@ Cinco Rios
 Colima
 ```
 
-Here are the results from the second `SELECt` query.
+Here are the results from the second `SELECT` query.
 
 ```output
 Place
@@ -170,7 +170,7 @@ Colima
 Chiapas
 ```
 
-Here are the results from the third `SELECt` query.
+Here are the results from the third `SELECT` query.
 
 ```output
 Place
