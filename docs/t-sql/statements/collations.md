@@ -3,7 +3,7 @@ title: "COLLATE (Transact-SQL)"
 description: COLLATE (Transact-SQL)
 author: markingmyname
 ms.author: maghan
-ms.date: 12/18/2024
+ms.date: 01/27/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
