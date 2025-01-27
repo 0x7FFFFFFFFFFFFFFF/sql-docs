@@ -87,8 +87,47 @@ Ledger tables are enabled for extract and publish operations with Parquet files.
 
 Data stored with Always Encrypted isn't supported for extract and publish operations with Parquet files.
 
+Checking the database for unsupported types is done prior to extract to Parquet by SqlPackage, but you can examine your database quickly with T-SQL. The following sample query returns a result set of types and tables with types not supported for writing to Parquet files.
+
+```sql
+SELECT DISTINCT C.DATA_TYPE, C.TABLE_SCHEMA, C.TABLE_NAME 
+FROM INFORMATION_SCHEMA.TABLES T
+INNER JOIN INFORMATION_SCHEMA.COLUMNS C
+    ON T.TABLE_SCHEMA = C.TABLE_SCHEMA 
+    AND T.TABLE_NAME = C.TABLE_NAME
+    AND T.TABLE_TYPE = 'BASE TABLE'
+WHERE C.DATA_TYPE NOT IN (
+    'binary',
+    'varbinary',
+    'char',
+    'varchar',
+    'nchar',
+    'nvarchar',
+    'smalldate',
+    'smalldatetime',
+    'date',
+    'datetime',
+    'datetime2',
+    'datetimeoffset',
+    'time',
+    'decimal',
+    'numeric',
+    'float',
+    'real',
+    'bigint',
+    'tinyint',
+    'smallint',
+    'int',
+    'bigint',
+    'bit',
+    'money',
+    'smallmoney',
+    'uniqueidentifier'
+)
+```
 
 ## Next Steps
+
 - Learn more about [Extract](sqlpackage-extract.md)
 - Learn more about [Publish](sqlpackage-publish.md)
 - Learn more about [Azure Blob Storage](/azure/storage/blobs/storage-blobs-introduction)
