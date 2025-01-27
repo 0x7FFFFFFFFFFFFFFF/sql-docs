@@ -146,7 +146,7 @@ To verify that your SQL Server enabled by Azure Arc is configured to run with le
 
    ```sql  
    EXECUTE AS LOGIN = 'NT Service\SqlServerExtension'  
-   SELECT * FROM fn_my_permissions (NULL, 'SERVER");
+   SELECT * FROM fn_my_permissions (NULL, 'SERVER');
    ```
 
    To verify database level permissions, replace `<database name>` with the name of one of your databases, and run the following query:
@@ -154,7 +154,7 @@ To verify that your SQL Server enabled by Azure Arc is configured to run with le
    ```sql
    EXECUTE AS LOGIN = 'NT Service\SqlServerExtension'  
    USE <database name>; 
-   SELECT * FROM fn_my_permissions (NULL, 'database");
+   SELECT * FROM fn_my_permissions (NULL, 'database');
 
 ## Related content
 

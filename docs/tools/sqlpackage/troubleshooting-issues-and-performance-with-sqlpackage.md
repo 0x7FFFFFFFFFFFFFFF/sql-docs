@@ -44,6 +44,10 @@ For Export, an example command is:
 
 Alternative to username and password, [multifactor authentication](/azure/azure-sql/database/authentication-mfa-ssms-overview) can be used to authenticate via Microsoft Entra authentication (formerly Azure Active Directory) with multifactor authentication. Substitute the username and password parameters for `/ua:true` and `/tid:"yourdomain.onmicrosoft.com"`.
 
+### Diagnostic package
+
+In SqlPackage [162.5](release-notes-sqlpackage.md#162557-sqlpackage) and later, a diagnostic package can be generated to assist in troubleshooting. The diagnostic package contains the SqlPackage version, the command executed, and the output of the command. To generate a diagnostic package, use the `/DiagnosticsFile:<filename>` parameter.
+
 ## Common issues
 
 ### Timeout errors
