@@ -46,23 +46,21 @@ ms.custom: mdx
 ### Examples of Regular Identifiers  
  In the following MDX statement, the identifiers, `Measures`, `Product`, and `Style`, comply with the formatting rules for regular identifiers. These regular identifiers do not need delimiters.  
   
- `SELECT Measures.MEMBERS ON COLUMNS,`  
+```  
+SELECT Measures.MEMBERS ON COLUMNS,  
+Product.Style.CHILDREN ON ROWS  
+FROM [Adventure Works]  
   
- `Product.Style.CHILDREN ON ROWS`  
-  
- `FROM [Adventure Works]`  
-  
- ``  
+```  
   
  Although not required, you could also use delimiters with regular identifiers. In the following MDX statement, the `Measures`, `Product`, and `Style` regular identifiers have been correctly delimited by using brackets.  
   
- `SELECT [Measures].MEMBERS ON COLUMNS,`  
+```  
+SELECT [Measures].MEMBERS ON COLUMNS,  
+[Product].[Style].CHILDREN ON ROWS  
+FROM [Adventure Works]  
   
- `[Product].[Style].CHILDREN ON ROWS`  
-  
- `FROM [Adventure Works]`  
-  
- ``  
+```  
   
 ## Using Delimited Identifiers  
  An identifier that does not comply with the formatting rules for regular identifiers must always be delimited by using brackets ([]).  
@@ -90,15 +88,13 @@ ms.custom: mdx
 ### Examples of Delimited Identifiers  
  In the following hypothetical MDX statement, `Sales Volume`, `Sales Cube`, and `select` are delimited identifiers:  
   
- `-- The [Sales Volume] and [Sales Cube] identifiers contain a space.`  
-  
- `SELECT Measures.[Sales Volume]`  
-  
- `FROM [Sales Cube]`  
-  
- `WHERE Product.[select]`  
-  
- `-- The [select] identifier is a reserved keyword.`  
+```  
+-- The [Sales Volume] and [Sales Cube] identifiers contain a space.  
+SELECT Measures.[Sales Volume]  
+FROM [Sales Cube]  
+WHERE Product.[select]  
+-- The [select] identifier is a reserved keyword.  
+```  
   
  In this next example, the name of an object is `Total Profit [Domestic]`. To reference this object, you must use the following delimited identifier:  
   

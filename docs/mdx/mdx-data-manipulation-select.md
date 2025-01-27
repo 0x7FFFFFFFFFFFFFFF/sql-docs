@@ -116,41 +116,26 @@ FROM
 ## Autoexists  
  When two or more attributes of the dimension are used in a SELECT statement, Analysis Services evaluates the attributes' expressions to make sure that the members of those attributes are properly confined to meet the criteria of all other attributes. For example, suppose you are working with attributes from the Geography dimension. If you have one expression that returns all members from the City attribute, and another expression that confines members from the Country attribute to all countries/regions in Europe, then this will result in the City members being confined to only those cities that belong to countries/regions in Europe. This characteristic of Analysis Services is called Autoexists and applies only to attributes in the same dimension. Autoexists only applies to attributes from the same dimension because it tries to prevent the dimension records excluded in one attribute expression from being included by the other attribute expressions. Autoexists can also be understood as the resulting intersection of the different attributes expressions over the dimension records. See the following examples below:  
   
- `//Obtain the Top 10 best reseller selling products by Name`  
-  
- `with member [Measures].[PCT Discount] AS '[Measures].[Discount Amount]/[Measures].[Reseller Sales Amount]', FORMAT_STRING = 'Percent'`  
-  
- `set Top10SellingProducts as 'topcount([Product].[Model Name].children, 10, [Measures].[Reseller Sales Amount])'`  
-  
- `set Preferred10Products as '`  
-  
- `{[Product].[Model Name].&[Mountain-200],`  
-  
- `[Product].[Model Name].&[Road-250],`  
-  
- `[Product].[Model Name].&[Mountain-100],`  
-  
- `[Product].[Model Name].&[Road-650],`  
-  
- `[Product].[Model Name].&[Touring-1000],`  
-  
- `[Product].[Model Name].&[Road-550-W],`  
-  
- `[Product].[Model Name].&[Road-350-W],`  
-  
- `[Product].[Model Name].&[HL Mountain Frame],`  
-  
- `[Product].[Model Name].&[Road-150],`  
-  
- `[Product].[Model Name].&[Touring-3000]`  
-  
- `}'`  
-  
- `select {[Measures].[Reseller Sales Amount], [Measures].[Discount Amount], [Measures].[PCT Discount]} on 0,`  
-  
- `Top10SellingProducts on 1`  
-  
- `from [Adventure Works]`  
+```  
+//Obtain the Top 10 best reseller selling products by Name  
+with member [Measures].[PCT Discount] AS '[Measures].[Discount Amount]/[Measures].[Reseller Sales Amount]', FORMAT_STRING = 'Percent'  
+set Top10SellingProducts as 'topcount([Product].[Model Name].children, 10, [Measures].[Reseller Sales Amount])'  
+set Preferred10Products as '  
+{[Product].[Model Name].&[Mountain-200],  
+[Product].[Model Name].&[Road-250],  
+[Product].[Model Name].&[Mountain-100],  
+[Product].[Model Name].&[Road-650],  
+[Product].[Model Name].&[Touring-1000],  
+[Product].[Model Name].&[Road-550-W],  
+[Product].[Model Name].&[Road-350-W],  
+[Product].[Model Name].&[HL Mountain Frame],  
+[Product].[Model Name].&[Road-150],  
+[Product].[Model Name].&[Touring-3000]  
+}'  
+select {[Measures].[Reseller Sales Amount], [Measures].[Discount Amount], [Measures].[PCT Discount]} on 0,  
+Top10SellingProducts on 1  
+from [Adventure Works]  
+```  
   
  The obtained result set is:  
   
@@ -169,39 +154,25 @@ FROM
   
  The obtained set of products seems to be the same as Preferred10Products; so, verifying the Preferred10Products set:  
   
- `with member [Measures].[PCT Discount] AS '[Measures].[Discount Amount]/[Measures].[Reseller Sales Amount]', FORMAT_STRING = 'Percent'`  
-  
- `set Top10SellingProducts as 'topcount([Product].[Model Name].children, 10, [Measures].[Reseller Sales Amount])'`  
-  
- `set Preferred10Products as '`  
-  
- `{[Product].[Model Name].&[Mountain-200],`  
-  
- `[Product].[Model Name].&[Road-250],`  
-  
- `[Product].[Model Name].&[Mountain-100],`  
-  
- `[Product].[Model Name].&[Road-650],`  
-  
- `[Product].[Model Name].&[Touring-1000],`  
-  
- `[Product].[Model Name].&[Road-550-W],`  
-  
- `[Product].[Model Name].&[Road-350-W],`  
-  
- `[Product].[Model Name].&[HL Mountain Frame],`  
-  
- `[Product].[Model Name].&[Road-150],`  
-  
- `[Product].[Model Name].&[Touring-3000]`  
-  
- `}'`  
-  
- `select {[Measures].[Reseller Sales Amount], [Measures].[Discount Amount], [Measures].[PCT Discount]} on 0,`  
-  
- `Preferred10Products on 1`  
-  
- `from [Adventure Works]`  
+```  
+with member [Measures].[PCT Discount] AS '[Measures].[Discount Amount]/[Measures].[Reseller Sales Amount]', FORMAT_STRING = 'Percent'  
+set Top10SellingProducts as 'topcount([Product].[Model Name].children, 10, [Measures].[Reseller Sales Amount])'  
+set Preferred10Products as '  
+{[Product].[Model Name].&[Mountain-200],  
+[Product].[Model Name].&[Road-250],  
+[Product].[Model Name].&[Mountain-100],  
+[Product].[Model Name].&[Road-650],  
+[Product].[Model Name].&[Touring-1000],  
+[Product].[Model Name].&[Road-550-W],  
+[Product].[Model Name].&[Road-350-W],  
+[Product].[Model Name].&[HL Mountain Frame],  
+[Product].[Model Name].&[Road-150],  
+[Product].[Model Name].&[Touring-3000]  
+}'  
+select {[Measures].[Reseller Sales Amount], [Measures].[Discount Amount], [Measures].[PCT Discount]} on 0,  
+Preferred10Products on 1  
+from [Adventure Works]  
+```  
   
  As per the following results, both sets (Top10SellingProducts, Preferred10Products) are the same  
   
@@ -222,19 +193,15 @@ FROM
   
  Autoexists can be applied deep or shallow to the expressions. The default  setting is deep. The following example will illustrate the concept of deep Autoexists. In the example we are filtering Top10SellingProducts by [Product].[Product Line] attribute for those in [Mountain] group. Note that both attributes (slicer and axis) belong to the same dimension, [Product].  
   
- `with member [Measures].[PCT Discount] AS '[Measures].[Discount Amount]/[Measures].[Reseller Sales Amount]', FORMAT_STRING = 'Percent'`  
-  
- `set Top10SellingProducts as 'topcount([Product].[Model Name].children, 10, [Measures].[Reseller Sales Amount])'`  
-  
- `// Preferred10Products set removed for clarity`  
-  
- `select {[Measures].[Reseller Sales Amount], [Measures].[Discount Amount], [Measures].[PCT Discount]} on 0,`  
-  
- `Top10SellingProducts on 1`  
-  
- `from [Adventure Works]`  
-  
- `where [Product].[Product Line].[Mountain]`  
+```  
+with member [Measures].[PCT Discount] AS '[Measures].[Discount Amount]/[Measures].[Reseller Sales Amount]', FORMAT_STRING = 'Percent'  
+set Top10SellingProducts as 'topcount([Product].[Model Name].children, 10, [Measures].[Reseller Sales Amount])'  
+// Preferred10Products set removed for clarity  
+select {[Measures].[Reseller Sales Amount], [Measures].[Discount Amount], [Measures].[PCT Discount]} on 0,  
+Top10SellingProducts on 1  
+from [Adventure Works]  
+where [Product].[Product Line].[Mountain]  
+```  
   
  Produces the following result set:  
   
@@ -257,41 +224,26 @@ FROM
   
  However, one might want to be able to do the analysis over the Top10SellingProducts as equivalent to Preferred10Products, as in the following example:  
   
- `with member [Measures].[PCT Discount] AS '[Measures].[Discount Amount]/[Measures].[Reseller Sales Amount]', FORMAT_STRING = 'Percent'`  
-  
- `set Top10SellingProducts as 'topcount([Product].[Model Name].children, 10, [Measures].[Reseller Sales Amount])'`  
-  
- `set Preferred10Products as '`  
-  
- `{[Product].[Model Name].&[Mountain-200],`  
-  
- `[Product].[Model Name].&[Road-250],`  
-  
- `[Product].[Model Name].&[Mountain-100],`  
-  
- `[Product].[Model Name].&[Road-650],`  
-  
- `[Product].[Model Name].&[Touring-1000],`  
-  
- `[Product].[Model Name].&[Road-550-W],`  
-  
- `[Product].[Model Name].&[Road-350-W],`  
-  
- `[Product].[Model Name].&[HL Mountain Frame],`  
-  
- `[Product].[Model Name].&[Road-150],`  
-  
- `[Product].[Model Name].&[Touring-3000]`  
-  
- `}'`  
-  
- `select {[Measures].[Reseller Sales Amount], [Measures].[Discount Amount], [Measures].[PCT Discount]} on 0,`  
-  
- `Preferred10Products on 1`  
-  
- `from [Adventure Works]`  
-  
- `where [Product].[Product Line].[Mountain]`  
+```  
+with member [Measures].[PCT Discount] AS '[Measures].[Discount Amount]/[Measures].[Reseller Sales Amount]', FORMAT_STRING = 'Percent'  
+set Top10SellingProducts as 'topcount([Product].[Model Name].children, 10, [Measures].[Reseller Sales Amount])'  
+set Preferred10Products as '  
+{[Product].[Model Name].&[Mountain-200],  
+[Product].[Model Name].&[Road-250],  
+[Product].[Model Name].&[Mountain-100],  
+[Product].[Model Name].&[Road-650],  
+[Product].[Model Name].&[Touring-1000],  
+[Product].[Model Name].&[Road-550-W],  
+[Product].[Model Name].&[Road-350-W],  
+[Product].[Model Name].&[HL Mountain Frame],  
+[Product].[Model Name].&[Road-150],  
+[Product].[Model Name].&[Touring-3000]  
+}'  
+select {[Measures].[Reseller Sales Amount], [Measures].[Discount Amount], [Measures].[PCT Discount]} on 0,  
+Preferred10Products on 1  
+from [Adventure Works]  
+where [Product].[Product Line].[Mountain]  
+```  
   
  Produces the following result set:  
   
@@ -307,19 +259,15 @@ FROM
   
  Autoexists behavior can be modified at the session level using the **Autoexists** connection string property. The following example begins by opening a new session and adding the *Autoexists=3* property to the connection string. You must open a new connection in order to do the example. Once the connection is established with the Autoexist setting it will remain in effect until that connection is finished.  
   
- `with member [Measures].[PCT Discount] AS '[Measures].[Discount Amount]/[Measures].[Reseller Sales Amount]', FORMAT_STRING = 'Percent'`  
-  
- `set Top10SellingProducts as 'topcount([Product].[Model Name].children, 10, [Measures].[Reseller Sales Amount])'`  
-  
- `//Preferred10Products set removed for clarity`  
-  
- `select {[Measures].[Reseller Sales Amount], [Measures].[Discount Amount], [Measures].[PCT Discount]} on 0,`  
-  
- `Top10SellingProducts on 1`  
-  
- `from [Adventure Works]`  
-  
- `where [Product].[Product Line].[Mountain]`  
+```  
+with member [Measures].[PCT Discount] AS '[Measures].[Discount Amount]/[Measures].[Reseller Sales Amount]', FORMAT_STRING = 'Percent'  
+set Top10SellingProducts as 'topcount([Product].[Model Name].children, 10, [Measures].[Reseller Sales Amount])'  
+//Preferred10Products set removed for clarity  
+select {[Measures].[Reseller Sales Amount], [Measures].[Discount Amount], [Measures].[PCT Discount]} on 0,  
+Top10SellingProducts on 1  
+from [Adventure Works]  
+where [Product].[Product Line].[Mountain]  
+```  
   
  The following result set now shows the shallow behavior of Autoexists.  
   
@@ -355,13 +303,12 @@ WHERE
   
  The following SELECT statement:  
   
- `select [Category].members on 0,`  
-  
- `[Business Type].members on 1`  
-  
- `from [Adventure Works]`  
-  
- `where [Measures].[Reseller Sales Amount]`  
+```  
+select [Category].members on 0,  
+[Business Type].members on 1  
+from [Adventure Works]  
+where [Measures].[Reseller Sales Amount]  
+```  
   
  Produces the following results:  
   
@@ -374,17 +321,14 @@ WHERE
   
  To produce a table with data only for theAccessories and Clothing products, the Value Added Reseller and Warehouse resellers,  yet keeping the overall totals could be written as follows using NON VISUAL:  
   
- `select [Category].members on 0,`  
-  
- `[Business Type].members on 1`  
-  
- `from NON VISUAL (Select {[Category].Accessories, [Category].Clothing} on 0,`  
-  
- `{[Business Type].[Value Added Reseller], [Business Type].[Warehouse]} on 1`  
-  
- `from [Adventure Works])`  
-  
- `where [Measures].[Reseller Sales Amount]`  
+```  
+select [Category].members on 0,  
+[Business Type].members on 1  
+from NON VISUAL (Select {[Category].Accessories, [Category].Clothing} on 0,  
+{[Business Type].[Value Added Reseller], [Business Type].[Warehouse]} on 1  
+from [Adventure Works])  
+where [Measures].[Reseller Sales Amount]  
+```  
   
  Produces the following results:  
   
@@ -396,19 +340,15 @@ WHERE
   
  To produce a table that visually totals the columns but for row totals brings the true total of all [Category], the following query should be issued:  
   
- `select [Category].members on 0,`  
-  
- `[Business Type].members on 1`  
-  
- `from NON VISUAL (Select {[Category].Accessories, [Category].Clothing} on 0`  
-  
- `from ( Select {[Business Type].[Value Added Reseller], [Business Type].[Warehouse]} on 0`  
-  
- `from [Adventure Works])`  
-  
- `)`  
-  
- `where [Measures].[Reseller Sales Amount]`  
+```  
+select [Category].members on 0,  
+[Business Type].members on 1  
+from NON VISUAL (Select {[Category].Accessories, [Category].Clothing} on 0  
+from ( Select {[Business Type].[Value Added Reseller], [Business Type].[Warehouse]} on 0  
+from [Adventure Works])  
+)  
+where [Measures].[Reseller Sales Amount]  
+```  
   
  Note how NON VISUAL is only applied to [Category].  
   
@@ -424,23 +364,17 @@ WHERE
   
  The following example demonstrates how to use calculated members in subselects to filter on them. To be able to reproduce this sample, the connection must be established using the connection string parameter *subqueries=1*.  
   
- `select Measures.allmembers on 0`  
-  
- `from (`  
-  
- `Select { [Measures].[Reseller Sales Amount]`  
-  
- `, [Measures].[Reseller Total Product Cost]`  
-  
- `, [Measures].[Reseller Gross Profit]`  
-  
- `, [Measures].[Reseller Gross Profit Margin]`  
-  
- `} on 0`  
-  
- `from [Adventure Works]`  
-  
- `)`  
+```  
+select Measures.allmembers on 0  
+from (  
+Select { [Measures].[Reseller Sales Amount]  
+, [Measures].[Reseller Total Product Cost]  
+, [Measures].[Reseller Gross Profit]  
+, [Measures].[Reseller Gross Profit Margin]  
+} on 0  
+from [Adventure Works]  
+)  
+```  
   
  The above query produces the following results:  
   

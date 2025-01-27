@@ -26,8 +26,13 @@ helpviewer_keywords:
   
 ## Explanation  
 
-The link failed to create because either the connection to the secondary replica failed, or the server didn't respond after a prolonged period of time. This could be due to network connectivity issues or incorrectly configured firewall rules.
-  
+The link failed to create because either: 
+- the connection to the secondary replica failed
+- the server didn't respond after a prolonged period of time
+- the link already exists
+
+Error 41986 could be due to network connectivity issues or incorrectly configured firewall rules during the link creation process, or after the link is already created.
+
 ## User Action  
 
 Verify that network connectivity was successfully established between SQL Server and Azure SQL Managed Instance, and that firewall rules are correctly configured, as described in [Configure network connectivity](/azure/azure-sql/managed-instance/managed-instance-link-preparation#configure-network-connectivity). Retry the operation after connection has been verified successfully. 

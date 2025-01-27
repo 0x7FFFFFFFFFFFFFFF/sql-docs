@@ -41,45 +41,32 @@ NONEMPTY(set_expression1 [,set_expression2])
 ## Examples  
  The following query shows a simple example of **NonEmpty**, returning all the Customers who had a non-null value for Internet Sales Amount on July 1st 2001:  
   
- `SELECT [Measures].[Internet Sales Amount] ON 0,`  
-  
- `NONEMPTY(`  
-  
- `[Customer].[Customer].[Customer].MEMBERS`  
-  
- `, {([Date].[Calendar].[Date].&[20010701], [Measures].[Internet Sales Amount])}`  
-  
- `)`  
-  
- `ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+SELECT [Measures].[Internet Sales Amount] ON 0,  
+NONEMPTY(  
+[Customer].[Customer].[Customer].MEMBERS  
+, {([Date].[Calendar].[Date].&[20010701], [Measures].[Internet Sales Amount])}  
+)  
+ON 1  
+FROM [Adventure Works]  
+```  
   
  The following example returns the set of tuples containing customers and purchase dates, using the **Filter** function and the **NonEmpty** functions to find the last date that each customer made a purchase:  
   
- `WITH SET MYROWS AS FILTER`  
-  
- `(NONEMPTY`  
-  
- `([Customer].[Customer Geography].[Customer].MEMBERS`  
-  
- `* [Date].[Date].[Date].MEMBERS`  
-  
- `, [Measures].[Internet Sales Amount]`  
-  
- `) AS MYSET`  
-  
- `, NOT(MYSET.CURRENT.ITEM(0)`  
-  
- `IS MYSET.ITEM(RANK(MYSET.CURRENT, MYSET)).ITEM(0))`  
-  
- `)`  
-  
- `SELECT [Measures].[Internet Sales Amount] ON 0,`  
-  
- `MYROWS ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH SET MYROWS AS FILTER  
+(NONEMPTY  
+([Customer].[Customer Geography].[Customer].MEMBERS  
+* [Date].[Date].[Date].MEMBERS  
+, [Measures].[Internet Sales Amount]  
+) AS MYSET  
+, NOT(MYSET.CURRENT.ITEM(0)  
+IS MYSET.ITEM(RANK(MYSET.CURRENT, MYSET)).ITEM(0))  
+)  
+SELECT [Measures].[Internet Sales Amount] ON 0,  
+MYROWS ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [DefaultMember &#40;MDX&#41;](../mdx/defaultmember-mdx.md)   

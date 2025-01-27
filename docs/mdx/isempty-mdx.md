@@ -42,15 +42,13 @@ IsEmpty(Value_Expression)
 ## Example  
  The following example returns TRUE if the Internet Sales Amount for the current member on the Fiscal hierarchy of the Date dimension returns an empty cell:  
   
- `WITH MEMBER MEASURES.ISEMPTYDEMO AS`  
-  
- `IsEmpty([Measures].[Internet Sales Amount])`  
-  
- `SELECT {[Measures].[Internet Sales Amount],MEASURES.ISEMPTYDEMO} ON 0,`  
-  
- `[Date].[Fiscal].MEMBERS ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.ISEMPTYDEMO AS  
+IsEmpty([Measures].[Internet Sales Amount])  
+SELECT {[Measures].[Internet Sales Amount],MEASURES.ISEMPTYDEMO} ON 0,  
+[Date].[Fiscal].MEMBERS ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [Working with Empty Values](../mdx/working-with-empty-values.md)   

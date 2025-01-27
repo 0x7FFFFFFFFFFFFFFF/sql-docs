@@ -99,7 +99,7 @@ A list of preview releases is available on the [dotnet tool feed for SqlPackage]
 
 ## Installation, file download (alternative)
 
-SqlPackage is also prepared as a self-contained download for Windows, macOS, and Linux. No .NET install is required, however, the dependencies included in this .zip download are updated more frequently in the [dotnet tool option for SqlPackage](#installation-cross-platform). The following links are for the latest version of SqlPackage:
+SqlPackage is also prepared as a self-contained download for Windows, macOS, and Linux. No .NET install is required, however, the [operating system requirements](#supported-operating-systems) are the same as the [dotnet tool install](#installation-cross-platform). The dependencies included in this .zip download are updated more frequently in the [dotnet tool option for SqlPackage](#installation-cross-platform). The following links are for the latest version of SqlPackage:
 
 | Platform | Download |
 | :--- | :--- |

@@ -77,15 +77,13 @@ FROM [Adventure Works]
   
  Often, the **SUM** function is used with the **CURRENTMEMBER** function or functions like **YTD** that return a set that varies depending on the currentmember of a hierarchy. For example, the following query returns the sum of the Internet Sales Amount measure for all dates from the beginning of the calendar year to the date displayed on the Rows axis:  
   
- `WITH MEMBER MEASURES.YTDSUM AS`  
-  
- `SUM(YTD(), [Measures].[Internet Sales Amount])`  
-  
- `SELECT {[Measures].[Internet Sales Amount], MEASURES.YTDSUM} ON 0,`  
-  
- `[Date].[Calendar].MEMBERS ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.YTDSUM AS  
+SUM(YTD(), [Measures].[Internet Sales Amount])  
+SELECT {[Measures].[Internet Sales Amount], MEASURES.YTDSUM} ON 0,  
+[Date].[Calendar].MEMBERS ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

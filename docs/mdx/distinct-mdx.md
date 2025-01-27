@@ -32,27 +32,19 @@ Distinct(Set_Expression)
 ## Examples  
  The following example query shows how to use the Distinct function with a named set, as well as how to use it with the Count function to find the number of distinct tuples in a set:  
   
- `WITH SET MySet AS`  
-  
- `{[Customer].[Customer Geography].[Country].&[Australia],[Customer].[Customer Geography].[Country].&[Australia],`  
-  
- `[Customer].[Customer Geography].[Country].&[Canada],[Customer].[Customer Geography].[Country].&[France],`  
-  
- `[Customer].[Customer Geography].[Country].&[United Kingdom],[Customer].[Customer Geography].[Country].&[United Kingdom]}`  
-  
- `MEMBER MEASURES.SETCOUNT AS`  
-  
- `COUNT(MySet)`  
-  
- `MEMBER MEASURES.SETDISTINCTCOUNT AS`  
-  
- `COUNT(DISTINCT(MySet))`  
-  
- `SELECT {MEASURES.SETCOUNT, MEASURES.SETDISTINCTCOUNT} ON 0,`  
-  
- `DISTINCT(MySet) ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH SET MySet AS  
+{[Customer].[Customer Geography].[Country].&[Australia],[Customer].[Customer Geography].[Country].&[Australia],  
+[Customer].[Customer Geography].[Country].&[Canada],[Customer].[Customer Geography].[Country].&[France],  
+[Customer].[Customer Geography].[Country].&[United Kingdom],[Customer].[Customer Geography].[Country].&[United Kingdom]}  
+MEMBER MEASURES.SETCOUNT AS  
+COUNT(MySet)  
+MEMBER MEASURES.SETDISTINCTCOUNT AS  
+COUNT(DISTINCT(MySet))  
+SELECT {MEASURES.SETCOUNT, MEASURES.SETDISTINCTCOUNT} ON 0,  
+DISTINCT(MySet) ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

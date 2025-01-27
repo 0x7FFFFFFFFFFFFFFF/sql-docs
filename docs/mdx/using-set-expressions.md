@@ -24,19 +24,15 @@ ms.custom: mdx
 ## Example  
  The following example shows two set expressions used on the Columns and Rows axes of a query:  
   
- `SELECT`  
-  
- `{[Measures].[Internet Sales Amount], [Measures].[Internet Tax Amount]} ON COLUMNS,`  
-  
- `{([Product].[Product Categories].[Category].&[4], [Date].[Calendar].[Calendar Year].&[2004]),`  
-  
- `([Product].[Product Categories].[Category].&[1], [Date].[Calendar].[Calendar Year].&[2003]),`  
-  
- `([Product].[Product Categories].[Category].&[3], [Date].[Calendar].[Calendar Year].&[2004])}`  
-  
- `ON ROWS`  
-  
- `FROM [Adventure Works]`  
+```  
+SELECT  
+{[Measures].[Internet Sales Amount], [Measures].[Internet Tax Amount]} ON COLUMNS,  
+{([Product].[Product Categories].[Category].&[4], [Date].[Calendar].[Calendar Year].&[2004]),  
+([Product].[Product Categories].[Category].&[1], [Date].[Calendar].[Calendar Year].&[2003]),  
+([Product].[Product Categories].[Category].&[3], [Date].[Calendar].[Calendar Year].&[2004])}  
+ON ROWS  
+FROM [Adventure Works]  
+```  
   
  On the Columns axis, the set  
   

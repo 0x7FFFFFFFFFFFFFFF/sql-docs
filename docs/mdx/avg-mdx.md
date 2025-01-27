@@ -47,79 +47,49 @@ Avg( Set_Expression [ , Numeric_Expression ] )
 ## Examples  
  The following example returns the average for a measure over a specified set. Notice that the specified measure can be either the default measure for the members of the specified set or a specified measure.  
   
- `WITH SET [NW Region] AS`  
-  
- `{[Geography].[State-Province].[Washington]`  
-  
- `, [Geography].[State-Province].[Oregon]`  
-  
- `, [Geography].[State-Province].[Idaho]}`  
-  
- `MEMBER [Geography].[Geography].[NW Region Avg] AS`  
-  
- `AVG ([NW Region]`  
-  
- `--Uncomment the line below to get an average by Reseller Gross Profit Margin`  
-  
- `--otherwise the average will be by whatever the default measure is in the cube,`  
-  
- `--or whatever measure is specified in the query`  
-  
- `--, [Measures].[Reseller Gross Profit Margin]`  
-  
- `)`  
-  
- `SELECT [Date].[Calendar Year].[Calendar Year].Members ON 0`  
-  
- `FROM [Adventure Works]`  
-  
- `WHERE ([Geography].[Geography].[NW Region Avg])`  
+```  
+WITH SET [NW Region] AS  
+{[Geography].[State-Province].[Washington]  
+, [Geography].[State-Province].[Oregon]  
+, [Geography].[State-Province].[Idaho]}  
+MEMBER [Geography].[Geography].[NW Region Avg] AS  
+AVG ([NW Region]  
+--Uncomment the line below to get an average by Reseller Gross Profit Margin  
+--otherwise the average will be by whatever the default measure is in the cube,  
+--or whatever measure is specified in the query  
+--, [Measures].[Reseller Gross Profit Margin]  
+)  
+SELECT [Date].[Calendar Year].[Calendar Year].Members ON 0  
+FROM [Adventure Works]  
+WHERE ([Geography].[Geography].[NW Region Avg])  
+```  
   
  The following example returns the daily average of the `Measures.[Gross Profit Margin]` measure, calculated across the days of each month in the 2003 fiscal year, from the **Adventure Works** cube. The **Avg** function calculates the average from the set of days that are contained in each month of the `[Ship Date].[Fiscal Time]` hierarchy. The first version of the calculation shows the default behavior of Avg in excluding days that did not record any sales from the average, the second version shows how to include days with no sales in the average.  
   
- `WITH MEMBER Measures.[Avg Gross Profit Margin] AS`  
-  
- `Avg(`  
-  
- `Descendants(`  
-  
- `[Ship Date].[Fiscal].CurrentMember,`  
-  
- `[Ship Date].[Fiscal].[Date]`  
-  
- `),`  
-  
- `Measures.[Gross Profit Margin]`  
-  
- `), format_String='percent'`  
-  
- `MEMBER Measures.[Avg Gross Profit Margin Including Empty Days] AS`  
-  
- `Avg(`  
-  
- `Descendants(`  
-  
- `[Ship Date].[Fiscal].CurrentMember,`  
-  
- `[Ship Date].[Fiscal].[Date]`  
-  
- `),`  
-  
- `CoalesceEmpty(Measures.[Gross Profit Margin],0)`  
-  
- `), Format_String='percent'`  
-  
- `SELECT`  
-  
- `{Measures.[Avg Gross Profit Margin],Measures.[Avg Gross Profit Margin Including Empty Days]} ON COLUMNS,`  
-  
- `[Ship Date].[Fiscal].[Fiscal Year].Members ON ROWS`  
-  
- `FROM`  
-  
- `[Adventure Works]`  
-  
- `WHERE([Product].[Product Categories].[Product].&[344])`  
+```  
+WITH MEMBER Measures.[Avg Gross Profit Margin] AS  
+Avg(  
+Descendants(  
+[Ship Date].[Fiscal].CurrentMember,  
+[Ship Date].[Fiscal].[Date]  
+),  
+Measures.[Gross Profit Margin]  
+), format_String='percent'  
+MEMBER Measures.[Avg Gross Profit Margin Including Empty Days] AS  
+Avg(  
+Descendants(  
+[Ship Date].[Fiscal].CurrentMember,  
+[Ship Date].[Fiscal].[Date]  
+),  
+CoalesceEmpty(Measures.[Gross Profit Margin],0)  
+), Format_String='percent'  
+SELECT  
+{Measures.[Avg Gross Profit Margin],Measures.[Avg Gross Profit Margin Including Empty Days]} ON COLUMNS,  
+[Ship Date].[Fiscal].[Fiscal Year].Members ON ROWS  
+FROM  
+[Adventure Works]  
+WHERE([Product].[Product Categories].[Product].&[344])  
+```  
   
  The following example returns the daily average of the `Measures.[Gross Profit Margin]` measure, calculated across the days of each semester in the 2003 fiscal year, from the **Adventure Works** cube.  
   
