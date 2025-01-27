@@ -87,7 +87,9 @@ New development work should consider using the SDK-style project format, as it's
 - NuGet [package references](concepts/package-references.md) for database references
 - Default globbing pattern for .sql files in the project
 
-SDK-style projects have a superset of functionality from original SQL projects and existing SQL projects can be converted to SDK-style projects through [modification of the project file](howto/convert-original-sql-project.md). The exception to the functionality coverage is support for SQLCLR objects, which require .NET Framework and aren't supported in SDK-style projects.
+SDK-style projects have a superset of functionality from original SQL projects and existing SQL projects can be converted to SDK-style projects through [modification of the project file](howto/convert-original-sql-project.md).
+
+The exception to the functionality coverage is support for SQLCLR objects, which require .NET Framework. A project that contains SQLCLR objects can be converted to an SDK-style project, but the project requires .NET Framework and must be built in Visual Studio on Windows. Once the project with the SQLCLR object is built, the `.dacpac` can be deployed with SqlPackage on .NET and .NET Framework and can be used as a `.dacpac` reference in a project (both same database or same server different database).
 
 ## Related content
 
