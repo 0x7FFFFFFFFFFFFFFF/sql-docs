@@ -4,7 +4,7 @@ description: "DBCC SHRINKFILE shrinks the size of a database file."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: umajay, dpless, randolphwest
-ms.date: 07/02/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "language-reference"
@@ -95,7 +95,7 @@ Migrates all data from the specified file to other files in the *same filegroup*
 
 For FILESTREAM filegroup containers, you can't use `ALTER DATABASE` to remove a file until the FILESTREAM Garbage Collector has run and deleted all the unnecessary filegroup container files that `EMPTYFILE` has copied to another container. For more information, see [sp_filestream_force_garbage_collection](../../relational-databases/system-stored-procedures/filestream-and-filetable-sp-filestream-force-garbage-collection.md). For information on removing a FILESTREAM container, see the corresponding section in [ALTER DATABASE File and Filegroup Options (Transact-SQL)](../../t-sql/statements/alter-database-transact-sql-file-and-filegroup-options.md)
 
-EMPTYFILE is not supported in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] or [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] Hyperscale.
+`EMPTYFILE` is not supported in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] or [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] Hyperscale.
 
 #### NOTRUNCATE
 
@@ -170,8 +170,6 @@ When a `DBCC SHRINKFILE` operation fails, an error is raised.
 Other users can work in the database during file shrinking; the database doesn't have to be in single-user mode. You don't have to run the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] in single-user mode to shrink the system databases.
 
 When specified with WAIT_AT_LOW_PRIORITY, the shrink operation's Sch-M lock request will wait with low priority when executing the command for 1 minute. If the operation is blocked for the duration, the specified ABORT_AFTER_WAIT action will be executed.
-
-[Database and file shrink operations](/azure/azure-sql/database/file-space-manage) are currently in preview for Azure SQL Database Hyperscale. For more information on the preview, see [Shrink for Azure SQL Database Hyperscale](https://aka.ms/hs-shrink-preview).
 
 ### Known issues
 
