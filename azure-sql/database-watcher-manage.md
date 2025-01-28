@@ -5,7 +5,7 @@ description: Setup and configuration details for database watcher
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf
-ms.date: 01/07/2024
+ms.date: 01/14/2024
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: how-to
@@ -228,6 +228,9 @@ To change the current data store, remove the existing data store, then add a new
     - The database you select must be empty, or must be a database that you have previously used as a database watcher data store. Selecting a database that contains any objects not created by database watcher is not supported.
     - Once you add a data store, you must grant the watcher access to use it. For more information, see [Grant access to data store](#grant-access-to-data-store).
     - Once the watcher is restarted, it starts using the new data store.
+
+> [!TIP]
+> If you switch the data store from a paid Azure Data Explorer cluster to a [free Azure Data Explorer cluster](#free-azure-data-explorer-cluster), consider stopping or deleting the paid cluster if you no longer need it. This can avoid unnecessary costs.
 
 ### Modify watcher identity
 
