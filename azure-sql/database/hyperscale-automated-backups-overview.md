@@ -22,7 +22,7 @@ This article explains the [automated backup](automated-backups-overview.md) feat
 
 Hyperscale databases use a [unique architecture](service-tier-hyperscale.md#distributed-functions-architecture) with highly scalable storage and compute performance tiers. Hyperscale backups are snapshot-based and are nearly instantaneous. Log backups are stored in long-term Azure storage for the backup retention period.
 
-A Hyperscale architecture doesn't require full, differential, or log backups. As such, backup frequency, storage costs, scheduling, storage redundancy, and restore capabilities differ from other databases in Azure SQL Database.
+A Hyperscale architecture doesn't require the same full, differential, and log backup chain as file-based backups used in SQL Server and other SQL Database tiers. As such, backup frequency, storage costs, scheduling, storage redundancy, and restore capabilities differ from other databases in Azure SQL Database.
 
 ## Backup and restore performance
 
