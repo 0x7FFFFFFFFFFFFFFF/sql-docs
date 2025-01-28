@@ -48,7 +48,7 @@ Take advantage of the following benefits by migrating to Azure SQL Managed Insta
 - 24x7 service health monitoring and automitigation services, with Microsoft engineers monitoring and managing the service to ensure stability. 
 - Easily and dynamically scale, add, or remove resources such as CPU, memory, IO, and storage as online operations without downtime. 
 - No need to enable or configure backups or patching as both are fully automated in Azure SQL Managed Instance. 
-- Zone-redundant storage increases the SLA of Azure SQL Managed Instance to 99.995%, which is higher than the SLA for SQL Server on Azure VMs, since the SLA is for the virtual machine, and not the SQL service.
+- Zone-redundant storage increases the SLA of Azure SQL Managed Instance higher than the SLA for SQL Server on Azure VMs, since the SLA is for the virtual machine, and not the SQL service.
 - Retain your backups up to 10 years with long-term retention.
 
 ## Prerequisites
