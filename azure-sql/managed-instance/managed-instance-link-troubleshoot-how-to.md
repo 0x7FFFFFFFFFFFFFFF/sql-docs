@@ -194,6 +194,10 @@ ALTER AVAILABILITY GROUP [<DAGName>] FAILOVER
 GO 
 ```
 
+## Expired certificate
+
+It's possible for the certificate used for the link to expire. If the certificate expires, the link fails. To resolve this issue, [rotate the certificate](managed-instance-link-best-practices.md#rotate-certificate). 
+
 ## Test network connectivity
 
 [!INCLUDE [azure-sql-managed-instance-link-check-network](../includes/sql-managed-instance/azure-sql-managed-instance-link-check-network.md)]
