@@ -29,7 +29,7 @@ helpviewer_keywords:
 The link failed to create because either: 
 - the connection to the secondary replica failed
 - the server didn't respond after a prolonged period of time
-- the link already exists
+
 
 Error 41986 could be due to network connectivity issues or incorrectly configured firewall rules during the link creation process, or after the link is already created.
 
