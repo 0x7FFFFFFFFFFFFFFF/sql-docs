@@ -51,11 +51,7 @@ The following table lists features of SQL Server on Azure VMs that have been mad
 | [Azure Update Manager](../azure-update-manager-sql-vm.md) | April 2024 | Automatically patch multiple SQL Server VMs at scale with the Azure Update Manager integrated in to the [SQL virtual machines](manage-sql-vm-portal.md) resource in the Azure portal, including Cumulative Updates. |
 | [Azure SQL triggers for Azure Functions](/azure/azure-functions/functions-bindings-azure-sql-trigger) | March 2024 | Azure Functions supports function triggers for SQL Server on Azure VMs. |
 | [Azure Elastic SAN](performance-guidelines-best-practices-storage.md#azure-elastic-san) | February 2024 | Place your SQL Server workloads on an Azure Elastic SAN for improved performance, throughput, and cost. | 
-| [SQL VM health notifications](manage-sql-vm-portal.md#overview-page) | September 2023 | The **Overview** page of the SQL virtual machines resource in the Azure portal now displays information about the health of the [SQL IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md), as well as error conditions when the state is _unhealthy_ or _failed_. Review [Troubleshoot the extension](sql-agent-extension-troubleshoot-known-issues.md) to learn more. | 
-| [Configure AG from Azure portal](availability-group-azure-portal-configure.md) | August 2023 | Deploy an Always On availability group to multiple subnets by using the Azure portal. |
-| [Azure SQL bindings for Azure Functions](/azure/azure-functions/functions-bindings-azure-sql) | May 2023 | Azure Functions supports input bindings, and output bindings for the Azure SQL and SQL Server products. | 
-| [Auto upgrade SQL IaaS Agent extension](manage-sql-vm-portal.md#sql-iaas-agent-extension-settings) | April 2023 | It's now possible to enable the automatic upgrade of your SQL IaaS Agent extension to ensure you're automatically receiving the latest updates to the extension every month |
-| [Microsoft Entra authentication](configure-azure-ad-authentication-for-sql-vm.md) | April 2023 | Configure Microsoft Entra authentication for your SQL Server on Azure VMs. |  
+
 
 ## Documentation changes 
 
@@ -80,50 +76,6 @@ Learn about significant changes to the SQL Server on Azure VMs documentation. Fo
 | Changes | Details |
 | --- | --- |
 | **Microsoft Entra authentication in any cloud**| It's now possible to configure Microsoft Entra authentication for your SQL Server on Azure VMs in any cloud. Review [Microsoft Entra authentication](configure-azure-ad-authentication-for-sql-vm.md) to learn more. |
-
-### September 2024
-
-| Changes | Details |
-| --- | --- |
-| **Azure Key Vault Managed Hardware Security Module (HSM) support with Extensible Key Management**| Azure Key Vault Managed HSM is supported for SQL Server and SQL Server on Azure VMs when using the latest version of the SQL Server Connector, as well as Azure SQL. For more information, see [Set up SQL Server TDE Extensible Key Management by using Azure Key Vault](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault). |
-|**Automated patching retirement** | The [automated patching](automated-patching.md) feature will retire. Currently scheduled for September 17, 2027. Migrate to [Azure Update Manager](../azure-update-manager-sql-vm.md) as soon as possible to continue receiving new updates to the patching feature for your SQL Server on Azure VM and avoid future service disruptions. |
-
-### August 2024
-
-| Changes | Details |
-| --- | --- |
-| **FCI with Azure Elastic SAN preview**| It's now possible to deploy your SQL Server failover cluster instance (FCI) using Azure Elastic SAN volumes. Review [FCI with Azure Elastic SAN](failover-cluster-instance-azure-elastic-san-manually-configure.md) to learn more. Using this storage solution for your FCI is currently in preview. |
-
-### May 2024
-
-| Changes | Details |
-| --- | --- |
-| **I/O Analysis preview** | Use the Azure portal to identify I/O performance issues with your SQL Server workloads from exceeding virtual machine and data disk limits. This feature is currently in preview. Review [I/O Analysis](storage-performance-analysis.md) to learn more. | 
-
-
-### April 2024
-
-| Changes | Details |
-| --- | --- |
-| **Azure Update Manager GA** | Automatically patch multiple SQL Server VMs at scale with the Azure Update Manager integrated in to the [SQL virtual machines](manage-sql-vm-portal.md) resource in the Azure portal, including Cumulative Updates, which isn't currently possible with the existing Automated Patching feature. This feature is now generally available. To learn more, review [Azure Update Manager for SQL Server on Azure VMs](../azure-update-manager-sql-vm.md). | 
-| **Deploy multi-subnet AG with commandline tools** | You can deploy an Always On availability group to multiple subnets by using PowerShell and the Azure CLI. Review [Deploy multi-subnet AG](availability-group-az-commandline-configure-multi-subnet.md) to get started. | 
-
-### March 2024
-
-| Changes | Details |
-| --- | --- |
-|**Azure SQL triggers for Azure Functions GA** | Azure Functions supports function triggers for SQL Server on Azure VMs. This feature is now generally available. Review [SQL triggers for Azure Functions](/azure/azure-functions/functions-bindings-azure-sql) to learn more. |
-| **Deploy SQL VM with Premium SSD v2 in Azure portal preview** | For improved throughput and performance, provision your SQL Server on Azure VMs with Premium SSD v2 disks by using the Azure portal.  Deploying your SQL Server VMs with Premium SSD v2 in the Azure portal is currently in preview. To learn more, review [Deploy SQL Server on Azure VMs with Premium SSD v2](storage-configuration-premium-ssd-v2.md). | 
-
-
-### February 2024
-
-| Changes | Details |
-| --- | --- |
-|**Azure Elastic SAN GA** | You can now place your SQL Server workloads on an Azure Elastic SAN for improved performance, throughput, and cost. The Azure Elastic SAN is now generally available (GA).  Review [Azure Elastic SAN](performance-guidelines-best-practices-storage.md#azure-elastic-san) to learn more.| 
-|**Configure log shipping** | Learn to configure log shipping between two SQL Server on Azure VMs. Review [Configure log shipping](log-shipping-configure.md) to learn more. |
-
-
 
 ## Archive
 

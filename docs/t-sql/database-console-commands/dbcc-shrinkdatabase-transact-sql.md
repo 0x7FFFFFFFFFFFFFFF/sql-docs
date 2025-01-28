@@ -4,7 +4,7 @@ description: DBCC SHRINKDATABASE shrinks the size of the data and log files in t
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: umajay, KevinConanMSFT, dplessMSFT, randolphwest
-ms.date: 07/03/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "language-reference"
@@ -170,8 +170,6 @@ You can't shrink a database while the database is being backed up. Conversely, y
 When specified with WAIT_AT_LOW_PRIORITY, the shrink operation's Sch-M lock request waits with low priority when executing the command for one minute. If the operation is blocked for the duration, the specified ABORT_AFTER_WAIT action will be executed.
 
 In Azure Synapse SQL pools, running a shrink command is not recommended as this is an I/O intensive operation and can take your dedicated SQL pool (formerly SQL DW) offline. In addition, there will be costing implications to your data warehouse snapshots after running this command.
-
-[Database and file shrink operations](/azure/azure-sql/database/file-space-manage) are currently in preview for Azure SQL Database Hyperscale. For more information on the preview, see [Shrink for Azure SQL Database Hyperscale](https://aka.ms/hs-shrink-preview).
 
 ## Known issues
 

@@ -4,7 +4,7 @@ description: This page describes how to manage file space with single and pooled
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: oslake, mathoma
-ms.date: 01/21/2025
+ms.date: 01/28/2025
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: conceptual
@@ -194,7 +194,6 @@ In Azure SQL Database, to shrink files you can use either `DBCC SHRINKDATABASE` 
         - Shrinking multiple data files concurrently lets you complete the shrink operation faster. If you use concurrent data file shrink, you might observe transient blocking of one shrink request by another.
     - If the tail of the file does not contain data, it can reduce allocated file size faster by specifying the `TRUNCATEONLY` argument. This does not require data movement within the file.
 - For more information about these shrink commands, see [DBCC SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=azuresqldb-current&preserve-view=true) and [DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql?view=azuresqldb-current&preserve-view=true).
-- Database and file shrink operations are supported in preview for Azure SQL Database Hyperscale. For more information, see [Shrink for Azure SQL Database Hyperscale](https://aka.ms/hs-shrink-preview).
 
 The following examples must be executed while connected to the target user database, not the `master` database.
 
