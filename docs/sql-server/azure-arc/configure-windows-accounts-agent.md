@@ -94,6 +94,7 @@ The extension also grants permissions to instance and database objects as featur
 | | **db_datawriter** role | `msdb` | Feature dependent |
 | | **db_datareader** role | `msdb` | Feature dependent |
 | **Availability group discovery** | `VIEW ANY DEFINITION` | Server level | Essential |
+| **Availability group failover**|`ALTER ANY AVAILABILITY GROUP`| Server level| Feature dependent|
 | **Purview** | `SELECT` | All databases | Feature dependent |
 | | `EXECUTE` | All databases | Feature dependent |
 | | `CONNECT ANY DATABASE` | Server level | Feature dependent |
