@@ -5,7 +5,7 @@ description: Learn about the features and documentation improvements for Azure S
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, randolphwest
-ms.date: 07/24/2024
+ms.date: 01/22/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -23,8 +23,33 @@ This article summarizes older documentation changes associated with new features
 
 Return to [What's new in Azure SQL Managed Instance?](doc-changes-updates-release-notes-whats-new.md)
 
-## 2023 
+## 2024
 
+| Changes | Month | Details |
+| --- | --- | --- |
+|**Free instance offer updates** | November | The free offer has a few new updates, such as dramatically simplifying the upgrade of your free instance to a paid version, and viewing how many free vCore hours remain for the month. Additionally, the free offer is now available in another nine subscription types. This feature is still in preview. Review [Free offer](free-offer.md#whats-new) to learn more. |
+|**Instance pools GA** | November | Save on costs and share resources between multiple instances in a pool within a single virtual machine. A convenient and cost-efficient way to migrate smaller SQL Server instances to the cloud, and the only way to deploy a 2-vCore managed instance. And now, with [reservations support](../database/reservations-discount-overview.md), you can save significantly more on your compute by allocating your reservations to an instance pool. Instance pools are now generally available. Review [Instance pools](instance-pools-overview.md) to learn more.  |
+|**Fail over a link with T-SQL GA** |  October | You can now fail over a [Managed Instance link](managed-instance-link-feature-overview.md) by using Transact-SQL (T-SQL) commands. This feature is now generally available. Review [Fail over a link with T-SQL](managed-instance-link-failover-how-to.md?tabs=tsql#fail-over-a-database) to learn more. |
+|**Link from SQL MI to SQL Server GA** |  October | Configure a link *from* Azure SQL Managed Instance to SQL Server 2022. This feature is now generally available. Review [Link from SQL MI to SQL Server](managed-instance-link-feature-overview.md)  to learn more.  |
+|**Two-way DR with SQL Server 2022 GA** | October | In the event of a disaster, you can fail your SQL Server 2022 workloads to Azure SQL Managed Instance using the link, and then, once the disaster is mitigated, you can fail back to SQL Server. This feature is now generally available. Review [Two-way DR with SQL Server 2022](managed-instance-link-disaster-recovery.md) to learn more.|
+| **CURRENT_DATE Transact-SQL GA** | August | The `CURRENT_DATE` Transact-SQL (T-SQL) function returns the current database system date as a date value, without the database time and time zone offset. This function is now generally available. For more information, see [CURRENT_DATE (Transact-SQL)](/sql/t-sql/functions/current-date-transact-sql). |
+| **JSON native data type preview** |  August | The new [**JSON** native data type](/sql/t-sql/data-types/json-data-type) and is currently in preview. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). Your SQL managed instance must be configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy).|
+| **JSON aggregate functions preview** |  August | Two new **JSON** aggregate functions [JSON_OBJECTAGG and JSON_ARRAYAGG](/sql/relational-databases/json/json-data-sql-server#json-data-from-aggregates) enable construction of JSON objects or arrays based on an aggregate from SQL data. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). Your SQL managed instance must be configured with the [the Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy).|
+| **Fail over link with T-SQL preview** |  August | You can now fail over a [Managed Instance link](managed-instance-link-feature-overview.md) by using Transact-SQL (T-SQL) commands. This capability is currently in preview starting with [SQL Server 2022 CU13 (KB5036432)](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate13). To learn more, review [fail over a database](managed-instance-link-failover-how-to.md?tabs=tsql#fail-over-a-database). |
+|**Native Windows principals**| July | [Native Windows principals](native-windows-principals.md) in SQL Managed Instance is in preview. |
+|**Advance notifications GA**| June | [Advance notifications](advance-notifications.md) for upcoming SQL managed instance [maintenance windows](maintenance-window.md) are now generally available. |
+|**November 2022 feature wave integration** | June | Changes and capabilities introduced in the November 2022 feature wave are now default for all instances. November 2022 feature selection options are being removed from areas in the Azure portal.| 
+|**Instance pool in the portal** | May | It's now possible to create a new instance pool, or a new instance inside an existing instance pool, by using the Azure portal. Review [Configure instance pool](instance-pools-configure.md?view=azure-portal&preserve-view=true#create-instance-pool) to learn more. The instance pool feature remains in preview.  |
+|**Update policy GA** | May | Use the update policy to control your internal database format alignment and access to the latest SQL Database Engine features. You can choose to either limit the feature set to features that are available in SQL Server 2022, or ensure your instance takes advantage of all the latest features of Azure SQL Managed Instance. This feature is generally available. Review [Update policy](update-policy.md) to learn more.  | 
+| **Zone redundancy guide** | May | We've published a guide making it easier for you to enable [zone redundancy](instance-zone-redundancy-configure.md) for Azure SQL Managed Instance. | 
+|**Azure SQL triggers for Azure Functions GA** | March | Azure Functions supports function triggers for Azure SQL Managed Instance. This feature is now generally available. Review [Azure SQL triggers for Azure Functions](/azure/azure-functions/functions-bindings-azure-sql) to learn more. |
+| **Database watcher for Azure SQL preview** | March | [Database watcher](../database-watcher-overview.md) is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. This feature is now in preview.  Learn more about [database watchers](https://aka.ms/dbwatcher-preview-announcement).|
+|**Next-gen General Purpose preview** |  March | An architectural upgrade of the General Purpose service tier that uses managed disks for greater resource flexibility, and improved performance while maintaining the same baseline cost as the General Purpose service tier. This service tier upgrade is currently in preview. Review [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) to learn more.   |
+| **OBJECT_ID T-SQL syntax preview** | February | The [CREATE USER](/sql/t-sql/statements/create-user-transact-sql) Transact-SQL (T-SQL) syntax has been extended to include `WITH OBJECT_ID` to support creating Microsoft Entra logins and users in Azure SQL Managed Instance that have nonunique names. Using the `OBJECT_ID` syntax to create users and logins in Azure SQL Managed Instance is currently in preview. To learn more, review [Microsoft Entra nonunique name support](../database/authentication-microsoft-entra-create-users-with-nonunique-names.md). | 
+|**Instance pool preview refresh** | January | Instance pools have a number of additional capabilities, such as the ability to deploy a 2-vCore instance. The preview of this feature has been refreshed. Review [instance pools](instance-pools-overview.md#whats-new) to learn more. |
+
+
+## 2023 
 
 | Changes | Month | Details |
 | --- | --- | --- |
