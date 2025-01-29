@@ -268,21 +268,74 @@ AKV offers the following components of availability and resilience that are prov
 
 ## Geo-DR and customer-managed TDE
 
-In both [active geo-replication](active-geo-replication-overview.md) and [failover groups](failover-group-sql-db.md) scenarios, the primary and secondary servers involved can be linked either to the same key vault (in any region) or to separate key vaults. If separate key vaults are linked to the primary and secondary servers, customer is responsible for keeping the key material across the key vaults consistent, so that geo-secondary is in sync and can take over using the same key from its linked key vault if primary becomes inaccessible due to an outage in the region and a failover is triggered. Up to four secondaries can be configured, and chaining (secondaries of secondaries) isn't supported.
+In both [active geo-replication](active-geo-replication-overview.md) and [failover groups](failover-group-sql-db.md) scenarios, the primary and secondary servers involved can be linked to the Azure Key Vault located in any region. The server and key vault don't have to be collocated in the same region. With this, for simplicity, the primary and secondary servers can be connected to the same key vault (in any region). This helps avoid scenarios where key material might be out of sync if separate key vaults are used for both the servers.  
 
-To avoid issues while establishing or during geo-replication due to incomplete key material, it's important to follow these rules when configuring customer-managed TDE (if separate key vaults are used for the primary and secondary servers):
+Azure Key Vault has multiple layers of redundancy in place to make sure that the keys and key vaults remain available in case of service or region failures. The redundancy is supported by the non-paired as well as in paired regions.  For more information, see [Azure Key Vault availability and redundancy](/azure/key-vault/general/disaster-recovery-guidance).
 
-- All key vaults involved must have same properties, and same access rights for respective servers.
+There are several options for storing the TDE protector key, based on the customers' requirements:
 
-- All key vaults involved must contain identical key material. It applies not just to the current TDE protector, but to the all previous TDE protectors that might be used in the backup files.
+- Leverage Azure Key Vault and the native paired region resiliency or non-paired region resiliency.
 
-- Both initial setup and rotation of the TDE protector must be done on the secondary first, and then on primary.
+- Leverage customer HSM and load keys in Azure Key Vault in separate AKVs across multiple regions.
 
-:::image type="content" source="media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png" alt-text="Diagram showing failover groups and geo-dr." lightbox="media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png":::
+- Leverage Managed HSM and the cross-region replication option.
+  - This option allows the customer to select the desired region where the keys will be replicated.
 
-To test a failover, follow the steps in [Active geo-replication overview](active-geo-replication-overview.md). Testing failover should be done regularly to validate that SQL Database has maintained access permission to both key vaults.
+The following diagram represents a configuration for paired region (primary and secondary) for an AKV cross-failover with Azure SQL setup for geo-replication using a failover group:
 
-**Azure SQL Database server and SQL Managed Instance in one region can now be linked to key vault in any other region.** The server and key vault don't have to be colocated in the same region. With this, for simplicity, the primary and secondary servers can be connected to the same key vault (in any region). This helps avoid scenarios where key material might be out of sync if separate key vaults are used for both the servers. Azure Key Vault has multiple layers of redundancy in place to make sure that your keys and key vaults remain available in case of service or region failures. [Azure Key Vault availability and redundancy](/azure/key-vault/general/disaster-recovery-guidance)
+:::image type="content" source="media/azure-key-vault-cross-region-failover-paried.png" alt-text="Diagram showing Azure Key Vault cross-region failover support for a paired region." lightbox="media/azure-key-vault-cross-region-failover-paried.png":::
+
+### Azure Key Vault remarks for Geo-DR
+
+- Both primary and secondary servers in Azure SQL access the AKV in the primary region.
+
+- The AKV failover is initiated by the AKV service and not by the customer.
+
+- In case of AKV failover to the secondary region, the server in Azure SQL can still access the same AKV. Although internally, the AKV connection is redirected to the AKV in the secondary region.
+
+- When the AKV in the primary and secondary regions are accessible, the key rotation is supported for both AKVs.
+
+- Once the failover occurs, the key rotation isn't allowed until the failback occurs.
+
+- Customer can't manually connect to the secondary region.
+
+- The AKV in the secondary region is in a read-only state until the failback occurs.
+
+Customer can't choose or check what region the AKV is currently in.
+
+- For non-paired region, both Azure SQL servers access the AKV  in the first region (as indicated on the graph) and the AKV uses zone-redundant storage  to replicate the data within the region, across independent availability zones of the same region.
+
+For more information, see [Azure Key Vault availability and redundancy](/azure/key-vault/general/disaster-recovery-guidance), [Azure region pairs and nonpaired regions](/azure/reliability/regions-paired), and [Service-level agreements for Azure Key Vault](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1&year=2024).
+
+### Azure SQL remarks for Geo-DR and AKV
+
+- Use the zone-redundant option of Azure SQL MI and Azure SQL DB to increase resilience. For more information, see [What are Azure availability zones?](/azure/reliability/availability-zones-overview).
+
+- Use failover groups for Azure SQL MI and Azure SQL DB for disaster recovery to a secondary region. For more information, see [Failover groups overview & best practices](failover-group-sql-db.md).
+
+- The configuration might require a more complex DNS zone if private endpoints are used in Azure SQL (for example, it can't create 2 private endpoints to the same resource in the same DNS zone).
+
+- Ensure applications leverages retry logic.
+
+- There are several scenarios when customers might want to choose Managed Hardware Security Modules (HSM) solution over AKV:
+
+  - Manual connection requirement to the secondary vault (a URL is exposed).
+
+  - Read access requirement to the vault even if a failure occurs.
+
+  - Flexibility to choose which region their key material is replicated to
+
+    - Requires enabling cross-region replication which creates the second Managed HSM pool in the second region.
+
+  - Using the Managed HSM allows customers to create an exact replica for HSM if the original is lost or unavailable.
+
+  - Use of Managed HSM for security or regulatory requirements.
+
+  - Having the ability to back up the entire vault versus backing up individual keys.
+
+  - Read access requirement to the vault even if a failure occurs.
+
+For more information, see [Enable multi-region replication on Azure Managed HSM](/azure/key-vault/managed-hsm/multi-region-replication) and [Managed HSM disaster recovery](/azure/key-vault/managed-hsm/disaster-recovery-guide).
 
 ## Azure Policy for customer-managed TDE
 
