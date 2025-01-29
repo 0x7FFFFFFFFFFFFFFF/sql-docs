@@ -4,7 +4,7 @@ description: "Learn about the optimized locking enhancement to the database engi
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, peskount, praspu, dfurman
-ms.date: 12/04/2024
+ms.date: 01/28/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -21,7 +21,7 @@ monikerRange: "=azuresqldb-current || =fabric"
 
 [!INCLUDE [asdb-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
 
-This article introduces the optimized locking feature, a new database engine capability that offers an improved transaction locking mechanism that reduces lock memory consumption and blocking for concurrent transactions.
+This article introduces optimized locking, a database engine capability that offers an improved transaction locking mechanism to reduce lock memory consumption and blocking for concurrent transactions.
 
 ## What is optimized locking?
 
@@ -85,7 +85,7 @@ When a transaction needs to modify data, it requests a lock on the data. The loc
 
 When multiple transactions attempt to access the same data concurrently, the database engine must resolve potentially complex conflicts with concurrent reads and writes. Locking is one of the mechanisms by which the engine can provide the semantics for the ANSI SQL transaction [isolation levels](../sql-server-transaction-locking-and-row-versioning-guide.md#isolation-levels-in-the-database-engine). Although locking in databases is essential, reduced concurrency, deadlocks, complexity, and lock overhead can affect performance and scalability.
 
-### Optimized locking and transaction ID (TID) locking
+### Transaction ID (TID) locking
 
 When [row versioning](../sql-server-transaction-locking-and-row-versioning-guide.md#Row_versioning) based isolation levels are in use or when ADR is enabled, every row in the database internally contains a transaction ID (TID). This TID is persisted on disk. Every transaction modifying a row stamps that row with its TID.
 
@@ -127,19 +127,21 @@ If optimized locking is enabled, the request holds only a single `X` lock on the
 
 :::image type="content" source="media/optimized-locking/sys-dm-tran-locks-with-optimized-locking.png" alt-text="Screenshot of the result set of a query on sys.dm_tran_locks for a single session shows only one lock when optimized locking is enabled." lightbox="media/optimized-locking/sys-dm-tran-locks-with-optimized-locking.png":::
 
-If optimized locking isn't enabled, the same request holds four locks - three `X` key locks on each row and one `IX` (intent exclusive) lock on the page containing the rows:
+If optimized locking isn't enabled, the same request holds four locks - one `IX` (intent exclusive) lock on the page containing the rows, and three `X` key locks on each row:
 
 :::image type="content" source="media/optimized-locking/sys-dm-tran-locks-without-optimized-locking.png" alt-text="Screenshot of the result set of a query on sys.dm_tran_locks for a single session shows three locks when optimized locking isn't enabled." lightbox="media/optimized-locking/sys-dm-tran-locks-without-optimized-locking.png":::
 
 The [sys.dm_tran_locks](../system-dynamic-management-views/sys-dm-tran-locks-transact-sql.md) dynamic management view (DMV) is useful in examining or troubleshooting locking issues, such as observing optimized locking in action.
 
-### Optimized locking and lock after qualification (LAQ)
+### Lock after qualification (LAQ)
 
-Building on the TID infrastructure, optimized locking changes how DML statements such as `INSERT`, `UPDATE`, `DELETE`, and `MERGE` acquire locks.
+Building on the TID infrastructure, optimized locking changes how DML statements such as `INSERT`, `UPDATE`, and `DELETE` acquire locks.
 
 Without optimized locking, query predicates are checked row by row in a scan by first taking an update (`U`) row lock. If the predicate is satisfied, an exclusive (`X`) row lock is taken before updating the row and held until the end of transaction.
 
-With optimized locking, and when the `READ COMMITTED` snapshot isolation level (RCSI) is enabled, predicates are checked on latest committed version of the row without taking any locks. If the predicate doesn't satisfy, the query moves to the next row in the scan. If the predicate is satisfied, an `X` row lock is taken to update the row. The `X` row lock is released as soon as the row update is complete, before the end of the transaction.
+With optimized locking, and when the `READ COMMITTED` snapshot isolation level (RCSI) is enabled, predicates can be optimistically checked on latest committed version of the row without taking any locks. If the predicate doesn't satisfy, the query moves to the next row in the scan. If the predicate is satisfied, an `X` row lock is taken to update the row.
+
+In other words, the lock is taken *after qualification* of the row for modification. The `X` row lock is released as soon as the row update is complete, before the end of the transaction.
 
 Since predicate evaluation is performed without acquiring any locks, concurrent queries modifying different rows don't block each other.
 
@@ -166,9 +168,15 @@ GO
 
 Without optimized locking, session 2 is blocked because session 1 holds a `U` lock on the row session 2 needs to update. However, with optimized locking, session 2 isn't blocked because `U` locks aren't taken, and because in the latest committed version of row 1, column `a` equals to 1, which doesn't satisfy the predicate of session 2.
 
-Because with LAQ `U` locks aren't taken, a concurrent transaction might modify the row after the predicate has been evaluated. If the predicate is satisfied and there is no other active transaction on the row (no `X` TID lock), the row is modified. If there is an active transaction, the database engine waits for it to complete, and re-evaluates the predicate again at the time of modification because the other transaction might have modified the row. If the predicate is still satisfied, the row is modified.
+LAQ is performed optimistically on the assumption that a row isn't modified after checking the predicate. If the predicate is satisfied and the row hasn't been modified after checking the predicate, it is modified by the current transaction.
 
-Consider the following example where predicate evaluation is automatically retried because another transaction has changed the row:
+Because `U` locks aren't taken, a concurrent transaction might modify the row after the predicate has been evaluated. If there is an active transaction holding an `X` TID lock on the row, the database engine waits for it to complete. If the row has changed after the predicate was evaluated previously, the database engine re-evaluates (re-qualifies) the predicate again before modifying the row. If the predicate is still satisfied, the row is modified.
+
+Predicate re-qualification is supported by a subset of the query engine operators. If predicate re-evaluation is needed, but the query plan uses an operator that doesn't support predicate re-qualification, the database engine internally aborts statement processing and restarts it without LAQ. When such an abort occurs, the `lock_after_qual_stmt_abort` extended event fires.
+
+Some statements, for example `UPDATE` statements with variable assignment and statements with the [OUTPUT](../../t-sql/queries/output-clause-transact-sql.md) clause, cannot be aborted and restarted without changing their semantics. For such statements, LAQ is not used.
+
+In the following example, the predicate is re-evaluated because another transaction has changed the row:
 
 ```sql
 CREATE TABLE t3
@@ -187,6 +195,16 @@ GO
 | | `BEGIN TRANSACTION;`<br />`UPDATE t3`<br />`SET b = b + 10`<br />`WHERE a = 1;` |
 | `COMMIT TRANSACTION;` | |
 | | `COMMIT TRANSACTION;` |
+
+#### LAQ heuristics
+
+As described in [Lock after qualification (LAQ)](#lock-after-qualification-laq), when LAQ is used, some statements might be internally restarted and processed without LAQ. If this happens frequently, the overhead of repeated processing might become significant. To keep this overhead to a minimum, optimized locking uses a heuristics mechanism to track repeated processing. This mechanism disables LAQ for the database if the overhead exceeds a threshold.
+
+For the purposes of the heuristics mechanism, the work done by a statement is measured in the number of pages it has processed (logical reads). If the database engine is modifying a row that has been modified by another transaction after statement processing started, then the work done by the statement is treated as potentially wasted because the statement might be aborted and restarted. The system keeps track of the total potentially wasted work and the total work done by all statements in the database.
+
+LAQ is disabled for the database if the percentage of the potentially wasted work exceeds a threshold. LAQ is also disabled if the number of restarted statements exceeds a threshold. The `laq_skip_reason_wasted_work` and `laq_skip_reason_conflict_count` fields of the `locking_stats` extended event provide the number of times LAQ was disabled for one of these reasons, respectively.
+
+If the wasted work or the number of restarted statements falls below the threshold, LAQ is re-enabled for the database.
 
 ### <a id="behavior"></a> Query behavior changes with optimized locking and RCSI
 
@@ -255,6 +273,9 @@ The following improvements help you monitor and troubleshoot blocking and deadlo
     - `XACT` wait resources. For more information, see `wait_resource` in [sys.dm_exec_requests (Transact-SQL)](../system-dynamic-management-views/sys-dm-exec-requests-transact-sql.md).
 - Deadlock graph
     - Under each resource in the deadlock report `<resource-list>`, each `<xactlock>` element reports the underlying resources and specific information for locks of each member of a deadlock. For more information and an example, see [Optimized locking and deadlocks](../sql-server-deadlocks-guide.md#optimized-locking-and-deadlocks).
+- Extended events
+    - The `locking_stats` event fires every several minutes and provides the aggregate lock-related statistics since the last time it fired. This includes the number of lock escalations, whether TID and LAQ are enabled, statistics for LAQ predicate re-evaluation (re-qualification), heuristics, and skips, and other lock diagnostic data.
+    - The `lock_after_qual_stmt_abort` event fires when a statement is internally aborted and restarted because of a conflict with another transaction. For more information, see [Lock after qualification (LAQ)](#lock-after-qualification-laq).
 
 ## Best practices with optimized locking
 

@@ -3,7 +3,7 @@ title: "UPDATE (Transact-SQL)"
 description: "UPDATE (Transact-SQL)"
 author: VanMSFT
 ms.author: vanto
-ms.date: "05/19/2020"
+ms.date: "01/29/2025"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -473,9 +473,12 @@ ID     Value
 (2 row(s) affected)  
 ```  
 
-## Locking behavior  
- An UPDATE statement acquires an exclusive (X) lock on any rows that it modifies, and holds these locks until the transaction completes. Depending on the query plan for the UPDATE statement, the number of rows being modified, and the isolation level of the transaction, locks may be acquired at the PAGE level or TABLE level rather than the ROW level. To avoid these higher level locks, consider dividing update statements that affect thousands of rows or more into batches, and ensure that any join and filter conditions are supported by indexes. See the article on [Locking in the Database Engine](../../relational-databases/sql-server-transaction-locking-and-row-versioning-guide.md#lock_engine) for more details on locking mechanics in SQL Server.  
-  
+## Locking behavior
+
+An UPDATE statement acquires an exclusive (`X`) lock on any rows that it modifies, and holds these locks until the transaction completes. Depending on the query plan for the UPDATE statement, the number of rows being modified, and the isolation level of the transaction, locks may be acquired at the page level or table level rather than the row level. To avoid these higher level locks, consider dividing update statements that affect thousands of rows or more into batches, and ensure that any join and filter conditions are supported by indexes. See the article on [Locking in the Database Engine](../../relational-databases/sql-server-transaction-locking-and-row-versioning-guide.md#lock_engine) for more details on locking mechanics in SQL Server.
+
+If optimized locking is enabled, some aspects of locking behavior for `UPDATE` change. For example, exclusive (`X`) locks aren't held until the transaction completes. For more information, see [Optimized locking](../../relational-databases/performance/optimized-locking.md).
+
 ## Logging behavior  
  The UPDATE statement is logged; however, partial updates to large value data types using the **\.WRITE** clause are minimally logged. For more information, see "Updating Large Value Data Types" in the earlier section "Data Types".  
   
