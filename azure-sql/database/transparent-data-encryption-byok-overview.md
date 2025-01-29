@@ -283,7 +283,7 @@ There are several options for storing the TDE protector key, based on the custom
 
 The following diagram represents a configuration for paired region (primary and secondary) for an AKV cross-failover with Azure SQL setup for geo-replication using a failover group:
 
-:::image type="content" source="media/azure-key-vault-cross-region-failover-paried.png" alt-text="Diagram showing Azure Key Vault cross-region failover support for a paired region." lightbox="media/azure-key-vault-cross-region-failover-paried.png":::
+:::image type="content" source="media/transparent-data-encryption-byok-overview/azure-key-vault-cross-region-failover-paried.png" alt-text="Diagram showing Azure Key Vault cross-region failover support for a paired region." lightbox="media/transparent-data-encryption-byok-overview/azure-key-vault-cross-region-failover-paried.png":::
 
 ### Azure Key Vault remarks for Geo-DR
 
