@@ -29,8 +29,8 @@ Optimized locking helps to reduce lock memory as very few locks are held even fo
 
 Optimized locking is composed of two primary components: **transaction ID (TID) locking** and **lock after qualification (LAQ)**.
 
-- A transaction ID (TID) is a unique identifier of a transaction. Each row is labeled with the last TID that modified it. Instead of potentially many key or row identifier locks, a single lock on the TID is used. For more information, see [Transaction ID (TID) locking](#optimized-locking-and-transaction-id-tid-locking).
-- Lock after qualification (LAQ) is an optimization that evaluates query predicates using the latest committed version of the row without acquiring a lock, thus improving concurrency. For more information, see [Lock after qualification (LAQ)](#optimized-locking-and-lock-after-qualification-laq).
+- A transaction ID (TID) is a unique identifier of a transaction. Each row is labeled with the last TID that modified it. Instead of potentially many key or row identifier locks, a single lock on the TID is used. For more information, see [Transaction ID (TID) locking](#transaction-id-tid-locking).
+- Lock after qualification (LAQ) is an optimization that evaluates query predicates using the latest committed version of the row without acquiring a lock, thus improving concurrency. For more information, see [Lock after qualification (LAQ)](#lock-after-qualification-laq).
 
 For example:
 
@@ -63,7 +63,7 @@ SELECT IsOptimizedLockingOn = DATABASEPROPERTYEX(DB_NAME(), 'IsOptimizedLockingO
 Optimized locking builds on other database features:
 
 - Optimized locking requires [accelerated database recovery (ADR)](/azure/azure-sql/accelerated-database-recovery) to be enabled on the database.
-- For the most benefit from optimized locking, [read committed snapshot isolation (RCSI)](../../t-sql/statements/alter-database-transact-sql-set-options.md?view=azuresqldb-current&preserve-view=true#read_committed_snapshot--on--off--1) should be enabled for the database. The [LAQ](#optimized-locking-and-lock-after-qualification-laq) component of optimized locking is in effect only if RCSI is enabled.
+- For the most benefit from optimized locking, [read committed snapshot isolation (RCSI)](../../t-sql/statements/alter-database-transact-sql-set-options.md?view=azuresqldb-current&preserve-view=true#read_committed_snapshot--on--off--1) should be enabled for the database. The [LAQ](#lock-after-qualification-laq) component of optimized locking is in effect only if RCSI is enabled.
 
 Both ADR and RCSI are enabled by default in [!INCLUDE [asdb](../../includes/ssazure-sqldb.md)]. To verify that these options are enabled for your current database, connect to the database and run the following T-SQL query:
 
