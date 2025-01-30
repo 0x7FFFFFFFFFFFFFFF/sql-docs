@@ -325,7 +325,7 @@ There are several scenarios when customers might want to choose Managed Hardware
 
 - Flexibility to choose which region their key material is replicated to
 
-- Requires enabling cross-region replication which creates the second Managed HSM pool in the second region.
+  - Requires enabling cross-region replication which creates the second Managed HSM pool in the second region.
 
 - Using the Managed HSM allows customers to create an exact replica for HSM if the original is lost or unavailable.
 
