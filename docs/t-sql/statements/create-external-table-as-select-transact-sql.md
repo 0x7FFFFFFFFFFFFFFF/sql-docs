@@ -4,7 +4,7 @@ description: "CREATE EXTERNAL TABLE AS SELECT (CETAS) creates an external table 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, wiassaf, mlandzic, nzagorac
-ms.date: 07/26/2023
+ms.date: 01/29/2025
 ms.service: sql
 ms.topic: reference
 f1_keywords:
@@ -30,7 +30,7 @@ monikerRange: ">=aps-pdw-2016||=azure-sqldw-latest||>=sql-server-ver16||>=sql-se
 Creates an external table and then exports, in parallel, the results of a [!INCLUDE [tsql](../../includes/tsql-md.md)] SELECT statement.
 
 - [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssaps-md](../../includes/ssaps-md.md)] support Hadoop or Azure Blob storage.
-- [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions support CREATE EXTERNAL TABLE AS SELECT (CETAS) to create an external table and then export, in parallel, the result of a [!INCLUDE [tsql](../../includes/tsql-md.md)] SELECT statement to Azure Data Lake Storage (ADLS) Gen2, Azure Storage Account V2, and S3-compatible object storage.
+- [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions support `CREATE EXTERNAL TABLE AS SELECT` (CETAS) to create an external table and then export, in parallel, the result of a [!INCLUDE [tsql](../../includes/tsql-md.md)] SELECT statement to Azure Data Lake Storage (ADLS) Gen2, Azure Storage Account V2, and S3-compatible object storage.
 
 > [!NOTE]
 > The capabilities and security of CETAS for [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] are different from [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]. For more information, see the [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] version of [CREATE EXTERNAL TABLE AS SELECT](create-external-table-as-select-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true).
@@ -89,7 +89,7 @@ LOCATION must point to a folder and have a trailing `/`, for example: `aggregate
 
 **Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later
 
-`prefix://path[:port]` provides the connectivity protocol (prefix), path and optionally the port, to the external data source, where the result of the SELECT statement will be written.
+`prefix://path[:port]` provides the connectivity protocol (prefix), path, and optionally the port, to the external data source, where the result of the SELECT statement will be written.
 
 If the destination is S3-compatible object storage, a bucket must first exist, but PolyBase can create subfolders if necessary. [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] supports Azure Data Lake Storage Gen2, Azure Storage Account V2, and S3-compatible object storage. ORC files aren't currently supported.
 
@@ -103,7 +103,7 @@ Specifies the name of the external file format object that contains the format f
 
 #### REJECT options
 
-REJECT options don't apply at the time this CREATE EXTERNAL TABLE AS SELECT statement is run. Instead, they're specified here so that the database can use them at a later time when it imports data from the external table. Later, when the CREATE TABLE AS SELECT statement selects data from the external table, the database will use the reject options to determine the number or percentage of rows that can fail to import before it stops the import.
+REJECT options don't apply at the time this `CREATE EXTERNAL TABLE AS SELECT` statement is run. Instead, they're specified here so that the database can use them at a later time when it imports data from the external table. Later, when the CREATE TABLE AS SELECT statement selects data from the external table, the database will use the reject options to determine the number or percentage of rows that can fail to import before it stops the import.
 
 - **REJECT_VALUE = *reject_value***
 
@@ -127,7 +127,7 @@ REJECT options don't apply at the time this CREATE EXTERNAL TABLE AS SELECT stat
 
   Required when `REJECT_TYPE = percentage`. Specifies the number of rows to attempt to import before the database recalculates the percentage of failed rows. 
 
-  For example, if REJECT_SAMPLE_VALUE = 1000, the database will calculate the percentage of failed rows after it has attempted to import 1000 rows from the external data file. If the percentage of failed rows is less than *reject_value*, the database attempts to load another 1000 rows. The database continues to recalculate the percentage of failed rows after it attempts to import each additional 1000 rows.
+  For example, if REJECT_SAMPLE_VALUE = 1000, the database will calculate the percentage of failed rows after it has attempted to import 1000 rows from the external data file. If the percentage of failed rows is less than *reject_value*, the database attempts to load another 1,000 rows. The database continues to recalculate the percentage of failed rows after it attempts to import each additional 1,000 rows.
 
   > [!NOTE]  
   > Because the database computes the percentage of failed rows at intervals, the actual percentage of failed rows can exceed *reject_value*.
@@ -186,21 +186,21 @@ Populates the new table with the results from a SELECT statement. *select_criter
 
 ## Error handling
 
-When CREATE EXTERNAL TABLE AS SELECT exports data to a text-delimited file, there's no rejection file for rows that fail to export.
+When `CREATE EXTERNAL TABLE AS SELECT` exports data to a text-delimited file, there's no rejection file for rows that fail to export.
 
 When you create the external table, the database attempts to connect to the external location. If the connection fails, the command fails, and the external table is not created. It can take a minute or more for the command to fail because the database retries the connection at least three times.
 
-If CREATE EXTERNAL TABLE AS SELECT is canceled or fails, the database makes a one-time attempt to remove any new files and folders already created on the external data source.
+If `CREATE EXTERNAL TABLE AS SELECT` is canceled or fails, the database makes a one-time attempt to remove any new files and folders already created on the external data source.
 
 In [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssaps-md](../../includes/ssaps-md.md)], the database reports any Java errors that occur on the external data source during the data export.
 
 ## <a id="GeneralRemarks"></a> Remarks
 
-After the CREATE EXTERNAL TABLE AS SELECT statement finishes, you can run [!INCLUDE [tsql](../../includes/tsql-md.md)] queries on the external table. These operations import data into the database for the duration of the query unless you import by using the CREATE TABLE AS SELECT statement.
+After the `CREATE EXTERNAL TABLE AS SELECT` statement finishes, you can run [!INCLUDE [tsql](../../includes/tsql-md.md)] queries on the external table. These operations import data into the database for the duration of the query unless you import by using the CREATE TABLE AS SELECT statement.
 
 The external table name and definition are stored in the database metadata. The data is stored in the external data source.
 
-The CREATE EXTERNAL TABLE AS SELECT statement always creates a nonpartitioned table, even if the source table is partitioned.
+The `CREATE EXTERNAL TABLE AS SELECT` statement always creates a nonpartitioned table, even if the source table is partitioned.
 
 For [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], the option `allow polybase export` must be enabled by using `sp_configure`. For more information, see [Set `allow polybase export` configuration option](../../database-engine/configure-windows/allow-polybase-export.md).
 
@@ -226,7 +226,7 @@ CREATE TABLE, DROP TABLE, CREATE STATISTICS, DROP STATISTICS, CREATE VIEW, and D
 
 - In serverless SQL pools, external tables can't be created in a location where you currently have data. To reuse a location that has been used to store data, the location must be manually deleted on ADLS. For more limitations and best practices, see [Filter optimization best practices](/azure/synapse-analytics/sql/best-practices-serverless-sql-pool#filter-optimization).
 
-In [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] dedicated SQL pools, and [!INCLUDE [ssaps-md](../../includes/ssaps-md.md)], when CREATE EXTERNAL TABLE AS SELECT selects from an RCFile, the column values in the RCFile must not contain the pipe (`|`) character.
+In [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] dedicated SQL pools, and [!INCLUDE [ssaps-md](../../includes/ssaps-md.md)], when `CREATE EXTERNAL TABLE AS SELECT` selects from an RCFile, the column values in the RCFile must not contain the pipe (`|`) character.
 
 [SET ROWCOUNT (Transact-SQL)](../../t-sql/statements/set-rowcount-transact-sql.md) has no effect on CREATE EXTERNAL TABLE AS SELECT. To achieve a similar behavior, use [TOP (Transact-SQL)](../../t-sql/queries/top-transact-sql.md).
 
@@ -234,7 +234,7 @@ Review [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storag
 
 ### Character errors
 
-The following characters present in data may cause errors including rejected records with CREATE EXTERNAL TABLE AS SELECT to Parquet files.
+The following characters present in data can cause errors including rejected records with `CREATE EXTERNAL TABLE AS SELECT` to Parquet files.
 
 In [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssaps-md](../../includes/ssaps-md.md)], this also applies to ORC files.
 
@@ -244,13 +244,13 @@ In [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INC
 - `\r`
 - `\n`
 
-To use CREATE EXTERNAL TABLE AS SELECT containing these characters, you must first run the CREATE EXTERNAL TABLE AS SELECT statement to export the data to delimited text files where you can then convert them to Parquet or ORC by using an external tool.
+To use `CREATE EXTERNAL TABLE AS SELECT` containing these characters, you must first run the `CREATE EXTERNAL TABLE AS SELECT` statement to export the data to delimited text files where you can then convert them to Parquet or ORC by using an external tool.
 
 ## Working with parquet
 
 When working with parquet files, `CREATE EXTERNAL TABLE AS SELECT` will generate one parquet file per available CPU, up to the configured maximum degree of parallelism (MAXDOP). Each file can grow up to 190 GB, after that SQL Server will generate more Parquet files as needed.
 
-The query hint `OPTION (MAXDOP n)` will only affect the SELECT part of `CREATE EXTERNAL TABLE AS SELECT`, it has no influence on the amount of parquet files. Only database-level MAXDOP and instance-level MAXDOP is considered.
+The query hint `OPTION (MAXDOP n)` will only affect the SELECT part of `CREATE EXTERNAL TABLE AS SELECT`. It has no influence on the number of parquet files. Only database-level MAXDOP and instance-level MAXDOP is considered.
 
 
 ## Locking
@@ -323,7 +323,7 @@ GO
 
 **Applies to:** [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssaps-md](../../includes/ssaps-md.md)]
 
-This query shows the basic syntax for using a query join hint with the CREATE EXTERNAL TABLE AS SELECT statement. After the query is submitted, the database uses the hash join strategy to generate the query plan. For more information on join hints and how to use the OPTION clause, see [OPTION Clause (Transact-SQL)](../../t-sql/queries/option-clause-transact-sql.md).
+This query shows the basic syntax for using a query join hint with the `CREATE EXTERNAL TABLE AS SELECT` statement. After the query is submitted, the database uses the hash join strategy to generate the query plan. For more information on join hints and how to use the OPTION clause, see [OPTION Clause (Transact-SQL)](../../t-sql/queries/option-clause-transact-sql.md).
 
 > [!NOTE]  
 > This example specifies for 5000. If the port isn't specified, the database uses 8020 as the default port.
@@ -443,7 +443,7 @@ GO
 
 **Applies to:** [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] serverless SQL pools and dedicated SQL pools.
 
-In this example, we can see example of a template code for writing CETAS with a user-defined view as source, using managed identity as an authentication, and `wasbs:`.
+Use the following example as a template for writing CETAS with a user-defined view as the source, using a managed identity for authentication and the `abfs:` endpoint:
 
 ```sql
 CREATE DATABASE [<mydatabase>];
@@ -464,7 +464,7 @@ CREATE EXTERNAL FILE FORMAT [ParquetFF] WITH (
 GO
 
 CREATE EXTERNAL DATA SOURCE [SynapseSQLwriteable] WITH (
-    LOCATION = 'wasbs://<mystoageaccount>.dfs.core.windows.net/<mycontainer>/<mybaseoutputfolderpath>',
+    LOCATION = 'abfs[s]://<file_system>@<account_name>.dfs.core.windows.net/<path>/<file_name>',
     CREDENTIAL = [WorkspaceIdentity]
 );
 GO
@@ -535,14 +535,14 @@ GO
 
 Creates an external table and then exports, in parallel, the results of a [!INCLUDE [tsql](../../includes/tsql-md.md)] SELECT statement.
 
-You can use CREATE EXTERNAL TABLE AS SELECT (CETAS) to complete the following tasks:  
+You can use `CREATE EXTERNAL TABLE AS SELECT` (CETAS) to complete the following tasks:  
 
 - Create an external table on top of Parquet or CSV files in Azure Blob storage or Azure Data Lake Storage (ADLS) Gen2.
 - Export, in parallel, the results of a T-SQL SELECT statement into the created external table.
 - For more data virtualization capabilities of [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], see [Data virtualization with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/data-virtualization-overview).
 
 > [!NOTE]
-> This content applies to [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] only. For other platforms, choose the appropriate version of [CREATE EXTERNAL TABLE AS SELECT](create-external-table-as-select-transact-sql.md?view=azure-sqldw-latest&preserve-view=true) from the dropdrown selector.
+> This content applies to [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] only. For other platforms, choose the appropriate version of [CREATE EXTERNAL TABLE AS SELECT](create-external-table-as-select-transact-sql.md?view=azure-sqldw-latest&preserve-view=true) from the drop-down selector.
 
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -666,7 +666,7 @@ CETAS stores result sets with following SQL data types:
 
 ## Limitations and restrictions
 
-- CREATE EXTERNAL TABLE AS SELECT (CETAS) for [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] is disabled by default. For more information, see the next section, [Disabled by default](#disabled-by-default).
+- `CREATE EXTERNAL TABLE AS SELECT` (CETAS) for [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] is disabled by default. For more information, see the next section, [Disabled by default](#disabled-by-default).
 - For more information on limitations or known issues with data virtualization in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], see [Limitations and Known issues](/azure/azure-sql/managed-instance/data-virtualization-overview#limitations).
 
 Because external table data resides outside of the database, backup and restore operations only operate on data stored in the database. As a result, only the metadata is backed up and restored.
@@ -721,7 +721,7 @@ A custom role can be created for this as well, requiring the **Read** and **Writ
 
 In order to invoke the PowerShell commands on a computer, [Az package version 9.7.0](https://www.powershellgallery.com/packages/Az/9.7.0) or newer must be installed locally. Or, consider using the [Azure Cloud Shell](/azure/cloud-shell/overview) to run Azure PowerShell at [shell.azure.com](https://shell.azure.com/).
 
-First, log in to Azure and set the proper context for your subscription:
+First, sign in to Azure and set the proper context for your subscription:
 
 ```powershell
 Login-AzAccount
@@ -729,7 +729,7 @@ $SubscriptionID = "<YourSubscriptionIDHERE>"
 Select-AzSubscription -SubscriptionName $SubscriptionID
 ```
 
-To manage the server configuration option "allowPolybaseExport", adjust the following PowerShell scripts to your subscription and SQL managed instance name, then run the commands. For more information, see [Set-AzSqlServerConfigurationOption](/powershell/module/az.sql/set-azsqlserverconfigurationoption) and [Get-AzSqlServerConfigurationOption](/powershell/module/az.sql/get-azsqlserverconfigurationoption).
+To manage the server configuration option `allowPolybaseExport`, adjust the following PowerShell scripts to your subscription and SQL managed instance name, then run the commands. For more information, see [Set-AzSqlServerConfigurationOption](/powershell/module/az.sql/set-azsqlserverconfigurationoption) and [Get-AzSqlServerConfigurationOption](/powershell/module/az.sql/get-azsqlserverconfigurationoption).
 
 ```powershell
 # Enable ServerConfigurationOption with name "allowPolybaseExport"
@@ -793,10 +793,10 @@ Azure CLI argument aliases:
 
 | Short version | Aliases | 
 |:--|:--|
-| -g | --resource-group | 
-| --mi | --instance-name  --managed-instance  --managed-instance-name |
-| -n | --name  --server-configuration-option-name | 
-| --value | --server-configuration-option-value | 
+| `-g` | `--resource-group` | 
+| `--mi` | `--instance-name`  `--managed-instance`  `--managed-instance-name` |
+| `-n` | `--name`  `--server-configuration-option-name` | 
+| `--value` | `--server-configuration-option-value` | 
     
 #### [API](#tab/api)
 
@@ -852,7 +852,7 @@ Invoke-WebRequest -Method PUT -Headers $headers -Uri $uriFull -ContentType "appl
 ```
     
 > [!NOTE]
-> Setting the server configuration option via invoking the API is an asynchronous operation. It is expected that the asynchronous operation executes quickly and completes within seconds, but its execution may fail for various reasons, for example, if your SQL managed instance was down at the time of operation execution. It is therefore important to verify the outcome of the change to your configuration option. 
+> Setting the server configuration option via invoking the API is an asynchronous operation. It is expected that the asynchronous operation executes quickly and completes within seconds, but its execution can fail for various reasons, for example, if your SQL managed instance was down at the time of operation execution. It is therefore important to verify the outcome of the change to your configuration option. 
 
 To check the asynchronous operation outcome of the API call, there are two methods:
 
@@ -904,7 +904,7 @@ For more steps to troubleshoot data virtualization in [!INCLUDE [ssazuremi-md](.
 
 ### Error handling
 
-When CREATE EXTERNAL TABLE AS SELECT exports data to a text-delimited file, there's no rejection file for rows that fail to export.
+When `CREATE EXTERNAL TABLE AS SELECT` exports data to a text-delimited file, there's no rejection file for rows that fail to export.
 
 When you create the external table, the database attempts to connect to the external location. If the connection fails, the command fails, and the external table won't be created. It can take a minute or more for the command to fail because the database retries the connection at least three times.
 
