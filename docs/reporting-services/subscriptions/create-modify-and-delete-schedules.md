@@ -1,8 +1,8 @@
 ---
 title: "Create, modify, and delete schedules"
 description: Create, modify & delete Reporting Services shared schedules. For native mode, use the web portal or Management Studio. For SharePoint mode, use the service app.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions

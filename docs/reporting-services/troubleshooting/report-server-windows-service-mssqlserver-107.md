@@ -1,8 +1,8 @@
 ---
 title: "Report Server Windows Service (MSSQLServer) 107"
 description: "In this error reference page, learn about event ID 107: Report Server Windows Service (SQL Server) can't connect to the report server database."
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: troubleshooting

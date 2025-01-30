@@ -1,8 +1,8 @@
 ---
 title: "SharePoint List Connection Type"
 description: Use the information in this article about the SharePoint List connection type to learn how to build a data source.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

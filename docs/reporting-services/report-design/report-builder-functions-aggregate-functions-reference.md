@@ -1,8 +1,8 @@
 ---
 title: "Aggregate functions reference for paginated reports"
 description: Use built-in aggregate functions in expressions in Report Builder to include aggregated values in your paginated report.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

@@ -1,8 +1,8 @@
 ---
 title: "Hide an item (Report Builder)"
 description: Learn how to hide or show a report item in Report Builder, specifically by using report parameters and expressions.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder

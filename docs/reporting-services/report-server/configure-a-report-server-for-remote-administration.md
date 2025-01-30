@@ -1,8 +1,8 @@
 ---
 title: "Configure a report server for remote administration"
 description: Learn how to configure Reporting Services Report Server instances for local or remote configuration by using the configuration tool or writing custom code.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

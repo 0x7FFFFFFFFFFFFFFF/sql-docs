@@ -1,8 +1,8 @@
 ---
 title: "Format paginated report items"
 description: Discover how formatting enhances readability and makes your paginated reports more attractive in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

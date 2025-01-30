@@ -1,8 +1,8 @@
 ---
 title: "Configure a native mode report server for local administration"
 description: Learn how to configure the report server for local administration, if you install a Reporting Services report server in certain environments.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

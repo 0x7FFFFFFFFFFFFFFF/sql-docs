@@ -1,8 +1,8 @@
 ---
 title: "Operators in expressions in a paginated report"
 description: Choose from categories of operators in a paginated report that are supported in an expression to represents actions applied to terms in an expression in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

@@ -1,8 +1,8 @@
 ---
 title: "System Role properties (Management Studio)"
 description: Learn about the options on the System Roles page where you can view the system role definitions that are currently defined for the report server.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

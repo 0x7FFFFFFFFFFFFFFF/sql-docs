@@ -1,8 +1,8 @@
 ---
 title: "Microsoft Report Builder support policy"
 description: Learn about the Microsoft Report Builder support policy.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

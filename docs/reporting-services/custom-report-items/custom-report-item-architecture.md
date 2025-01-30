@@ -1,8 +1,8 @@
 ---
 title: "Custom report item architecture"
 description: Learn how the custom report item architecture is an extension that allows developers to add functionality that isn't natively supported in the RDL.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: custom-report-items

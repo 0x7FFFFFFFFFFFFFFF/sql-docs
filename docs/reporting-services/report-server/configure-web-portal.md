@@ -1,8 +1,8 @@
 ---
 title: "Configure the web portal"
 description: Learn how to configure the web portal application and used to view reports. Also, learn how to manage report server content and grant user access to a native mode report server.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

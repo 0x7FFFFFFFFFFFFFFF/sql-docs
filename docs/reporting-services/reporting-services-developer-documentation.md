@@ -1,8 +1,8 @@
 ---
 title: Reporting Services developer documentation
 description: Use the documentation to understand Reporting Services features and capabilities to build custom reporting and management tools into Web sites and Windows applications.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

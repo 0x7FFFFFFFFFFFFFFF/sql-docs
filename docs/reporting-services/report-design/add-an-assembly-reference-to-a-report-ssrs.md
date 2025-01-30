@@ -1,8 +1,8 @@
 ---
 title: "Add an assembly reference to a paginated report"
 description: Learn how to provide an assembly reference to a report so that the report processor can resolve names in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

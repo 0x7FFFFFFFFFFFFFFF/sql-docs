@@ -1,8 +1,8 @@
 ---
 title: "What is SQL Server Reporting Services?"
 description: "Learn how to create, deploy, and manage reports by using SQL Server Reporting Services (SSRS) to deliver data insights through paginated reports to web portals."
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

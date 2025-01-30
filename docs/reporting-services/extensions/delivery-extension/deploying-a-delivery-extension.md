@@ -1,8 +1,8 @@
 ---
 title: "Deploy a delivery extension"
 description: Learn how to deploy a delivery extension to a report server. See which entries to add to which configuration files so the report server locates the extension.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

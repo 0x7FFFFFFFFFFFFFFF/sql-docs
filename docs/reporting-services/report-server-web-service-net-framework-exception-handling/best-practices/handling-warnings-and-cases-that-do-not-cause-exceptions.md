@@ -1,8 +1,8 @@
 ---
 title: "Handle warnings and cases that do not cause exceptions"
 description: Learn how to handle warnings and cases that don't cause exceptions so that appropriate action can be taken.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-web-service

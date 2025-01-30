@@ -1,8 +1,8 @@
 ---
 title: "Performance counters - ReportServer service, performance objects"
 description: "Learn about performance counters for the ReportServer:Service and ReportServerSharePoint:Service performance objects, part of a SQL Server 2012 deployment."
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

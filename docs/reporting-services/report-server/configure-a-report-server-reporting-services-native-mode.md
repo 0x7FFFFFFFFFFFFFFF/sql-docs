@@ -1,8 +1,8 @@
 ---
 title: "Configure a report server (Reporting Services native mode)"
 description: Learn about another configuration for SQL Server Report Server, which depends on options you chose during installation.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

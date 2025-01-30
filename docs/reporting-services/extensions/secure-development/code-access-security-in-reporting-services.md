@@ -1,8 +1,8 @@
 ---
 title: "Code access security in Reporting Services"
 description: Find out about code access security in Reporting Services. Learn how evidence, code groups, and named permission sets factor into a security policy.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

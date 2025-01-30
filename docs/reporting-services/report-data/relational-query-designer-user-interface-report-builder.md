@@ -1,8 +1,8 @@
 ---
 title: "Relational Query Designer User Interface (Report Builder)"
 description: Learn to use the graphical query designer to explore the metadata, interactively build a query, and view the results for your query.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

@@ -1,8 +1,8 @@
 ---
 title: "Implement a Command class for a data processing extension"
 description: Learn how to implement a Command class for a data processing extension so that the extension can formulate requests and pass them on to the data source.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

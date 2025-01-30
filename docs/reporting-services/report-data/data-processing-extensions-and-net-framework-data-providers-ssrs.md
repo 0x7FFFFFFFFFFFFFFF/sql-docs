@@ -1,8 +1,8 @@
 ---
 title: "Data Processing Extensions and .NET Framework Data Providers"
 description: Learn about data processing extensions, a component installed with Reporting Services, and .NET Framework data providers.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

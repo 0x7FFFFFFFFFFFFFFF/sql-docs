@@ -1,8 +1,8 @@
 ---
 title: "Data-driven subscriptions in Reporting Services"
 description: Learn how data-driven subscriptions, which provide a way to use dynamic subscription data that you retrieve from an external data source at run time.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions

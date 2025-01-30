@@ -1,8 +1,8 @@
 ---
 title: "My Settings for Power BI integration (web portal)"
 description: Learn about the My Settings page in the Reporting Services web portal and how individual users can manage their sign-in with Power BI.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

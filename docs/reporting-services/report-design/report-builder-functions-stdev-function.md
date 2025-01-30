@@ -1,8 +1,8 @@
 ---
 title: "StDev function in a paginated report"
 description: The StDev Function in Report Builder returns the standard deviation of all non-null numeric values in a paginated report specified by an expression.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

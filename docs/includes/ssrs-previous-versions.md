@@ -1,8 +1,8 @@
 ---
 title: include file
 description: include file
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 03/20/2018
 ms.service:
 ms.topic: include
