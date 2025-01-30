@@ -1,10 +1,10 @@
 ---
-title: Scalar UDF inlining
+title: Scalar UDF Inlining
 description: The scalar UDF inlining feature improves performance of queries that invoke scalar UDFs in SQL Server 2019 and later versions.
 author: s-r-k
 ms.author: karam
 ms.reviewer: randolphwest
-ms.date: 10/15/2024
+ms.date: 01/30/2025
 ms.service: sql
 ms.topic: conceptual
 monikerRange: "=azuresqldb-current || >=sql-server-ver15 || >=sql-server-linux-ver15"
@@ -229,10 +229,13 @@ A value of `1` indicates that the UDF is inlineable, and `0` indicates otherwise
 If a scalar UDF is inlineable, it doesn't imply that it's always inlined. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] decides (on a per-query, per-UDF basis) whether to inline a UDF. Refer to the lists of requirements earlier in this article.
 
   ```sql
-  SELECT *
-  FROM sys.crypt_properties AS cp
-       INNER JOIN sys.objects AS o
-           ON cp.major_id = o.object_id;
+  SELECT b.name,
+         b.type_desc,
+         a.is_inlineable
+  FROM sys.sql_modules AS a
+       INNER JOIN sys.objects AS b
+           ON a.object_id = b.object_id
+  WHERE b.type IN ('IF', 'TF', 'FN');
   ```
 
 ### Check whether inlining has happened
