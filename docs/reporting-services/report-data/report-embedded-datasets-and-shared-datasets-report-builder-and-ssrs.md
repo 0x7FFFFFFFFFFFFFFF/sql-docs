@@ -1,8 +1,8 @@
 ---
 title: "Report Embedded Datasets and Shared Datasets (Report Builder)"
 description: Learn about report embedded datasets and shared datasets so you can create expressions that evaluate to the actual data when the report runs.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

@@ -1,8 +1,8 @@
 ---
 title: "Cause and resolution of Reporting Services errors"
 description: View the list of error message articles related to Reporting Services. Each article explains the error message, possible causes, and how to correct the problem.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: troubleshooting

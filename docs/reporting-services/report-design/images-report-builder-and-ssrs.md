@@ -1,8 +1,8 @@
 ---
 title: "Images in paginated reports"
 description: Find out about images as items in paginated reports in Report Builder. These items contain a reference to an image embedded in a report or stored in a database.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

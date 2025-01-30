@@ -1,8 +1,8 @@
 ---
 title: "Save reports to a report server (Report Builder)"
 description: In Report Builder, you can publish a report to a report server. Others can view it. Each time you run the published report, you see the most current data.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder

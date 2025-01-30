@@ -1,8 +1,8 @@
 ---
 title: "Prepare to implement a delivery extension"
 description: Discover how to implement a delivery extension in Reporting Services. Learn about available interfaces and classes and required and optional functionality.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

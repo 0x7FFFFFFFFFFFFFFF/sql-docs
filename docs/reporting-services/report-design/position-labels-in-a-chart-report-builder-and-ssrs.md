@@ -1,8 +1,8 @@
 ---
 title: "Position labels in a paginated report chart"
 description: Determine the type of chart you're using in your paginated report to find out how to change the position of labels in that type and shape of chart.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

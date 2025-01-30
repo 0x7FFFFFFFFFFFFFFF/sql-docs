@@ -1,8 +1,8 @@
 ---
 title: "Count function in a paginated report"
 description: Learn about the Count function, which returns a count of non-null values specified by an expression, which is evaluated in the context of a specified scope in a paginated report.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

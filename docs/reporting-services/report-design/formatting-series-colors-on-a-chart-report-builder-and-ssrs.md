@@ -1,8 +1,8 @@
 ---
 title: "Formatting series colors on a paginated report chart"
 description: Learn how to use the many built-in palettes in paginated reports for charts or define a custom palette of your own design in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

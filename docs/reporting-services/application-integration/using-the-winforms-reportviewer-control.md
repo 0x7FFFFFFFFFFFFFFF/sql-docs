@@ -1,8 +1,8 @@
 ---
 title: "Use WinForms ReportViewer Control"
 description: To view reports deployed to a report server or on a local file system, you can use the WinForms ReportViewer control to render them in a Windows application.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: application-integration

@@ -1,8 +1,8 @@
 ---
 title: "Cells, rows, & columns in a tablix in a paginated report"
 description: Understand how to specify rows and columns in a paginated report for data, labels, and totals, enabling you to control the display in a SQL Server report.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

@@ -1,8 +1,8 @@
 ---
 title: "Web Service Authentication"
 description: If your client makes SOAP requests to a report server, implement the client portion of authentication. Learn to implement authentication for a Web service.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-web-service

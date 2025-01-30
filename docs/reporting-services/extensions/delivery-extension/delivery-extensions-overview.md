@@ -1,8 +1,8 @@
 ---
 title: "Delivery extensions overview"
 description: Read an overview of delivery extensions, which you can use to deliver Reporting Services reports in various ways, such as through email or file sharing.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

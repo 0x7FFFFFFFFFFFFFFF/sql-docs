@@ -1,8 +1,8 @@
 ---
 title: "Report server database (native mode)"
 description: Learn how a native mode Reporting Services installation separates persistent data storage and temporary data storage into two databases.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

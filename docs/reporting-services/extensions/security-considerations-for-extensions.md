@@ -1,8 +1,8 @@
 ---
 title: "Security considerations for extensions"
 description: Learn about the security policies, conditions, and requirements that determine how report servers grant permissions to Reporting Services extensions.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

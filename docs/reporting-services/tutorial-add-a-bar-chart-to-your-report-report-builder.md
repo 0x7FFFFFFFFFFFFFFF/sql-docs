@@ -1,8 +1,8 @@
 ---
 title: "Tutorial: Add a bar chart to your report (Report Builder)"
 description: Learn how to use a wizard in Report Builder to create a bar chart in a Reporting Services paginated report.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

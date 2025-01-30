@@ -1,8 +1,8 @@
 ---
 title: "Remove a delivery extension"
 description: "Learn how to remove a delivery extension from Reporting Services so the report server doesn't list it as available and deactivates subscriptions that use it."
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

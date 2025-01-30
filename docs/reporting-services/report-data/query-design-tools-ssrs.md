@@ -1,8 +1,8 @@
 ---
 title: "Query Design Tools"
 description: Learn about query design tools and also learn the type of data source each query design tool supports.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

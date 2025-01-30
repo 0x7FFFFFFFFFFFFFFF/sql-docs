@@ -1,8 +1,8 @@
 ---
 title: "Reporting Services extension library"
 description: Learn about the Reporting Services extension library, a set of classes, interfaces, and value types that provide access to system functionality.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

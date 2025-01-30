@@ -1,8 +1,8 @@
 ---
 title: "Upload a File or Report in the Report Server"
 description: Learn how to add reports and other files to a report server without having to publish those items from a client application.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reports

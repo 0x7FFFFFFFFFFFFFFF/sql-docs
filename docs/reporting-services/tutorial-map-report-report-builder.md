@@ -1,8 +1,8 @@
 ---
 title: "Tutorial: Map report (Report Builder)"
 description: Learn about map features you can use to display data on a geographic background in a Reporting Services paginated report.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

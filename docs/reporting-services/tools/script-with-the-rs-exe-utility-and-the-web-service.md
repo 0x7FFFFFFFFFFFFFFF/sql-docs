@@ -1,8 +1,8 @@
 ---
 title: "Script with the rs.exe utility and the web service"
 description: Learn about the RS.exe utility that can be used to programmatically administer a report server by using scripts written with Microsoft Visual Basic.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

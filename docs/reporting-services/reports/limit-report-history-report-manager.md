@@ -1,8 +1,8 @@
 ---
 title: "Limit Report History - Reporting Services"
 description: Learn how to configure the report history for a report server. Also learn how to configure report history for a specific report.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reports

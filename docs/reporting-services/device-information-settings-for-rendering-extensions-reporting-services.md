@@ -1,8 +1,8 @@
 ---
 title: "Device information settings for rendering extensions (Reporting Services)"
 description: Learn how device information settings are used to pass rendering parameters to a rendering extension in Reporting Services.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

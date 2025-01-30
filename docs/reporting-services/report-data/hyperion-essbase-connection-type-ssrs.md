@@ -1,8 +1,8 @@
 ---
 title: "Hyperion Essbase Connection Type"
 description: Learn how to retrieve multidimensional data from a Hyperion Essbase external data source to include in your report.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data
