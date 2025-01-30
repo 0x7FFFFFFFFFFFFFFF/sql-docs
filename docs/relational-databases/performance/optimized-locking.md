@@ -202,9 +202,9 @@ As described in [Lock after qualification (LAQ)](#lock-after-qualification-laq),
 
 For the purposes of the heuristics mechanism, the work done by a statement is measured in the number of pages it has processed (logical reads). If the database engine is modifying a row that has been modified by another transaction after statement processing started, then the work done by the statement is treated as potentially wasted because the statement might be aborted and restarted. The system keeps track of the total potentially wasted work and the total work done by all statements in the database.
 
-LAQ is disabled for the database if the percentage of the potentially wasted work exceeds a threshold. LAQ is also disabled if the number of restarted statements exceeds a threshold. The `laq_skip_reason_wasted_work` and `laq_skip_reason_conflict_count` fields of the `locking_stats` extended event provide the number of times LAQ was disabled for one of these reasons, respectively.
+LAQ is disabled for the database if the percentage of the potentially wasted work exceeds a threshold. LAQ is also disabled if the number of restarted statements exceeds a threshold.
 
-If the wasted work or the number of restarted statements falls below the threshold, LAQ is re-enabled for the database.
+If the wasted work and the number of restarted statements fall below their respective thresholds, LAQ is re-enabled for the database.
 
 ### <a id="behavior"></a> Query behavior changes with optimized locking and RCSI
 
@@ -274,7 +274,6 @@ The following improvements help you monitor and troubleshoot blocking and deadlo
 - Deadlock graph
     - Under each resource in the deadlock report `<resource-list>`, each `<xactlock>` element reports the underlying resources and specific information for locks of each member of a deadlock. For more information and an example, see [Optimized locking and deadlocks](../sql-server-deadlocks-guide.md#optimized-locking-and-deadlocks).
 - Extended events
-    - The `locking_stats` event fires every several minutes and provides the aggregate lock-related statistics since the last time it fired. This includes the number of lock escalations, whether TID and LAQ are enabled, statistics for LAQ predicate re-evaluation (re-qualification), heuristics, and skips, and other lock diagnostic data.
     - The `lock_after_qual_stmt_abort` event fires when a statement is internally aborted and restarted because of a conflict with another transaction. For more information, see [Lock after qualification (LAQ)](#lock-after-qualification-laq).
 
 ## Best practices with optimized locking
