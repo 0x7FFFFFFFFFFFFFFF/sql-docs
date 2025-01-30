@@ -295,11 +295,11 @@ The following diagram represents a configuration for paired region (primary and 
 
 - When the AKV in the primary and secondary regions are accessible, the key rotation is supported for both AKVs.
 
-- Once the failover occurs, the key rotation isn't allowed until the failback occurs.
+- Once the failover occurs, key rotation isn't allowed until the AKV in the primary region of the paired region is accessible again.
 
 - Customer can't manually connect to the secondary region.
 
-- The AKV in the secondary region is in a read-only state until the failback occurs.
+- The AKV in the secondary region is in a read-only state until the AKV in the primary region of the paired region is accessible again.
 
 - Customer can't choose or check what region the AKV is currently in.
 
