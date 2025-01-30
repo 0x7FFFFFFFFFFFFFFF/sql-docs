@@ -39,9 +39,9 @@ This behavior stops when you remove the last managed instance from the subnet an
 
 To ensure uninterrupted management connectivity for SQL Managed Instance, some security rules and routes are mandatory and can't be removed or modified.
 
-Mandatory rules and routes always begin with `Microsoft.Sql-managedInstances_UseOnly_mi-`.
+The names of mandatory rules and routes always begin with `Microsoft.Sql-managedInstances_UseOnly_mi-`. This prefix is reserved for use by Azure SQL Managed Instance. **Do not use this prefix when updating your route table and NSG.** Service updates may delete all rules and routes with that prefix, after which only the mandatory ones will be recreated.
 
-The following table lists the mandatory rules and routes that are enforced and automatically deployed to the user's subnet:
+The following table lists the mandatory rules and routes that are automatically deployed to and enforced on the user's subnet:
 
 | Kind | Name | Description |
 | ---- | ---- | ----------- |
