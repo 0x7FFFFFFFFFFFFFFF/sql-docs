@@ -112,7 +112,7 @@ BEGIN
     used_log_space_in_bytes,
     used_log_space_in_percent,
     log_space_in_bytes_since_last_backup
-    from ' + @dbname +'.sys.dm_db_log_space_usage'
+    from [' + @dbname +'].sys.dm_db_log_space_usage'
 
     BEGIN TRY
         exec (@SQL)
@@ -173,7 +173,7 @@ BEGIN
     if (@log_reuse_wait = 1)
     BEGIN
         select 'Consider running the checkpoint command to attempt resolving this issue or further t-shooting may be required on the checkpoint process. Also, examine the log for active VLFs at the end of file' as Recommendation
-        select 'USE ''' + @dbname+ '''; CHECKPOINT' as CheckpointCommand
+        select 'USE ' + QUOTENAME(@dbname) + '; CHECKPOINT' as CheckpointCommand
         select 'select * from sys.dm_db_log_info(' + CONVERT(varchar,@database_id)+ ')' as VLF_LogInfo
     END
     else if (@log_reuse_wait = 2)
@@ -232,7 +232,7 @@ BEGIN
     BEGIN
         select 'For memory-optimized tables, an automatic checkpoint is taken when transaction log file becomes bigger than 1.5 GB since the last checkpoint (includes both disk-based and memory-optimized tables)' as Finding
         select 'Review https://blogs.msdn.microsoft.com/sqlcat/2016/05/20/logging-and-checkpoint-process-for-memory-optimized-tables-2/' as ReviewBlog
-        select 'use ' +@dbname+ ' CHECKPOINT' as RunCheckpoint
+        select 'use [' +@dbname+ '] CHECKPOINT' as RunCheckpoint
     END
 
     FETCH NEXT FROM no_truncate_db into @log_reuse_wait, @log_reuse_wait_desc, @dbname, @database_id, @recovery_model_desc
