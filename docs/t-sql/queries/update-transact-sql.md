@@ -3,7 +3,7 @@ title: "UPDATE (Transact-SQL)"
 description: "UPDATE (Transact-SQL)"
 author: VanMSFT
 ms.author: vanto
-ms.date: "05/19/2020"
+ms.date: "01/29/2025"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -137,7 +137,7 @@ SET { column_name = { expression | NULL } } [ ,...n ]
  TOP **(** _expression_**)** [ PERCENT ]  
  Specifies the number or percent of rows that are updated. *expression* can be either a number or a percent of the rows.  
   
- The rows referenced in the TOP expression used with INSERT, UPDATE, or DELETE are not arranged in any order.  
+ The rows referenced in the TOP expression used with INSERT, UPDATE, or DELETE aren't arranged in any order.  
   
  Parentheses delimiting *expression* in TOP are required in INSERT, UPDATE, and DELETE statements. For more information, see [TOP &#40;Transact-SQL&#41;](../../t-sql/queries/top-transact-sql.md).  
   
@@ -160,7 +160,7 @@ SET { column_name = { expression | NULL } } [ ,...n ]
  Is either the [OPENQUERY](../../t-sql/functions/openquery-transact-sql.md) or [OPENROWSET](../../t-sql/functions/openrowset-transact-sql.md) function, subject to provider capabilities.  
   
  WITH **(** \<Table_Hint_Limited> **)**  
- Specifies one or more table hints that are allowed for a target table. The WITH keyword and the parentheses are required. NOLOCK, READUNCOMMITTED, NOEXPAND, and several others are not allowed. For information about table hints, see [Table Hints &#40;Transact-SQL&#41;](../../t-sql/queries/hints-transact-sql-table.md).  
+ Specifies one or more table hints that are allowed for a target table. The WITH keyword and the parentheses are required. NOLOCK, READUNCOMMITTED, NOEXPAND, and several others aren't allowed. For information about table hints, see [Table Hints &#40;Transact-SQL&#41;](../../t-sql/queries/hints-transact-sql-table.md).  
   
  @*table_variable*  
  Specifies a [table](../../t-sql/data-types/table-transact-sql.md) variable as a table source.  
@@ -169,13 +169,13 @@ SET { column_name = { expression | NULL } } [ ,...n ]
  Specifies the list of column or variable names to be updated.  
   
  *column_name*  
- Is a column that contains the data to be changed. *column_name* must exist in *table_or view_name*. Identity columns cannot be updated.  
+ Is a column that contains the data to be changed. *column_name* must exist in *table_or view_name*. Identity columns can't be updated.  
   
  *expression*  
  Is a variable, literal value, expression, or a subselect statement (enclosed with parentheses) that returns a single value. The value returned by *expression* replaces the existing value in *column_name* or @*variable*.  
   
 > [!NOTE]  
->  When referencing the Unicode character data types **nchar**, **nvarchar**, and **ntext**, 'expression' should be prefixed with the capital letter 'N'. If 'N' is not specified, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] converts the string to the code page that corresponds to the default collation of the database or column. Any characters not found in this code page are lost.  
+>  When referencing the Unicode character data types **nchar**, **nvarchar**, and **ntext**, 'expression' should be prefixed with the capital letter 'N'. If 'N' isn't specified, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] converts the string to the code page that corresponds to the default collation of the database or column. Any characters not found in this code page are lost.  
   
  DEFAULT  
  Specifies that the default value defined for the column is to replace the existing value in the column. This can also be used to change the column to NULL if the column has no default and is defined to allow null values.  
@@ -201,13 +201,13 @@ SET { column_name = { expression | NULL } } [ ,...n ]
  Is a nonstatic public mutator method of *udt_column_name* that takes one or more arguments.  
   
  **.**WRITE **(**_expression_**,**@_Offset_**,**@_Length_**)**  
- Specifies that a section of the value of *column_name* is to be modified. *expression* replaces @*Length* units starting from @*Offset* of *column_name*. Only columns of **varchar(max)**, **nvarchar(max)**, or **varbinary(max)** can be specified with this clause. *column_name* cannot be NULL and cannot be qualified with a table name or table alias.  
+ Specifies that a section of the value of *column_name* is to be modified. *expression* replaces @*Length* units starting from @*Offset* of *column_name*. Only columns of **varchar(max)**, **nvarchar(max)**, or **varbinary(max)** can be specified with this clause. *column_name* can't be NULL and can't be qualified with a table name or table alias.  
   
  *expression* is the value that is copied to *column_name*. *expression* must evaluate to or be able to be implicitly cast to the *column_name* type. If *expression* is set to NULL, @*Length* is ignored, and the value in *column_name* is truncated at the specified @*Offset*.  
   
- @*Offset* is the starting point in the value stored in *column_name* at which *expression* is written. @*Offset* is a zero-based ordinal byte position, is **bigint**, and cannot be a negative number. If @*Offset* is NULL, the update operation appends *expression* at the end of the existing *column_name* value and @*Length* is ignored. If @*Offset* is greater than the byte length of the *column_name* value, the [!INCLUDE[ssDE](../../includes/ssde-md.md)] returns an error. If @*Offset* plus @*Length* exceeds the end of the underlying value in the column, the deletion occurs up to the last character of the value.  
+ @*Offset* is the starting point in the value stored in *column_name* at which *expression* is written. @*Offset* is a zero-based ordinal byte position, is **bigint**, and can't be a negative number. If @*Offset* is NULL, the update operation appends *expression* at the end of the existing *column_name* value and @*Length* is ignored. If @*Offset* is greater than the byte length of the *column_name* value, the [!INCLUDE[ssDE](../../includes/ssde-md.md)] returns an error. If @*Offset* plus @*Length* exceeds the end of the underlying value in the column, the deletion occurs up to the last character of the value.  
   
- @*Length* is the length of the section in the column, starting from @*Offset*, that is replaced by *expression*. @*Length* is **bigint** and cannot be a negative number. If @*Length* is NULL, the update operation removes all data from @*Offset* to the end of the *column_name* value.  
+ @*Length* is the length of the section in the column, starting from @*Offset*, that is replaced by *expression*. @*Length* is **bigint** and can't be a negative number. If @*Length* is NULL, the update operation removes all data from @*Offset* to the end of the *column_name* value.  
   
  For more information, see [Updating Large Value Data Types](#updating-lobs).  
   
@@ -217,14 +217,14 @@ SET { column_name = { expression | NULL } } [ ,...n ]
  SET **@**_variable_ = *column* = *expression* sets the variable to the same value as the column. This differs from SET **@**_variable_ = _column_, _column_ = _expression_, which sets the variable to the pre-update value of the column.  
   
  \<OUTPUT_Clause>  
- Returns updated data or expressions based on it as part of the UPDATE operation. The OUTPUT clause is not supported in any DML statements that target remote tables or views. For more information about the arguments and behavior of this clause, see [OUTPUT Clause &#40;Transact-SQL&#41;](../../t-sql/queries/output-clause-transact-sql.md).  
+ Returns updated data or expressions based on it as part of the UPDATE operation. The OUTPUT clause isn't supported in any DML statements that target remote tables or views. For more information about the arguments and behavior of this clause, see [OUTPUT Clause &#40;Transact-SQL&#41;](../../t-sql/queries/output-clause-transact-sql.md).  
   
  FROM \<table_source>  
  Specifies that a table, view, or derived table source is used to provide the criteria for the update operation. For more information, see [FROM &#40;Transact-SQL&#41;](../../t-sql/queries/from-transact-sql.md).  
   
  If the object being updated is the same as the object in the FROM clause and there is only one reference to the object in the FROM clause, an object alias may or may not be specified. If the object being updated appears more than one time in the FROM clause, one, and only one, reference to the object must not specify a table alias. All other references to the object in the FROM clause must include an object alias.  
   
- A view with an INSTEAD OF UPDATE trigger cannot be a target of an UPDATE with a FROM clause.  
+ A view with an INSTEAD OF UPDATE trigger can't be a target of an UPDATE with a FROM clause.  
   
 > [!NOTE]  
 >  Any call to OPENDATASOURCE, OPENQUERY, or OPENROWSET in the FROM clause is evaluated separately and independently from any call to these functions used as the target of the update, even if identical arguments are supplied to the two calls. In particular, filter or join conditions applied on the result of one of those calls have no effect on the results of the other.  
@@ -242,7 +242,7 @@ SET { column_name = { expression | NULL } } [ ,...n ]
 CURRENT OF  
  Specifies that the update is performed at the current position of the specified cursor.  
   
- A positioned update using a WHERE CURRENT OF clause updates the single row at the current position of the cursor. This can be more accurate than a searched update that uses a WHERE \<search_condition> clause to qualify the rows to be updated. A searched update modifies multiple rows when the search condition does not uniquely identify a single row.  
+ A positioned update using a WHERE CURRENT OF clause updates the single row at the current position of the cursor. This can be more accurate than a searched update that uses a WHERE \<search_condition> clause to qualify the rows to be updated. A searched update modifies multiple rows when the search condition doesn't uniquely identify a single row.  
   
 GLOBAL  
  Specifies that *cursor_name* refers to a global cursor.  
@@ -261,15 +261,15 @@ OPTION **(** \<query_hint> [ **,**... *n* ] **)**
   
  Variable names can be used in UPDATE statements to show the old and new values affected, but this should be used only when the UPDATE statement affects a single record. If the UPDATE statement affects multiple records, to return the old and new values for each record, use the [OUTPUT clause](../../t-sql/queries/output-clause-transact-sql.md).  
   
- Use caution when specifying the FROM clause to provide the criteria for the update operation. The results of an UPDATE statement are undefined if the statement includes a FROM clause that is not specified in such a way that only one value is available for each column occurrence that is updated, that is if the UPDATE statement is not deterministic. For example, in the UPDATE statement in the following script, both rows in `Table1` meet the qualifications of the FROM clause in the UPDATE statement; but it is undefined which row from `Table1` is used to update the row in `Table2.`  
+ Use caution when specifying the FROM clause to provide the criteria for the update operation. The results of an UPDATE statement are undefined if the statement includes a FROM clause that isn't specified in such a way that only one value is available for each column occurrence that is updated, that is if the UPDATE statement isn't deterministic. For example, in the UPDATE statement in the following script, both rows in `Table1` meet the qualifications of the FROM clause in the UPDATE statement; but it is undefined which row from `Table1` is used to update the row in `Table2.`  
   
 ```sql  
 USE AdventureWorks2022;  
 GO  
-IF OBJECT_ID ('dbo.Table1', 'U') IS NOT NULL  
+IF OBJECT_ID ('dbo.Table1', 'U') isn't NULL  
     DROP TABLE dbo.Table1;  
 GO  
-IF OBJECT_ID ('dbo.Table2', 'U') IS NOT NULL  
+IF OBJECT_ID ('dbo.Table2', 'U') isn't NULL  
     DROP TABLE dbo.Table2;  
 GO  
 CREATE TABLE dbo.Table1   
@@ -296,10 +296,10 @@ FROM dbo.Table2;
 ```sql  
 USE AdventureWorks2022;  
 GO  
-IF OBJECT_ID ('dbo.Table1', 'U') IS NOT NULL  
+IF OBJECT_ID ('dbo.Table1', 'U') isn't NULL  
     DROP TABLE dbo.Table1;  
 GO  
-IF OBJECT_ID ('dbo.Table2', 'U') IS NOT NULL  
+IF OBJECT_ID ('dbo.Table2', 'U') isn't NULL  
     DROP TABLE dbo.Table2;  
 GO  
 CREATE TABLE dbo.Table1  
@@ -346,13 +346,13 @@ GO
 ### <a name="updating-lobs"></a> Updating large value data types  
  Use the **.**WRITE **(**_expression_**,**@_Offset_**,**@_Length_**)** clause to perform a partial or full update of **varchar(max)**, **nvarchar(max)**, and **varbinary(max)** data types. 
  
- For example, a partial update of a **varchar(max)** column might delete or modify only the first 200 bytes of the column (200 characters if using ASCII characters), whereas a full update would delete or modify all the data in the column. **.WRITE** updates that insert or append new data are minimally logged if the database recovery model is set to bulk-logged or simple. Minimal logging is not used when existing values are updated. For more information, see [The Transaction Log &#40;SQL Server&#41;](../../relational-databases/logs/the-transaction-log-sql-server.md).  
+ For example, a partial update of a **varchar(max)** column might delete or modify only the first 200 bytes of the column (200 characters if using ASCII characters), whereas a full update would delete or modify all the data in the column. **.WRITE** updates that insert or append new data are minimally logged if the database recovery model is set to bulk-logged or simple. Minimal logging isn't used when existing values are updated. For more information, see [The Transaction Log &#40;SQL Server&#41;](../../relational-databases/logs/the-transaction-log-sql-server.md).  
   
  The [!INCLUDE[ssDE](../../includes/ssde-md.md)] converts a partial update to a full update when the UPDATE statement causes either of these actions:  
 -   Changes a key column of the partitioned view or table.  
 -   Modifies more than one row and also updates the key of a nonunique clustered index to a nonconstant value.  
   
-You cannot use the **.WRITE** clause to update a NULL column or set the value of *column_name* to NULL.  
+You can't use the **.WRITE** clause to update a NULL column or set the value of *column_name* to NULL.  
   
 @*Offset* and @*Length* are specified in bytes for **varbinary** and **varchar** data types and in byte-pairs for the **nvarchar** data type. For more information on string data type lengths, see [char and varchar (Transact-SQL)](../../t-sql/data-types/char-and-varchar-transact-sql.md) and [nchar and nvarchar (Transact-SQL)](../../t-sql/data-types/nchar-and-nvarchar-transact-sql.md).
   
@@ -395,26 +395,26 @@ To achieve the same functionality of **\.WRITE** with other character or binary 
      To modify different properties of the same user-defined type column, issue multiple UPDATE statements, or invoke a mutator method of the type.  
   
 ### Updating FILESTREAM data  
- You can use the UPDATE statement to update a FILESTREAM field to a null value, empty value, or a relatively small amount of inline data. However, a large amount of data is more efficiently streamed into a file by using Win32 interfaces. When you update a FILESTREAM field, you modify the underlying BLOB data in the file system. When a FILESTREAM field is set to NULL, the BLOB data associated with the field is deleted. You cannot use .WRITE(), to perform partial updates to FILESTREAM data. For more information, see [FILESTREAM &#40;SQL Server&#41;](../../relational-databases/blob/filestream-sql-server.md).  
+ You can use the UPDATE statement to update a FILESTREAM field to a null value, empty value, or a relatively small amount of inline data. However, a large amount of data is more efficiently streamed into a file by using Win32 interfaces. When you update a FILESTREAM field, you modify the underlying BLOB data in the file system. When a FILESTREAM field is set to NULL, the BLOB data associated with the field is deleted. You can't use .WRITE(), to perform partial updates to FILESTREAM data. For more information, see [FILESTREAM &#40;SQL Server&#41;](../../relational-databases/blob/filestream-sql-server.md).  
   
 ## Error handling  
  If an update to a row violates a constraint or rule, violates the NULL setting for the column, or the new value is an incompatible data type, the statement is canceled, an error is returned, and no records are updated.  
   
- When an UPDATE statement encounters an arithmetic error (overflow, divide by zero, or a domain error) during expression evaluation, the update is not performed. The rest of the batch is not executed, and an error message is returned.  
+ When an UPDATE statement encounters an arithmetic error (overflow, divide by zero, or a domain error) during expression evaluation, the update isn't performed. The rest of the batch isn't executed, and an error message is returned.  
   
  If an update to a column or columns participating in a clustered index causes the size of the clustered index and the row to exceed 8,060 bytes, the update fails and an error message is returned.  
   
 ## Interoperability  
  UPDATE statements are allowed in the body of user-defined functions only if the table being modified is a table variable.  
   
- When an `INSTEAD OF` trigger is defined on UPDATE actions against a table, the trigger is running instead of the UPDATE statement. Earlier versions of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] only support AFTER triggers defined on UPDATE and other data modification statements. The FROM clause cannot be specified in an UPDATE statement that references, either directly or indirectly, a view with an `INSTEAD OF` trigger defined on it. For more information about INSTEAD OF triggers, see [CREATE TRIGGER &#40;Transact-SQL&#41;](../../t-sql/statements/create-trigger-transact-sql.md).  
+ When an `INSTEAD OF` trigger is defined on UPDATE actions against a table, the trigger is running instead of the UPDATE statement. Earlier versions of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] only support AFTER triggers defined on UPDATE and other data modification statements. The FROM clause can't be specified in an UPDATE statement that references, either directly or indirectly, a view with an `INSTEAD OF` trigger defined on it. For more information about INSTEAD OF triggers, see [CREATE TRIGGER &#40;Transact-SQL&#41;](../../t-sql/statements/create-trigger-transact-sql.md).  
 
- Currently, the FROM clause cannot be specified in an UPDATE statement on [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]. Single-table UPDATE statements are supported.
+ Currently, the FROM clause can't be specified in an UPDATE statement on [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]. Single-table UPDATE statements are supported.
 
 ## Limitations and restrictions  
- The FROM clause cannot be specified in an UPDATE statement that references, either directly or indirectly, a view that has an `INSTEAD OF` trigger defined on it. For more information about `INSTEAD OF` triggers, see [CREATE TRIGGER &#40;Transact-SQL&#41;](../../t-sql/statements/create-trigger-transact-sql.md).  
+ The FROM clause can't be specified in an UPDATE statement that references, either directly or indirectly, a view that has an `INSTEAD OF` trigger defined on it. For more information about `INSTEAD OF` triggers, see [CREATE TRIGGER &#40;Transact-SQL&#41;](../../t-sql/statements/create-trigger-transact-sql.md).  
   
- When a common table expression (CTE) is the target of an UPDATE statement, all references to the CTE in the statement must match. For example, if the CTE is assigned an alias in the FROM clause, the alias must be used for all other references to the CTE. Unambiguous CTE references are required because a CTE does not have an object ID, which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] uses to recognize the implicit relationship between an object and its alias. Without this relationship, the query plan may produce unexpected join behavior and unintended query results. The following examples demonstrate correct and incorrect methods of specifying a CTE when the CTE is the target object of the update operation.  
+ When a common table expression (CTE) is the target of an UPDATE statement, all references to the CTE in the statement must match. For example, if the CTE is assigned an alias in the FROM clause, the alias must be used for all other references to the CTE. Unambiguous CTE references are required because a CTE doesn't have an object ID, which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] uses to recognize the implicit relationship between an object and its alias. Without this relationship, the query plan may produce unexpected join behavior and unintended query results. The following examples demonstrate correct and incorrect methods of specifying a CTE when the CTE is the target object of the update operation.  
   
 ```sql  
 USE tempdb;  
@@ -455,7 +455,7 @@ INSERT @x VALUES (1, 10), (2, 20);
 INSERT @y VALUES (1, 100),(2, 200);  
   
 WITH cte AS (SELECT * FROM @x)  
-UPDATE cte   -- cte is not referenced by the alias.  
+UPDATE cte   -- cte isn't referenced by the alias.  
 SET Value = y.Value  
 FROM cte AS x  -- cte is assigned an alias.  
 INNER JOIN @y AS y ON y.ID = x.ID;   
@@ -473,9 +473,12 @@ ID     Value
 (2 row(s) affected)  
 ```  
 
-## Locking behavior  
- An UPDATE statement acquires an exclusive (X) lock on any rows that it modifies, and holds these locks until the transaction completes. Depending on the query plan for the UPDATE statement, the number of rows being modified, and the isolation level of the transaction, locks may be acquired at the PAGE level or TABLE level rather than the ROW level. To avoid these higher level locks, consider dividing update statements that affect thousands of rows or more into batches, and ensure that any join and filter conditions are supported by indexes. See the article on [Locking in the Database Engine](../../relational-databases/sql-server-transaction-locking-and-row-versioning-guide.md#lock_engine) for more details on locking mechanics in SQL Server.  
-  
+## Locking behavior
+
+An UPDATE statement acquires an exclusive (`X`) lock on any rows that it modifies, and holds these locks until the transaction completes. Depending on the query plan for the UPDATE statement, the number of rows being modified, and the isolation level of the transaction, locks may be acquired at the page level or table level rather than the row level. To avoid these higher level locks, consider dividing update statements that affect thousands of rows or more into batches, and ensure that any join and filter conditions are supported by indexes. See the article on [Locking in the Database Engine](../../relational-databases/sql-server-transaction-locking-and-row-versioning-guide.md#lock_engine) for more details on locking mechanics in SQL Server.
+
+If optimized locking is enabled, some aspects of locking behavior for `UPDATE` change. For example, exclusive (`X`) locks aren't held until the transaction completes. For more information, see [Optimized locking](../../relational-databases/performance/optimized-locking.md).
+
 ## Logging behavior  
  The UPDATE statement is logged; however, partial updates to large value data types using the **\.WRITE** clause are minimally logged. For more information, see "Updating Large Value Data Types" in the earlier section "Data Types".  
   
@@ -592,7 +595,7 @@ WHERE d.ComponentLevel = 0;
 ```  
   
 #### F. Using the WHERE CURRENT OF clause  
- The following example uses the WHERE CURRENT OF clause to update only the row on which the cursor is positioned. When a cursor is based on a join, only the `table_name` specified in the UPDATE statement is modified. Other tables participating in the cursor are not affected.  
+ The following example uses the WHERE CURRENT OF clause to update only the row on which the cursor is positioned. When a cursor is based on a join, only the `table_name` specified in the UPDATE statement is modified. Other tables participating in the cursor aren't affected.  
   
 ```sql  
 USE AdventureWorks2022;  
@@ -757,7 +760,7 @@ JOIN Sales.SalesOrderHeader AS so
 GO  
 ```  
   
- The previous example assumes that only one sale is recorded for a specified salesperson on a specific date and that updates are current. If more than one sale for a specified salesperson can be recorded on the same day, the example shown does not work correctly. The example runs without error, but each `SalesYTD` value is updated with only one sale, regardless of how many sales actually occurred on that day. This is because a single UPDATE statement never updates the same row two times.  
+ The previous example assumes that only one sale is recorded for a specified salesperson on a specific date and that updates are current. If more than one sale for a specified salesperson can be recorded on the same day, the example shown doesn't work correctly. The example runs without error, but each `SalesYTD` value is updated with only one sale, regardless of how many sales actually occurred on that day. This is because a single UPDATE statement never updates the same row two times.  
   
  In the situation in which more than one sale for a specified salesperson can occur on the same day, all the sales for each sales person must be aggregated together within the `UPDATE` statement, as shown in the following example:  
   
@@ -844,7 +847,7 @@ GO
 ```  
   
 #### S. Using UPDATE with .WRITE to add and remove data in an nvarchar(max) column  
- The following examples add and remove data from an **nvarchar(max)** column that has a value currently set to NULL. Because the .WRITE clause cannot be used to modify a NULL column, the column is first populated with temporary data. This data is then replaced with the correct data by using the .WRITE clause. The additional examples append data to the end of the column value, remove (truncate) data from the column and, finally, remove partial data from the column. The SELECT statements display the data modification generated by each UPDATE statement.  
+ The following examples add and remove data from an **nvarchar(max)** column that has a value currently set to NULL. Because the .WRITE clause can't be used to modify a NULL column, the column is first populated with temporary data. This data is then replaced with the correct data by using the .WRITE clause. The additional examples append data to the end of the column value, remove (truncate) data from the column and, finally, remove partial data from the column. The SELECT statements display the data modification generated by each UPDATE statement.  
   
 ```sql  
 USE AdventureWorks2022;  
@@ -915,7 +918,7 @@ GO
 ```  
   
 #### U. Using UPDATE to modify FILESTREAM data  
- The following example uses the UPDATE statement to modify the data in the file system file. We do not recommend this method for streaming large amounts of data to a file. Use the appropriate Win32 interfaces. The following example replaces any text in the file record with the text `Xray 1`. For more information, see [FILESTREAM &#40;SQL Server&#41;](../../relational-databases/blob/filestream-sql-server.md).  
+ The following example uses the UPDATE statement to modify the data in the file system file. We don't recommend this method for streaming large amounts of data to a file. Use the appropriate Win32 interfaces. The following example replaces any text in the file record with the text `Xray 1`. For more information, see [FILESTREAM &#40;SQL Server&#41;](../../relational-databases/blob/filestream-sql-server.md).  
   
 ```sql  
 UPDATE Archive.dbo.Records  
@@ -1040,7 +1043,7 @@ GO
  Examples in this section demonstrate how to use UPDATE in other statements.  
   
 #### AB. Using UPDATE in a stored procedure  
- The following example uses an UPDATE statement in a stored procedure. The procedure takes one input parameter, `@NewHours` and one output parameter `@RowCount`. The `@NewHours` parameter value is used in the UPDATE statement to update the column `VacationHours` in the table `HumanResources.Employee`. The `@RowCount` output parameter is used to return the number of rows affected to a local variable. The CASE expression is used in the SET clause to conditionally determine the value that is set for `VacationHours`. When the employee is paid hourly (`SalariedFlag` = 0), `VacationHours` is set to the current number of hours plus the value specified in `@NewHours`; otherwise, `VacationHours` is set to the value specified in `@NewHours`.  
+ The following example uses an UPDATE statement in a stored procedure. The procedure takes one input parameter, `@NewHours`, and one output parameter `@RowCount`. The `@NewHours` parameter value is used in the UPDATE statement to update the column `VacationHours` in the table `HumanResources.Employee`. The `@RowCount` output parameter is used to return the number of rows affected to a local variable. The CASE expression is used in the SET clause to conditionally determine the value that is set for `VacationHours`. When the employee is paid hourly (`SalariedFlag` = 0), `VacationHours` is set to the current number of hours plus the value specified in `@NewHours`; otherwise, `VacationHours` is set to the value specified in `@NewHours`.  
   
 ```sql  
 USE AdventureWorks2022;  
@@ -1097,7 +1100,7 @@ GO
 ## Examples: [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)]  
   
 ### AD. Using a simple UPDATE statement  
- The following examples show how all rows can be affected when a WHERE clause is not used to specify the row (or rows) to update.  
+ The following examples show how all rows can be affected when a WHERE clause isn't used to specify the row (or rows) to update.  
   
  This example updates the values in the `EndDate` and `CurrentFlag` columns for all rows in the `DimEmployee` table.  
   
