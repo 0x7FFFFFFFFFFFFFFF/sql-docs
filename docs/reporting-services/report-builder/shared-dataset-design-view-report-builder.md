@@ -1,7 +1,7 @@
 ---
 title: "Shared Dataset Design View (Report Builder)"
 description: In Report Builder, use the Shared Dataset Design window to create datasets to share. Publish your shared datasets on a report server that you use for multiple reports.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Dataset Properties Dialog Box, Query (Report Builder)"
 description: Learn how to use Query on the Dataset Properties dialog box in the Report Builder to choose a shared dataset from a report server or to create an embedded dataset.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

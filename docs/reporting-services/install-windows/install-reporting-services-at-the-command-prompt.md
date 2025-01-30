@@ -1,7 +1,7 @@
 ---
 title: "Install Reporting Services 2016 at the Command Prompt - SSRS"
 description: "Install Reporting Services 2016 at the Command Prompt - SSRS"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

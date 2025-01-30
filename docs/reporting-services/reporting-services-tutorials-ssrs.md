@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services tutorials"
 description: Use these tutorials to learn about the capabilities of SQL Server 2022 Reporting Services (SSRS) or later, SQL Server Data Tools (SSDT), and Report Builder with sample data.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Upload files to a folder"
 description: Learn what happens when you upload different file types from the file system and store them as managed items in a report server database in Reporting Services.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Formatting data points on a paginated report chart"
 description: Find out about different types of formatting of data points on charts in your paginated reports in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

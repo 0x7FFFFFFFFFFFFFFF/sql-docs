@@ -1,7 +1,7 @@
 ---
 title: Roles and permissions in Reporting Services
 description: Learn how you can use the roles and permissions tools in Reporting Services to manage your report servers.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

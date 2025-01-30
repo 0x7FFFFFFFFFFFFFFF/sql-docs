@@ -1,7 +1,7 @@
 ---
 title: "Lesson 1: Create a new website"
 description: "Learn how to create a new website project by using the ASP.NET website template for Visual C#."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

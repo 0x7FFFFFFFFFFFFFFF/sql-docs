@@ -1,7 +1,7 @@
 ---
 title: "Add a moving average to a chart in a paginated report"
 description: Learn how the Moving Average formula price indicator can be shown on a chart to identify trends in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

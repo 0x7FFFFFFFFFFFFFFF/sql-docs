@@ -1,7 +1,7 @@
 ---
 title: "Windows application log"
 description: Learn how to view event messages in the application log. The report server applications that run on the local system generate the messages.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

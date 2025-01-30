@@ -1,7 +1,7 @@
 ---
 title: "Report Server Item Properties"
 description: Item properties are specific to items in the report server database. Items include reports, linked reports, folders, resources, models, and data sources.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

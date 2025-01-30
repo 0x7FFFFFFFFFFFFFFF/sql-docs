@@ -1,7 +1,7 @@
 ---
 title: "Create mobile reports with SQL Server Mobile Report Publisher"
 description: "Learn about Reporting Services mobile reports for mobile devices, connected to on-premises data, with an assortment of data visualizations."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

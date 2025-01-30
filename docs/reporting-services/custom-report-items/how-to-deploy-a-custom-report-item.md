@@ -1,7 +1,7 @@
 ---
 title: "How to deploy a custom report item"
 description: Learn how to deploy a custom report item. Modify the report server configuration files and copy the component assemblies to the appropriate folders.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

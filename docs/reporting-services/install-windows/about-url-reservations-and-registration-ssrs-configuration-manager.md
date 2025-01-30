@@ -1,7 +1,7 @@
 ---
 title: "URL reservations & registration (Report Server Configuration Manager)"
 description: "URLs for Reporting Services applications are defined as URL reservations in HTTP.SYS."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

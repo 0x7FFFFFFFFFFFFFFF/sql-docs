@@ -1,7 +1,7 @@
 ---
 title: "Rendering report items in paginated reports"
 description: Learn how paginated report items such as number, size, and locations affect rendering pagination in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Understand security policies"
 description: Learn about Reporting Services security policies, which specify permissions for assemblies, extensions, and report expressions based on code groups.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Tutorial: Add a KPI to your report (Report Builder)"
 description: Learn how to add a key performance indicator (KPI) to a Reporting Services paginated report in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

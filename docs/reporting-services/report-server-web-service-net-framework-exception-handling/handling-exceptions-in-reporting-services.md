@@ -1,7 +1,7 @@
 ---
 title: "Handle exceptions in Reporting Services"
 description: Learn how to handle exceptions that occur in Reporting Services so you can determine the next appropriate action to take in your applications.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

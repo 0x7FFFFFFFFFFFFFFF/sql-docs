@@ -1,7 +1,7 @@
 ---
 title: "Configure Windows authentication on the report server"
 description: "Configure Windows Authentication on the Report Server"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.reviewer: randolphwest
 ms.date: 09/25/2024

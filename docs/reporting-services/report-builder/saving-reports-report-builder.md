@@ -1,7 +1,7 @@
 ---
 title: "Save reports (Report Builder)"
 description: In Report Builder, you can save the definition of a report, which includes the layout but not the data. The data is refreshed every time you run the report.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

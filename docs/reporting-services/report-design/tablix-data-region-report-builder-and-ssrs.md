@@ -1,7 +1,7 @@
 ---
 title: "Tablix data region in a paginated report"
 description: See how to display paginated report data in cells. Organize data into rows and columns with a tablix data region in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

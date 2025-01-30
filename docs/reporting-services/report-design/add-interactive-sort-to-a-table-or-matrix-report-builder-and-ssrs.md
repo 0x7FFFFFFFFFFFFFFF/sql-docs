@@ -1,7 +1,7 @@
 ---
 title: "Add interactive sort to a table or matrix in paginated reports"
 description: Enable users to change the sort order of rows and columns in tables and matrices in paginated reports using interactive sort buttons in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

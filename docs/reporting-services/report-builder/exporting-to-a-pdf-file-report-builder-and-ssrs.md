@@ -1,7 +1,7 @@
 ---
 title: "Export a paginated report to a PDF file (Report Builder)"
 description: In Report Builder, the PDF rendering extension renders paginated reports to files that can be opened in Adobe Acrobat and other PDF viewers.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

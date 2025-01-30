@@ -1,7 +1,7 @@
 ---
 title: "Create report history (Reporting Services in SharePoint integrated mode)"
 description: In Reporting Services in SharePoint integrated mode, learn how to create a report history, which is a collection of report snapshots that you create over time.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

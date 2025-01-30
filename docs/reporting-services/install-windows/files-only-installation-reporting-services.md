@@ -1,7 +1,7 @@
 ---
 title: "Files-only installation (Reporting Services)"
 description: "Files-Only Installation (Reporting Services)"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

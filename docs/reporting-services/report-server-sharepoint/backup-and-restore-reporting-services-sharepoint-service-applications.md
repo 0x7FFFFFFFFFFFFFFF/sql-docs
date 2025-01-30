@@ -1,7 +1,7 @@
 ---
 title: "Back up and restore Reporting Services SharePoint service applications"
 description: Learn how to back up and restore a SQL Server Reporting Services service applications using SharePoint Central Administration or PowerShell.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

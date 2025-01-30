@@ -1,7 +1,7 @@
 ---
 title: "Verify a report run"
 description: Learn how to use log files or refer to status information that is displayed with a report to verify a report run in Report Manager.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

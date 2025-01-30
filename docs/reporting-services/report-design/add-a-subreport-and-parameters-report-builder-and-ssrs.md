@@ -1,7 +1,7 @@
 ---
 title: Add a subreport and parameters to a Report Builder paginated report
 description: Learn how to add a subreport to a paginated report when you want to create a main report as a container for multiple related reports in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

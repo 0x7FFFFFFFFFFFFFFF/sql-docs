@@ -1,7 +1,7 @@
 ---
 title: "Create a matrix in a paginated report"
 description: Display grouped data and summary information in a matrix in a paginated report, which provides functionality in Report Builder similar to crosstabs and pivot tables.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

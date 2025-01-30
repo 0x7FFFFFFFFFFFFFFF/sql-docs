@@ -1,7 +1,7 @@
 ---
 title: "Start Microsoft Report Builder"
 description: Learn how to start Microsoft Report Builder from the SQL Server Reporting Services (SSRS) web portal and create paginated reports.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

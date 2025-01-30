@@ -1,7 +1,7 @@
 ---
 title: "Display headers and footers with a group in a paginated report"
 description: Find out how to set properties to render headers and footers with dynamic rows that are associated with a group in a tablix data region in a paginated report.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

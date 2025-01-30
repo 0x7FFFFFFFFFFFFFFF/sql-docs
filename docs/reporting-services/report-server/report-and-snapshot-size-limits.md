@@ -1,7 +1,7 @@
 ---
 title: "Report and snapshot size limits"
 description: Learn about report size limits when a report is published in Report Server, rendered at run time, and saved to the file system.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

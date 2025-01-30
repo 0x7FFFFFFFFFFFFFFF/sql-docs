@@ -1,7 +1,7 @@
 ---
 title: "Upgrade a Report Server Database"
 description: "Upgrade a Report Server Database"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

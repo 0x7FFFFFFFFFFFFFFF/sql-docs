@@ -1,7 +1,7 @@
 ---
 title: "User Role Properties page (Management Studio)"
 description: Learn about the User Role Properties page in SQL Server Management Studio where you view item-level role definition tasks, change the task list, or modify a role description.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

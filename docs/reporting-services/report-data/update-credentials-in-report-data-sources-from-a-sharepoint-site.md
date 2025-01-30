@@ -1,7 +1,7 @@
 ---
 title: "Update Credentials in Report Data Sources from a SharePoint Site"
 description: Learn how to update data sources embedded in reports and shared data sources that are saved in a SharePoint document library.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

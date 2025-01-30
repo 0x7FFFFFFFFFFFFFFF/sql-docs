@@ -1,7 +1,7 @@
 ---
 title: "Creating the Web Service Proxy"
 description: A client and Web service can communicate using SOAP messages. Add a proxy class to your project to map parameters to XML elements and send SOAP messages.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

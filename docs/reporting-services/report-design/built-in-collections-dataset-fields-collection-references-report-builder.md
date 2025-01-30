@@ -1,7 +1,7 @@
 ---
 title: "Dataset Fields collection references in a paginated report"
 description: Create a dataset for display of individual or summarized values in the Report Data pane of Report Builder in a paginated report.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

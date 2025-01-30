@@ -1,7 +1,7 @@
 ---
 title: "Publishing Data Sources and Reports"
 description: Learn how to publish data sources and reports so that individuals who have permissions to the report server or the SharePoint site can run your report.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

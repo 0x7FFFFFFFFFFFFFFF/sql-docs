@@ -1,7 +1,7 @@
 ---
 title: Filter, group, and sort data in Report Builder paginated reports
 description: Learn how to control, organize, and sort paginated report data with expressions based on dataset fields and parameters in the Report Data pane of Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

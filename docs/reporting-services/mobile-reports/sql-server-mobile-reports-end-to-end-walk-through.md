@@ -1,7 +1,7 @@
 ---
 title: "SQL Server mobile reports: End-to-end walk-through"
 description: Learn to create mobile reports on SQL Server Mobile Report Publisher, save reports on the Reporting Services web portal, & view reports in Power BI mobile apps.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

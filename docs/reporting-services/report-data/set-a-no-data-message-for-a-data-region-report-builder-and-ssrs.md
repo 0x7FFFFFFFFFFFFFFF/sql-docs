@@ -1,7 +1,7 @@
 ---
 title: "Set a No Data Message for a Data Region (Report Builder)"
 description: Learn how to set a no data message to show in a rendered report in place of a data region that has no data.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

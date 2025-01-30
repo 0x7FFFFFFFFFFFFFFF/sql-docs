@@ -1,7 +1,7 @@
 ---
 title: "Formatting lines, colors, and images in a paginated report"
 description: Explore ways to use lines, colors, data regions, and images in a paginated report. Visually tie items together to improve readability in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

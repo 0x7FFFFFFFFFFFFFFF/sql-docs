@@ -1,7 +1,7 @@
 ---
 title: "Prepare to implement a data processing extension"
 description: Discover how to implement a data processing extension in Reporting Services. Learn about available interfaces and required and optional functionality.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

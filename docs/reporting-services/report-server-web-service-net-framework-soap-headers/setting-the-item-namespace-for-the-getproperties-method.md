@@ -1,7 +1,7 @@
 ---
 title: "Set the item namespace for the GetProperties method"
 description: "Setting the Item Namespace for the GetProperties Method"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

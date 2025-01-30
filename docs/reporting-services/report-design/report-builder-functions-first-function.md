@@ -1,7 +1,7 @@
 ---
 title: "First function in a paginated report"
 description: Use the First function in a paginated report to return the first value in the given scope of the specified expression in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

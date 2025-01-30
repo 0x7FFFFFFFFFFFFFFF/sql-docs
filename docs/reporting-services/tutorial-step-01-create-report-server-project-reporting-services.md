@@ -1,7 +1,7 @@
 ---
 title: "Tutorial: Create a report server project"
 description: "In this article, you learn how to use Report Designer to create a report server project and a report definition (.rdl) file."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

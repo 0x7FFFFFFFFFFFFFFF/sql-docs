@@ -1,7 +1,7 @@
 ---
 title: "Add a bookmark to a paginated report"
 description: Find out how to add bookmarks to a paginated report to provide a customized table of contents or to provide customized internal navigation links in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

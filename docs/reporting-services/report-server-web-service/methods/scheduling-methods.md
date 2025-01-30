@@ -1,7 +1,7 @@
 ---
 title: "Scheduling methods"
 description: In Reporting Services, these methods create and manage shared schedules for report execution and delivery, and cache refresh plans used by the report server.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

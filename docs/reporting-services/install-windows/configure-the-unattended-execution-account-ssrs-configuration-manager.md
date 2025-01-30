@@ -1,7 +1,7 @@
 ---
 title: "Configure the unattended execution account (Report Server Configuration Manager)"
 description: "Reporting Services provides a special account that is used for unattended report processing and for sending connection requests across the network."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

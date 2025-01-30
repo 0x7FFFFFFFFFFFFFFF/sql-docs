@@ -1,7 +1,7 @@
 ---
 title: "Provision Subscriptions and Alerts for SSRS Service Applications"
 description: "Provision Subscriptions and Alerts for SSRS Service Applications"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

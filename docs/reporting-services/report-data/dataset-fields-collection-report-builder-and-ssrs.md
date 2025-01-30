@@ -1,7 +1,7 @@
 ---
 title: "Dataset Fields Collection (Report Builder)"
 description: Learn about dataset field collection. Dataset fields represent the data from a data connection. A field can represent either numeric or non-numeric data.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

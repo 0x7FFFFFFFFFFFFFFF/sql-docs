@@ -1,7 +1,7 @@
 ---
 title: "ListInstalledSharePointVersions method (WMI)"
 description: "ConfigurationSetting method - ListInstalledSharePointVersions"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

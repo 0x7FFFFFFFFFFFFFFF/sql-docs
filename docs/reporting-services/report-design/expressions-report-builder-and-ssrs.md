@@ -1,7 +1,7 @@
 ---
 title: "Expressions in a paginated report"
 description: Control the content, design, and interactivity of your paginated report with expressions that enable you to retrieve, display, filter, and format data in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

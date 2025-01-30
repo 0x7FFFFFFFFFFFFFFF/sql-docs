@@ -1,7 +1,7 @@
 ---
 title: "IsInitialized property (WMI MSReportServer_ConfigurationSetting)"
 description: "IsInitialized property (WMI MSReportServer_ConfigurationSetting)"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

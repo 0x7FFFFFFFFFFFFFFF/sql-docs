@@ -1,7 +1,7 @@
 ---
 title: "Specifying paths to external items in a paginated report"
 description: Find out how to specify paths in item properties to reference items that are external to the paginated report definition file in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

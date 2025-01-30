@@ -1,7 +1,7 @@
 ---
 title: "Preview reports in Report Builder"
 description: While you create a Reporting Services paginated report, you can preview the report to verify that the report displays what you want.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

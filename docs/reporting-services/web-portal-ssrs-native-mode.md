@@ -1,7 +1,7 @@
 ---
 title: "What is the report server web portal (Native mode)?"
 description: The SQL Server Reporting Services (SSRS) web portal is a web-based experience for viewing reports and KPIs, and navigating through elements on your report server.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

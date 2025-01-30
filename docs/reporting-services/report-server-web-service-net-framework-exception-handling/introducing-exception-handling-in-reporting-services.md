@@ -1,7 +1,7 @@
 ---
 title: "Introduction to exception management in Reporting Services"
 description: Learn how to handle exceptions thrown by the Report Server Web service so you can return useful information to users when errors occur.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

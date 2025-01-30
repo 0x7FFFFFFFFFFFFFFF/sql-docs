@@ -1,7 +1,7 @@
 ---
 title: "Report Datasets"
 description: Learn about report datasets, for example that a dataset contains the information that is needed to retrieve a specific set of data from a data source.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

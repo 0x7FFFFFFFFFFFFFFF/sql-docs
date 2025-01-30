@@ -1,7 +1,7 @@
 ---
 title: "Add a rectangle or container to a paginated report"
 description: Separate or emphasize areas of a report or provide a background for one or more report items using a customized rectangle in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

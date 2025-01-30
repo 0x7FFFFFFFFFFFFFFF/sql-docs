@@ -1,7 +1,7 @@
 ---
 title: "HelpLink element"
 description: Learn the details about the HelpLink element of the Detail property, including the arguments of the HelpLink URL.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

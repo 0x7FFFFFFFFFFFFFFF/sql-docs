@@ -1,7 +1,7 @@
 ---
 title: "Pie charts in a paginated report"
 description: Learn about displaying data as a proportion of the whole with the use of pie charts and doughnut charts in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

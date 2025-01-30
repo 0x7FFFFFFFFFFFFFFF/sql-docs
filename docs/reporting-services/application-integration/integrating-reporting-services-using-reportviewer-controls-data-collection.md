@@ -1,7 +1,7 @@
 ---
 title: Data collection in ReportViewer control
 description: ReportViewer collects anonymous usage data to understand how customers use the product and focus development on improvements most relevant to customers.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Configure the web portal to pass custom authentication cookies"
 description: "Configure the web portal to pass custom authentication cookies"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

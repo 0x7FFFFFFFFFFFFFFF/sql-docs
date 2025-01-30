@@ -1,7 +1,7 @@
 ---
 title: "Create a Reporting Services mobile report"
 description: With SQL Server Mobile Report Publisher, create SQL Server Reporting Services mobile reports for any screen size with flexible mobile report elements.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

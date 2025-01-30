@@ -1,7 +1,7 @@
 ---
 title: "Troubleshoot reports: map reports in a paginated report"
 description: Explore troubleshooting ideas for situations that can result when you customize, add a layer, or publish a paginated report with a map in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "XML Connection Type"
 description: Learn about the XML connection type to connect to and retrieve data from XML documents, Web services, or XML that is embedded in the query.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

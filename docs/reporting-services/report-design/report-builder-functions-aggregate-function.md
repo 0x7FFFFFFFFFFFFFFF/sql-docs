@@ -1,7 +1,7 @@
 ---
 title: "Aggregate function in a paginated report"
 description: The Aggregate Function returns a custom aggregate of a specified expression in a paginated report as the expression is defined by the data provider.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Access report server items using URL access"
 description: "Learn how to access catalog items of different types in a report server database or in a SharePoint site using rs:Command=Value."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

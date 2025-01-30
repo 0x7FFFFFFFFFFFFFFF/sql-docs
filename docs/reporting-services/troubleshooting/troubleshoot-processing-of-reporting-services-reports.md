@@ -1,7 +1,7 @@
 ---
 title: "Troubleshoot processing of Reporting Services reports"
 description: In this article, troubleshoot issues occurring when the report processor combines data and layout information and evaluates report item property expressions.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Data sources and connection methods"
 description: In Report Services, you can use these methods to set and manage data source connections and credentials.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

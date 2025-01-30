@@ -1,7 +1,7 @@
 ---
 title: "Subscriptions and delivery (Reporting Services)"
 description: In this article, learn about Reporting Services subscriptions, which delivers a report at a specific time or in response to an event.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

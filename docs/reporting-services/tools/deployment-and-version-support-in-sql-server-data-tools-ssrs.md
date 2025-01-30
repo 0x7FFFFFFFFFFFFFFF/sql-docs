@@ -1,7 +1,7 @@
 ---
 title: "Deployment and version support in SQL Server Data Tools (SSDT)"
 description: Learn about the supported versions for authoring and publishing reports in SQL Server Data Tools. Also, discover how to set project configuration and deployment properties.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

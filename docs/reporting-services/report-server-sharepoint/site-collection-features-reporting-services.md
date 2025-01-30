@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services site collection features"
 description: Learn about the SharePoint site collection features that SQL Server Reporting Services SharePoint mode provides.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

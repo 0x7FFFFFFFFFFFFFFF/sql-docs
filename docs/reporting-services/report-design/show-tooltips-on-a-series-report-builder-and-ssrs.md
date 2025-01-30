@@ -1,7 +1,7 @@
 ---
 title: "Show ToolTips on a series in a paginated report"
 description: Learn how to add a ToolTip to each data point on the series of a chart in a paginated report to display related information in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

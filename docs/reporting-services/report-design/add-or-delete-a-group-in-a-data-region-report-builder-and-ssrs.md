@@ -1,7 +1,7 @@
 ---
 title: "Add or delete a group in a data region in a paginated report"
 description: Consider adding a group to a data region in a paginated report. This addition helps organize data by a specific value or set of expressions for display and calculations in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

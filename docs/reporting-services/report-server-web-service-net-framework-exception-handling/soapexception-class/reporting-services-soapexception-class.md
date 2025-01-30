@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services SoapException class"
 description: Learn how to address specific Reporting Services SoapException class errors that you know might happen.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

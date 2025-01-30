@@ -1,7 +1,7 @@
 ---
 title: "Create a recursive hierarchy group in a paginated report"
 description: Learn about organizing data in a paginated report, from a single report dataset that includes hierarchical levels, by using a recursive hierarchy group.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

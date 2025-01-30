@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services roles-tasks vs. SharePoint groups-permissions"
 description: "Reporting Services roles-tasks vs. SharePoint groups-permissions"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

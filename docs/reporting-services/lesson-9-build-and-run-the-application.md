@@ -1,7 +1,7 @@
 ---
 title: "Lesson 9: Build and run the application"
 description: Learn how to build and run the website application after you create a data filter for the data table.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

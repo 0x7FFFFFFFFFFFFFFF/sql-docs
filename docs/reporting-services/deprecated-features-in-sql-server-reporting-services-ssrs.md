@@ -1,7 +1,7 @@
 ---
 title: "Deprecated features in SQL Server Reporting Services"
 description: Learn about the deprecated features in the different versions of SQL Server Reporting Services. The features are still available in the release in which they are deprecated.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

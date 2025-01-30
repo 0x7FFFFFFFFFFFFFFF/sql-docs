@@ -1,7 +1,7 @@
 ---
 title: "SoapException Errors table"
 description: Learn about the errors that are accessible from methods through a SoapException in the Report Server Web service.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

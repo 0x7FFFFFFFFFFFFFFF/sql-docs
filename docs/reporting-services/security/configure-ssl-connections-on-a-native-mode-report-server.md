@@ -1,7 +1,7 @@
 ---
 title: "Configure TLS connections on a native mode report server"
 description: See how to configure TLS connections on a native mode report server so that you can encrypt connections to the report server.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

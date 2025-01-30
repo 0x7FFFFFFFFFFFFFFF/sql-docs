@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services report server (native mode)"
 description: Learn about report server configured for native mode, including managing content, managing a resource, and referencing an image resource from a report.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

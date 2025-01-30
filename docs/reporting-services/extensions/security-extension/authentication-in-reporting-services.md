@@ -1,7 +1,7 @@
 ---
 title: "Authentication in Reporting Services"
 description: Find out how to extend authentication schemes in Reporting Services by using either Forms Authentication or the IAuthenticationExtension2 interface.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

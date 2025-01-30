@@ -1,7 +1,7 @@
 ---
 title: "Add a chart to a paginated report"
 description: Learn how to add a chart to a paginated report when you want to summarize data in a visual format in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

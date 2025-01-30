@@ -1,7 +1,7 @@
 ---
 title: "The Role of SOAP in Reporting Services"
 description: The Report Server Web service uses SOAP over HTTP. Report Manager provides an interface to the report server database, which stores reports and related content.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services data alerts"
 description: Learn how SQL Server Reporting Services data alerts help inform you about report data that is interesting or important to you.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

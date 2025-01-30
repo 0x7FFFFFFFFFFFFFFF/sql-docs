@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services extensions"
 description: Find out how to extend data processing capabilities in Reporting Services by customizing report data, notification mechanisms, and security systems.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

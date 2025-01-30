@@ -1,7 +1,7 @@
 ---
 title: "Constants in expressions in paginated reports"
 description: Learn about the literal text or predefined text of constants in expressions for your paginated reports in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

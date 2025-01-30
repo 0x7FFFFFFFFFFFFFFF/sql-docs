@@ -1,7 +1,7 @@
 ---
 title: "Render a report history snapshot using URL access"
 description: "Learn how to render a report based on a report history snapshot by supplying the rs:Snapshot parameter and setting its value to a valid snapshot ID."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

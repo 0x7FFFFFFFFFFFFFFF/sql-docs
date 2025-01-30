@@ -1,7 +1,7 @@
 ---
 title: "Store Encrypted Report Server Data (Configuration Manager)"
 description: "Store Encrypted Report Server Data (Configuration Manager)"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Troubleshoot report design issues with Reporting Services"
 description: In this article, diagnose and fix report design issues, which might occur when you create the report layout in Design view in a report authoring application.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

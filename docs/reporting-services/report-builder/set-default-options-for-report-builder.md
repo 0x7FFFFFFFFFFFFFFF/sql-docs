@@ -1,7 +1,7 @@
 ---
 title: "Set default options for Report Builder"
 description: This article describes useful defaults that you can set in Report Builder. These defaults make authoring a report easier and faster.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

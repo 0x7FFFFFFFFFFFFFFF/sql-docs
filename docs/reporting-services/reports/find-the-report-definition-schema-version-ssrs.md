@@ -1,7 +1,7 @@
 ---
 title: "Find the Report Definition Schema Version"
 description: Learn how to identify the Report Definition Language (RDL) schema version of your report definition file.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

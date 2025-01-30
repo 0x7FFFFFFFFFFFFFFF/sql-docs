@@ -1,7 +1,7 @@
 ---
 title: Reporting Services backward compatibility
 description: Learn about changes in behavior of SQL Server Reporting Services, including features that are no longer available or scheduled to be removed in a future release.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

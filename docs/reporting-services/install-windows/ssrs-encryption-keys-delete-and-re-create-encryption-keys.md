@@ -1,7 +1,7 @@
 ---
 title: "Delete and Recreate Encryption Keys (Configuration Manager)"
 description: "Deleting and recreating encryption keys are activities that fall outside of routine encryption key maintenance."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Change a chart type in a paginated report"
 description: Learn how to change your paginated report chart type at any point in report design. Improve interpretation with characteristics appropriate for your data in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

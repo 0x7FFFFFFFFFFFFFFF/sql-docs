@@ -1,7 +1,7 @@
 ---
 title: "Secure shared dataset items"
 description: "Secure shared dataset items"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

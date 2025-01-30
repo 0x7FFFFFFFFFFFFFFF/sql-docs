@@ -1,7 +1,7 @@
 ---
 title: "Add and remove encryption keys for scale-out deployment"
 description: "Add and Remove Encryption Keys for Scale-Out Deployment"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

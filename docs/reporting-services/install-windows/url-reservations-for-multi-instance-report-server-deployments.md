@@ -1,7 +1,7 @@
 ---
 title: "URL Reservations for Multi-Instance Report Server Deployments"
 description: "URL Reservations for Multi-Instance Report Server Deployments"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

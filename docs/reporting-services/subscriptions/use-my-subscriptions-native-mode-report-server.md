@@ -1,7 +1,7 @@
 ---
 title: "Use My Subscriptions (native mode report server)"
 description: Learn to use the My Subscriptions page in the Reporting Services web portal to view, modify, enable, disable, or delete existing subscriptions.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

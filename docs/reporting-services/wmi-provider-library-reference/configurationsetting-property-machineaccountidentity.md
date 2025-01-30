@@ -1,7 +1,7 @@
 ---
 title: "MachineAccountIdentity property (WMI)"
 description: "ConfigurationSetting property - MachineAccountIdentity"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

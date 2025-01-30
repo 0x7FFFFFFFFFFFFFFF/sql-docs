@@ -1,7 +1,7 @@
 ---
 title: "Atom device information settings"
 description: Learn about device information settings for the Atom rendering extension that supports submittal of the Atom feed name and which character encoding to use.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

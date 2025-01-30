@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services in SQL Server Management Studio"
 description: View information about how to perform reporting tasks and how to create and manage shared schedules in the web portal using SQL Server Management Studio.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

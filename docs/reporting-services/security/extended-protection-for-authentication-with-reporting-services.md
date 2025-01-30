@@ -1,7 +1,7 @@
 ---
 title: "Extended protection for authentication with Reporting Services"
 description: "Extended protection for authentication with Reporting Services"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

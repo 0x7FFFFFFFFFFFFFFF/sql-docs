@@ -1,7 +1,7 @@
 ---
 title: "Page layout and rendering in paginated reports"
 description: Design or improve your paginated reports with rendering extensions for page layout, page breaks, and paper size in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

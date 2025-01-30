@@ -1,7 +1,7 @@
 ---
 title: "Max function in a paginated report"
 description: Learn about the Max function in a paginated report, which returns the maximum value of all non-null numeric values specified by the expression in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "PPTX device information settings"
 description: Learn details about the device information settings for rendering Reporting Services reports in the PPTX format.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

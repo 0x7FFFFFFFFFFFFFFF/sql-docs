@@ -1,7 +1,7 @@
 ---
 title: "Min function in a paginated report"
 description: Learn about the Min function in a paginated report, which returns the minimum value of all non-null numeric values specified by an expression in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

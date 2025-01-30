@@ -1,7 +1,7 @@
 ---
 title: "Secure shared data source items"
 description: "Secure shared data source items"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

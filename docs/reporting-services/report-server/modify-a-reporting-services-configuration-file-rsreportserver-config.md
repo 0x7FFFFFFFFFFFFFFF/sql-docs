@@ -1,7 +1,7 @@
 ---
 title: "Modify a Reporting Services configuration file (RSreportserver.config)"
 description: Learn how to modify configuration files in Reporting Services to add or configure advanced settings. Some settings are for internal use. Proceed with caution.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

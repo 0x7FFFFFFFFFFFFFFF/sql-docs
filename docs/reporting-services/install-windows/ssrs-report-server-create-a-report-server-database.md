@@ -1,7 +1,7 @@
 ---
 title: "Create a report server database, Configuration Manager"
 description: "SQL Server Reporting Services native mode uses two SQL Server relational databases to store report server metadata and objects. One database is used for primary storage, and the second one stores temporary data."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

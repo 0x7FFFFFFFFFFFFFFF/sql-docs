@@ -1,7 +1,7 @@
 ---
 title: "Manage Report Data Sources"
 description: Learn about managing report data sources, including how to connect to external data sources that are referenced in a report.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

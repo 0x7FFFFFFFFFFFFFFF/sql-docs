@@ -1,7 +1,7 @@
 ---
 title: "Change the order of a paginated report parameter"
 description: Learn how to change the order of paginated report parameters when you have a dependent parameter that is listed out of order in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

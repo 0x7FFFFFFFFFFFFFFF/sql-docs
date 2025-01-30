@@ -1,7 +1,7 @@
 ---
 title: "Report Server HTTP log"
 description: Learn how to enable the Report Server HTTP log after you install Reporting Services. This feature logs every HTTP request and response a report server handles.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

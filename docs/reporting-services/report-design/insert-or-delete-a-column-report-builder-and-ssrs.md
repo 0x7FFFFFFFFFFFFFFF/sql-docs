@@ -1,7 +1,7 @@
 ---
 title: "Insert or delete a column in a paginated report"
 description: Add or delete columns in a tablix data region in a paginated report. In Report Builder, the tablix data region can be a table, a matrix, or a list.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

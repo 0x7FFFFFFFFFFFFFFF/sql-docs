@@ -1,7 +1,7 @@
 ---
 title: "Work with subscriptions (web portal)"
 description: Learn how to use the Subscriptions page to list all of the subscriptions for the current report in Reporting Services.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

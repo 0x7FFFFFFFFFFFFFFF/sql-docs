@@ -1,7 +1,7 @@
 ---
 title: "Find Text, Numbers, or Dates in a Report"
 description: Learn how to use Reporting Services to search for content in a report, such as text, numbers, and dates.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

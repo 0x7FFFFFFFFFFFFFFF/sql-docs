@@ -1,7 +1,7 @@
 ---
 title: "GetReportServerUrls method (WMI MSReportServer_Instance)"
 description: "GetReportServerUrls method (WMI MSReportServer_Instance)"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

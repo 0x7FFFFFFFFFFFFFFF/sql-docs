@@ -1,7 +1,7 @@
 ---
 title: "Create a delivery extension library"
 description: Find out how to assign a delivery extension that you create in Reporting Services to a unique namespace and build it into a library or assembly file.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Initialize a Report Server (Configuration Manager)"
 description: "Initialize a Report Server (Configuration Manager)"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

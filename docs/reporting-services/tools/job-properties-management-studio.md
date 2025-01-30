@@ -1,7 +1,7 @@
 ---
 title: "Job properties (Management Studio)"
 description: Learn about the Job Properties page in SQL Server Management Studio where you view information about jobs on the report server.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

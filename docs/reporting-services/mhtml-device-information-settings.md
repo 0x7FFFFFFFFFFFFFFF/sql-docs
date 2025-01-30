@@ -1,7 +1,7 @@
 ---
 title: "MHTML device information settings"
 description: Learn about the various device information settings for rendering reports in Web archive (MHTML) format.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

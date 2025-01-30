@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services Reports"
 description: Learn details about Reporting Services reports, including the benefits of the reports, how to create paginated reports, and how to view reports.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

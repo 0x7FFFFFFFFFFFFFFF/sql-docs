@@ -1,7 +1,7 @@
 ---
 title: "Integrating into applications"
 description: Reporting Services is an open and extensible reporting platform designed to provide developers with a comprehensive set of APIs for developing solutions.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

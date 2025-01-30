@@ -1,7 +1,7 @@
 ---
 title: "Report history methods"
 description: In Reporting Services, you can use these report history methods to create and manage item history snapshots.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

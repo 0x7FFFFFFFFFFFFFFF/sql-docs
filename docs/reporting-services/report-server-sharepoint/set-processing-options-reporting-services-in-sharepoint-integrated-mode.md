@@ -1,7 +1,7 @@
 ---
 title: "Set processing options (Reporting Services in SharePoint integrated mode)| Microsoft Docs"
 description: In SQL Server Reporting Services in SharePoint integrated mode, specify when data processing occurs, a time-out value, and other options.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

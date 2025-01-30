@@ -1,7 +1,7 @@
 ---
 title: "Get data from shared datasets in Reporting Services mobile reports"
 description: SQL Server Mobile Report Publisher can access data from almost any source by using a shared data source, configured on a Reporting Services web portal.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

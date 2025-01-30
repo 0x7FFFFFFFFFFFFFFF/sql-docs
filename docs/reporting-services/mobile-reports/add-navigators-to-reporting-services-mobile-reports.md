@@ -1,7 +1,7 @@
 ---
 title: "Add navigators to Reporting Services mobile reports"
 description: In Mobile Report Publisher, add navigators to filter data by time or by selection. Navigators are similar to slicers in Power BI and Excel PivotTables.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

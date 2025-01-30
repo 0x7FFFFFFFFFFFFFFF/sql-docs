@@ -1,7 +1,7 @@
 ---
 title: "Report parameters concepts in paginated reports"
 description: Find out how to add parameters to link related paginated reports, to control a report appearance, to filter report data, or to narrow the scope in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

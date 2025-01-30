@@ -1,7 +1,7 @@
 ---
 title: "Add another report server to a farm (SSRS scale-out)"
 description: "Add an Additional Report Server to a Farm (SSRS Scale-out)"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

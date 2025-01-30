@@ -1,7 +1,7 @@
 ---
 title: "Plan for report design and report deployment"
 description: Learn how to plan a report authoring and report server environment that work together using Reporting Services.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

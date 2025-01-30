@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services features and tasks"
 description: Learn how to access Reporting Services foundational content organized by reports and report features, report server features, and Reporting Services product features.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

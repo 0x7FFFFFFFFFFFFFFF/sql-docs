@@ -1,7 +1,7 @@
 ---
 title: "Disable or pause report and process subscriptions"
 description: Manage subscriptions, pause shared schedules, disable shared data sources, block report access, manage subscription permissions, & remove delivery extensions.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

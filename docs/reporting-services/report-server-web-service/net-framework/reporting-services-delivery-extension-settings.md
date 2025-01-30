@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services Delivery Extension Settings"
 description: Reporting Services offers e-mail delivery to send reports to users and file share delivery to send reports to a share. Learn about delivery extension settings.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

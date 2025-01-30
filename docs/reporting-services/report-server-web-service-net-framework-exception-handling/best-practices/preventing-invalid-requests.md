@@ -1,7 +1,7 @@
 ---
 title: "Prevent invalid requests"
 description: Learn how to prevent invalid requests by analyzing your application flow and ensuring that the requests being sent to the report server are valid.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

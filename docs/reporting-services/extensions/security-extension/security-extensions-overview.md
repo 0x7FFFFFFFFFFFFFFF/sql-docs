@@ -1,7 +1,7 @@
 ---
 title: "Security extensions overview"
 description: Find out about security extensions in Reporting Services. See the situations in which custom authentication and authorization is appropriate.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

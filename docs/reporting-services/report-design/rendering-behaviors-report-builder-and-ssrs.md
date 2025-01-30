@@ -1,7 +1,7 @@
 ---
 title: "Rendering behaviors in a paginated report"
 description: Learn about the rules that are applied to the paginated report body and its contents when rendering a report in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

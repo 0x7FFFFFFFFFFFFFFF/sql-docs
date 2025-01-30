@@ -1,7 +1,7 @@
 ---
 title: "Using Secure Web Service Methods"
 description: Require a secure connection for Report Server Web service methods with the SecureConnectionLevel setting in the RSReportServer configuration file.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

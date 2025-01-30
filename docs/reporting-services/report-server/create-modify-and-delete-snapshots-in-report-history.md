@@ -1,7 +1,7 @@
 ---
 title: "Create, modify, and delete snapshots in report history"
 description: Learn how to maintain report history in Reporting Services by adding and deleting snapshots, or by modifying properties that affect report history storage.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

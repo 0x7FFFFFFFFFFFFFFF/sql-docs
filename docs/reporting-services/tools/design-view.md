@@ -1,7 +1,7 @@
 ---
 title: "Design view"
 description: Learn how to use the Design view in the Reporting Services Report Designer to arrange report items in a report.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

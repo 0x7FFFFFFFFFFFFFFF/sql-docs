@@ -1,7 +1,7 @@
 ---
 title: "Word device information settings"
 description: Learn about the device information settings that are available for rendering in Microsoft Word format.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

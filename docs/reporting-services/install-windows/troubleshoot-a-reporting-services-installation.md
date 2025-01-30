@@ -1,7 +1,7 @@
 ---
 title: "Troubleshoot a Reporting Services installation"
 description: "Troubleshoot a Reporting Services installation"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

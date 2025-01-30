@@ -1,7 +1,7 @@
 ---
 title: "Render to HTML (Report Builder)"
 description: In Report Builder, the HTML rendering extension renders paginated reports in HTML format. It can produce full HTML pages or fragments to embed in other pages.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

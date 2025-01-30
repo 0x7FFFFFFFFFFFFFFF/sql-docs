@@ -1,7 +1,7 @@
 ---
 title: "Plot data on a secondary axis in a paginated report"
 description: Find out about the uses for the secondary axis type in a paginated report for comparing two distinct data ranges in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

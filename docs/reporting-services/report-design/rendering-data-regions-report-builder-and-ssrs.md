@@ -1,7 +1,7 @@
 ---
 title: "Rendering data regions in a paginated report"
 description: Learn about the pagination and rendering behaviors of various parts of a data region in a paginated report in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

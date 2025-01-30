@@ -1,7 +1,7 @@
 ---
 title: "MSReportServer_Instance class"
 description: "MSReportServer_Instance class"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

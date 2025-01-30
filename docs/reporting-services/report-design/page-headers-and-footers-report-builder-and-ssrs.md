@@ -1,7 +1,7 @@
 ---
 title: "Page headers and footers in a paginated report"
 description: Discover the many paginated report items you can add to headers and footers, including text, images, rectangles, borders, background color, and expressions in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

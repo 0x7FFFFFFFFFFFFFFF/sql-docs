@@ -1,7 +1,7 @@
 ---
 title: "Hide legend items on the paginated report chart"
 description: Discover how to choose paginated report items that appear on the legend to display the essential data in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

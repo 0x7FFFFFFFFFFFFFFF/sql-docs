@@ -1,7 +1,7 @@
 ---
 title: "Grant permissions on a native mode report server"
 description: "Grant permissions on a native mode report server"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

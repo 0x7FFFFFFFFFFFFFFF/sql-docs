@@ -1,7 +1,7 @@
 ---
 title: "Export a report by using the rs:Format URL parameter"
 description: "Learn how to export a report from SQL Server Reporting Services (SSRS) in different file formats by using the rs:Format URL parameter."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Show Hidden Datasets for Parameter Values - Multidimensional Data"
 description: Learn how to show hidden datasets for parameter values so you can display all datasets in a report.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

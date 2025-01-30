@@ -1,7 +1,7 @@
 ---
 title: "Uninstall Reporting Services"
 description: This article describes how to uninstall Reporting Services, which does not remove content you created or configuration you have modified.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: "03/01/2017"
 ms.service: reporting-services

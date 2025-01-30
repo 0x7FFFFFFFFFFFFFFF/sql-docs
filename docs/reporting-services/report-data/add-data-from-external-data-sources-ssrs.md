@@ -1,7 +1,7 @@
 ---
 title: "Add Data from External Data Sources"
 description: Learn about adding data to reports from external data sources and how reports work with data access technologies.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

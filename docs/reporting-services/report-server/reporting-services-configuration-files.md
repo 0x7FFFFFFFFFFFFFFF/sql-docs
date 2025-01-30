@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services configuration files"
 description: Learn about configuration files where Reporting Services stores component information. You might need to modify the files to add or configure advanced settings.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

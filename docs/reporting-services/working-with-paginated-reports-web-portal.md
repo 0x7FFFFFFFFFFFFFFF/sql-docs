@@ -1,7 +1,7 @@
 ---
 title: "Work with paginated reports (web portal)"
 description: Learn how to view and manage the properties of a paginated report within the web portal. Also, learn to use Report Builder to create or edit paginated reports.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

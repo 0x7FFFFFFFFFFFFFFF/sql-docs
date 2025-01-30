@@ -1,7 +1,7 @@
 ---
 title: "Add data grids to mobile reports"
 description: You can present data in a grid in SQL Server Mobile Report Publisher. Choose a simple data grid, an indicator data grid, or a chart data grid.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

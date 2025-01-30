@@ -1,7 +1,7 @@
 ---
 title: "MSReportServer_ConfigurationSetting members"
 description: "MSReportServer_ConfigurationSetting members"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

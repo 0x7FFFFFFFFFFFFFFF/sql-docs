@@ -1,7 +1,7 @@
 ---
 title: "Report design view in Report Builder"
 description: Learn about the interface in the Report Builder window that you use to add, select, organize report resources, and change report item properties.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Schedules in Reporting Services"
 description: In this overview, learn how you can use shared schedules and report-specific schedules in Reporting Services to control the processing and distribution of reports.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

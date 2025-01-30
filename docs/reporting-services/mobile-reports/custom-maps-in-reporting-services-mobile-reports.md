@@ -1,7 +1,7 @@
 ---
 title: "Custom maps in Reporting Services mobile reports"
 description: Learn about geographic maps in SQL Server Mobile Report Publisher, defined in a format known as ESRI shapefiles.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.reviewer: maghan
 ms.date: 09/25/2024

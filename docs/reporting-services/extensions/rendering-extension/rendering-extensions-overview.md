@@ -1,7 +1,7 @@
 ---
 title: "Rendering extensions overview"
 description: See which data rendering extensions are included with Reporting Services. Learn how to add custom rendering extensions to generate reports in other formats.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Install Reporting Services 2016 in SharePoint mode"
 description: "Install Reporting Services 2016 in SharePoint mode"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

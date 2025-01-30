@@ -1,7 +1,7 @@
 ---
 title: "Integrate using SOAP"
 description: The Reporting Services SOAP API provides several Web service endpoints for developing custom reporting solutions.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

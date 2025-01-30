@@ -1,7 +1,7 @@
 ---
 title: "Data processing extensions overview"
 description: See which data processing extensions are included with Reporting Services, and learn how to add custom data processing to your report server.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

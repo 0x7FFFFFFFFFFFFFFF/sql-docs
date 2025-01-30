@@ -1,7 +1,7 @@
 ---
 title: "Preparing data for display in a tablix data region in a paginated report"
 description: Learn how to customize the paginated report display of data in Report Builder to show either all data retrieved or a subset of the data.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

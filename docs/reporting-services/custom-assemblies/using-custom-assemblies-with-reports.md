@@ -1,7 +1,7 @@
 ---
 title: "Using custom assemblies with reports"
 description: Develop a custom code assembly using the Microsoft .NET Framework so you can reference the assembly from within your report definition files.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

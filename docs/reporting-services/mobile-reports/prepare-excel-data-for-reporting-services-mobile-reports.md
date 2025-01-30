@@ -1,7 +1,7 @@
 ---
 title: "Prepare Excel data for Reporting Services mobile reports"
 description: Reporting Services mobile reports can use data from Excel files. Follow these tips to prepare Excel files and worksheets for easy import.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

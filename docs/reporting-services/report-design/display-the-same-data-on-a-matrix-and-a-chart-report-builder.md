@@ -1,7 +1,7 @@
 ---
 title: "Display the same data on a matrix and a chart in paginated report"
 description: Show the same data in a paginated report in a matrix and in a chart in Report Builder. Set properties on these data regions to include the specifics.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

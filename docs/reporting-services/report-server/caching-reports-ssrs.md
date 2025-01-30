@@ -1,7 +1,7 @@
 ---
 title: "Cache reports"
 description: Learn about caching reports in Report Manager, which speeds up viewing for a processed report while it remains cached.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

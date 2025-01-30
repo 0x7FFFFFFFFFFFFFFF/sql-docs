@@ -1,7 +1,7 @@
 ---
 title: "RSReportDesigner configuration file"
 description: Learn about the configuration file that stores settings about the rendering and data processing extensions available to Report Designer.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

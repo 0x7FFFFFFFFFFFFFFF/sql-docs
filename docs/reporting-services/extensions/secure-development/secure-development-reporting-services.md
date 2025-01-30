@@ -1,7 +1,7 @@
 ---
 title: "Secure development (Reporting Services)"
 description: Learn about the code access security system that Reporting Services uses, which runs code in tightly constrained, administrator-defined security contexts.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

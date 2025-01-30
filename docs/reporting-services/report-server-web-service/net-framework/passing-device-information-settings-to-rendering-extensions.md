@@ -1,7 +1,7 @@
 ---
 title: "Passing Device Information Settings to Rendering Extensions"
 description: Rendering parameters are passed a rendering extension. Specify device information settings by the Render method, as URL parameter, or in configuration files.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

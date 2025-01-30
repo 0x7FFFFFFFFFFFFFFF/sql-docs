@@ -1,7 +1,7 @@
 ---
 title: "Turn Reporting Services features on or off"
 description: Learn how to turn off individual features in native mode Reporting Services. There are different ways to configure features.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

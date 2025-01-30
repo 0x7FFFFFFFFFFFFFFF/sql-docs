@@ -1,7 +1,7 @@
 ---
 title: "Implement a Connection class for a data processing extension"
 description: Implement a Connection object for a data processing extension in Reporting Services. See which interfaces to implement and what to require of clients.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

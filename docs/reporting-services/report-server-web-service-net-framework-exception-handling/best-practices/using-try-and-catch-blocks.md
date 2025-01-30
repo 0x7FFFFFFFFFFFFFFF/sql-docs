@@ -1,7 +1,7 @@
 ---
 title: "Use try and catch blocks"
 description: Learn how to provide another layer of protection against requests that aren't valid by applying adequate exception handling by using try/catch blocks.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

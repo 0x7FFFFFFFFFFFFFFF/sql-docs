@@ -1,7 +1,7 @@
 ---
 title: "Create and Modify Embedded Data Sources"
 description: Learn how to create and modify embedded data sources that are defined in a report definition and only used by that report.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

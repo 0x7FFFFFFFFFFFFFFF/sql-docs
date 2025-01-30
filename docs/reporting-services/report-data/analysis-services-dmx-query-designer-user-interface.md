@@ -1,7 +1,7 @@
 ---
 title: "Analysis Services DMX Query Designer User Interface"
 description: Learn about Reporting Services graphical query designers for building Data Mining Expressions (DMX) queries.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

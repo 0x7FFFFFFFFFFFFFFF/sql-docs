@@ -1,7 +1,7 @@
 ---
 title: "Configure available memory for report server applications"
 description: Learn about the configuration settings for memory usage in Reporting Services and how a server responds when memory pressure is a factor in processing requests.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

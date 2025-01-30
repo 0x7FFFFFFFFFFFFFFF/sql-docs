@@ -1,7 +1,7 @@
 ---
 title: "Add, change, or delete a paginated report parameter"
 description: Choose report data, connect related reports, and vary the report presentation with the addition of report parameters in a paginated report in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

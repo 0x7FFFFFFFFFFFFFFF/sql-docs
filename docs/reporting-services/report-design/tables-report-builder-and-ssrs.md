@@ -1,7 +1,7 @@
 ---
 title: "Tables in paginated reports"
 description: Display detail data or grouped data by using a single field or multiple fields, or by writing your own expression in a paginated report in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

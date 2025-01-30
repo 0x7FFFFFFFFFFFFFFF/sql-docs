@@ -1,7 +1,7 @@
 ---
 title: "Create a Linked Report"
 description: Learn how to create a linked report so that you can create additional versions of an existing report.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

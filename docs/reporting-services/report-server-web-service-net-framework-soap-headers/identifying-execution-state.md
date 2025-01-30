@@ -1,7 +1,7 @@
 ---
 title: "Identify the execution state"
 description: Learn to use Reporting Services to identify the execution state so that you can interact with the report in several ways.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

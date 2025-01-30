@@ -1,7 +1,7 @@
 ---
 title: "Allow a text box to grow or shrink in a paginated report"
 description: Find out how to set property options in Report Builder paginated reports that let a text box expand or shrink based on its contents.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Set the language for report parameters in a URL"
 description: "Learn how to set the language for report parameters in a URL by using the rs:ParameterLanguage URL access parameter."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

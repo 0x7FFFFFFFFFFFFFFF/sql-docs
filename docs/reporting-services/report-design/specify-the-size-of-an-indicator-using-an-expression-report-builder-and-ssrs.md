@@ -1,7 +1,7 @@
 ---
 title: "Specify the size of an indicator in a paginated report using an expression"
 description: Discover ways to use size, in addition to color, direction, and shape, to maximize the visual impact of indicators in a paginated report in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

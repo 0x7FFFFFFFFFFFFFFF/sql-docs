@@ -1,7 +1,7 @@
 ---
 title: "Detail property"
 description: Learn about the Detail property of the Reporting Services SoapException class, specifically about the XML elements that define the property.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

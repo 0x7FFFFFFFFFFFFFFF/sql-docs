@@ -1,7 +1,7 @@
 ---
 title: "Activate the report server and Power View integration features in SharePoint"
 description: SQL Server Reporting Services Add-in for SharePoint features automatically activate. Use these instructions if you need to manually activate them.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

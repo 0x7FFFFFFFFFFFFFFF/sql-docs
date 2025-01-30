@@ -1,7 +1,7 @@
 ---
 title: "Move or delete an item (Report Manager)"
 description: A Report Manager report server stores reports and related items in folders. You can move or delete items. Report server maintains references to items you move.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

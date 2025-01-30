@@ -1,7 +1,7 @@
 ---
 title: "Tutorial: Format a report (Reporting Services)"
 description: Learn how to format a report in SQL Server Data Tools. You can format text styles, date fields, currency fields, and the column widths after you add a data region.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

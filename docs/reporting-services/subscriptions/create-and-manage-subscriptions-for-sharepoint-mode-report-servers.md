@@ -1,7 +1,7 @@
 ---
 title: "Create and manage subscriptions for SharePoint mode report servers"
 description: Learn to create a Reporting Services subscription to deliver reports from a SharePoint web app you integrated with a SharePoint mode report server.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

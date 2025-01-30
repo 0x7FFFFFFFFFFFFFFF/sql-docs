@@ -1,7 +1,7 @@
 ---
 title: "Parameters collection references in a paginated report"
 description: Discover how to use parameters in an expression to customize paginated report data and appearance based on user choices in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

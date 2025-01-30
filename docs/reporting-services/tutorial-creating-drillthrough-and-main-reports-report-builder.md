@@ -1,7 +1,7 @@
 ---
 title: "Tutorial: Create drillthrough and main reports (Report Builder)"
 description: "Learn how to create two kinds of Reporting Services paginated reports: a drillthrough report and a main report."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

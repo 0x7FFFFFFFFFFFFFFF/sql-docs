@@ -1,7 +1,7 @@
 ---
 title: "rsInternalError - Reporting Services error"
 description: "In this error reference page, learn about event ID 'rsInternalError': An internal error occurred on the report server. For more information, see the error log."
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

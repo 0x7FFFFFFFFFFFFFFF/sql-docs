@@ -1,7 +1,7 @@
 ---
 title: "Reports, Report Parts, and Report Definitions (Report Builder)"
 description: Discover the terms used to describe reports in different states in Report Builder. These states include the initial definition and the published report.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

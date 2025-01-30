@@ -1,7 +1,7 @@
 ---
 title: "Show row and column headers on multiple pages in a report"
 description: Learn how to control repeating row and column headers on every page of a paginated report for a tablix data region that spans multiple pages in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

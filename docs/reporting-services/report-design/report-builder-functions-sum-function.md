@@ -1,7 +1,7 @@
 ---
 title: "Sum function in a paginated report"
 description: The Sum function in Report Builder returns the sum of all the non-null numeric values in a paginated report specified by the expression.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

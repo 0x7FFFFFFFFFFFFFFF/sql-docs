@@ -1,7 +1,7 @@
 ---
 title: Add a page break to a Report Builder paginated report
 description: Learn how to add a page break to rectangles, data regions, or groups within data regions in Report Builder to control the information on each page.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

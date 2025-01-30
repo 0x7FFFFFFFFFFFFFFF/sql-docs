@@ -1,7 +1,7 @@
 ---
 title: "Vary polygon, line, and point display in a paginated report by rules and analytical data"
 description: Control display for polygons, lines, and points in a paginated report by setting options and rules, or by overriding options for embedded map elements in Report Builder.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

@@ -1,7 +1,7 @@
 ---
 title: "Reporting Services WMI provider library reference"
 description: "Reporting Services WMI provider library reference (SSRS)"
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

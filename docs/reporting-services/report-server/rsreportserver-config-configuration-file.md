@@ -1,7 +1,7 @@
 ---
 title: "RsReportServer.config configuration file"
 description: Learn about the configuration file that stores settings that are used by the Report Server web service and background processing.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services

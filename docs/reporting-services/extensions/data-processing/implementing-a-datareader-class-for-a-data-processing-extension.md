@@ -1,7 +1,7 @@
 ---
 title: "Implement a DataReader class for a data processing extension"
 description: Increase application performance and reduce system overhead by implementing a DataReader class for a data processing extension.
-author: maggiesMSFT
+author: kfollis
 ms.author: maggies
 ms.date: 09/25/2024
 ms.service: reporting-services
