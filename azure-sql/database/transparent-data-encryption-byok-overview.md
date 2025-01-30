@@ -301,7 +301,7 @@ The following diagram represents a configuration for paired region (primary and 
 
 - The AKV in the secondary region is in a read-only state until the failback occurs.
 
-Customer can't choose or check what region the AKV is currently in.
+- Customer can't choose or check what region the AKV is currently in.
 
 - For nonpaired region, both Azure SQL servers access the AKV  in the first region (as indicated on the graph) and the AKV uses zone-redundant storage  to replicate the data within the region, across independent availability zones of the same region.
 
