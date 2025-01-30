@@ -1,10 +1,10 @@
 ---
 title: Elastic Query Overview
 description: Elastic query enables you to run a Transact-SQL query that spans multiple databases.
-author: bgavrilovicMS
-ms.author: bgavrilovic
-ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 01/14/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: drskwier, bgavrilovic, mathoma, randolphwest
+ms.date: 01/30/2025
 ms.service: azure-sql-database
 ms.subservice: scale-out
 ms.topic: overview
@@ -142,10 +142,6 @@ Elastic query is included in the cost of Azure SQL Database. Topologies where yo
 
 - Running your first elastic query can take up to a few minutes on smaller resources and Standard and General Purpose service tier. This time is necessary to load the elastic query functionality; loading performance improves with higher service tiers and compute sizes.
 
-- Scripting of external data sources or external tables from SSMS or SSDT isn't yet supported.
-
-- Import/Export for SQL Database doesn't yet support external data sources and external tables. If you need to use Import/Export, drop these objects before exporting and then re-create them after importing.
-
 - Elastic query currently only supports read-only access to external tables. You can, however, use full Transact-SQL functionality on the database where the external table is defined. This can be useful to, for example, persist temporary results using, for example, `SELECT <column_list> INTO <local_table>`, or to define stored procedures on the elastic query database that refer to external tables.
 
 - Except for **nvarchar(max)**, LOB types (including spatial types) aren't supported in external table definitions. As a workaround, you can create a view on the remote database that casts the LOB type into **nvarchar(max)**, define your external table over the view instead of the base table and then cast it back into the original LOB type in your queries.
@@ -156,7 +152,7 @@ Elastic query is included in the cost of Azure SQL Database. Topologies where yo
 
 - Cursors aren't supported for external tables in Azure SQL Database.
 
-- Elastic query works with Azure SQL Database only. You can't use it for querying a SQL Server instance.
+- Elastic query works with Azure SQL Database only. You can't use it for querying a SQL Server instance, Azure SQL Managed Instance, or Fabric SQL database.
 
 - Private links are currently not supported with elastic query for those databases that are targets of external data sources.
 
