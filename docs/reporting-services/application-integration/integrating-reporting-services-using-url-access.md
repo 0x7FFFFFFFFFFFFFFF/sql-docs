@@ -2,7 +2,7 @@
 title: "Integrate using URL Access"
 description: A URL request enables you to access a specific report server and the reports, resources, and other items in the report server database.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: application-integration

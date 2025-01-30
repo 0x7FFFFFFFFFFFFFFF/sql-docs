@@ -2,7 +2,7 @@
 title: "Data for Reporting Services mobile reports"
 description: After you import data into SQL Server Mobile Report Publisher, mobile report creation and design is the same, whether data is from Excel files or shared datasets.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: mobile-reports

@@ -2,7 +2,7 @@
 title: "Find, view, & manage reports (Report Builder & SSRS)"
 description: See how you can browse to find paginated reports, shared data sources, models, and other related report items in Report Builder and Report Designer.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder

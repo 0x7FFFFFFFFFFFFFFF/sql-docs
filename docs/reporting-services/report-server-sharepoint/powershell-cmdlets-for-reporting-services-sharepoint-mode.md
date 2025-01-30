@@ -2,7 +2,7 @@
 title: "PowerShell cmdlets for Reporting Services SharePoint mode"
 description: PowerShell cmdlets are installed to support SQL Server Reporting Services SharePoint mode, including installation and feature and application management.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint

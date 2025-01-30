@@ -2,7 +2,7 @@
 title: "Install the first Report Server in SharePoint mode"
 description: "Install the first Report Server in SharePoint mode"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint

@@ -2,7 +2,7 @@
 title: "Report Builder authoring environment"
 description: Learn about Report Builder, a stand-alone authoring environment for creating Reporting Services paginated reports outside of Visual Studio.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

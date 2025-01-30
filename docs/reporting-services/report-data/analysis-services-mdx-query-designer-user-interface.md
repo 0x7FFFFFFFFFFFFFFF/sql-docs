@@ -2,7 +2,7 @@
 title: "Analysis Services MDX Query Designer User Interface"
 description: Learn about Reporting Services graphical query designers for building Multidimensional Expression (MDX) queries.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

@@ -2,7 +2,7 @@
 title: Add a filter to a Report Builder paginated report
 description: Learn how to add a filter to a dataset, data region, or group when you want to include or exclude specific values for calculations in a paginated report.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

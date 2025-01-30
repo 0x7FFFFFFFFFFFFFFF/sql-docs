@@ -2,7 +2,7 @@
 title: "Add code to a paginated report"
 description: Find out how to call your own custom code for any expression you have in your paginated report in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

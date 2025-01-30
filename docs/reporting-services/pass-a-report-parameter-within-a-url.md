@@ -2,7 +2,7 @@
 title: "Pass a report parameter within a URL"
 description: Learn about how you can pass report parameters directly to the SQL Server Reporting Services (SSRS) report server in a URL.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

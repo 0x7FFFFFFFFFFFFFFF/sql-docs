@@ -1,6 +1,6 @@
 ---
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 12/06/2018
 ms.service: reporting-services
 ms.topic: include

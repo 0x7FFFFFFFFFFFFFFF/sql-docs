@@ -2,7 +2,7 @@
 title: "Administer a report server database (native mode)"
 description: Learn about administering a Reporting Services deployment, including backup and restore of report server databases and managing encryption keys.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

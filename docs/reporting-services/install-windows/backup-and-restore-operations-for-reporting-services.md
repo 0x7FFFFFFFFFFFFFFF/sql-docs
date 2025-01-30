@@ -2,7 +2,7 @@
 title: "Backup and restore operations for Reporting Services"
 description: "Backup and Restore Operations for Reporting Services"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

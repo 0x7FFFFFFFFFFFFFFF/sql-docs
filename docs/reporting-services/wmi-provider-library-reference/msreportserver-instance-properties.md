@@ -2,7 +2,7 @@
 title: "MSReportServer_Instance properties"
 description: "MSReportServer_Instance properties"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: wmi-provider-library-reference

@@ -2,7 +2,7 @@
 title: "Alternative ways to get a data connection (Report Builder)"
 description: Learn details about alternative ways to connect to an external data source, such as a SQL Server database.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

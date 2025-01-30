@@ -2,7 +2,7 @@
 title: "Extended protection for authentication with Reporting Services"
 description: "Extended protection for authentication with Reporting Services"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security

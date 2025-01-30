@@ -2,7 +2,7 @@
 title: "Server properties (Security page) - Reporting Services"
 description: Learn how to use the Reporting Services page in SQL Server Management Studio to turn off features that can potentially compromise a report server.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

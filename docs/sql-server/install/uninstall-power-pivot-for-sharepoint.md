@@ -2,7 +2,7 @@
 title: "Uninstall Power Pivot for SharePoint"
 description: This article describes how to uninstall a Power Pivot for SharePoint installation, which is a multi-step operation.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: install

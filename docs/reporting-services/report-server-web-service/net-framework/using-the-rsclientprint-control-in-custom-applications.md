@@ -2,7 +2,7 @@
 title: "Using the RSClientPrint Control in Custom Applications"
 description: RSPrintClient provides client-side printing for reports viewed in HTML Viewer. The report server renders the report in the Image (EMF) rendering extension.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-web-service

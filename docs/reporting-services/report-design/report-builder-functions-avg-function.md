@@ -2,7 +2,7 @@
 title: "Avg function in a paginated report"
 description: Learn about the Avg Function in paginated reports, which returns the average of all non-null numeric values specified by the expression in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

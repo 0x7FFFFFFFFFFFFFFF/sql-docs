@@ -2,7 +2,7 @@
 title: "Subreports in paginated reports"
 description: Display a report inside another paginated report. Display and store them both in the same server folder in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

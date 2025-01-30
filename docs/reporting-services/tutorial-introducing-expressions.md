@@ -2,7 +2,7 @@
 title: "Tutorial: Introduce expressions"
 description: Learn to use expressions with common functions and operators to create powerful and flexible Reporting Services paginated reports.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

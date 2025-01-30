@@ -2,7 +2,7 @@
 title: "Embedded and Shared Datasets (Report Builder)"
 description: Learn about embedded and shared datasets. Datasets contain a query command, parameters, and data options that include case sensitivity and collation.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

@@ -2,7 +2,7 @@
 title: "Manage a Reporting Services native mode report server"
 description: Refer to these articles when configuring a native mode report server, or when configuring a report server to run in SharePoint integrated mode.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

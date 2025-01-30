@@ -2,7 +2,7 @@
 title: "Report server in Management Studio F1 Help"
 description: View information about the features for managing report servers in SQL Server Management Studio.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

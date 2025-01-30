@@ -2,7 +2,7 @@
 title: "Use the Report class for a delivery extension"
 description: Find out how delivery extensions can use the Report class, which stores the report URL on the report server, the report name, and other properties.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

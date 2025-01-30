@@ -2,7 +2,7 @@
 title: "Preview view"
 description: Learn about the Preview view of the Reporting Services Report Designer where you view a display of your rendered report.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

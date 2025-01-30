@@ -2,7 +2,7 @@
 title: "Create a document map or table of contents in paginated reports"
 description: Learn how to use a document map to provide a table of contents or a set of navigational links to report items in a rendered paginated report in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

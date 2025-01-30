@@ -2,7 +2,7 @@
 title: "Script deployment and administrative tasks"
 description: Learn about the tools, technologies and strategies for automating routine installation, deployment, and administrative tasks for a report server.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

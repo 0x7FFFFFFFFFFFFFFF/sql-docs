@@ -2,7 +2,7 @@
 title: "Configure Execution Properties for a Report - Reporting Services"
 description: Learn how to set report processing options to specify when to retrieve report data to avoid the overhead of retrieving the same data each time a report is requested.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reports

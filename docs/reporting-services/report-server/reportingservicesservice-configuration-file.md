@@ -2,7 +2,7 @@
 title: "ReportingServicesService configuration file"
 description: Learn about the file location, editing guidelines, and configuration settings of ReportingServicesService.exe.config used for tracing in Reporting Services.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

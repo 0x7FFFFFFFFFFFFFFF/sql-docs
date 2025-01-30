@@ -2,7 +2,7 @@
 title: "Technical reference"
 description: Learn about the tools and PowerShell reference documentation for using or administering SQL Server Reporting Services.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

@@ -2,7 +2,7 @@
 title: Use ExecutionLog and the ExecutionLog3 view in Reporting Services
 description: See the report server execution log that's in Reporting Services, which contains information about reports on servers in native mode or a SharePoint farm.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

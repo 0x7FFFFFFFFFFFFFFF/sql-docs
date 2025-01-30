@@ -2,7 +2,7 @@
 title: "Turn on Reporting Services events for the SharePoint trace log (ULS)"
 description: Learn how to turn on writing of Reporting Services events to the SharePoint ULS trace log for Reporting Services servers in SharePoint mode.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

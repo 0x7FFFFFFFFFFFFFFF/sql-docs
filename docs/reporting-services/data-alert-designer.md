@@ -2,7 +2,7 @@
 title: "Data Alert Designer"
 description: Learn about data alert definitions and how to create and edit data alert definitions in Data Alert Designer.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

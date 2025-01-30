@@ -2,7 +2,7 @@
 title: What are REST APIs for Reporting Services?
 description: Learn how REST APIs provide programmatic access to the objects in a SQL Server 2017 Reporting Services report server catalog.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: developer

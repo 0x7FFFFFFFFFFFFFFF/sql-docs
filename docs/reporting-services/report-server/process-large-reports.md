@@ -2,7 +2,7 @@
 title: "Process large reports"
 description: Find out how to run large reports properly in Report Server by following configuration, rendering, deployment, and distribution recommendations.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

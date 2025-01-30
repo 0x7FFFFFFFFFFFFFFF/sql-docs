@@ -2,7 +2,7 @@
 title: "Host a report server database in a SQL Server failover cluster"
 description: "Host a report server database in a SQL Server failover cluster"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

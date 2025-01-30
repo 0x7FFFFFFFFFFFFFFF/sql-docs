@@ -1,6 +1,6 @@
 ---
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.reviewer: randolphwest
 ms.date: 05/01/2024
 ms.service: powerbi

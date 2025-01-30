@@ -2,7 +2,7 @@
 title: "Create a Native Mode Report Server Database (Configuration Manager)"
 description: "Native mode Reporting Services uses a SQL Server database for internal storage. The database is required and it is used to store published reports, models, shared data sources, session data, resources, and server metadata."
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

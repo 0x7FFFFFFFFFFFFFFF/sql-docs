@@ -2,7 +2,7 @@
 title: "Define Parameters in the MDX Query Designer for Analysis Services"
 description: Learn how to define query parameters in the Multidimensional Expression (MDX) query designer for Analysis Services.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

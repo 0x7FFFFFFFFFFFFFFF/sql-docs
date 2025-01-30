@@ -2,7 +2,7 @@
 title: "Rendering and execution methods"
 description: In Reporting Services, you can use these methods to manage item execution and caching, and report rendering.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-web-service

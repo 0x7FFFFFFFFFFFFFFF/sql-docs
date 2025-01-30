@@ -2,7 +2,7 @@
 title: "Configure Reporting Services to use a Subject Alternative Name (SAN)"
 description: Learn how to configure SQL Server Reporting Services and Power BI Report Server to use a SAN by modifying the rsreportserver.config file and using the Netsh.exe tool.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security

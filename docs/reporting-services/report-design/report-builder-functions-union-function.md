@@ -2,7 +2,7 @@
 title: "Union function in a paginated report"
 description: Find out about this function that returns the union of all the non-null numeric values in a paginated report that are specified by an expression.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

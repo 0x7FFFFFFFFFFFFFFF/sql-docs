@@ -2,7 +2,7 @@
 title: "Reporting Services Login dialog box"
 description: Learn how to use the Reporting Services Login dialog box to provide credentials to publish reports to the report server.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

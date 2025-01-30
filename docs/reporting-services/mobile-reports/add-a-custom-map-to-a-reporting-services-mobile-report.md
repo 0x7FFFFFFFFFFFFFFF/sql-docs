@@ -2,7 +2,7 @@
 title: "Add a custom map to a Reporting Services mobile report"
 description: You can add a custom map to a Reporting Services mobile report. This article describes how to load and connect data to a custom map.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: mobile-reports

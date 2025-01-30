@@ -2,7 +2,7 @@
 title: Export a paginated report to Microsoft Excel (Report Builder)
 description: Find out about the Excel rendering extension, which you can use to export a Report Builder paginated report to the Office Open XML format for use in Microsoft Excel.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/30/2024
 ms.service: reporting-services
 ms.subservice: report-builder

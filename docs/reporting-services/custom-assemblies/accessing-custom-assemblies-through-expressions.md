@@ -2,7 +2,7 @@
 title: "Accessing custom assemblies through expressions"
 description: After you create a custom assembly, learn how to access classes in your custom assembly by using report expressions.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: custom-assemblies

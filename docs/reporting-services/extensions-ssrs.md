@@ -2,7 +2,7 @@
 title: Extensions for SQL Server Reporting Services (SSRS)
 description: Learn about the extensions that are readily available in Reporting Services, and how it uses extensions to modularize the types of input or output it accepts.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

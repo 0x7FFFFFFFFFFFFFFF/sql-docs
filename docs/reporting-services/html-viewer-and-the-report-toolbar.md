@@ -2,7 +2,7 @@
 title: "HTML Viewer and the report toolbar"
 description: Learn about the HTML Viewer and the report toolbar and how you can view reports on demand as they're requested from the report server.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

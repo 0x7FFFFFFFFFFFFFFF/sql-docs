@@ -2,7 +2,7 @@
 title: "Add sparklines and data bars in a paginated report"
 description: "Learn how to add sparklines and data bars in a paginated report."
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

@@ -2,7 +2,7 @@
 title: "Lesson 6: Add a ReportViewer control to the application"
 description: Learn how to add a ReportViewer control to the website application after you design the child report by using the Report Wizard.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

@@ -2,7 +2,7 @@
 title: "Teradata Connection Type"
 description: Use the information in this article about the Teradata connection type to learn how to build a data source.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

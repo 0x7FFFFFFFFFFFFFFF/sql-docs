@@ -2,7 +2,7 @@
 title: "Specify consistent colors in multiple shape charts in a paginated report"
 description: Find out how choosing colors for a shape chart in a paginated report results in mapping each color in the palette to a data point in the dataset.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

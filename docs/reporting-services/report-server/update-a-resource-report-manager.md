@@ -2,7 +2,7 @@
 title: "Update a resource (web portal)"
 description: Update a resource by using Reporting Services web portal. Replace an existing resource by importing new or different file content into the existing resource.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

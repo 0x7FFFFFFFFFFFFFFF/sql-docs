@@ -2,7 +2,7 @@
 title: "Range charts in a paginated report"
 description: Display a set of data points in a paginated report that are each defined by multiple values for the same category by using range charts in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

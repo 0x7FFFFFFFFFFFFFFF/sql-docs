@@ -2,7 +2,7 @@
 title: "Dataset Properties Dialog Box, Parameters"
 description: Learn to use the Parameters property in the Dataset Properties dialog box to add, change, and delete query parameters.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

@@ -2,7 +2,7 @@
 title: "Add cascading parameters to a paginated report"
 description: Find out how to use cascading parameters in your paginated reports in Report Builder to manage large amounts of report data.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

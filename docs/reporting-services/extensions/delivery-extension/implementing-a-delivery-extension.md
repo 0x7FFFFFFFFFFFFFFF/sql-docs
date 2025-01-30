@@ -2,7 +2,7 @@
 title: "Implement a delivery extension"
 description: Read an overview of how you can extend the functionality of delivery in Reporting Services by implementing a custom delivery extension.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

@@ -2,7 +2,7 @@
 title: "Report Viewer Web Part programmability in SharePoint integration"
 description: Learn how to create custom Web Parts that supply report path and parameters to Report Viewer Web Part using Web Part connections.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

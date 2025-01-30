@@ -2,7 +2,7 @@
 title: Search a report by using URL access
 description: "Learn how to search a report using URL access. For example, set the rc:FindString parameter on the URL equal to the text for which you want to search."
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

@@ -2,7 +2,7 @@
 title: "Add custom locations to a map in a paginated report"
 description: Learn how to add custom locations to a map you added to a paginated report in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

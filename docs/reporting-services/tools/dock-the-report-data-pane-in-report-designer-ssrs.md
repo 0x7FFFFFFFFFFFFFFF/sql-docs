@@ -2,7 +2,7 @@
 title: "Dock the Report Data pane in Report Designer"
 description: Learn how to view and dock the Report Data pane. The Report Data pane displays a hierarchical view of report data objects in the Reporting Services Report Designer in SQL Server Data Tools.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

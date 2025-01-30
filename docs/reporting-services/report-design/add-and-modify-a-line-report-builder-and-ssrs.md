@@ -2,7 +2,7 @@
 title: "Add and modify a line in a paginated report"
 description: Customize the appearance of reports by adding a graphical element to separate sections or by editing line properties that change color or style in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

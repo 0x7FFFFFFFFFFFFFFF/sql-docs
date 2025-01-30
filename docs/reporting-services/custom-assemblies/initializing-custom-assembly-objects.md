@@ -2,7 +2,7 @@
 title: "Initializing custom assembly objects"
 description: Learn to initialize custom classes with values available to you from the report's global object collections.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: custom-assemblies

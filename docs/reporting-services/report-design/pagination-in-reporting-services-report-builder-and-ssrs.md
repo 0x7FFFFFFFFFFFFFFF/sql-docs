@@ -2,7 +2,7 @@
 title: "Pagination in paginated reports"
 description: Learn about the number of pages within a paginated report and how report items are arranged on these pages in Microsoft Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

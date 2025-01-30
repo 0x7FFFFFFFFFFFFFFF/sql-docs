@@ -2,7 +2,7 @@
 title: "Access the Reporting Services WMI provider"
 description: Learn how to access the Reporting Services WMI provider. The WMI provider exposes two WMI classes for administration of Native mode report server instances through scripting.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

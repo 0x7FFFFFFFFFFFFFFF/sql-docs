@@ -2,7 +2,7 @@
 title: "Create a data alert in Data Alert Designer"
 description: Learn how to create data alert definitions in Data Alert Designer. Also, learn about editing the alerts and saving the edits when you're finished.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

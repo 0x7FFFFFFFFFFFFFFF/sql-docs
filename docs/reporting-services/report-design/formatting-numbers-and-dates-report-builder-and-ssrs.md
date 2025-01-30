@@ -2,7 +2,7 @@
 title: Format numbers and dates in Report Builder paginated reports
 description: Learn how to format numbers and dates in Report Builder data regions in a paginated report by selecting a format from the Properties dialog box.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

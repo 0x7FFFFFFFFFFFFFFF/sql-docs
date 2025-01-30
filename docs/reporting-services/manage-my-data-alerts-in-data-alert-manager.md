@@ -2,7 +2,7 @@
 title: "Manage My Data Alerts in Data Alert Manager"
 description: Learn how to view a list of the data alerts that they created and information about the alerts in Data Alert Manager.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

@@ -2,7 +2,7 @@
 title: "Grant permissions on report server items on a SharePoint site"
 description: "Grant permissions on report server items on a SharePoint site"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security

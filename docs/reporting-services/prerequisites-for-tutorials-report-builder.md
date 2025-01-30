@@ -2,7 +2,7 @@
 title: "Prerequisites for tutorials (Report Builder)"
 description: Learn about the prerequisites that you must have in place to complete the Report Builder tutorials.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

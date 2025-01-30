@@ -2,7 +2,7 @@
 title: "Use the Detail property to handle specific errors"
 description: Learn how access the inner text of the Message child element by using the Detail property to handle specific errors.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-web-service

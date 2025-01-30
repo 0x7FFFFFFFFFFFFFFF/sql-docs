@@ -2,7 +2,7 @@
 title: "Display page numbers or other paginated report properties"
 description: Add properties of your paginated report including page numbers, filenames, and titles, for display in page headers or footers.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

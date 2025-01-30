@@ -2,7 +2,7 @@
 title: "Implement a data processing extension"
 description: Find out how to create a bridge between a data source and a dataset in Reporting Services by implementing a data processing extension.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

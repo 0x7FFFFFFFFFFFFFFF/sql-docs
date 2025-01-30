@@ -2,7 +2,7 @@
 title: "SQL Server Connection Type"
 description: Learn about the SQL Server connection type and including data from a SQL Server database in your report.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

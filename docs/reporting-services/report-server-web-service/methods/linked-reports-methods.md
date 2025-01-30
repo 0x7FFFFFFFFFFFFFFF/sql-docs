@@ -2,7 +2,7 @@
 title: "Linked reports methods"
 description: These methods add linked items to a database, get the name of an item for a linked item, get items linked to an item, and set a catalog item for a linked item.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-web-service

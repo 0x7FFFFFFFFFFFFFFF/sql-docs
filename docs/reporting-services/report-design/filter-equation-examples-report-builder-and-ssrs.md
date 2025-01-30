@@ -2,7 +2,7 @@
 title: "Filter equation examples in a paginated report"
 description: Find out how to create a paginated report filter. Consider these examples of often-used filters to create your own.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

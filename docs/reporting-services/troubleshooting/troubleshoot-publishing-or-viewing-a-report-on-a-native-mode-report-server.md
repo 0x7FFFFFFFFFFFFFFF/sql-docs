@@ -2,7 +2,7 @@
 title: "Troubleshoot publishing or viewing a report on a native mode report server"
 description: In this article, you diagnose and fix issues that occur when you publish or upload a report to a report server configured in native mode.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: troubleshooting

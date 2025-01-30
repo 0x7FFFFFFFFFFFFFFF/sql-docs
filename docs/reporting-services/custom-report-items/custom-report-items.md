@@ -2,7 +2,7 @@
 title: "Custom report items"
 description: Learn about custom report items and how they consist of a run-time component and a design-time component.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: custom-report-items

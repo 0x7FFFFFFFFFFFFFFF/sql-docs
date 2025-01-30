@@ -2,7 +2,7 @@
 title: "Report Parts in Report Designer"
 description: Publish paginated report items separately to a report server or SharePoint site so that you and others can reuse them in other reports in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

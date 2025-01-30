@@ -2,7 +2,7 @@
 title: "StDevP function in a paginated report"
 description: Learn about this function that returns the population standard deviation of all non-null numeric values in a paginated report specified by an expression.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

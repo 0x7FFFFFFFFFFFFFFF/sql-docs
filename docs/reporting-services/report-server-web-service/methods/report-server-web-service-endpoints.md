@@ -2,7 +2,7 @@
 title: "Report Server Web service endpoints"
 description: The Report Server Web service provides three endpoints for managing a report server and executing and navigating reports.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-web-service

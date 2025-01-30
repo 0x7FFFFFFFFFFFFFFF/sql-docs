@@ -2,7 +2,7 @@
 title: "Formatting pointers on a gauge in a paginated report"
 description: Find out how to indicate the current value of a gauge in a paginated report in Report Builder by formatting points on the gauge.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

@@ -2,7 +2,7 @@
 title: "SharePoint site and list permission reference for report server items"
 description: "SharePoint site and list permission reference for report server items"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security

@@ -2,7 +2,7 @@
 title: "Build a Query in the Relational Query Designer (Report Builder and SSRS"
 description: Learn how to build a query in the Relational Query Designer so that you can specify which data to retrieve from an external data source for a report dataset.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

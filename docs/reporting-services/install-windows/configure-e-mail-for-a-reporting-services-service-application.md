@@ -2,7 +2,7 @@
 title: "Configure e-mail for a Reporting Services service application"
 description: "Configure e-mail for a Reporting Services service application"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

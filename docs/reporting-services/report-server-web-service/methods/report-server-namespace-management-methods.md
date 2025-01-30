@@ -2,7 +2,7 @@
 title: "Report Server namespace management methods"
 description: The Report Server Management Web service contains methods that you can use to manage reports, folders, and resources in the report server database.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-web-service

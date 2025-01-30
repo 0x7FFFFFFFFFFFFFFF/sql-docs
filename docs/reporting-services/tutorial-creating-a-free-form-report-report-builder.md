@@ -2,7 +2,7 @@
 title: "Tutorial: Create a free form report (Report Builder)"
 description: Learn how to create a paginated report that acts as a newsletter and where each page displays static text, summary visuals, and detailed sample sales data.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

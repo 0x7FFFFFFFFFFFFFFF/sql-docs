@@ -2,7 +2,7 @@
 title: "Interactive sort in a paginated report"
 description: Add interactive sort buttons to enable a user to toggle between ascending and descending order for rows in a table in a paginated report.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

@@ -2,7 +2,7 @@
 title: "Tutorial: Create a basic table report (Report Builder)"
 description: Create a basic table report from sample sales data by using the SSRS Report Builder, and organize, format, save, and export your report.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

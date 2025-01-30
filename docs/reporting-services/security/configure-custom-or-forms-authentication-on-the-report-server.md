@@ -2,7 +2,7 @@
 title: "Configure custom or forms authentication on the report server"
 description: "Configure custom or forms authentication on the report server"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security

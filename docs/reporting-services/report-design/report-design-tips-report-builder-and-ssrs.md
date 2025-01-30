@@ -2,7 +2,7 @@
 title: "Report design tips for paginated reports"
 description: Identify visual design methods for better data display in Report Builder. Customize your reports with charts, databars, indicators, sparklines, tables, and maps in a paginated report.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

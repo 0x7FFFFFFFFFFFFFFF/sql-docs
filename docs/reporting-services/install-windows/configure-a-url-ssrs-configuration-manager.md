@@ -2,7 +2,7 @@
 title: "Configure a URL (Report Server Configuration Manager)"
 description: Learn how to create and configure a URL and set advanced URL properties to define more URLs for the report server web service.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

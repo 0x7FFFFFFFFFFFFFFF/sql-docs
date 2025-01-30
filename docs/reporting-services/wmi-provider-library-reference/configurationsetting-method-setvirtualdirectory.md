@@ -2,7 +2,7 @@
 title: "SetVirtualDirectory method (WMI MSReportServer_ConfigurationSetting)"
 description: "SetVirtualDirectory method (WMI MSReportServer_ConfigurationSetting)"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: wmi-provider-library-reference

@@ -2,7 +2,7 @@
 title: "Deploy a data processing extension"
 description: Learn how to make your Reporting Services data processing extension discoverable by the report server and by Report Designer.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

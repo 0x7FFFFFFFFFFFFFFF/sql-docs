@@ -2,7 +2,7 @@
 title: "Accessing the WMI Provider programmatically"
 description: Learn what a WMI provider is, how to find a report server instance, and how to access the WMI Provider programmatically.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

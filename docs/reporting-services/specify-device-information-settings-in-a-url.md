@@ -2,7 +2,7 @@
 title: "Specify device information settings in a URL"
 description: Learn how to specify device information settings in a URL, specifically with the DeviceInfo XML element.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

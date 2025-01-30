@@ -2,7 +2,7 @@
 title: "Troubleshoot Reporting Services report rendering issues"
 description: In this article, diagnose and fix display problems when the compiled report and layout data is sent to a report renderer in SQL Server Reporting Services.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: troubleshooting

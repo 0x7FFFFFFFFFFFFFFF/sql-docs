@@ -2,7 +2,7 @@
 title: "Document Outline window"
 description: Learn about the Document Outline window where you view the hierarchy of report items in a report.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

@@ -2,7 +2,7 @@
 title: "Lesson 2: Define a data connection and data table for the parent report"
 description: "Learn how to create a data connection and a data table for the parent report after you create a new website project using the ASP.NET website template for Visual C#."
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

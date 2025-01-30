@@ -2,7 +2,7 @@
 title: "Monitor report server performance"
 description: Learn how to monitor report server performance to evaluate server activity, watch trends, diagnose bottlenecks, and gather data about system configuration.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

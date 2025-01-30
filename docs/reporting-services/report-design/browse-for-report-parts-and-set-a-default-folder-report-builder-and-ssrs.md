@@ -2,7 +2,7 @@
 title: "Browse for report parts and set a default folder (Report Builder)"
 description: Learn how to add existing report parts, such as tables and charts, to your report from the Report Part Gallery in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

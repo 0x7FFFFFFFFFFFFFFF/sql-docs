@@ -2,7 +2,7 @@
 title: "Authentication in a report server"
 description: Learn how you can authenticate users and client applications against your report server by using configurable options.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security

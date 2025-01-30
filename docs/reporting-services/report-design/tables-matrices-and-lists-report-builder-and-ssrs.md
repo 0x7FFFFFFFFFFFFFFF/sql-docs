@@ -2,7 +2,7 @@
 title: "Tables, matrices, and lists in Report Builder paginated reports"
 description: Learn about how tablix data regions, including tables, matrices, and lists, display paginated report data organized into rows and columns in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

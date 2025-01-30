@@ -1,6 +1,6 @@
 ---
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.reviewer: randolphwest
 ms.date: 12/19/2023
 ms.service: reporting-services

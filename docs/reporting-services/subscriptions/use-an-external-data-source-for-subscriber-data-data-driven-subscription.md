@@ -2,7 +2,7 @@
 title: "Use an external data source for subscriber data (data-driven subscription)"
 description: Learn to use an external data source for a dynamic data-driven subscription. Understand data processing, querying, delivery options, and parameter passing.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions

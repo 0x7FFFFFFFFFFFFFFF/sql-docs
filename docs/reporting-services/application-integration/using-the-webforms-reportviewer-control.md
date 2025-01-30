@@ -2,7 +2,7 @@
 title: "Use WebForms ReportViewer control"
 description: To view reports deployed to a report server or on a local file system, you can use the WebForms ReportViewer control to render them in a Web application.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: application-integration

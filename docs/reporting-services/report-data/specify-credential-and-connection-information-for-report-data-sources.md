@@ -2,7 +2,7 @@
 title: Credentials and connections for report data sources
 description: See how report servers use credentials to connect to external data sources that provide content to reports or recipient information to a data-driven subscription.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

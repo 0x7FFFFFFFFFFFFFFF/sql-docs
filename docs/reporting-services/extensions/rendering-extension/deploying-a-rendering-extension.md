@@ -2,7 +2,7 @@
 title: "Deploy a rendering extension"
 description: Find out how to deploy a report rendering extension. See which configuration file entries to add so the report server and Report Designer locate the extension.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

@@ -2,7 +2,7 @@
 title: "Planning a paginated report"
 description: Plan and create paginated reports with richly formatted text that shows sales data, marketing trends, operational reports, or dashboards in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

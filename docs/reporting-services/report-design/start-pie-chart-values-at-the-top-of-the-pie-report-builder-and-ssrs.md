@@ -2,7 +2,7 @@
 title: "Start pie chart values at the top of the pie in a paginated report"
 description: Learn how to start pie chart values a the top of the chart in a paginated report rather than the default 90 degrees from the top.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

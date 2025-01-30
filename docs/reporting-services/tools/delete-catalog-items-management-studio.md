@@ -2,7 +2,7 @@
 title: "Delete Catalog Items (Management Studio)"
 description: Learn about the options on the Delete Catalog Items page of Management Studio that allow you to delete shared schedules and role definitions.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

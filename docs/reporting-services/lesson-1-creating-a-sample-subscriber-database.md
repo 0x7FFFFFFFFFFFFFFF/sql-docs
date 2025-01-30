@@ -2,7 +2,7 @@
 title: "Lesson 1: Create a sample subscriber database"
 description: Learn how to create a small subscriber database to store subscription data for your data-driven subscription.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

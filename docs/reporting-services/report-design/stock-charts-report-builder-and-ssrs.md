@@ -2,7 +2,7 @@
 title: "Stock charts in a paginated report"
 description: Display financial or scientific data using up to four values per data point in a paginated report using markers such as lines or triangles in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

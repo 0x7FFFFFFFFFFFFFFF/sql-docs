@@ -2,7 +2,7 @@
 title: "Format a Reporting Services script file"
 description: Format a Reporting Services script file in Microsoft Visual Basic .NET that contains user-defined procedures and module-level variables.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.reviewer: maghan, randolphwest
 ms.date: 09/25/2024
 ms.service: reporting-services

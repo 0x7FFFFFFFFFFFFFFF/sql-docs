@@ -2,7 +2,7 @@
 title: "Publish reports to a report server"
 description: Learn how to use the deployment features in SQL Server Data Tools (SSDT) to publish multiple reports or a report server project to a report server.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reports

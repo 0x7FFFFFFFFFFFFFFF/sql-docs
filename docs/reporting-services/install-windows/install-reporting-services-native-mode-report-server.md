@@ -2,7 +2,7 @@
 title: Install a Reporting Services 2016 native mode report server
 description: See how to install Reporting Services in native mode. View steps for how to use the SQL Server installation wizard to install and configure the report server.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

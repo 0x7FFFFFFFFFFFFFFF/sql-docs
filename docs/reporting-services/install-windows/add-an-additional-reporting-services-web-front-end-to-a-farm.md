@@ -2,7 +2,7 @@
 title: "Add another Reporting Services web front-end to a farm"
 description: "Add another Reporting Services web front-end to a Farm"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

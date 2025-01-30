@@ -2,7 +2,7 @@
 title: "Implement a rendering extension"
 description: Find out how to transform Reporting Services report data and layout information into device-specific formats by implementing rendering extensions.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

@@ -2,7 +2,7 @@
 title: "Enable remote errors (Reporting Services)"
 description: Learn how to set server properties on a Reporting Services report server to return additional information about error conditions that occur on remote servers.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

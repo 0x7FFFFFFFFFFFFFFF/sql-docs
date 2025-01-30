@@ -2,7 +2,7 @@
 title: "Analysis Services Connection Type for DMX"
 description: Learn about the Analysis Services connection type for DMX and learn to use the DMX Query Designer to build a DMX query using graphical elements.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

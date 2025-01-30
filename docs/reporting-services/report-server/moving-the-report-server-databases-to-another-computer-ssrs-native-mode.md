@@ -2,7 +2,7 @@
 title: Move report server databases to another computer (native mode)
 description: Find out how to move report server databases to a different SQL Server instance. See how to attach and detach the databases or use backup and restore actions.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/26/2024
 ms.service: reporting-services
 ms.subservice: report-server

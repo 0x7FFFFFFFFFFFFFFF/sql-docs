@@ -2,7 +2,7 @@
 title: "VarP function in a paginated report"
 description: The VarP Function in Report Builder returns the population variance of all non-null numeric values in a paginated report specified by the expression.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

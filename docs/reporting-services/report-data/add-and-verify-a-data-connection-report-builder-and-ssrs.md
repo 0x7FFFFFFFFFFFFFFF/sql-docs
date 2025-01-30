@@ -2,7 +2,7 @@
 title: Add and verify a data connection in Report Builder
 description: Learn how to use Report Builder to add and verify a data connection to make sure that the credentials you specify are sufficient.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

@@ -2,7 +2,7 @@
 title: "Data Alert Manager for SharePoint users"
 description: Learn how Reporting Services provides Data Alert Manager for SharePoint information workers to manage the data alerts.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

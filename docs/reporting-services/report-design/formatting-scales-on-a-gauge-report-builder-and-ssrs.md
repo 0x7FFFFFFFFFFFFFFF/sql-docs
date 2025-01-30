@@ -2,7 +2,7 @@
 title: "Formatting scales on a gauge in a paginated report"
 description: Learn about the gauge scale range of numbers bound by a minimum and a maximum in a paginated report in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

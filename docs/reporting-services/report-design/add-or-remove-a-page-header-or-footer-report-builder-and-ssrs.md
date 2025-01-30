@@ -2,7 +2,7 @@
 title: "Add or remove a page header or footer in a paginated report"
 description: Find out how you can add static text, images, lines, rectangles, and borders to paginated report page headers or footers in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

@@ -2,7 +2,7 @@
 title: "Importing HTML into a paginated report"
 description: Learn about using a text box to insert HTML-formatted text that you have retrieved from a field in your dataset into a paginated report.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

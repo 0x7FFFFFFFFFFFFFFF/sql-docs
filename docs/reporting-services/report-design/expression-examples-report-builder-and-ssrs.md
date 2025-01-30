@@ -2,7 +2,7 @@
 title: Expression examples in Report Builder paginated reports
 description: Learn how to control content and paginated report appearance using built-in functions, custom code, report and group variables, and user-defined variables in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

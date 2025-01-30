@@ -2,7 +2,7 @@
 title: "Add, Edit, Refresh Fields in the Report Data Pane (Report Builder)"
 description: Learn details about datasets as well as how to add, edit, and refresh fields in the report data pane in Report Builder.
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

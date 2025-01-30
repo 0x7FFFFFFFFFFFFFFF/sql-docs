@@ -2,7 +2,7 @@
 title: "Tutorial: Specify connection information (Reporting Services)"
 description: "In this lesson, you define a data source: connection information the report uses to access data from a relational database or other sources."
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

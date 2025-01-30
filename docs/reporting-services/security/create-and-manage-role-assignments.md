@@ -2,7 +2,7 @@
 title: "Create and manage role assignments"
 description: "Create and manage role assignments"
 author: kfollis
-ms.author: maggies
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security
