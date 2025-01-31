@@ -234,12 +234,7 @@ The current passive instance detection logic has the following limitations.
 
 If you are unable to work within these limitations, you can use volume licensing instead of `PAYG`. For details, review [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
 
-### ESU billing after failover
-
-During the failovers, the extension is aware of the transition and automatically switches the ESU billing to the active replica without new bill-back charges and follow below logic
-
-- If the period of failover <= 90 days, ESU billback occurs only from the prior watermark of usage upload.
-- If the period of failover > 90 days, ESU billback occurs from the start of the ESU period.
+[!INCLUDE [billing-after-failover](includes/billing-after-failover.md)]
 
 For additional information, review [SQL Server Extended Security Updates enabled by Azure Arc](extended-security-updates.md#manage-hadr).
 

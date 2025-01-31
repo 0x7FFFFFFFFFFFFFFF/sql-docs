@@ -178,7 +178,9 @@ For information, see:
 
 [!INCLUDE [manage-passive-instance](includes/manage-passive-instance.md)]
 
-For details, review [ESU billing after failover](manage-license-billing.md#esu-billing-after-failover).
+[!INCLUDE [billing-after-failover](includes/billing-after-failover.md)]
+
+For additional information on passive replica detection logic, review [Manage passive license for high availability and disaster recovery](manage-license-billing.md#manage-passive-license-for-high-availability-and-disaster-recovery).
 
 ## <a id="server-cal"></a> Manage SQL Server instances that use a Server+CAL license
 
