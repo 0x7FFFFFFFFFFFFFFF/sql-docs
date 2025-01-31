@@ -199,7 +199,7 @@ To properly manage this transition, use the following sequence of best practices
 1. Terminate the p-core ESU license if it's no longer financially beneficial, but keep the ESU subscription active on the individual VMs.
 
 > [!IMPORTANT]  
-> If the VMs in scope are configured to use a ESU subscription *while the p-core ESU license is active* (as described in step 1), after the p-core license termination, they automatically switch to billing for ESU based on the installed [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] edition and the v-core count of each VM. There are no additional bill-back charges.  
+> If the VMs in scope are configured to use an ESU subscription *while the p-core ESU license is active* (as described in step 1), after the p-core license termination, they automatically switch to billing for ESU based on the installed [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] edition and the v-core count of each VM. There are no additional bill-back charges.  
 >  
 > If the VM is configured to use the ESU subscription *after the p-core ESU license is terminated*, it's treated as a new subscription and the appropriate bill-back charges apply.
 
