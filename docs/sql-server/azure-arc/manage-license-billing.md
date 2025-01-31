@@ -207,16 +207,14 @@ For information, see:
 
 ## Manage license for high availability and disaster recovery
 
-SQL Server licenses with Software Assurance or pay-as you go (`PAYG`) can benefit from a free passive instance of SQL Server for their high availability and disaster recovery (HADR) configurations.
-
-For more information about the failover benefits, see the section "Licensing SQL Server for high availability and disaster recovery" in the [SQL Server licensing guide](https://go.microsoft.com/fwlink/p/?linkid=2215573).
+SQL Server licenses with Software Assurance or pay-as you go (`PAYG`) can benefit from a free passive instance of SQL Server for their high availability and disaster recovery (HADR) configurations. For more information about the failover benefits, see the section "Licensing SQL Server for high availability and disaster recovery" in the [SQL Server licensing guide](https://go.microsoft.com/fwlink/p/?linkid=2215573).
 
 To help you manage the failover benefits and remain compliant, Azure Extension for SQL Server automatically detects the passive instances for availability groups (AGs) or failover clustered instances (FCIs) and reflects the use of the SQL Server software by emitting special $0 meters for disaster recovery, as long as you properly configured the LicenseType property.
 
 ### To qualify as passive instance for an availability group (AG)
 
 - All replicas present in the operating system environment (OSE) must be secondary.
-- No user database outside of an AG - (irrespective of [any database state](../../relational-databases/databases/database-states.md#database-state-definitions)).
+- No user database outside of an AG, irrespective of [database state](../../relational-databases/databases/database-states.md#database-state-definitions)).
 - No active connection to any user database.
 - Instance license type is set to `Paid` or `PAYG`.
 
@@ -234,9 +232,9 @@ The current passive instance detection logic has the following limitations.
 
 - The checks are done every hour. A failover within the hour may or may not bill both replicas.
 - Passive instances for other HADR technologies like log shipping or mirroring are not automatically detected at this time.
-- The detection logic does not support free disaster recovery testing or monitoring. connections like database consistency checks, backups or monitoring resource usage data.
+- The detection logic does not support free disaster recovery testing or monitoring connections like database consistency checks, backups or monitoring resource usage data.
 
-If you are unable to work within these limitations, instead of `PAYG`, you can use volume licensing instead. For details, review [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
+If you are unable to work within these limitations, you can use volume licensing instead of `PAYG`. For details, review [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
 
 ## <a id="server-cal"></a> Manage SQL Server instances that use a Server+CAL license
 
