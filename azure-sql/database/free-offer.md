@@ -131,6 +131,7 @@ Compared to a normal General Purpose database, a free offer database has the fol
 - You can use the Azure portal, PowerShell, or Azure CLI to create a free offer database.
 - Currently, the Microsoft Azure for Students Starter offer is incompatible with this Azure SQL Database free offer. Instead, consider the [Azure for College Students offer](https://azure.microsoft.com/pricing/offers/ms-azr-0170p/) or the [Azure Free offer](https://azure.microsoft.com/pricing/offers/ms-azr-0044p/). If desired, the **Continue using database for additional charges** option can deduct from the starting credits.
 - For more information, review the [Azure SQL Database free offer FAQ](free-offer-faq.yml).
+- Once a region is selected for a free database under a subscription, the same region applies to all free databases in that subscription, and cannot be changed.
 
 ## Clean up resources
 
