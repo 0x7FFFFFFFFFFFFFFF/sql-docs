@@ -30,7 +30,7 @@ The Query editor (preview) is a tool to run T-SQL queries in the Azure portal in
 - For a quickstart on the Azure portal query editor, see [Quickstart: Use the Azure portal query editor (preview)](connect-query-portal.md).
 - For more advanced object explorer capabilities and management functions, use [Azure Data Studio](/azure-data-studio/quickstart-sql-database) or [SQL Server Management Studio (SSMS)](connect-query-ssms.md).
 - For more information about Microsoft Copilot skills in Azure SQL Database (preview), see [Microsoft Copilot skills in Azure SQL Database (preview)](../copilot/copilot-azure-sql-overview.md). For a tutorial and examples, visit [Natural language to SQL in the Azure portal query editor (preview)](../copilot/query-editor-natural-language-to-sql-copilot.md).
-- If you don't already have an Azure SQL Database created, visit [Quickstart: Create a single database](single-database-create-quickstart.md). Look for the option to use your offer to [try Azure SQL Database for free (preview)](free-offer.md).
+- If you don't already have an Azure SQL Database created, visit [Quickstart: Create a single database](single-database-create-quickstart.md). Look for the option to use your offer to [Deploy Azure SQL Database for free](free-offer.md).
 
 ## Query your Azure SQL Database from the Azure portal
 
