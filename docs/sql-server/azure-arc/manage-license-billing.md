@@ -46,7 +46,7 @@ For each of these options, you have to decide how you want to pay for the licens
 
 | Payment option | V-core licensing | P-core licensing without VMs | P-core licensing with unlimited virtualization |
 | --- | --- | --- | --- |
-| Subscribe to the service through Microsoft Azure by using a pay-as-you-go method | Yes | Yes | Yes |
+| Subscribe to the service through Microsoft Azure by using a pay-as-you-go (PAYG) method | Yes | Yes | Yes |
 | Bring your own license with Software Assurance or a SQL Server subscription <sup>1</sup> | Yes | Yes | Yes |
 | Bring your own license without Software Assurance <sup>2</sup> | Yes | Yes | No |
 
