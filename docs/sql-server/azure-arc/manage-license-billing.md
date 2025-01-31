@@ -234,7 +234,7 @@ The current passive instance detection logic has the following limitations.
 
 If you are unable to work within these limitations, you can use volume licensing instead of `PAYG`. For details, review [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
 
-### ESU billing after failover
+### ESU billing for passive instance after failover
 
 During the failovers, the extension is aware of the transition and automatically switches the ESU billing to the active replica without new bill-back charges and follow below logic
 
