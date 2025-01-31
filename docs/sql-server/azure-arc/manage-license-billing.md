@@ -207,9 +207,9 @@ For information, see:
 
 ## Manage license for high availability and disaster recovery
 
-SQL Server licenses with Software Assurance or pay-as you go (`PAYG`) can benefit from free passive instance of SQL Server for their high availability and disaster recovery (HADR) configurations. For more information about the failover benefits, see the section "Licensing SQL Server for high availability and disaster recovery" in the [SQL Server licensing guide](https://go.microsoft.com/fwlink/p/?linkid=2215573).
+SQL Server licenses with Software Assurance or pay-as you go (`PAYG`) can benefit from free passive instances of SQL Server for their high availability and disaster recovery (HADR) configurations. For more information about the failover benefits, see the section "Licensing SQL Server for high availability and disaster recovery" in the [SQL Server licensing guide](https://go.microsoft.com/fwlink/p/?linkid=2215573).
 
-To help you manage the failover benefits and remain compliant, Azure Extension for SQL Server automatically detects the passive instances for availability groups (AGs) or failover clustered instances (FCIs) and reflects the use of the SQL Server software by emitting special $0 meters for disaster recovery, as long as you properly configured the LicenseType property.
+To help you manage the failover benefits and remain compliant, Azure Extension for SQL Server automatically detects the passive instances for availability groups (AGs) or failover clustered instances (FCIs) and reflects the use of the SQL Server software by emitting special $0 meters for disaster recovery, as long as you properly configured the LicenseType property. 
 
 During the failovers, the extension is aware of the transition and automatically switches the ESU billing to the active replica without new bill-back charges and follow below logic 
 - If the period of failover <= 90 days, ESU billback occurs only from the prior watermark of usage upload
