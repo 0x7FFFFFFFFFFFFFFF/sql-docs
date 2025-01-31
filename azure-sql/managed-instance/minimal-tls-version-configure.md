@@ -11,6 +11,11 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ---
+# Upcoming retirement changes 
+Azure has announced that support for older TLS versions (TLS 1.0, and 1.1) ends August 31, 2025. For more information, see [TLS 1.0 and 1.1 deprecation](https://azure.microsoft.com/updates/azure-support-tls-will-end-by-31-october-2024-2/).
+
+Starting November 2024, you will no longer be able to set the minimal TLS version for Azure SQL Managed Instance client connections below TLS 1.2. 
+
 # Configure minimal TLS version in Azure SQL Managed Instance
 The Minimal [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) Version setting allows customers to control the version of TLS used by their Azure SQL Managed Instance.
 
