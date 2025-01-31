@@ -1,10 +1,10 @@
 ---
-title: Configure SMB storage FCI - SQL Server on Linux
+title: Configure SMB Storage FCI - SQL Server on Linux
 description: Learn to configure a failover cluster instance (FCI) using SMB storage for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 08/23/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -243,4 +243,4 @@ You're now ready to configure the FCI.
 
 ## Related content
 
-- [Configure failover cluster instance - SQL Server on Linux](sql-server-linux-shared-disk-cluster-configure.md)
+- [Configure failover cluster instance - SQL Server on Linux (RHEL)](sql-server-linux-shared-disk-cluster-configure.md)

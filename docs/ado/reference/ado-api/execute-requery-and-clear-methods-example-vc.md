@@ -140,7 +140,7 @@ void PrintOutput(_RecordsetPtr pRstTemp) {
   
       // Enumerate Recordset and print from each.  
       while ( !(pRstTemp->EndOfFile) ) {  
-         // Convert variant string to convertable string type.  
+         // Convert variant string to convertible string type.  
          bstrTitle = pRstTemp->Fields->GetItem("Title")->Value;  
          bstrType  = pRstTemp->Fields->GetItem("Type")->Value;  
          printf("\t%s, %s \n", (LPCSTR) bstrTitle, (LPCSTR) bstrType);  

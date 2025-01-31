@@ -62,7 +62,7 @@ Use the following to configure auditing using user-assigned managed identity:
 1. Go to the **Identity** menu for your server. Under the **User assigned managed identity** section, **Add** the managed identity.
 1. You can then select the added managed identity as the **Primary identity** for your server.
 
-   :::image type="content" source="media/auditing-overview/auditing-select-primary-identiy.png" alt-text="Screenshot of the Identity menu in the Azure portal and selecting the primary identity.":::
+   :::image type="content" source="media/auditing-overview/auditing-select-primary-identity.png" alt-text="Screenshot of the Identity menu in the Azure portal and selecting the primary identity.":::
 
 1. Go to the **Auditing** menu for the server. Select **Managed Identity** as the **Storage Authentication Type** when configuring the **Storage** for your server.
 

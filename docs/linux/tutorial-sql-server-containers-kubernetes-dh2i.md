@@ -1,10 +1,10 @@
 ---
-title: Deploy Availability Groups With DH2i DxEnterprise on Kubernetes
+title: Deploy Availability Groups with DH2i DxEnterprise on Kubernetes
 description: Set up an availability group in SQL Server on Kubernetes using DH2i DxEnterprise.
 author: aravindmahadevan-ms
 ms.author: armaha
 ms.reviewer: amitkh, randolphwest
-ms.date: 11/18/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
@@ -593,7 +593,7 @@ DxEnterprise is high availability clustering software from DH2i that supports AG
 With these steps, you should have an AG created and databases added to the group supporting high availability.
 
 > [!NOTE]  
-> You can deploy [basic Always On availability group](../database-engine/availability-groups/windows/basic-availability-groups-always-on-availability-groups.md) with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Standard edition, but as you might be aware, one of the limitations of basic AGs is that you're limited to only having two replicas and one additional configuration only replica required for successful automatic failover. For more information on failover with configuration only replica, see [Configuration-only replica and quorum](./sql-server-linux-availability-group-overview.md#configuration-only-replica-and-quorum). You can add configuration only replica for containers as well, and to do so, please refer to the [DH2i documentation](https://support.dh2i.com/docs/guides/dxenterprise/azure/ms-k8s-supplemental-guide/#configure-the-primary-and-create-the-availability-group), making sure to pass the availability mode in the 'dxcli add-ags-node' command as 'configuration_only'.
+> You can deploy [basic Always On availability group](../database-engine/availability-groups/windows/basic-availability-groups-always-on-availability-groups.md) with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Standard edition, but as you might be aware, one of the limitations of basic AGs is that you're limited to only having two replicas and one additional configuration only replica required for successful automatic failover. For more information on failover with configuration only replica, see [Configuration-only replica and quorum](./sql-server-linux-availability-group-overview.md#configuration-only-replica-and-quorum). You can add configuration only replica for containers as well, and to do so, refer to the [DH2i documentation](https://support.dh2i.com/docs/guides/dxenterprise/azure/ms-k8s-supplemental-guide/#configure-the-primary-and-create-the-availability-group), making sure to pass the availability mode in the 'dxcli add-ags-node' command as 'configuration_only'.
 
 ---
 

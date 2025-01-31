@@ -1,10 +1,10 @@
 ---
-title: Extract, transform, and load data on Linux with SSIS
+title: Extract, Transform, and Load Data on Linux with SSIS
 description: Learn how to run SQL Server Integration Services (SSIS) packages on Linux. Also learn where to find more information about the capabilities of SSIS.
 author: lrtoyou1223
 ms.author: lle
 ms.reviewer: maghan, randolphwest
-ms.date: 11/16/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual

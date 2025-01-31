@@ -101,7 +101,7 @@ For example: Consider a 1-minute window with the following four data points: 0.1
 Diagnostic settings is a feature that contains Resource Log categories (formerly known as Diagnostic Logs). You can enable and configure the [streaming export of diagnostic telemetry](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export) to one of several destinations, including Log Analytics, Event Hubs, and Azure Storage.
 
 > [!NOTE]
-> The resource log category for [Intelligent Insights](intelligent-insights-overview.md) is called `SQLInsights`. This is unrelated to the [SQL Insights (preview)](sql-insights-overview.md) monitoring solution.
+> The resource log category for [Intelligent Insights](intelligent-insights-overview.md) is called `SQLInsights`. This is unrelated to the retired SQL Insights monitoring solution.
 
 You configure diagnostic settings to stream categories of metrics and resource logs for single databases, pooled databases, elastic pools, SQL managed instances, and instance databases to one of the following Azure services.
 

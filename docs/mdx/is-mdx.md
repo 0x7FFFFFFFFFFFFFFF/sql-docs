@@ -38,23 +38,17 @@ Expression1 IS ( Expression2 | NULL )
 ## Examples  
  The following example shows how to use the **IS** operator to check if the current member on an axis is a specific member:  
   
- `With`  
-  
- `//Returns TRUE if the currentmember is Bikes`  
-  
- `Member [Measures].[IsBikes?] AS`  
-  
- `[Product].[Category].CurrentMember IS [Product].[Category].&[1]`  
-  
- `SELECT`  
-  
- `{[Measures].[IsBikes?]} ON 0,`  
-  
- `[Product].[Category].[Category].Members ON 1`  
-  
- `FROM`  
-  
- `[Adventure Works]`  
+```  
+With  
+//Returns TRUE if the currentmember is Bikes  
+Member [Measures].[IsBikes?] AS  
+[Product].[Category].CurrentMember IS [Product].[Category].&[1]  
+SELECT  
+{[Measures].[IsBikes?]} ON 0,  
+[Product].[Category].[Category].Members ON 1  
+FROM  
+[Adventure Works]  
+```  
   
 ## See Also  
  [MDX Operator Reference &#40;MDX&#41;](../mdx/mdx-operator-reference-mdx.md)  

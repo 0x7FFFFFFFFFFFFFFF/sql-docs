@@ -1,6 +1,6 @@
 ---
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.reviewer: randolphwest
 ms.date: 05/01/2024
 ms.service: reporting-services

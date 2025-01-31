@@ -109,7 +109,7 @@ For information on installing the current release of Azure CLI, see [Install the
 
 # [PowerShell](#tab/azure-powershell)
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 - Prepopulate the list of current keys in use by the primary database using the command [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) and the `-ExpandKeyList` and `-KeysFilter "current"` parameters. Exclude `-KeysFilter` if you wish to retrieve all the keys.
 
@@ -348,7 +348,7 @@ For information on installing the current release of Azure CLI, see [Install the
 
 # [PowerShell](#tab/azure-powershell2)
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 - Prepopulate the list of keys used by the primary database using the command [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) and the `-ExpandKeyList` and `-KeysFilter "2023-01-01"` parameters (`2023-01-01` is an example of the point in time you wish to restore the database to). Exclude `-KeysFilter` if you wish to retrieve all the keys.
 
@@ -414,7 +414,7 @@ For information on installing the current release of Azure CLI, see [Install the
 
 # [PowerShell](#tab/azure-powershell2)
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 - Prepopulate the list of keys used by the primary database using the command [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) and the `-ExpandKeyList` parameter. It's recommended to pass all the keys that the source database was using. You can also attempt a restore with the keys provided at deletion time by using the `-KeysFilter` parameter.
 
@@ -480,7 +480,7 @@ For information on installing the current release of Azure CLI, see [Install the
 
 # [PowerShell](#tab/azure-powershell2)
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 - Prepopulate the list of keys used by the primary database using the command [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) and the `-ExpandKeyList` to retrieve all the keys.
 

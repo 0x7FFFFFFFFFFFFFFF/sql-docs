@@ -142,11 +142,9 @@ After your DC virtual machines are ready, configure the domain controller for co
 To configure **DC-VM-1** as the domain controller, follow these steps:
 
 1. Go to your resource group in the [Azure portal](https://portal.azure.com) and select the **DC-VM-1** machine.
-1. On the **DC-VM-1** page, select **Connect** to download an RDP file for remote desktop access and then open the file.  
+1. On the **DC-VM-1** page, select **Connect via Bastion** to go to the **Bastion** page and then deploy [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) for remote desktop access.  
 
-   :::image type="content" source="./media/availability-group-manually-configure-prerequisites-tutorial-multi-subnet/08-dc-vm-1-rdp-connect.png" alt-text="Connect to a virtual machine":::
-
-1. Connect to the RDP session using your configured administrator account (**DomainAdmin**) and password (**Contoso!0000**).
+1. Connect to the Bastion session using your configured administrator account (**DomainAdmin**) and password (**Contoso!0000**).
 1. Open the **Server Manager** dashboard (which may open by default) and choose to **Add roles and features**.
 
     :::image type="content" source="./media/availability-group-manually-configure-prerequisites-tutorial-multi-subnet/09-add-features.png" alt-text="Server Manager - Add roles":::
@@ -248,7 +246,7 @@ Next, join the **corp.contoso.com** domain. To do so, follow these steps:
 
 Once your server has joined the domain, you can configure it as the second domain controller. To do so, follow these steps:
 
-1. If you're not already connected, open an RDP session to your secondary domain controller, and open **Server Manager Dashboard** (which may be open by default).
+1. If you're not already connected, open a [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) session to your secondary domain controller, and open **Server Manager Dashboard** (which may be open by default).
 1. Select the **Add roles and features** link on the dashboard.
 
     :::image type="content" source="./media/availability-group-manually-configure-prerequisites-tutorial-multi-subnet/09-add-features.png" alt-text="Server Manager - Add roles":::
@@ -455,7 +453,7 @@ The installation account (CORP\install) used to configure the availability group
 
 To grant **sysadmin** rights to the installation account, follow these steps:
 
-1. Connect to the server through the Remote Desktop Protocol (RDP) by using the *\<MachineName\>\DomainAdmin* account, such as `SQL-VM-1\DomainAdmin`.
+1. Connect to the server through [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) by using the *\<MachineName\>\DomainAdmin* account, such as `SQL-VM-1\DomainAdmin`.
 1. Open SQL Server Management Studio and connect to the local instance of SQL Server.
 1. In **Object Explorer**, select **Security**.
 1. Right-click **Logins**. Select **New Login**.
@@ -473,7 +471,7 @@ In later versions of SQL Server, the [NT AUTHORITY\SYSTEM] account does not have
 
 To add the [NT AUTHORITY\SYSTEM] and grant appropriate permissions, follow these steps:
 
-1. Connect to the first SQL Server VM through the Remote Desktop Protocol (RDP) by using the *\<MachineName\>\DomainAdmin* account, such as `SQL-VM-1\DomainAdmin`.
+1. Connect to the first SQL Server VM through [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) by using the *\<MachineName\>\DomainAdmin* account, such as `SQL-VM-1\DomainAdmin`.
 1. Open SQL Server Management Studio and connect to the local instance of SQL Server.
 1. Create an account for `[NT AUTHORITY\SYSTEM]` on each SQL Server instance by using the following Transact-SQL (T-SQL) command:
 
@@ -509,7 +507,7 @@ The SQL Server service on each VM needs to use a dedicated domain account.  Use 
 
 To set the service account, follow these steps:
 
-1. Connect to the first SQL Server VM through the Remote Desktop Protocol (RDP) by using the *\<MachineName\>\DomainAdmin* account, such as `SQL-VM-1\DomainAdmin`.
+1. Connect to the first SQL Server VM through [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) by using the *\<MachineName\>\DomainAdmin* account, such as `SQL-VM-1\DomainAdmin`.
 1. Open **SQL Server Configuration Manager**.
 1. Right-click the SQL Server service, and then select **Properties**.
 1. Provide the account (**Corp\SQLSvc**) and password.

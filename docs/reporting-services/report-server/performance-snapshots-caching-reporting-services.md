@@ -1,8 +1,8 @@
 ---
 title: "Performance, snapshots, caching (Reporting Services)"
 description: Learn how to get baseline data and run tests to understand performance factors specific to your installation and to produce the results you want.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

@@ -253,7 +253,7 @@ You can monitor the deployment from the Azure portal. The **Notifications** butt
 
 ## <a id="remotedesktop"></a> Open the VM with Remote Desktop
 
-Use the following steps to connect to the SQL Server virtual machine with Remote Desktop Protocol (RDP):
+Use the following steps to connect to the SQL Server virtual machine with [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows):
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 

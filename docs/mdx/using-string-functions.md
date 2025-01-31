@@ -20,77 +20,52 @@ ms.custom: mdx
 ## Examples  
  The following example queries show how to use these functions:  
   
- `WITH`  
-  
- `//Returns the name of the current Product on rows`  
-  
- `MEMBER [Measures].[ProductName] AS [Product].[Product].CurrentMember.Name`  
-  
- `//Returns the uniquename of the current Product on rows`  
-  
- `MEMBER [Measures].[ProductUniqueName] AS [Product].[Product].CurrentMember.Uniquename`  
-  
- `//Returns the name of the Product dimension`  
-  
- `MEMBER [Measures].[ProductDimensionName] AS [Product].Name`  
-  
- `SELECT  {[Measures].[ProductName],[Measures].[ProductUniqueName],[Measures].[ProductDimensionName]}`  
-  
- `ON COLUMNS,`  
-  
- `[Product].[Product].MEMBERS  ON ROWS`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH  
+//Returns the name of the current Product on rows  
+MEMBER [Measures].[ProductName] AS [Product].[Product].CurrentMember.Name  
+//Returns the uniquename of the current Product on rows  
+MEMBER [Measures].[ProductUniqueName] AS [Product].[Product].CurrentMember.Uniquename  
+//Returns the name of the Product dimension  
+MEMBER [Measures].[ProductDimensionName] AS [Product].Name  
+SELECT  {[Measures].[ProductName],[Measures].[ProductUniqueName],[Measures].[ProductDimensionName]}  
+ON COLUMNS,  
+[Product].[Product].MEMBERS  ON ROWS  
+FROM [Adventure Works]  
+```  
   
  The **Generate** function can be used to execute a string function on every member of a set and concatenate the results. This also can be useful when debugging calculations as it allows you to visualize the contents of a set. The following example shows how to use it in this way:  
   
- `WITH`  
-  
- `//Returns the names of the current Product and its ancestors up to the All Member`  
-  
- `MEMBER [Measures].[AncestorNames] AS`  
-  
- `GENERATE(`  
-  
- `ASCENDANTS([Product].[Product Categories].CurrentMember)`  
-  
- `, [Product].[Product Categories].CurrentMember.Name, ", ")`  
-  
- `SELECT`  
-  
- `{[Measures].[AncestorNames]}`  
-  
- `ON COLUMNS,`  
-  
- `[Product].[Product Categories].MEMBERS  ON ROWS`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH  
+//Returns the names of the current Product and its ancestors up to the All Member  
+MEMBER [Measures].[AncestorNames] AS  
+GENERATE(  
+ASCENDANTS([Product].[Product Categories].CurrentMember)  
+, [Product].[Product Categories].CurrentMember.Name, ", ")  
+SELECT  
+{[Measures].[AncestorNames]}  
+ON COLUMNS,  
+[Product].[Product Categories].MEMBERS  ON ROWS  
+FROM [Adventure Works]  
+```  
   
  Another group of widely used string functions are those that enable you to cast a string containing the uniquename of an object or an expression which resolves to the object into the object itself. The following example query demonstrates how the **StrToMember** and **StrToSet** functions do this:  
   
- `SELECT`  
-  
- `{StrToMember("[Measures].[Inter" + "net Sales Amount]")}`  
-  
- `ON COLUMNS,`  
-  
- `StrToSet("{`  
-  
- `[Product].[Product Categories].[Category].&[3],`  
-  
- `[Product].[Product Categories].[Product].&[477],`  
-  
- `[Product].[Product Categories].[Product].&[788],`  
-  
- `[Product].[Product Categories].[Product].&[708],`  
-  
- `[Product].[Product Categories].[Product].&[711]`  
-  
- `}")`  
-  
- `ON ROWS`  
-  
- `FROM [Adventure Works]`  
+```  
+SELECT  
+{StrToMember("[Measures].[Inter" + "net Sales Amount]")}  
+ON COLUMNS,  
+StrToSet("{  
+[Product].[Product Categories].[Category].&[3],  
+[Product].[Product Categories].[Product].&[477],  
+[Product].[Product Categories].[Product].&[788],  
+[Product].[Product Categories].[Product].&[708],  
+[Product].[Product Categories].[Product].&[711]  
+}")  
+ON ROWS  
+FROM [Adventure Works]  
+```  
   
 > [!NOTE]  
 >  The **StrToMember** and **StrToSet** functions should be used with caution. They can lead to poor query performance if they are used within calculation definitions.  

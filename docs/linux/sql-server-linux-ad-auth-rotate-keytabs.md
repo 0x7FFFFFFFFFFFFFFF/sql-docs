@@ -4,7 +4,7 @@ description: Recommendations on rotating keytabs for SQL Server on Linux using a
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -90,7 +90,7 @@ You can install **adutil** and integrate it with **mssql-conf**, which means you
    sqluser@contoso.com's password:
    Confirm sqluser@contoso.com's password:
 
-   SQL Server needs to be restarted in order to adopt the new AD configuration, please run 'systemctl restart mssql-server.service'.
+   SQL Server needs to be restarted in order to adopt the new AD configuration. To restart, run `systemctl restart mssql-server.service`.
 
    bash-4.4$ klist -kte /var/opt/mssql/secrets/mssql.keytab
    Keytab name: FILE:/var/opt/mssql/secrets/mssql.keytab

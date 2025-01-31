@@ -1,8 +1,8 @@
 ---
 title: "Plan for Reporting Services"
 description: Learn how to install and configure the SQL Server Reporting Services (SSRS) environment to best fit your needs.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

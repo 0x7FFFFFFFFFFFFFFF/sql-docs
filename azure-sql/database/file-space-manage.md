@@ -1,10 +1,10 @@
 ---
 title: Database file space management
 description: This page describes how to manage file space with single and pooled databases in Azure SQL Database, and provides code samples for how to determine if you need to shrink a single or a pooled database as well as how to perform a database shrink operation.
-author: oslake
-ms.author: moslake
-ms.reviewer: wiassaf, mathoma
-ms.date: 07/02/2024
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: oslake, mathoma
+ms.date: 01/28/2025
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: conceptual
@@ -19,7 +19,7 @@ monikerRange: "= azuresql-db"
 > * [Azure SQL Database](file-space-manage.md?view=azuresql-db&preserve-view=true)
 > * [Azure SQL Managed Instance](../managed-instance/file-space-manage.md?view=azuresql-mi&preserve-view=true)
 
-This article describes different types of storage space for databases in Azure SQL Database, and steps that can be taken when the file space allocated needs to be explicitly managed.
+This article describes different types of storage space for databases in Azure SQL Database. Though uncommon, this article includes steps that can be taken when the file space allocated needs to be explicitly managed.
 
 ## Overview
 
@@ -86,7 +86,7 @@ Understanding the following storage space quantities are important for managing 
 |**Data max size**|The maximum amount of data space that can be used by the elastic pool for all of its databases.|The space allocated for the elastic pool should not exceed the elastic pool max size. If this condition occurs, then space allocated that is unused can be reclaimed by shrinking database data files.|
 
 > [!NOTE]
-> The error message "The elastic pool has reached its storage limit" indicates that the database objects have been allocated enough space to meet the elastic pool storage limit, but there might be unused space in the data space allocation. Consider increasing the elastic pool's storage limit, or as a short-term solution, freeing up data space using the samples in [Reclaim unused allocated space](#reclaim-unused-allocated-space). You should also be aware of the potential negative performance impact of shrinking database files, see [Index maintenance after shrink](#index-maintenance-after-shrink).
+> The error message "The elastic pool has reached its storage limit" indicates that the database objects have been allocated enough space to meet the elastic pool storage limit, but there might be unused space in the data space allocation. Consider increasing the elastic pool's storage limit, or as a short-term solution, freeing up data space using the samples in [Reclaim unused allocated space](#reclaim-unused-allocated-space). You should also be aware of the potential negative performance impact of shrinking database files. See [Index maintenance after shrink](#index-maintenance-after-shrink).
 
 ## Query an elastic pool for storage space information
 
@@ -112,9 +112,16 @@ Modify the following examples to return a table listing the space allocated and 
 The query results for determining the space allocated for each database in the pool can be added together to determine the total space allocated for the elastic pool. The elastic pool space allocated should not exceed the elastic pool max size.  
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020. The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> The PowerShell Azure Resource Manager (AzureRM) module was deprecated on February 29, 2024. All future development should use the Az.Sql module. Users are advised to migrate from AzureRM to the Az PowerShell module to ensure continued support and updates. The AzureRM module is no longer maintained or supported. The arguments for the commands in the Az PowerShell module and in the AzureRM modules are substantially identical. For more about their compatibility, see [Introducing the new Az PowerShell module](/powershell/azure/new-azureps-module-az).
 
-The PowerShell script requires SQL Server PowerShell module – see [Download PowerShell module](/sql/powershell/download-sql-server-ps-module) to install.
+The PowerShell script requires SQL Server PowerShell module. For more information, see [SQL Server PowerShell module](/sql/powershell/download-sql-server-ps-module).
+
+The following PowerShell script completes these steps:
+
+1. Declare variables. Replace these values with your values.
+1. Get a list of databases in elastic pool.
+1. For each database in the elastic pool, get space allocated in MB and space allocated unused in MB.
+1. Display databases in descending order of unused allocated space.
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -142,7 +149,7 @@ foreach ($database in $databasesInPool) {
             -Username $userName -Password $password -Query $sqlCommand)
 }
 
-# display databases in descending order of space allocated unused
+# display databases in descending order of unused allocated space
 Write-Output "`n" "ElasticPoolName: $poolName"
 Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocatedUnusedInMB -Descending | Format-Table
 ```
@@ -169,12 +176,14 @@ ORDER BY end_time DESC;
 > [!IMPORTANT]
 > Shrink commands impact database performance while running, and if possible should be run during periods of low usage.
 
-### <a id="shrinking-data-files"></a> Shrink data files
+<a id="shrinking-data-files"></a> 
+
+### Shrink data files
 
 Because of a potential impact to database performance, Azure SQL Database does not automatically shrink data files. However, customers might shrink data files via self-service at a time of their choosing. This should not be a regularly scheduled operation, but rather, a one-time event in response to a major reduction in data file used space consumption.
 
 > [!TIP]
-> It is not recommended to shrink data files if regular application workload will cause the files to grow to the same allocated size again.
+> Don't waste time shrinking data files if the regular application workload will cause the files to grow to the same allocated size again. File growth events can negatively impact application performance.
 
 In Azure SQL Database, to shrink files you can use either `DBCC SHRINKDATABASE` or `DBCC SHRINKFILE` commands:
 
@@ -183,9 +192,8 @@ In Azure SQL Database, to shrink files you can use either `DBCC SHRINKDATABASE` 
     - It can target individual files as needed, rather than shrinking all files in the database.
     - Each `DBCC SHRINKFILE` command can run in parallel with other `DBCC SHRINKFILE` commands to shrink multiple files at the same time and reduce the total time of shrink, at the expense of higher resource usage and a higher chance of blocking user queries, if they are executing during shrink.
         - Shrinking multiple data files concurrently lets you complete the shrink operation faster. If you use concurrent data file shrink, you might observe transient blocking of one shrink request by another.
-    - If the tail of the file does not contain data, it can reduce allocated file size much faster by specifying the `TRUNCATEONLY` argument. This does not require data movement within the file.
+    - If the tail of the file does not contain data, it can reduce allocated file size faster by specifying the `TRUNCATEONLY` argument. This does not require data movement within the file.
 - For more information about these shrink commands, see [DBCC SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=azuresqldb-current&preserve-view=true) and [DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql?view=azuresqldb-current&preserve-view=true).
-- Database and file shrink operations are supported in preview for Azure SQL Database Hyperscale. For more information, see [Shrink for Azure SQL Database Hyperscale](https://aka.ms/hs-shrink-preview).
 
 The following examples must be executed while connected to the target user database, not the `master` database.
 
@@ -217,7 +225,7 @@ DBCC SHRINKFILE ('data_0', TRUNCATEONLY);
 GO
 ```
 
-Be aware of the potential negative performance impact of shrinking database files, see [Index maintenance after shrink](#index-maintenance-after-shrink). 
+Be aware of the potential negative performance impact of shrinking database files. For more information, see [Index maintenance after shrink](#index-maintenance-after-shrink). 
 
 ### Shrink transaction log file
 
@@ -286,7 +294,7 @@ Once this command is executed for every data file, you can rerun the space usage
 
 ### Evaluate index page density
 
-If truncating data files did not result in a sufficient reduction in allocated space, you will need to shrink data files. However, as an optional but recommended step, you should first determine average page density for indexes in the database. For the same amount of data, shrink will complete faster if page density is high, because it will have to move fewer pages. If page density is low for some indexes, consider performing maintenance on these indexes to increase page density before shrinking data files. This will also let shrink achieve a deeper reduction in allocated storage space.
+If truncating data files did not result in a sufficient reduction in allocated space, you will need to shrink data files. However, as an optional but recommended step, you should first determine average page density for indexes in the database. For the same amount of data, shrink operations complete faster if page density is high, because it has to move fewer pages. If page density is low for some indexes, consider performing maintenance on these indexes to increase page density before shrinking data files. This will also let shrink achieve a deeper reduction in allocated storage space.
 
 To determine page density for all indexes in the database, use the following query. Page density is reported in the `avg_page_space_used_in_percent` column.
 
@@ -313,7 +321,7 @@ If there are indexes with high page count that have page density lower than 60-7
 > [!NOTE]
 > For larger databases, the query to determine page density might take a long time (hours) to complete. Additionally, rebuilding or reorganizing large indexes also requires substantial time and resource usage. There is a tradeoff between spending extra time on increasing page density on one hand, and reducing shrink duration and achieving higher space savings on another.
 
-If there are multiple indexes with low page density, you might be able to rebuild them in parallel on multiple database sessions to speed up the process. However, make sure that you are not approaching database resource limits by doing so, and leave sufficient resource headroom for application workloads that might be running. Monitor resource consumption (CPU, Data IO, Log IO) in Azure portal or using the [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current&preserve-view=true) view, and start additional parallel rebuilds only if resource utilization on each of these dimensions remains substantially lower than 100%. If CPU, Data IO, or Log IO utilization is at 100%, you can scale up the database to have more CPU cores and increase IO throughput. This might enable additional parallel rebuilds to complete the process faster.
+If there are multiple indexes with low page density, you might be able to rebuild them in parallel on multiple database sessions to speed up the process. However, make sure that you are not approaching database resource limits by doing so, and leave sufficient resource headroom for application workloads that might be running. Monitor resource consumption (CPU, Data IO, Log IO) in Azure portal or using the [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current&preserve-view=true) view. Start additional parallel rebuilds only if resource utilization on each of these dimensions remains substantially lower than 100%. If CPU, Data IO, or Log IO utilization is at 100%, you can scale up the database to have more CPU cores and increase IO throughput. This might enable additional parallel rebuilds to complete the process faster.
 
 <a id="rebuild-indexes"></a> 
 
@@ -356,7 +364,7 @@ You can mitigate this by shrinking each file in smaller steps. This means that i
 DBCC SHRINKFILE (4, 170000);
 ```
 
-Once this command completes, it will have truncated the file and reduced its allocated size to 170,000 MB. You can then repeat this command, setting target first to 140,000 MB, then to 110,000 MB, etc., until the file is shrunk to the desired size. If the command completes but the file is not truncated, use smaller steps, for example 15,000 MB rather than 30,000 MB.
+Once this command completes, it has truncated the file and reduced its allocated size to 170,000 MB. You can then repeat this command, setting target first to 140,000 MB, then to 110,000 MB, and so forth, until the file is shrunk to the desired size. If the command completes but the file is not truncated, use smaller steps, for example 15,000 MB rather than 30,000 MB.
 
 To monitor shrink progress for all concurrently running shrink sessions, you can use the following query:
 
@@ -380,15 +388,15 @@ WHERE r.command IN ('DbccSpaceReclaim','DbccFilesCompact','DbccLOBCompact','DBCC
 ```
 
 > [!NOTE]
-> Shrink progress can be non-linear, and the value in the `percent_complete` column might remain virtually unchanged for long periods of time, even though shrink is still in progress.
+> Shrink progress can be nonlinear, and the value in the `percent_complete` column might remain unchanged for long periods of time, even though shrink is still in progress.
 
-Once shrink has completed for all data files, rerun the [space usage query](#capture-space-usage-baseline) (or check in Azure portal) to determine the resulting reduction in allocated storage size. If there is still a large difference between used space and allocated space, you can [rebuild indexes](#sample-index-rebuild-command) as described earlier. This can temporarily increase allocated space further, however shrinking data files again after rebuilding indexes should result in a deeper reduction in allocated space.
+Once shrink completes for all data files, rerun the [space usage query](#capture-space-usage-baseline) (or check in Azure portal) to determine the resulting reduction in allocated storage size. If there is still a large difference between used space and allocated space, [rebuild indexes](#sample-index-rebuild-command). This can temporarily increase allocated space further, however shrinking data files again after rebuilding indexes should result in a deeper reduction in allocated space.
 
 ## Transient errors during shrink
 
-Occasionally, a shrink command can fail with various errors such as timeouts and deadlocks. In general, these errors are transient, and do not occur again if the same command is repeated. If shrink fails with an error, the progress it has made so far in moving data pages is retained, and the same shrink command can be executed again to continue shrinking the file.
+Occasionally, a shrink command can fail with various errors such as time-outs and deadlocks. In general, these errors are transient, and do not occur again if the same command is repeated. If shrink fails with an error, the progress it has made so far in moving data pages is retained, and the same shrink command can be executed again to continue shrinking the file.
 
-The following sample script shows how you can run shrink in a retry loop to automatically retry up to a configurable number of times when a timeout error or a deadlock error occurs. This retry approach is applicable to many other errors that might occur during shrink.
+The following sample script shows how you can run shrink in a retry loop to automatically retry up to a configurable number of times when a time-out error or a deadlock error occurs. This retry approach is applicable to many other errors that might occur during shrink.
 
 ```sql
 DECLARE @RetryCount int = 3; -- adjust to configure desired number of retries
@@ -427,13 +435,13 @@ END CATCH
 END;
 ```
 
-In addition to timeouts and deadlocks, shrink can encounter errors due to certain known issues.
+In addition to time-outs and deadlocks, shrink can encounter errors due to certain known issues.
 
 The errors returned and mitigation steps are as follows:
 
 - **Error number: 49503**, error message: _%.*ls: Page %d:%d could not be moved because it is an off-row persistent version store page. Page holdup reason: %ls. Page holdup timestamp: %I64d._
 
-This error occurs when there are long running active transactions that have generated row versions in persistent version store (PVS). The pages containing these row versions cannot be moved by shrink, hence it cannot make progress and fails with this error.
+This error occurs when there are long running active transactions that have generated row versions in persistent version store (PVS). The pages containing these row versions cannot be moved by shrink, and fails with this error.
  
 To mitigate, you have to wait until these long running transactions have completed. Alternatively, you can identify and terminate these long running transactions, but this can affect your application if it does not handle transaction failures gracefully. One way to find long running transactions is by running the following query in the database where you ran the shrink command:
 
@@ -466,7 +474,7 @@ KILL 4242; -- replace 4242 with the session_id value from query results
 > [!CAUTION]
 > Terminating a transaction can negatively impact workloads.
 
-Once long running transactions have been terminated or have completed, an internal background task will clean up no longer needed row versions after some time. You can monitor PVS size to gauge cleanup progress, using the following query. Run the query in the database where you ran the shrink command:
+Once long running transactions are terminated or have completed, an internal background task will clean up no longer needed row versions after some time. You can monitor PVS size to gauge cleanup progress, using the following query. Run the query in the database where you ran the shrink command:
 
 ```sql
 SELECT pvss.persistent_version_store_size_kb / 1024. / 1024 AS persistent_version_store_size_gb,
@@ -520,6 +528,7 @@ Rebuild the index identified by the query, and retry the shrink command.
 This error means that the data file cannot be shrunk further. You can move on to the next data file.
 
 ## Related content
+
 For information about database max sizes, see:
 
 - [Azure SQL Database vCore-based purchasing model limits for a single database](resource-limits-vcore-single-databases.md)

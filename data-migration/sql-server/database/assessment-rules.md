@@ -4,7 +4,7 @@ description: Assessment rules to identify issues with the source SQL Server inst
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, randolphwest
-ms.date: 06/26/2024
+ms.date: 01/08/2025
 ms.service: azure-sql-database
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -240,7 +240,7 @@ For more information, see [Azure SQL Database elastic query overview (preview)](
 Distributed transaction started by Transact SQL BEGIN DISTRIBUTED TRANSACTION and managed by Microsoft Distributed Transaction Coordinator (MS DTC) isn't supported in Azure SQL Database.
 
 **Recommendation**  
-Review affected objects section in Azure Migrate to see all objects using BEGIN DISTRUBUTED TRANSACTION. Consider migrating the participant databases to Azure SQL Managed Instance where distributed transactions across multiple instances are supported.
+Review affected objects section in Azure Migrate to see all objects using BEGIN DISTRIBUTED TRANSACTION. Consider migrating the participant databases to Azure SQL Managed Instance where distributed transactions across multiple instances are supported.
 
 For more information, see [Transactions across multiple servers for Azure SQL Managed Instance](/azure/azure-sql/database/elastic-transactions-overview#transactions-for-sql-managed-instance).
 
@@ -472,5 +472,4 @@ Review affected objects section in Azure Migrate to see all objects using `xp_cm
 - [Azure total Cost of Ownership Calculator](https://azure.microsoft.com/pricing/tco/calculator/)
 - [Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
 - [Best practices for costing and sizing workloads migrate to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
-- [Data Access Migration Toolkit (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
 - [Overview of Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview)

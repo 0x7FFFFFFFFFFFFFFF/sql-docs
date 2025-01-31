@@ -1,9 +1,9 @@
 ---
 title: "Change the password of the accounts used (SQL Server Configuration Manager)"
-description: Find out how to change the password of the accounts that the Database Engine and the SQL Server Agent use. Learn when it is important to change the password.
+description: Find out how to change the password of the accounts that the Database Engine and the SQL Server Agent use. Learn when it's important to change the password.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/26/2024
+ms.date: 01/23/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -21,7 +21,7 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-This article describes how to change the password of the accounts used by the [!INCLUDE [ssDE](../../includes/ssde-md.md)] and the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] by using SQL Server Configuration Manager.
+This article describes how to change the password of the accounts used by the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] and the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent by using SQL Server Configuration Manager.
 
 The [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] and [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent run on a computer as a service using credentials that are initially provided during setup. If the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is running under a domain account and the password for that account is changed, the password used by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] must be updated to the new password. If the password isn't updated, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] might lose access to some domain resources and if [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] stops, the service don't restart until the password is updated.
 
@@ -56,7 +56,7 @@ You must be an administrator of the computer to change the password used by a se
 
 1. In the **SQL Server (**\<instancename>**) Properties** dialog box, on the Log On tab, for the account listed in the **Account Name** box, type the new password in the **Password** and **Confirm Password** boxes, and then select **OK**.
 
-   The password takes effect immediately, without restarting [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+   The password change made in SQL Server Configuration Manager takes effect immediately, without the need to restart the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] service. If you use the Windows Services app (`services.msc`) to change the account password, a service restart is required.
 
 #### Change the password used by the SQL Server Agent service
 

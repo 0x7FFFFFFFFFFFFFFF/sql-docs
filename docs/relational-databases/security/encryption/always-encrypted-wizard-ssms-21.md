@@ -4,7 +4,7 @@ description: Learn how to configure Always Encrypted for database columns by usi
 author: pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, maghan, randolphwest
-ms.date: 11/12/2024
+ms.date: 01/22/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: concept-article
@@ -52,9 +52,9 @@ To perform cryptographic operations using the wizard, you must have the `VIEW AN
 
 You can launch the wizard at three different levels:
 
-- You can encrypt multiple columns in different tables at a database level.
-- At a table level, if you want ypt multiple columns in the same table.
-- At a column level, if you want ypt one specific column.
+- At a database level, if you want to encrypt multiple columns in different tables.
+- At a table level, if you want to encrypt multiple columns in the same table.
+- At a column level, if you want to encrypt one specific column.
 
 1. Connect to your [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] with the Object Explorer component of [!INCLUDE [ssManStudioFull](../../../includes/ssmanstudiofull-md.md)].
 
@@ -99,16 +99,36 @@ When configuring a new column master key, you can either pick an existing key in
 
 To use in-place encryption, select **Allow enclave computations** for a new column master key. Selecting this checkbox is allowed only if your database is configured with a secure enclave.
 
-For more information about creating and storing column master keys in Windows Certificate Store, Azure Key Vault or other key stores, see [Create and store column master keys for Always Encrypted](../../../relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted.md) or [Manage keys for Always Encrypted with secure enclaves](../../../relational-databases/security/encryption/always-encrypted-enclaves-manage-keys.md).
+For more information about creating and storing column master keys in Windows Certificate Store, Azure Key Vault, or other key stores, see [Create and store column master keys for Always Encrypted](../../../relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted.md) or [Manage keys for Always Encrypted with secure enclaves](../../../relational-databases/security/encryption/always-encrypted-enclaves-manage-keys.md).
 
 > [!TIP]  
-> The wizard allows you to browse and create keys only in the Windows Certificate Store and Azure Key Vault. It also auto-generates the names of the new keys and the database metadata objects describing them. Suppose you need more control over how your keys are provisioned (and more choices for a key store containing your column master key). In that case, you can use the **New Column Master Key** and **New Column Encryption Key** dialogs to create the keys first, and then run the wizard and pick the keys you have created. See [Provision Column Master Keys with the New Column Master Key Dialog](configure-always-encrypted-keys-using-ssms.md#provision-column-master-keys-with-the-new-column-master-key-dialog) or [Provision enclave-enabled keys](always-encrypted-enclaves-provision-keys.md) and [Provision Column Encryption Keys with the New Column Encryption Key Dialog](configure-always-encrypted-keys-using-ssms.md#provision-column-encryption-keys-with-the-new-column-encryption-key-dialog).
+> The wizard allows you to browse and create keys only in the Windows Certificate Store and Azure Key Vault. It also autogenerates the names of the new keys and the database metadata objects describing them. Suppose you need more control over how your keys are provisioned (and more choices for a key store containing your column master key). In that case, you can use the **New Column Master Key** and **New Column Encryption Key** dialogs to create the keys first, and then run the wizard and pick the keys you have created. See [Provision Column Master Keys with the New Column Master Key Dialog](configure-always-encrypted-keys-using-ssms.md#provision-column-master-keys-with-the-new-column-master-key-dialog) or [Provision enclave-enabled keys](always-encrypted-enclaves-provision-keys.md) and [Provision Column Encryption Keys with the New Column Encryption Key Dialog](configure-always-encrypted-keys-using-ssms.md#provision-column-encryption-keys-with-the-new-column-encryption-key-dialog).
 
 ## In-Place Encryption Settings page
 
 If you have configured a secure enclave in your database and you're using enclave-enabled keys, this page allows you to specify the enclave attestation parameters required for in-place encryption. If you don't want to use in-place encryption, unselect **Use in-place encryption for eligible columns** to proceed with client-side encryption. We recommend leaving this checkbox enabled so that the wizard can use in-place encryption.
 
 For more information about enclave attestation, see [Configure attestation for Always Encrypted using Azure Attestation](/azure/azure-sql/database/always-encrypted-enclaves-configure-attestation)
+
+## Run Settings page
+
+The wizard supports two approaches for setting up the target encryption configuration: online and offline.
+
+With the offline approach, the target tables and any tables related to the target tables (for example, any tables a target table have foreign key relationships with) are unavailable to write transactions throughout the duration of the operation. The semantics of foreign key constraints (CHECK or NOCHECK) are always preserved when using the offline approach.
+
+With the online approach, the operation of copying, encrypting, decrypting, or re-encrypting the data is performed incrementally. Applications can read and write data from and to the target tables throughout the data movement operation, except the last iteration, the duration of which is limited by the *Maximum downtime* parameter. To detect and process the changes applications can make while the data is being copied, the wizard enables Change Tracking in the target database. Because of that, the online approach is likely to consume more resources on the database side than the offline approach. The operation might also take more time with the online approach, especially if a write-heavy workload is running against the database. The online approach can be used to encrypt **one table at a time** and the table must have a primary key. By default, foreign key constraints are recreated with the NOCHECK option to minimize the impact on applications. You can enforce preserving the semantics of foreign key constraints by enabling the `Keep check foreign key constraints` option.
+
+Here are the guidelines for choosing between the offline and online approaches:
+
+Use the offline approach:
+
+- To minimize the duration of the operation.
+- To encrypt/decrypt/re-encrypt columns in multiple tables at the same time.
+- If the target table doesn't have a primary key.
+
+Use the online approach:
+
+- To minimize the downtime/unavailability of the database to your applications.
 
 ## Related content
 

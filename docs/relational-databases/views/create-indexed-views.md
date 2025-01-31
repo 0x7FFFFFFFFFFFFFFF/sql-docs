@@ -1,10 +1,10 @@
 ---
-title: Create indexed views
+title: Create Indexed Views
 description: Creating a unique clustered index on a view improves query performance, because the view is stored in the same way as a clustered index is stored.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 07/22/2024
+ms.date: 01/14/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
@@ -252,7 +252,7 @@ GROUP BY OrderDate
 ORDER BY OrderDate ASC;
 ```
 
-Finally, this example shows querying directly from the indexed view. Before [!INCLUDE [ssSQL15_md](../../includes/sssql16-md.md)] Service Pack 1, automatic use of an indexed view by the query optimizer is supported only in specific editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. On [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Standard edition, you must use the `NOEXPAND` query hint to query the indexed view directly. Since [!INCLUDE [ssSQL15_md](../../includes/sssql16-md.md)] Service Pack 1, all editions support automatic use of an indexed view. [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] also support automatic use of indexed views without specifying the `NOEXPAND` hint. For more information, see [Table Hints (Transact-SQL)](../../t-sql/queries/hints-transact-sql-table.md#using-noexpand).
+Finally, this example shows querying directly from the indexed view. Automatic use of an indexed view by the query optimizer is supported only in specific editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. On [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Standard edition, you must use the `NOEXPAND` query hint to query the indexed view directly. [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] support automatic use of indexed views without specifying the `NOEXPAND` hint. For more information, see [Table Hints (Transact-SQL)](../../t-sql/queries/hints-transact-sql-table.md#using-noexpand).
 
 ```sql
 --This query uses the indexed view directly, on Enterprise edition.

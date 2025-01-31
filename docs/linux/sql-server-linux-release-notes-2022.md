@@ -4,7 +4,7 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 11/14/2024
+ms.date: 01/16/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -34,35 +34,38 @@ Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnov
 
 ## Latest versions for all packages
 
-This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL22](../includes/sssql22-md.md)]. The following table shows the most recent release, which is **CU 16**. For full release history, see [Release history for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] 2022](/troubleshoot/sql/linux/release-history-2022).
+This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL22](../includes/sssql22-md.md)]. The following table shows the most recent release, which is **CU 17**. For full release history, see [Release history for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] 2022](/troubleshoot/sql/linux/release-history-2022).
 
 | Version | Release | Date | Build | KB article |
 | --- | --- | --- | --- | --- |
-| [!INCLUDE [ssSQL22](../includes/sssql22-md.md)] | CU 16 | 2024-11-14 | 16.0.4165.4 | [Support article](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate16) |
+| [!INCLUDE [ssSQL22](../includes/sssql22-md.md)] | CU 17 | 2025-01-16 | 16.0.4175.1 | [Support article](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate17) |
+
+> [!IMPORTANT]  
+> The Microsoft Entra managed identity feature for SQL Server on Azure VM isn't supported on Linux. For more information, see [Improvement: Microsoft Entra managed identity support for backup and restore database operations and for EKM with AKV in SQL Server on Azure VMs](/troubleshoot/sql/releases/sqlserver-2022/microsoft-entra-managed-identity-support-for-backup-restore-database-ekm-akv).
 
 - The **mssql-server-is** package isn't supported on SUSE in this release. For more information, see [SQL Server on Linux: Known issues](sql-server-linux-known-issues.md#sql-server-integration-services-ssis).
 
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
 | **Red Hat Enterprise Linux** | | | |
-| RHEL 9 | Database Engine | 16.0.4165.4-7 | [Database Engine RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2022/Packages/m/mssql-server-16.0.4165.4-7.x86_64.rpm) |
-| RHEL 9 | Extensibility | 16.0.4165.4-7 | [Extensibility RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4165.4-7.x86_64.rpm) |
-| RHEL 9 | Full-Text Search | 16.0.4165.4-7 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4165.4-7.x86_64.rpm) |
-| RHEL 9 | High Availability | 16.0.4165.4-7 | [High Availability RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4165.4-7.x86_64.rpm) |
-| RHEL 9 | PolyBase | 16.0.4165.4-7 | [PolyBase RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4165.4-7.x86_64.rpm) |
+| RHEL 9 | Database Engine | 16.0.4175.1-3 | [Database Engine RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2022/Packages/m/mssql-server-16.0.4175.1-3.x86_64.rpm) |
+| RHEL 9 | Extensibility | 16.0.4175.1-3 | [Extensibility RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4175.1-3.x86_64.rpm) |
+| RHEL 9 | Full-Text Search | 16.0.4175.1-3 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4175.1-3.x86_64.rpm) |
+| RHEL 9 | High Availability | 16.0.4175.1-3 | [High Availability RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4175.1-3.x86_64.rpm) |
+| RHEL 9 | PolyBase | 16.0.4175.1-3 | [PolyBase RPM package](https://packages.microsoft.com/rhel/9.0/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4175.1-3.x86_64.rpm) |
 | RHEL 8 | SSIS | 16.0.4003.1-1 | [SSIS RPM package](https://packages.microsoft.com/rhel/8/mssql-server-2022/Packages/m/mssql-server-is-16.0.4003.1-1.x86_64.rpm) |
 | **SUSE Linux Enterprise Server** | | | |
-| SLES 15 | Database Engine | 16.0.4165.4-7 | [Database Engine RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-16.0.4165.4-7.x86_64.rpm) |
-| SLES 15 | Extensibility | 16.0.4165.4-7 | [Extensibility RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4165.4-7.x86_64.rpm) |
-| SLES 15 | Full-Text Search | 16.0.4165.4-7 | [Full-Text Search RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4165.4-7.x86_64.rpm) |
-| SLES 15 | High Availability | 16.0.4165.4-7 | [High Availability RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4165.4-7.x86_64.rpm) |
-| SLES 15 | PolyBase | 16.0.4165.4-7 | [PolyBase RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4165.4-7.x86_64.rpm) |
+| SLES 15 | Database Engine | 16.0.4175.1-3 | [Database Engine RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-16.0.4175.1-3.x86_64.rpm) |
+| SLES 15 | Extensibility | 16.0.4175.1-3 | [Extensibility RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4175.1-3.x86_64.rpm) |
+| SLES 15 | Full-Text Search | 16.0.4175.1-3 | [Full-Text Search RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4175.1-3.x86_64.rpm) |
+| SLES 15 | High Availability | 16.0.4175.1-3 | [High Availability RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4175.1-3.x86_64.rpm) |
+| SLES 15 | PolyBase | 16.0.4175.1-3 | [PolyBase RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4175.1-3.x86_64.rpm) |
 | **Ubuntu** | | | |
-| Ubuntu 22.04 | Database Engine | 16.0.4165.4-7 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server/mssql-server_16.0.4165.4-7_amd64.deb) |
-| Ubuntu 22.04 | Extensibility | 16.0.4165.4-7 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_16.0.4165.4-7_amd64.deb) |
-| Ubuntu 22.04 | Full-Text Search | 16.0.4165.4-7 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-fts/mssql-server-fts_16.0.4165.4-7_amd64.deb) |
-| Ubuntu 22.04 | High Availability | 16.0.4165.4-7 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-ha/mssql-server-ha_16.0.4165.4-7_amd64.deb) |
-| Ubuntu 22.04 | PolyBase | 16.0.4165.4-7 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-polybase/mssql-server-polybase_16.0.4165.4-7_amd64.deb) |
+| Ubuntu 22.04 | Database Engine | 16.0.4175.1-3 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server/mssql-server_16.0.4175.1-3_amd64.deb) |
+| Ubuntu 22.04 | Extensibility | 16.0.4175.1-3 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_16.0.4175.1-3_amd64.deb) |
+| Ubuntu 22.04 | Full-Text Search | 16.0.4175.1-3 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-fts/mssql-server-fts_16.0.4175.1-3_amd64.deb) |
+| Ubuntu 22.04 | High Availability | 16.0.4175.1-3 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-ha/mssql-server-ha_16.0.4175.1-3_amd64.deb) |
+| Ubuntu 22.04 | PolyBase | 16.0.4175.1-3 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-polybase/mssql-server-polybase_16.0.4175.1-3_amd64.deb) |
 | Ubuntu 20.04 | SSIS | 16.0.4003.1-1 | [SSIS Debian package](https://packages.microsoft.com/ubuntu/20.04/mssql-server-2022/pool/main/m/mssql-server-is/mssql-server-is_16.0.4003.1-1_amd64.deb) |
 
 ## <a id="cuinstall"></a> How to install updates
@@ -87,6 +90,7 @@ The following table lists the release history for [!INCLUDE [ssSQL22](../include
 
 | Release                                                                  | Version       | Release date |
 | ------------------------------------------------------------------------ | ------------- | ------------ |
+| [CU 17](/troubleshoot/sql/linux/release-history-2022#CU17)               | 16.0.4175.1   | 2025-01-16   |
 | [CU 16](/troubleshoot/sql/linux/release-history-2022#CU16)               | 16.0.4165.4   | 2024-11-14   |
 | [CU 15 GDR 2](/troubleshoot/sql/linux/release-history-2022#CU15-GDR2)    | 16.0.4155.4   | 2024-11-12   |
 | [CU 15 GDR 1](/troubleshoot/sql/linux/release-history-2022#CU15-GDR1)    | 16.0.4150.1   | 2024-10-08   |

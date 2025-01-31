@@ -4,7 +4,7 @@ description: DBCC SHRINKDATABASE shrinks the size of the data and log files in t
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: umajay, KevinConanMSFT, dplessMSFT, randolphwest
-ms.date: 07/03/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "language-reference"
@@ -87,7 +87,7 @@ The database name or ID to be shrunk. 0 specifies that the current database is u
 
 #### *target_percent*
 
-The percentage of free space that you want left in the database file after the database has been shrunk.
+The percentage of free space that you want left in the database file after the shrink operation completes.
 
 #### NOTRUNCATE
 
@@ -115,13 +115,13 @@ The wait at low priority feature reduces lock contention. For more information, 
 
 This feature is similar to the [WAIT_AT_LOW_PRIORITY with online index operations](../statements/alter-table-transact-sql.md#wait_at_low_priority), with some differences.
 
-- You cannot specify ABORT_AFTER_WAIT option NONE.
+- You cannot specify `ABORT_AFTER_WAIT` option `NONE`.
 
 #### WAIT_AT_LOW_PRIORITY
 
-When a shrink command is executed in `WAIT_AT_LOW_PRIORITY` mode, new queries requiring schema stability (Sch-S) locks are not blocked by the waiting shrink operation until the shrink operation stops waiting and starts executing. The shrink operation will execute when it is able to obtain a schema modify lock (Sch-M) lock.  If a new shrink operation in `WAIT_AT_LOW_PRIORITY` mode cannot obtain a lock due to a long-running query, the shrink operation will eventually timeout after 1 minute by default and will exit with no error.
+When a shrink command is executed in `WAIT_AT_LOW_PRIORITY` mode, new queries requiring schema stability (Sch-S) locks are not blocked by the waiting shrink operation until the shrink operation stops waiting and starts executing. The shrink operation executes when it is able to obtain a schema modify lock (Sch-M) lock. If a new shrink operation in `WAIT_AT_LOW_PRIORITY` mode cannot obtain a lock due to a long-running query, the shrink operation will eventually time out after 1 minute by default and exit with no error.
 
-If a new shrink operation in `WAIT_AT_LOW_PRIORITY` mode cannot obtain a lock due to a long-running query, the shrink operation will eventually timeout after 1 minute by default and will exit with no error. This will occur if the shrink operation cannot obtain the Sch-M lock due to concurrent query or queries holding Sch-S locks. When a timeout occurs, an error 49516 message will be sent to the SQL Server error log, for example: `Msg 49516, Level 16, State 1, Line 134 Shrink timeout waiting to acquire schema modify lock in WLP mode to process IAM pageID 1:2865 on database ID 5`. At this point, you can simply retry the shrink operation in `WAIT_AT_LOW_PRIORITY` mode knowing that there would be no impact to the application.
+If a new shrink operation in `WAIT_AT_LOW_PRIORITY` mode cannot obtain a lock due to a long-running query, the shrink operation will eventually time out after 1 minute by default and will exit with no error. This occurs if the shrink operation cannot obtain the Sch-M lock due to concurrent query or queries holding Sch-S locks. When a timeout occurs, error 49516 is sent to the [SQL Server error log](../../tools/configuration-manager/viewing-the-sql-server-error-log.md), for example: `Msg 49516, Level 16, State 1, Line 134 Shrink timeout waiting to acquire schema modify lock in WLP mode to process IAM pageID 1:2865 on database ID 5`. Retry the shrink operation in `WAIT_AT_LOW_PRIORITY` mode.
 
 #### ABORT_AFTER_WAIT = [ SELF | BLOCKERS ]
 
@@ -167,11 +167,9 @@ The shrunk database doesn't have to be in single user mode. Other users can be w
 
 You can't shrink a database while the database is being backed up. Conversely, you can't back up a database while a shrink operation on the database is in process.
 
-When specified with WAIT_AT_LOW_PRIORITY, the shrink operation's Sch-M lock request will wait with low priority when executing the command for 1 minute. If the operation is blocked for the duration, the specified ABORT_AFTER_WAIT action will be executed.
+When specified with WAIT_AT_LOW_PRIORITY, the shrink operation's Sch-M lock request waits with low priority when executing the command for one minute. If the operation is blocked for the duration, the specified ABORT_AFTER_WAIT action will be executed.
 
 In Azure Synapse SQL pools, running a shrink command is not recommended as this is an I/O intensive operation and can take your dedicated SQL pool (formerly SQL DW) offline. In addition, there will be costing implications to your data warehouse snapshots after running this command.
-
-[Database and file shrink operations](/azure/azure-sql/database/file-space-manage) are currently in preview for Azure SQL Database Hyperscale. For more information on the preview, see [Shrink for Azure SQL Database Hyperscale](https://aka.ms/hs-shrink-preview).
 
 ## Known issues
 
@@ -214,7 +212,7 @@ Consider the following information when you plan to shrink a database:
 
 ## Troubleshoot
 
-It's possible to block shrink operations by a transaction that is running under a [row versioning-based isolation level](../../t-sql/statements/set-transaction-isolation-level-transact-sql.md). For example, a large delete operation running under a row versioning-based isolation level is in progress when a `DBCC SHRINKDATABASE` operation is executed. When this situation happens, the shrink operation will wait for the delete operation to complete before it shrinks the files. When the shrink operation waits, `DBCC SHRINKFILE` and `DBCC SHRINKDATABASE` operations print an informational message (5202 for `SHRINKDATABASE` and 5203 for `SHRINKFILE`). This message prints to the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log every five minutes in the first hour and then every upcoming hour. For example, if the error log contains the following error message:
+It's possible to block shrink operations by a transaction that is running under a [row versioning-based isolation level](../../t-sql/statements/set-transaction-isolation-level-transact-sql.md). For example, a large delete operation running under a row versioning-based isolation level is in progress when a `DBCC SHRINKDATABASE` operation is executed. When this situation happens, the shrink operation waits for the delete operation to complete before it shrinks the files. When the shrink operation waits, `DBCC SHRINKFILE` and `DBCC SHRINKDATABASE` operations print an informational message (5202 for `SHRINKDATABASE` and 5203 for `SHRINKFILE`). This message prints to the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log every five minutes in the first hour and then every upcoming hour. For example, if the error log contains the following error message:
 
 ```output
 DBCC SHRINKDATABASE for database ID 9 is waiting for the snapshot
@@ -222,7 +220,7 @@ transaction with timestamp 15 and other snapshot transactions linked to
 timestamp 15 or with timestamps older than 109 to finish.
 ```
 
-This error means snapshot transactions that have timestamps older than 109 will block the shrink operation. That transaction is the last transaction that the shrink operation completed. It also indicates the `transaction_sequence_num` or `first_snapshot_sequence_num` columns in the [sys.dm_tran_active_snapshot_database_transactions (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-tran-active-snapshot-database-transactions-transact-sql.md) dynamic management view contain a value of 15. The `transaction_sequence_num` or `first_snapshot_sequence_num` column in the view might contain a number that is less than the last transaction completed by a shrink operation (109). If so, the shrink operation will wait for those transactions to finish.
+This error means snapshot transactions that have timestamps older than 109 will block the shrink operation. That transaction is the last transaction that the shrink operation completed. It also indicates the `transaction_sequence_num` or `first_snapshot_sequence_num` columns in the [sys.dm_tran_active_snapshot_database_transactions (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-tran-active-snapshot-database-transactions-transact-sql.md) dynamic management view contain a value of 15. The `transaction_sequence_num` or `first_snapshot_sequence_num` column in the view might contain a number that is less than the last transaction completed by a shrink operation (109). If so, the shrink operation waits for those transactions to finish.
 
 To resolve the problem, you can do one of the following tasks:
 
@@ -262,7 +260,7 @@ DBCC SHRINKDATABASE (database_B, 10);
 
 ### D. Shrink a database with WAIT_AT_LOW_PRIORITY
 
-The following example attempts to reduce the size of the data and log files in the [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] database to allow for 20% free space in the database. If a lock can't be obtained within one minute, the shrink operation will abort.
+The following example attempts to reduce the size of the data and log files in the [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] database to allow for 20% free space in the database. If a lock can't be obtained within one minute, the shrink operation aborts.
 
 ```sql
 DBCC SHRINKDATABASE ([AdventureWorks2022], 20) WITH WAIT_AT_LOW_PRIORITY (ABORT_AFTER_WAIT = SELF);

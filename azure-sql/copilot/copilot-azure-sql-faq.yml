@@ -6,7 +6,6 @@ metadata:
   ms.author: wiassaf
   ms.reviewer: josephsack
   ms.service: azure-sql-database
-  ms.subservice: ai-copilot
   ms.collection: ce-skilling-ai-copilot
   ms.custom:
     - build-2024

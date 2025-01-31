@@ -1,8 +1,8 @@
 ---
 title: "Report parameters methods"
 description: These methods get and set parameter properties for an item and validate parameter values, get supported parameter states, and get parameter types.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-web-service

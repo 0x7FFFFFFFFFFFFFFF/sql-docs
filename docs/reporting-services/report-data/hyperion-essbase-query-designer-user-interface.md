@@ -1,8 +1,8 @@
 ---
 title: "Hyperion Essbase Query Designer User Interface"
 description: Learn how to use the Hyperion Essbase query designer user interface to retrieve data when a report is processed.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

@@ -5,7 +5,7 @@ description: Learn how Azure SQL Database automatically backs up all databases a
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, danil, dinethi
-ms.date: 11/07/2024
+ms.date: 01/13/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: conceptual
@@ -267,12 +267,6 @@ Long-term retention can be enabled for Hyperscale databases created or migrated 
 ## Backup storage costs
 
 The price for backup storage varies and depends on your [purchasing model (DTU or vCore)](purchasing-models.md), chosen backup storage redundancy option, and region. Backup storage is charged based on gigabytes consumed per month, at the same rate for all backups. 
-
-Backup storage redundancy affects backup costs in the following way:
-
-- `Locally redundant price = published price`
-- `Zone-redundant price = published price x 1.25`
-- `Geo-redundant price = published price x 2`
 
 For pricing, see the [Azure SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/single/) page. 
 

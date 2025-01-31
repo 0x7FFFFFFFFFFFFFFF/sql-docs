@@ -64,23 +64,21 @@ SELECT [Geography].[Country].[Country].MEMBERS ON 0
   
  The following example creates a subcube that restricts the apparent cube space to {Accessories, Clothing} members in Products.Category and {[Value Added Reseller], [Warehouse]} in Resellers.[Business Type].  
   
- `CREATE SUBCUBE [Adventure Works] AS`  
-  
- `Select {[Category].Accessories, [Category].Clothing} on 0,`  
-  
- `{[Business Type].[Value Added Reseller], [Business Type].[Warehouse]} on 1`  
-  
- `from [Adventure Works]`  
+```  
+CREATE SUBCUBE [Adventure Works] AS  
+Select {[Category].Accessories, [Category].Clothing} on 0,  
+{[Business Type].[Value Added Reseller], [Business Type].[Warehouse]} on 1  
+from [Adventure Works]  
+```  
   
  Querying the subcube for all members in Products.Category and Resellers.[Business Type] with the following MDX:  
   
- `select [Category].members on 0,`  
-  
- `[Business Type].members on 1`  
-  
- `from [Adventure Works]`  
-  
- `where [Measures].[Reseller Sales Amount]`  
+```  
+select [Category].members on 0,  
+[Business Type].members on 1  
+from [Adventure Works]  
+where [Measures].[Reseller Sales Amount]  
+```  
   
  Yields the following results:  
   
@@ -92,23 +90,21 @@ SELECT [Geography].[Country].[Country].MEMBERS ON 0
   
  Dropping and recreating the subcube using the NON VISUAL clause will create a subcube that keeps the true totals for all members in Products.Category and Resellers.[Business Type], whether they are visible or not in the subcube.  
   
- `CREATE SUBCUBE [Adventure Works] AS`  
-  
- `NON VISUAL (Select {[Category].Accessories, [Category].Clothing} on 0,`  
-  
- `{[Business Type].[Value Added Reseller], [Business Type].[Warehouse]} on 1`  
-  
- `from [Adventure Works])`  
+```  
+CREATE SUBCUBE [Adventure Works] AS  
+NON VISUAL (Select {[Category].Accessories, [Category].Clothing} on 0,  
+{[Business Type].[Value Added Reseller], [Business Type].[Warehouse]} on 1  
+from [Adventure Works])  
+```  
   
  Issuing the same MDX query from above:  
   
- `select [Category].members on 0,`  
-  
- `[Business Type].members on 1`  
-  
- `from [Adventure Works]`  
-  
- `where [Measures].[Reseller Sales Amount]`  
+```  
+select [Category].members on 0,  
+[Business Type].members on 1  
+from [Adventure Works]  
+where [Measures].[Reseller Sales Amount]  
+```  
   
  Yields the following different results:  
   

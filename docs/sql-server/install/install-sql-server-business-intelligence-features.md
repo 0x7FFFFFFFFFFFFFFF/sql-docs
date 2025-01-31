@@ -1,8 +1,8 @@
 ---
 title: "Install Business Intelligence Features"
 description: This article provides links to information to install SQL Server features that are part of the Microsoft Business Intelligence platform.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: "12/13/2019"
 ms.service: sql
 ms.subservice: install

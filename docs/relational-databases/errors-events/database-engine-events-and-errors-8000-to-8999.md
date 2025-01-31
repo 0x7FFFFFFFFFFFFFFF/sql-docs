@@ -3,10 +3,10 @@ title: "Database Engine events and errors (8000 to 8999)"
 description: "Consult this SQL Server error code list (between 8000 and 8999) to find explanations for error messages for SQL Server database engine events."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/10/2024
+ms.date: 01/16/2025
 ms.service: sql
 ms.subservice: supportability
-ms.topic: reference
+ms.topic: error-reference
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || >=aps-pdw-2016-au7 || >=sql-server-2016 || >=sql-server-linux-2017"
 ---
 # Database Engine events and errors (8000 to 8999)

@@ -1,8 +1,8 @@
 ---
 title: "Publish and Republish Report Parts (Report Builder)"
 description: Learn how to publish a report part with edited metadata with default settings in a default location in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

@@ -17,25 +17,18 @@ ms.custom: mdx
   
  The following example shows how to use the **.Dimension**, **.Hierarchy**, and **.Level** functions:  
   
- `WITH`  
-  
- `MEMBER MEASURES.DIMENSIONNAME AS [Date].[Calendar].CURRENTMEMBER.DIMENSION.NAME`  
-  
- `MEMBER MEASURES.HIERARCHYNAME AS [Date].[Calendar].CURRENTMEMBER.HIERARCHY.NAME`  
-  
- `MEMBER MEASURES.LEVELNAME AS [Date].[Calendar].LEVEL.NAME`  
-  
- `SELECT`  
-  
- `{MEASURES.DIMENSIONNAME, MEASURES.HIERARCHYNAME, MEASURES.LEVELNAME}`  
-  
- `ON Columns,`  
-  
- `[Date].[Calendar].MEMBERS`  
-  
- `ON Rows`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH  
+MEMBER MEASURES.DIMENSIONNAME AS [Date].[Calendar].CURRENTMEMBER.DIMENSION.NAME  
+MEMBER MEASURES.HIERARCHYNAME AS [Date].[Calendar].CURRENTMEMBER.HIERARCHY.NAME  
+MEMBER MEASURES.LEVELNAME AS [Date].[Calendar].LEVEL.NAME  
+SELECT  
+{MEASURES.DIMENSIONNAME, MEASURES.HIERARCHYNAME, MEASURES.LEVELNAME}  
+ON Columns,  
+[Date].[Calendar].MEMBERS  
+ON Rows  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [Dimension &#40;MDX&#41;](../mdx/dimension-mdx.md)   

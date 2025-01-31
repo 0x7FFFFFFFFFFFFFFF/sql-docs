@@ -138,7 +138,7 @@ az sql db create --resource-group $resourceGroupName --server $serverName --name
 
 Create a database configured with user-assigned managed identity and cross-tenant customer-managed TDE at the database level using PowerShell.
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 Use the [New-AzSqlDatabase](/powershell/module/az.sql/New-AzSqlDatabase) cmdlet.
 
@@ -290,7 +290,7 @@ $keysToRemove = '"https://yourvault.vault.azure.net/keys/yourkey3/6638b3667e384a
 
 Update a database configured with user-assigned managed identity and cross-tenant customer-managed TDE at the database level using PowerShell.
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 Use the [Set-AzSqlDatabase](/powershell/module/az.sql/Set-AzSqlDatabase) cmdlet.
 
@@ -460,7 +460,7 @@ az sql db list --resource-group $resourceGroupName --server $serverName
 
 # [PowerShell](#tab/azure-powershell2)
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 Use the [Get-AzSqlDatabase](/powershell/module/az.sql/Get-AzSqlDatabase) cmdlet.
 
@@ -543,7 +543,7 @@ az sql db tde key revalidate --resource-group $resourceGroupName --server $serve
 
 # [PowerShell](#tab/azure-powershell2)
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 [Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation](/powershell/module/az.sql/invoke-azsqldatabasetransparentdataencryptionprotectorrevalidation) can be used to make the database accessible.
 
@@ -582,7 +582,7 @@ az sql db tde key revert --resource-group $resourceGroupName --server $serverNam
 
 # [PowerShell](#tab/azure-powershell2)
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 [Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert](/powershell/module/az.sql/invoke-azsqldatabasetransparentdataencryptionprotectorrevert) can be used to perform this operation.
 

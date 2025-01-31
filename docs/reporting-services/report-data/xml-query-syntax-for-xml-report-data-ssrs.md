@@ -1,8 +1,8 @@
 ---
 title: "XML Query Syntax for XML Report Data"
 description: Learn how to create the dataset query in Reporting Services by including an XML Query or an element path.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

@@ -4,7 +4,7 @@ description: Learn about the transaction log. Every SQL Server database records 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 07/29/2024
+ms.date: 01/11/2024
 ms.service: sql
 ms.subservice: supportability
 ms.topic: conceptual
@@ -112,7 +112,7 @@ When log records remain active for a long time, transaction log truncation is de
 > [!IMPORTANT]  
 > For information about how to respond to a full transaction log, see [Troubleshoot a full transaction log (SQL Server Error 9002)](troubleshoot-a-full-transaction-log-sql-server-error-9002.md).
 
-Really, log truncation can be delayed by various reasons. Learn what, if anything, is preventing your log truncation by querying the `log_reuse_wait` and `log_reuse_wait_desc` columns of the [sys.databases](../system-catalog-views/sys-databases-transact-sql.md) catalog view. The following table describes the values of these columns.
+Log truncation can be delayed for various reasons. To learn what is preventing your log truncation, query the `log_reuse_wait` and `log_reuse_wait_desc` columns of the [sys.databases](../system-catalog-views/sys-databases-transact-sql.md) catalog view. The following table describes the values of these columns.
 
 | log_reuse_wait value | log_reuse_wait_desc value | Description |
 | --- | --- | --- |
@@ -131,7 +131,7 @@ Really, log truncation can be delayed by various reasons. Learn what, if anythin
 | `12` | - | For internal use only |
 | `13` | `OLDEST_PAGE` | If a database is configured to use indirect checkpoints, the oldest page on the database might be older than the checkpoint [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch). In this case, the oldest page can delay log truncation (All recovery models).<br /><br />For information about indirect checkpoints, see [Database checkpoints (SQL Server)](database-checkpoints-sql-server.md). |
 | `14` | `OTHER_TRANSIENT` | This value is currently not used. |
-| `16` | `XTP_CHECKPOINT` | An In-Memory OLTP checkpoint needs to be performed. For memory-optimized tables, an automatic checkpoint is taken when transaction log file becomes bigger than 1.5 GB since the last checkpoint (includes both disk-based and memory-optimized tables).<br /><br />For more information, see [Checkpoint Operation for Memory-Optimized Tables](../in-memory-oltp/checkpoint-operation-for-memory-optimized-tables.md) and [Logging and Checkpoint process for In-Memory Optimized Tables] (<https://blogs.msdn.microsoft.com/sqlcat/2016/05/20/logging-and-checkpoint-process-for-memory-optimized-tables-2/>) |
+| `16` | `XTP_CHECKPOINT` | An In-Memory OLTP checkpoint needs to be performed. For memory-optimized tables, an automatic checkpoint is taken when transaction log file becomes bigger than 1.5 GB since the last checkpoint (includes both disk-based and memory-optimized tables).<br /><br />For more information, see [Checkpoint Operation for Memory-Optimized Tables](../in-memory-oltp/checkpoint-operation-for-memory-optimized-tables.md) and [Logging and Checkpoint process for In-Memory Optimized Tables](https://blogs.msdn.microsoft.com/sqlcat/2016/05/20/logging-and-checkpoint-process-for-memory-optimized-tables-2/) |
 
 <a id="MinimallyLogged"></a>
 

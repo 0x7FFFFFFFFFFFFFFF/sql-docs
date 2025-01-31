@@ -32,15 +32,13 @@ IsLeaf(Member_Expression)
 ## Example  
  The following example returns TRUE if [Date].[Fiscal].CurrentMember is a leaf member:  
   
- `WITH MEMBER MEASURES.ISLEAFDEMO AS`  
-  
- `IsLeaf([Date].[Fiscal].CURRENTMEMBER)`  
-  
- `SELECT {MEASURES.ISLEAFDEMO} ON 0,`  
-  
- `[Date].[Fiscal].MEMBERS ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.ISLEAFDEMO AS  
+IsLeaf([Date].[Fiscal].CURRENTMEMBER)  
+SELECT {MEASURES.ISLEAFDEMO} ON 0,  
+[Date].[Fiscal].MEMBERS ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

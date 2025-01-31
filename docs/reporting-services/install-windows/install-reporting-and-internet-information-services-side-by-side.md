@@ -1,8 +1,8 @@
 ---
 title: "Install Reporting and Internet Information Services side-by-side"
 description: "Install Reporting and Internet Information Services Side-by-Side"
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

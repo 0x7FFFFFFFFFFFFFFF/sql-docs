@@ -3,7 +3,7 @@ title: Export Registered Server Information
 description: "Export Registered Server Information (SQL Server Management Studio)"
 author: markingmyname
 ms.author: maghan
-ms.date: 03/01/2017
+ms.date: 01/22/2025
 ms.service: sql
 ms.subservice: ssms
 ms.topic: conceptual
@@ -30,12 +30,12 @@ This topic describes how to save and export registered server information in [!I
   
 #### To export registered server information  
   
-1.  In Registered Servers, right-click a server group, and then click **Export**.  
+1.  In Registered Servers, right-click a server group, and then select **Tasks** > **Export...**.  
   
     > [!NOTE]  
     >  You can export an individual server, all of the registered server tree, or a subset of the registered server tree.  
   
-2.  In the **Export Registered Servers** dialog box, make the following selections.  
+1.  In the **Export Registered Servers** dialog box, make the following selections.  
   
      **Server group**  
      Specify the server group which will be exported. Export all registered servers, registered servers in a particular server group, or a single registered server to the export file. The export functionality is recursive; for example, if server group A contains server group B, and server group B contains server groups C and D, exporting server group A exports all entries in A, B, C, and D.  
@@ -43,7 +43,7 @@ This topic describes how to save and export registered server information in [!I
      The server group displays only the server groups of the current registered server tree.  
   
      **Export file**  
-     Type the name of the export file in the text box or use the Browse button (**...**) to locate an export file on the client computer. If you select an existing file, the registered server information is appended to the file. Use the .regsrvr extension. If you want your registered server information to be available to other users or another computer, you can save the file on the network. Other users can access the file and import part or all of the registered server information. If you select an existing file as your export file, the contents of the file are overwritten with the server registration information.  
+     Type the path and name of the export file in the text box or use the Browse button (**...**) to select a location on the client computer, and name for the export file. Use the `.regsrvr` extension for the file. If you select an existing file, the registered server information is appended to the file. If you want your registered server information to be available to other users or another computer, you can save the file on the network. Other users can access the file and import part or all of the registered server information. If you select an existing file as your export file, the contents of the file are overwritten with the server registration information.  
   
      **Do not include user names and passwords in the export file**  
      Exclude user names when exporting the file.  

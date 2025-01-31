@@ -234,7 +234,7 @@ Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <SQL VM resource n
 
 After you have deleted the extension, you can uninstall SQL Server. Follow these steps on each virtual machine: 
 
-1. Connect to the virtual machine by using RDP or Bastion. When you first connect to a virtual machine by using RDP or Bastion, a prompt asks you if you want to allow the PC to be discoverable on the network. Select **Yes**.
+1. Connect to the virtual machine by using [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows). When you first connect to a virtual machine by using [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows), a prompt asks you if you want to allow the PC to be discoverable on the network. Select **Yes**.
 1. Open **Programs and Features** in the **Control Panel**. 
 1. In **Programs and Features**, right-click **Microsoft SQL Server 201_ (64-bit)** and select **Uninstall/Change**.
 1. Select **Remove**.

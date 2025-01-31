@@ -4,7 +4,7 @@ description: The native JSON data type provides advantages for storing JSON data
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest, jovanpop
-ms.date: 01/07/2025
+ms.date: 01/22/2025
 ms.service: sql
 ms.topic: reference
 ms.custom:
@@ -54,7 +54,7 @@ CREATE TABLE Orders (order_id int, order_details JSON NOT NULL
 
 ## Feature availability
 
-JSON support was first introduced in [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], mostly in the form of JSON functions. The new native **json** type was introduced in 2024, first on Azure SQL platforms.
+JSON function support was first introduced in [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]. The native **json** type was introduced in 2024 in Azure SQL Database and Azure SQL Managed Instance.
 
 **json** is available under all database compatibility levels.
 

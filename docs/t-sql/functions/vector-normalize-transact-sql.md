@@ -66,7 +66,7 @@ A string with the name of the norm type to use to calculate the norm of the give
 
 ## Return value
 
-The result is a vector with the same direction as the input vector but with a length of 1.
+The result is a vector with the same direction as the input vector but with a length of 1 according to the given norm.
 
 If the input is `NULL`, the returned result will also be `NULL`.
 

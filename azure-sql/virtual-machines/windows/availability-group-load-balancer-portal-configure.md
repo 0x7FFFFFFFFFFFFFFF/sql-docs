@@ -266,7 +266,7 @@ You now have an availability group in Azure virtual machines running in Resource
 
 Test the connection by doing the following steps:
 
-1. Use remote desktop protocol (RDP) to connect to a SQL Server instance that's in the same virtual network, but doesn't own the replica. This server can be the other SQL Server instance in the cluster.
+1. Use [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) to connect to a SQL Server instance that's in the same virtual network, but doesn't own the replica. This server can be the other SQL Server instance in the cluster.
 
 1. Use **sqlcmd** utility to test the connection. For example, the following script establishes a **sqlcmd** connection to the primary replica through the listener with Windows authentication:
 

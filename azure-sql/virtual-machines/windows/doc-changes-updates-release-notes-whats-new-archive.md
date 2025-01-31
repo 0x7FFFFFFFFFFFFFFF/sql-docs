@@ -4,7 +4,7 @@ description: Learn about the features and documentation improvements for SQL Ser
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, mathoma
-ms.date: 03/01/2024
+ms.date: 01/22/2025
 ms.service: azure-vm-sql-server
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -16,6 +16,25 @@ ms.custom: references_regions
 This article summarizes older documentation changes associated with new features and improvements in the recent releases of [SQL Server on Azure VMs](https://azure.microsoft.com/updates/?product=sql-database&query=sql%20managed%20instance). To learn more about SQL Server on Azure VMs, see the [overview](sql-server-on-azure-vm-iaas-what-is-overview.md).
 
 Return to [What's new in SQL Server on Azure VMs?](doc-changes-updates-release-notes-whats-new.md)
+
+
+## 2024
+
+| Changes | Month | Details |
+| --- | --- | --- |
+| **Mbsv3 and Mbdsv3 VM series GA** | November | A powerful new VM series that currently delivers one of the highest IOPS and GB throughput, with substantial vCore and memory options. This VM series is now generally available. Review [Mbsv3 and Mbdsv3 series](performance-guidelines-best-practices-vm-size.md#mbsv3-and-mbdsv3-series) to learn more. |
+| **Microsoft Entra authentication in any cloud**| October | It's now possible to configure Microsoft Entra authentication for your SQL Server on Azure VMs in any cloud. Review [Microsoft Entra authentication](configure-azure-ad-authentication-for-sql-vm.md) to learn more. |
+| **Azure Key Vault Managed Hardware Security Module (HSM) support with Extensible Key Management**| September | Azure Key Vault Managed HSM is supported for SQL Server and SQL Server on Azure VMs when using the latest version of the SQL Server Connector, as well as Azure SQL. For more information, see [Set up SQL Server TDE Extensible Key Management by using Azure Key Vault](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault). |
+|**Automated patching retirement** | September | The [automated patching](automated-patching.md) feature will retire. Currently scheduled for September 17, 2027. Migrate to [Azure Update Manager](../azure-update-manager-sql-vm.md) as soon as possible to continue receiving new updates to the patching feature for your SQL Server on Azure VM and avoid future service disruptions. |
+| **FCI with Azure Elastic SAN preview**| August | It's now possible to deploy your SQL Server failover cluster instance (FCI) using Azure Elastic SAN volumes. Review [FCI with Azure Elastic SAN](failover-cluster-instance-azure-elastic-san-manually-configure.md) to learn more. Using this storage solution for your FCI is currently in preview. |
+| **I/O Analysis preview** | May | Use the Azure portal to identify I/O performance issues with your SQL Server workloads from exceeding virtual machine and data disk limits. This feature is currently in preview. Review [I/O Analysis](storage-performance-analysis.md) to learn more. | 
+| **Azure Update Manager GA** | April | Automatically patch multiple SQL Server VMs at scale with the Azure Update Manager integrated in to the [SQL virtual machines](manage-sql-vm-portal.md) resource in the Azure portal, including Cumulative Updates, which isn't currently possible with the existing Automated Patching feature. This feature is now generally available. To learn more, review [Azure Update Manager for SQL Server on Azure VMs](../azure-update-manager-sql-vm.md). | 
+| **Deploy multi-subnet AG with commandline tools** | April | You can deploy an Always On availability group to multiple subnets by using PowerShell and the Azure CLI. Review [Deploy multi-subnet AG](availability-group-az-commandline-configure-multi-subnet.md) to get started. | 
+|**Azure SQL triggers for Azure Functions GA** | March | Azure Functions supports function triggers for SQL Server on Azure VMs. This feature is now generally available. Review [SQL triggers for Azure Functions](/azure/azure-functions/functions-bindings-azure-sql) to learn more. |
+| **Deploy SQL VM with Premium SSD v2 in Azure portal preview** | March | For improved throughput and performance, provision your SQL Server on Azure VMs with Premium SSD v2 disks by using the Azure portal.  Deploying your SQL Server VMs with Premium SSD v2 in the Azure portal is currently in preview. To learn more, review [Deploy SQL Server on Azure VMs with Premium SSD v2](storage-configuration-premium-ssd-v2.md). | 
+|**Azure Elastic SAN GA** | February | You can now place your SQL Server workloads on an Azure Elastic SAN for improved performance, throughput, and cost. The Azure Elastic SAN is now generally available (GA).  Review [Azure Elastic SAN](performance-guidelines-best-practices-storage.md#azure-elastic-san) to learn more.| 
+|**Configure log shipping** | February | Learn to configure log shipping between two SQL Server on Azure VMs. Review [Configure log shipping](log-shipping-configure.md) to learn more. |
+
 
 ## 2023
 
@@ -49,7 +68,7 @@ Return to [What's new in SQL Server on Azure VMs?](doc-changes-updates-release-n
 | **Least privilege permission model for SQL IaaS Agent extension** | There is a new permissions model available for the SQL Server IaaS Agent extension that grants the least privileged permission for each feature used by the extension. To learn more, review [SQL IaaS Agent extension permissions](sql-server-iaas-agent-extension-automate-management.md#permissions-models). | 
 | **Confidential VMs** | SQL Server on Azure VMs has added support to deploy to [SQL Server on Azure confidential VMs](sql-vm-create-confidential-vm-how-to.md). To get started, review the [Quickstart: Deploy SQL Server to an Azure confidential VM](sql-vm-create-portal-quickstart.md?tabs=confidential-vm). 
 | **Azure CLI for SQL best practices assessment**| It's now possible to configure the [SQL best practices assessment](sql-assessment-for-sql-vm.md) feature using the Azure CLI. |
-| **Configure tempdb from Azure portal** | It's now possible to configure your `tempdb` settings, such as the number of files, initial size, and autogrowth ratio for an existing SQL Server instance by using the Azure portal. See [manage SQL Server VM from portal](manage-sql-vm-portal.md#storage-configuration) to learn more. |
+| **Configure tempdb from Azure portal** | It's now possible to configure your `tempdb` settings, such as the number of files, initial size, and autogrowth ratio for an existing SQL Server instance by using the Azure portal. See [manage SQL Server VM from portal](manage-sql-vm-portal.md#storage) to learn more. |
 | **SDK-style SQL projects**| Use [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql) for SDK-style SQL projects in the SQL Database Projects extension in Azure Data Studio or VS Code. This feature is currently in preview. To learn more, see [SDK-style SQL projects](/azure-data-studio/extensions/sql-database-project-extension-sdk-style-projects). |
 | **Ebdsv5-series** | The new [Ebdsv5-series](/azure/virtual-machines/ebdsv5-ebsv5-series#ebdsv5-series) provides the highest I/O throughput-to-vCore ratio in Azure along with a memory-to-vCore ratio of 8. This series offers the best price-performance for SQL Server workloads on Azure VMs. Consider this series first for most SQL Server workloads. To learn more, see the updates in [VM sizes](performance-guidelines-best-practices-vm-size.md). |
 | **Security best practices** | The [SQL Server VM security best practices](security-considerations-best-practices.md) have been rewritten and refreshed! |

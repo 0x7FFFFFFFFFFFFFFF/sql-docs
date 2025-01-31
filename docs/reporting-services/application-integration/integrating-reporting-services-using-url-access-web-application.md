@@ -1,8 +1,8 @@
 ---
 title: "Use URL access in Web applications"
 description: URL access in Reporting Services enables access to reports over a network, which allows integrating report viewing and navigation into a custom Web application.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: application-integration

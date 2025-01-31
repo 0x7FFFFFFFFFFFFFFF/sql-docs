@@ -3,7 +3,7 @@ title: Installation Guidance for SQL Server on Linux
 description: Install, update, and uninstall SQL Server on Linux. This article covers online, offline, and unattended scenarios.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -64,7 +64,7 @@ For answers to frequently asked questions, see the [SQL Server on Linux FAQ](sql
 Microsoft also supports deploying and managing [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers by using OpenShift and Kubernetes.
 
 > [!NOTE]  
-> [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is tested and supported on Linux for the previously listed distributions. If you choose to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on an unsupported operating system, please review the **Support policy** section of the [Technical support policy for Microsoft SQL Server](/troubleshoot/sql/general/support-policy-sql-server) to understand the support implications.
+> [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is tested and supported on Linux for the previously listed distributions. If you choose to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on an unsupported operating system, review the **Support policy** section of the [Technical support policy for Microsoft SQL Server](/troubleshoot/sql/general/support-policy-sql-server) to understand the support implications.
 
 <a id="system"></a>
 

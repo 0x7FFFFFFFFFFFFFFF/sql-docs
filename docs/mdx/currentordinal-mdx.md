@@ -32,15 +32,13 @@ Set_Expression.CurrentOrdinal
 ## Examples  
  The following simple example shows how **CurrentOrdinal** can be used with **Generate** to return a string containing the name of each item in a set along with its position in the set:  
   
- `WITH SET MySet AS [Customer].[Customer Geography].[Country].MEMBERS`  
-  
- `MEMBER MEASURES.CURRENTORDINALDEMO AS`  
-  
- `GENERATE(MySet, CSTR(MySet.CURRENTORDINAL) + ") " + MySet.CURRENT.ITEM(0).NAME, ", ")`  
-  
- `SELECT MEASURES.CURRENTORDINALDEMO ON 0`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH SET MySet AS [Customer].[Customer Geography].[Country].MEMBERS  
+MEMBER MEASURES.CURRENTORDINALDEMO AS  
+GENERATE(MySet, CSTR(MySet.CURRENTORDINAL) + ") " + MySet.CURRENT.ITEM(0).NAME, ", ")  
+SELECT MEASURES.CURRENTORDINALDEMO ON 0  
+FROM [Adventure Works]  
+```  
   
  The practical use of CurrentOrdinal is limited to very complex calculations. The following example returns the number of products in the set that are unique, using the **Order** function to order the non-empty tuples before utilizing the **Filter** function. The **CurrentOrdinal** function is used to compare and eliminate ties.  
   

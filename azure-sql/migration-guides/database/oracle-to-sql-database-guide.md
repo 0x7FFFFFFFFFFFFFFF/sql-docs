@@ -4,7 +4,7 @@ description: In this guide, you learn how to migrate your Oracle schema to Azure
 author: nilabjaball
 ms.author: niball
 ms.reviewer: mathoma, randolphwest
-ms.date: 11/19/2024
+ms.date: 01/08/2025
 ms.service: azure-sql-database
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -147,8 +147,6 @@ After you successfully complete the *migration* stage, you need to complete a se
 ### Remediate applications
 
 After the data is migrated to the target environment, all the applications that formerly consumed the source need to start consuming the target. Accomplishing this task requires changes to the applications in some cases.
-
-The [Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) is an extension for Visual Studio Code that allows you to analyze your Java source code and detect data access API calls and queries. The toolkit provides you with a single-pane view of what needs to be addressed to support the new database back end. To learn more, see the [Migrate your Java applications from Oracle](https://techcommunity.microsoft.com/blog/microsoftdatamigration/migrate-your-java-applications-from-oracle-to-sql-server-with-the-help-of-the-da/368727) blog post.
 
 ### Perform tests
 

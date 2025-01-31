@@ -149,7 +149,7 @@ Azure SQL Managed Instance automatically manages backups by creating full, diffe
 Immediately after a database is created, restored, or undergoes backup redundancy changes, the first full backup is initiated. This backup typically completes within 30 minutes, though it may take longer. The duration of the initial backup for restored databases varies and depends on the database size. Larger restored databases or database copies, may require more time for the initial backup.
 
 > [!IMPORTANT]
-> The first full backup for a *new* database takes priority over other database backups, so it's the first backup taken during the first full backup window. If the full backup window is already active and other databases are being backed up, the first full backup for the new database is taken immediately after the full back up of another database completes.
+> The first full backup for a *new* database takes priority over other database backups, so it's the first backup taken during the first full backup window. If the full backup window is already active and other databases are being backed up, the first full backup for the new database is taken immediately after the full backup of another database completes.
 
 ### Scheduled full backups
 - **Weekly Schedule**: The system sets a weekly full backup window for the entire instance.
@@ -226,10 +226,8 @@ The price for backup storage varies. It depends on your chosen backup storage re
 
 Backup storage redundancy affects backup costs in the following way:
 
-- `Locally redundant price = published price`
-- `Zone-redundant price = published price x 1.25`
-- `Geo-redundant price = published price x 2`
-- `Geo-zone-redundant price = published price x 3.4`
+- `Locally-redundant price (LRS) = Zone-redundant price (ZRS) = published price`
+- `Geo-redundant price (GRS) = Geo-zone-redundant price (GZRS) = published price x 2`
 
 For pricing, review the [Azure SQL Managed Instance pricing](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) page.
 

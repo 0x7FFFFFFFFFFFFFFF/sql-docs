@@ -24,34 +24,32 @@ ms.custom: mdx
   
  The following example shows a calculated member that uses the expression [Measures] along with the .Members and Count() functions to return the number of members on the Measures dimension:  
   
- `WITH MEMBER [Measures].[MeasureCount] AS`  
-  
- `COUNT([Measures].MEMBERS)`  
-  
- `SELECT [Measures].[MeasureCount] ON 0`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER [Measures].[MeasureCount] AS  
+COUNT([Measures].MEMBERS)  
+SELECT [Measures].[MeasureCount] ON 0  
+FROM [Adventure Works]  
+```  
   
  A dimension identifier appears as *Dimension_Name* in the BNF notation used to describe MDX statements.  
   
 ## Hierarchy Expressions  
  Similarly, a hierarchy expression contains either a hierarchy identifier or a hierarchy function. The following example shows the use of the hierarchy expression [Date].[Calendar], along with the .Levels and .Count functions, to return the number of levels in the Calendar hierarchy of the Date dimension:  
   
- `WITH MEMBER [Measures].[CalendarLevelCount] AS`  
-  
- `[Date].[Calendar].Levels.Count`  
-  
- `SELECT [Measures].[CalendarLevelCount] ON 0`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER [Measures].[CalendarLevelCount] AS  
+[Date].[Calendar].Levels.Count  
+SELECT [Measures].[CalendarLevelCount] ON 0  
+FROM [Adventure Works]  
+```  
   
  The most common scenario where hierarchy expressions are used is in conjunction with the .Members function, to return all the members on a hierarchy. The following example returns all the members of [Date].[Calendar] on the rows axis:  
   
- `SELECT [Measures].[Internet Sales Amount] ON 0,`  
-  
- `[Date].[Calendar].MEMBERS ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+SELECT [Measures].[Internet Sales Amount] ON 0,  
+[Date].[Calendar].MEMBERS ON 1  
+FROM [Adventure Works]  
+```  
   
  A hierarchy identifier appears as *Dimension_Name.Hierarchy_Name* in the BNF notation used to describe MDX statements.  
   

@@ -1,14 +1,16 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/14/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: include
 ms.custom:
   - linux-related-content
 ---
-## <a id="pacemakerNotify"></a> Understand SQL Server resource agent for Pacemaker
+<a id="pacemakerNotify"></a>
+
+## Understand SQL Server resource agent for Pacemaker
 
 [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] introduced `sequence_number` to `sys.availability_groups` to show if a replica marked as `SYNCHRONOUS_COMMIT` was up to date. `sequence_number` is a monotonically increasing BIGINT that represents how up-to-date the local availability group replica is with respect to the rest of the replicas in the availability group. Performing failovers, adding or removing replicas, and other availability group operations update this number. The number is updated on the primary, then pushed to secondary replicas. Thus a secondary replica that is up-to-date has the same `sequence_number` as the primary.
 

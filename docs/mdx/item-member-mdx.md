@@ -35,13 +35,12 @@ Tuple_Expression.Item( Index )
 ## Example  
  The following example returns the member `[2003]` - the first item in the tuple `[Date].[Calendar Year].&[2003], [Measures].[Internet Sales Amount] ).` - on columns :  
   
- `SELECT`  
-  
- `{( [Date].[Calendar Year].&[2003], [Measures].[Internet Sales Amount] ).Item(0)} ON 0`  
-  
- `,{[Measures].[Reseller Sales Amount]} ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+SELECT  
+{( [Date].[Calendar Year].&[2003], [Measures].[Internet Sales Amount] ).Item(0)} ON 0  
+,{[Measures].[Reseller Sales Amount]} ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

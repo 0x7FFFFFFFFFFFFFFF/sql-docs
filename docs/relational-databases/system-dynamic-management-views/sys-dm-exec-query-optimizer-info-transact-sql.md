@@ -71,6 +71,7 @@ On [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] **Basic**, **S0**
 | `insert stmt` | Number of optimizations that are for `INSERT` statements. | Not applicable |
 | `delete stmt` | Number of optimizations that are for `DELETE` statements. | Not applicable |
 | `update stmt` | Number of optimizations that are for `UPDATE` statements. | Not applicable |
+| `merge stmt` | Number of optimizations that are for `MERGE` statements. | Not applicable |
 | `contains subquery` | Number of optimizations for a query that contains at least one subquery. | Not applicable |
 | `unnest failed` | Internal only | Internal only |
 | `tables` | Total number of optimizations. | Average number of tables referenced per query optimized. |
@@ -87,7 +88,6 @@ On [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] **Basic**, **S0**
 | `indexed views updated` | Number of optimizations of a DML statement that produce a plan that maintains one or more indexed views. | Average number of views maintained. |
 | `dynamic cursor request` | Number of optimizations in which a dynamic cursor request was specified. | Not applicable |
 | `fast forward cursor request` | Number of optimizations in which a fast-forward cursor request was specified. | Not applicable |
-| `merge stmt` | Number of optimizations that are for `MERGE` statements. | Not applicable |
 
 ## Examples
 

@@ -230,7 +230,6 @@ The virtual machine is created.
 
 SQL Server virtual machines support automated management features with the [SQL Server IaaS Agent Extension](sql-server-iaas-agent-extension-automate-management.md). To register your SQL Server with the extension run the [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) command after the virtual machine is created. Specify the license type for your SQL Server VM, choosing between pay-as-you-go (`PAYG`), bring-your-own-license via the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) (`AHUB`), disaster recovery (`DR`) to activate the [free DR replica license](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure). For more information about licensing, see [licensing model](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
-
 To register your SQL Server VM with the SQL IaaS Agent extension, first register your subscription with the resource provider by using [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider), and then register your SQL Server VM with the SQL IaaS Agent extension by using [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm): 
 
 :::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/virtual-machine/create-sql-server-vm.ps1" id="RegisterSQLIaaSExtension":::
@@ -255,12 +254,11 @@ You can also permanently delete all resources associated with the virtual machin
 
 For a full PowerShell script that provides an end-to-end experience, see [Deploy SQL Server on Azure VM with PowerShell](../scripts/create-sql-vm-powershell.md). 
 
-
 ## Related content
 
 After the virtual machine is created, you can:
 
-- Connect to the virtual machine using RDP
+- Connect to the virtual machine using [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows)
 - Configure SQL Server settings in the portal for your VM, including:
    - [Storage settings](storage-configuration.md) 
    - [Automated management tasks](sql-server-iaas-agent-extension-automate-management.md)

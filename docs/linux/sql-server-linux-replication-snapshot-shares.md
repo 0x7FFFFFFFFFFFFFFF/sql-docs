@@ -1,11 +1,11 @@
 ---
-title: Configure snapshot folder shares
+title: Configure Snapshot Folder Shares
 titleSuffix: SQL Server on Linux
 description: Learn to configure snapshot folder shares SQL Server replication on Linux.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/16/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -75,7 +75,7 @@ sudo service smbd restart
 
 1. Edit the `/etc/samba/smb.conf` to include the following entry and fill in the *share_name* and *path* fields
 
-   ```bash
+   ```output
    <[share_name]>
    path = </local/path/on/host/1>
    writable = yes
@@ -84,15 +84,26 @@ sudo service smbd restart
    valid users = mssql
    ```
 
+   The following table describes each setting.
+
+   | Setting | Description |
+   | --- | --- |
+   | `[mssql_data]` | Name of the shared directory |
+   | `path` | Location of directory we wish to share |
+   | `writable` | Determine if the share is writable from other hosts |
+   | `create mask` | Linux permissions for files created |
+   | `directory mask` | Linux permissions for directories created |
+   | `valid users` | List of users who can login to this share |
+
    **Example**
 
-   ```bash
-   [mssql_data]    <- Name of the shared directory
-   path = /var/opt/mssql/repldata <- location of directory we wish to share
-   writable = yes  <- determines if the share is writable from other hosts
-   create mask = 770  <- Linux permissions for files created
-   directory mask = 770 <- Linux permissions for directories created
-   valid users = mssql   <- list of users who can login to this share
+   ```ini
+   [mssql_data]
+   path = /var/opt/mssql/repldata
+   writable = yes
+   create mask = 770
+   directory mask = 770
+   valid users = mssql
    ```
 
 ### Mount the Samba share on subscriber (host2)
@@ -117,7 +128,7 @@ gid=mssql  <- sets the mssql group as the owner of the mounted directory
 
 Add the following section to `mssql.conf` on both machines. Use wherever the samba share for the `//share/path`. In this example, it would be `//host1/mssql_data`.
 
-```bash
+```ini
 [uncmapping]
 //share/path = /local/path/on/hosts/
 ```
@@ -126,14 +137,14 @@ Add the following section to `mssql.conf` on both machines. Use wherever the sam
 
 On `host1`:
 
-```bash
+```ini
 [uncmapping]
 //host1/mssql_data = /local/path/on/hosts/1
 ```
 
 On `host2`:
 
-```bash
+```ini
 [uncmapping]
 //host1/mssql_data = /local/path/on/hosts/2
 ```

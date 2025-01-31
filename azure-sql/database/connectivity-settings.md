@@ -57,7 +57,7 @@ Choose the **Private access** tab to configure a [private endpoint](private-endp
 It's possible to change public network access by using Azure PowerShell.
 
 > [!IMPORTANT]
-> Azure SQL Database still supports the PowerShell Azure Resource Manager module, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
+> The `Az` module replaces `AzureRM`. All future development is for the `Az.Sql` module. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
 
 The following PowerShell script shows how to `Get` and `Set` the **Public Network Access** property at the server level:
 
@@ -158,7 +158,7 @@ Login failed with invalid TLS version
 It's possible to change the minimum TLS version by using Azure PowerShell. 
 
 > [!IMPORTANT]
-> Azure SQL Database still supports the PowerShell Azure Resource Manager module, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
+> The `Az` module replaces `AzureRM`. All future development is for the `Az.Sql` module. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
 
 The following PowerShell script shows how to `Get` the **Minimal TLS Version** property at the logical server level:
 
@@ -209,7 +209,7 @@ You can use the Azure portal and SQL audit logs to identify clients that are con
 
 In the Azure portal, go to **Metrics** under **Monitoring** for your database resource, and then filter by *Successful connections*, and *TLS versions* = `1.0` and `1.1`:
 
-:::image type="content" source="media/connectivity-settings/connections-in-portal.png" alt-text="Screenshot of the montoring page for the database resource in the Azure portal with successful tls 1.0 and 1.1 connections filtered. "::: 
+:::image type="content" source="media/connectivity-settings/connections-in-portal.png" alt-text="Screenshot of the monitoring page for the database resource in the Azure portal with successful tls 1.0 and 1.1 connections filtered. "::: 
  
 You can also query [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) directly within your database to view the `client_tls_version_name` in the audit file: 
 
@@ -237,7 +237,7 @@ It's possible to change your connection policy for your logical server by using 
 It's possible to change the connection policy for your logical server by using Azure PowerShell.
 
 > [!IMPORTANT]
-> Azure SQL Database still supports the PowerShell Azure Resource Manager module, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
+> The `Az` module replaces `AzureRM`. All future development is for the `Az.Sql` module. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
 
 The following PowerShell script shows how to change the connection policy by using PowerShell:
 

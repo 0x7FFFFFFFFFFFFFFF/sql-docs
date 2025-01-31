@@ -1,8 +1,8 @@
 ---
 title: "Built-in Globals and User references in a paginated report"
 description: Find out about the values that can be used in expressions to filter results in a paginated report in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

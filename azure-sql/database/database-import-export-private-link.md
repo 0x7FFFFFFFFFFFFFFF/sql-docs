@@ -103,7 +103,7 @@ $importRequest = New-AzSqlDatabaseImport -ResourceGroupName "<resourceGroupName>
                         -StorageAccountName "<storageAccountName>").Value[0]
         -StorageUri "https://myStorageAccount.blob.core.windows.net/importsample/sample.bacpac" `
         -Edition "Standard" -ServiceObjectiveName "P6" ` -UseNetworkIsolation $true `
-        -StorageAccountResourceIdForPrivateLink "/subscriptions/<subscriptionId>/resourcegroups/<resource_group_name>/providers/Microsoft.Storage/storageAccounts/<storage_account_name>" `
+        -StorageAccountResourceIdForPrivateLink "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Storage/storageAccounts/<storage_account_name>" `
          -SqlServerResourceIdForPrivateLink "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Sql/servers/<server_name>" `
         -AdministratorLogin "<userID>" `
         -AdministratorLoginPassword $(ConvertTo-SecureString -String "<password>" -AsPlainText -Force)
@@ -121,7 +121,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName "<resourceGroupName>
                         -StorageAccountName "<storageAccountName>").Value[0]
         -StorageUri "https://myStorageAccount.blob.core.windows.net/importsample/sample.bacpac" `
         -UseNetworkIsolation $true `
-        -StorageAccountResourceIdForPrivateLink "/subscriptions/<subscriptionId>/resourcegroups/<resource_group_name>/providers/Microsoft.Storage/storageAccounts/<storage_account_name>" `
+        -StorageAccountResourceIdForPrivateLink "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Storage/storageAccounts/<storage_account_name>" `
          -SqlServerResourceIdForPrivateLink "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Sql/servers/<server_name>" `
         -AdministratorLogin "<userID>" `
         -AdministratorLoginPassword $(ConvertTo-SecureString -String "<password>" -AsPlainText -Force)

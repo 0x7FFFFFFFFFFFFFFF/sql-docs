@@ -1,8 +1,8 @@
 ---
 title: "How to: Deploy a data processing extension to Report Designer"
 description: Find out how to deploy a data processing extension to Report Designer by learning which entries to add to which configuration files.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

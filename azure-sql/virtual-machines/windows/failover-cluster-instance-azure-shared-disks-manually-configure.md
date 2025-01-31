@@ -142,7 +142,7 @@ After you've configured the failover cluster and all cluster components, includi
 
 To create the first node in the SQL Server FCI, follow these steps:
 
-1. Connect to the first virtual machine by using Remote Desktop Protocol (RDP) or Bastion.
+1. Connect to the first virtual machine by using [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows).
 
 1. In **Failover Cluster Manager**, make sure that all core cluster resources are on the first virtual machine. If necessary, move the disks to that virtual machine.
 
@@ -182,7 +182,7 @@ To create the first node in the SQL Server FCI, follow these steps:
 
 To add an additional node to the SQL Server FCI, follow these steps:
 
-1. After FCI installation succeeds on the first node, connect to the second node by using RDP or Bastion.
+1. After FCI installation succeeds on the first node, connect to the second node by using [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows).
 
 1. Open the **SQL Server Installation Center**, and then select **Installation**.
 

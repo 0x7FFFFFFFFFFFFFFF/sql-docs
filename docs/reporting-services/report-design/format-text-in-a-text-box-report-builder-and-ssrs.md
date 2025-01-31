@@ -1,8 +1,8 @@
 ---
 title: "Format text in a text box in paginated reports"
 description: Discover how to format text in a text box in paginated reports, and how to mix placeholder text and static text to create mail merges or templates for text in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
@@ -70,7 +70,7 @@ In paginated reports, you can format any part of the text in a text box independ
  
 1. Set heading elements. For example, on the **Accessibility** tab:
 
-    - **Accessibility options** Overwrite the structural type to give the Texbox a different semantic meaning output format, like HTML and Accessible PDF.
+    - **Accessibility options** Overwrite the structural type to give the Textbox a different semantic meaning output format, like HTML and Accessible PDF.
     - **Overwrite structure type** allows you to choose HTML heading elements H1-H6.
 
 1. Make a selection. 

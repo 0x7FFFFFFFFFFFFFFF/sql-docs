@@ -1,10 +1,10 @@
 ---
-title: Deploy SQL Server containers on Kubernetes with StatefulSets
+title: Deploy SQL Server Containers on Kubernetes with StatefulSets
 description: This article provides best practices and guidance for running SQL Server Linux containers on Kubernetes with StatefulSets.
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: randolphwest
-ms.date: 05/03/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -512,4 +512,4 @@ Tolerations:               node.kubernetes.io/memory-pressure:NoSchedule op=Exis
 
 - [Quickstart: Deploy a SQL Server container cluster on Azure](quickstart-sql-server-containers-azure.md)
 - [Quickstart: Deploy a SQL Server Linux container to Kubernetes using Helm charts](sql-server-linux-containers-deploy-helm-charts-kubernetes.md)
-- [Deploy availability group with DH2i for SQL Server containers on AKS](tutorial-sql-server-containers-kubernetes-dh2i.md)
+- [Deploy availability groups with DH2i DxEnterprise on Kubernetes](tutorial-sql-server-containers-kubernetes-dh2i.md)

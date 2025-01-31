@@ -1,10 +1,10 @@
 ---
 title: "Oracle to Azure SQL Managed Instance: Migration guide"
 description: In this guide, you learn how to migrate your Oracle schemas to Azure SQL Managed Instance by using SQL Server Migration Assistant for Oracle.
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: mathoma
-ms.date: 11/06/2020
+author: nilabjaball
+ms.author: niball
+ms.reviewer: mathoma, randolphwest
+ms.date: 01/08/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -140,8 +140,6 @@ After you've successfully completed the *migration* stage, you need to complete 
 ### Remediate applications
 
 After the data is migrated to the target environment, all the applications that formerly consumed the source need to start consuming the target. Accomplishing this step will require changes to the applications in some cases.
-
-The [Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) is an extension for Visual Studio Code that allows you to analyze your Java source code and detect data access API calls and queries. The toolkit provides you with a single-pane view of what needs to be addressed to support the new database back end. To learn more, see the [Migrate our Java application from Oracle](https://techcommunity.microsoft.com/t5/microsoft-data-migration/migrate-your-java-applications-from-oracle-to-sql-server-with/ba-p/368727) blog post.
 
 ### Perform tests
 

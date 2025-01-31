@@ -5,7 +5,7 @@ description: This tutorial provides the configuration steps for Active Directory
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
@@ -108,7 +108,7 @@ Configuring Active Directory authentication for [!INCLUDE [ssnoversion-md](../in
    ```
 
    > [!NOTE]  
-   > SPNs can take several minutes to propagate through your domain, especially if the domain is large. If you receive the error, `kvno: Server not found in Kerberos database while getting credentials for MSSQLSvc/<fully qualified domain name of host machine>:<tcp port>@CONTOSO.COM`, please wait a few minutes and try again.</br></br> The above commands will only work if the server has been joined to an Active Directory domain, which was covered in the previous section.
+   > SPNs can take several minutes to propagate through your domain, especially if the domain is large. If you receive the error, `kvno: Server not found in Kerberos database while getting credentials for MSSQLSvc/<fully qualified domain name of host machine>:<tcp port>@CONTOSO.COM`, wait a few minutes and try again. The previous commands only work if the server has been joined to an Active Directory domain, which was covered in an earlier section.
 
 1. Using **[ktpass](/windows-server/administration/windows-commands/ktpass)**, add keytab entries for each SPN using the following commands on a Windows machine Command Prompt:
 
@@ -163,14 +163,13 @@ Configuring Active Directory authentication for [!INCLUDE [ssnoversion-md](../in
    sudo systemctl restart mssql-server
    ```
 
-   > [!TIP]  
-   > Optionally, disable UDP connections to the domain controller to improve performance. In many cases, UDP connections consistently fail when connecting to a domain controller, so you can set config options in `/etc/krb5.conf` to skip UDP calls. Edit `/etc/krb5.conf` and set the following options:
-   >  
-   > ```bash
-   > /etc/krb5.conf
-   > [libdefaults]
-   > udp_preference_limit=0
-   > ```
+   Optionally, you can disable UDP connections to the domain controller to improve performance. In many cases, UDP connections consistently fail when connecting to a domain controller, so you can set config options in `/etc/krb5.conf` to skip UDP calls. Edit `/etc/krb5.conf` and set the following options:
+
+   ```bash
+   /etc/krb5.conf
+   [libdefaults]
+   udp_preference_limit=0
+   ```
 
 At this point, you're ready to use Active Directory-based logins in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 

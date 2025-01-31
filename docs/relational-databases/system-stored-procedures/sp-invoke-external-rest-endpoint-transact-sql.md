@@ -355,7 +355,7 @@ When `sp_invoke_external_rest_endpoint` is waiting for the call to the invoked s
 
 ### HTTPS and TLS
 
-Only endpoints that are configured to use HTTPS with at least TLS 1.2 encryption protocol are supported.
+Only endpoints that are configured to use HTTPS with TLS encryption protocol are supported.
 
 ### HTTP redirects
 

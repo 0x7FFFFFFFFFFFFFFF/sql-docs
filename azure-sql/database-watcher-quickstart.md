@@ -5,7 +5,7 @@ description: Learn how to create a new database watcher to monitor an Azure SQL 
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf
-ms.date: 12/20/2024
+ms.date: 01/24/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: quickstart
@@ -37,7 +37,7 @@ This quickstart requires the [prerequisites for creating and configuring a datab
 
     :::image type="content" source="media/database-watcher-quickstart/database-watchers-create.png" alt-text="Screenshot of the database watchers view with the Create button highlighted." lightbox="media/database-watcher-quickstart/database-watchers-create.png":::
 
-1. On the **Basics** tab, select the subscription and resource group for the watcher, enter the name of the watcher, and select an Azure region where you want to create the watcher.
+1. On the **Basics** tab, select the subscription and resource group for the watcher, enter the name of the watcher, and select an Azure region where you want to create the watcher. The rest of this quickstart assumes that you don't modify default selections on the **Identity**, **Data store**, and **Targets** tabs.
 
     :::image type="content" source="media/database-watcher-quickstart/database-watcher-create-basics.png" alt-text="Screenshot of the Basics page for a new database watcher being created, with the subscription, resource group, watcher name, and watcher region filled in." lightbox="media/database-watcher-quickstart/database-watcher-create-basics.png":::
 

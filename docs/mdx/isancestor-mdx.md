@@ -35,15 +35,13 @@ IsAncestor(Member_Expression1, Member_Expression2)
 ## Example  
  The following example returns **true** if [Date].[Fiscal].CurrentMember is an ancestor of January 2003:  
   
- `WITH MEMBER MEASURES.ISANCESTORDEMO AS`  
-  
- `IsAncestor([Date].[Fiscal].CurrentMember, [Date].[Fiscal].[Month].&[2003]&[1])`  
-  
- `SELECT MEASURES.ISANCESTORDEMO ON 0,`  
-  
- `[Date].[Fiscal].MEMBERS ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.ISANCESTORDEMO AS  
+IsAncestor([Date].[Fiscal].CurrentMember, [Date].[Fiscal].[Month].&[2003]&[1])  
+SELECT MEASURES.ISANCESTORDEMO ON 0,  
+[Date].[Fiscal].MEMBERS ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [Ancestor &#40;MDX&#41;](../mdx/ancestor-mdx.md)   

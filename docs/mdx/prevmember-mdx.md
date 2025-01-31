@@ -32,15 +32,13 @@ Member_Expression.PrevMember
 ## Example  
  The following example shows a simple query that uses the **PrevMember** function to display the name of the member immediately before the current member on the rows axis:  
   
- `WITH MEMBER MEASURES.PREVMEMBERDEMO AS`  
-  
- `[Date].[Calendar].CURRENTMEMBER.PREVMEMBER.NAME`  
-  
- `SELECT MEASURES.PREVMEMBERDEMO ON 0,`  
-  
- `[Date].[Calendar].MEMBERS ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.PREVMEMBERDEMO AS  
+[Date].[Calendar].CURRENTMEMBER.PREVMEMBER.NAME  
+SELECT MEASURES.PREVMEMBERDEMO ON 0,  
+[Date].[Calendar].MEMBERS ON 1  
+FROM [Adventure Works]  
+```  
   
  The following example returns the count of the resellers whose sales have declined over the previous time period, based on user-selected State-Province member values evaluated using the Aggregate function. The **Hierarchize** and **DrillDownLevel** functions are used to return values for declining sales for product categories in the Product dimension. The **PrevMember** function is used to compare the current time period with the previous time period.  
   

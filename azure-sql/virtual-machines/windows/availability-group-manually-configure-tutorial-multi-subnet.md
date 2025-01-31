@@ -44,7 +44,7 @@ The Always On availability group lives on top of the Windows Server Failover Clu
 
 Add the failover cluster feature to both SQL Server VMs. To do so, follow these steps:
 
-1. Connect to the SQL Server virtual machine through the Remote Desktop Protocol (RDP) using a domain account that has permissions to create objects in AD, such as the **CORP\Install** domain account created in the [prerequisites article](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md).
+1. Connect to the SQL Server virtual machine through [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) using a domain account that has permissions to create objects in AD, such as the **CORP\Install** domain account created in the [prerequisites article](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md).
 1. Open **Server Manager Dashboard**.
 1. Select the **Add roles and features** link on the dashboard.
 
@@ -62,7 +62,7 @@ After the cluster feature has been added to each SQL Server VM, you're ready to 
 
 To create the cluster, follow these steps:
 
-1. Use Remote Desktop Protocol (RDP) to connect to the first SQL Server VM (such as **SQL-VM-1**) using a domain account that has permissions to create objects in AD, such as the **CORP\Install** domain account created in the [prerequisites article](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md).
+1. Use [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) to connect to the first SQL Server VM (such as **SQL-VM-1**) using a domain account that has permissions to create objects in AD, such as the **CORP\Install** domain account created in the [prerequisites article](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md).
 2. In the **Server Manager** dashboard, select **Tools**, and then select **Failover Cluster Manager**.
 3. In the left pane, right-click **Failover Cluster Manager**, and then select **Create a Cluster**.
 
@@ -175,7 +175,7 @@ The Always On availability group feature is disabled by default. Use the **SQL S
 
 To enable the availability group feature, follow these steps:
 
-1. Launch the RDP file to the first SQL Server VM (such as **SQL-VM-1**) with a domain account that is a member of sysadmin fixed server role, such as the **CORP\Install** domain account created in the [prerequisites document](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)
+1. Connect to the first SQL Server VM (such as **SQL-VM-1**) with a domain account that is a member of sysadmin fixed server role, such as the **CORP\Install** domain account created in the [prerequisites document](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)
 1. From the **Start** screen of one your SQL Server VMs, launch **SQL Server Configuration Manager**.
 1. In the browser tree, highlight **SQL Server Services**, right-click the **SQL Server (MSSQLSERVER)** service and select **Properties**.
 1. Select the **Always On High Availability** tab, then check the box to **Enable Always On availability groups**:
@@ -194,7 +194,7 @@ If you plan on adding a database to your availability group that uses [FILESTREA
 
 To [enable the FILESTREAM feature](/sql/relational-databases/blob/enable-and-configure-filestream), follow these steps:
 
-1. Launch the RDP file to the first SQL Server VM (such as **SQL-VM-1**) with a domain account that is a member of sysadmin fixed server role, such as the **CORP\Install** domain account created in the [prerequisites document](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)
+1. Connect to the first SQL Server VM (such as **SQL-VM-1**) with a domain account that is a member of sysadmin fixed server role, such as the **CORP\Install** domain account created in the [prerequisites document](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)
 1. From the **Start** screen of one your SQL Server VMs, launch **SQL Server Configuration Manager**.
 1. In the browser tree, highlight **SQL Server Services**, right-click the **SQL Server (MSSQLSERVER)** service and select **Properties**.
 1. Select the **FILESTREAM** tab, then check the box to **Enable FILESTREAM for Transact-SQL access**:
@@ -217,7 +217,7 @@ For your database, you can either follow the steps in this section to create a n
 
 To create a database, follow these steps:
 
-1. Launch the RDP file to the first SQL Server VM (such as **SQL-VM-1**) with a domain account that is a member of the sysadmin fixed server role, such as the **CORP\Install** domain account created in the [prerequisites document](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md).
+1. Connect to the first SQL Server VM (such as **SQL-VM-1**) with a domain account that is a member of the sysadmin fixed server role, such as the **CORP\Install** domain account created in the [prerequisites document](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md).
 1. Open **SQL Server Management Studio** and connect to the SQL Server instance.
 1. In **Object Explorer**, right-click **Databases** and select **New Database**.
 1. In **Database name**, type **MyDB1**.
@@ -366,7 +366,7 @@ After your availability group is ready, and your listener has been configured wi
 
 To test the connection, follow these steps:
 
-1. Use RDP to connect to a SQL Server that is in the same virtual network, but does not own the replica, such as the other SQL Server instance within the cluster, or any other VM with **SQL Server Management Studio** installed to it.  
+1. Connect to a SQL Server that is in the same virtual network, but does not own the replica, such as the other SQL Server instance within the cluster, or any other VM with **SQL Server Management Studio** installed to it.  
 
 2. Open **SQL Server Management Studio**, and in the **Connect to Server** dialog box type the name of the listener (such as **AG1-Listener**) in **Server name:**, and then select **Options**:
 

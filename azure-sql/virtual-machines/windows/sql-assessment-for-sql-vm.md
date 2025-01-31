@@ -81,7 +81,6 @@ az sql vm update --enable-assessment false -g "myRg" -n "myVM"
 
 ---
 
-
 ## Assess SQL Server VM
 
 Assessments run:
@@ -139,7 +138,6 @@ az sql vm start-assessment -g "myRg" -n "myVM"
 ```
 
 ---
-
 
 ## View results
 

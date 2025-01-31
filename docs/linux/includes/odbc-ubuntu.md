@@ -1,7 +1,7 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/11/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.topic: include
 ms.custom:
@@ -58,7 +58,7 @@ Use the following steps to install the **mssql-tools18** on Ubuntu.
    To update to the latest version of **mssql-tools**, run the following commands:
 
    ```bash
-   sudo apt-get update  
+   sudo apt-get update
    sudo apt-get install mssql-tools18
    ```
 
