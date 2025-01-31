@@ -46,7 +46,7 @@ For each of these options, you have to decide how you want to pay for the licens
 
 | Payment option | V-core licensing | P-core licensing without VMs | P-core licensing with unlimited virtualization |
 | --- | --- | --- | --- |
-| Subscribe to the service through Microsoft Azure by using a pay-as-you-go method | Yes | Yes | Yes |
+| Subscribe to the service through Microsoft Azure by using a pay-as-you-go (PAYG) method | Yes | Yes | Yes |
 | Bring your own license with Software Assurance or a SQL Server subscription <sup>1</sup> | Yes | Yes | Yes |
 | Bring your own license without Software Assurance <sup>2</sup> | Yes | Yes | No |
 
@@ -214,7 +214,6 @@ For information, see:
 - All replicas present in the operating system environment (OSE) must be secondary.
 - No user database outside of an AG, irrespective of [database state](../../relational-databases/databases/database-states.md#database-state-definitions)).
 - No active connection to any user database.
-- License type is set to `Paid` or `PAYG`.
 
 If there are multiple SQL Server instances on the OSE, all instances and replicas must meet the conditions above.
 
@@ -222,7 +221,6 @@ If there are multiple SQL Server instances on the OSE, all instances and replica
 
 - The node must be passive of all FCIs present.
 - There is no standalone instance present in the node that does not qualify for AG passive replica.
-- License type is set to `Paid` or `PAYG`.
 
 ### Limitations
 
