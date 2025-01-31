@@ -2,8 +2,8 @@
 title: Azure SQL Database connectivity architecture
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 description: This article explains the Azure SQL Database connectivity architecture for database connections from within Azure or from outside of Azure.
-author: rohitnayakmsft
-ms.author: rohitna
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: wiassaf, mathoma, vanto
 ms.date: 05/10/2024
 ms.service: azure-sql-database

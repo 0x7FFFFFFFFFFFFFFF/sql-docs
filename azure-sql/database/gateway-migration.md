@@ -1,8 +1,8 @@
 ---
 title: Gateway traffic migration notice
 description: Article provides notice to users about the migration of Azure SQL Database gateway IP addresses
-author: rohitnayakmsft
-ms.author: rohitna
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: wiassaf, vanto, mathoma
 ms.date: 02/14/2024
 ms.service: azure-sql-database
