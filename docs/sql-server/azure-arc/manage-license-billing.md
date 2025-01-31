@@ -205,7 +205,7 @@ For information, see:
 - [Creating Enterprise and Organization Azure Dev/Test Subscriptions](/azure/devtest/offer/quickstart-create-enterprise-devtest-subscriptions).
 - The section "Licensing SQL Server for non-production use" in the [SQL Server licensing guide (download link)](https://go.microsoft.com/fwlink/p/?linkid=2215573).
 
-## Manage license for high availability and disaster recovery
+## Manage passive license for high availability and disaster recovery
 
 SQL Server licenses with Software Assurance or pay-as you go (`PAYG`) can benefit from free passive instances of SQL Server for their high availability and disaster recovery (HADR) configurations. For more information about the failover benefits, see the section "Licensing SQL Server for high availability and disaster recovery" in the [SQL Server licensing guide](https://go.microsoft.com/fwlink/p/?linkid=2215573).
 
