@@ -2,8 +2,8 @@
 title: Connectivity settings for Azure SQL Database and Azure Synapse Analytics
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 description: This article explains the Transport Layer Security (TLS) version choice and the Proxy versus Redirect settings for Azure SQL Database and Azure Synapse Analytics.
-author: rohitnayakmsft
-ms.author: rohitna
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: wiassaf, mathoma, vanto
 ms.service: azure-sql-database
 ms.date: 09/13/2024

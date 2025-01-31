@@ -2,8 +2,8 @@
 title: Outbound firewall rules
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 description: Overview of the outbound firewall rules feature for Azure SQL Database and Azure Synapse Analytics.
-author: rohitnayakmsft
-ms.author: rohitna
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: wiassaf, vanto, mathoma
 ms.date: 05/16/2023
 ms.service: azure-sql-database
