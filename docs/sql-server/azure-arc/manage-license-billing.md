@@ -10,7 +10,7 @@ ms.topic: conceptual
 
 # Manage licensing and billing of SQL Server enabled by Azure Arc
 
-This article explains how to manage licensing and billing of SQL Server enabled by Azure Arc. SQL Server enabled by Azure Arc directly supports only the core-based licensing methods. For information about how you can manage SQL Server instances with a Server+CAL license, see the section [Manage SQL Server instances with a Server+CAL license](manage-license-billing.md#server-cal) in this article. The full range of the licensing options is described in the [SQL Server licensing guide (download link)](https://go.microsoft.com/fwlink/p/?linkid=2215573).
+This article explains how to manage licensing and billing of SQL Server enabled by Azure Arc. SQL Server enabled by Azure Arc directly supports only the core-based licensing methods. For information about how you can manage SQL Server instances with a Server+CAL license, see [Manage SQL Server instances with a Server+CAL license](manage-license-billing.md#server-cal). The full range of the licensing options is described in the [SQL Server licensing guide (download link)](https://go.microsoft.com/fwlink/p/?linkid=2215573).
 
 ## Licensing and billing in the production environment
 
@@ -56,7 +56,7 @@ For each of these options, you have to decide how you want to pay for the licens
 
 Your choice of payment option might affect your outsourcing options. For more information, see the [service-specific terms](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/eaeas#ServiceSpecificTerms) and the [Flexible Virtualization Benefit licensing guide](https://www.microsoft.com/licensing/docs/view/Virtualization).
 
-For information about licensing your non-production or test SQL Server instances through Azure Arc, see the [Manage SQL Server licensed for non-production use](manage-license-billing.md#non-production-licensing) section later in this article.
+For information about licensing your non-production or test SQL Server instances through Azure Arc, see [Manage SQL Server licensed for non-production use](manage-license-billing.md#non-production-licensing).
 
 ## <a id="license-vcores"></a> License SQL Server instances by virtual cores
 
@@ -205,11 +205,38 @@ For information, see:
 - [Creating Enterprise and Organization Azure Dev/Test Subscriptions](/azure/devtest/offer/quickstart-create-enterprise-devtest-subscriptions).
 - The section "Licensing SQL Server for non-production use" in the [SQL Server licensing guide (download link)](https://go.microsoft.com/fwlink/p/?linkid=2215573).
 
-## Manage SQL Server licensed for high availability and disaster recovery
+## Manage license for high availability and disaster recovery
 
-If your SQL Server instance is a passive replica created as part of your high-availability or disaster recovery configuration, you're entitled to the failover benefits that are included if your license type is set to `Paid` or `PAYG`. For more information about the failover benefits, see the section "Licensing SQL Server for high availability and disaster recovery" in the [SQL Server licensing guide (download link)](https://go.microsoft.com/fwlink/p/?linkid=2215573).
+SQL Server licenses with Software Assurance or pay-as you go (`PAYG`) can benefit from a free passive instance of SQL Server for their high availability and disaster recovery (HADR) configurations.
 
-To help you manage the failover benefits and remain compliant, Azure Extension for SQL Server automatically detects the passive instances and reflects the use of the SQL Server software by emitting special $0 meters for disaster recovery, as long as you properly configured the `LicenseType` property. For more information, see [Metering software usage](manage-license-billing.md#usage-metering) later in this article.
+For more information about the failover benefits, see the section "Licensing SQL Server for high availability and disaster recovery" in the [SQL Server licensing guide](https://go.microsoft.com/fwlink/p/?linkid=2215573).
+
+To help you manage the failover benefits and remain compliant, Azure Extension for SQL Server automatically detects the passive instances for availability groups (AGs) or failover clustered instances (FCIs) and reflects the use of the SQL Server software by emitting special $0 meters for disaster recovery, as long as you properly configured the LicenseType property.
+
+### To qualify as passive instance for an availability group (AG)
+
+- All replicas present in the operating system environment (OSE) must be secondary.
+- No user database outside of an AG - (irrespective of [any database state](../../relational-databases/databases/database-states.md#database-state-definitions)).
+- No active connection to any user database.
+- Instance license type is set to `Paid` or `PAYG`.
+
+If there are multiple SQL Server instances on the OSE, all instances and replicas must meet the conditions above.
+
+### To qualify as passive node of failover clustered Instance (FCI)
+
+- The node must be passive of all FCIs present.
+- There is no standalone instance present in the node that does not qualify for AG passive replica.
+- Instance license type is set to `Paid` or `PAYG`.
+
+### Limitations
+
+The current passive instance detection logic has the following limitations.
+
+- The checks are done every hour. A failover within the hour may or may not bill both replicas.
+- Passive instances for other HADR technologies like log shipping or mirroring are not automatically detected at this time.
+- The detection logic does not support free disaster recovery testing or monitoring. connections like database consistency checks, backups or monitoring resource usage data.
+
+If you are unable to work within these limitations, instead of `PAYG`, you can use volume licensing instead. For details, review [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
 
 ## <a id="server-cal"></a> Manage SQL Server instances that use a Server+CAL license
 
