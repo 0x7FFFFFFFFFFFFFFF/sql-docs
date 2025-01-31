@@ -174,13 +174,11 @@ For information, see:
 - [Create an Enterprise Agreement subscription](/azure/cost-management-billing/manage/create-enterprise-subscription#create-an-ea-subscription).
 - The section "Licensing SQL Server for nonproduction use" in the [SQL Server licensing guide (download link)](https://download.microsoft.com/download/e/2/9/e29a9331-965d-4faa-bd2e-7c1db7cd8348/SQL_Server_2019_Licensing_guide.pdf).
 
-## Manage SQL Server ESU subscriptions on high-availability and disaster recovery replicas
+## <a id="manage-hadr"></a> Manage SQL Server ESU subscriptions on high-availability and disaster recovery replicas
 
-If your out-of-service [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance is a passive replica created as part of your high-availability or disaster recovery configuration, you're entitled to the failover benefits that are included if your license type is set to `Paid` or `PAYG`. For more information about the failover benefits, see the section "Licensing SQL Server for high availability and disaster recovery" in the [SQL Server licensing guide (download link)](https://download.microsoft.com/download/e/2/9/e29a9331-965d-4faa-bd2e-7c1db7cd8348/SQL_Server_2019_Licensing_guide.pdf).
+[!INCLUDE [manage-passive-instance](includes/manage-passive-instance.md)]
 
-To help you manage the failover benefits and remain compliant, Azure Extension for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] automatically detects the passive instances and reflects the use of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] software by emitting special $0 meters for disaster recovery, as long as you properly configured the `LicenseType` property. For more information, see [Metering software usage](manage-license-billing.md#usage-metering).
-
-During the failovers, the extension is aware of the transition and automatically switches the ESU billing to the active replica without new bill-back charges.
+For details, review [ESU billing after failover](manage-license-billing.md#esu-billing-after-failover).
 
 ## <a id="server-cal"></a> Manage SQL Server instances that use a Server+CAL license
 

@@ -207,13 +207,7 @@ For information, see:
 
 ## Manage passive license for high availability and disaster recovery
 
-SQL Server licenses with Software Assurance or pay-as you go (`PAYG`) can benefit from free passive instances of SQL Server for their high availability and disaster recovery (HADR) configurations. For more information about the failover benefits, see the section "Licensing SQL Server for high availability and disaster recovery" in the [SQL Server licensing guide](https://go.microsoft.com/fwlink/p/?linkid=2215573).
-
-To help you manage the failover benefits and remain compliant, Azure Extension for SQL Server automatically detects the passive instances for availability groups (AGs) or failover clustered instances (FCIs) and reflects the use of the SQL Server software by emitting special $0 meters for disaster recovery, as long as you properly configured the LicenseType property. For more information, see [Metering software usage](https://learn.microsoft.com/sql/sql-server/azure-arc/manage-license-billing?view=sql-server-ver16#usage-metering) later in this article.
-
-During the failovers, the extension is aware of the transition and automatically switches the ESU billing to the active replica without new bill-back charges and follow below logic 
-- If the period of failover <= 90 days, ESU billback occurs only from the prior watermark of usage upload
-- If the period of failover > 90 days, ESU billback occurs from the start of the ESU period. 
+[!INCLUDE [manage-passive-instance](includes/manage-passive-instance.md)]
 
 ### To qualify as passive instance for an availability group (AG)
 
@@ -239,6 +233,15 @@ The current passive instance detection logic has the following limitations.
 - The detection logic does not support free disaster recovery testing or monitoring connections like database consistency checks, backups or monitoring resource usage data.
 
 If you are unable to work within these limitations, you can use volume licensing instead of `PAYG`. For details, review [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
+
+### ESU billing after failover
+
+During the failovers, the extension is aware of the transition and automatically switches the ESU billing to the active replica without new bill-back charges and follow below logic
+
+- If the period of failover <= 90 days, ESU billback occurs only from the prior watermark of usage upload.
+- If the period of failover > 90 days, ESU billback occurs from the start of the ESU period.
+
+For additional information, review [SQL Server Extended Security Updates enabled by Azure Arc](extended-security-updates.md#manage-hadr).
 
 ## <a id="server-cal"></a> Manage SQL Server instances that use a Server+CAL license
 
