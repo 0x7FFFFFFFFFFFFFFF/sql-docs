@@ -50,7 +50,7 @@ For example, `SELECT BIT_COUNT (CAST (-1 as smallint))` and `SELECT BIT_COUNT (C
 
 In the initial implementation, Distributed Query functionality for the bit manipulation functions within linked server or ad hoc queries (OPENQUERY) won't be supported.
 
-Large Object (LOB) data types in the database engine are capable of storing data that exceeds 8,000 bytes. These data types will store data on a [row-overflow](../../relational-databases/pages-and-extents-architecture-guide.md#row-overflow-considerations) data page. A LOB also encompasses data types that store data on dedicated LOB page structures and/or use a text or an image pointer of in-row references to LOB data pages. Please refer to the [Pages and extents architecture guide](../../relational-databases/pages-and-extents-architecture-guide.md) for more information regarding data storage in the database engine.
+Large Object (LOB) data types in the database engine are capable of storing data that exceeds 8,000 bytes. These data types will store data on a [row-overflow](../../relational-databases/pages-and-extents-architecture-guide.md#row-overflow-considerations) data page. A LOB also encompasses data types that store data on dedicated LOB page structures which use a text or an image pointer of in-row references to LOB data pages. Please refer to the [Pages and extents architecture guide](../../relational-databases/pages-and-extents-architecture-guide.md) for more information regarding data storage in the database engine.
 
 The bit manipulation functions operate on the tinyint, smallint, int, bigint, binary(n), and varbinary(n) data types. Large object (LOB) data types such as: varchar(max), nvarchar(max), varbinary(max), image, ntext, text, xml, and CLR BLOB types are not supported.
 
