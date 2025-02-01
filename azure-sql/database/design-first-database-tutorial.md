@@ -87,7 +87,7 @@ Use [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) 
    | **Login** | The server admin account | If using SQL Server Authentication, the account that you specified when you created the server. |
    | **Password** | The password for your server admin account | If using SQL Server Authentication, the password that you specified when you created the server. |
 
-   :::image type="content" source="media\design-first-database-tutorial\connect.png" alt-text="Screenshot of the connect to an Azure SQL Database logical server server dialog box in SQL Server Management Studio (SSMS).":::
+   :::image type="content" source="media\design-first-database-tutorial\connect.png" alt-text="Screenshot of the Connect to Server dialog box in SQL Server Management Studio (SSMS).":::
 
 1. Select **Options** in the **Connect to server** dialog box. In the **Connect to database** section, enter *yourDatabase* to connect to this database.
 

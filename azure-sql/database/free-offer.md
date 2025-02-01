@@ -49,7 +49,7 @@ For more information, see the [Azure SQL Database free offer FAQ](free-offer-faq
 
 ## Prerequisites
 
-To create a Azure SQL Database, you need:
+To create a free Azure SQL Database, you need:
 
 - An Azure account.
   - If you're evaluating Azure, consider the [Azure free account, with many services available free for 12 months](https://azure.microsoft.com/free/).
