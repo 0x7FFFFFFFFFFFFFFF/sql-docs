@@ -4,7 +4,7 @@ description: "Explains the SQL Server instance configuration setting for ADR cle
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 12/04/2024
+ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -15,9 +15,9 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-[!INCLUDE [sssql19-starting-md](../../includes/sssql19-starting-md.md)], this configuration setting is used for [accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md) (ADR). The cleaner is an asynchronous process that wakes up periodically and cleans page versions that aren't needed.
+[!INCLUDE [sssql19-starting-md](../../includes/sssql19-starting-md.md)], this configuration setting is used for [accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md) (ADR). The cleaner is an asynchronous process that wakes up periodically and cleans row versions that aren't needed.
 
-Occasionally the cleaner might run into issues while acquiring object level locks due to conflicts with user workloads during its sweep. The cleaner tracks such pages in a separate list. `ADR cleaner retry timeout (min)` controls the amount of time the cleaner spends exclusively retrying object lock acquisition and cleanup of pages before it abandons the sweep. Completing the sweep with 100% success is essential to keep the growth of aborted transactions in the aborted transactions map. If the pages on the separate list can't be cleaned up in the prescribed timeout, then the current sweep is abandoned, and the cleanup is attempted during the next sweep.
+Occasionally the cleaner might run into issues while acquiring object or partition level `IX` locks due to lock conflicts with user workloads during its sweep. The cleaner tracks such pages in a separate list. `ADR cleaner retry timeout (min)` controls the amount of time the cleaner spends exclusively retrying `IX` lock acquisition and cleanup of pages before it abandons the sweep. Completing the sweep with 100% success is essential to keep the growth of aborted transactions in the aborted transactions map. If the pages on the separate list can't be cleaned up in the prescribed timeout, then the current sweep is abandoned, and the cleanup is attempted during the next sweep.
 
 | Version | Default value |
 | --- | --- |

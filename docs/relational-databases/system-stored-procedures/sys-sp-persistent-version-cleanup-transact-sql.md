@@ -3,7 +3,8 @@ title: "sys.sp_persistent_version_cleanup (Transact-SQL)"
 description: "Manually starts persistent version store (PVS) cleanup process, a key element of accelerated database recovery (ADR)."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/04/2024
+ms.reviewer: dfurman
+ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -20,9 +21,9 @@ monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-
 
 [!INCLUDE [SQL Server 2019, ASDB, ASDBMI](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi.md)]
 
-Manually starts persistent version store (PVS) cleanup process, a key element of accelerated database recovery (ADR). This cleaner rolls back uncommitted data in the PVS from aborted transactions.
+Manually starts persistent version store (PVS) cleanup process, a key element of accelerated database recovery (ADR). This cleaner also removes uncommitted data in PVS from aborted transactions.
 
-It isn't typically necessary to start the PVS cleanup process manually using `sys.sp_persistent_version_cleanup`. However in some scenarios, in a known period of rest/recovery after busy OLTP activity, you might want to initiate the PVS cleanup process manually.
+It isn't typically necessary to start the PVS cleanup process manually using `sys.sp_persistent_version_cleanup`. However in some scenarios, you might want to initiate the PVS cleanup process manually during a known period of rest/recovery after busy OLTP activity.
 
 For more information about ADR, see [Accelerated database recovery](../accelerated-database-recovery-concepts.md).
 
@@ -115,5 +116,5 @@ EXEC sys.sp_persistent_version_cleanup;
 ## Related content
 
 - [Accelerated database recovery](../accelerated-database-recovery-concepts.md)
-- [Troubleshoot accelerated database recovery](../accelerated-database-recovery-troubleshoot.md)
+- [Monitor and troubleshoot accelerated database recovery](../accelerated-database-recovery-troubleshoot.md)
 - [Manage accelerated database recovery](../accelerated-database-recovery-management.md)
