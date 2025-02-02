@@ -33,7 +33,7 @@ Azure SQL Database is a relational database-as-a-service (DBaaS) in the Microsof
 
 - An installation of [Visual Studio 2019](https://www.visualstudio.com/downloads/) or later.
 - If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-- If you don't already have an Azure SQL Database created, visit [Quickstart: Create a single database](single-database-create-quickstart.md). Look for the option to use your offer to [try Azure SQL Database for free (preview)](free-offer.md).
+- If you don't already have an Azure SQL Database created, visit [Quickstart: Create a single database](single-database-create-quickstart.md). Look for the option to use your offer to [Deploy Azure SQL Database for free](free-offer.md).
 
 ## Sign in to the Azure portal
 
@@ -82,7 +82,7 @@ SQL Database creates an IP firewall at the server-level. This firewall prevents 
 
 ## Related content
 
-- [Try Azure SQL Database for free (preview)](free-offer.md)
+- [Deploy Azure SQL Database for free](free-offer.md)
 - [What's new in Azure SQL Database?](doc-changes-updates-release-notes-whats-new.md)
 - [Configure and manage content reference - Azure SQL Database](how-to-content-reference-guide.md)
 - [Plan and manage costs for Azure SQL Database](cost-management.md)

@@ -34,7 +34,7 @@ To complete this tutorial, make sure you've installed:
 - [Azure Data Studio](/azure-data-studio/download-azure-data-studio) (latest version)
 - [BCP and SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433) (latest version).
 - If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-- If you don't already have an Azure SQL Database created, visit [Quickstart: Create a single database](single-database-create-quickstart.md). Look for the option to use your offer to [try Azure SQL Database for free (preview)](free-offer.md).
+- If you don't already have an Azure SQL Database created, visit [Quickstart: Create a single database](single-database-create-quickstart.md). Look for the option to use your offer to [Deploy Azure SQL Database for free](free-offer.md).
 
 ## Sign in to the Azure portal
 
@@ -253,7 +253,7 @@ This query joins all four tables and finds the courses in which 'Noe Coleman' ha
 ## Related content
 
 - [Tutorial: Design a relational database in Azure SQL Database](design-first-database-tutorial.md)
-- [Try Azure SQL Database for free (preview)](free-offer.md)
+- [Deploy Azure SQL Database for free](free-offer.md)
 - [What's new in Azure SQL Database?](doc-changes-updates-release-notes-whats-new.md)
 - [Configure and manage content reference - Azure SQL Database](how-to-content-reference-guide.md)
 - [Plan and manage costs for Azure SQL Database](cost-management.md)
