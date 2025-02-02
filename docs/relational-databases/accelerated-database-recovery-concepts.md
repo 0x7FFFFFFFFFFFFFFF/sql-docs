@@ -170,7 +170,7 @@ ADR isn't supported in databases using [database mirroring](../database-engine/d
 
 - When you use [transactional replication](replication/transactional/transactional-replication.md), [snapshot replication](replication/snapshot-replication.md), or [change data capture (CDC)](track-changes/about-change-data-capture-sql-server.md), the aggressive log truncation behavior of ADR is disabled to allow the log reader to collect changes from the transaction log. Make sure that the transaction log is sufficiently large.
 
-   In Azure SQL Database, you might need to increase your service tier or compute size to ensure that sufficient transaction log space is available for the needs of all your workloads. Similarly, in Azure SQL Managed Instance you might need to increase your instance maximum storage size.
+   If using [CDC](/azure/azure-sql/database/change-data-capture-overview) or [change feed](/azure/synapse-analytics/synapse-link/sql-database-synapse-link) in Azure SQL Database, you might need to increase your service tier or compute size to ensure that sufficient transaction log space is available for the needs of all your workloads. Similarly, in Azure SQL Managed Instance you might need to increase your instance maximum storage size.
 
 - For [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], isolate the PVS version store on a filegroup on higher tier storage, such as high-end SSD or advanced SSD or Persistent Memory (PMEM), sometimes referred to as Storage Class Memory (SCM). For more information, see [Change the location of the PVS to a different filegroup](accelerated-database-recovery-management.md#change-the-pvs-filegroup).
 

@@ -121,7 +121,10 @@ ORDER BY persistent_version_store_size_kb DESC;
 
 Check the `pvs_percent_of_database_size` column to see the size of the PVS relative to the total database size. Note any difference between the typical PVS size and the baselines seen during typical periods of application activity. PVS is considered large if it's significantly larger than the baseline or if it's close to 50% of the database size.
 
-If the size of PVS is not decreasing, use the following troubleshooting steps to find and resolve the reason for large PVS size. Columns mentioned in the troubleshooting steps refer to the result of the diagnostic query in this section.
+If the size of PVS is not decreasing, use the following troubleshooting steps to find and resolve the reason for large PVS size.
+
+> [!TIP]
+> Columns mentioned in the following troubleshooting steps refer to the columns in the result set of the diagnostic query in this section.
 
 Large PVS size might be caused by any of the following reasons:
 - [Long-running active transactions](#check-for-long-running-active-transactions)
@@ -188,7 +191,7 @@ SELECT sdt.transaction_id,
        s.database_id,
        s.session_id,
        s.login_time,
-       GETDATE() AS [now],
+       GETDATE() AS query_time,
        s.host_name,
        s.program_name,
        s.login_name,
@@ -211,7 +214,7 @@ If the database has secondary replicas, check if the secondary low watermark is 
 
 A large value in the `pvs_off_row_page_skipped_low_water_mark` column might be an indication of a cleanup delay because of a long-running query on a secondary replica. In addition to holding up PVS cleanup, a long-running query on a secondary replica can also hold up [ghost cleanup](ghost-record-cleanup-process-guide.md).
 
-You can use the following example queries on the primary replica to find if long-running queries on secondary replicas might be preventing PVS cleanup. If a write workload is running on the primary replica but the value in the `low_water_mark_for_ghosts` column isn't increasing from one execution of an example query to the next, then PVS and ghost cleanup might be held up by a long-running query on a secondary replica.
+You can use the following example queries on the primary replica to find if long-running queries on secondary replicas might be preventing PVS cleanup. If a write workload is running on the primary replica, but the value in the `low_water_mark_for_ghosts` column isn't increasing from one execution of the example query to the next, then PVS and ghost cleanup might be held up by a long-running query on a secondary replica.
 
 # [SQL Server and SQL Managed Instance](#tab/sql-server-sql-mi)
 
@@ -264,16 +267,16 @@ To solve PVS cleanup delay due to a large number of aborted transactions, consid
 - If you are using [!INCLUDE [sql-server-2022](../includes/sssql22-md.md)], increase the value of the `ADR Cleaner Thread Count` server configuration. For more information, see [Server configuration: ADR Cleaner Thread Count](../database-engine/configure-windows/adr-cleaner-thread-count-configuration-option.md).
 - If possible, stop the workload to let the version cleaner make progress.
 - Review the application to identify and resolve the high transaction abort rate issue. The aborts might come from a high rate of deadlocks, duplicate keys, constraint violations, or query timeouts.
-- Optimize the workload to reduce object-level locks.
+- Optimize the workload to reduce locks that are incompatible with the object-level or partition-level `IX` locks required by the PVS cleaner. For more information, see [Lock compatibility](sql-server-transaction-locking-and-row-versioning-guide.md#lock_compatibility).
 - If using [!INCLUDE [ssnoversion-md.md](../includes/ssnoversion-md.md)], disable ADR as an emergency-only step to control PVS size. See [Disable ADR](accelerated-database-recovery-management.md#disable-adr).
 - If using [!INCLUDE [ssnoversion-md.md](../includes/ssnoversion-md.md)], and if the aborted transaction cleanup hasn't recently completed successfully, check the error log for messages reporting `VersionCleaner` issues.
 - If PVS size isn't reduced as expected even after a cleanup has completed, check the `pvs_off_row_page_skipped_oldest_aborted_xdesid` column. Large values indicate space is still being used by row versions from aborted transactions.
 
 ## Control PVS size
 
-If you have a workload with a high volume of DML statements (`INSERT`, `UPDATE`, `DELETE`, `MERGE`), such as high-volume OLTP, you might need to increase the value of the `ADR Cleaner Thread Count` server configuration. For more information, see [Server configuration: ADR Cleaner Thread Count](../database-engine/configure-windows/adr-cleaner-thread-count-configuration-option.md), which is available starting from [!INCLUDE [sql-server-2022](../includes/sssql22-md.md)].
+If you have a workload with a high volume of DML statements (`INSERT`, `UPDATE`, `DELETE`, `MERGE`), such as high-volume OLTP, and observe that PVS size is large, you might need to increase the value of the `ADR Cleaner Thread Count` server configuration to keep PVS size under control. For more information, see [Server configuration: ADR Cleaner Thread Count](../database-engine/configure-windows/adr-cleaner-thread-count-configuration-option.md), which is available starting from [!INCLUDE [sql-server-2022](../includes/sssql22-md.md)].
 
-In [!INCLUDE [sql-server-2019](../includes/sssql19-md.md)], the workload might require a period of rest/recovery for the PVS cleanup process to reclaim space.
+In [!INCLUDE [sql-server-2019](../includes/sssql19-md.md)], or if increasing the value of `ADR Cleaner Thread Count` configuration doesn't help reduce PVS size sufficiently, the workload might require a period of rest/recovery for the PVS cleanup process to reclaim space.
 
 To activate the PVS cleanup process manually between workloads or during maintenance windows, use the system stored procedure [sys.sp_persistent_version_cleanup](system-stored-procedures/sys-sp-persistent-version-cleanup-transact-sql.md).
 
