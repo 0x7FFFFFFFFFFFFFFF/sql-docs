@@ -30,7 +30,7 @@ Make sure you've completed one of the [Getting started using Always Encrypted wi
 ## Step 1: Enable Accelerated Database Recovery (ADR) in your database
 
 > [!NOTE]
-> This step applies only to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. If you're using [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] or [!INCLUDE[ssazuremi-md](../includes/ssazuremi-md.md)], skip this step. ADR is always enabled in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE[ssazuremi-md](../includes/ssazuremi-md.md)].
+> This step applies only to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. If you're using [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] or [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], skip this step. ADR is always enabled in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)].
 
 Microsoft strongly recommends you enable ADR in your database before creating the first index on an enclave-enabled column using randomized encryption. See the [Database Recovery](./encryption/always-encrypted-enclaves.md#database-recovery) section in [Always Encrypted with secure enclaves](./encryption/always-encrypted-enclaves.md).
 
