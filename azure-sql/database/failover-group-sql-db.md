@@ -4,7 +4,7 @@ description: Failover groups let you manage geo-replication and automatic / coor
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: rsetlem, mathoma
-ms.date: 01/13/2025
+ms.date: 01/24/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: conceptual
@@ -105,7 +105,7 @@ A failover group in Azure SQL Database can include one or multiple databases, ty
 
 :::image type="content" source="media/failover-group-sql-db/failover-group.png" alt-text="Diagram shows a typical configuration of a geo-redundant cloud application using multiple databases and a failover group.":::
 
-When designing a service with business continuity in mind, follow the general guidelines and best practices outlined in this article. When configuring a failover group, ensure that authentication and network access on the secondary is set up to function correctly after geo-failover, when the geo-secondary becomes the new primary. For details, see [Configure and manage Azure SQL Database security for geo-restore or failover](active-geo-replication-security-configure.md). For more information, see [Designing globally available services using Azure SQL Database](designing-cloud-solutions-for-disaster-recovery.md).
+When designing a service with business continuity in mind, follow the general guidelines and best practices outlined in this article. When configuring a failover group, ensure that authentication and network access on the secondary is set up to function correctly after geo-failover, when the geo-secondary becomes the new primary. For details, see [Configure and manage Azure SQL Database security for geo-restore or failover](active-geo-replication-security-configure.md). For more information, see [Designing globally available services using Azure SQL Database](designing-cloud-solutions-for-disaster-recovery.md) and [Geo-restore for Azure SQL Database](recovery-using-backups.md#geo-restore).
 
 <a id="using-geo-paired-regions"></a>
 

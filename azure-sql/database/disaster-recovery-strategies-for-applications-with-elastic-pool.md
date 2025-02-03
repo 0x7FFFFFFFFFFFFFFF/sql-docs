@@ -4,7 +4,7 @@ description: Learn how to design your cloud solution for disaster recovery by ch
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: wiassaf, mathoma
-ms.date: 01/25/2019
+ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
 ms.topic: conceptual
@@ -15,7 +15,7 @@ ms.custom: sqldbrb-1
 
 Azure SQL Database provides several capabilities to provide for the business continuity of your application when catastrophic incidents occur. [Elastic pools](elastic-pool-overview.md) and single databases support the same kind of disaster recovery (DR) capabilities. This article describes several DR strategies for elastic pools that leverage these Azure SQL Database business continuity features.
 
-This article uses the following canonical SaaS ISV application pattern:
+This article uses the following canonical SaaS independent software vendor (ISV) application pattern:
 
 A modern cloud-based web application provisions one database for each end user. The ISV has many customers and therefore uses many databases, known as tenant databases. Because the tenant databases typically have unpredictable activity patterns, the ISV uses an elastic pool to make the database cost very predictable over extended periods of time. The elastic pool also simplifies the performance management when the user activity spikes. In addition to the tenant databases the application also uses several databases to manage user profiles, security, collect usage patterns etc. Availability of the individual tenants does not impact the application's availability as whole. However, the availability and performance of management databases is critical for the application's function and if the management databases are offline the entire application is offline.
 
@@ -26,9 +26,9 @@ This article discusses DR strategies covering a range of scenarios from cost sen
 
 ## Scenario 1. Cost sensitive startup
 
-I am a startup business and am extremely cost sensitive.  I want to simplify deployment and management of the application and I can have a limited SLA for individual customers. But I want to ensure the application as a whole is never offline.
+I am a startup business and am extremely cost sensitive. I want to simplify deployment and management of the application and I can have a limited SLA for individual customers. But I want to ensure the application as a whole is never offline.
 
-To satisfy the simplicity requirement, deploy all tenant databases into one elastic pool in the Azure region of your choice and deploy management databases as geo-replicated single databases. For the disaster recovery of tenants, use geo-restore, which comes at no additional cost. To ensure the availability of the management databases, geo-replicate them to another region using a failover group (step 1). The ongoing cost of the disaster recovery configuration in this scenario is equal to the total cost of the secondary databases. This configuration is illustrated on the next diagram.
+To satisfy the simplicity requirement, deploy all tenant databases into one elastic pool in the Azure region of your choice and deploy management databases as geo-replicated single databases. For the disaster recovery of tenants, use [geo-restore](recovery-using-backups.md#geo-restore), which comes at no additional cost. To ensure the availability of the management databases, geo-replicate them to another region using a failover group (step 1). The ongoing cost of the disaster recovery configuration in this scenario is equal to the total cost of the secondary databases. This configuration is illustrated on the next diagram.
 
 ![Figure 1](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-1.png)
 
@@ -66,7 +66,7 @@ The trade-off is that the complete recovery of all tenant databases takes signif
 
 ## Scenario 2. Mature application with tiered service
 
-I am a mature SaaS application with tiered service offers and different SLAs for trial customers and for paying customers. For the trial customers, I have to reduce the cost as much as possible. Trial customers can take downtime but I want to reduce its likelihood. For the paying customers, any downtime is a flight risk. So I want to make sure that paying customers are always able to access their data.
+I'm a mature SaaS application with tiered service offers and different SLAs for trial customers and for paying customers. For the trial customers, I have to reduce the cost as much as possible. Trial customers can take downtime but I want to reduce its likelihood. For the paying customers, any downtime is a flight risk. So I want to make sure that paying customers are always able to access their data.
 
 To support this scenario, separate the trial tenants from paid tenants by putting them into separate elastic pools. The trial customers have lower eDTU or vCores per tenant and lower SLA with a longer recovery time. The paying customers are in a pool with higher eDTU or vCores per tenant and a higher SLA. To guarantee the lowest recovery time, the paying customers' tenant databases are geo-replicated. This configuration is illustrated on the next diagram.
 
@@ -87,7 +87,7 @@ If an outage occurs in the primary region, the recovery steps to bring your appl
 * Create the new elastic pool with the same name and the same configuration in the DR region for the trial customers' databases (6).
 * Once the trial customers' pool is created, use geo-restore to restore the individual trial tenant databases into the new pool (7). Consider triggering the individual restores by the end-user connections or use some other application-specific priority scheme.
 
-At this point your application is back online in the DR region. All paying customers have access to their data while the trial customers experience delay when accessing their data.
+At this point, your application is back online in the DR region. All paying customers have access to their data while the trial customers experience delay when accessing their data.
 
 When the primary region is recovered by Azure *after* you have restored the application in the DR region you can continue running the application in that region or you can decide to fail back to the primary region. If the primary region is recovered *before* the failover process is completed, consider failing back right away. The failback takes the steps illustrated in the next diagram:
 
@@ -122,7 +122,7 @@ To guarantee the lowest recovery time during outages, the paying customers' tena
 
 ![Diagram shows a primary region called Region A and secondary region called Region B which employ geo-replication between the management database and paid customers primary pool and secondary pool with no replication for the trial customers pool.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
-As in the previous scenarios, the management databases are quite active so configure them as single geo-replicated databases (1). This ensures the predictable performance of the new customer subscriptions, profile updates and other management operations. Region A is the primary region for the management databases and the region B is used for recovery of the management databases.
+As in the previous scenarios, the management databases are quite active so configure them as single geo-replicated databases (1). This ensures the predictable performance of the new customer subscriptions, profile updates, and other management operations. Region A is the primary region for the management databases and the region B is used for recovery of the management databases.
 
 The paying customers' tenant databases are also geo-replicated but with primaries and secondaries split between region A and region B (2). This way, the tenant primary databases impacted by the outage can fail over to the other region and become available. The other half of the tenant databases are not be impacted at all.
 
@@ -132,7 +132,7 @@ The next diagram illustrates the recovery steps to take if  an outage occurs in 
 
 * Immediately fail over the management databases to region B (3).
 * Change the application's connection string to point to the management databases in region B. Modify the management databases to make sure the new accounts and tenant databases are created in region B and the existing tenant databases are found there as well. The existing trial customers see their data temporarily unavailable.
-* Fail over the paid tenant's databases to pool 2 in region B to immediately restore their availability (4). Since the failover is a quick metadata level change, you may consider an optimization where the individual failovers are triggered on demand by the end-user connections.
+* Fail over the paid tenant's databases to pool 2 in region B to immediately restore their availability (4). Since the failover is a quick metadata level change, you could consider an optimization where the individual failovers are triggered on demand by the end-user connections.
 * Since now pool 2 contains only primary databases, the total workload in the pool increases and can immediately increase its eDTU size (5) or number of vCores.
 * Create the new elastic pool with the same name and the same configuration in the region B for the trial customers' databases (6).
 * Once the pool is created use geo-restore to restore the individual trial tenant database into the pool (7). You can consider triggering the individual restores by the end-user connections or use some other application-specific priority scheme.
@@ -142,7 +142,7 @@ The next diagram illustrates the recovery steps to take if  an outage occurs in 
 
 At this point your application is back online in region B. All paying customers have access to their data while the trial customers experience delay when accessing their data.
 
-When region A is recovered you need to decide if you want to use region B for trial customers or failback to using the trial customers pool in region A. One criteria could be the % of trial tenant databases modified since the recovery. Regardless of that decision, you need to re-balance the paid tenants between two pools. The next diagram illustrates the process when the trial tenant databases fail back to region A.  
+When region A is recovered, you need to decide if you want to use region B for trial customers or failback to using the trial customers pool in region A. One criteria could be the % of trial tenant databases modified since the recovery. Regardless of that decision, you need to re-balance the paid tenants between two pools. The next diagram illustrates the process when the trial tenant databases fail back to region A.  
 
 ![Diagram shows failback steps to implement after restoring Region A.](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
@@ -169,11 +169,11 @@ The main trade-offs are:
 
 * The CRUD operations against the management databases have lower latency for the end users connected to region A than for the end users connected to region B as they are executed against the primary of the management databases.
 * It requires more complex design of the management database. For example, each tenant record has a location tag that needs to be changed during failover and failback.  
-* The paying customers may experience lower performance than usual until the pool upgrade in region B is completed.
+* The paying customers might experience lower performance than usual until the pool upgrade in region B is completed.
 
 ## Summary
 
-This article focuses on the disaster recovery strategies for the database tier used by a SaaS ISV multitenant application. The strategy you choose is based on the needs of the application, such as the business model, the SLA you want to offer to your customers, budget constraint etc. Each described strategy outlines the benefits and trade-off so you could make an informed decision. Also, your specific application likely includes other Azure components. So you review their business continuity guidance and orchestrate the recovery of the database tier with them. To learn more about managing recovery of database applications in Azure, refer to [Designing cloud solutions for disaster recovery](designing-cloud-solutions-for-disaster-recovery.md).  
+This article focuses on the disaster recovery strategies for the database tier used by a SaaS ISV multitenant application. The strategy you choose is based on the needs of the application, such as the business model, the SLA you want to offer to your customers, budget constraints, etc. Each described strategy outlines the benefits and trade-off so you could make an informed decision. Also, your specific application likely includes other Azure components. So you review their business continuity guidance and orchestrate the recovery of the database tier with them. To learn more about managing recovery of database applications in Azure, refer to [Designing cloud solutions for disaster recovery](designing-cloud-solutions-for-disaster-recovery.md).  
 
 ## Next steps
 

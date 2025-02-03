@@ -11,7 +11,7 @@ metadata:
   author: WilliamDAssafMSFT
   ms.author: wiassaf
   ms.reviewer: dfurman, mathoma, dinethi
-  ms.date: 01/21/2025
+  ms.date: 02/03/2025
 title: Azure SQL Database Hyperscale FAQ
 summary: |
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -326,7 +326,7 @@ sections:
       - question: |
           Can I perform geo-restore with a Hyperscale database?
         answer: |
-          Yes. Geo-restore is fully supported if geo-redundant or geo-zone-redundant storage is used. Geo-redundant storage is the default for new databases. Unlike point-in-time restore, geo-restore requires a size-of-data operation. Data files are copied in parallel, so the duration of this operation depends primarily on the size of the largest file in the database, rather than on total database size. Geo-restore time will be significantly shorter if the database is restored in the Azure region that is [paired](/azure/reliability/cross-region-replication-azure) with the region of the source database.
+          Yes. Geo-restore is fully supported if geo-redundant or geo-zone-redundant storage is used. Geo-redundant storage is the default for new databases. Unlike point-in-time restore, geo-restore requires a size-of-data operation. Data files are copied in parallel, so the duration of this operation depends primarily on the size of the largest file in the database, rather than on total database size. Geo-restore time will be significantly shorter if the database is restored in the Azure region that is [paired](/azure/reliability/cross-region-replication-azure) with the region of the source database. For more information, see [Geo-restore for Azure SQL Database](recovery-using-backups.md#geo-restore).
           
       - question: |
           Can I set up geo-replication or use failover groups with a Hyperscale database?
