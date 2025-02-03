@@ -1,14 +1,13 @@
 ---
-title: Deploy for free
+title: Deploy for Free
 description: Guidance on how to deploy the Azure SQL Database offer for up to 10 free databases.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: amapatil, mathoma
-ms.date: 02/02/2025
+ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: how-to
-ms.custom: 
 monikerRange: "=azuresql || =azuresql-db"
 ---
 # Deploy Azure SQL Database for free
@@ -23,7 +22,7 @@ For each database, you receive a monthly allowance of 100,000 vCore seconds of c
 
 To get started, look for the **Apply offer** banner on the [provisioning page for Azure SQL Database](https://portal.azure.com/#create/Microsoft.SQLDatabase).
 
-:::image type="content" source="media/free-offer/azure-sql-database-free-banner.png" alt-text="Screenshot from the Azure portal of the Free Offer banner.":::
+:::image type="content" source="media/free-offer/azure-sql-database-free-banner.png" alt-text="Screenshot from the Azure portal of the Free Offer banner." lightbox="media/free-offer/azure-sql-database-free-banner.png":::
 
 You know the offer has been applied when the **Cost summary** card on the right side of the page shows **Estimated Cost/Month** zero cost.
 
@@ -71,12 +70,12 @@ To create a free offer database, follow these steps:
    - **Server name**: Enter `myfreesqldbserver`, and add some characters for uniqueness. The name of the Azure SQL logical server must be lowercase.
    - **Authentication method**: Select **Use both SQL and Microsoft Entra authentication**.
    - **Server admin login**: Enter a username for the SQL authentication server admin.
-   - - **Password**: Enter a password for the SQL authenticated server admin that meets complexity requirements, and enter it again in the **Confirm password** field.
-   - **Location**: Select a location from the dropdown list.
+   - **Password**: Enter a password for the SQL authenticated server admin that meets complexity requirements, and enter it again in the **Confirm password** field.
+   - **Location**: Select a location from the dropdown list. 
 1. Select **OK**. Leave other options as default.
 1. Under **Compute + storage**, leave the existing default database as configured "Standard-series (Gen5), 2 vCores, 32-GB storage". You can adjust this setting later if needed.
 1. For the **Behavior when free limit reached** setting, you have two choices to determine what happens when the free monthly offer limits are exhausted for a free offer database.
-    :::image type="content" source="media/free-offer/behavior-when-free-offer-limit-reached.png" alt-text="Screenshot from the Azure portal showing the free Azure SQL Database offer options.":::
+    :::image type="content" source="media/free-offer/behavior-when-free-offer-limit-reached.png" alt-text="Screenshot from the Azure portal showing the free Azure SQL Database offer options." lightbox="media/free-offer/behavior-when-free-offer-limit-reached.png":::
     - If you choose **Auto-pause the database until next month** option, you'll not be charged for that month once the free limits are reached, however the database will become inaccessible for the remainder of the calendar month. Later, you can enable the **Continue using database for additional charges** setting in the **Compute + Storage** page of the SQL database.
     - To maintain access to the database when limits are reached, which results in charges for any amount above the free offer vCore and storage size limits, select the **Continue using database for additional charges** option. You only pay for any usage over the free offer limits.
     - You continue to get the free amount renewed at the beginning of each month.
@@ -131,7 +130,8 @@ Compared to a normal General Purpose database, a free offer database has the fol
 - You can use the Azure portal, PowerShell, or Azure CLI to create a free offer database.
 - Currently, the Microsoft Azure for Students Starter offer is incompatible with this Azure SQL Database free offer. Instead, consider the [Azure for College Students offer](https://azure.microsoft.com/pricing/offers/ms-azr-0170p/) or the [Azure Free offer](https://azure.microsoft.com/pricing/offers/ms-azr-0044p/). If desired, the **Continue using database for additional charges** option can deduct from the starting credits.
 - For more information, review the [Azure SQL Database free offer FAQ](free-offer-faq.yml).
-- Once a region is selected for a free database under a subscription, the same region applies to all free databases in that subscription, and cannot be changed.
+- Once a region is selected for a free database under a subscription, the same region applies to all free databases in that subscription, and cannot be changed. 
+- If the free offer banner doesn't appear in the Azure portal as expected, choose the desired logical **Server** in the dropdown list again.
 
 ## Clean up resources
 
