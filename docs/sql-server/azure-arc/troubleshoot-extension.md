@@ -184,7 +184,7 @@ To identify possible problems, review the value in the **RecommendedAction** or 
 
 ## Identify extensions missing updates
 
-Identify extensions that haven't updated status recently. This query returns a list of Azure extensions for SQL Server ordered by the number of days since the extension last updated its status. A value of '-1' indicates that the extension crashed and there is a callstack in the extension status.
+Identify extensions that without recent status updates. This query returns a list of Azure extensions for SQL Server ordered by the number of days since the extension last updated its status. A value of '-1' indicates that the extension crashed and there is a callstack in the extension status.
 
 ```kusto
 // Show the timestamp extracted
