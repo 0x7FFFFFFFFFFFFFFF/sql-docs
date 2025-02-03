@@ -5,7 +5,7 @@ description: Learn how to configure an Azure SQL Database and Azure Synapse Anal
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mireks, vanto, mathoma
-ms.date: 01/21/2025
+ms.date: 02/03/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
@@ -93,7 +93,7 @@ For adding permissions to your server on a Managed HSM, add the 'Managed HSM Cry
 > The combined length for the key vault name and key name cannot exceed 94 characters.
 
 > [!TIP]
-> An example KeyId from Key Vault: `https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h`
+> An example KeyId from Key Vault: `https://contosokeyvault.vault.azure.net/keys/Key1/<key-id>`
 >
 > An example KeyId from Managed HSM:<br/>https://contosoMHSM.managedhsm.azure.net/keys/myrsakey
 
@@ -159,7 +159,7 @@ az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group 
 ```
 
 > [!TIP]
-> Keep the key URI or keyID of the new key for the next step, for example: `https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h`
+> Keep the key URI or keyID of the new key for the next step, for example: `https://contosokeyvault.vault.azure.net/keys/Key1/<key-id>`
 
 ## Add the Key Vault key to the server and set the TDE Protector
 
@@ -181,12 +181,9 @@ az sql db tde set --database <dbname> --server <servername> --resource-group <rg
 
 Now the database or data warehouse has TDE enabled with a customer-managed encryption key in Azure Key Vault.
 
-## Check the encryption state and encryption activity
+## Check the encryption state
 
 ```azurecli
-# get encryption scan progress
-az sql db tde list-activity --database <dbname> --server <servername> --resource-group <rgname>  
-
 # get whether encryption is on or off
 az sql db tde show --database <dbname> --server <servername> --resource-group <rgname>
 ```
