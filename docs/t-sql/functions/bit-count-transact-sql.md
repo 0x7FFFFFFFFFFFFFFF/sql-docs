@@ -4,7 +4,7 @@ description: "Transact-SQL reference for the BIT_COUNT function."
 author: thesqlsith
 ms.author: derekw
 ms.reviewer: randolphwest
-ms.date: 07/26/2022
+ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -17,14 +17,15 @@ helpviewer_keywords:
   - "bit shifting [SQL Server], bit count"
 dev_langs:
   - "TSQL"
-monikerRange: ">= sql-server-ver16 || >= sql-server-linux-ver16 || = azuresqldb-mi-current ||= azuresqldb-current || =fabric"
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =azuresqldb-current || =fabric"
 ---
 # BIT_COUNT (Transact SQL)
+
 [!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw.md)]
 
-BIT_COUNT takes one parameter and returns the number of bits set to 1 in that parameter as a **bigint** type.
+`BIT_COUNT` takes one parameter and returns the number of bits set to 1 in that parameter as a **bigint** type.
 
-:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
+:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
@@ -38,21 +39,21 @@ BIT_COUNT ( expression_value )
 
 Any integer or binary expression that isn't a large object ([LOB](#remarks)).
 
-## Return type
+## Return types
 
 **bigint**
 
-BIT_COUNT doesn't cast prior to counting the number of bits. This is because the same number can have a different number of ones in its binary representation depending on the data type.
+`BIT_COUNT` doesn't cast, before counting the number of bits. This is because the same number can have a different number of ones in its binary representation depending on the data type.
 
-For example, `SELECT BIT_COUNT (CAST (-1 as smallint))` and `SELECT BIT_COUNT (CAST (-1 as int))` will return 16 and 32 respectively. This is intended, as the binary representation of `-1` can have a different number of bits set to 1 depending on the data type.
+For example, `SELECT BIT_COUNT (CAST (-1 AS SMALLINT))` and `SELECT BIT_COUNT (CAST (-1 AS INT))` return `16` and `32` respectively. This is intended, as the binary representation of `-1` can have a different number of bits set to `1` depending on the data type.
 
 ## Remarks
 
-In the initial implementation, Distributed Query functionality for the bit manipulation functions within linked server or ad hoc queries (OPENQUERY) won't be supported.
+Distributed Query functionality for the bit manipulation functions within linked server or ad hoc queries (`OPENQUERY`) aren't supported.
 
-Large Object (LOB) data types in the database engine are capable of storing data that exceeds 8,000 bytes. These data types will store data on a [row-overflow](../../relational-databases/pages-and-extents-architecture-guide.md#row-overflow-considerations) data page. A LOB also encompasses data types that store data on dedicated LOB page structures which use a text or an image pointer of in-row references to LOB data pages. Please refer to the [Pages and extents architecture guide](../../relational-databases/pages-and-extents-architecture-guide.md) for more information regarding data storage in the database engine.
+Large object (LOB) data types in the Database Engine can store data that exceeds 8,000 bytes. These data types store data on a [row-overflow](../../relational-databases/pages-and-extents-architecture-guide.md#row-overflow-considerations) data page. A LOB also encompasses data types that store data on dedicated LOB page structures, which use a text or an image pointer of in-row references to LOB data pages. For more information about data storage, see the [Pages and extents architecture guide](../../relational-databases/pages-and-extents-architecture-guide.md).
 
-The bit manipulation functions operate on the tinyint, smallint, int, bigint, binary(n), and varbinary(n) data types. Large object (LOB) data types such as: varchar(max), nvarchar(max), varbinary(max), image, ntext, text, xml, and CLR BLOB types are not supported.
+The bit manipulation functions operate on the **tinyint**, **smallint**, **int**, **bigint**, **binary(*n*)**, and **varbinary(*n*)** data types. Large object (LOB) data types, such as **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **image**, **ntext**, **text**, **xml**, and common language runtime (CLR) BLOB types, aren't supported.
 
 ## Examples
 
@@ -61,7 +62,7 @@ The bit manipulation functions operate on the tinyint, smallint, int, bigint, bi
 In the following example, the number of bits set to `1` in a binary value are calculated.
 
 ```sql
-SELECT BIT_COUNT ( 0xabcdef ) as Count;
+SELECT BIT_COUNT(0xabcdef) AS Count;
 ```
 
 The result is `17`. This is because `0xabcdef` in binary is `1010 1011 1100 1101 1110 1111`, and there are 17 bits with a value set to `1`.
@@ -71,12 +72,12 @@ The result is `17`. This is because `0xabcdef` in binary is `1010 1011 1100 1101
 In the following example, the number of bits set to `1` in an integer are calculated.
 
 ```sql
-SELECT BIT_COUNT ( 17 ) as Count;
+SELECT BIT_COUNT(17) AS Count;
 ```
 
 The result is `2`. This is because `17` in binary is `0001 0001`, and there are only 2 bits with a value set to `1`.
 
-## See also
+## Related content
 
 - [LEFT_SHIFT (Transact SQL)](left-shift-transact-sql.md)
 - [RIGHT_SHIFT (Transact SQL)](right-shift-transact-sql.md)
