@@ -4,7 +4,7 @@ description: "Transact-SQL reference for the GET_BIT function."
 author: thesqlsith
 ms.author: derekw
 ms.reviewer: randolphwest
-ms.date: 07/26/2022
+ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -17,14 +17,15 @@ helpviewer_keywords:
   - "bit shifting [SQL Server], get bit"
 dev_langs:
   - "TSQL"
-monikerRange: ">= sql-server-ver16 || >= sql-server-linux-ver16 || = azuresqldb-mi-current ||= azuresqldb-current || =fabric"
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current ||=azuresqldb-current || =fabric"
 ---
 # GET_BIT (Transact SQL)
+
 [!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw.md)]
 
-GET_BIT takes two parameters and returns the bit in *expression_value* that is in the offset defined by *bit_offset*.
+`GET_BIT` takes two parameters and returns the bit in *expression_value* that is in the offset defined by *bit_offset*.
 
-:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
+:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
@@ -36,23 +37,27 @@ GET_BIT ( expression_value, bit_offset )
 
 #### *expression_value*
 
-Any integer or binary expression that isn't a large object (LOB).
+Any integer or binary expression that isn't a large object ([LOB](#remarks)).
 
 #### *bit_offset*
 
 Any integer.
 
-## Return type
+## Return types
 
 **bit**
 
-The *bit_offset* parameter in GET_BIT is used to identify the *n*th bit of the data to get or set. In integer types, the `0`th bit is the least significant bit. In binary types, the `0`th bit is the least significant bit in the rightmost byte.
+The *bit_offset* parameter in `GET_BIT` is used to identify the *n*th bit of the data to get or set. In integer types, the `0`th bit is the least significant bit. In binary types, the `0`th bit is the least significant bit in the rightmost byte.
 
-GET_BIT will throw an error if *bit_offset* is negative or greater than the last bit in the data type.
+`GET_BIT` will throw an error if *bit_offset* is negative or greater than the last bit in the data type.
 
 ## Remarks
 
-In the initial implementation, Distributed Query functionality for the bit manipulation functions within linked server or ad hoc queries (OPENQUERY) won't be supported.
+Distributed Query functionality for the bit manipulation functions within linked server or ad hoc queries (`OPENQUERY`) aren't supported.
+
+Large object (LOB) data types in the Database Engine can store data that exceeds 8,000 bytes. These data types store data on a [row-overflow](../../relational-databases/pages-and-extents-architecture-guide.md#row-overflow-considerations) data page. A LOB also encompasses data types that store data on dedicated LOB page structures, which use a text or an image pointer of in-row references to LOB data pages. For more information about data storage, see the [Pages and extents architecture guide](../../relational-databases/pages-and-extents-architecture-guide.md).
+
+The bit manipulation functions operate on the **tinyint**, **smallint**, **int**, **bigint**, **binary(*n*)**, and **varbinary(*n*)** data types. Large object (LOB) data types, such as **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **image**, **ntext**, **text**, **xml**, and common language runtime (CLR) BLOB types, aren't supported.
 
 ## Examples
 
@@ -72,7 +77,7 @@ The results are as follows:
 > [!NOTE]  
 > `0xabcdef` in binary is 1010 1011 1100 1101 111**0** 1**1**11. The second and fourth bits are highlighted.
 
-## See also
+## Related Content
 
 - [SET_BIT (Transact SQL)](set-bit-transact-sql.md)
 - [LEFT_SHIFT (Transact SQL)](left-shift-transact-sql.md)
