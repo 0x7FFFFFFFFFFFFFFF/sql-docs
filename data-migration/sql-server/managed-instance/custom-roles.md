@@ -56,7 +56,10 @@ Use the `AssignableScopes` section of the role definition JSON string to control
                     "Microsoft.DataMigration/sqlMigrationServices/deleteNode/action",
                     "Microsoft.DataMigration/sqlMigrationServices/listMonitoringData/action",
                     "Microsoft.DataMigration/sqlMigrationServices/listMigrations/read",
-                    "Microsoft.DataMigration/sqlMigrationServices/MonitoringData/read"
+                    "Microsoft.DataMigration/sqlMigrationServices/MonitoringData/read",
+                    "Microsoft.DataMigration/SqlMigrationServices/tasks/read",
+                    "Microsoft.DataMigration/SqlMigrationServices/tasks/write",
+                    "Microsoft.DataMigration/SqlMigrationServices/tasks/delete"
                 ],
                 "notActions": [],
                 "dataActions": [],
@@ -104,6 +107,9 @@ For more information, see [Create or update Azure custom roles using the Azure p
 | `Microsoft.DataMigration/sqlMigrationServices/MonitoringData/read` | Retrieve the Monitoring Data. |
 | `Microsoft.SqlVirtualMachine/sqlVirtualMachines/read` | Retrieve details of SQL virtual machine. |
 | `Microsoft.SqlVirtualMachine/sqlVirtualMachines/write` | Create a new or change properties of existing SQL virtual machine. |
+| `Microsoft.DataMigration/SqlMigrationServices/tasks/read` | Get Migration Service Task details |
+| `Microsoft.DataMigration/SqlMigrationServices/tasks/write` | Create or Update Migration Service Task |
+| `Microsoft.DataMigration/SqlMigrationServices/tasks/delete` | Delete Migration Service Task |
 
 You can get a sample script to create a login and provision it with the necessary permissions, for [VMware](/azure/migrate/migrate-support-matrix-vmware?pivots=sql-server-instance-database-discovery-requirements#sql-server-instance-and-database-discovery-requirements), [Hyper-V](/azure/migrate/migrate-support-matrix-hyper-v#sql-server-instance-and-database-discovery-requirements), or [physical servers](/azure/migrate/migrate-support-matrix-physical#sql-server-instance-and-database-discovery-requirements), using Windows authentication or SQL Server authentication.
 
