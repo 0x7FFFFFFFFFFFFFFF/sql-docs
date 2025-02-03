@@ -5,7 +5,7 @@ description: You can enable automatic tuning on your database easily using the A
 author: NikaKinska
 ms.author: nnikolic
 ms.reviewer: wiassaf, mathoma
-ms.date: 06/06/2022
+ms.date: 02/03/2025
 ms.service: azure-sql
 ms.subservice: performance
 ms.topic: how-to
@@ -26,9 +26,6 @@ Automatic tuning can be enabled at the server or the database level through:
 > [!NOTE]
 > For Azure SQL Managed Instance, the supported option FORCE_LAST_GOOD_PLAN can only be configured through [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management). The Azure portal based configuration and automatic index tuning options described in this article do not apply to Azure SQL Managed Instance.
 
-> [!NOTE]
-> Configuring automatic tuning options through the ARM (Azure Resource Manager) template is not supported at this time.
-
 ## Enable automatic tuning on server
 
 On the server level you can choose to inherit automatic tuning configuration from "Azure Defaults" or not to inherit the configuration. Azure defaults are FORCE_LAST_GOOD_PLAN enabled, CREATE_INDEX disabled, and DROP_INDEX disabled.
@@ -46,6 +43,9 @@ Automatic tuning options on a server are applied to all databases on this server
 ### REST API
 
 To find out more about using a REST API to enable automatic tuning on a **server**, see [Server automatic tuning UPDATE and GET HTTP methods](/rest/api/sql/server-automatic-tuning).
+
+> [!NOTE]
+> Configuring automatic tuning options through the ARM (Azure Resource Manager) template is not supported at this time.
 
 ## Enable automatic tuning on an individual database
 
@@ -67,6 +67,9 @@ Once you have selected your desired configuration, click **Apply**.
 ### REST API
 
 To find out more about using a REST API to enable automatic tuning on a single database, see [Azure SQL Database automatic tuning UPDATE and GET HTTP methods](/rest/api/sql/database-automatic-tuning).
+
+> [!NOTE]
+> Configuring automatic tuning options through the ARM (Azure Resource Manager) template is not supported at this time.
 
 ### T-SQL
 
@@ -123,7 +126,7 @@ For permissions required to manage Automatic tuning with T-SQL, see [Permissions
 
 To receive automated email notifications on recommendations made by the automatic tuning, see the [automatic tuning e-mail notifications](automatic-tuning-email-notifications-configure.md) guide.
 
-## Next steps
+## Related Content
 
 - Read the [Automatic tuning article](automatic-tuning-overview.md) to learn more about automatic tuning and how it can help you improve your performance.
 - See [Performance recommendations](database-advisor-implement-performance-recommendations.md) for an overview of Azure SQL Database performance recommendations.
