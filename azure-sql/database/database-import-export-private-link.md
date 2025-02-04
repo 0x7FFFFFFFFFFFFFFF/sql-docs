@@ -100,38 +100,53 @@ Approve the new private endpoint connection for the database import BACPAC file 
 
 ### Import a database using private link in PowerShell
 
-Use the [New-AzSqlDatabaseImport](/PowerShell/module/az.sql/new-azsqldatabaseimport) cmdlet to submit an import database request to Azure. Depending on database size, the import might take some time to complete. The DTU-based provisioning model supports select database max size values for each tier. When importing a database, [use one of these supported values](/sql/t-sql/statements/create-database-transact-sql).
+Use the [New-AzSqlDatabaseImport](/PowerShell/module/az.sql/new-azsqldatabaseimport) cmdlet to submit an import database request to Azure. Depending on database size, the import might take some time to complete. The DTU-based provisioning model supports select database max size values for each tier. When importing a database, [use the supported edition and service objective values for Azure SQL Database](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#create-a-database).
+
+Provide your own `<values>` in the following PowerShell code sample, which imports a .bacpac file named `sample.bacpac` and creates an Azure SQL Database with 2 General Purpose vCores.
 
 ```PowerShell
-$importRequest = New-AzSqlDatabaseImport -ResourceGroupName "<resourceGroupName>" `
-        -ServerName "<serverName>" -DatabaseName "<databaseName>" `
-        -DatabaseMaxSizeBytes "<databaseSizeInBytes>" -StorageKeyType "StorageAccessKey" `
-        -StorageKey $(Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName `
-                        -StorageAccountName "<storageAccountName>").Value[0]
-        -StorageUri "https://myStorageAccount.blob.core.windows.net/importsample/sample.bacpac" `
-        -Edition "Standard" -ServiceObjectiveName "P6" ` -UseNetworkIsolation $true `
-        -StorageAccountResourceIdForPrivateLink "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Storage/storageAccounts/<storage_account_name>" `
-         -SqlServerResourceIdForPrivateLink "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Sql/servers/<server_name>" `
-        -AdministratorLogin "<userID>" `
-        -AdministratorLoginPassword $(ConvertTo-SecureString -String "<password>" -AsPlainText -Force)
+$importRequestParams = @{
+   ResourceGroupName                   = "<resourceGroupName>"
+   ServerName                          = "<serverName>"
+   DatabaseName                        = "<databaseName>"
+   DatabaseMaxSizeBytes                = "<databaseSizeInBytes>"
+   StorageKeyType                      = "StorageAccessKey"
+   StorageKey                          = $(Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName "<storageAccountName>").Value[0]
+   StorageUri                          = "https://myStorageAccount.blob.core.windows.net/importsample/sample.bacpac"
+   Edition                             = "GeneralPurpose"
+   ServiceObjectiveName                = "GP_Gen5_2"
+   UseNetworkIsolation                 = $true
+   StorageAccountResourceIdForPrivateLink = "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Storage/storageAccounts/<storage_account_name>"
+   SqlServerResourceIdForPrivateLink   = "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Sql/servers/<server_name>"
+   AdministratorLogin                  = "<userID>"
+   AdministratorLoginPassword          = $(ConvertTo-SecureString -String "<password>" -AsPlainText -Force)
+}
+
+$importRequest = New-AzSqlDatabaseImport @importRequestParams
 ```
 
 ### Export a database using private link in PowerShell
 
 Use the [New-AzSqlDatabaseExport](/PowerShell/module/az.sql/new-azsqldatabaseexport) cmdlet to submit an export database request to the Azure SQL Database service. Depending on the size of your database, the export operation might take some time to complete.
 
+Provide your own `<values>` in the following PowerShell code sample:
+
 ```PowerShell
-$exportRequest = New-AzSqlDatabaseExport -ResourceGroupName "<resourceGroupName>" `
-        -ServerName "<serverName>" -DatabaseName "<databaseName>" `
-        -StorageKeyType "StorageAccessKey" `
-        -StorageKey $(Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName `
-                        -StorageAccountName "<storageAccountName>").Value[0]
-        -StorageUri "https://myStorageAccount.blob.core.windows.net/importsample/sample.bacpac" `
-        -UseNetworkIsolation $true `
-        -StorageAccountResourceIdForPrivateLink "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Storage/storageAccounts/<storage_account_name>" `
-         -SqlServerResourceIdForPrivateLink "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Sql/servers/<server_name>" `
-        -AdministratorLogin "<userID>" `
-        -AdministratorLoginPassword $(ConvertTo-SecureString -String "<password>" -AsPlainText -Force)
+$exportRequestParams = @{
+   ResourceGroupName                   = "<resourceGroupName>"
+   ServerName                          = "<serverName>"
+   DatabaseName                        = "<databaseName>"
+   StorageKeyType                      = "StorageAccessKey"
+   StorageKey                          = $(Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName "<storageAccountName>").Value[0]
+   StorageUri                          = "https://myStorageAccount.blob.core.windows.net/importsample/sample.bacpac"
+   UseNetworkIsolation                 = $true
+   StorageAccountResourceIdForPrivateLink = "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Storage/storageAccounts/<storage_account_name>"
+   SqlServerResourceIdForPrivateLink   = "/subscriptions/<subscriptionId>/resourceGroups/<resource_group_name>/providers/Microsoft.Sql/servers/<server_name>"
+   AdministratorLogin                  = "<userID>"
+   AdministratorLoginPassword          = $(ConvertTo-SecureString -String "<password>" -AsPlainText -Force)
+}
+
+$exportRequest = New-AzSqlDatabaseExport @exportRequestParams
 ```
 
 ## Create import/export private link using REST API
