@@ -32,7 +32,7 @@ This article describes limitations and issues with [!INCLUDE [sssql16-md](../inc
 
 :::image type="icon" source="../includes/media/download.svg" border="false"::: **[Download SQL Server 2016 Service Pack 3 (SP3)](https://www.microsoft.com/download/details.aspx?id=103440)**  
 
-For a complete list of updates, see [KB5003279 - SQL Server 2016 Service Pack 3 release information](/troubleshoot/sql/releases/sqlserver-2016/servicepack3)
+For a complete list of updates, see [KB5003279 - SQL Server 2016 Service Pack 3 release information](/troubleshoot/sql/releases/sqlserver-2016/servicepack3).
 
 The [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] SP3 installation might require restart after installation. As a best practice, you should perform a restart following the installation of [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] SP3.
 
@@ -275,9 +275,9 @@ The [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] SP1 installation might re
 
   If you use **KB 3164398**, you can install during SQL Server installation, through Microsoft Update, or from Microsoft Download Center.
 
-  - **During [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] Installation:** If the computer running SQL Server setup has internet access, SQL Server setup checks for the update as part of the overall SQL Server installation. If you accept the update, setup downloads and update the binaries during installation.
+  - **During [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] Installation:** If the computer running SQL Server setup has internet access, SQL Server setup checks for the update as part of the overall SQL Server installation. If you accept the update, setup downloads and updates the binaries during installation.
 
-  - **Microsoft Update:** The update is available from Microsoft Update as a critical non-security [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] update. Installing through Microsoft update, after [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] requires the server to be restarted following the update.
+  - **Microsoft Update:** The update is available from Microsoft Update as a critical non-security [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] update. Installing through Microsoft update after [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] requires the server to be restarted following the update.
 
   - **Download Center:** Finally, the update is available from the Microsoft Download Center. You can download the software for the update and install it on servers after they have [!INCLUDE [sssql16-md](../includes/sssql16-md.md)].
 
@@ -305,7 +305,7 @@ The [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] SP1 installation might re
 
 **Issue and customer impact:**
 
-Automatic data cleanup fails on editions other than Enterprise and Developer. So, if data isn't purged manually, space used by the Query Store grows over time until configured limit is reached. If not mitigated, this issue also fills up disk space allocated for the error logs, as every attempt to execute cleanup produces a dump file. Cleanup activation period depends on the workload frequency, but it's no longer than 15 min.
+Automatic data cleanup fails on editions other than Enterprise and Developer. So, if data isn't purged manually, space used by the Query Store grows over time until configured limit is reached. If not mitigated, this issue also fills up disk space allocated for the error logs, as every attempt to execute cleanup produces a dump file. Cleanup activation period depends on the workload frequency, but it's no longer than 15 minutes.
 
 **Workaround:** If you plan to use Query Store on editions other than Enterprise and Developer, you need to explicitly turn off cleanup policies. It can be done either from SQL Server Management Studio (Database Properties page) or via Transact-SQL script:
 
