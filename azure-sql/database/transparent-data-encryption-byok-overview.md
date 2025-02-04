@@ -35,8 +35,8 @@ Managing the TDE protector at the database level in Azure SQL Database is availa
 
 > [!NOTE]
 > In this article, the terms Customer Managed Key (CMK) and Bring Your Own Key (BYOK) are used interchangeably, but they represent some differences.
-> - **Customer Managed Key (CMK)** - The customer manages the key lifecycle, including key creation, rotation, and deletion. The key is stored in [Azure Key Vault](/azure/key-vault/general/overview) or [Azure Key Vault Managed HSM](/azure/key-vault/managed-hsm/overview) and used for encryption of the Database Encryption Key (DEK) in Azure SQL.
-> - **Bring Your Own Key (BYOK)** - The customer brings their own key to Azure Key Vault and uses it for encryption of the DEK in Azure SQL. The key can be imported or created from another key vault. For more information, see [Import HSM-protected keys to Managed HSM (BYOK)](/azure/key-vault/managed-hsm/hsm-protected-keys-byok).
+> - **Customer Managed Key (CMK)** - The customer manages the key lifecycle, including key creation, rotation, and deletion. The key is stored in [Azure Key Vault](/azure/key-vault/general/overview) or [Azure Key Vault Managed HSM](/azure/key-vault/managed-hsm/overview) and used for encryption of the Database Encryption Key (DEK) in Azure SQL, SQL Server on Azure VM, and SQL Server on-premises.
+> - **Bring Your Own Key (BYOK)** - The customer securely brings or imports their own key from an on-premises hardware security module (HSM) into Azure Key Vault or Azure Key Vault Managed HSM. Such imported keys may be used as any other key in Azure Key Vault, including as a Customer Managed Key for encryption of the DEK. For more information, see  [Import HSM-protected keys to Managed HSM (BYOK)](/azure/key-vault/managed-hsm/hsm-protected-keys-byok).
 
 Customer-managed TDE provides the following benefits to the customer:
 
