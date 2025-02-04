@@ -5,7 +5,7 @@ description: Bring Your Own Key (BYOK) support for transparent data encryption (
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: wiassaf, vanto, mathoma, randolphwest
-ms.date: 10/22/2024
+ms.date: 02/04/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: conceptual
@@ -32,6 +32,11 @@ Managing the TDE protector at the database level in Azure SQL Database is availa
 [!INCLUDE [entra-id](../includes/entra-id.md)]
 
 ## Benefits of the customer-managed TDE
+
+> [!NOTE]
+> In this article, the terms Customer Managed Key (CMK) and Bring Your Own Key (BYOK) are used interchangeably, but they represent some differences.
+> - **Customer Managed Key (CMK)** - The customer manages the key lifecycle, including key creation, rotation, and deletion. The key is stored in [Azure Key Vault](/azure/key-vault/general/overview) or [Azure Key Vault Managed HSM](/azure/key-vault/managed-hsm/overview) and used for encryption of the Database Encryption Key (DEK) in Azure SQL.
+> - **Bring Your Own Key (BYOK)** - The customer brings their own key to Azure Key Vault and uses it for encryption of the DEK in Azure SQL. The key can be imported or created from another key vault. For more information, see [Import HSM-protected keys to Managed HSM (BYOK)](/azure/key-vault/managed-hsm/hsm-protected-keys-byok).
 
 Customer-managed TDE provides the following benefits to the customer:
 
@@ -125,7 +130,7 @@ Auditors can use Azure Monitor to review key vault AuditEvent logs, if logging i
 
 - Enable auditing and reporting on all encryption keys: Key vault provides logs that are easy to inject into other security information and event management tools. Operations Management Suite [Log Analytics](/azure/azure-monitor/insights/key-vault-insights-overview) is one example of a service that is already integrated.
 
-- Link each server with two key vaults that reside in different regions and hold the same key material, to ensure high availability of encrypted databases. Mark the key from one of the key vaults as the TDE protector. System will automatically switch to the key vault in the second region with the same key material, if there's an outage affecting the key vault in the first region.
+- Use a key vault from an Azure region that can replicate its content to a paired region for maximum availability. For more information, see [Best practices for using Azure Key Vault](/azure/key-vault/general/best-practices) and [Azure Key Vault availability and redundancy](/azure/key-vault/general/disaster-recovery-guidance).
 
 > [!NOTE]  
 > To allow greater flexibility in configuring customer-managed TDE, Azure SQL Database and Azure SQL Managed Instance in one region can now be linked to key vault in any other region. The server and key vault don't have to be colocated in the same region.
@@ -178,7 +183,7 @@ When TDE is configured to use a customer-managed key, continuous access to the T
 
 After access to the key is restored, taking database back online requires extra time and steps, which might vary based on the time elapsed without access to the key and the size of the data in the database:
 
-> [!NOTE]  
+> [!NOTE]
 > - If key access is restored within 30 minutes, the database will autoheal within the next hour.
 > - If key access is restored after more than 30 minutes, autoheal of the database isn't possible. Bringing back the database requires extra steps on the Azure portal and can take a significant amount of time depending on the size of the database.
 > - Once the database is back online, previously configured server-level settings that might include [failover group](failover-group-sql-db.md) configuration, tags, and database-level settings such as elastic pools configuration, read scale, auto pause, point-in-time-restore history, long term retention policy, and others will be lost. Therefore, it's recommended that customers implement a notification system that identifies loss of encryption key access within 30 minutes. Once the 30-minutes window has expired, we recommend validating all server and database level settings on the recovered database.
@@ -222,8 +227,8 @@ The most common causes for lack of networking connectivity to Key Vault are:
 In case the test returns *TcpTestSucceeded: False*, review the networking configuration:
 
 - Check the resolved IP address, confirm it's valid. A missing value means there's issues with DNS resolution.
-    - Confirm that the network security group on the managed instance has an **outbound** rule that covers the resolved IP address on port 443, especially when the resolved address belongs to the key vault's private endpoint.
-    - Check other networking configurations like route table, existence of virtual appliance and its configuration, etc.
+  - Confirm that the network security group on the managed instance has an **outbound** rule that covers the resolved IP address on port 443, especially when the resolved address belongs to the key vault's private endpoint.
+  - Check other networking configurations like route table, existence of virtual appliance and its configuration, etc.
 
 ## Monitoring of the customer-managed TDE
 
@@ -293,13 +298,13 @@ The following diagram represents a configuration for paired region (primary and 
 
 - In case of AKV failover to the secondary region, the server in Azure SQL can still access the same AKV. Although internally, the AKV connection is redirected to the AKV in the secondary region.
 
-- When the AKV in the primary and secondary regions are accessible, the key rotation is supported for both AKVs.
+- New key creations, imports, and key rotations are only possible while the AKV in the primary is available.
 
 - Once the failover occurs, key rotation isn't allowed until the AKV in the primary region of the paired region is accessible again.
 
 - Customer can't manually connect to the secondary region.
 
-- The AKV in the secondary region is in a read-only state until the AKV in the primary region of the paired region is accessible again.
+- The AKV is in a read-only state while the AKV in the primary region is unavailable
 
 - Customer can't choose or check what region the AKV is currently in.
 
@@ -319,7 +324,7 @@ For more information, see [Azure Key Vault availability and redundancy](/azure/k
 
 There are several scenarios when customers might want to choose Managed Hardware Security Modules (HSM) solution over AKV:
 
-- Manual connection requirement to the secondary vault (a URL is exposed).
+- Manual connection requirement to the secondary vault.
 
 - Read access requirement to the vault even if a failure occurs.
 
@@ -332,8 +337,6 @@ There are several scenarios when customers might want to choose Managed Hardware
 - Use of Managed HSM for security or regulatory requirements.
 
 - Having the ability to back up the entire vault versus backing up individual keys.
-
-- Read access requirement to the vault even if a failure occurs.
 
 For more information, see [Enable multi-region replication on Azure Managed HSM](/azure/key-vault/managed-hsm/multi-region-replication) and [Managed HSM disaster recovery](/azure/key-vault/managed-hsm/disaster-recovery-guide).
 
