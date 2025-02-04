@@ -14,11 +14,11 @@ helpviewer_keywords:
   - "columns [SQL Server], constraints"
   - "constraints [SQL Server], check"
   - "CHECK constraints, attaching"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current||=fabric"
 ---
 # Create check constraints
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 You can create a check constraint in a table to specify the data values that are acceptable in one or more columns in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE [tsql](../../includes/tsql-md.md)]. For more information on adding column constraints, see [ALTER TABLE column_constraint](../../t-sql/statements/alter-table-column-constraint-transact-sql.md).
 

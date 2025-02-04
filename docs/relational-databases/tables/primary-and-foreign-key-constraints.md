@@ -13,11 +13,11 @@ helpviewer_keywords:
   - "FOREIGN KEY constraints"
   - "foreign keys [SQL Server]"
   - "foreign keys [SQL Server], about foreign key constraints"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
 ---
 # Primary and foreign key constraints
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
   Primary keys and foreign keys are two types of constraints that can be used to enforce data integrity in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] tables. These are important database objects.  
     

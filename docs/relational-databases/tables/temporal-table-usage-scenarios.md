@@ -7,10 +7,11 @@ ms.date: 07/29/2024
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current||=fabric"
 ---
 # Temporal table usage scenarios
 
-[!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 System-versioned temporal tables are useful in scenarios that require tracking history of data changes. We recommend that you consider temporal tables in the following use cases, for major productivity benefits.
 
@@ -159,7 +160,7 @@ There are many real-world scenarios that require time travel analysis. To illust
 
 In transaction processing systems, you can analyze how important metrics change over time. Ideally, analyzing history shouldn't compromise performance of the OLTP application where access to the latest state of data must occur with minimal latency and data locking. You can use system-versioned temporal tables to transparently keep the full history of changes for later analysis, separately from the current data, with a minimal impact on the main OLTP workload.
 
-For high transactional processing workloads, we recommend that you use [System-versioned temporal tables with memory-optimized tables](system-versioned-temporal-tables-with-memory-optimized-tables.md), which allow you to store current data in-memory and full history of changes on disk in a cost effective way.
+For high transactional processing workloads in SQL Server and Azure SQL Managed Instance, we recommend that you use [System-versioned temporal tables with memory-optimized tables](system-versioned-temporal-tables-with-memory-optimized-tables.md), which allow you to store current data in-memory and full history of changes on disk in a cost effective way.
 
 For the history table, we recommend that you use a clustered columnstore index for the following reasons:
 

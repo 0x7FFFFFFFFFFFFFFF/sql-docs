@@ -15,11 +15,11 @@ helpviewer_keywords:
   - "removing columns"
   - "deleting columns"
   - "dropping columns"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
 ---
 # Delete columns from a table
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 This article describes how to delete table columns in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] using [SQL Server Management Studio](../../ssms/sql-server-management-studio-ssms.md) (SSMS) or [!INCLUDE [tsql](../../includes/tsql-md.md)].
 
