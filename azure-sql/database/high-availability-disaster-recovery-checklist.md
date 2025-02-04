@@ -50,7 +50,7 @@ To best prepare for disaster recovery, follow these recommendations:
 * When scaling down, reverse the order: scale down the primary first, and then scale down the secondary.
 * Disaster recovery, by nature, is designed to make use of asynchronous replication of data between the primary and secondary region. To prioritize data availability over higher commit latency, consider calling the [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/sp-wait-for-database-copy-sync-transact-sql) stored procedure immediately after committing a transaction. Calling `sp_wait_for_database_copy_sync` blocks the calling thread until the last committed transaction has been transmitted and hardened in the transaction log of the secondary database.
 * Monitor lag with respect to Recovery Point Objective (RPO) by using the `replication_lag_sec` column of the [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database?preserve-view=true&view=azuresqldb-current) dynamic management view (DMV) on the primary database. The DMV shows lag in seconds between the transactions committed on the primary and hardened to the transaction log on the secondary. For example, assume the lag is one second at a point in time, if the primary is impacted by an outage and a geo-failover is initiated at that point in time, transactions committed in the last second will be lost.
-* If enabling failover groups or active geo-replication isn't possible, then consider setting the [backup storage redundancy option](automated-backups-change-settings.md?preserve-view=true&view=azuresqldb-current#configure-backup-storage-redundancy) to **Geo-redundant backup storage** to use the [geo-restore capability](recovery-using-backups.md#point-in-time-restore). 
+* If enabling failover groups or active geo-replication isn't possible, then consider setting the [backup storage redundancy option](automated-backups-change-settings.md?preserve-view=true&view=azuresqldb-current#configure-backup-storage-redundancy) to **Geo-redundant backup storage** to use [geo-restore for Azure SQL Database](recovery-using-backups.md#geo-restore). 
     * This option isn't available in [regions with no region pair](/azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair). 
 * Frequently plan and execute [disaster recovery drills](disaster-recovery-drills.md) so you're better prepared in the event of a real outage.
 
@@ -74,5 +74,5 @@ To successfully recover to another data region using either active geo-replicati
 - To learn about using automated backups for recovery, see [restore a database from the service-initiated backups](recovery-using-backups.md).
 - Learn more about [active geo-replication](active-geo-replication-overview.md).
 - Learn more about [failover groups](failover-group-sql-db.md).
-- Learn more about [geo-restore](recovery-using-backups.md#point-in-time-restore).
+- Learn more about [geo-restore](recovery-using-backups.md#geo-restore).
 - Learn more about [zone-redundant databases](high-availability-sla-local-zone-redundancy.md).

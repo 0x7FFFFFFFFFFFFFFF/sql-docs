@@ -4,7 +4,7 @@ description: Learn to use Azure SQL Database geo-redundant backups to recover a 
 author: bgavrilovicMS
 ms.author: bgavrilovic
 ms.reviewer: mathoma, wiassaf
-ms.date: 01/14/2019
+ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: scenario
 ms.topic: tutorial
@@ -13,11 +13,11 @@ ms.custom: sqldbrb=1
 # Use geo-restore to recover a multitenant SaaS application from database backups
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-This tutorial explores a full disaster recovery scenario for a multitenant SaaS application implemented with the database per tenant model. You use [geo-restore](recovery-using-backups.md) to recover the catalog and tenant databases from automatically maintained geo-redundant backups into an alternate recovery region. After the outage is resolved, you use [geo-replication](active-geo-replication-overview.md) to repatriate changed databases to their original region.
+This tutorial explores a full disaster recovery scenario for a multitenant SaaS application implemented with the database per tenant model. You use [geo-restore](recovery-using-backups.md#geo-restore) to recover the catalog and tenant databases from automatically maintained geo-redundant backups into an alternate recovery region. After the outage is resolved, you use [geo-replication](active-geo-replication-overview.md) to repatriate changed databases to their original region.
 
 ![Diagram shows an original and recovery regions, both of which have an app, catalog, original or mirror images of servers and pools, automatic backups to storage, with the recovery region accepting geo-replication of backup and having server and pool for new tenants.](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
-Geo-restore is the lowest-cost disaster recovery solution for Azure SQL Database. However, restoring from geo-redundant backups can result in data loss of up to one hour. It can take considerable time, depending on the size of each database. 
+Geo-restore is the lowest-cost disaster recovery solution for Azure SQL Database. However, estoring from geo-redundant backups could potentially result in data loss in certain scenarios because Azure Geo-Redundant Storage (GRS) replicates data asynchronously to a secondary region. This means that there is some latency involved in the replication process, but the exact latency can vary based on several factors, including the distance between the primary and secondary regions and the current network conditions. Typically, the replication latency for GRS is in the range of minutes, but it is not guaranteed to be within a specific time frame. It can take considerable time, depending on the size of each database. 
 
 > [!NOTE]
 > Recover applications with the lowest possible RPO and RTO by using geo-replication instead of geo-restore.
@@ -72,9 +72,9 @@ The DR scripts used in this tutorial are available in the [Wingtip Tickets SaaS 
 ## Review the healthy state of the application
 Before you start the recovery process, review the normal healthy state of the application.
 
-1. In your web browser, open the Wingtip Tickets events hub (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net, replace &lt;user&gt; with your deployment's user value).
-	
-   Scroll to the bottom of the page and notice the catalog server name and location in the footer. The location is the region in which you deployed the app.	
+1. In your web browser, open the Wingtip Tickets events hub (`http://events.wingtip-dpt.<user>.trafficmanager.net`, replace `<user>` with your deployment's user value).
+    
+   Scroll to the bottom of the page and notice the catalog server name and location in the footer. The location is the region in which you deployed the app.    
 
    > [!TIP]
    > Hover the mouse over the location to enlarge the display.
@@ -85,7 +85,7 @@ Before you start the recovery process, review the normal healthy state of the ap
 
    In the footer, notice the tenant's server name. The location is the same as the catalog server's location.
 
-   ![Contoso Concert Hall original region](./media/saas-dbpertenant-dr-geo-restore/contoso-original-location.png)	
+   ![Contoso Concert Hall original region](./media/saas-dbpertenant-dr-geo-restore/contoso-original-location.png)    
 
 3. In the [Azure portal](https://portal.azure.com), review and open the resource group in which you deployed the app.
 
@@ -99,21 +99,21 @@ In this task, you start a process to sync the configuration of the servers, elas
 > For simplicity, the sync process and other long-running recovery and repatriation processes are implemented in these samples as local PowerShell jobs or sessions that run under your client user login. The authentication tokens issued when you log in expire after several hours, and the jobs will then fail. 
 > In a production scenario, long-running processes should be implemented as reliable Azure services of some kind, running under a service principal. See [Use Azure PowerShell to create a service principal with a certificate](/azure/active-directory/develop/howto-authenticate-service-principal-powershell). 
 
-1. In the PowerShell ISE, open the ...\Learning Modules\UserConfig.psm1 file. Replace `<resourcegroup>` and `<user>` on lines 10 and 11 with the value used when you deployed the app. Save the file.
+1. In the PowerShell ISE, open the `...\Learning Modules\UserConfig.psm1` file. Replace `<resourcegroup>` and `<user>` on lines 10 and 11 with the value used when you deployed the app. Save the file.
 
-2. In the PowerShell ISE, open the ...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 script.
+2. In the PowerShell ISE, open the `...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1` script.
 
-	In this tutorial, you run each of the scenarios in this PowerShell script, so keep this file open.
+    In this tutorial, you run each of the scenarios in this PowerShell script, so keep this file open.
 
 3. Set the following:
 
-	$DemoScenario = 1: Start a background job that syncs tenant server and pool configuration info into the catalog.
+    `$DemoScenario = 1: Start a background job that syncs tenant server and pool configuration info into the catalog.`
 
 4. To run the sync script, select F5. 
 
-	This information is used later to ensure that recovery creates a mirror image of the servers, pools, and databases in the recovery region.  
+    This information is used later to ensure that recovery creates a mirror image of the servers, pools, and databases in the recovery region.  
 
-	![Sync process](./media/saas-dbpertenant-dr-geo-restore/sync-process.png)
+    ![Sync process](./media/saas-dbpertenant-dr-geo-restore/sync-process.png)
 
 Leave the PowerShell window running in the background and continue with the rest of this tutorial.
 
@@ -137,47 +137,47 @@ The recovery process does the following:
 5. Provisions a server and elastic pool in which new tenants are provisioned. Creating these resources ensures that provisioning new tenants doesn't interfere with the recovery of existing tenants.
 
 6. Updates the new tenant alias to point to the server for new tenant databases in the recovery region. Changing this alias ensures that databases for any new tenants are provisioned in the recovery region.
-		
+        
 7. Provisions servers and elastic pools in the recovery region for restoring tenant databases. These servers and pools are a mirror image of the configuration in the original region. Provisioning pools up front reserves the capacity needed to restore all the databases.
 
-	An outage in a region might place significant pressure on the resources available in the paired region. If you rely on geo-restore for DR, then reserving resources quickly is recommended. Consider geo-replication if it's critical that an application is recovered in a specific region. 
+    An outage in a region might place significant pressure on the resources available in the paired region. If you rely on geo-restore for DR, then reserving resources quickly is recommended. Consider geo-replication if it's critical that an application is recovered in a specific region. 
 
 8. Enables the Traffic Manager endpoint for the web app in the recovery region. Enabling this endpoint allows the application to provision new tenants. At this stage, existing tenants are still offline.
 
 9. Submits batches of requests to restore databases in priority order. 
 
-	* Batches are organized so that databases are restored in parallel across all pools.  
+    * Batches are organized so that databases are restored in parallel across all pools.  
 
-	* Restore requests are submitted asynchronously so they are submitted quickly and queued for execution in each pool.
+    * Restore requests are submitted asynchronously so they are submitted quickly and queued for execution in each pool.
 
-	* Because restore requests are processed in parallel across all pools, it's better to distribute important tenants across many pools. 
+    * Because restore requests are processed in parallel across all pools, it's better to distribute important tenants across many pools. 
 
 10. Monitors the service to determine when databases are restored. After a tenant database is restored, it's marked online in the catalog, and a rowversion sum for the tenant database is recorded. 
 
-	* Tenant databases can be accessed by the application as soon as they're marked online in the catalog.
+    * Tenant databases can be accessed by the application as soon as they're marked online in the catalog.
 
-	* A sum of rowversion values in the tenant database is stored in the catalog. This sum acts as a fingerprint that allows the repatriation process to determine if the database was updated in the recovery region.
+    * A sum of rowversion values in the tenant database is stored in the catalog. This sum acts as a fingerprint that allows the repatriation process to determine if the database was updated in the recovery region.
 
 ## Run the recovery script
 
 > [!IMPORTANT]
-> This tutorial restores databases from geo-redundant backups. Although these backups are typically available within 10 minutes, it can take up to an hour. The script pauses until they're available.
+> This tutorial restores databases from geo-redundant backups. Although these backups are typically available within 10 minutes, it can take longer. The script pauses until they're available.
 
 Imagine there's an outage in the region in which the application is deployed, and run the recovery script:
 
-1. In the PowerShell ISE, in the ...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 script, set the following value:
+1. In the PowerShell ISE, in the `...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1` script, set the following value:
 
-	$DemoScenario = 2: Recover the app into a recovery region by restoring from geo-redundant backups.
+    `$DemoScenario = 2: Recover the app into a recovery region by restoring from geo-redundant backups.`
 
 2. To run the script, select F5.  
 
-	* The script opens in a new PowerShell window and then starts a set of PowerShell jobs that run in parallel. These jobs restore servers, pools, and databases to the recovery region.
+    * The script opens in a new PowerShell window and then starts a set of PowerShell jobs that run in parallel. These jobs restore servers, pools, and databases to the recovery region.
 
-	* The recovery region is the paired region associated with the Azure region in which you deployed the application. For more information, see [Azure paired regions](/azure/reliability/cross-region-replication-azure). 
+    * The recovery region is the paired region associated with the Azure region in which you deployed the application. For more information, see [Azure paired regions](/azure/reliability/cross-region-replication-azure). 
 
 3. Monitor the status of the recovery process in the PowerShell window.
 
-	![Screenshot that shows the PowerShell window where you can monitor the status of the recovery process.](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
+    ![Screenshot that shows the PowerShell window where you can monitor the status of the recovery process.](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
 > To explore the code for the recovery jobs, review the PowerShell scripts in the ...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\RecoveryJobs folder.
@@ -187,34 +187,34 @@ While the application endpoint is disabled in Traffic Manager, the application i
 
 * After the catalog database has been recovered but before the tenants are back online, refresh the Wingtip Tickets events hub in your web browser.
 
-  * In the footer, notice that the catalog server name now has a -recovery suffix and is located in the recovery region.
+  * In the footer, notice that the catalog server name now has a `-recovery` suffix and is located in the recovery region.
 
   * Notice that tenants that are not yet restored are marked as offline and are not selectable.   
  
-	![Recovery process](./media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)	
+    ![Recovery process](./media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-  * If you open a tenant's events page directly while the tenant is offline, the page displays a tenant offline notification. For example, if Contoso Concert Hall is offline, try to open http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall.
+  * If you open a tenant's events page directly while the tenant is offline, the page displays a tenant offline notification. For example, if Contoso Concert Hall is offline, try to open `http://events.wingtip-dpt.<user>.trafficmanager.net/contosoconcerthall`.
 
-	![Screenshot that shows an offline events page.](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
+    ![Screenshot that shows an offline events page.](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
 ## Provision a new tenant in the recovery region
 Even before tenant databases are restored, you can provision new tenants in the recovery region. New tenant databases provisioned in the recovery region are repatriated with the recovered databases later.   
 
-1. In the PowerShell ISE, in the ...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 script, set the following property:
+1. In the PowerShell ISE, in the `...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1` script, set the following property:
 
-	$DemoScenario = 3: Provision a new tenant in the recovery region.
+    `$DemoScenario = 3: Provision a new tenant in the recovery region.`
 
 2. To run the script, select F5.
 
 3. The Hawthorn Hall events page opens in the browser when provisioning finishes. 
 
-	Notice that the Hawthorn Hall database is located in the recovery region.
+    Notice that the Hawthorn Hall database is located in the recovery region.
 
-	![Hawthorn Hall provisioned in the recovery region](./media/saas-dbpertenant-dr-geo-restore/hawthorn-hall-provisioned-in-recovery-region.png)
+    ![Hawthorn Hall provisioned in the recovery region](./media/saas-dbpertenant-dr-geo-restore/hawthorn-hall-provisioned-in-recovery-region.png)
 
 4. In the browser, refresh the Wingtip Tickets events hub page to see Hawthorn Hall included. 
 
-	If you provisioned Hawthorn Hall without waiting for the other tenants to restore, other tenants might still be offline.
+    If you provisioned Hawthorn Hall without waiting for the other tenants to restore, other tenants might still be offline.
 
 ## Review the recovered state of the application
 
@@ -222,44 +222,44 @@ When the recovery process finishes, the application and all tenants are fully fu
 
 1. After the display in the PowerShell console window indicates all the tenants are recovered, refresh the events hub. 
 
-	The tenants all appear online, including the new tenant, Hawthorn Hall.
+    The tenants all appear online, including the new tenant, Hawthorn Hall.
 
-	![Recovered and new tenants in the events hub](./media/saas-dbpertenant-dr-geo-restore/events-hub-with-hawthorn-hall.png)
+    ![Recovered and new tenants in the events hub](./media/saas-dbpertenant-dr-geo-restore/events-hub-with-hawthorn-hall.png)
 
 2. Click on Contoso Concert Hall and open its events page. 
 
-	In the footer, notice that the database is located on the recovery server located in the recovery region.
+    In the footer, notice that the database is located on the recovery server located in the recovery region.
 
-	![Contoso in the recovery region](./media/saas-dbpertenant-dr-geo-restore/contoso-recovery-location.png)
+    ![Contoso in the recovery region](./media/saas-dbpertenant-dr-geo-restore/contoso-recovery-location.png)
 
 3. In the [Azure portal](https://portal.azure.com), open the list of resource groups.  
 
-	Notice the resource group that you deployed, plus the recovery resource group, with the -recovery suffix. The recovery resource group contains all the resources created during the recovery process, plus new resources created during the outage. 
+    Notice the resource group that you deployed, plus the recovery resource group, with the `-recovery` suffix. The recovery resource group contains all the resources created during the recovery process, plus new resources created during the outage. 
 
 4. Open the recovery resource group and notice the following items:
 
-   * The recovery versions of the catalog and tenants1 servers, with the -recovery suffix. The restored catalog and tenant databases on these servers all have the names used in the original region.
+   * The recovery versions of the catalog and tenants1 servers, with the `-recovery` suffix. The restored catalog and tenant databases on these servers all have the names used in the original region.
 
-   * The tenants2-dpt-&lt;user&gt;-recovery SQL server. This server is used for provisioning new tenants during the outage.
+   * The `tenants2-dpt-<user>-recovery` SQL server. This server is used for provisioning new tenants during the outage.
 
-   * The app service named events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;user&gt;, which is the recovery instance of the events app.
+   * The app service named `events-wingtip-dpt-<recoveryregion>-<user>`, which is the recovery instance of the events app.
 
      ![Contoso resources in the recovery region](./media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
-	
-5. Open the tenants2-dpt-&lt;user&gt;-recovery SQL server. Notice that it contains the database hawthornhall and the elastic pool Pool1. The hawthornhall database is configured as an elastic database in the Pool1 elastic pool.
+    
+5. Open the `tenants2-dpt-<user>-recovery` SQL server. Notice that it contains the database hawthornhall and the elastic pool Pool1. The hawthornhall database is configured as an elastic database in the Pool1 elastic pool.
 
 ## Change the tenant data 
 In this task, you update one of the restored tenant databases. The repatriation process copies restored databases that have been changed to the original region. 
 
 1. In your browser, find the events list for the Contoso Concert Hall, scroll through the events, and notice the last event, Seriously Strauss.
 
-2. In the PowerShell ISE, in the ...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 script, set the following value:
+2. In the PowerShell ISE, in the `...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1` script, set the following value:
 
-	$DemoScenario = 4: Delete an event from a tenant in the recovery region.
+    `$DemoScenario = 4: Delete an event from a tenant in the recovery region.`
 
 3. To execute the script, select F5.
 
-4. Refresh the Contoso Concert Hall events page (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall), and notice that the event Seriously Strauss is missing.
+4. Refresh the Contoso Concert Hall events page (`http://events.wingtip-dpt.<user>.trafficmanager.net/contosoconcerthall`), and notice that the event Seriously Strauss is missing.
 
 At this point in the tutorial, you have recovered the application, which is now running in the recovery region. You have provisioned a new tenant in the recovery region and modified data of one of the restored tenants.  
 
@@ -270,7 +270,7 @@ At this point in the tutorial, you have recovered the application, which is now 
 
 The repatriation process reverts the application and its databases to its original region after an outage is resolved.
 
-![Geo-restore repatriation](./media/saas-dbpertenant-dr-geo-restore/geo-restore-repatriation.png)	
+![Geo-restore repatriation](./media/saas-dbpertenant-dr-geo-restore/geo-restore-repatriation.png)    
 
 The process:
 
@@ -311,25 +311,25 @@ Let's imagine the outage is resolved and run the repatriation script.
 
 If you've followed the tutorial, the script immediately reactivates Fabrikam Jazz Club and Dogwood Dojo in the original region because they're unchanged. It then repatriates the new tenant, Hawthorn Hall, and Contoso Concert Hall because it has been modified. The script also repatriates the catalog, which was updated when Hawthorn Hall was provisioned.
   
-1. In the PowerShell ISE, in the ...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 script, verify that the Catalog Sync process is still running in its PowerShell instance. If necessary, restart it by setting:
+1. In the PowerShell ISE, in the `...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1` script, verify that the Catalog Sync process is still running in its PowerShell instance. If necessary, restart it by setting:
 
-	$DemoScenario = 1: Start synchronizing tenant server, pool, and database configuration info into the catalog.
+    `$DemoScenario = 1: Start synchronizing tenant server, pool, and database configuration info into the catalog.`
 
-	To run the script, select F5.
+    To run the script, select F5.
 
 2.  Then to start the repatriation process, set:
 
-	$DemoScenario = 5: Repatriate the app into its original region.
+    `$DemoScenario = 5: Repatriate the app into its original region.`
 
-	To run the recovery script in a new PowerShell window, select F5. Repatriation takes several minutes and can be monitored in the PowerShell window.
+    To run the recovery script in a new PowerShell window, select F5. Repatriation takes several minutes and can be monitored in the PowerShell window.
 
-3. While the script is running, refresh the events hub page (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net).
+3. While the script is running, refresh the events hub page (`http://events.wingtip-dpt.<user>.trafficmanager.net`).
 
-	Notice that all the tenants are online and accessible throughout this process.
+    Notice that all the tenants are online and accessible throughout this process.
 
 4. Select the Fabrikam Jazz Club to open it. If you didn't modify this tenant, notice from the footer that the server is already reverted to the original server.
 
-5. Open or refresh the Contoso Concert Hall events page. Notice from the footer that, initially, the database is still on the -recovery server. 
+5. Open or refresh the Contoso Concert Hall events page. Notice from the footer that, initially, the database is still on the `-recovery` server. 
 
 6. Refresh the Contoso Concert Hall events page when the repatriation process finishes, and notice that the database is now in your original region.
 
@@ -343,9 +343,9 @@ After repatriation is complete, it's safe to delete the resources in the recover
 
 The restore process creates all the recovery resources in a recovery resource group. The cleanup process deletes this resource group and removes all references to the resources from the catalog. 
 
-1. In the PowerShell ISE, in the ...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 script, set:
-	
-	$DemoScenario = 6: Delete obsolete resources from the recovery region.
+1. In the PowerShell ISE, in the `...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1` script, set:
+    
+    `$DemoScenario = 6: Delete obsolete resources from the recovery region.`
 
 2. To run the script, select F5.
 
