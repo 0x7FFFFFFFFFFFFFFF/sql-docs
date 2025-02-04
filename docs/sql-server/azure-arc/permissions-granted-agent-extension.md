@@ -49,6 +49,7 @@ This article lists the server and database roles and mappings that the installat
 | | db_datawriter role | msdb | SQLArcExtensionUserRole |
 | | db_datareader role | msdb | SQLArcExtensionUserRole |
 | Availability Group Discovery | VIEW ANY DEFINITION | Server Level | SQLArcExtensionServerRole |
+| Availability Group Failover | ALTER ANY AVAILABILITY GROUP | Server Level | SQLArcExtensionServerRole |
 | Purview | SELECT | All databases | SQLArcExtensionUserRole |
 | | EXECUTE | All databases | SQLArcExtensionUserRole |
 | Migration Assessment | EXECUTE dbo.agent_datetime | msdb | SQLArcExtensionUserRole |
