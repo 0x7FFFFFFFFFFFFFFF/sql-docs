@@ -11,10 +11,10 @@ f1_keywords:
   - "vdtsql.chm:65558"
   - "vdtsql.chm:69657"
   - "vdt.ppg.columns"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
 ---
 # Table Column Properties (SQL Server Management Studio)
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
   These properties appear in the bottom pane of Table Designer. Unless otherwise noted, you can edit these properties in the Properties window when the column is selected. The **Column Properties** can be displayed in categories or alphabetically. Many properties only appear or can only be changed for certain data types.  
   
