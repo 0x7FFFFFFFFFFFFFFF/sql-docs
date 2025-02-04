@@ -97,7 +97,7 @@ ALTER DATABASE CURRENT SET AUTOMATIC_TUNING (
 );
 ```
 
-Setting the individual tuning option to ON overrides any setting that database inherited, and enables the tuning option. Setting it to `OFF` also overrides any setting that database inherited and disable the tuning option. Automatic tuning options for which `DEFAULT` is specified, inherit the automatic tuning configuration from the server level settings.
+Setting the individual tuning option to ON overrides any setting that database inherited, and enables the tuning option. Setting it to `OFF` also overrides any setting that database inherited and disables the tuning option. Automatic tuning options for which `DEFAULT` is specified inherit the automatic tuning configuration from the server level settings.
 
 > [!IMPORTANT]  
 > For [active geo-replication](failover-group-sql-db.md), automatic tuning must be configured on the primary database only. Automatically applied tuning actions, such as creating or deleting an index, are automatically replicated to geo-secondaries. Trying to enable automatic tuning via T-SQL on the read-only secondary results in a failure, as having a different tuning configuration on the read-only secondary isn't supported.
@@ -120,12 +120,12 @@ The following steps can be considered to rectify this issue:
 
 - Use SQL Server Management Studio (SSMS) and follow these steps:
 
-  - Connect to the Azure SQL database
-  - Right-click on the database
-  - Go to **Properties** and select **Query Store**
-  - Change the **Operation Mode** to **Read-Write**
-  - Change the **Store Capture Mode** to **Auto**
-  - Change the **Size Based Cleanup Mode** to **Auto**
+  1. Connect to the Azure SQL database.
+  1. Right-click on the database.
+  1. Go to **Properties** and select **Query Store**.
+  1. Change the **Operation Mode** to **Read-Write**.
+  1. Change the **Store Capture Mode** to **Auto**.
+  1. Change the **Size Based Cleanup Mode** to **Auto**.
 
 ### Permissions
 
