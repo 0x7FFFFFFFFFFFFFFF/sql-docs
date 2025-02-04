@@ -4,7 +4,7 @@ description: Learn how to set database options such as Automatic tuning, encrypt
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 12/04/2024
+ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -338,7 +338,7 @@ Runs the action in the current database. `CURRENT` isn't supported for all optio
 
 **Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)])
 
-Enables [accelerated database recovery (ADR)](../../relational-databases/accelerated-database-recovery-management.md). ADR is set to OFF by default in [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later. By using this syntax, you can designate a specific filegroup for the Persistent Version Store (PVS) data. If no filegroup is specified, the PVS is stored in the `PRIMARY` filegroup. For more information, see [Manage accelerated database recovery](../../relational-databases/accelerated-database-recovery-management.md).
+Enables [accelerated database recovery (ADR)](../../relational-databases/accelerated-database-recovery-management.md). ADR is set to OFF by default in [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later. By using this syntax, you can designate a specific filegroup for the Persistent Version Store (PVS) data. If no filegroup is specified, PVS uses the `PRIMARY` filegroup. For more information, see [Manage accelerated database recovery](../../relational-databases/accelerated-database-recovery-management.md).
 
 #### \<auto_option> ::=
 

@@ -4,7 +4,7 @@ description: "Learn about accelerated database recovery (ADR), which redesigned 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, derekw, randolphwest, dfurman
-ms.date: 12/04/2024
+ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: conceptual
@@ -149,6 +149,8 @@ ADR is particularly beneficial for workloads that have:
 - Active transactions that cause the transaction log to grow significantly.
 - Long periods of database unavailability due to long running recovery (such as from unexpected service restart or manual transaction rollback).
 
+ADR isn't supported in databases using [database mirroring](../database-engine/database-mirroring/database-mirroring-sql-server.md), an older and deprecated high availability feature.
+
 ## Best practices for ADR
 
 - Avoid unnecessary long-running transactions. Though ADR speeds up database recovery even with long-running transactions, such transactions can delay version cleanup and increase the size of the PVS.
@@ -168,7 +170,7 @@ ADR is particularly beneficial for workloads that have:
 
 - When you use [transactional replication](replication/transactional/transactional-replication.md), [snapshot replication](replication/snapshot-replication.md), or [change data capture (CDC)](track-changes/about-change-data-capture-sql-server.md), the aggressive log truncation behavior of ADR is disabled to allow the log reader to collect changes from the transaction log. Make sure that the transaction log is sufficiently large.
 
-   In Azure SQL Database, you might need to increase your service tier or compute size to ensure that sufficient transaction log space is available for the needs of all your workloads. Similarly, in Azure SQL Managed Instance you might need to increase your instance maximum storage size.
+   If using [CDC](/azure/azure-sql/database/change-data-capture-overview) or [change feed](/azure/synapse-analytics/synapse-link/sql-database-synapse-link) in Azure SQL Database, you might need to increase your service tier or compute size to ensure that sufficient transaction log space is available for the needs of all your workloads. Similarly, in Azure SQL Managed Instance you might need to increase your instance maximum storage size.
 
 - For [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], isolate the PVS version store on a filegroup on higher tier storage, such as high-end SSD or advanced SSD or Persistent Memory (PMEM), sometimes referred to as Storage Class Memory (SCM). For more information, see [Change the location of the PVS to a different filegroup](accelerated-database-recovery-management.md#change-the-pvs-filegroup).
 
@@ -176,7 +178,7 @@ ADR is particularly beneficial for workloads that have:
 
 - For [!INCLUDE[sssql22-md](../includes/sssql22-md.md)] and later, consider enabling multi-threaded PVS cleanup if the single-threaded cleaner performance is insufficient. For more information, see [Server configuration: ADR Cleaner Thread Count](../database-engine/configure-windows/adr-cleaner-thread-count-configuration-option.md).
 
-- If you observe issues such as high database space usage by PVS or slow PVS cleanup, see [Troubleshoot accelerated database recovery](accelerated-database-recovery-troubleshoot.md).
+- If you observe issues such as high database space usage by PVS or slow PVS cleanup, see [Monitor and troubleshoot accelerated database recovery](accelerated-database-recovery-troubleshoot.md).
 
 ## ADR improvements in SQL Server 2022
 
@@ -215,4 +217,4 @@ The same improvements are also available in [!INCLUDE [ssazure-sqldb](../include
 ## Related content
 
 - [Manage accelerated database recovery](accelerated-database-recovery-management.md)
-- [Troubleshoot accelerated database recovery](accelerated-database-recovery-troubleshoot.md)
+- [Monitor and troubleshoot accelerated database recovery](accelerated-database-recovery-troubleshoot.md)
