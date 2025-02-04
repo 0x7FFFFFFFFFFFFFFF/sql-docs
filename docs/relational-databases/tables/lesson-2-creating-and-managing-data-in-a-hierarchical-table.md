@@ -10,10 +10,11 @@ ms.subservice: table-view-index
 ms.topic: conceptual
 helpviewer_keywords:
   - "HierarchyID"
+monikerRange: "=azuresqldb-current||>=sql-server-2016 || >=sql-server-linux-2017 ||=azuresqldb-mi-current||=fabric"
 ---
 # Lesson 2: Create and manage data in a hierarchical table
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 In Lesson 1, you modified an existing table to use the **hierarchyid** data type, and populated the **hierarchyid** column with the representation of the existing data. In this lesson, you start with a new table, and insert data by using the hierarchical methods. Then, you query and manipulate the data by using the hierarchical methods.
 

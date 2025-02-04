@@ -56,6 +56,22 @@ Further, let's suppose that you plan to deploy the following within the next mon
 
 Also, let's suppose that you know that you will need these resources for at least 1 year. In this case, you should purchase a 32 (2x16) vCores 1-year reservation for single database/elastic pool General Purpose - standard-series (Gen5) and a 40 (2x4 + 32) vCore 1-year reservation for single database/elastic pool Business Critical - standard-series (Gen5).
 
+## Reservations for Zone-Redundant Compute in Azure SQL Managed Instance
+
+The price of compute for zone-redundant instances consists of two separate entries:
+1.	Regular compute
+2.	Zone-redundant add-on
+
+The total compute charge is calculated by summing these two entries. To achieve full reservation coverage for zone-redundant instances, you must purchase two separate reservations - one for regular compute and one for the zone-redundant add-on. However, reservation can also be purchased for only one of the entries. 
+
+The following compute charges will apply to different reservation scenarios:
+- No reservation: Price for regular compute + Price for zone-redundant add-on
+- Full reservation: Reservation for regular compute + Reservation for zone-redundant add-on
+- Reservation for only zone-redundant add-on: Price for regular compute + Reservation for zone-redundant add-on
+- Reservation for only regular compute: Reservation for regular compute + Price for zone-redundant add-on
+
+Carefully evaluating your compute needs and reservation strategy will help optimize costs and ensure efficient resource allocation.
+
 ## Buy reservations
 
 1. Sign in to the [Azure portal](https://portal.azure.com).

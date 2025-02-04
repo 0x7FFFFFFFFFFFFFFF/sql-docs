@@ -74,7 +74,7 @@ To start learning how to build SSIS packages, see the tutorial [How to Create an
 > [!IMPORTANT]  
 > In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], you can't import directly from Excel. You must first [export the data to a text (CSV) file](import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server.md).
 
-The ACE provider (formerly the Jet provider) that connects to Excel data sources is intended for interactive client-side use. If you use the ACE provider on [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], especially in automated processes or processes running in parallel, you might see unexpected results.
+The following examples use the JET provider, because the ACE provider included with Office that connects to Excel data sources is intended for interactive client-side use.
 
 ### Distributed queries
 
@@ -100,8 +100,8 @@ The following code sample uses `OPENROWSET` to import the data from the Excel `S
 USE ImportFromExcel;
 GO
 SELECT * INTO Data_dq
-FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0',
-    'Excel 12.0; Database=C:\Temp\Data.xlsx', [Sheet1$]);
+FROM OPENROWSET('Microsoft.JET.OLEDB.4.0',
+    'Excel 8.0; Database=C:\Temp\Data.xls', [Sheet1$]);
 GO
 ```
 
@@ -111,8 +111,8 @@ Here's the same example with `OPENDATASOURCE`.
 USE ImportFromExcel;
 GO
 SELECT * INTO Data_dq
-FROM OPENDATASOURCE('Microsoft.ACE.OLEDB.12.0',
-    'Data Source=C:\Temp\Data.xlsx;Extended Properties=Excel 12.0')...[Sheet1$];
+FROM OPENDATASOURCE('Microsoft.JET.OLEDB.4.0',
+    'Data Source=C:\Temp\Data.xls;Extended Properties=Excel 8.0')...[Sheet1$];
 GO
 ```
 
@@ -154,9 +154,9 @@ DECLARE @catalog NVARCHAR(128);
 -- Set parameter values
 SET @server = 'EXCELLINK';
 SET @srvproduct = 'Excel';
-SET @provider = 'Microsoft.ACE.OLEDB.12.0';
-SET @datasrc = 'C:\Temp\Data.xlsx';
-SET @provstr = 'Excel 12.0';
+SET @provider = 'Microsoft.JET.OLEDB.4.0';
+SET @datasrc = 'C:\Temp\Data.xls';
+SET @provstr = 'Excel 8.0';
 
 EXEC @RC = [master].[dbo].[sp_addlinkedserver] @server,
     @srvproduct,
@@ -265,68 +265,6 @@ To start learning how to copy data with Azure data factory, see the following ar
 
 - [Move data by using Copy Activity](/azure/data-factory/data-factory-data-movement-activities)
 - [Tutorial: Create a pipeline with Copy Activity using Azure portal](/azure/data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database)
-
-## Common errors
-
-#### Microsoft.ACE.OLEDB.12.0" hasn't been registered
-
-This error occurs because the OLEDB provider isn't installed. Install it from [Microsoft Access Database Engine 2016 Redistributable](https://www.microsoft.com/download/details.aspx?id=54920). Be sure to install the 64-bit version if Windows and [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] are both 64-bit.
-
-The full error is:
-
-```output
-Msg 7403, Level 16, State 1, Line 3
-The OLE DB provider "Microsoft.ACE.OLEDB.12.0" has not been registered.
-```
-
-#### Can't create an instance of OLE DB provider "Microsoft.ACE.OLEDB.12.0" for linked server "(null)"
-
-This error indicates that the Microsoft OLEDB wasn't configured properly. To resolve this issue, run the following Transact-SQL code:
-
-```sql
-EXEC sp_MSset_oledb_prop N'Microsoft.ACE.OLEDB.12.0', N'AllowInProcess', 1;
-EXEC sp_MSset_oledb_prop N'Microsoft.ACE.OLEDB.12.0', N'DynamicParameters', 1;
-```
-
-The full error is:
-
-```output
-Msg 7302, Level 16, State 1, Line 3
-Cannot create an instance of OLE DB provider "Microsoft.ACE.OLEDB.12.0" for linked server "(null)".
-```
-
-#### The 32-bit OLE DB provider "Microsoft.ACE.OLEDB.12.0" can't be loaded in-process on a 64-bit SQL Server
-
-This error occurs when a 32-bit version of the OLD DB provider is installed with a 64-bit [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. To resolve this issue, uninstall the 32-bit version and install the 64-bit version of the OLE DB provider instead.
-
-The full error is:
-
-```output
-Msg 7438, Level 16, State 1, Line 3
-The 32-bit OLE DB provider "Microsoft.ACE.OLEDB.12.0" cannot be loaded in-process on a 64-bit SQL Server.
-```
-
-#### The OLE DB provider "Microsoft.ACE.OLEDB.12.0" for linked server "(null)" reported an error
-
-This error typically indicates a permissions issue between the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] process and the file. Ensure that the account that is running the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] service has full access permission to the file. We recommend against trying to import files from the desktop.
-
-The full error is:
-
-```output
-Msg 7399, Level 16, State 1, Line 3
-The OLE DB provider "Microsoft.ACE.OLEDB.12.0" for linked server "(null)" reported an error. The provider did not give any information about the error.
-```
-
-#### Can't initialize the data source object of OLE DB provider "Microsoft.ACE.OLEDB.12.0" for linked server "(null)"
-
-This error typically indicates a permissions issue between the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] process and the file. Ensure that the account that is running the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] service has full access permission to the file. We recommend against trying to import files from the desktop.
-
-The full error is:
-
-```output
-Msg 7303, Level 16, State 1, Line 3
-Cannot initialize the data source object of OLE DB provider "Microsoft.ACE.OLEDB.12.0" for linked server "(null)".
-```
 
 ## Related content
 

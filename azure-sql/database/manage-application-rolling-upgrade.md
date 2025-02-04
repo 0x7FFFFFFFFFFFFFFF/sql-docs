@@ -4,7 +4,7 @@ description: Learn how to use Azure SQL Database geo-replication to support roll
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: wiassaf, mathoma
-ms.date: 02/13/2019
+ms.date: 01/24/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: how-to
@@ -25,7 +25,7 @@ When evaluating upgrade options, consider these factors:
 
 ## Upgrade applications that rely on database backups for disaster recovery
 
-If your application relies on automatic database backups and uses geo-restore for disaster recovery, it's deployed to a single Azure region. To minimize user disruption, create a staging environment in that region with all the application components involved in the upgrade. The first diagram illustrates the operational environment before the upgrade process. The endpoint `contoso.azurewebsites.net` represents a production environment of the web app. To be able to roll back the upgrade, you must create a staging environment with a fully synchronized copy of the database. Follow these steps to create a staging environment for the upgrade:
+If your application relies on automatic database backups and uses [geo-restore](recovery-using-backups.md#geo-restore) for disaster recovery, it's deployed to a single Azure region. To minimize user disruption, create a staging environment in that region with all the application components involved in the upgrade. The first diagram illustrates the operational environment before the upgrade process. The endpoint `contoso.azurewebsites.net` represents a production environment of the web app. To be able to roll back the upgrade, you must create a staging environment with a fully synchronized copy of the database. Follow these steps to create a staging environment for the upgrade:
 
 1. Create a secondary database in the same Azure region. Monitor the secondary to see if the seeding process is complete (1).
 2. Create a new environment for your web app and call it 'Staging'. It will be registered in Azure DNS with the URL `contoso-staging.azurewebsites.net` (2).
@@ -64,7 +64,7 @@ At this point, the application is fully functional, and you can repeat the upgra
 
 The key advantage of this option is that you can upgrade an application in a single region by following a set of simple steps. The dollar cost of the upgrade is relatively low. 
 
-The main tradeoff is that, if a catastrophic failure occurs during the upgrade, the recovery to the pre-upgrade state involves redeploying the application in a different region and restoring the database from backup by using geo-restore. This process results in significant downtime.
+The main tradeoff is that, if a catastrophic failure occurs during the upgrade, the recovery to the pre-upgrade state involves redeploying the application in a different region and restoring the database from backup by using geo-restore. This process results in significant downtime. For more information, see [Geo-restore for Azure SQL Database](recovery-using-backups.md#geo-restore).
 
 ## Upgrade applications that rely on database geo-replication for disaster recovery
 

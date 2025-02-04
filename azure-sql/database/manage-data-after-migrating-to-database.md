@@ -5,7 +5,7 @@ description: Learn how to manage your single and pooled databases after migratio
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: wiassaf, mathoma, dfurman, randolphwest
-ms.date: 08/23/2024
+ms.date: 01/24/2025
 ms.service: azure-sql-database
 ms.subservice: migration
 ms.topic: conceptual
@@ -55,7 +55,7 @@ In addition, the [Long-Term Retention (LTR)](long-term-retention-overview.md) fe
 
 ### How do I ensure business continuity in the event of a datacenter-level disaster or regional catastrophe
 
-Your database backups are stored in geo-replicated storage to ensure that, during a regional disaster, you can restore the backup to another Azure region. This is called geo-restore. The RPO (Recovery Point Objective) for geo-restore is generally < 1 hour and the ERT (Estimated Recovery Time) – few minutes to hours.
+Your database backups are stored in geo-replicated storage to ensure that, during a regional disaster, you can restore the backup to another Azure region. This is called geo-restore. For more information and timing of geo-restores, see [Geo-restore for Azure SQL Database](recovery-using-backups.md#geo-restore).
 
 For mission-critical databases, Azure SQL Database offers [active geo-replication](active-geo-replication-overview.md), which creates a geo-replicated secondary copy of your original database in another region. For example, if your database is initially hosted in Azure West US region and you want regional disaster resilience, create an active geo replica of the database in West US to East US. When calamity strikes on West US, you can fail over to the East US region. 
 

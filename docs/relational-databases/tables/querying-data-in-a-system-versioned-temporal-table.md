@@ -7,11 +7,11 @@ ms.date: 06/12/2024
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current||=fabric"
 ---
 # Query data in a system-versioned temporal table
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 When you want to get latest (current) state of data in a temporal table, you can query the same way as you query a non-temporal table. If the `PERIOD` columns aren't hidden, their values appear in a `SELECT *` query. If you specified `PERIOD` columns as `HIDDEN`, their values don't appear in a `SELECT *` query. When the `PERIOD` columns are hidden, you must reference the `PERIOD` columns specifically in the `SELECT` clause to return the values for these columns.
 

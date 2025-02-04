@@ -5,7 +5,7 @@ description: Learn about point-in-time restore, which enables you to roll back a
 author: dnethi
 ms.author: dinethi
 ms.reviewer: wiassaf, mathoma, danil
-ms.date: 01/16/2025
+ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -57,7 +57,7 @@ Several factors affect the recovery time to restore a database through automated
 - The network bandwidth if the restore is to a different region
 - The number of concurrent restore requests that are processed in the target region
 
-For a large or very active database, the restore might take several hours. A prolonged outage in a region might cause a high number of geo-restore requests for disaster recovery. When there are many requests, the recovery time for individual databases can increase. Most database restores finish in less than 12 hours.
+For a large or very active database, the restore might take several hours. A prolonged outage in a region might cause a high number of geo-restore requests for disaster recovery. When there are many requests, the recovery time for individual databases can increase. For information on recovery times, see [RTO and RPO](business-continuity-high-availability-disaster-recover-hadr-overview.md?view=azuresql-db&preserve-view=true#rto-and-rpo).
 
 For a single subscription, you have the following limitations on the number of concurrent restore requests. These limitations apply to any combination of point-in-time restores, geo-restores, and restores from long-term retention backup.
 
@@ -226,19 +226,21 @@ To restore a deleted database by using the REST API:
 
 ## Geo-restore
 
-You can use geo-restore to restore a deleted database by using the Azure portal, the Azure CLI, Azure PowerShell, and the REST API.
+Geo-restore uses geo-replicated backups as the source. You can restore a database on any [logical server](logical-servers.md) in any Azure region from the most recent geo-replicated backups. You can request a geo-restore even if an outage has made the database or the entire region inaccessible.
 
 > [!IMPORTANT]  
 > - Geo-restore is available only for databases configured with geo-redundant [backup storage](automated-backups-overview.md#backup-storage-redundancy). If you're not currently using geo-replicated backups for a database, you can change this by [configuring backup storage redundancy](automated-backups-change-settings.md#configure-backup-storage-redundancy).
 > - You can perform geo-restore only on databases that reside in the same subscription.
 
-Geo-restore uses geo-replicated backups as the source. You can restore a database on any [logical server](logical-servers.md) in any Azure region from the most recent geo-replicated backups. You can request a geo-restore even if an outage has made the database or the entire region inaccessible.
-
 Geo-restore is the default recovery option when your database is unavailable because of an incident in the hosting region. You can restore the database to a server in any other region.
 
-There's a delay between when a backup is taken and when it's geo-replicated to an Azure blob in a different region. As a result, the restored database can be up to one hour behind the original database. The following illustration shows a database restore from the last available backup in another region.
+Restoring from geo-redundant backups could potentially result in data loss in certain scenarios because Azure Geo-Redundant Storage (GRS) replicates data asynchronously to a secondary region. There is some latency involved in the replication process, but the exact latency can vary based on several factors, including the distance between the primary and secondary regions and the current network conditions. Typically, the replication latency for GRS is in the range of minutes, but it is not guaranteed to be within a specific time frame. It can take considerable time, depending on the size of each database. For more information, see [RTO and RPO](business-continuity-high-availability-disaster-recover-hadr-overview.md?view=azuresql-db&preserve-view=true#rto-and-rpo).
+
+The following illustration shows a database restore from the last available backup in another region.
 
 :::image type="content" source="media/recovery-using-backups/geo-restore-2.png" alt-text="Screenshot of Illustration of geo-restore." lightbox="media/recovery-using-backups/geo-restore-2.png":::
+
+You can use geo-restore to restore a deleted database by using the Azure portal, the Azure CLI, Azure PowerShell, and the REST API.
 
 ### [Azure portal](#tab/azure-portal)
 
@@ -289,7 +291,7 @@ For more information on using geo-restore, see [Recovery using Geo-restore](reco
 > [!NOTE]  
 > For detailed information about recover from an outage, see [disaster recovery guidance](disaster-recovery-guidance.md) and the [high availability and disaster recovery checklist](high-availability-disaster-recovery-checklist.md).
 
-Geo-restore is the most basic disaster-recovery solution available in SQL Database. It relies on automatically created geo-replicated backups with a recovery point objective (RPO) typically around one hour and an estimated recovery time objective (RTO) of up to 12 hours. It doesn't guarantee that the target region will have the capacity to restore your databases after a regional outage, because a sharp increase of demand is likely. If your application uses relatively small databases and isn't critical to the business, geo-restore is an appropriate disaster-recovery solution.
+Geo-restore is the most basic disaster-recovery solution available in SQL Database. It relies on automatically created geo-replicated backups. For information on recovery times, see [RTO and RPO](business-continuity-high-availability-disaster-recover-hadr-overview.md?view=azuresql-db&preserve-view=true#rto-and-rpo). It doesn't guarantee that the target region will have the capacity to restore your databases after a regional outage, because a sharp increase of demand is likely. If your application uses relatively small databases and isn't critical to the business, geo-restore is an appropriate disaster-recovery solution.
 
 For business-critical applications that require large databases and must ensure business continuity, use [failover groups](failover-group-sql-db.md). That feature offers a much lower RPO and RTO, and the capacity is always guaranteed.
 

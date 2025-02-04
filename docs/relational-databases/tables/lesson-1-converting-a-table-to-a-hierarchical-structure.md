@@ -9,9 +9,11 @@ ms.subservice: table-view-index
 ms.topic: conceptual
 helpviewer_keywords:
   - "HierarchyID"
+monikerRange: "=azuresqldb-current||>=sql-server-2016 || >=sql-server-linux-2017 ||=azuresqldb-mi-current||=fabric"
 ---
 # Lesson 1: Converting a Table to a Hierarchical Structure
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
+
 Customers who have tables using self joins to express hierarchical relationships can convert their tables to a hierarchical structure using this lesson as a guide. It is relatively easy to migrate from this representation to one using **hierarchyid**. After migration, users will have a compact and easy to understand hierarchical representation, which can be indexed in several ways for efficient queries.  
   
 This lesson, examines an existing table, creates a new table containing a **hierarchyid** column, populates the table with the data from the source table, and then demonstrates three indexing strategies. This lesson contains the following topics:  
@@ -41,8 +43,8 @@ The sample [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md
 
     SELECT emp.BusinessEntityID AS EmployeeID, emp.LoginID, 
      (SELECT  man.BusinessEntityID FROM HumanResources.Employee man 
-	    WHERE emp.OrganizationNode.GetAncestor(1)=man.OrganizationNode OR 
-		    (emp.OrganizationNode.GetAncestor(1) = 0x AND man.OrganizationNode IS NULL)) AS ManagerID,
+        WHERE emp.OrganizationNode.GetAncestor(1)=man.OrganizationNode OR 
+            (emp.OrganizationNode.GetAncestor(1) = 0x AND man.OrganizationNode IS NULL)) AS ManagerID,
           emp.JobTitle, emp.HireDate
    INTO HumanResources.EmployeeDemo   
    FROM HumanResources.Employee emp ;
@@ -67,15 +69,15 @@ The sample [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md
   
     ```  
     MgrID Manager                 E_ID LoginID                  JobTitle  
-    NULL	NULL	                1	adventure-works\ken0	    Chief Executive Officer
-    1	adventure-works\ken0	    2	adventure-works\terri0   	Vice President of Engineering
-    1	adventure-works\ken0	   16	adventure-works\david0	  Marketing Manager
-    1	adventure-works\ken0	   25	adventure-works\james1	  Vice President of Production
-    1	adventure-works\ken0	  234	adventure-works\laura1	  Chief Financial Officer
-    1	adventure-works\ken0  	263	adventure-works\jean0	    Information Services Manager
-    1	adventure-works\ken0	  273	adventure-works\brian3	  Vice President of Sales
-    2	adventure-works\terri0	  3	adventure-works\roberto0	Engineering Manager
-    3	adventure-works\roberto0	4	adventure-works\rob0	    Senior Tool Designer
+    NULL    NULL                    1    adventure-works\ken0        Chief Executive Officer
+    1    adventure-works\ken0        2    adventure-works\terri0       Vice President of Engineering
+    1    adventure-works\ken0       16    adventure-works\david0      Marketing Manager
+    1    adventure-works\ken0       25    adventure-works\james1      Vice President of Production
+    1    adventure-works\ken0      234    adventure-works\laura1      Chief Financial Officer
+    1    adventure-works\ken0      263    adventure-works\jean0        Information Services Manager
+    1    adventure-works\ken0      273    adventure-works\brian3      Vice President of Sales
+    2    adventure-works\terri0      3    adventure-works\roberto0    Engineering Manager
+    3    adventure-works\roberto0    4    adventure-works\rob0        Senior Tool Designer
     ...  
     ```  
   
@@ -152,19 +154,19 @@ This task creates a new table and populates it with the data in the **EmployeeDe
     [!INCLUDE[ssResult](../../includes/ssresult-md.md)]  
 
     ```
-    EmployeeID	ManagerID	Num
-    1  	NULL  	1
-    2	     1    1
-    16	   1	  2
-    25	   1	  3
-    234	   1	  4
-    263	   1	  5
-    273	   1	  6
-    3	     2	  1
-    4	     3	  1
-    5	     3	  2
-    6	     3	  3
-    7	     3	  4
+    EmployeeID    ManagerID    Num
+    1      NULL      1
+    2         1    1
+    16       1      2
+    25       1      3
+    234       1      4
+    263       1      5
+    273       1      6
+    3         2      1
+    4         3      1
+    5         3      2
+    6         3      3
+    7         3      4
     ```
 
 
@@ -266,36 +268,36 @@ The **hierarchyid** column (**OrgNode**) is the primary key for the **NewOrg** t
     Depth-first index: Employee records are stored adjacent to their manager.  
 
     ```
-    LogicalNode	OrgNode	H_Level	EmployeeID	LoginID
-    /	0x	0	1	adventure-works\ken0
-    /1/	0x58	1	2	adventure-works\terri0
-    /1/1/	0x5AC0	2	3	adventure-works\roberto0
-    /1/1/1/	0x5AD6	3	4	adventure-works\rob0
-    /1/1/2/	0x5ADA	3	5	adventure-works\gail0
-    /1/1/3/	0x5ADE	3	6	adventure-works\jossef0
-    /1/1/4/	0x5AE1	3	7	adventure-works\dylan0
-    /1/1/4/1/	0x5AE158	4	8	adventure-works\diane1
-    /1/1/4/2/	0x5AE168	4	9	adventure-works\gigi0
-    /1/1/4/3/	0x5AE178	4	10	adventure-works\michael6
-    /1/1/5/	0x5AE3	3	11	adventure-works\ovidiu0
+    LogicalNode    OrgNode    H_Level    EmployeeID    LoginID
+    /    0x    0    1    adventure-works\ken0
+    /1/    0x58    1    2    adventure-works\terri0
+    /1/1/    0x5AC0    2    3    adventure-works\roberto0
+    /1/1/1/    0x5AD6    3    4    adventure-works\rob0
+    /1/1/2/    0x5ADA    3    5    adventure-works\gail0
+    /1/1/3/    0x5ADE    3    6    adventure-works\jossef0
+    /1/1/4/    0x5AE1    3    7    adventure-works\dylan0
+    /1/1/4/1/    0x5AE158    4    8    adventure-works\diane1
+    /1/1/4/2/    0x5AE168    4    9    adventure-works\gigi0
+    /1/1/4/3/    0x5AE178    4    10    adventure-works\michael6
+    /1/1/5/    0x5AE3    3    11    adventure-works\ovidiu0
     ```
 
     **EmployeeID**-first index: Rows are stored in **EmployeeID** sequence.  
 
     ```
-    LogicalNode	OrgNode	H_Level	EmployeeID	LoginID
-    /	0x	0	1	adventure-works\ken0
-    /1/	0x58	1	2	adventure-works\terri0
-    /1/1/	0x5AC0	2	3	adventure-works\roberto0
-    /1/1/1/	0x5AD6	3	4	adventure-works\rob0
-    /1/1/2/	0x5ADA	3	5	adventure-works\gail0
-    /1/1/3/	0x5ADE	3	6	adventure-works\jossef0
-    /1/1/4/	0x5AE1	3	7	adventure-works\dylan0
-    /1/1/4/1/	0x5AE158	4	8	adventure-works\diane1
-    /1/1/4/2/	0x5AE168	4	9	adventure-works\gigi0
-    /1/1/4/3/	0x5AE178	4	10	adventure-works\michael6
-    /1/1/5/	0x5AE3	3	11	adventure-works\ovidiu0
-    /1/1/5/1/	0x5AE358	4	12	adventure-works\thierry0
+    LogicalNode    OrgNode    H_Level    EmployeeID    LoginID
+    /    0x    0    1    adventure-works\ken0
+    /1/    0x58    1    2    adventure-works\terri0
+    /1/1/    0x5AC0    2    3    adventure-works\roberto0
+    /1/1/1/    0x5AD6    3    4    adventure-works\rob0
+    /1/1/2/    0x5ADA    3    5    adventure-works\gail0
+    /1/1/3/    0x5ADE    3    6    adventure-works\jossef0
+    /1/1/4/    0x5AE1    3    7    adventure-works\dylan0
+    /1/1/4/1/    0x5AE158    4    8    adventure-works\diane1
+    /1/1/4/2/    0x5AE168    4    9    adventure-works\gigi0
+    /1/1/4/3/    0x5AE178    4    10    adventure-works\michael6
+    /1/1/5/    0x5AE3    3    11    adventure-works\ovidiu0
+    /1/1/5/1/    0x5AE358    4    12    adventure-works\thierry0
     ```
   
 > [!NOTE]  

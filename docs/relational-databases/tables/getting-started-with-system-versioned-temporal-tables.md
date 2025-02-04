@@ -9,11 +9,11 @@ ms.subservice: table-view-index
 ms.topic: conceptual
 ms.custom:
   - intro-get-started
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current||=fabric"
 ---
 # Get started with system-versioned temporal tables
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Depending on your scenario, you can either create new system-versioned temporal tables, or modify existing ones by adding temporal attributes to the existing table schema. When the data in temporal table is modified, the system builds version history transparently to applications and end users. As a result, working with temporal tables doesn't require any change to the way table is modified or how the latest (current) state of the data is queried.
 

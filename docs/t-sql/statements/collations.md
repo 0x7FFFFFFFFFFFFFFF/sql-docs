@@ -4,7 +4,7 @@ description: "The COLLATE statement sets the collation of a database or table co
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf
-ms.date: 01/27/2025
+ms.date: 02/04/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -46,7 +46,7 @@ Is the name of the collation to be applied to the expression, column definition,
 *SQL_collation_name* is the collation name for a [SQL Server Collation Name](../../t-sql/statements/sql-server-collation-name-transact-sql.md).
 
 > [!NOTE]  
-> In Microsoft Fabric, the only collations allowed are: Latin1_General_100_BIN2_UTF8 and Latin1_General_100_CI_AS_KS_WS_SC_UTF8.
+> In Microsoft Fabric Data Warehouse, the only collations allowed are: Latin1_General_100_BIN2_UTF8 and Latin1_General_100_CI_AS_KS_WS_SC_UTF8.
 
 **database_default**
 Causes the COLLATE clause to inherit the collation of the current database.

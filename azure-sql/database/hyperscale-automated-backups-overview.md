@@ -5,7 +5,7 @@ description: Learn about automated backups for Hyperscale databases in Azure SQL
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dinethi, mathoma, danil, randolphwest, 
-ms.date: 01/28/2025
+ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: conceptual
@@ -77,7 +77,7 @@ Backup storage consumption for a Hyperscale database depends on the retention pe
 - Avoid doing large write operations, such as index maintenance, more frequently than you need to. For index maintenance recommendations, see [Optimize index maintenance to improve query performance and reduce resource consumption](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 - For large data-load operations, consider using data compression when appropriate.
 - Use the `tempdb` database instead of permanent tables in your application logic to store temporary results and/or transient data.
-- Use locally redundant or zone-redundant backup storage when geo-restore capability is unnecessary (for example, dev/test environments).
+- Use locally redundant or zone-redundant backup storage when [geo-restore](recovery-using-backups.md#geo-restore) capability is unnecessary (for example, dev/test environments).
 
 ## Backup storage costs
 
@@ -147,8 +147,8 @@ You might need to restore your Hyperscale database to a region that's different 
 > [!NOTE]  
 > Because the source and target are in separate regions, the database can't share snapshot storage with the source database as it does in non-geo restores. Non-geo restores finish quickly regardless of database size.  
 >  
-> A geo-restore of a Hyperscale database is a size-of-data operation, even if the target is in the paired region of the geo-replicated storage. Therefore, a geo-restore will take a significantly longer time compared to a point-in-time restore in the same region.
->  
+> A [geo-restore](recovery-using-backups.md#geo-restore) of a Hyperscale database is a size-of-data operation, even if the target is in the paired region of the geo-replicated storage. Therefore, a geo-restore will take a significantly longer time compared to a point-in-time restore in the same region.
+>
 > If the target is in the paired region, data transfer will be within a region. That transfer will be significantly faster than a cross-region data transfer. But it will still be a size-of-data operation.
 
 If you prefer, you can copy the database to a different region. Use this method if geo-restore isn't available because it's not supported with the selected storage redundancy type. For details, see [Database copy for Hyperscale](database-copy.md#database-copy-for-hyperscale-databases).
