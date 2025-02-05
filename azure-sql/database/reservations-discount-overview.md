@@ -60,7 +60,7 @@ Also, let's suppose that you know that you will need these resources for at leas
 
 When you enable [zone-redundancy](../managed-instance/high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) for Azure SQL Managed Instance, resources are made available in multiple availability zones to provide high availability and fault tolerance. 
 
-_Regular compute resources_ for the primary instance are charged separately, and listed as separate entries on your bill, to the _zone-redundant add-on_. 
+_Regular compute resources_ for the primary instance are charged separately to the _zone-redundant add-on_, and both are listed as separate entries on your bill. 
 
 Total compute is calculated by adding the _zone-redundant add-on_ to the _regular compute cost_. While it's possible to pay for reservations for only the regular compute cost, or the zone redundant add-on, to achieve full reservation coverage for zone-redundant instances, you must purchase two separate reservations.
 
