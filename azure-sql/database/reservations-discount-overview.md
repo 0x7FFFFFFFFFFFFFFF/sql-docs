@@ -56,21 +56,25 @@ Further, let's suppose that you plan to deploy the following within the next mon
 
 Also, let's suppose that you know that you will need these resources for at least 1 year. In this case, you should purchase a 32 (2x16) vCores 1-year reservation for single database/elastic pool General Purpose - standard-series (Gen5) and a 40 (2x4 + 32) vCore 1-year reservation for single database/elastic pool Business Critical - standard-series (Gen5).
 
-## Reservations for Zone-Redundant Compute in Azure SQL Managed Instance
+## Reservations for zone-redundant SQL managed instances
 
-The price of compute for zone-redundant instances consists of two separate entries:
-1.	Regular compute
-2.	Zone-redundant add-on
+When you enable [zone-redundancy](../managed-instance/high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) for Azure SQL Managed Instance, resources are made available in multiple availability zones to provide high availability and fault tolerance. 
 
-The total compute charge is calculated by summing these two entries. To achieve full reservation coverage for zone-redundant instances, you must purchase two separate reservations - one for regular compute and one for the zone-redundant add-on. However, reservation can also be purchased for only one of the entries. 
+_Regular compute resources_ for the primary instance are charged separately, and listed as separate entries on your bill, to the _zone-redundant add-on_. 
 
-The following compute charges will apply to different reservation scenarios:
-- No reservation: Price for regular compute + Price for zone-redundant add-on
-- Full reservation: Reservation for regular compute + Reservation for zone-redundant add-on
-- Reservation for only zone-redundant add-on: Price for regular compute + Reservation for zone-redundant add-on
-- Reservation for only regular compute: Reservation for regular compute + Price for zone-redundant add-on
+Total compute is calculated by adding the _zone-redundant add-on_ to the _regular compute cost_. While it's possible to pay for reservations for only the regular compute cost, or the zone redundant add-on, to achieve full reservation coverage for zone-redundant instances, you must purchase two separate reservations.
 
-Carefully evaluating your compute needs and reservation strategy will help optimize costs and ensure efficient resource allocation.
+The following lists the compute charges for different reservation scenarios:
+- **No reservation**:   
+   `Regular price for regular compute` + `regular price for zone-redundant add-on`
+- **Full reservation**:   
+   `Discounted reservation for regular compute` + `discounted reservation for zone-redundant add-on`
+- **Reservation for only regular compute**:   
+   `Discounted reservation for regular compute` + `regular price for zone-redundant add-on`
+- **Reservation for only zone-redundant add-on**:   
+   `Regular price for regular compute` + `discounted reservation for zone-redundant add-on`
+
+Carefully evaluate your compute needs and reservation strategy to optimize costs and ensure efficient resource allocation.
 
 ## Buy reservations
 
