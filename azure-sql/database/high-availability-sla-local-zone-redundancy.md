@@ -248,7 +248,7 @@ A failover can be initiated using PowerShell, REST API, or Azure CLI:
 | Deployment type | PowerShell | REST API | Azure CLI |
 | :--- | :--- | :--- | :--- |
 | Database | [Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover) | [Database failover](/rest/api/sql/databases/failover) | [az rest](/cli/azure/reference-index#az-rest) might be used to invoke a REST API call from Azure CLI |
-| Elastic pool | [Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover) | [Elastic pool failover](/javascript/api/@azure/arm-sql/elasticpools) | [az rest](/cli/azure/reference-index#az-rest) might be used to invoke a REST API call from Azure CLI |
+| Elastic pool | [Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover) | [Elastic pool failover](/rest/api/sql/elastic-pools/failover) | [az rest](/cli/azure/reference-index#az-rest) might be used to invoke a REST API call from Azure CLI |
 
 > [!IMPORTANT]  
 > The Failover command is not available for readable secondary replicas of Hyperscale databases.
