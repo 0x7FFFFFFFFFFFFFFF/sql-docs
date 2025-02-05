@@ -102,7 +102,7 @@ Invoke-WebRequest: Response status code does not indicate success: 401 (Unauthor
 For DPS:
 
 ```powershell
-Invoke-WebRequest san-af-<region>-prod.azurewebsites.net
+Invoke-WebRequest dataprocessingservice.<region>.arcdataservices.com
 ```
 
 A possible response status code is:
@@ -123,6 +123,10 @@ You can probe connectivity to all regions with the [test-connectivity.ps1](https
 
 ## Endpoint reference
 
+To connect to Azure, the endpoints use `*.arcdataservices.com`.
+
+### Additional background
+
 Beginning with [March, 12 2024](release-notes.md#march-12-2024), the Azure Extension for SQL Server uses the following endpoints:
 
 - DPS: `dataprocessingservice.<region>.arcdataservices.com`
@@ -130,16 +134,14 @@ Beginning with [March, 12 2024](release-notes.md#march-12-2024), the Azure Exten
 
 Replace `<region>` with the short name of the Azure region where the Arc machine resource is located. The short name is derived from the Azure region name without spaces and all lower case.
 
-For example, if your Arc machine resource is located in *East US 2* the short name of the region is `eastus2` and the telemetry endpoint is: 
+For example, if your Arc machine resource is located in *East US 2* the short name of the region is `eastus2` and the telemetry endpoint is:
 
 `telemetry.eastus2.arcdataservices.com`
 
-Up to and including the [February 13, 2024](release-notes.md#february-13-2024), The specific endpoints were:
+If your extension is older than March 11, 2024, it may use older endpoints. Update your extension to use the current endpoint.
 
-- DPS: `san-af-<region>-prod.azurewebsites.net`.
-- Telemetry `telemetry.<region>.arcdataservices.com`.
-
-Your extension continues to use these services until it is updated.
+> [!NOTE]
+> The endpoint values before `*.arcdataservices.com` are subject to change.
 
 ## Use an HTTPS proxy server for outbound connectivity
 
@@ -177,7 +179,7 @@ The following table shows some of the common DPS upload status values and what y
 |`Bad request`|400|Possible cause: The resource name (SQL Server instance or database name) doesn't conform to Azure resource naming conventions. For example, if the database name is a [reserved word](/azure/azure-resource-manager/troubleshooting/error-reserved-resource-name).|
 | `Unauthorized` | 401 | Likely cause: the extension is configured to send data through an HTTP proxy that requires authentication. Using an HTTP proxy that requires authentication is not currently supported. Use an unauthenticated HTTP proxy or no proxy.|
 | `Forbidden` | 403 | If the Azure Connected Machine agent is otherwise working as expected and this error doesn't resolve itself after a reboot, create a support case with Microsoft Support through the Azure portal.|
-| `NotFound` | 404 | The endpoint that the extension is trying to connect to doesn't exist. <br/><br/> To check which endpoint it is trying to connect to, search the logs for `dataprocessingservice` (or before March, 2024 `san-af`). This condition can happen if the Azure Connected Machine agent was deployed and connected to an Azure region in which the `Microsoft.AzureArcData` resource provider is not yet available. [Redeploy the Azure Connected Machine agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent) in a region that the `Microsoft.AzureArcData` resource provider for aSQL Server enabled by Azure Arc is available. See also [Region availability](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=azure-arc).<br/><br/> It is possible that the DNS resolver cache is not refreshed for your machine. To refresh: <br/> - On Windows run: `ipconfig /flushdns`</br> - On Linux (if `systemd` is being used) run: `sudo resolvectl flush-caches` |
+| `NotFound` | 404 | The endpoint that the extension is trying to connect to doesn't exist. <br/><br/> To check which endpoint it is trying to connect to, search the logs for `dataprocessingservice`. This condition can happen if the Azure Connected Machine agent was deployed and connected to an Azure region in which the `Microsoft.AzureArcData` resource provider is not yet available. [Redeploy the Azure Connected Machine agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent) in a region that the `Microsoft.AzureArcData` resource provider for aSQL Server enabled by Azure Arc is available. See also [Region availability](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=azure-arc).<br/><br/> It is possible that the DNS resolver cache is not refreshed for your machine. To refresh: <br/> - On Windows run: `ipconfig /flushdns`</br> - On Linux (if `systemd` is being used) run: `sudo resolvectl flush-caches` |
 | `Conflict` | 409 | Likely cause: temporary error happening inside of the DPS. If this does not resolve itself, create a support case with Microsoft Support through the Azure portal.|
 | `InternalServerError` | 500 | This is an error that is happening inside of the DPS. Create a support case with Microsoft Support through the Azure portal. |
 
