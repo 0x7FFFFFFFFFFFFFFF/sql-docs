@@ -210,7 +210,7 @@ Learn more about [the common causes for database to become inaccessible](/sql/re
 
 ### Blocked connectivity between SQL Managed Instance and Key Vault
 
-On SQL Managed Instance, network errors while trying to access TDE protector in Azure Key Vault might not cause the databases to change its state to *Inaccessible* but will render the instance unavailable afterwards. This happens mostly when the key vault resource exists but its endpoint can't be reached from the managed instance. All scenarios where the key vault endpoint can be reached but connection is denied, missing permissions, etc., will cause the databases to change its state to *Inaccessible*.
+To mitigate the impact of network errors or outages on SQL Managed Instance (for example, DNS server failures) while trying to access the TDE protector in Azure Key Vault, a 24 hour buffer has been introduced before the service attempts to move the database to an inaccessible state. If a failover occurs before reaching the inaccessible state, the database becomes unavailable due to the loss of the encryption cache. This happens mostly when the key vault resource exists but its endpoint can't be reached from the managed instance. All scenarios where the key vault endpoint can be reached but connection is denied, missing permissions, etc., will cause the databases to change its state to *Inaccessible*.
 
 The most common causes for lack of networking connectivity to Key Vault are:
 
