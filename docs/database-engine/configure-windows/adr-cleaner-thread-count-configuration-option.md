@@ -3,8 +3,8 @@ title: "Server configuration: ADR cleaner thread count"
 description: "Explains the SQL Server instance configuration setting for ADR cleaner thread count."
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: randolphwest
-ms.date: 12/04/2024
+ms.reviewer: randolphwest, dfurman
+ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -22,7 +22,7 @@ By default, this configuration setting is set to `1`. This means that the cleane
 If the cleaner performance is insufficient and you observe that PVS size is reduced too slowly or remains large, you can increase this configuration to make the cleaner multi-threaded.
 
 > [!IMPORTANT]
-> PVS cleanup might be slow or blocked due to workload activity. Before increasing this configuration value, review [Troubleshoot accelerated database recovery](../../relational-databases/accelerated-database-recovery-troubleshoot.md). If PVS cleanup is slow or blocked for one of the reasons mentioned in that article, follow the recommendations in the article instead of increasing the `ADR Cleaner Thread Count` configuration value.
+> PVS cleanup might be slow or blocked due to workload activity. Before increasing this configuration value, review [Monitor and troubleshoot accelerated database recovery](../../relational-databases/accelerated-database-recovery-troubleshoot.md). If PVS cleanup is slow or blocked for one of the reasons mentioned in that article, follow the recommendations in the article instead of increasing the `ADR Cleaner Thread Count` configuration value.
 
 ## Remarks
 
@@ -50,4 +50,4 @@ GO
 - [Server configuration options](server-configuration-options-sql-server.md)
 - [Accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md)
 - [Manage accelerated database recovery](../../relational-databases/accelerated-database-recovery-management.md)
-- [Troubleshoot accelerated database recovery](../../relational-databases/accelerated-database-recovery-troubleshoot.md)
+- [Monitor and troubleshoot accelerated database recovery](../../relational-databases/accelerated-database-recovery-troubleshoot.md)
