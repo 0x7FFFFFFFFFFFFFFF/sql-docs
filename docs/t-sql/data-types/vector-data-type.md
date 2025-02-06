@@ -16,6 +16,7 @@ helpviewer_keywords:
   - "vector, data type"
 dev_langs:
   - "TSQL"
+ms.collection: ce-skilling-ai-copilot
 monikerRange: "=azuresqldb-current||=fabric"
 ---
 # Vector data type (preview)

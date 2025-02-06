@@ -13,6 +13,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: "= azuresqldb-current"
+ms.collection: ce-skilling-ai-copilot
 ---
 
 # Vector functions (preview)
