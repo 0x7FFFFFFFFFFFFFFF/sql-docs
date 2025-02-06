@@ -387,8 +387,8 @@ public class ActiveDirectoryAuthenticationProvider
     public void SetIWin32WindowFunc(Func<IWin32Window> iWin32WindowFunc);
 
     // For .NET Standard targeted applications only
-    // Sets a reference to the ViewController (if using Xamarin.iOS), Activity
-    // (if using Xamarin.Android) IWin32Window, or IntPtr (if using .NET Framework). 
+    // Sets a reference to the ViewController (if using .NET for iOS), Activity
+    // (if using .NET for Android) IWin32Window, or IntPtr (if using .NET Framework). 
     // Used for invoking the browser for Active Directory Interactive authentication.
     public void SetParentActivityOrWindowFunc(Func<object> parentActivityOrWindowFunc);
 
