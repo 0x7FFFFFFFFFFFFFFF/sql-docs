@@ -179,7 +179,7 @@ To avoid issues while establishing or during geo-replication, when automatic rot
 When TDE is configured to use a customer-managed key, continuous access to the TDE protector is required for the database to stay online. If the server loses access to the customer-managed TDE protector in AKV, in up to 10 minutes a database starts denying all connections with the corresponding error message and change its state to *Inaccessible*. The only action allowed on a database in the Inaccessible state is deleting it.
 
 > [!NOTE]  
-> If the database is inaccessible due to an intermittent networking outage, there's no action required and the databases will come back online automatically.
+> If the database is inaccessible due to an intermittent networking outage, there's no action required and the databases will come back online automatically. To mitigate the impact of network errors or outages while trying to access the TDE protector in Azure Key Vault, a 24 hour buffer has been introduced before the service attempts to move the database to an inaccessible state. If a failover occurs before reaching the inaccessible state, the database becomes unavailable due to the loss of the encryption cache.
 
 After access to the key is restored, taking database back online requires extra time and steps, which might vary based on the time elapsed without access to the key and the size of the data in the database:
 
@@ -210,7 +210,7 @@ Learn more about [the common causes for database to become inaccessible](/sql/re
 
 ### Blocked connectivity between SQL Managed Instance and Key Vault
 
-To mitigate the impact of network errors or outages on SQL Managed Instance (for example, DNS server failures) while trying to access the TDE protector in Azure Key Vault, a 24 hour buffer has been introduced before the service attempts to move the database to an inaccessible state. If a failover occurs before reaching the inaccessible state, the database becomes unavailable due to the loss of the encryption cache. This happens mostly when the key vault resource exists but its endpoint can't be reached from the managed instance. All scenarios where the key vault endpoint can be reached but connection is denied, missing permissions, etc., will cause the databases to change its state to *Inaccessible*.
+The network connectivity block between SQL Managed Instance and key vault happens mostly when the key vault resource exists but its endpoint can't be reached from the managed instance. All scenarios where the key vault endpoint can be reached but connection is denied, missing permissions, etc., will cause the databases to change its state to *Inaccessible*.
 
 The most common causes for lack of networking connectivity to Key Vault are:
 
