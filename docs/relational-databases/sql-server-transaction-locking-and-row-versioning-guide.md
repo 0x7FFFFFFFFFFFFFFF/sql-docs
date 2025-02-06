@@ -1209,15 +1209,15 @@ Decreasing the [fill factor](indexes/specify-fill-factor-for-an-index.md) might 
 
 When ADR is enabled, row versions can be stored in persistent version store (PVS) in one of the following ways, depending on the size of the row prior to modification:
 
-- If the size is small, the entire old row version is stored as part of the modified row.
-- If the size is intermediate, the difference between the old row version and the modified row is stored as part of the modified row. The difference is constructed in a way that lets the database engine reconstruct the entire old row version if needed.
+- If the size is small, the entire old row version is stored as a part of the modified row.
+- If the size is intermediate, the difference between the old row version and the modified row is stored as a part of the modified row. The difference is constructed in a way that lets the database engine reconstruct the entire old row version if needed.
 - If the size is large, the entire old row version is stored in a separate internal table.
 
-The first two methods are called **in-row** version storage. The last method is called **off-row** version storage. When in-row and off-row row versions are no longer needed, they are removed to free up the space on pages.
+The first two methods are called **in-row** version storage. The last method is called **off-row** version storage. When in-row versions are no longer needed, they are removed to free up space on pages. Similarly, pages in the internal table containing no longer needed off-row versions are removed by the version cleaner.
 
 Storing row versions as part of the row optimizes data retrieval by transactions that need to read row versions. If a version is stored in-row, a separate read of an off-row PVS page is not required.
 
-The [sys.dm_db_index_physical_stats](./system-dynamic-management-views/sys-dm-db-index-physical-stats-transact-sql.md) DMV provides the number and type of versions stored in-row and off-row for a partition of an index. The total size of version data stored in-row on index pages is reported in the `total_inrow_version_payload_size_in_bytes` column.
+The [sys.dm_db_index_physical_stats](./system-dynamic-management-views/sys-dm-db-index-physical-stats-transact-sql.md) DMV provides the number and type of versions stored in-row and off-row for a partition of an index. The total size of version data stored in-row is reported in the `total_inrow_version_payload_size_in_bytes` column.
 
 The size of the off-row version storage is reported in the `persistent_version_store_size_kb` column in the [sys.dm_tran_persistent_version_store_stats](./system-dynamic-management-views/sys-dm-tran-persistent-version-store-stats.md) DMV.
 

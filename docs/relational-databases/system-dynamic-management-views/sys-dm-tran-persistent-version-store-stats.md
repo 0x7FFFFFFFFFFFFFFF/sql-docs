@@ -32,7 +32,7 @@ Returns information for accelerated database recovery (ADR) persistent version s
 |:--|:--|:--|
 | `database_id` | **int** | The `database_id` of this row.<br /><br />In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], the values are unique within a single database or an elastic pool, but not within a logical server. |
 | `pvs_filegroup_id` | **smallint** | The filegroup that hosts PVS version store. |
-| `persistent_version_store_size_kb` | **bigint** | The size of off-row versions in PVS, in kilobytes. Does not include the size of row versions stored in-row. For more information, see [Space used by the persistent version store (PVS)](../../relational-databases/sql-server-transaction-locking-and-row-versioning-guide.md#space-used-by-the-persistent-version-store-pvs). |
+| `persistent_version_store_size_kb` | **bigint** | The size of the off-row versions in PVS, in kilobytes. Does not include the size of row versions stored in-row. For more information, see [Space used by the persistent version store (PVS)](../../relational-databases/sql-server-transaction-locking-and-row-versioning-guide.md#space-used-by-the-persistent-version-store-pvs). |
 | `online_index_version_store_size_kb` | **bigint** | The size of a special version store size used during online index rebuild, in kilobytes. |
 | `current_aborted_transaction_count` | **bigint** | The number of aborted transactions in the database. For more details, see `sys.dm_tran_aborted_transactions`. |
 | `oldest_active_transaction_id` | **bigint** | The transaction ID of the oldest active transaction. |
