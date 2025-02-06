@@ -93,7 +93,7 @@ CREATE REMOTE TABLE { database_name.schema_name.table_name | schema_name.table_n
 
 #### SELECT <select_criteria>
 
- The query predicate that specifies which data will populate the new remote table. For information on the SELECT statement, see [SELECT (Transact-SQL)](../queries/select-transact-sql.md).  
+ The query predicate that specifies which data populate the new remote table. For information on the SELECT statement, see [SELECT (Transact-SQL)](../queries/select-transact-sql.md).  
 
 ## Permissions
 
@@ -115,23 +115,23 @@ CREATE REMOTE TABLE { database_name.schema_name.table_name | schema_name.table_n
 
 -   TCP is the default and only supported protocol for connecting to a remote server.  
 
--   The destination server must be a nonappliance server. CREATE REMOTE TABLE cannot be used to copy data from one appliance to another.  
+-   The destination server must be a nonappliance server. `CREATE REMOTE TABLE` cannot be used to copy data from one appliance to another.  
 
--   The CREATE REMOTE TABLE statement only creates new tables. Therefore, the new table cannot already exist. The remote database and schema must already exist.  
+-   The `CREATE REMOTE TABLE` statement only creates new tables. Therefore, the new table cannot already exist. The remote database and schema must already exist.  
 
 -   The remote server must have space available to store the data that is transferred from the appliance to the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] remote database.  
 
  **SELECT statement**:  
 
--   The ORDER BY and TOP clauses are not supported in the select criteria.  
+-   The `ORDER BY` and `TOP` clauses are not supported in the select criteria.  
 
--   CREATE REMOTE TABLE cannot be run inside an active transaction or when the AUTOCOMMIT OFF setting is active for the session.  
+-   `CREATE REMOTE TABLE` cannot be run inside an active transaction or when the AUTOCOMMIT OFF setting is active for the session.  
 
  [SET ROWCOUNT (Transact-SQL)](set-rowcount-transact-sql.md) has no effect on this statement. To achieve a similar behavior, use [TOP (Transact-SQL)](../queries/top-transact-sql.md).  
 
 ## Locking behavior
 
- After creating the remote table, the destination table is not locked until the copy starts. Therefore, it is possible for another process to delete the remote table after it is created and before the copy starts. When this occurs, [!INCLUDE [ssPDW](../../includes/sspdw-md.md)] generates an error and the copy fails.  
+ After you create the remote table, the destination table is not locked until the copy starts. Therefore, it is possible for another process to delete the remote table after it is created and before the copy starts. When this occurs, [!INCLUDE [ssPDW](../../includes/sspdw-md.md)] generates an error and the copy fails.  
 
 ## Metadata
 
@@ -139,13 +139,13 @@ CREATE REMOTE TABLE { database_name.schema_name.table_name | schema_name.table_n
 
 ## Security
 
- CREATE REMOTE TABLE uses [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Authentication to connect to the remote [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance; it does not use Windows Authentication.  
+ `CREATE REMOTE TABLE` uses [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Authentication to connect to the remote [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance; it does not use Windows Authentication.  
 
  The [!INCLUDE [ssPDW](../../includes/sspdw-md.md)] external facing network must be firewalled, with exception of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ports, administrative ports, and management ports.  
 
  To help prevent accidental data loss or corruption, the user account that is used to copy from the appliance to the destination database should have only the minimum required permissions on the destination database.  
 
- Connection settings allow you to connect to the SMP [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance with SSL protecting user name and password data, but with actual data being sent unencrypted in clear text. When this occurs, a malicious user could intercept the CREATE REMOTE TABLE statement text, which contains the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] user name and password to sign in to the SMP [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance. To avoid this risk, use data encryption on the connection to the SMP [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance.  
+ Connection settings allow you to connect to the SMP [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance with SSL protecting user name and password data, but with actual data being sent unencrypted in clear text. When this occurs, a malicious user could intercept the `CREATE REMOTE TABLE` statement text, which contains the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] user name and password to sign in to the SMP [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance. To avoid this risk, use data encryption on the connection to the SMP [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance.  
 
 ## Examples
 
@@ -173,7 +173,7 @@ WHERE type = 'PARALLEL_COPY_READER';
 <a id="c-using-a-query-join-hint-with-create-remote-table"></a>
 
 ### C. Use a query join hint with CREATE REMOTE TABLE
- This query shows the basic syntax for using a query join hint with CREATE REMOTE TABLE. After the query is submitted to the Control node, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], running on the Compute nodes, will apply the hash join strategy when generating the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] query plan. For more information on join hints and how to use the OPTION clause, see [OPTION clause (Transact-SQL)](../queries/option-clause-transact-sql.md).  
+ This query shows the basic syntax for using a query join hint with `CREATE REMOTE TABLE`. After the query is submitted to the Control node, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], running on the Compute nodes, will apply the hash join strategy when generating the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] query plan. For more information on join hints and how to use the OPTION clause, see [OPTION clause (Transact-SQL)](../queries/option-clause-transact-sql.md).  
 
 ```sql
 USE ssawPDW;  
