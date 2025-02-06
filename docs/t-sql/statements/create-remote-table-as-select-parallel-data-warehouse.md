@@ -30,7 +30,7 @@ CREATE REMOTE TABLE { database_name.schema_name.table_name | schema_name.table_n
 [;]  
   
 <connection_string> ::=   
-    Data Source = { IP_address | hostname } [, port ]; User ID = user_name ;Password = password;  
+    Data Source = { IP_address | hostname } [, port ]; User ID = user_name ;Password = strong_password;  
   
 <select_statement> ::=  
     [ WITH <common_table_expression> [ ,...n ] ]  
@@ -132,11 +132,11 @@ CREATE REMOTE TABLE { database_name.schema_name.table_name | schema_name.table_n
 ## <a id="Examples"></a> Examples
   
 ### <a id="a-creating-a-remote-table"></a> A. Create a remote table
- This example creates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] SMP remote table called `MyOrdersTable` on database `OrderReporting` and schema `Orders`. The `OrderReporting` database is on a server named `SQLA` that listens on the default port 1433. The connection to the server uses the credentials of the user `David`, whose password is `e4n8@3`.  
+ This example creates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] SMP remote table called `MyOrdersTable` on database `OrderReporting` and schema `Orders`. The `OrderReporting` database is on a server named `SQLA` that listens on the default port 1433. Provider your own `<user name>` and `<strong password>`. 
   
 ```sql  
 CREATE REMOTE TABLE OrderReporting.Orders.MyOrdersTable  
-AT ( 'Data Source = SQLA, 1433; User ID = David; Password = e4n8@3;' )  
+AT ( 'Data Source = SQLA, 1433; User ID = <user name>; Password = <strong password>;' )  
 AS SELECT <select_criteria>;  
 ```  
   
@@ -154,7 +154,7 @@ WHERE type = 'PARALLEL_COPY_READER';
 ```sql  
 USE ssawPDW;  
 CREATE REMOTE TABLE OrderReporting.Orders.MyOrdersTable  
-AT ( 'Data Source = SQLA, 1433; User ID = David; Password = e4n8@3;' )  
+AT ( 'Data Source = SQLA, 1433; User ID = <user name>; Password = <strong password>;' )  
     AS SELECT T1.* FROM OrderReporting.Orders.MyOrdersTable T1   
     JOIN OrderReporting.Orders.Customer T2  
     ON T1.CustomerID=T2.CustomerID OPTION (HASH JOIN);  
