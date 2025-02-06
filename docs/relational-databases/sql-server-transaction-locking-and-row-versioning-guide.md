@@ -4,7 +4,7 @@ description: "Transaction locking and row versioning guide"
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, wiassaf
-ms.date: 01/28/2025
+ms.date: 02/05/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -1049,11 +1049,11 @@ Row versioning is a general framework in [!INCLUDE [ssNoVersion](../includes/ssn
   - A new implementation of the `READ COMMITTED` isolation level that uses row versioning to provide statement-level read consistency.
   - A new isolation level, `SNAPSHOT`, to provide transaction-level read consistency.
 
-Row versions are stored in a version store. If [Accelerated Database Recovery](accelerated-database-recovery-concepts.md) is enabled on a database, the version store is created in that database. Otherwise, the version store is created in the `tempdb` database.
+Row versions are stored in a version store. If [accelerated database recovery (ADR)](accelerated-database-recovery-concepts.md) is enabled on a database, the version store is created in that database. Otherwise, the version store is created in the `tempdb` database.
 
 The database must have enough space for the version store. When the version store is in `tempdb`, and the `tempdb` database is full, update operations stop generating versions but continue to succeed, but read operations might fail because a particular row version that is needed does not exists. This affects operations like triggers, MARS, and online indexing.
 
-When Accelerated Database Recovery is used and the version store is full, read operations continue to succeed but write operations that generate versions, such as `UPDATE` and `DELETE` fail. `INSERT` operations continue to succeed if the database has sufficient space.
+When ADR is used and the version store is full, read operations continue to succeed but write operations that generate versions, such as `UPDATE` and `DELETE` fail. `INSERT` operations continue to succeed if the database has sufficient space.
 
 Using row versioning for `READ COMMITTED` and `SNAPSHOT` transactions is a two-step process:
 
@@ -1163,7 +1163,7 @@ Row versioning-based isolation levels increase the resources needed by data modi
 
 #### Space used in tempdb
 
-For each instance of the [!INCLUDE [Database Engine](../includes/ssde-md.md)], the version store must have enough space to hold the row versions. The database administrator must ensure that `tempdb` and other databases (if Accelerated Database Recovery is enabled) have ample space to support the version store. There are two types of version stores:
+For each instance of the [!INCLUDE [Database Engine](../includes/ssde-md.md)], the version store must have enough space to hold the row versions. The database administrator must ensure that `tempdb` and other databases (if ADR is enabled) have ample space to support the version store. There are two types of version stores:
 
 - The online index build version store is used for online index builds.
 - The common version store is used for all other data modification operations.
@@ -1199,11 +1199,27 @@ If the version store is in `tempdb`, these 14 bytes are removed from the databas
 - MARS isn't being used.
 - Online index build operations are not currently running.
 
-The 14 bytes are also removed when a row is modified if Accelerated Database Recovery is no longer enabled and the above conditions are satisfied.
+The 14 bytes are also removed when a row is modified if ADR is no longer enabled and the above conditions are satisfied.
 
 If you use any of the row versioning features, you might need to allocate additional disk space for the database to accommodate the 14 bytes per database row. Adding the row versioning information can cause index page splits or the allocation of a new data page if there isn't enough space available on the current page. For example, if the average row length is 100 bytes, the additional 14 bytes cause an existing table to grow up to 14 percent.
 
 Decreasing the [fill factor](indexes/specify-fill-factor-for-an-index.md) might help to prevent or decrease fragmentation of index pages. To view current page density information for the data and indexes of a table or view, you can use [sys.dm_db_index_physical_stats](../relational-databases/system-dynamic-management-views/sys-dm-db-index-physical-stats-transact-sql.md).
+
+#### Space used by the persistent version store (PVS)
+
+When ADR is enabled, row versions can be stored in persistent version store (PVS) in one of the following ways, depending on the size of the row prior to modification:
+
+- If the size is small, the entire old row version is stored as a part of the modified row.
+- If the size is intermediate, the difference between the old row version and the modified row is stored as a part of the modified row. The difference is constructed in a way that lets the database engine reconstruct the entire old row version if needed.
+- If the size is large, the entire old row version is stored in a separate internal table.
+
+The first two methods are called **in-row** version storage. The last method is called **off-row** version storage. When in-row versions are no longer needed, they are removed to free up space on pages. Similarly, pages in the internal table containing no longer needed off-row versions are removed by the version cleaner.
+
+Storing row versions as part of the row optimizes data retrieval by transactions that need to read row versions. If a version is stored in-row, a separate read of an off-row PVS page is not required.
+
+The [sys.dm_db_index_physical_stats](./system-dynamic-management-views/sys-dm-db-index-physical-stats-transact-sql.md) DMV provides the number and type of versions stored in-row and off-row for a partition of an index. The total size of version data stored in-row is reported in the `total_inrow_version_payload_size_in_bytes` column.
+
+The size of the off-row version storage is reported in the `persistent_version_store_size_kb` column in the [sys.dm_tran_persistent_version_store_stats](./system-dynamic-management-views/sys-dm-tran-persistent-version-store-stats.md) DMV.
 
 #### Space used in large objects
 
@@ -1247,7 +1263,7 @@ The following DMVs provide information about the current system state of `tempdb
 
 - `sys.dm_tran_current_snapshot`. Returns a virtual table that displays all active transactions at the time the current snapshot isolation transaction starts. If the current transaction is using snapshot isolation, this function returns no rows. The DMV `sys.dm_tran_current_snapshot` is similar to `sys.dm_tran_transactions_snapshot`, except that it returns only the active transactions for the current snapshot. For more information, see [sys.dm_tran_current_snapshot (Transact-SQL)](../relational-databases/system-dynamic-management-views/sys-dm-tran-current-snapshot-transact-sql.md).
 
-- `sys.dm_tran_persistent_version_store_stats`. Returns statistics for the persistent version store in each database used when Accelerated Database Recovery is enabled. For more information, see [sys.dm_tran_persistent_version_store_stats (Transact-SQL)](../relational-databases/system-dynamic-management-views/sys-dm-tran-persistent-version-store-stats.md).
+- `sys.dm_tran_persistent_version_store_stats`. Returns statistics for the persistent version store in each database used when accelerated database recovery is enabled. For more information, see [sys.dm_tran_persistent_version_store_stats (Transact-SQL)](../relational-databases/system-dynamic-management-views/sys-dm-tran-persistent-version-store-stats.md).
 
 ##### Performance counters
 

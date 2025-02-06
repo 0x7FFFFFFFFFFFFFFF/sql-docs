@@ -9,6 +9,7 @@ ms.service: sql
 ms.topic: conceptual
 ms.custom:
   - intro-quickstart
+ms.collection: ce-skilling-ai-copilot
 helpviewer_keywords:
   - "Vectors"
   - "Vectors, built-in support"
