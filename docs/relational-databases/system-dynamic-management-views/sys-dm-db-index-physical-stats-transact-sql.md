@@ -4,7 +4,7 @@ description: Returns size and fragmentation information for the data and indexes
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dfurman
-ms.date: 02/03/2025
+ms.date: 02/05/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -115,7 +115,7 @@ The name of the mode. *mode* specifies the scan level that is used to obtain sta
 | `inrow_diff_version_record_count` | **bigint** | Count of ADR version records kept in the form of differences from the base version.<br /><br />**Applies to:** [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] |
 | `total_inrow_version_payload_size_in_bytes` | **bigint** | Total size in bytes of the in-row version records for this index.<br /><br />**Applies to:** [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] |
 | `offrow_regular_version_record_count` | **bigint** | Count of version records being kept outside the original data row.<br /><br />**Applies to:** [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] |
-| `offrow_long_term_version_record_count` | **bigint** | Count of version records considered long term.<br /><br />**Applies to:** [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] |
+| `offrow_long_term_version_record_count` | **bigint** | Count of version records in the online index version store.<br /><br />**Applies to:** [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] |
 
 [!INCLUDE [sql-b-tree](../../includes/sql-b-tree.md)]
 
