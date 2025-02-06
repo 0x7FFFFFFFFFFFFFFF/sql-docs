@@ -4,7 +4,7 @@ description: "Learn about accelerated database recovery (ADR), which redesigned 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, derekw, randolphwest, dfurman
-ms.date: 02/03/2025
+ms.date: 02/05/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: conceptual
@@ -91,7 +91,7 @@ The ADR recovery process has the same three phases as the traditional recovery p
 
   The process remains the same as the traditional recovery model with the addition of reconstructing the secondary log stream (SLOG) and copying log records for nonversioned operations.
   
-- **Redo** phase
+- **Redo phase**
 
   Broken into two subphases
 
@@ -118,6 +118,8 @@ The four key components of ADR are:
 - **Persistent version store (PVS)**
 
   The persistent version store (PVS) is a database engine mechanism for persisting row versions in the database itself instead of in the traditional version store in the `tempdb` database. PVS enables resource isolation and improves availability of readable secondaries.
+
+  PVS stores row versions either directly on data pages being modified, or in a separate system table. For more information, see [Space used by the persistent version store (PVS)](sql-server-transaction-locking-and-row-versioning-guide.md#space-used-by-the-persistent-version-store-pvs).
 
 - **Logical revert**
 
