@@ -18,9 +18,11 @@ An Always On availability group is an enterprise level high availability and dis
 - [View list of availability groups and status](#view-list-of-availability-groups-and-status)
 - [Failover](#failover)
 
-## Prerequisites
+## Prerequisite
 
-- You have a [Contributor role](/azure/role-based-access-control/built-in-roles#contributor) or a [Custom role](/azure/role-based-access-control/custom-roles) with `Microsoft.AzureArcData/SqlServerInstances/AvailabilityGroups` permissions in at least one of the Azure subscriptions that your organization created. [Learn how to create a new subscription](/azure/cloud-adoption-framework/ready/azure-best-practices/initial-subscriptions).
+You have a [Contributor role](/azure/role-based-access-control/built-in-roles#contributor) or a [Custom role](/azure/role-based-access-control/custom-roles) with `Microsoft.AzureArcData/SqlServerInstances/AvailabilityGroups` permissions in at least one of the Azure subscriptions that your organization created. 
+
+[Learn how to create a new subscription](/azure/cloud-adoption-framework/ready/azure-best-practices/initial-subscriptions).
 
 ## View list of availability groups and status
 
