@@ -20,7 +20,6 @@ The `TRUSTWORTHY` database property is used to indicate whether the instance of 
 > [!NOTE]  
 > To set this option, you must have `CONTROL SERVER` permission, or be a member of the **sysadmin** fixed server role.
 
-
 We recommend that you leave the `TRUSTWORTHY` database property set to OFF to mitigate certain threats that can exist as a result of attaching a database that contains one of the following objects:
 
 - Malicious assemblies with an EXTERNAL_ACCESS or UNSAFE permission setting. For more information, see [CLR Integration Security](../../relational-databases/clr-integration/security/clr-integration-security.md).
