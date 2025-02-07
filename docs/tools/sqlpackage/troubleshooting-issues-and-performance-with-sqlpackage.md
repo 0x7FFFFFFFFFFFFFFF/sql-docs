@@ -143,9 +143,6 @@ A parameter for SqlPackage is available on all commands, `/ThreadMaxStackSize:`,
 
 When using the `/ThreadMaxStackSize:` parameter, it's recommended to tune repeated operations to the lowest value that resolves the stack overflow exception if performance impact is noted. The value of the parameter is in megabytes (MB), example values for testing as a workaround include 10 and 100.
 
-## Diagnostics
-
-
 ## Import action tips
 
 For imports that contain large tables or tables with many indexes, the use of `/p:RebuildIndexesOfflineForDataPhase=True` or `/p:DisableIndexesForDataPhase=False` can improve performance. These properties modify the index rebuild operation to occur offline or not occur, respectively. Those and other properties are available to tune the [SqlPackage Import](sqlpackage-import.md) operation.
