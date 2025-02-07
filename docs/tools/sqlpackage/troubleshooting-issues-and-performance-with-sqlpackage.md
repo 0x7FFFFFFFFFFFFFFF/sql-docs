@@ -4,7 +4,7 @@ description: Learn how to troubleshoot with SqlPackage.
 author: "dzsquared"
 ms.author: "drskwier"
 ms.reviewer: "maghan"
-ms.date: 05/31/2024
+ms.date: 02/07/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: conceptual
@@ -44,9 +44,19 @@ For Export, an example command is:
 
 Alternative to username and password, [multifactor authentication](/azure/azure-sql/database/authentication-mfa-ssms-overview) can be used to authenticate via Microsoft Entra authentication (formerly Azure Active Directory) with multifactor authentication. Substitute the username and password parameters for `/ua:true` and `/tid:"yourdomain.onmicrosoft.com"`.
 
-### Diagnostic package
+### Diagnostics
 
-In SqlPackage [162.5](release-notes-sqlpackage.md#162557-sqlpackage) and later, a diagnostic package can be generated to assist in troubleshooting. The diagnostic package contains the SqlPackage version, the command executed, and the output of the command. To generate a diagnostic package, use the `/DiagnosticsFile:<filename>` parameter.
+Diagnosing errors and unexpected behavior in SqlPackage is supported by diagnostic logs and a diagnostic package. The diagnostic logs are essential to troubleshooting and are captured to a file with the `/DiagnosticsFile:<filename>` parameter.
+
+The level of detail in diagnostic output is controlled through the `/DiagnosticsLevel` parameter. Values of `Information` and `Verbose` are useful in obtaining more details.
+
+Performance-related trace data can be logged by setting the environment variable `DACFX_PERF_TRACE=true` before running SqlPackage. The trace data increases the log output, so only include when diagnosing performance challenges. To set this environment variable in PowerShell, use the following command:
+
+``` powershell
+Set-Item -Path Env:DACFX_PERF_TRACE -Value true
+```
+
+In SqlPackage [162.5](release-notes-sqlpackage.md#162557-sqlpackage) and later, a diagnostic package can be generated to assist in troubleshooting. The diagnostic package contains the SqlPackage version, the command executed, information about the source and target database models, and the output of the command. To generate a diagnostic package, use the `//DiagnosticsPackageFile:<filename>` parameter.
 
 ## Common issues
 
@@ -135,13 +145,6 @@ When using the `/ThreadMaxStackSize:` parameter, it's recommended to tune repeat
 
 ## Diagnostics
 
-Logs are essential to troubleshooting. Capture the diagnostic logs to a file with the `/DiagnosticsFile:<filename>` parameter.
-
-More performance-related trace data can be logged by setting the environment variable `DACFX_PERF_TRACE=true` before running SqlPackage. To set this environment variable in PowerShell, use the following command:
-
-``` powershell
-Set-Item -Path Env:DACFX_PERF_TRACE -Value true
-```
 
 ## Import action tips
 
