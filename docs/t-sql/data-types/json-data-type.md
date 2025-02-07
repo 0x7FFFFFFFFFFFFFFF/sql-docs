@@ -4,7 +4,7 @@ description: The native JSON data type provides advantages for storing JSON data
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest, jovanpop
-ms.date: 01/22/2025
+ms.date: 02/07/2025
 ms.service: sql
 ms.topic: reference
 ms.custom:
@@ -59,7 +59,7 @@ JSON function support was first introduced in [!INCLUDE [sssql16-md](../../inclu
 **json** is available under all database compatibility levels.
 
 > [!NOTE]  
-> The [JSON data type](../../t-sql/data-types/json-data-type.md) is currently in preview for Azure SQL Database and Azure SQL Managed Instance (configured with the [**Always-up-to-date** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)). 
+> The [JSON data type](../../t-sql/data-types/json-data-type.md) is currently in preview for Azure SQL Database and Azure SQL Managed Instance configured with the [**Always-up-to-date** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy). It's not available in Azure SQL Managed Instance configured with the [**SQL Server 2022** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).
 
 ## Function support
 
