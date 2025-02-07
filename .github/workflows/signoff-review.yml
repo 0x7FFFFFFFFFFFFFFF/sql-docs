@@ -405,6 +405,22 @@ jobs:
                          
                             Write-Host "Comment not sign off."
 
+                            # Get the list of files on the PR.
+                            $PrFiles = Invoke-RestMethod -Method GET -Headers $GitHubHeaders -Uri "$PrUrl/files"
+
+                            Write-Host "Checking for monitored folders in PR"
+
+                            # Check to see if any files in the PR exist in one or more monitored branches. Only a single
+                            # file needs to be in a monitored branch for the workflow to block the PR.
+                            $MonitoredFoldersFound = Test-MonitoredFolders -PrFileList $PrFiles -MonitoredFolderList $MonitoredFolders
+                        
+                            Write-Host "Monitored folders found: $MonitoredFoldersFound"
+
+                            # If a monitored folder is found, add the review label and fail the check.
+                            If (-not $MonitoredFoldersFound) {
+                                $Status.state = "success"
+                                $Status.description = "No monitored folders. Allowing sign off." 
+                            }
                         }
 
                   # This section, if uncommented along with the "pull_request_target" event up in the workflow definition, is uncommented, will cause the PR to set the
