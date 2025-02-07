@@ -56,7 +56,7 @@ Performance-related trace data can be logged by setting the environment variable
 Set-Item -Path Env:DACFX_PERF_TRACE -Value true
 ```
 
-In SqlPackage [162.5](release-notes-sqlpackage.md#162557-sqlpackage) and later, a diagnostic package can be generated to assist in troubleshooting. The diagnostic package contains the SqlPackage version, the command executed, information about the source and target database models, and the output of the command. To generate a diagnostic package, use the `//DiagnosticsPackageFile:<filename>` parameter.
+In SqlPackage [162.5](release-notes-sqlpackage.md#162557-sqlpackage) and later, a diagnostic package can be generated to assist in troubleshooting. The diagnostic package contains the SqlPackage version, the command executed, information about the source and target database models, and the output of the command. To generate a diagnostic package, use the `/DiagnosticsPackageFile:<filename>` parameter.
 
 ## Common issues
 
