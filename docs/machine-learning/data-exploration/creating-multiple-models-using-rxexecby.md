@@ -29,7 +29,7 @@ The rxExecBy function in RevoScaleR is designed for high-volume parallel process
 1. You call the rxExecBy function as part of your R code, and pass a dataset of unordered data.
 2. Specify the partition by which the data should be grouped and sorted.
 3. Define a transformation or modeling function that should be applied to each data partition
-4. When the function executes, the data queries are processed in parallel if your environment supports it. Moreover, the modeling or transformation tasks are distributed among individual cores and executed in parallel. Supported compute context for thee operations include RxSpark and RxInSQLServer.
+4. When the function executes, the data queries are processed in parallel if your environment supports it. Moreover, the modeling or transformation tasks are distributed among individual cores and executed in parallel. Supported compute context for the operations include RxSpark and RxInSQLServer.
 5. Multiple results are returned.
 
 ## rxExecBy syntax and examples
