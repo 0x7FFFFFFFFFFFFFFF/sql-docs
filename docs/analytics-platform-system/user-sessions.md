@@ -11,13 +11,12 @@ ms.topic: conceptual
 ---
 
 # User Sessions in Analytics Platform System
+
 A login with the appropriate permissions can manage the sessions of all logins on a SQL Server PDW appliance, including performing these actions:  
   
--   View the current sessions on the appliance, including both active and idle sessions.  
-  
--   View the active and recent queries for a session.  
-  
--   End active sessions.  
+- View the current sessions on the appliance, including both active and idle sessions.  
+- View the active and recent queries for a session.  
+- End active sessions.  
   
 These actions can be performed by using either the [Monitor the Appliance by Using the Admin Console](monitor-the-appliance-by-using-the-admin-console.md) or [System Views](tsql-system-views.md) through SQL commands, as shown below.  
   
