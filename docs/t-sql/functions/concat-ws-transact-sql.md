@@ -4,7 +4,7 @@ description: This function returns a string resulting from the concatenation, or
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 09/22/2023
+ms.date: 02/06/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -99,10 +99,12 @@ Address
 
 ### C. Generate CSV-formatted data from table
 
-This example uses a comma separator value (`,`), and adds the carriage return character `CHAR(13)` in the column separated values format of the result set.
+This example uses a comma separator value (`,`), and adds the carriage return character `CHAR(13)` in the comma-separated values format of the result set.
 
 ```sql
-SELECT STRING_AGG(CONCAT_WS(',', database_id, recovery_model_desc, containment_desc), CHAR(13)) AS DatabaseInfo
+SELECT STRING_AGG(
+    CONCAT_WS(',', database_id, recovery_model_desc, containment_desc), CHAR(13)
+) AS DatabaseInfo
 FROM sys.databases;
 ```
 
@@ -121,9 +123,8 @@ DatabaseInfo
 
 ```sql
 SELECT STRING_AGG(
-    CONCAT_WS(',', database_id, ISNULL(recovery_model_desc, ''),
-    ISNULL(containment_desc, 'N/A')
-    ), CHAR(13)) AS DatabaseInfo
+    CONCAT_WS(',', database_id, ISNULL(recovery_model_desc, ''), ISNULL(containment_desc, 'N/A')), CHAR(13)
+) AS DatabaseInfo
 FROM sys.databases;
 ```
 

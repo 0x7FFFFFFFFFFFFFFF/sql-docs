@@ -5,7 +5,7 @@ description: Setup and configuration details for database watcher
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf
-ms.date: 01/14/2024
+ms.date: 02/07/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: how-to
@@ -55,7 +55,7 @@ To use database watcher, the following prerequisites are required.
 
 - The user who configures the watcher must have administrator access to the Azure SQL targets. An administrator grants the watcher limited, specific access to SQL monitoring targets. For more information, see [Grant access to targets](#grant-access-to-sql-targets).
 
-- To grant a watcher access to a SQL target, an administrator needs to execute T-SQL scripts using [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms), [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio), or Visual Studio Code with the [SQL server mssql](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) extension.
+- To grant a watcher access to a SQL target, an administrator needs to execute T-SQL scripts using [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms), Visual Studio Code with the [SQL server mssql](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) extension, or other SQL client tools.
 
 - To use [Azure Private Link](/azure/private-link/private-link-overview) for private connectivity to Azure resources, the user who approves the private endpoint must be a member of the **Owner** RBAC role, or must have the required RBAC permissions. For more information, see [Approval RBAC for private endpoint](/azure/private-link/rbac-permissions#approval-rbac-for-private-endpoint).
 
@@ -302,7 +302,7 @@ To allow a watcher to collect SQL monitoring data, you need to execute a T-SQL s
     > [!IMPORTANT]
     > The Microsoft Entra authentication script in Azure portal is specific to a watcher because it includes the name of the managed identity of the watcher. For a generic version of this script that you can customize for each watcher, see [Grant access to SQL targets with T-SQL scripts](#grant-access-to-sql-targets-with-t-sql-scripts).
 
-1. In SQL Server Management Studio, Azure Data Studio, or any other SQL client tool, open a new query window and connect it to the `master` database on an Azure SQL logical server containing the target, or to the `master` database on a SQL managed instance target.
+1. In SQL Server Management Studio or any other SQL client tool, open a new query window and connect it to the `master` database on an Azure SQL logical server containing the target, or to the `master` database on a SQL managed instance target.
 
 1. Paste and execute the T-SQL script to grant access to the watcher. The script creates a login that the watcher uses to connect, and grants specific, limited permissions to collect monitoring data.
 
