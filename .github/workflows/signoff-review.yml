@@ -58,7 +58,7 @@ jobs:
                 $Status.Add("target_url", $StatusHelpUrl)
 
                 $SignOffString = "#sign-off"
-                $SignOffRegex = "(?m)^\s*$SignOffString\s*$"
+                $SignOffRegex = "\s*$SignOffString\s*"
 
                 $CheckFailed = $False
 
