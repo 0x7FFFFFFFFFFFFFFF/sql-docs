@@ -28,7 +28,7 @@ monikerRange: "=azuresqldb-current || =fabric"
 Returns information about backups of a database in an [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] logical server and in [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
 
 > [!NOTE]  
-> The `sys.dm_database_backups` DMV is currently in preview and is available for all Azure SQL Database service tiers except Hyperscale tier.
+> The `sys.dm_database_backups` DMV is currently in preview and is available for all Azure SQL Database service tiers except the Hyperscale tier. Since the Hyperscale service tier relies on snapshots for backups, running this DMV in the Hyperscale service tier returns no results.
 
 | Column name | Data type | Description |
 | --- | --- | --- |
