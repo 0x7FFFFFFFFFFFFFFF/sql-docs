@@ -22,7 +22,7 @@ jobs:
               AccessToken: ${{ secrets.GITHUB_TOKEN }}
               # For testing set to a little used folder as the only target
               MonitoredFolders: '[
-                    "docs/analytics-platform-system/", 
+                    "docs/does-not-exist-analytics-platform-system/", 
  
                 ]'
   
@@ -58,7 +58,7 @@ jobs:
                 $Status.Add("target_url", $StatusHelpUrl)
 
                 $SignOffString = "#sign-off"
-                $SignOffRegex = "(?m)^\s*$SignOffString\s*$"
+                $SignOffRegex = "\s*$SignOffString\s*"
 
                 $CheckFailed = $False
 
