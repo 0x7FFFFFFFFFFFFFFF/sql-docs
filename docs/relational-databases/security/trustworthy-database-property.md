@@ -18,7 +18,8 @@ helpviewer_keywords:
 The `TRUSTWORTHY` database property is used to indicate whether the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] trusts the database and the contents within it. By default, this setting is OFF, but can be set to ON by using the `ALTER DATABASE` statement. For example: `ALTER DATABASE AdventureWorks2022 SET TRUSTWORTHY ON;`.
 
 > [!NOTE]  
-> To set this option, you must be a member of the **sysadmin** fixed server role or member of control server securable.
+> To set this option, you must have `CONTROL SERVER` permission, or be a member of the **sysadmin** fixed server role.
+
 
 We recommend that you leave the `TRUSTWORTHY` database property set to OFF to mitigate certain threats that can exist as a result of attaching a database that contains one of the following objects:
 
