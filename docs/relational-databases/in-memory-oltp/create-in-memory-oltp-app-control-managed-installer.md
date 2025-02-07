@@ -34,7 +34,7 @@ With AppLocker, WDAC App Control can be configured to trust files that are insta
 
 ### Example
 
-In this example, `sp_configure` is used to enable the Hekaton DLL generator option, which is called `external xtp dll gen util enabled`. A test database is created, along with a test database.
+In this example, `sp_configure` is used to enable the Hekaton DLL generator option, which is called `external xtp dll gen util enabled`. A test database is created, along with a test memory optimized table.
 
 1. Create a test database.
 
