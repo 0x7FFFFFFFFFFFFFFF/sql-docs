@@ -106,12 +106,23 @@ You can reduce the logical core count per NUMA node in an [Azure Virtual Machine
 
 The following tables describe how to reduce the logical core count on bare-metal instances of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
-On **Intel CPUs**, you can enable sub-NUMA clustering (SNC), formerly called Cluster-on-Die (CoD), resulting in two NUMA domains within a single physical socket.
+On third, fourth, and fifth generation **Intel Xeon CPUs**, you can enable sub-NUMA clustering (SNC), formerly called Cluster-on-Die (CoD), resulting in two NUMA domains within a single physical socket.
+
+> [!NOTE]  
+> Sixth generation Intel Xeon CPUs come with sub-NUMA clustering (SNC2 or SNC3) enabled by default. In some CPU models, the default SNC configuration could result in more than 64 logical processors per NUMA node. You should activate the Intel virtual NUMA feature in the BIOS/firmware, alongside SNC2 or SNC3, for these CPU models.
 
 | Configuration&nbsp;setting | Description |
 | --- | --- |
-| SNC disabled (default) | Disables sub-NUMA clustering. |
-| SNC enabled | Enables sub-NUMA clustering. |
+| SNC disabled <sup>1</sup> | Disables sub-NUMA clustering. |
+| SNC2 enabled <sup>2</sup> | Presents two NUMA nodes per socket. |
+| SNC3 enabled <sup>2</sup> | Presents three NUMA nodes per socket. |
+| Intel VirtualNuma enabled <sup>3</sup> | Creates multiple virtual nodes within a single physical NUMA node. |
+
+<sup>1</sup> Default for third, fourth, and fifth generation Intel CPUs.
+
+<sup>2</sup> Default for sixth generation Intel Xeon CPUs and later.
+
+<sup>3</sup> Only available on sixth generation Intel Xeon CPUs and later. Use this setting for high core count CPUs, where the number of logical processors per NUMA node exceeds 64 when using the SNC defaults.
 
 On **AMD CPUs**, you can enable various Nodes per Socket (NPS) options.
 
