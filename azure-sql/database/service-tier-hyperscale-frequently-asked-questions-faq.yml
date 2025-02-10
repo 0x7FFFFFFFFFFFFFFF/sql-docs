@@ -369,9 +369,14 @@ sections:
           Currently, non-Hyperscale service tiers (Basic/Standard/Premium/General Purpose/Business Critical) backups cannot be geo-restored into a Hyperscale service tier and vice-versa. To convert a non-Hyperscale database to a Hyperscale database, change the service tier after a restore.
 
       - question: |
+          When I convert a database to Hyperscale, when does Hyperscale billing begin?
+        answer: |
+          Hyperscale billing after a conversion begins only after the cutover is complete.
+
+      - question: |
           When I convert to Hyperscale, can I control the disruption to my database?
         answer: | 
-          Yes. Currently a preview feature, you have the ability to manually initiate the cutover when you [convert a database to Hyperscale](convert-to-hyperscale.md) via the Azure portal, PowerShell, Azure CLI, or T-SQL.
+          Yes. Currently a preview feature, you have the ability to manually initiate the cutover when you [convert a database to Hyperscale](convert-to-hyperscale.md) via the Azure portal, PowerShell, Azure CLI, or T-SQL. You'll only experience a short period of downtime, generally less than a minute, during the final cutover to Hyperscale.
 
   - name: Performance questions
     questions:

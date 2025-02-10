@@ -17,12 +17,12 @@ monikerRange: "=azuresql || =azuresql-db"
 
 You can convert an existing database in Azure SQL Database to Hyperscale using the Azure portal, the Azure CLI, PowerShell, or Transact-SQL.
 
-## Manual cutover
+## Cutover
 
-The conversion process is divided into two stages - the conversion of data, which occurs while the existing database is online, and then a cutover to the new Hyperscale database. 
+The conversion process is divided into two stages - the conversion of database, which occurs while the existing database is online, and then a cutover to the new Hyperscale database. 
 
 - The time required to move an existing database to Hyperscale consists of the time to copy data and the time to replay the changes made in the source database while copying data. The data copy time is proportional to data size. We recommend converting to Hyperscale during a lower write activity period so that the time to replay accumulated changes is shorter.
-- You'll only experience a short period of downtime, generally less than a minute, during the final cutover to Hyperscale. You have the ability to choose when the cutover occurs - as soon as the database is ready, or manually at a time of your choosing. 
+- You'll only experience a short period of downtime, generally less than a minute, during the final cutover to Hyperscale. You have the ability to choose when the cutover occurs - as soon as the database is ready, or manually at a time of your choosing. By default, the process to convert to Hypersacle will cutover automatically. 
 
 > [!NOTE]
 > The ability to initiate a manual cutover for a conversion to Hyperscale is a preview feature.
@@ -41,7 +41,7 @@ Direct conversion from the Basic service tier to Hyperscale is not supported. To
 
 To convert an existing Azure SQL Database to Hyperscale, first identify your target service objective. 
 
-Review [resource limits for single databases](resource-limits-vcore-single-databases.md) if you aren't sure which service objective is right for your database. In many cases, you can choose a service objective with the same number of vCores and the same hardware generation as the original database. If needed, you can [change the service objective](scale-resources.md) later with minimal downtime.
+Review [resource limits for single databases](resource-limits-vcore-single-databases.md) if you aren't sure which service objective is right for your database. In many cases, you can choose a service objective with the same number of vCores and the same hardware generation as the original database. If needed, you can [change the service objective](scale-resources.md) later with minimal downtime. Billing for Hyperscale begins only after cutover.
 
 Select the tab for your preferred method to convert your database:
 
