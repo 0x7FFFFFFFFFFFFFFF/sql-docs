@@ -1,9 +1,9 @@
 ---
 title: Serverless compute tier
 description: This article describes the new serverless compute tier and compares it with the existing provisioned compute tier for Azure SQL Database.
-author: oslake
-ms.author: moslake
-ms.reviewer: wiassaf, mathoma
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: moslake, mathoma, dfurman, blakhani
 ms.date: 02/10/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
