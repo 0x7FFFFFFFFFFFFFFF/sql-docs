@@ -82,6 +82,15 @@ BULK INSERT
 
 ## Arguments
 
+The `BULK INSERT` statement has different arguments and options in different platforms. The differences are summarized in the following table:
+
+| Feature     | SQL Server | Azure SQL Database and Azure SQL Managed Instance | Fabric Warehouse |
+|---------------|------------|
+| Data source | Local path, Network path (UNC), or Azure Storage | Azure Storage | Azure Storage | 
+| Source authentication | Windows authentication, SAS | Microsoft Entra ID, SAS token, managed identity | Microsoft Entra ID |
+| Unsupported options | `*` wildcards in path | `*` wildcards in path | `DATA_SOURCE`, `FORMATFILE_DATA_SOURCE`, `ERRORFILE`, `ERRORFILE_DATA_SOURCE` |
+| Enabled options but without effect | | | `KEEPIDENTITY`, `FIRE_TRIGGERS`, `CHECK_CONSTRAINTS`, `TABLOCK`, `ORDER`, `ROWS_PER_BATCH`, `KILOBYTES_PER_BATCH`, and `BATCHSIZE` are not applicable. They will not throw an syntax error, but they will not have any effect | 
+
 #### *database_name*
 
 The database name in which the specified table or view resides. If not specified, *database_name* is the current database.
@@ -123,7 +132,7 @@ Fabric Warehouse supports `*` wildcards that can match any character in the URI,
 
 ```sql
 BULK INSERT bing_covid_19_data
-FROM 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/*.csv)';
+FROM 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/*.csv';
 ```
 
 #### BATCHSIZE = *batch_size*
@@ -364,13 +373,7 @@ To bulk export or import SQLXML data, use one of the following data types in you
 | **SQLNCHAR** or **SQLNVARCHAR** |The data is sent as Unicode. The effect is the same as specifying the `DATAFILETYPE = 'widechar'` without specifying a format file.|
 | **SQLBINARY** or **SQLVARBIN** |The data is sent without any conversion.|
 
-The `BULK INSERT` statement has different options in different platforms. The differences are summarized in the following table:
-
-| Feature     | SQL Server | Azure SQL Database and Azure SQL Managed Instance | Fabric Warehouse |
-|---------------|------------|
-| Data source | Local path, Network path (UNC), or Azure Storage | Azure Storage | Azure Storage | 
-| Source authentication | Windows authentication, SAS | Microsoft Entra ID, SAS token, managed identity | Microsoft Entra ID |
-| Unsupported options | `*` wildcards in path | `*` wildcards in path | `DATA_SOURCE`, `FORMATFILE_DATA_SOURCE`, `ERRORFILE_DATA_SOURCE` |
+## Remarks
 
 For a comparison of the BULK INSERT statement, the `INSERT ... SELECT * FROM OPENROWSET(BULK...)` statement, and the `bcp` command, see [Bulk Import and Export of Data](../../relational-databases/import-export/bulk-import-and-export-of-data-sql-server.md).
 
