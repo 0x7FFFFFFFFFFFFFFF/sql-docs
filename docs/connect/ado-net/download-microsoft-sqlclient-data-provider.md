@@ -1,9 +1,9 @@
 ---
 title: Download Microsoft SqlClient Data Provider for SQL Server
 description: Download page for ADO.NET and Microsoft SqlClient Data Provider for SQL Server.
-author: David-Engel
-ms.author: davidengel
-ms.date: 02/28/2024
+author: cheenamalhotra
+ms.author: cmalhotra
+ms.date: 01/24/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -20,29 +20,9 @@ If you need to download the Microsoft.Data.SqlClient package for offline use, it
 
 For more information about version compatibility and support, see [SQL version compatibility with Microsoft.Data.SqlClient](sqlclient-driver-support-lifecycle.md#sql-version-compatibility-with-microsoftdatasqlclient).
 
-## Download stable versions of Microsoft SqlClient Data Provider for SQL Server
+## Download supported versions of Microsoft SqlClient Data Provider for SQL Server
 
-* [5.2.0](https://www.nuget.org/packages/Microsoft.Data.SqlClient/5.2.0)
-* [5.1.0](https://www.nuget.org/packages/Microsoft.Data.SqlClient/5.1.0)
-* [5.0.0](https://www.nuget.org/packages/Microsoft.Data.SqlClient/5.0.0)
-* [4.1.0](https://www.nuget.org/packages/Microsoft.Data.SqlClient/4.1.0)
-* [4.0.1](https://www.nuget.org/packages/Microsoft.Data.SqlClient/4.0.1)
-* [4.0.0](https://www.nuget.org/packages/Microsoft.Data.SqlClient/4.0.0)
-* [3.1.0](https://www.nuget.org/packages/Microsoft.Data.SqlClient/3.1.0)
-* [3.0.1](https://www.nuget.org/packages/Microsoft.Data.SqlClient/3.0.1)
-* [3.0.0](https://www.nuget.org/packages/Microsoft.Data.SqlClient/3.0.0)
-* [2.1.4](https://www.nuget.org/packages/Microsoft.Data.SqlClient/2.1.4)
-* [2.1.3](https://www.nuget.org/packages/Microsoft.Data.SqlClient/2.1.3)
-* [2.1.2](https://www.nuget.org/packages/Microsoft.Data.SqlClient/2.1.2)
-* [2.1.1](https://www.nuget.org/packages/Microsoft.Data.SqlClient/2.1.1)
-* [2.1.0](https://www.nuget.org/packages/Microsoft.Data.SqlClient/2.1.0)
-* [2.0.1](https://www.nuget.org/packages/Microsoft.Data.SqlClient/2.0.1)
-* [2.0.0](https://www.nuget.org/packages/Microsoft.Data.SqlClient/2.0.0)
-* [1.1.4](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.4)
-* [1.1.3](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.3)
-* [1.1.2](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)
-* [1.1.1](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.1)
-* [1.1.0](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.0)
-* [1.0.19269.1](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.0.19269.1)
-* [1.0.19249.1](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.0.19249.1)
-* [1.0.19239.1](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.0.19239.1)
+* [6.0.1](https://www.nuget.org/packages/Microsoft.Data.SqlClient/6.0.1)
+* [5.2.2](https://www.nuget.org/packages/Microsoft.Data.SqlClient/5.2.2)
+* [5.1.6](https://www.nuget.org/packages/Microsoft.Data.SqlClient/5.1.6)
+* [3.1.7](https://www.nuget.org/packages/Microsoft.Data.SqlClient/3.1.7)

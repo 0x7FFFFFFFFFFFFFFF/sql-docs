@@ -3,7 +3,7 @@ title: Restore a SQL Server Database in a Linux Container
 description: This tutorial shows how to restore a SQL Server database backup in a new Linux container.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -191,7 +191,7 @@ This section provides deployment options for your environment.
 
 ::: moniker-end
 
-### Change the SA password
+### Change the system administrator (SA) password
 
 [!INCLUDE [change-docker-password](includes/change-docker-password.md)]
 
@@ -223,18 +223,18 @@ This tutorial uses the [Wide World Importers sample databases for Microsoft SQL]
 The backup file is now located inside the container. Before restoring the backup, it's important to know the logical file names and file types inside the backup. The following Transact-SQL commands inspect the backup and perform the restore using **sqlcmd** in the container.
 
 > [!TIP]  
-> This tutorial uses **sqlcmd** inside the container, because the container comes with this tool pre-installed. However, you can also run Transact-SQL statements with other client tools outside of the container, such as [SQL Server extension for Visual Studio Code](../tools/visual-studio-code/sql-server-develop-use-vscode.md) or [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](sql-server-linux-manage-ssms.md). To connect, use the host port that was mapped to port 1433 in the container. In this example, that is `localhost,1401` on the host machine and `Host_IP_Address,1401` remotely.
+> This tutorial uses **sqlcmd** inside the container, because the container comes with this tool preinstalled. However, you can also run Transact-SQL statements with other client tools outside of the container, such as [SQL Server extension for Visual Studio Code](../tools/visual-studio-code/sql-server-develop-use-vscode.md) or [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](sql-server-linux-manage-ssms.md). To connect, use the host port that was mapped to port 1433 in the container. In this example, the host and port are `localhost,1401` on the host machine, and `Host_IP_Address,1401` remotely.
 
 1. Run **sqlcmd** inside the container to list out logical file names and paths inside the backup. This is done with the `RESTORE FILELISTONLY` Transact-SQL statement.
 
    ```bash
-   sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd -S localhost \
+   sudo docker exec -it sql1 /opt/mssql-tools18/bin/sqlcmd -S localhost \
       -U sa -P '<new-password>' \
       -Q 'RESTORE FILELISTONLY FROM DISK = "/var/opt/mssql/backup/wwi.bak"' \
       | tr -s ' ' | cut -d ' ' -f 1-2
    ```
 
-   You should see an output similar to the following:
+   The results should look similar to the following output:
 
    ```output
    LogicalName   PhysicalName
@@ -248,12 +248,12 @@ The backup file is now located inside the container. Before restoring the backup
 1. Call the `RESTORE DATABASE` command to restore the database inside the container. Specify new paths for each of the files in the previous step.
 
    ```bash
-   sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd \
+   sudo docker exec -it sql1 /opt/mssql-tools18/bin/sqlcmd \
       -S localhost -U sa -P '<new-password>' \
       -Q 'RESTORE DATABASE WideWorldImporters FROM DISK = "/var/opt/mssql/backup/wwi.bak" WITH MOVE "WWI_Primary" TO "/var/opt/mssql/data/WideWorldImporters.mdf", MOVE "WWI_UserData" TO "/var/opt/mssql/data/WideWorldImporters_userdata.ndf", MOVE "WWI_Log" TO "/var/opt/mssql/data/WideWorldImporters.ldf", MOVE "WWI_InMemory_Data_1" TO "/var/opt/mssql/data/WideWorldImporters_InMemory_Data_1"'
    ```
 
-   You should see an output similar to the following:
+   The results should look similar to the following output:
 
    ```output
    Processed 1464 pages for database 'WideWorldImporters', file 'WWI_Primary' on file 1.
@@ -286,7 +286,7 @@ The backup file is now located inside the container. Before restoring the backup
 Run the following query to display a list of database names in your container:
 
 ```bash
-sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd \
+sudo docker exec -it sql1 /opt/mssql-tools18/bin/sqlcmd \
    -S localhost -U sa -P '<new-password>' \
    -Q 'SELECT name FROM sys.databases'
 ```
@@ -300,7 +300,7 @@ Follow these steps to make a change in the database.
 1. Run a query to view the top 10 items in the `Warehouse.StockItems` table.
 
    ```bash
-   sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd \
+   sudo docker exec -it sql1 /opt/mssql-tools18/bin/sqlcmd \
       -S localhost -U sa -P '<new-password>' \
       -Q 'SELECT TOP 10 StockItemID, StockItemName FROM WideWorldImporters.Warehouse.StockItems ORDER BY StockItemID'
    ```
@@ -325,7 +325,7 @@ Follow these steps to make a change in the database.
 1. Update the description of the first item with the following `UPDATE` statement:
 
    ```bash
-   sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd \
+   sudo docker exec -it sql1 /opt/mssql-tools18/bin/sqlcmd \
       -S localhost -U sa -P '<new-password>' \
       -Q 'UPDATE WideWorldImporters.Warehouse.StockItems SET StockItemName="USB missile launcher (Dark Green)" WHERE StockItemID=1; SELECT StockItemID, StockItemName FROM WideWorldImporters.Warehouse.StockItems WHERE StockItemID=1'
    ```
@@ -341,17 +341,17 @@ Follow these steps to make a change in the database.
 
 ### Create a new backup
 
-After you've restored your database into a container, you might also want to regularly create database backups inside the running container. The steps follow a similar pattern to the previous steps but in reverse.
+After you restore your database into a container, you might also want to regularly create database backups inside the running container. The steps follow a similar pattern to the previous steps but in reverse.
 
 1. Use the `BACKUP DATABASE` Transact-SQL command to create a database backup in the container. This tutorial creates a new backup file, `wwi_2.bak`, in the previously created `/var/opt/mssql/backup` directory.
 
    ```bash
-   sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd \
+   sudo docker exec -it sql1 /opt/mssql-tools18/bin/sqlcmd \
       -S localhost -U sa -P '<new-password>' \
       -Q "BACKUP DATABASE [WideWorldImporters] TO DISK = N'/var/opt/mssql/backup/wwi_2.bak' WITH NOFORMAT, NOINIT, NAME = 'WideWorldImporters-full', SKIP, NOREWIND, NOUNLOAD, STATS = 10"
    ```
 
-   You should see output similar to the following:
+   The results should look similar to the following output:
 
    ```output
    10 percent processed.
@@ -442,7 +442,7 @@ In addition to taking database backups for protecting your data, you can also us
 1. The Wide World Importers database is now in the new container. Run a query to verify the previous change you made.
 
    ```bash
-   sudo docker exec -it sql2 /opt/mssql-tools/bin/sqlcmd \
+   sudo docker exec -it sql2 /opt/mssql-tools18/bin/sqlcmd \
       -S localhost -U sa -P '<new-password>' \
       -Q 'SELECT StockItemID, StockItemName FROM WideWorldImporters.Warehouse.StockItems WHERE StockItemID=1'
    ```
@@ -476,7 +476,7 @@ In addition to taking database backups for protecting your data, you can also us
 1. The Wide World Importers database is now in the new container. Run a query to verify the previous change you made.
 
    ```bash
-   sudo docker exec -it sql2 /opt/mssql-tools/bin/sqlcmd \
+   sudo docker exec -it sql2 /opt/mssql-tools18/bin/sqlcmd \
       -S localhost -U sa -P '<new-password>' \
       -Q 'SELECT StockItemID, StockItemName FROM WideWorldImporters.Warehouse.StockItems WHERE StockItemID=1'
    ```
@@ -540,7 +540,7 @@ Follow these steps to make a change in the database.
 
 ### Create a new backup
 
-After you've restored your database into a container, you might also want to regularly create database backups inside the running container. The steps follow a similar pattern to the previous steps but in reverse.
+After you restore your database into a container, you might also want to regularly create database backups inside the running container. The steps follow a similar pattern to the previous steps but in reverse.
 
 1. Use the `BACKUP DATABASE` Transact-SQL command to create a database backup in the container. This tutorial creates a new backup file, `wwi_2.bak` in the `/var/opt/mssql/backup` directory.
 
@@ -548,7 +548,7 @@ After you've restored your database into a container, you might also want to reg
    sqlcmd -Q "BACKUP DATABASE [WideWorldImporters-Full] TO DISK = N'/var/opt/mssql/backup/wwi_2.bak' WITH NOFORMAT, NOINIT, NAME = 'WideWorldImporters-full', SKIP, NOREWIND, NOUNLOAD, STATS = 10"
    ```
 
-   You should see output similar to the following:
+   The results should look similar to the following output:
 
    ```output
    10 percent processed.
@@ -571,9 +571,9 @@ After you've restored your database into a container, you might also want to reg
 
 ### Clean up
 
-Now that the backup has been copied off the container, it can be cleaned up. The following steps completely remove the `sql1` container.
+Now that the backup is copied off the container, it can be cleaned up. The following steps completely remove the `sql1` container.
 
-1. Remove the container. **sqlcmd** has built-in safeguards to prevent deleting a container that is in use. The way it determines if a container is still in use is whether it has any user databases. For production scenarios, you should delete user databases individually after verifying they are no long in use. For development/testing we can use the `--force` parameter to delete the container without deleting the user database.
+1. Remove the container. **sqlcmd** has built-in safeguards to prevent deleting a container that is in use. The way it determines if a container is still in use is whether it has any user databases. For production scenarios, you should delete user databases individually after verifying they're no long in use. For development/testing, you can use the `--force` parameter to delete the container without deleting the user database.
 
    ```bash
    sqlcmd delete --force

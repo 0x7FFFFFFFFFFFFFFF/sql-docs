@@ -1,8 +1,8 @@
 ---
 title: "Change the default Reporting Services delivery extension"
 description: "Learn to configure Reporting Services settings to reorder the delivery extensions shown in the Delivered by list, and to set the default delivery extension."
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions

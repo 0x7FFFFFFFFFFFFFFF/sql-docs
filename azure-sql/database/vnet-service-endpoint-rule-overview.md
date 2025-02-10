@@ -1,8 +1,8 @@
 ---
 title: Virtual network endpoints and rules for databases
 description: Mark a subnet as a virtual network service endpoint. Then add the endpoint as a virtual network rule to the ACL for your database. Your database then accepts communication from all virtual machines and other nodes on the subnet.
-author: rohitnayakmsft
-ms.author: rohitna
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: wiassaf, vanto, mathoma
 ms.date: 05/24/2024
 ms.service: azure-sql-database
@@ -61,7 +61,6 @@ You have the option of using [role-based access control (RBAC)][rbac-what-is-813
 > [!NOTE]  
 > In some cases, the database in SQL Database and the virtual network subnet are in different subscriptions. In these cases, you must ensure the following configurations:
 >
-> - Both subscriptions must be in the same Microsoft Entra tenant.
 > - The user has the required permissions to initiate operations, such as enabling service endpoints and adding a virtual network subnet to the given server.
 > - Both subscriptions must have the Microsoft.Sql provider registered.
 
@@ -78,6 +77,7 @@ For SQL Database, the virtual network rules feature has the following limitation
 - On the firewall, IP address ranges do apply to the following networking items, but virtual network rules don't:
   - [Site-to-site (S2S) virtual private network (VPN)][vpn-gateway-indexmd-608y]
   - On-premises via [Azure ExpressRoute](/azure/expressroute/index)
+- Both subscriptions must be in the same Microsoft Entra tenant.
 
 ### Considerations when you use service endpoints
 
@@ -110,8 +110,8 @@ PolyBase and the COPY statement are commonly used to load data into Azure Synaps
 - If you have a general-purpose v1 or Azure Blob Storage account, you must first upgrade to general-purpose v2 by following the steps in [Upgrade to a general-purpose v2 storage account](/azure/storage/common/storage-account-upgrade).
 - You must have **Allow trusted Microsoft services to access this storage account** turned on under the Azure Storage account **Firewalls and Virtual networks** settings menu. Enabling this configuration will allow PolyBase and the COPY statement to connect to the storage account by using strong authentication where network traffic remains on the Azure backbone. For more information, see [this guide](/azure/storage/common/storage-network-security#exceptions).
 
-> [!IMPORTANT]  
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the `Az.Sql` module. The AzureRM module will continue to receive bug fixes until at least December 2020. The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> [!IMPORTANT]
+> The PowerShell Azure Resource Manager (AzureRM) module was deprecated on February 29, 2024. All future development should use the Az.Sql module. Users are advised to migrate from AzureRM to the Az PowerShell module to ensure continued support and updates. The AzureRM module is no longer maintained or supported. The arguments for the commands in the Az PowerShell module and in the AzureRM modules are substantially identical. For more about their compatibility, see [Introducing the new Az PowerShell module](/powershell/azure/new-azureps-module-az).
 
 #### Steps
 

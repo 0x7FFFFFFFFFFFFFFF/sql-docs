@@ -43,13 +43,12 @@ TopCount(Set_Expression,Count [ ,Numeric_Expression ] )
 ## Examples  
  The following example returns the top 10 dates by Internet Sales Amount:  
   
- `SELECT [Measures].[Internet Sales Amount] ON 0,`  
-  
- `TOPCOUNT([Date].[Date].[Date].MEMBERS, 10, [Measures].[Internet Sales Amount])`  
-  
- `ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+SELECT [Measures].[Internet Sales Amount] ON 0,  
+TOPCOUNT([Date].[Date].[Date].MEMBERS, 10, [Measures].[Internet Sales Amount])  
+ON 1  
+FROM [Adventure Works]  
+```  
   
  The following example returns, for the Bike category, the first five members in the set containing all combinations of members of the City level in the Geography hierarchy in the Geography dimension and all fiscal years from the Fiscal hierarchy of the Date dimension, ordered by the Reseller Sales Amount measure (beginning with the members of this set with the largest number of sales).  
   

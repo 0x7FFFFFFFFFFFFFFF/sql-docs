@@ -1,8 +1,8 @@
 ---
 title: "Element Path Syntax for XML Report Data"
 description: Learn about the element path syntax and conventions used to define the path for XML report data in Report Designer.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

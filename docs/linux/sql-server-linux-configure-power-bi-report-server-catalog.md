@@ -1,9 +1,9 @@
 ---
-title: Configure Power BI Report Server catalog databases for SQL Server on Linux
+title: Configure Power BI Report Server Catalog Databases for SQL Server on Linux
 description: Learn how to configure SQL Server on Linux to host the Power BI Report Server catalog database.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/05/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -47,7 +47,7 @@ Before proceeding with the configuration (or reconfiguration) of PBIRS to use [!
 
 You can install and configure **adutil**, and join the domain, following the instructions in [Tutorial: Use adutil to configure Active Directory authentication with SQL Server on Linux](sql-server-linux-ad-auth-adutil-tutorial.md).
 
-> [!NOTE]
+> [!NOTE]  
 > For information about specific packages on RHEL 8, see [Connecting RHEL systems directly to AD using SSSD](https://docs.redhat.com/documentation/red_hat_enterprise_linux/8/html-single/integrating_rhel_systems_directly_with_windows_active_directory/index#discovering-and-joining-an-ad-domain-using-sssd_connecting-directly-to-ad).
 
 ## SQL Server service principal names (SPNs)
@@ -98,7 +98,7 @@ In order to achieve this, the PBIRS service account (`pbirsservice` in this exam
 
 PBIRS should be installed in *configuration only* mode.
 
-Immediately after installing PBIRS, you must configure it to support Kerberos authentication. PBIRS by default only supports NTLM authentication. During the installation process, you need to update one of the PBIRS configuration files before completing the PBIRS configuration process, either in the UI, or via the command line. If you use an existing PBIRS installation, you still need to perform the edits, and the PBIRS service must be restarted to take effect. The configuration file is the `rsreportserver.config`. It is in path where PBIRS was installed. For example, on a default installation of PBIRS, the file is in the following location:
+Immediately after installing PBIRS, you must configure it to support Kerberos authentication. PBIRS by default only supports NTLM authentication. During the installation process, you need to update one of the PBIRS configuration files before completing the PBIRS configuration process, either in the UI, or via the command line. If you use an existing PBIRS installation, you still need to perform the edits, and the PBIRS service must be restarted to take effect. The configuration file is the `rsreportserver.config`. It's in path where PBIRS was installed. For example, on a default installation of PBIRS, the file is in the following location:
 
 `C:\Program Files\Microsoft SQL Server Reporting Services\SSRS\ReportServer`
 
@@ -128,10 +128,10 @@ Finally, we can add the `reportuser` as a login on the [!INCLUDE [ssnoversion-md
 
 ## After reports have been deployed
 
-If you need to set up report subscriptions after reports are deployed, it is a good practice to configure embedded credentials in the PBIRS data sources. All credential options work properly, except for the use of embedded credentials configured with the **impersonate the user viewing the report** option. This step fails when using Windows credentials, because of a limitation within the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux implementation that makes impersonation more difficult.
+If you need to set up report subscriptions after reports are deployed, it's a good practice to configure embedded credentials in the PBIRS data sources. All credential options work properly, except for the use of embedded credentials configured with the **impersonate the user viewing the report** option. This step fails when using Windows credentials, because of a limitation within the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux implementation that makes impersonation more difficult.
 
 ## Related content
 
 - [Active Directory authentication for SQL Server on Linux](sql-server-linux-active-directory-auth-overview.md)
 - [Tutorial: Use Active Directory authentication with SQL Server on Linux](sql-server-linux-active-directory-authentication.md)
-- [Reporting Services Tools](../reporting-services/tools/reporting-services-tools.md)
+- [SQL Server Reporting Services tools](../reporting-services/tools/reporting-services-tools.md)

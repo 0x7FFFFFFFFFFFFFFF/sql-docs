@@ -10,7 +10,7 @@ ms.topic: "reference"
 helpviewer_keywords:
   - "bcp_writefmt function"
 apilocation: "sqlncli11.dll"
-apiname: "bcp_writefmt"
+apiname: ["bcp_writefmt", "bcp_writefmtA", "bcp_writefmtW"]
 apitype: "DLLExport"
 ---
 # bcp_writefmt
@@ -25,8 +25,13 @@ apitype: "DLLExport"
 RETCODE bcp_writefmt (  
         HDBC hdbc,  
         LPCTSTR szFormatFile);  
-```  
-  
+```
+
+Unicode and ANSI names:
+
+- bcp_writefmtA (ANSI)
+- bcp_writefmtW (Unicode)
+
 ## Arguments  
  *hdbc*  
  Is the bulk copy-enabled ODBC connection handle.  

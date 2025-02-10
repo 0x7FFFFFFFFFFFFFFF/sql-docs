@@ -19,31 +19,21 @@ ms.custom: mdx
   
  Scalar expressions are typically used in calculated member definitions, as calculated members must return a scalar value. The following query shows examples of calculated members on the Measures dimension that use different types of scalar expression:  
   
- `WITH`  
-  
- `MEMBER MEASURES.NumericValue AS 10`  
-  
- `MEMBER MEASURES.NumericExpression AS 10 + 10`  
-  
- `MEMBER MEASURES.NumericExpressionBasedOnMeasure AS [Measures].[Internet Sales Amount] + 10`  
-  
- `MEMBER MEASURES.StringValue AS "10"`  
-  
- `MEMBER MEASURES.ConcatenatedString AS "10" + "10"`  
-  
- `MEMBER MEASURES.StringFunction AS MEASURES.CURRENTMEMBER.NAME`  
-  
- `MEMBER MEASURES.TodaysDate AS NOW()`  
-  
- `SELECT`  
-  
- `{MEASURES.NumericValue,MEASURES.NumericExpression,MEASURES.NumericExpressionBasedOnMeasure,`  
-  
- `MEASURES.StringValue, MEASURES.ConcatenatedString, MEASURES.StringFunction, MEASURES.TodaysDate}`  
-  
- `ON COLUMNS`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH  
+MEMBER MEASURES.NumericValue AS 10  
+MEMBER MEASURES.NumericExpression AS 10 + 10  
+MEMBER MEASURES.NumericExpressionBasedOnMeasure AS [Measures].[Internet Sales Amount] + 10  
+MEMBER MEASURES.StringValue AS "10"  
+MEMBER MEASURES.ConcatenatedString AS "10" + "10"  
+MEMBER MEASURES.StringFunction AS MEASURES.CURRENTMEMBER.NAME  
+MEMBER MEASURES.TodaysDate AS NOW()  
+SELECT  
+{MEASURES.NumericValue,MEASURES.NumericExpression,MEASURES.NumericExpressionBasedOnMeasure,  
+MEASURES.StringValue, MEASURES.ConcatenatedString, MEASURES.StringFunction, MEASURES.TodaysDate}  
+ON COLUMNS  
+FROM [Adventure Works]  
+```  
   
  The only data type that a measure, calculated or otherwise, can return is the OLE Variant type. Therefore, sometimes you might need to cast a measure value to a particular type to receive the behavior you expect. The following query shows an example of this:  
   

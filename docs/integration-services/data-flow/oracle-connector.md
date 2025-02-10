@@ -12,6 +12,9 @@ ms.topic: how-to
 
 [!INCLUDE[sqlserver-ssis](../../includes/applies-to-version/sqlserver.md)]
 
+> [!IMPORTANT]
+> Microsoft Connector for Oracle is deprecated now. Details refer to [the announcement](https://www.microsoft.com/en-us/sql-server/blog/2025/01/21/sql-server-integration-services-ssis-microsoft-connector-for-oracle-deprecation/).
+
 Microsoft Connector for Oracle enables the ability to export data from and load data into Oracle data source in an SSIS package.
 
 ## Version support
@@ -37,17 +40,17 @@ The Oracle database is supported on all operating systems and platforms.
 
 To install the connector for Oracle database, download and run the installer from [the latest version of Microsoft connector for Oracle](https://aka.ms/SSISMSOracleConnector). Then follow the directions in the installation wizard.  
 
-Visual Studio will expect the x86 version of the connector to be installed on the machine being used to develop SSIS packages. By default, packages in the SSIS catalog will run in 64-bit mode and therefore use the x64 version, but they can be configured to run in 32-bit mode. To accommodate both modes, you will need to install both the 32-bit and 64-bit versions of the connector.   
+Visual Studio expects the x86 version of the connector to be installed on the machine being used to develop SSIS packages. By default, packages in the SSIS catalog run in 64-bit mode and therefore use the x64 version, but they can be configured to run in 32-bit mode. To accommodate both modes, you'll need to install both the 32-bit and 64-bit versions of the connector.   
 
 After you install the connector, you must restart the SQL Server Integration Service to be sure that the Oracle source and destination can work correctly.
 
 > [!NOTE]
 >
-> To design packages with SQL Server Integration Services Projects, you will need to install the appropriate connector for both the target and the latest SQL Server version.
+> To design packages with SQL Server Integration Services Projects, you'll need to install the appropriate connector for both the target and the latest SQL Server version.
 > 
 > For example, if you upgrade to Visual Studio 2022 but deploy to SQL Server Integration Services 2019, you need to install MicrosoftSSISOracleConnector-SQL22 and MicrosoftSSISOracleConnector-SQL19. 
 
-To execute SSIS packages targeting SQL Server 2019 and above, you do not need to install an **Oracle client** to use the Microsoft Connector for Oracle. To execute SSIS packages targeting SQL Server 2017 and below, in addition to **Microsoft Connector for Oracle**, you will need to install an **Oracle client** and **Microsoft Connector for Oracle by Attunity** with the corresponding version from below links:
+To execute SSIS packages targeting SQL Server 2019 and above, you don't need to install an **Oracle client** to use the Microsoft Connector for Oracle. To execute SSIS packages targeting SQL Server 2017 and below, in addition to **Microsoft Connector for Oracle**, you'll need to install an **Oracle client** and **Microsoft Connector for Oracle by Attunity** with the corresponding version from below links:
 
 - [SQL Server 2017: Microsoft Connector Version 5.0 for Oracle by Attunity](https://www.microsoft.com/download/details.aspx?id=55179)
 - [SQL Server 2016: Microsoft Connector Version 4.0 for Oracle by Attunity](https://www.microsoft.com/download/details.aspx?id=52950)
@@ -56,8 +59,8 @@ To execute SSIS packages targeting SQL Server 2019 and above, you do not need to
 
 ## Limitations and known issues
 
-- Views are not listed under Oracle source *Name of the table or the view*. As work-around, use the SQL command and do a select * from view, or set view name to property [Oracle Source].[TableName] in Advanced Editor.
-- The Microsoft Connector for Oracle can only be used by implementing an [Oracle Source](oracle-source.md) or [Oracle Destination](oracle-destination.md) in a data flow task. It is not available for other SSIS tasks, including Execute SQL tasks. 
+- Views aren't listed under Oracle source *Name of the table or the view*. As work-around, use the SQL command and do a select * from view, or set view name to property [Oracle Source].[TableName] in Advanced Editor.
+- The Microsoft Connector for Oracle can only be used by implementing an [Oracle Source](oracle-source.md) or [Oracle Destination](oracle-destination.md) in a data flow task. It isn't available for other SSIS tasks, including Execute SQL tasks. 
 
 ## Uninstallation
 

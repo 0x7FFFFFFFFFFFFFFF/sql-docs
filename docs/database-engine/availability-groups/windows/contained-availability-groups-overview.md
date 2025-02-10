@@ -74,6 +74,10 @@ You can restore a contained system database using one of two different ways.
 
   1. Recreate the contained AG using original nodes and name, using `WITH (CONTAINED, REUSE_SYSTEM_DATABASES)` syntax.
 
+### Contained availability group jobs
+
+Jobs that belong to a contained availability group run on the primary replica only. They do not run on secondary replicas.
+
 ### Connect (contained environment)
 
 It's important to distinguish the difference between connecting to the instance, and connecting to the contained AG. The only way to access the environment of the contained AG is to connect to the contained AG listener, or to connect to a database that is in the contained AG.
@@ -124,13 +128,21 @@ This connection string would get you connected to the readable secondary that is
 
 There are additional considerations when using certain features with contained AGs, and there are some features that are currently unsupported.
 
-### Not supported
+### Back up
 
-Currently, the following [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] features aren't supported with a contained AG:
+Procedures to back up databases in a contained AG are the same as any user database backup procedures. This is true for both the contained AG user databases and the contained AG system databases.
 
-- [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] Replication of any type (transactional, merge, snapshot, and so on).
-- Distributed availability groups.
-- Log shipping where the target database is in the contained AG. Log shipping with the source database in the contained AG is supported.
+If the backup location is local, the backup files are placed on the server that runs the backup job. This means your backup files may be in different locations.
+
+If the backup location is on a network resource, all servers that host replicas need access to that resource.
+
+### Resource governor
+
+Resource governor works at the instance level. Resource governor with a contained availability group isn't applicable.
+
+Resource governor configuration DDL commands have no effect when executed on a contained availability group connection.
+
+If resource governor is enabled via an instance connection, it has no effect on the contained availability group connections.
 
 ### Change data capture
 
@@ -159,6 +171,14 @@ To transfer the DMK from the `master` database of the instance, to the contained
 ### SSIS packages & maintenance plans
 
 Using SSIS packages, including maintenance plans, is not supported with contained availability groups.
+
+## Not supported
+
+Currently, the following [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] features aren't supported with a contained AG:
+
+- [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] Replication of any type (transactional, merge, snapshot, and so on).
+- Distributed availability groups.
+- Log shipping where the target database is in the contained AG. Log shipping with the source database in the contained AG is supported.
 
 ## DDL changes
 

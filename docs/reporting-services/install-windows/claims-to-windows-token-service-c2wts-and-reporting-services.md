@@ -1,8 +1,8 @@
 ---
 title: "Claims to Windows Token Service (c2WTS) and Reporting Services"
 description: "Claims to Windows Token Service (c2WTS) and Reporting Services"
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

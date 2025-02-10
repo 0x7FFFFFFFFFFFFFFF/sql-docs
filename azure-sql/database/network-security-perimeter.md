@@ -2,8 +2,8 @@
 title: Network Security Perimeter
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
 description: Overview of Network Security Perimeter for Azure SQL Database
-author: rohitnayakmsft
-ms.author: rohitna
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: wiassaf, vanto, mathoma
 ms.date: 11/19/2024
 ms.service: azure-sql-database

@@ -21,10 +21,10 @@ To troubleshoot performance problems in a Hyperscale database, the [general SQL 
 
 Every database and elastic pool in Azure SQL Database manages log generation rate via [log rate governance](resource-limits-logical-server.md#transaction-log-rate-governance). In Hyperscale, the log rate governance limit is set to 105 MB/s, regardless of the compute size. This value is exposed in the `primary_max_log_rate` column in [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database/).
 
-At times, log generation rate on the primary compute replica must be reduced to maintain recoverability SLAs. For example, this can happen when a [page server or another compute replica](service-tier-hyperscale.md#distributed-functions-architecture) is significantly behind applying new log records from the log service. If no Hyperscale components are behind, the log rate governance mechanism allows log generation rate to reach 100 MB/s. This is the effective maximum log generation rate in all Hyperscale compute sizes.
+At times, log generation rate on the primary compute replica must be reduced to maintain recoverability SLAs. For example, this can happen when a [page server or another compute replica](service-tier-hyperscale.md#distributed-functions-architecture) is significantly behind applying new log records from the log service. If no Hyperscale components are behind, the log rate governance mechanism allows log generation rate to reach 100 MiB/s. This is the effective maximum log generation rate in all Hyperscale compute sizes.
 
 > [!NOTE]
-> Log generation rate of 150 MB/s is available as an opt-in preview feature. For more information and to opt-in to 150 MB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
+> Log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
 
 The following wait types appear in [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/) when the log rate is reduced:
 

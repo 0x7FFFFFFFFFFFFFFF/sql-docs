@@ -1,8 +1,8 @@
 ---
 title: "LookupSet function in a paginated report"
 description: Find out about the LookupSet function in a paginated report, which returns the set of matching values for a specified name from a dataset that contains name or value pairs.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

@@ -1,8 +1,8 @@
 ---
 title: "Format paginated report items"
 description: Discover how formatting enhances readability and makes your paginated reports more attractive in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
@@ -18,7 +18,7 @@ f1_keywords:
 
   Formatting the items in your paginated reports makes them look more attractive and enhances readability. You can format the text boxes and individual items within text boxes, the images, the expressions, and the data while in report design mode.  
   
- ![rs_FormattingReporttItems](../../reporting-services/report-design/media/rs-formattingreporttitems.gif "rs_FormattingReporttItems")  
+ ![rs_FormattingReportItems](../../reporting-services/report-design/media/rs-formattingreportitems.gif "rs_FormattingReportItems")  
   
  A. Text box with a double-line border and a variety of formatting styles, including a link.  
   

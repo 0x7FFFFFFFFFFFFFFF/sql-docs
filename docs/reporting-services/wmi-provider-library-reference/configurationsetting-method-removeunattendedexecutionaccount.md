@@ -1,8 +1,8 @@
 ---
 title: "ConfigurationSetting method - RemoveUnattendedExecutionAccount"
 description: "ConfigurationSetting method - RemoveUnattendedExecutionAccount"
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: wmi-provider-library-reference

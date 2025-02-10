@@ -1,8 +1,8 @@
 ---
 title: "Server properties (Logging page)"
 description: Learn how to use the options on the Reporting Services page in SQL Server Management Studio. You can learn how to set limits on the report execution data that the report server collects.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

@@ -263,7 +263,7 @@ After the deployment finishes, you can browse to the [SQL virtual machines resou
 
 Add databases to your availability group after deployment finishes. The following steps use SQL Server Management Studio, but you can also use [Transact-SQL or PowerShell](/sql/database-engine/availability-groups/windows/availability-group-add-a-database).
 
-1. Connect to one of your SQL Server VMs by using your preferred method, such as a remote desktop connection (RDP). Use a domain account that's a member of the **sysadmin** fixed server role on all of the SQL Server instances.
+1. Connect to one of your SQL Server VMs by using your preferred method, such as [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows). Use a domain account that's a member of the **sysadmin** fixed server role on all of the SQL Server instances.
 
 1. Open SQL Server Management Studio.
 

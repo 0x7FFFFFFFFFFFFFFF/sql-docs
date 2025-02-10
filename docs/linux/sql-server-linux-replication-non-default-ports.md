@@ -1,11 +1,11 @@
 ---
-title: Configure replication snapshot folder (non-default ports)
+title: "Configure Replication Snapshot Folder (Non-Default Ports)"
 titleSuffix: SQL Server on Linux
 description: Learn to configure snapshot folder shares with non-default ports for SQL Server replication on Linux.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/16/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -32,7 +32,7 @@ The server name of an instance can be found by running `@@SERVERNAME` on the ins
 `Server1` listens on port 1500 on Linux. To configure `Server1` for distribution, run `sp_adddistributor` with `@distributor`. For example:
 
 ```sql
-EXEC sp_adddistributor @distributor = 'Server1,1500'
+EXECUTE sp_adddistributor @distributor = 'Server1,1500';
 ```
 
 `Server1` listens on port 1500 on Linux. To configure a publisher for the distributor, run `sp_adddistpublisher` with `@publisher`. For example:

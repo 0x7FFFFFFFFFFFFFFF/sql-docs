@@ -37,19 +37,15 @@ Filter(Set_Expression, Logical_Expression )
 ## Examples  
  The following example shows the use of the Filter function on the Rows axis of a query, to return only the Dates where Internet Sales Amount is greater than $10000:  
   
- `SELECT [Measures].[Internet Sales Amount] ON 0,`  
-  
- `FILTER(`  
-  
- `[Date].[Date].[Date].MEMBERS`  
-  
- `,  [Measures].[Internet Sales Amount]>10000)`  
-  
- `ON 1`  
-  
- `FROM`  
-  
- `[Adventure Works]`  
+```  
+SELECT [Measures].[Internet Sales Amount] ON 0,  
+FILTER(  
+[Date].[Date].[Date].MEMBERS  
+,  [Measures].[Internet Sales Amount]>10000)  
+ON 1  
+FROM  
+[Adventure Works]  
+```  
   
  The Filter function can also be using inside calculated member definitions. The following example returns the sum of the `Measures.[Order Quantity]` member, aggregated over the first nine months of 2003 contained in the `Date` dimension, from the **Adventure Works** cube. The **PeriodsToDate** function defines the tuples in the set over which the **Aggregate** function operates. The **Filter** function limits those tuples being returned to those with lower values for the Reseller Sales Amount measure for the previous time period.  
   

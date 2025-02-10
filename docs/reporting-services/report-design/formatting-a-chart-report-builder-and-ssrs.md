@@ -1,8 +1,8 @@
 ---
 title: "Formatting a chart in a paginated report"
 description: Improve the appearance of your paginated report chart and highlight data points using the formatting options found in the properties of each chart element in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

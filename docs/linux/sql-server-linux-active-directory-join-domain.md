@@ -5,7 +5,7 @@ description: This article provides guidance joining a SQL Server Linux host mach
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 06/27/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -253,7 +253,9 @@ After the basic configuration and connectivity with domain controller is verifie
 - [Option 1: Use an SSSD package](#option1)
 - [Option 2: Use third-party OpenLDAP provider utilities](#option2)
 
-### <a id="option1"></a> Option 1: Use SSSD package to join Active Directory domain
+<a id="option1"></a>
+
+### Option 1: Use SSSD package to join Active Directory domain
 
 This method joins the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] host to an Active Directory domain using **realmd** and **sssd** packages.
 
@@ -309,9 +311,9 @@ Use the following steps to join a [!INCLUDE [ssnoversion-md](../includes/ssnover
 
    ---
 
-2. If the Kerberos client package installation prompts you for a realm name, enter your domain name in uppercase.
+1. If the Kerberos client package installation prompts you for a realm name, enter your domain name in uppercase.
 
-3. After you confirm that your DNS is configured properly, join the domain by running the following command. You must authenticate using an Active Directory account that has sufficient privileges in Active Directory to join a new machine to the domain. This command creates a new computer account in Active Directory, creates the `/etc/krb5.keytab` host keytab file, configures the domain in `/etc/sssd/sssd.conf`, and updates `/etc/krb5.conf`.
+1. After you confirm that your DNS is configured properly, join the domain by running the following command. You must authenticate using an Active Directory account that has sufficient privileges in Active Directory to join a new machine to the domain. This command creates a new computer account in Active Directory, creates the `/etc/krb5.keytab` host keytab file, configures the domain in `/etc/sssd/sssd.conf`, and updates `/etc/krb5.conf`.
 
    Because of an issue with **realmd**, first set the machine hostname to the FQDN instead of to the machine name. Otherwise, **realmd** might not create all required SPNs for the machine and DNS entries won't automatically update, even if your domain controller supports dynamic DNS updates.
 
@@ -339,7 +341,7 @@ Use the following steps to join a [!INCLUDE [ssnoversion-md](../includes/ssnover
 
    For more information, see how to [configure SSSD manually](https://access.redhat.com/articles/3023951), and [configure NSS to work with SSSD](https://docs.redhat.com/documentation/red_hat_enterprise_linux/7/html/system-level_authentication_guide/configuring_services#Configuration_Options-NSS_Configuration_Options).
 
-4. Verify that you can now gather information about a user from the domain, and that you can acquire a Kerberos ticket as that user. The following example uses **id**, [kinit](https://web.mit.edu/kerberos/krb5-1.12/doc/user/user_commands/kinit.html), and [klist](https://web.mit.edu/kerberos/krb5-1.12/doc/user/user_commands/klist.html) commands for this.
+1. Verify that you can now gather information about a user from the domain, and that you can acquire a Kerberos ticket as that user. The following example uses **id**, [kinit](https://web.mit.edu/kerberos/krb5-1.12/doc/user/user_commands/kinit.html), and [klist](https://web.mit.edu/kerberos/krb5-1.12/doc/user/user_commands/klist.html) commands for this.
 
    ```bash
    id user@contoso.com
@@ -361,14 +363,16 @@ Use the following steps to join a [!INCLUDE [ssnoversion-md](../includes/ssnover
 
 For more information, see the Red Hat documentation for [Discovering and Joining Identity Domains](https://docs.redhat.com/documentation/red_hat_enterprise_linux/7/html/windows_integration_guide/realmd-domain).
 
-### <a id="option2"></a> Option 2: Use third-party OpenLDAP provider utilities
+<a id="option2"></a>
+
+### Option 2: Use third-party OpenLDAP provider utilities
 
 You can use third-party utilities such as [PBIS](https://www.beyondtrust.com/), [VAS](https://www.oneidentity.com/products/one-identity-safeguard-authentication-services), or [Centrify](https://delinea.com/centrify). This article doesn't cover steps for each individual utility. You must first use one of these utilities to join the Linux host for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to the domain before continuing forward.
 
 [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] doesn't use third-party integrator's code or library for any Active Directory-related queries. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] always queries Active Directory using OpenLDAP library calls directly in this setup. The third-party integrators are only used to join the Linux host to Active Directory domain, and [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] doesn't have any direct communication with these utilities.
 
 > [!IMPORTANT]  
-> Please see the recommendations for using the `mssql-conf network.disablesssd` configuration option in the Additional configuration options section of the article [Use Active Directory authentication with SQL Server on Linux](sql-server-linux-active-directory-authentication.md#additionalconfig).
+> See the recommendations for using the `mssql-conf network.disablesssd` configuration option in the Additional configuration options section of the article [Use Active Directory authentication with SQL Server on Linux](sql-server-linux-active-directory-authentication.md#additionalconfig).
 
 Verify that your `/etc/krb5.conf` is configured correctly. For most third-party Active Directory providers, this configuration is done automatically. However, check `/etc/krb5.conf` for the following values to prevent any future issues:
 

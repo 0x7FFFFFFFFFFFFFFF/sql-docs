@@ -4,7 +4,7 @@ description: Explore how SQL Server can be deployed on Linux containers and lear
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -30,7 +30,7 @@ For other deployment scenarios, see:
 > This article specifically focuses on using the `mssql-server-linux` image. SQL Server deployments in Windows containers aren't covered by support. For development and testing, you can create your own custom container images to work with SQL Server in Windows containers. Sample files are available on [GitHub](https://github.com/microsoft/mssql-docker/blob/master/windows/mssql-server-windows-developer/dockerfile_1). Sample files are for reference only.
 
 > [!IMPORTANT]  
-> Before choosing to run a SQL Server container for production use cases, please review our [support policy for SQL Server Containers](/troubleshoot/sql/database-engine/install/windows/support-policy-sql-server) to ensure that you're running on a supported configuration.
+> Before choosing to run a SQL Server container for production use cases, review the [Technical support policy for Microsoft SQL Server](/troubleshoot/sql/database-engine/install/windows/support-policy-sql-server) to ensure that you're running on a supported configuration.
 
 This 6-minute video provides an introduction into running SQL Server on containers:
 

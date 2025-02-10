@@ -4,7 +4,7 @@ description: "The queryinsights.exec_requests_history in Microsoft Fabric provid
 author: WilliamDAssafMSFT
 ms.author: mariyaali
 ms.reviewer: mariyaali, randolphwest
-ms.date: 12/27/2024
+ms.date: 1/23/2025
 ms.service: sql
 ms.topic: "reference"
 f1_keywords:
@@ -27,9 +27,11 @@ The `queryinsights.exec_requests_history` in [!INCLUDE [fabric](../../includes/f
 | Column name | Data type | Description |
 | --- | --- | --- |
 | `distributed_statement_id` | **uniqueidentifier** | Unique ID for each query. |
+| `submit_time` | **datetime2** | Time at which the request was submitted for execution. |
 | `start_time` | **datetime2** | Time when the query started running. |
 | `command` | **varchar(8000)** | Complete text of the executed query. |
 | `login_name` | **varchar(128)** | Name of the user or system that sent the query. |
+| `program_name` | **varchar(128)** | Name of client program that initiated the session. The value is `NULL` for internal sessions. Is nullable. |
 | `row_count` | **bigint** | Number of rows retrieved by the query. |
 | `total_elapsed_time_ms` | **int** | Total time (in milliseconds) taken by the query to finish. |
 | `status` | **varchar(30)** | Query status: `Succeeded`, `Failed`, or `Canceled` |

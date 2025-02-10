@@ -1,11 +1,10 @@
 ---
-title: New to linux resources for SQL users
+title: New to Linux Resources for SQL Users
 titleSuffix: SQL Server
 description: Resources and guidance for SQL Server users who are new to Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: randolphwest
-ms.date: 03/15/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -18,7 +17,7 @@ ms.custom:
 
 This article is intended to provide a learning path through an introduction of Linux concepts. Use the sections in the article as a guided learning path to familiarize yourself with the Linux environment.
 
-This is not intended to be a comprehensive list but instead provides the bare minimum you need to help you administer and navigate your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux environment. See the [full list of tutorials](https://www.linux.org/forums/linux-beginner-tutorials.123/) to learn more.
+This isn't intended to be a comprehensive list but instead provides the bare minimum you need to help you administer and navigate your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux environment. See the [full list of tutorials](https://www.linux.org/forums/linux-beginner-tutorials.123/) to learn more.
 
 ## What is Linux?
 

@@ -19,27 +19,19 @@ ms.custom: mdx
   
  There are three tuple functions in MDX, [Current &#40;MDX&#41;](../mdx/current-mdx.md), [Item &#40;Tuple&#41; &#40;MDX&#41;](../mdx/item-tuple-mdx.md) and [StrToTuple &#40;MDX&#41;](../mdx/strtotuple-mdx.md). The following example query shows how to use of each of them:  
   
- `WITH`  
-  
- `//Creates a set of tuples consisting of Years and Countries`  
-  
- `SET MyTuples AS  [Date].[Calendar Year].[Calendar Year].MEMBERS * [Customer].[Country].[Country].MEMBERS`  
-  
- `//Returns a string representation of that set using the Current and Generate functions`  
-  
- `MEMBER MEASURES.CURRENTDEMO AS GENERATE(MyTuples, TUPLETOSTR(MyTuples.CURRENT), ", ")`  
-  
- `//Retrieves the fourth tuple from that set and displays it as a string`  
-  
- `MEMBER MEASURES.ITEMDEMO AS TUPLETOSTR(MyTuples.ITEM(3))`  
-  
- `//Creates a tuple consisting of the measure Internet Sales Amount and the country Australia from a string`  
-  
- `MEMBER MEASURES.STRTOTUPLEDEMO AS STRTOTUPLE("([Measures].[Internet Sales Amount]" + ", [Customer].[Country].&[Australia])")`  
-  
- `SELECT{MEASURES.CURRENTDEMO,MEASURES.ITEMDEMO,MEASURES.STRTOTUPLEDEMO} ON COLUMNS`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH  
+//Creates a set of tuples consisting of Years and Countries  
+SET MyTuples AS  [Date].[Calendar Year].[Calendar Year].MEMBERS * [Customer].[Country].[Country].MEMBERS  
+//Returns a string representation of that set using the Current and Generate functions  
+MEMBER MEASURES.CURRENTDEMO AS GENERATE(MyTuples, TUPLETOSTR(MyTuples.CURRENT), ", ")  
+//Retrieves the fourth tuple from that set and displays it as a string  
+MEMBER MEASURES.ITEMDEMO AS TUPLETOSTR(MyTuples.ITEM(3))  
+//Creates a tuple consisting of the measure Internet Sales Amount and the country Australia from a string  
+MEMBER MEASURES.STRTOTUPLEDEMO AS STRTOTUPLE("([Measures].[Internet Sales Amount]" + ", [Customer].[Country].&[Australia])")  
+SELECT{MEASURES.CURRENTDEMO,MEASURES.ITEMDEMO,MEASURES.STRTOTUPLEDEMO} ON COLUMNS  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [Functions &#40;MDX Syntax&#41;](../mdx/functions-mdx-syntax.md)   

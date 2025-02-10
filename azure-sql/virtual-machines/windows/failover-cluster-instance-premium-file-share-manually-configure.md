@@ -50,7 +50,7 @@ To mount your premium file share, follow these steps:
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/premium-file-storage-commands.png" alt-text="Screenshot showing how to copy the PowerShell command from the file share connect portal.":::
 
-1. Use Remote Desktop Protocol (RDP) to connect to the SQL Server VM with the **account that your SQL Server FCI will use for the service account**.
+1. Use [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) to connect to the SQL Server VM with the **account that your SQL Server FCI will use for the service account**.
 1. Open an administrative PowerShell command console.
 1. Run the command that you copied earlier to your text editor from the File share portal.
 1. Go to the share by using either File Explorer or the **Run** dialog box (Windows + R on your keyboard). Use the network path `\\storageaccountname.file.core.windows.net\filesharename`. For example, `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
@@ -110,7 +110,7 @@ After you've configured the failover cluster and all cluster components, includi
 
 To create the first node in the SQL Server FCI, follow these steps:
 
-1. Connect to the first virtual machine by using RDP or Bastion.
+1. Connect to the first virtual machine by using [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows).
 
 1. In **Failover Cluster Manager**, make sure that all the core cluster resources are on the first virtual machine. If necessary, move all resources to this virtual machine.
 
@@ -138,7 +138,7 @@ To create the first node in the SQL Server FCI, follow these steps:
 
    :::image type="content" source="media/failover-cluster-instance-azure-shared-disk-manually-configure/sql-install-cluster-network-secondary-ip-vm-1.png" alt-text="Screenshot of the secondary IP address in the subnet of the first VM.":::
 
-1. In **Database Engine Configuration**, the data directories need to be on the premium file share. Enter the full path of the share, in this format: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. A warning appears, telling you that you've specified a file server as the data directory. This warning is expected. Ensure that the user account you used to access the VM via RDP when you persisted the file share is the same account that the SQL Server service uses to avoid possible failures.
+1. In **Database Engine Configuration**, the data directories need to be on the premium file share. Enter the full path of the share, in this format: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. A warning appears, telling you that you've specified a file server as the data directory. This warning is expected. Ensure that the user account you used to access the VM via [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) when you persisted the file share is the same account that the SQL Server service uses to avoid possible failures.
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Screenshot showing to use file share as SQL data directories.":::
 
@@ -148,7 +148,7 @@ To create the first node in the SQL Server FCI, follow these steps:
 
 To add an additional node to the SQL Server FCI, follow these steps:
 
-1. After FCI installation succeeds on the first node, connect to the second node by using RDP or Bastion.
+1. After FCI installation succeeds on the first node, connect to the second node by using [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows).
 
 1. Open the **SQL Server Installation Center**, and then select **Installation**.
 

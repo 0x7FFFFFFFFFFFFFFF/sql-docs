@@ -1,7 +1,7 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/06/2024
+ms.date: 01/16/2025
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -273,10 +273,10 @@ ms.topic: include
 | [41973](../mssqlserver-41973-database-engine-error.md) | 16 | No | The link cannot be established because the endpoint certificate from SQL Server has not been imported to Azure SQL Managed Instance. Please import the endpoint certificate from SQL Server to Managed Instance, and retry the link creation again. Please see online documentation for Managed Instance link for more information. |
 | [41974](../mssqlserver-41974-database-engine-error.md) | 16 | No | The link cannot be established because the endpoint certificate from SQL Azure SQL Managed Instance has not been imported to SQL Server. Please download the endpoint certificate from Managed Instance and import it to SQL Server, and retry the link creation again. Please see online documentation for Managed Instance link for more information. |
 | 41975 | 16 | No | Unsupported storage type. Azure SQL Managed Instance does not support database backup to the provided storage type. |
-| [41976](../mssqlserver-41976-database-engine-error.md)  | 16 | No | Connection with availability group '%.\*ls' on the server with endpoint '%.\*ls' cannot be established as it is not responding. Possible causes could be nonexistence of availability group or distributed availability group on the partner server, incorrectly specified names or configuration parameters. Please check the log file on the partner server for the exact error cause. |
-| [41977](../mssqlserver-41977-database-engine-error.md)  | 16 | No | Connection with availability group '%.\*ls' on the server with endpoint '%.\*ls' is established, but there is no response from the target database. Possible causes could be errors with creating a database on the partner server, incorrectly specified names or configuration parameters. Please check the log file on the partner server for the exact error cause. |
+| [41976](../mssqlserver-41976-database-engine-error.md) | 16 | No | Connection with availability group '%.\*ls' on the server with endpoint '%.\*ls' cannot be established as it is not responding. Possible causes could be nonexistence of availability group or distributed availability group on the partner server, incorrectly specified names or configuration parameters. Please check the log file on the partner server for the exact error cause. |
+| [41977](../mssqlserver-41977-database-engine-error.md) | 16 | No | Connection with availability group '%.\*ls' on the server with endpoint '%.\*ls' is established, but there is no response from the target database. Possible causes could be errors with creating a database on the partner server, incorrectly specified names or configuration parameters. Please check the log file on the partner server for the exact error cause. |
 | 41978 | 16 | No | The parameters (%ls) are not supported for this stored procedure in SQL Database Managed Instance. Review the documentation for supported parameters. |
-| [41986](../mssqlserver-41986-database-engine-error.md)  | 16 | No | Azure SQL Managed Instance link creation failed because either connection to SQL Server failed, or the server did not respond after a prolonged period of time. Verify the network connectivity and firewall rules between SQL Server and Managed Instance are properly configured and retry again. |
+| [41986](../mssqlserver-41986-database-engine-error.md) | 16 | No | Azure SQL Managed Instance link creation failed because either connection to SQL Server failed, or the server did not respond after a prolonged period of time. Verify the network connectivity and firewall rules between SQL Server and Managed Instance are properly configured and retry again. |
 | 41988 | 16 | No | The link supporting bi-directional failover requires matching database formats on source and target server. |
 | 41989 | 16 | No | The parameters (%ls) can only be set/updated on SQL Database Managed Instance. Review the documentation for supported parameters. |
 | 41990 | 16 | No | %s cannot be null or empty when %s is set to 0 (SQL Server Authentication). |
@@ -334,6 +334,7 @@ ms.topic: include
 | 42116 | 11 | No | Cannot open database "%.\*ls" requested by the login because this database is currently being dropped. The login failed. |
 | 42117 | 16 | No | The elastic pool '%.\*ls' has reached its active database count limit. The active database count for the elastic pool cannot exceed (%d) for the current service tier. |
 | 42118 | 16 | No | Login failed because the network security perimeter denied inbound access. |
+| 42134 | 16 | No | Cannot open database "%.\*ls" requested by the login because this database is participating in a failover group as a secondary and has geo link in an inactive state. The login failed. |
 | 43001 | 16 | No | '%.\*ls' is not a valid login name. |
 | 43002 | 16 | No | The storage size of %d MB exceeds the maximum allowed storage of %d MB. |
 | 43003 | 16 | No | More than one firewall rules have the same name '%.\*ls'. |
@@ -1298,7 +1299,7 @@ ms.topic: include
 | 47518 | 16 | No | Adding memory optimized table to the database replicated to Azure SQL Managed Instance is not supported because its service tier does not support In-memory OLTP capabilities. Consider replicating database to managed instance service tier supporting In-memory OLTP capabilities. |
 | 47519 | 16 | No | Cannot create distributed availability group '%.\*ls' when local AG '%.\*ls' does not contain database in cases when secondary participant is Azure SQL Managed Instance. |
 | 47520 | 16 | No | Database cannot be removed from availability group which participates in distributed availability group in which secondary participant is Azure SQL Managed Instance. |
-| [47521](../mssqlserver-47521-database-engine-error.md)  | 16 | No | Secondary replica could not be built as the replica request was not received from the primary, or not processed correctly. Check the state of the primary server and ensure that Availability Group on this server is not empty, and that it contains healthy databases. |
+| [47521](../mssqlserver-47521-database-engine-error.md) | 16 | No | Secondary replica could not be built as the replica request was not received from the primary, or not processed correctly. Check the state of the primary server and ensure that Availability Group on this server is not empty, and that it contains healthy databases. |
 | 47522 | 16 | No | Database '%.\*ls' has been removed from availability group which participates in Azure SQL Managed Instance link. |
 | 47600 | 10 | No | Reason: Windows Authentication for Azure AD Principals is not enabled on this instance. |
 | 47601 | 10 | No | Reason: There was an internal error while attempting Windows Authentication for Azure AD Principals. |

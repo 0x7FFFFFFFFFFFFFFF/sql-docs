@@ -1,8 +1,8 @@
 ---
 title: "Configure a Native mode report server scale-out deployment"
 description: "Configure a Native Mode Report Server Scale-Out Deployment"
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

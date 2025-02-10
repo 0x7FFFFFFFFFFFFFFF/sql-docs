@@ -12,12 +12,10 @@ ms.custom: references_regions
 ---
 
 
-# Configure service endpoint policies (Preview) for Azure SQL Managed Instance
+# Configure service endpoint policies for Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Virtual Network (VNet) Azure Storage [service endpoint policies](/azure/virtual-network/virtual-network-service-endpoint-policies-overview) allow you to filter egress virtual network traffic to Azure Storage, restricting data transfers to specific storage accounts.
-
-The ability to configure your endpoint policies and associate them with your SQL Managed Instance is currently in preview. 
 
 ## Key benefits
 
@@ -29,19 +27,17 @@ Configuring Virtual network Azure Storage service endpoint policies for your Azu
 
 - __System traffic remains unaffected__: Service endpoint policies never obstruct access to storage that is required for Azure SQL Managed Instance to function. This includes the storage of backups, data files, transaction log files, and other assets.
 
-> [!IMPORTANT]
-> Service endpoint policies only control traffic that originates from the SQL Managed Instance subnet and terminates in Azure storage. The policies do not affect, for example, exporting the database to an on-premises BACPAC file, Azure Data Factory integration, the collection of diagnostic information via Azure Diagnostic Settings, or other mechanisms of data extraction that do not directly target Azure Storage.
+Service endpoint policies only control traffic that originates from the SQL Managed Instance subnet and terminates in Azure Storage. They do not affect other means of data egress; for example, exporting the database to an on-premises BACPAC file, Azure Data Factory integration, data exfiltration to other cloud providers, or other mechanisms of data extraction that do not directly target Azure Storage. Those pathways can be protected with other means of traffic control, like user-defined routes, network security groups, and Azure Firewall.
 
 ## Limitations
 
 Enabling service endpoint policies for your Azure SQL Managed Instance has the following limitations:
 
-- While in preview, placing a service endpoint policy on a subnet will interfere with the ability of instances in that subnet to perform [point-in-time restores (PITR)](point-in-time-restore.md) from an instance in another subnet. A service endpoint policy does not, however, prevent instances in other subnets from restoring backups from that subnet.
-- While in preview, this feature is available in all Azure regions where SQL Managed Instance is supported except for **China East 2**, **China North 2**,  **Central US EUAP**, **East US 2 EUAP**, **US Gov Arizona**, **US Gov Texas**, **US Gov Virginia**, and **West Central US**.
+- Service endpoint policies for Azure Storage in managed instance subnets are available in all Azure regions where SQL Managed Instance is supported except for **China East 2**, **China North 2**,  **Central US EUAP**, **East US 2 EUAP**, **US Gov Arizona**, **US Gov Texas**, **US Gov Virginia**, and **West Central US**.
 - The feature is available only to virtual networks deployed through the Azure Resource Manager deployment model.
 - The feature is available only in subnets that have [service endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview) for Azure Storage enabled.
 - Assigning a service endpoint policy to a service endpoint upgrades the endpoint from regional to global scope. In other words, all traffic to Azure Storage will go through the service endpoint regardless of the region in which the storage account resides.
-- Allowing a storage account will automatically allow access to its RA-GRS secondary.
+- Allowing a storage account will automatically allow access to its RA-GRS secondary if it exists.
 
 ## Prepare storage inventory
 
@@ -60,15 +56,12 @@ The following is a list of workflows that may contact Azure Storage:
 
 Note the account name, resource group, and subscription for any storage account that participates in these, or any other, workflows that access storage. 
 
-
 ## Configure policies
 
 You'll first need to create your service endpoint policy, and then associate the policy with the SQL Managed Instance subnet. Modify the workflow in this section to suit your business needs.
 
-
 > [!NOTE]
 > - SQL Managed Instance subnets require policies to contain the /Services/Azure/ManagedInstance service alias (See step 5). 
-> - Managed instances deployed to a subnet that already contains service endpoint policies will be automatically upgraded the /Services/Azure/ManagedInstance service alias.
 
 ### Create a service endpoint policy
 

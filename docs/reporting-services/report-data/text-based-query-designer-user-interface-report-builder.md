@@ -1,8 +1,8 @@
 ---
 title: "Text-based Query Designer User Interface (Report Builder)"
 description: Use the text-based query designer to specify a query using the query language supported by the data source, run the query, and view the results at design time.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

@@ -5,7 +5,7 @@ description: Learn how to connect to Azure SQL Database or Azure SQL Managed Ins
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: wiassaf, mathoma, randolphwest, maghan
-ms.date: 09/19/2024
+ms.date: 01/10/2025
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: quickstart
@@ -19,7 +19,7 @@ monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 
 [!INCLUDE [appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[Visual Studio Code](https://code.visualstudio.com/docs) is a graphical code editor for Linux, macOS, and Windows. It supports extensions, including the [mssql extension](https://aka.ms/mssql-marketplace) for querying SQL Server, Azure SQL Database, Azure SQL Managed Instance, and a database in Azure Synapse Analytics. In this quickstart, you use Visual Studio Code to connect to Azure SQL Database or Azure SQL Managed Instance and then run Transact-SQL statements to query, insert, update, and delete data.
+[Visual Studio Code](https://code.visualstudio.com/docs) is a graphical code editor for Linux, macOS, and Windows. It supports extensions, including the [mssql extension](https://aka.ms/mssql-marketplace) for querying SQL Server, Azure SQL Database, Azure SQL Managed Instance, [SQL database in Microsoft Fabric](/fabric/database/sql/connect), and other platforms. In this quickstart, you use Visual Studio Code to connect to Azure SQL Database or Azure SQL Managed Instance and then run Transact-SQL statements to query, insert, update, and delete data.
 
 ## Prerequisites
 
@@ -118,7 +118,7 @@ Use Visual Studio Code to establish a connection to your server.
 
    | Property       | Suggested value | Description  |
    | --- | --- | --- |
-   | **Server name** | The fully qualified server name | Something like: **mynewserver20170313.database.windows.net**. |
+   | **Server name** | The fully qualified server name | Something like: `<Contoso-server-name>.database.windows.net`. |
    | **Database name** | mySampleDatabase | The database to connect to. |
    | **Authentication** | SQL Login | This tutorial uses SQL Authentication. |
    | **User name** | User name | The user name of the server admin account used to create the server. |

@@ -1,8 +1,8 @@
 ---
 title: "Grouping pane in a paginated report"
 description: Display row groups and column groups for a currently selected tablix data region in a paginated report. Find out about the grouping pane in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

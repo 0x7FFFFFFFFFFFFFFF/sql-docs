@@ -1,8 +1,8 @@
 ---
 title: "URLs in Configuration Files  (Configuration Manager)"
 description: "URLs in Configuration Files  (Report Server Configuration Manager)"
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

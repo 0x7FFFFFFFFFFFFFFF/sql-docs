@@ -36,7 +36,7 @@ namespace EMB
 			try
 			{
 				// Do something that may generate an exception.
-				throw new ApplicationException("An error has occured");
+				throw new ApplicationException("An error has occurred");
 			}
 			catch (ApplicationException ex)
 			{
@@ -78,7 +78,7 @@ namespace EMB
 			try
 			{
 				// Do something that may cause an exception.
-				throw new ApplicationException("An error has occured");
+				throw new ApplicationException("An error has occurred");
 			}
 			catch (ApplicationException ex)
 			{
@@ -121,7 +121,7 @@ namespace EMB
 			try
 			{
 				// Do something that may cause an exception.
-				throw new ApplicationException("An error has occured.");
+				throw new ApplicationException("An error has occurred.");
 			}
 			catch (ApplicationException ex)
 			{
@@ -150,7 +150,7 @@ namespace EMB
 			try
 			{
 				// Do something that could generate an exception.
-				throw new ApplicationException("An error has occured.");
+				throw new ApplicationException("An error has occurred.");
 			}
 			catch (ApplicationException ex)
 			{

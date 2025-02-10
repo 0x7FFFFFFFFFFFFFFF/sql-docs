@@ -1,8 +1,8 @@
 ---
 title: "Report Server command prompt utilities"
 description: Learn about the SQL Server Reporting Services command line utilities that are used to administer a report server.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

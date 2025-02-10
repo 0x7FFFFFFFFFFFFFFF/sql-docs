@@ -41,23 +41,17 @@ BottomSum(Set_Expression, Value, Numeric_Expression)
 ## Examples  
  The following example returns, for the Bike category, the smallest set of members of the City level in the Geography hierarchy in the Geography dimension for fiscal year 2003, and whose cumulative total, using the Reseller Sales Amount measure, is at least the sum of 50,000 (beginning with the members of this set with the smallest number of sales):  
   
- `SELECT`  
-  
- `[Product].[Product Categories].Bikes ON 0,`  
-  
- `BottomSum`  
-  
- `({[Geography].[Geography].[City].Members}`  
-  
- `, 50000`  
-  
- `, ([Measures].[Reseller Sales Amount],[Product].[Product Categories].Bikes)`  
-  
- `) ON 1`  
-  
- `FROM [Adventure Works]`  
-  
- `WHERE([Measures].[Reseller Sales Amount],[Date].[Fiscal].[Fiscal Year].[FY 2003])`  
+```  
+SELECT  
+[Product].[Product Categories].Bikes ON 0,  
+BottomSum  
+({[Geography].[Geography].[City].Members}  
+, 50000  
+, ([Measures].[Reseller Sales Amount],[Product].[Product Categories].Bikes)  
+) ON 1  
+FROM [Adventure Works]  
+WHERE([Measures].[Reseller Sales Amount],[Date].[Fiscal].[Fiscal Year].[FY 2003])  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

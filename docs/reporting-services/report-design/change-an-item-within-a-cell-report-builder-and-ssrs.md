@@ -1,8 +1,8 @@
 ---
 title: "Change an item within a cell in a paginated report"
 description: Replace a noncontainer item, such as a text box, line, or image, in paginated reports with a new report item in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

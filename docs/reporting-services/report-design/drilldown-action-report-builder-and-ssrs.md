@@ -1,8 +1,8 @@
 ---
 title: "Drilldown action in a paginated report"
 description: Enable users with drilldown action in a paginated report to hide and display items interactively in Report Builder by providing plus and minus icons on a text box.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

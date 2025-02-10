@@ -35,9 +35,10 @@ IF expression THEN assignment END IF
 ## Examples  
  In the following example, the scope is restricted to the Country level of the Customers Geography hierarchy in the Customers dimension. If the current measure is Internet Sales Amount, then the Internet Sales Amount is set to 10:  
   
- `SCOPE ([Customer].[Customer Geography].[Country].MEMBERS);`  
-  
- `IF Measures.CurrentMember IS [Measures].[Internet Sales Amount] THEN this = 10 END IF;`  
+```  
+SCOPE ([Customer].[Customer Geography].[Country].MEMBERS);  
+IF Measures.CurrentMember IS [Measures].[Internet Sales Amount] THEN this = 10 END IF;  
+```  
   
  `END SCOPE`;  
   

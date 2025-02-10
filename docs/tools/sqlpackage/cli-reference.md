@@ -75,6 +75,7 @@ Some parameters are shared between the SqlPackage actions. Below is a table summ
 |**/DeployReportPath:**|**/drp**| | x | | | | | x |
 |**/Diagnostics:**|**/d**| x | x | x | x | x | x | x |
 |**/DiagnosticsFile:**|**/df**| x | x | x | x | x | x | x |
+|**/DiagnosticsPackageFile:**|**/dpf**| | x | | x | | | |
 |**/MaxParallelism:**|**/mp**| x | x | x | x | x | x | x |
 |**/OutputPath:**|**/op**|  |  |  | | x | x | x |
 |**/OverwriteFiles:**|**/of**| x | x | x | | x | x | x |

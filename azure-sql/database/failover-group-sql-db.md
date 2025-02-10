@@ -1,10 +1,10 @@
 ---
 title: Failover groups overview & best practices
 description: Failover groups let you manage geo-replication and automatic / coordinated failover of a group of databases on a server for both single and pooled database in Azure SQL Database.
-author: rajeshsetlem
-ms.author: rsetlem
-ms.reviewer: wiassaf, mathoma
-ms.date: 09/30/2024
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: rsetlem, mathoma
+ms.date: 01/24/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: conceptual
@@ -21,10 +21,10 @@ ms.custom:
 
 The failover groups feature allows you to manage the replication and failover of some or all databases on a [logical server](logical-servers.md) to a logical server in another region. This article provides an overview of the failover group feature with best practices and recommendations for using it with Azure SQL Database.  
 
-To get started using the feature, review [Configure failover group](failover-group-configure-sql-db.md).
+To get started using the feature, review [Configure a failover group for Azure SQL Database](failover-group-configure-sql-db.md).
 
 > [!NOTE]
-> This article covers failover groups for Azure SQL Database. For Azure SQL Managed Instance, see [Failover groups in Azure SQL Managed Instance](../managed-instance/failover-group-sql-mi.md).
+> This article covers failover groups for Azure SQL Database. For Azure SQL Managed Instance, see [Failover groups overview & best practices - Azure SQL Managed Instance](../managed-instance/failover-group-sql-mi.md).
 
 To learn more about Azure SQL Database disaster recovery, watch this video:
 
@@ -32,7 +32,7 @@ To learn more about Azure SQL Database disaster recovery, watch this video:
 
 ## Overview
 
-The failover groups feature allows you to manage the replication and failover of databases to another Azure region. You can choose all, or a subset of, user databases in a logical server to be replicated to another logical server. It's a declarative abstraction on top of the [active geo-replication](../database/active-geo-replication-overview.md) feature, designed to simplify deployment and management of geo-replicated databases at scale.
+The failover groups feature allows you to manage the replication and failover of databases to another Azure region. You can choose all, or a subset of, user databases in a logical server to be replicated to another logical server. It's a declarative abstraction on top of the [active geo-replication](active-geo-replication-overview.md) feature, designed to simplify deployment and management of geo-replicated databases at scale.
 
 For geo-failover RPO and RTO, see [overview of business continuity](business-continuity-high-availability-disaster-recover-hadr-overview.md#rto-and-rpo).
 
@@ -40,7 +40,9 @@ For geo-failover RPO and RTO, see [overview of business continuity](business-con
 [!INCLUDE [failover-groups-overview](../includes/failover-group-overview.md)]
 
 
-## <a id="terminology-and-capabilities"></a> Terminology and capabilities
+<a id="terminology-and-capabilities"></a>
+
+## Terminology and capabilities
 
 <!--
 There is some overlap of content in the following articles, be sure to make changes to all if necessary:
@@ -101,11 +103,13 @@ There is some overlap of content in the following articles, be sure to make chan
 
 A failover group in Azure SQL Database can include one or multiple databases, typically used by the same application. A failover group must be configured on the primary server, which connects it to the secondary server in a different Azure region. The failover group can include all or some databases in the primary server. The following diagram illustrates a typical configuration of a geo-redundant cloud application using multiple databases in a failover group: 
 
-:::image type="content" source="./media/failover-group-overview/failover-group.png" alt-text="Diagram shows a typical configuration of a geo-redundant cloud application using multiple databases and a failover group.":::
+:::image type="content" source="media/failover-group-sql-db/failover-group.png" alt-text="Diagram shows a typical configuration of a geo-redundant cloud application using multiple databases and a failover group.":::
 
-When designing a service with business continuity in mind, follow the general guidelines and best practices outlined in this article.  When configuring a failover group, ensure that authentication and network access on the secondary is set up to function correctly after geo-failover, when the geo-secondary becomes the new primary. For details, see [SQL Database security after disaster recovery](active-geo-replication-security-configure.md). For more information, see [Designing cloud solutions for disaster recovery](designing-cloud-solutions-for-disaster-recovery.md).
+When designing a service with business continuity in mind, follow the general guidelines and best practices outlined in this article. When configuring a failover group, ensure that authentication and network access on the secondary is set up to function correctly after geo-failover, when the geo-secondary becomes the new primary. For details, see [Configure and manage Azure SQL Database security for geo-restore or failover](active-geo-replication-security-configure.md). For more information, see [Designing globally available services using Azure SQL Database](designing-cloud-solutions-for-disaster-recovery.md) and [Geo-restore for Azure SQL Database](recovery-using-backups.md#geo-restore).
 
-## <a id="using-geo-paired-regions"></a> Use paired regions
+<a id="using-geo-paired-regions"></a>
+
+## Use paired regions
 
 When creating your failover group between the primary and secondary server, use [paired regions](/azure/reliability/cross-region-replication-azure) as failover groups in paired regions have better performance compared to unpaired regions.
 
@@ -124,15 +128,21 @@ The number of databases within a failover group directly impacts the duration of
 - During a Failover (also known as Planned Failover), we ensure that all primary databases are fully synchronized with their secondary and reach a ready state. To avoid overwhelming the control plane, databases are prepared in batches. Therefore, it is highly recommended to limit the number of databases in a failover group.
 - In the case of a Forced Failover, the preparation phase is expedited as data synchronization is not initiated. To achieve quicker and predictable failover durations, it might be beneficial to keep the number of databases in the failover group to a smaller number. 
 
-## <a id="using-one-or-several-failover-groups-to-manage-failover-of-multiple-databases"></a> Use multiple failover groups to fail over multiple databases
+<a id="using-one-or-several-failover-groups-to-manage-failover-of-multiple-databases"></a>
+
+## Use multiple failover groups to fail over multiple databases
 
 One or many failover groups can be created between two servers in different regions (primary and secondary servers). Each group can include one or several databases that are recovered as a unit in case all or some primary databases become unavailable due to an outage in the primary region. Creating a failover group creates geo-secondary databases with the same service objective as the primary. If you add an existing geo-replication relationship to a failover group, make sure the geo-secondary is configured with the same service tier and compute size as the primary.
   
-## <a id="using-read-write-listener-for-oltp-workload"></a> Use the read-write listener (primary)
+<a id="using-read-write-listener-for-oltp-workload"></a>
+
+## Use the read-write listener (primary)
 
 For read-write workloads, use `<fog-name>.database.windows.net` as the server name in the connection string. Connections are automatically directed to the primary. This name doesn't change after failover. Note the failover involves updating the DNS record so the client connections are redirected to the new primary only after the client DNS cache is refreshed. The time to live (TTL) of the primary and secondary listener DNS record is 30 seconds.
 
-## <a id="using-read-only-listener-for-read-only-workload"></a> Use the read-only listener (secondary)
+<a id="using-read-only-listener-for-read-only-workload"></a>
+
+## Use the read-only listener (secondary)
 
 If you have logically isolated read-only workloads that are tolerant to data latency, you can run them on the geo-secondary. For read-only sessions, use `<fog-name>.secondary.database.windows.net` as the server name in the connection string. Connections are automatically directed to the geo-secondary. It's also recommended that you indicate read intent in the connection string by using `ApplicationIntent=ReadOnly`.
 
@@ -140,11 +150,15 @@ In the Premium, Business Critical, and Hyperscale service tiers, SQL Database su
 
 To connect to a read-only replica in the secondary location, use `ApplicationIntent=ReadOnly` and `<fog-name>.secondary.database.windows.net`.
 
-## <a id="preparing-for-performance-degradation"></a> Potential performance degradation after failover
+<a id="preparing-for-performance-degradation"></a>
+
+## Potential performance degradation after failover
 
 A typical Azure application uses multiple Azure services and consists of multiple components. Failover of a group is triggered based on the state of Azure SQL Database alone. Other Azure services in the primary region might not be affected by the outage and their components might still be available in that region. Once the primary databases switch to the secondary (DR) region, latency between dependent components can increase. To avoid the impact of higher latency on the application's performance, ensure the redundancy of all the application's components in the DR region, follow these [network security guidelines](failover-group-configure-sql-db.md#failover-groups-and-network-security), and orchestrate the geo-failover of relevant application components together with the database.
 
-## <a id="preparing-for-data-loss"></a> Potential data loss after forced failover
+<a id="preparing-for-data-loss"></a>
+
+## Potential data loss after forced failover
 
 If an outage occurs in the primary region, recent transactions might not have been replicated to the geo-secondary and there might be data loss if a forced failover is performed.
 
@@ -152,7 +166,9 @@ If an outage occurs in the primary region, recent transactions might not have be
 > Elastic pools with 800 or fewer DTUs or 8 or fewer vCores, and more than 250 databases can encounter issues including longer planned geo-failovers and degraded performance. These issues are more likely to occur for write intensive workloads when geo-replicas are widely separated by geography, or when multiple secondary geo-replicas are used for each database. A symptom of these issues is an increase in geo-replication lag over time, potentially leading to a more extensive data loss in an outage. This lag can be monitored using [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database). If these issues occur, then mitigation includes scaling up the pool to have more DTUs or vCores, or reducing the number of geo-replicated databases in the pool.
 
 
-## <a id="failback"></a> Failback
+<a id="failback"></a>
+
+## Failback
 
 When failover groups are configured with a Microsoft-managed failover policy, then forced failover to the geo-secondary server is initiated during a disaster scenario as per the defined grace period. Failback to the old primary must be initiated manually. 
 
@@ -160,17 +176,36 @@ When failover groups are configured with a Microsoft-managed failover policy, th
 
 Review the configure failover group guide for a list of [permissions](failover-group-configure-sql-db.md#permissions) and [limitations](failover-group-configure-sql-db.md#limitations).
 
+<a id="programmatically-managing-failover-groups"></a>
 
-## <a id="programmatically-managing-failover-groups"></a> Programmatically manage failover groups
+## Programmatically manage failover groups
 
-Failover groups can also be managed programmatically using Azure PowerShell, Azure CLI, and REST API. For more information, review [Configure failover group](failover-group-configure-sql-db.md).
+Failover groups can also be managed programmatically using Azure PowerShell, Azure CLI, and REST API. For more information, review [Configure a failover group for Azure SQL Database](failover-group-configure-sql-db.md).
+
+## Enable high availability (zone redundancy)
+
+[Availability through redundancy](high-availability-sla-local-zone-redundancy.md) improves resiliency further by protecting against outages of an availability zone within a region.
+
+When creating a failover group that includes one or more databases, there is no option to enable high availability for the secondary databases, regardless of the high availability settings of the primary databases.
+
+### Zone redundancy with non-Hyperscale databases
+
+Secondary databases created through the failover group **will not** have high availability enabled by default. After the failover group is created, enable high availability on the databases contained within the group. This behavior also applies if you create Active Geo-Replication first and then optionally add the databases to a failover group.
+ 
+### Zone redundancy with Hyperscale
+
+Secondary databases created through the failover group **will** inherit the high availability settings of their respective primary databases. Therefore, if the primary database has high availability enabled, the secondary database will also have it enabled. Conversely, if the primary database does not have high availability enabled, the secondary database will not have it enabled either.
+
+### Regional support for availability zones
+
+In a scenario where high availability is enabled on the primary database, and the secondary database being added is in a region that does not yet support availability zones, the workflow will fail with an error message with code 45122: "Create or update Failover Group operation successfully completed; however, some of the databases could not be added to or removed from Failover Group. Provisioning of zone redundant database/pool is not supported for your current request." To work around this issue, use [Active geo-replication](active-geo-replication-overview.md) where you enable or disable high availability while creating the secondary database. You can then optionally add these databases to a failover group.
 
 ## Related content
 
 - For sample scripts, see:
-  - [Use PowerShell to configure active geo-replication for Azure SQL Database](scripts/setup-geodr-and-failover-database-powershell.md)
-  - [Use PowerShell to configure active geo-replication for a pooled database in Azure SQL Database](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)
-  - [Use PowerShell to add an Azure SQL Database to a failover group](scripts/add-database-to-failover-group-powershell.md)
+   - [Use PowerShell to configure active geo-replication for Azure SQL Database](scripts/setup-geodr-and-failover-database-powershell.md)
+   - [Use PowerShell to configure active geo-replication for a pooled database in Azure SQL Database](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)
+   - [Use PowerShell to add an Azure SQL Database to a failover group](scripts/add-database-to-failover-group-powershell.md)
 - For a business continuity overview and scenarios, see [Business continuity overview](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 - To learn about Azure SQL Database automated backups, see [SQL Database automated backups](automated-backups-overview.md).
 - To learn about using automated backups for recovery, see [Restore a database from the service-initiated backups](recovery-using-backups.md).

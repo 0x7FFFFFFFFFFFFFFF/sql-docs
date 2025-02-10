@@ -1,8 +1,8 @@
 ---
 title: "Use SOAP API in Web Applications"
 description: You can access the functionality of the report server through the Reporting Services SOAP API, which can be accessed to provide enterprise reporting features.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: application-integration

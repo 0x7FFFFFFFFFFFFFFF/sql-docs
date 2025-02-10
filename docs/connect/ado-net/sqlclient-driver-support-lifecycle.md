@@ -1,9 +1,9 @@
 ---
 title: SqlClient driver support lifecycle
 description: Product support lifecycle information for the Microsoft.Data.SqlClient .NET library.
-author: David-Engel
-ms.author: davidengel
-ms.date: 02/28/2024
+author: cheenamalhotra
+ms.author: cmalhotra
+ms.date: 01/24/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -27,9 +27,9 @@ New stable (GA) releases are published every six months on a regular cadence beg
 
 | Version | Official Release Date | Latest Patch Version | Patch Release Date | Support Level | End of Support |
 |--|--|--|--|--|--|
-| 5.2 | February 28, 2024 | 5.2.2 | August 27, 2024 | Current | - |
+| 6.0 | January 9, 2025 | 6.0.1 | January 23, 2025 | Current | - |
+| 5.2 | February 28, 2024 | 5.2.2 | August 27, 2024 | Current | August 28, 2025 |
 | 5.1 | January 19, 2023 | 5.1.6 | August 27, 2024 | LTS | January 20, 2026 |
-| 4.0 | November 18, 2021 | 4.0.6 | August 21, 2024 | LTS | November 19, 2024 |
 | 3.1 | March 30, 2022 | 3.1.7 | August 20, 2024 | LTS | March 30, 2025 |
 
 ### Out of support releases
@@ -38,6 +38,7 @@ New stable (GA) releases are published every six months on a regular cadence beg
 |--|--|--|--|--|--|
 | 5.0 | July 29, 2022 | 5.0.2 | March 31, 2023 | Current | July 19, 2023 |
 | 4.1 | January 31, 2022 | 4.1.1 | September 13, 2022 | Current | January 29, 2023 |
+| 4.0 | November 18, 2021 | 4.0.6 | August 21, 2024 | LTS | November 19, 2024 |
 | 3.0 | June 9, 2021 | 3.0.1 | September 24, 2021 | Current | May 18, 2022 |
 | 2.1 | November 19, 2020 | 2.1.7 | January 9, 2024 | LTS | November 20, 2023 |
 | 2.0 | June 16, 2020 | 2.0.1 | August 25, 2020 | Current | May 19, 2021 |
@@ -53,12 +54,12 @@ New stable (GA) releases for `Microsoft.Data.SqlClient.AlwaysEncrypted.AzureKeyV
 | Version | Official Release Date | Latest Patch Version | Patch Release Date | Support Level | End of Support |
 |--|--|--|--|--|--|
 | 5.x | February 2, 2024 | 5.1.0 | February 2, 2024 | LTS | February 3, 2027 |
-| 3.x | June 14, 2021 | 3.0.0 | June 14, 2021 | LTS | June 15, 2024 |
 
 ### Out of support Azure Key Vault Provider releases
 
 | Version | Official Release Date | Latest Patch Version | Patch Release Date | Support Level | End of Support |
 |--|--|--|--|--|--|
+| 3.x | June 14, 2021 | 3.0.0 | June 14, 2021 | LTS | June 15, 2024 |
 | 2.x | March 3, 2021 | 2.0.0 | March 3, 2021 | LTS | March 4, 2024 |
 | 1.x | November 19, 2019 | 1.2.0 | December 01, 2020 | LTS | November 21, 2022 |
 
@@ -74,6 +75,7 @@ Current releases are supported for three months after a subsequent Current or LT
 
 |Database version&nbsp;&#8594;<br />&#8595; Driver Version|Azure SQL Database|Azure Synapse Analytics|Azure SQL Managed Instance|SQL Server 2022|SQL Server 2019|SQL Server 2017|SQL Server 2016|SQL Server 2014|SQL Server 2012|
 |---|---|---|---|---|---|---|---|---|---|
+|6.0|Yes|Yes|Yes|Yes|Yes|Yes|Yes|||
 |5.2|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes||
 |5.1|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |5.0|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|

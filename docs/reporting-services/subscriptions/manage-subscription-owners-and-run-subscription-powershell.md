@@ -1,8 +1,8 @@
 ---
 title: "Manage subscription owners and run subscription - PowerShell"
 description: Learn how to programmatically transfer the ownership of a Reporting Services subscription from one user to another.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions
@@ -365,7 +365,7 @@ Param(
   )  
   
 $rs2010 = New-WebServiceProxy -Uri "https://$server/ReportService2010.asmx" -Namespace SSRS.ReportingService2010 -UseDefaultCredential ;  
-#event type is case sensative to what is in the rsreportserver.config  
+#event type is case sensitive to what is in the rsreportserver.config  
 $rs2010.FireEvent("TimedSubscription",$subscriptionid,$site)  
   
 Write-Host " "  

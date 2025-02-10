@@ -33,13 +33,15 @@ To complete downloading the product before installation starts, select the **Dow
 
 Open a command prompt with administrator privileges, navigate to the directory where you downloaded the bootstrapper, and use the [bootstrapper's parameters](command-line-parameters.md#layout-command-and-command-line-parameters) to create your local layout. You must have an internet connection to complete this step.
 
-You can install a language other than English by changing `en-US` to a locale from the [list of language locales](command-line-parameters.md#list-of-language-locales), and you can use the [[list of component IDs](workload-component-ids.md) to further customize your local layout.
+You can install a language other than English by changing `en-US` to a locale from the [list of language locales](command-line-parameters.md#list-of-language-locales), and you can use the [list of component IDs](workload-component-ids.md) to further customize your local layout.
 
 To create a complete local layout for SQL Server Management Studio, run:
 
 ```cmd
 vs_ssms.exe --layout c:\localSSMSlayout --add Microsoft.Component.HelpViewer
 ```
+
+After the bootstrapper has finished downloading the layout files, the local layout folder can be moved to any other machine or environment you want to install SQL Server Management Studio on without requiring an internet connection.
 
 > [!NOTE]  
 > Make sure that your full installation path is less than 80 characters and that your machine has ample storage. SQL Server Management Studio requires a minimum of 4-GB of disk space. For more information, see [System requirements for SQL Server Management Studio 21 Preview](../ssms-21/system-requirements.md).
@@ -48,13 +50,7 @@ vs_ssms.exe --layout c:\localSSMSlayout --add Microsoft.Component.HelpViewer
 
 When you install SSMS from a local layout, the Visual Studio Installer uses the local versions of the files. If you select components during installation that aren't in the layout, then the Visual Studio Installer attempts to download them from the internet. To make sure you install only the files you previously downloaded, use the same [command-line options](command-line-parameters.md) you used to create the local layout. To make sure your installer doesn't try to access the internet when it's installing the product, use the `--noweb` switch.
 
-For example, if you created a local installation layout with the following command:
-
-```cmd
-vs_ssms.exe --layout c:\localSSMSlayout --add Microsoft.Component.HelpViewer
-```
-
-Then use the following command to run the installation and prevent the client machine from accessing the internet:
+For example, if you created a local installation layout using the command from step 2, then use the following command to run the installation and prevent the client machine from accessing the internet:
 
 ```cmd
 c:\localSSMSlayout\vs_ssms.exe --noWeb --add Microsoft.Component.HelpViewer

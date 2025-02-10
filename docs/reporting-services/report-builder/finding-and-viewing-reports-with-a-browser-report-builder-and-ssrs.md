@@ -1,8 +1,8 @@
 ---
 title: "Find and view reports with a browser (Report Builder)"
 description: You can view a report with a web browser with a direct connection to a report server. The report includes the report toolbar, so you can navigate and search.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder

@@ -4,7 +4,7 @@ description: Deploy and explore the Wingtip Tickets SaaS multitenant application
 author: bgavrilovicMS
 ms.author: bgavrilovic
 ms.reviewer: mathoma, wiassaf
-ms.date: 01/25/2019
+ms.date: 01/24/2025
 ms.service: azure-sql-database
 ms.subservice: scenario
 ms.topic: tutorial
@@ -138,7 +138,8 @@ In a production environment, typically you create a CNAME DNS record to [*point 
 
 > [!NOTE]
 > It may not be immediately obvious what the use of the traffic manager is in this tutorial. The goal of this series of tutorials is to showcase patterns that can handle the scale of a complex production environment. In such a case, for example, you would have multiple web apps distributed across the globe, co-located with databases and you would need traffic manager to route between these instances.
-Another set of tutorials that illustrates the use of traffic manager though are the [geo-restore](./saas-dbpertenant-dr-geo-restore.md) and the [geo-replication](./saas-dbpertenant-dr-geo-replication.md) tutorials. In these tutorials, traffic manager is used to help to switch over to a recovery instance of the SaaS app in the event of a regional outage.
+
+Another set of tutorials that illustrates the use of traffic manager though are the [geo-restore](./saas-dbpertenant-dr-geo-restore.md) and the [geo-replication](./saas-dbpertenant-dr-geo-replication.md) tutorials. In these tutorials, traffic manager is used to help to switch over to a recovery instance of the SaaS app in the event of a regional outage. For more information on geo-restores, see [Geo-restore for Azure SQL Database](recovery-using-backups.md#geo-restore).
 
 ## Start generating load on the tenant databases
 

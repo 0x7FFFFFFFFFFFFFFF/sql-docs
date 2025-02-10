@@ -36,17 +36,14 @@ Level_Expression.Hierarchy
 ### Examples  
  The following example returns the name of the Calendar hierarchy in the Date dimension in the AdventureWorks cube.  
   
- `WITH`  
-  
- `MEMBER Measures.HierarchyName as`  
-  
- `[Date].[Calendar].Currentmember.Hierarchy.Name`  
-  
- `SELECT {Measures.HierarchyName}  ON 0,`  
-  
- `{[Date].[Calendar].[All Periods]} ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH  
+MEMBER Measures.HierarchyName as  
+[Date].[Calendar].Currentmember.Hierarchy.Name  
+SELECT {Measures.HierarchyName}  ON 0,  
+{[Date].[Calendar].[All Periods]} ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

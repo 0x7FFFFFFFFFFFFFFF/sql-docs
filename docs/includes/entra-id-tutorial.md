@@ -110,38 +110,62 @@ Select the newly created application, and on the left side menu, select **API Pe
 
    :::image type="content" source="../relational-databases/security/authentication-access/media/upload-certificate-to-application.png" alt-text="Screenshot of certificate and secrets menu in the Azure portal." lightbox="../relational-databases/security/authentication-access/media/upload-certificate-to-application.png":::
 
-1. In the Azure portal, navigate to the Azure Key Vault instance where the certificate is stored, and select **Access policies** from the navigation menu.
+1. In the Azure portal, get the object ID of the Azure Arc Machine.
 
+   1. Under **Azure Arc Resources**>**Machines**, select the machine.
+   1. In **Overview**, find **JSON View**.
+   1. Under **Identity**, copy the value for **principalId**.
+
+      :::image type="content" source="../relational-databases/security/authentication-access/media/machine-azure-arc-json-view.png" alt-text="Screenshot of portal control of JSON view of    machine definition.":::
+
+1. In the portal, navigate to the Azure Key Vault instance where the certificate is stored, and grant access to the Azure Machine resource(s). In your Azure Key Vault navigation menu, navigate to **Settings**, and **Access configuration**. For detailed steps to manage role assignments, review [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
+  
+   Your experience depends on your key vault access configuration:
+
+   To use **Azure role-based access control (recommended)**:
+
+   1. Add the following roles to your Resource.
+
+      - Key Vault Certificate User
+      - Key Vault Secrets User
+
+   1. Verify the roles in this location:
+
+      :::image type="content" source="../relational-databases/security/authentication-access/media/add-rbac-roles-on-key-vault.png" alt-text="Screenshot of Azure Key Vault IAM role additions.":::
+
+   To use **Vault access policy**:
+
+   1. Select **Access policies** from the navigation menu.
    1. Select **Create**.
-   1. For **Secret permissions**, select **Get** and **List**.
-   1. For **Certificate permissions**, select **Get** and **List**.
+   1. For **Secret permissions**, select **Get**>**List**.
+   1. For **Certificate permissions**, select **Get**>**List**.
    1. Select **Next**.
-   1. On the **Principal** page, search for the name of your Machine - Azure Arc instance, which is the hostname of the SQL Server host.
+   1. For **Principal** page, search for the name of your **Machine - Azure Arc** instance, which is the hostname of the SQL Server host.
 
-       :::image type="content" source="../relational-databases/security/authentication-access/media/machine-azure-arc-resource.png" alt-text="Screenshot of Azure Arc server resource in portal.":::
+      :::image type="content" source="../relational-databases/security/authentication-access/media/machine-azure-arc-resource.png" alt-text="Screenshot of Azure Arc server resource in portal.   ":::
 
-   1. Skip the **Application (optional)** page by selecting **Next** twice, or selecting **Review + create**.
+   1. Select **Review + create**.
+   1. Verify that the value for **Principal**>**Object ID** matches the **Principal ID** of the managed identity assigned to the instance.
 
-      Verify that the "Object ID" of the **Principal** matches the **Principal ID** of the managed identity assigned to the instance.
-
-      :::image type="content" source="../relational-databases/security/authentication-access/media/customer-managed-akv-review-create.png" alt-text="Screenshot of Azure portal to review and create access policy."
+      :::image type="content" source="../relational-databases/security/authentication-access/media/customer-managed-akv-review-create.png" alt-text="Screenshot of Azure portal to review and    create access policy."
 
       To confirm, go to the resource page and select **JSON View** in the top right of the Essentials box on the Overview page. Under **identity** you'll find the **principalId**
 
-      :::image type="content" source="../relational-databases/security/authentication-access/media/machine-azure-arc-json-view.png" alt-text="Screenshot of portal control of JSON view of machine definition.":::
-
    1. Select **Create**.
 
-   You must select **Create** to ensure that the permissions are applied. To ensure permissions have been stored, refresh the browser window, and check that the row for your Azure Arc instance is still present.
-
-   :::image type="content" source="../relational-databases/security/authentication-access/media/add-access-policy-on-key-vault.png" alt-text="Screenshot of adding access policy to the key vault in the Azure portal.":::
+      You must select **Create** to ensure that the permissions are applied. To ensure permissions have been stored, refresh the browser window, and confirm that your Azure Arc instance is present.
 
 <a name='configure-azure-ad-authentication-for-sql-server-through-azure-portal'></a>
 
 ## Configure Microsoft Entra authentication for SQL Server through Azure portal
 
 > [!NOTE]
-> Using the [Azure CLI](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md?tabs=azure-cli#setting-up-the-azure-ad-admin-for-the-sql-server), [PowerShell](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md?tabs=azure-powershell#setting-up-the-azure-ad-admin-for-the-sql-server), or [ARM template](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md?tabs=arm-template#setting-up-the-azure-ad-admin-for-the-sql-server) to set up a Microsoft Entra admin for SQL Server is available.
+>
+> You can configure Microsoft Entra authentication with any of the following experiences: 
+> - [Azure CLI](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md?tabs=azure-cli#setting-up-the-azure-ad-admin-for-the-sql-server)
+> - [PowerShell](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md?tabs=azure-powershell#setting-up-the-azure-ad-admin-for-the-sql-server)
+> - [ARM template](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md?tabs=arm-template#setting-up-the-azure-ad-admin-for-the-sql-server)
+>
 
 1. Go to the [Azure portal](https://portal.azure.com), and select **SQL Server – Azure Arc**, and select the instance for your SQL Server host.
 
@@ -280,7 +304,7 @@ To list the users created in the database, execute the following T-SQL command:
 SELECT * FROM sys.database_principals;
 ```
 
-A new database user is given the **Connect** permission by default. All other SQL Server permissions must be explicitly granted by authorized grantors.
+A new database has **Connect** permission by default. All other SQL Server permissions must be explicitly granted by authorized grantors.
 
 <a name='azure-ad-guest-accounts'></a>
 

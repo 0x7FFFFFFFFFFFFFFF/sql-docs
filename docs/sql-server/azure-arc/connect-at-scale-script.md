@@ -53,7 +53,7 @@ Each machine must have [Azure PowerShell](/powershell/azure/install-az-ps) insta
    $tenantId= (Get-AzContext).Tenant.Id
    ```
 
-4. Copy and save the password, application ID, and tenant ID values using the appropriate security practices. If you forget or lose your service principal password, you can reset it using the [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) cmdlet.
+4. Copy and save the password, application ID, and tenant ID values using the appropriate security practices. If you forget or lose your service principal password, you can reset it using the [`New-AzADSpCredential`](/powershell/module/az.resources/new-azadspcredential) cmdlet.
 
    > [!NOTE]
    > Note that Azure Arc for servers doesn't currently support signing in with a certificate, so the service principal must have a secret to authenticate with.

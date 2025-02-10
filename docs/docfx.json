@@ -120,11 +120,11 @@
         "**/*.md": "~/breadcrumb/toc.yml"
       },
       "layout": {
-          "**/*.md": "Conceptual",
-          "**/*.yml": "Conceptual",
-          "**/toc.md": null,
-          "**/toc.yml": null,
-          "**/index.yml": "LandingPage"
+        "**/*.md": "Conceptual",
+        "**/*.yml": "Conceptual",
+        "**/toc.md": null,
+        "**/toc.yml": null,
+        "**/index.yml": "LandingPage"
       },
       "monikerRange": {
         "ado/**/*.md": ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-current || = azuresqldb-mi-current || = azure-sqldw-latest || >= aps-pdw-2016",
@@ -212,7 +212,8 @@
         "azdata/**/*.md": "reference"
       },
       "ms.service": {
-        "sql-server/azure-arc/**/*.md": "sql"
+        "sql-server/azure-arc/**/*.md": "sql",
+        "sql-server/azure-arc/**/*.yml": "sql"
       },
       "ms.subservice": {
         "sql-server/azure-arc/**/*.md": "azure-arc-sql-server",
@@ -411,6 +412,9 @@
         ],
         "relational-databases/system-stored-procedures/sys-sp-rda-test-connection-transact-sql.md": [
           "sql-server-ver16"
+        ],
+        "ado/**/*.md": [
+          "sql-server-ver15"
         ]
       }
     },

@@ -4,7 +4,7 @@ description: Manage and scale multiple Hyperscale databases in Azure SQL Databas
 author: arvindshmicrosoft
 ms.author: arvindsh
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 09/13/2024
+ms.date: 01/09/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
 ms.topic: conceptual
@@ -105,18 +105,7 @@ In addition to the [sys.dm_operation_status](/sql/relational-databases/system-dy
 
 ## Resource limits
 
-The following lists the supported limits for working with Hyperscale databases within elastic pools:
-
-- Supported hardware generation: Standard-series (Gen5), premium-series, and premium-series memory optimized.
-- vCore maximum per pool: 80 or 128 vCores, depending on the service level objective.
-- Maximum supported data size per single Hyperscale database: 100 TB.
-- Maximum supported total data size across databases in the pool: 100 TB.
-- Maximum supported transaction log throughput per database: 100 MB/s.
-    - Log generation rate of 150 MB/s is available as an opt-in preview feature. For more information and to opt-in to 150 MB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
-- Maximum supported total transaction log throughput across databases in the pool: 131.25 MB/second.
-- Each Hyperscale elastic pool can have up to 25 databases.
-
-For greater detail, see the resource limits of Hyperscale elastic pools for [standard-series](resource-limits-vcore-elastic-pools.md#hyperscale---provisioned-compute---standard-series-gen5),  [premium-series](resource-limits-vcore-elastic-pools.md#hyperscale---premium-series), and [premium-series memory optimized](resource-limits-vcore-elastic-pools.md#hyperscale---premium-series-memory-optimized).
+See the resource limits of Hyperscale elastic pools for [standard-series](resource-limits-vcore-elastic-pools.md#hyperscale---provisioned-compute---standard-series-gen5),  [premium-series](resource-limits-vcore-elastic-pools.md#hyperscale---premium-series), and [premium-series memory optimized](resource-limits-vcore-elastic-pools.md#hyperscale---premium-series-memory-optimized).
 
 ## Limitations
 
@@ -133,7 +122,7 @@ Consider the following limitations:
 Here are some considerations for zone redundant Hyperscale elastic pools:
 
 - Only databases with zone-redundant storage redundancy (ZRS or GZRS) can be added to Hyperscale elastic pools with zone redundancy.
-- A standalone Hyperscale database must be created with zone redundancy and zone-redundant backup storage (ZRS or GZRS) in order to add it to a zone-redundant Hyperscale elastic pool.  For Hyperscale databases without zone redundancy, perform a data transfer to a new Hyperscale database with the zone redundancy option enabled. A clone must be created using database copy, point-in-time restore, or geo-replica. For more information, see [Redeployment (Hyperscale)](/azure/reliability/migrate-sql-database#redeployment-hyperscale).
+- A standalone Hyperscale database must be created with zone redundancy and zone-redundant backup storage (ZRS or GZRS) in order to add it to a zone-redundant Hyperscale elastic pool. For Hyperscale databases without zone redundancy, perform a data transfer to a new Hyperscale database with the zone redundancy option enabled. A clone must be created using database copy, point-in-time restore, or geo-replica. For more information, see [Redeployment (Hyperscale)](/azure/reliability/migrate-sql-database#redeployment-hyperscale).
 - To move a Hyperscale database from one elastic pool to another, the zone redundancy and zone-redundant backup storage settings must match.
 - To convert a database from another non-Hyperscale service tier into a Hyperscale elastic pool with zone redundancy: 
   - Via the Azure portal, first enable both zone redundancy and zone redundant backup storage (ZRS). Then, you can add the database to the zone redundant Hyperscale elastic pool. 
@@ -143,7 +132,7 @@ Here are some considerations for zone redundant Hyperscale elastic pools:
 
 | Issue | Recommendation |
 | *-- | *-- |
-| Adding a database from a zone redundant Hyperscale elastic pool, to a [failover group](./failover-group-sql-db.md) with a non-zone redundant Hyperscale elastic pool in another region, will fail internally, but the operation may appear to be running without any progress. You may see the geo-secondary database when using tools like SSMS, but you cannot connect to and use the geo-secondary database. The failover group may show a status of "Seeding 0%" for the geo-secondary database. This issue doesn't occur if the second Hyperscale elastic pool is zone redundant. | To work around this issue, setup geo-replication outside of the failover group using Azure PowerShell, explicitly specifying non-zone redundant in the command line `New-AzSqlDatabaseSecondary -ResourceGroupName "primary-rg" -ServerName "primary-server" -DatabaseName "hsdb1" -PartnerResourceGroupName "secondary-rg" -PartnerServerName "secondary-server" -AllowConnections "All" -SecondaryElasticPoolName "secondary-nonzr-pool" -BackupStorageRedundancy Local -ZoneRedundant:$false`. Then, you can add the database into the failover group. |
+| Adding a database from a zone redundant Hyperscale elastic pool, to a [failover group](./failover-group-sql-db.md) with a non-zone redundant Hyperscale elastic pool in another region, will fail internally, but the operation can appear to be running without any progress. You can see the geo-secondary database when using tools like SSMS, but you cannot connect to and use the geo-secondary database. The failover group might show a status of "Seeding 0%" for the geo-secondary database. This issue doesn't occur if the second Hyperscale elastic pool is zone redundant. | To work around this issue, setup geo-replication outside of the failover group using Azure PowerShell, explicitly specifying non-zone redundant in the command line `New-AzSqlDatabaseSecondary -ResourceGroupName "primary-rg" -ServerName "primary-server" -DatabaseName "hsdb1" -PartnerResourceGroupName "secondary-rg" -PartnerServerName "secondary-server" -AllowConnections "All" -SecondaryElasticPoolName "secondary-nonzr-pool" -BackupStorageRedundancy Local -ZoneRedundant:$false`. Then, you can add the database into the failover group. |
 | In rare cases, you might get the error `45122 - This Hyperscale database cannot be added into an elastic pool at this time. In case of any questions, please contact Microsoft support`, when trying to move / restore / copy a Hyperscale database into an elastic pool. | This limitation is due to implementation-specific details. If this error is blocking you, raise a support incident and request help. |
 
 ## Related content

@@ -1,8 +1,8 @@
 ---
 title: "Change time zones and clock settings on a report server"
 description: Change time zones & clock settings for a report server. You can't set a report server time zone, so set the computer's time zone or SharePoint region settings.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions

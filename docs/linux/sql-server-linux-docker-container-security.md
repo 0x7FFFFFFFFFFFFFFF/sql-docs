@@ -4,7 +4,7 @@ description: Understand the different ways to secure SQL Server Linux containers
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -139,7 +139,7 @@ chown -R 10001:0 <database file dir>
 ## Encrypt connections to SQL Server Linux containers
 
 > [!IMPORTANT]  
-> When configuring Active Directory authentication or encryption options such as Transparent Data Encryption (TDE) and SSL for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux or containers, there are several files, such as the keytab, certificates, and machine key, that are created by default under the folder `/var/opt/mssql/secrets`, and access to which is restricted by default to `mssql` and `root` users. When configuring persistent storage for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers, please use the same access strategy, ensuring that the path on the host or shared volume that is mapped to the `/var/opt/mssql/secrets` folder inside the container is protected and accessible only to the `mssql` and `root` users on the host as well. If the access to this path/folder is compromised, a malicious user can gain access to these critical files, compromising the encryption hierarchy and/or Active Directory configurations.
+> When configuring Active Directory authentication or encryption options such as Transparent Data Encryption (TDE) and SSL for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux or containers, there are several files, such as the keytab, certificates, and machine key, that are created by default under the folder `/var/opt/mssql/secrets`, and access to which is restricted by default to `mssql` and `root` users. When configuring persistent storage for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers, use the same access strategy, ensuring that the path on the host or shared volume that is mapped to the `/var/opt/mssql/secrets` folder inside the container is protected and accessible only to the `mssql` and `root` users on the host as well. If the access to this path/folder is compromised, a malicious user can gain access to these critical files, compromising the encryption hierarchy and/or Active Directory configurations.
 
 To encrypt connections to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux containers, you need a certificate with the following [requirements](sql-server-linux-encrypted-connections.md).
 
@@ -171,7 +171,7 @@ Following is an example of how the connection can be encrypted to [!INCLUDE [ssn
     ```
 
    > [!NOTE]  
-   > For some Linux distributions the path for storing the certificate and key could also be : /etc/pki/tls/certs/ and /etc/pki/tls/private/ respectively. Please verify the path before updating the `mssql.conf` for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers. The location you set in the `mssql.conf` will be the location where [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in the container is going to search for the certificate and its key. In this case, that location is `/etc/ssl/certs/` and `/etc/ssl/private/`.
+   > For some Linux distributions the path for storing the certificate and key could also be : /etc/pki/tls/certs/ and /etc/pki/tls/private/ respectively. Verify the path before updating the `mssql.conf` for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers. The location you set in the `mssql.conf` will be the location where [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in the container is going to search for the certificate and its key. In this case, that location is `/etc/ssl/certs/` and `/etc/ssl/private/`.
 
    The `mssql.conf` file is also created under the same folder location `/container/sql1/`. After running the above steps, you should have three files: `mssql.conf`, `mssql.key`, and `mssql.pem` in the `sql1` folder.
 

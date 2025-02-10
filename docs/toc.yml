@@ -6025,8 +6025,6 @@ items:
       href: dma/dma-migrateserverlogins.md
     - name: Best practices
       href: dma/dma-bestpractices.md
-    - name: Assess application data access layer
-      href: dma/dma-assess-app-data-layer.md
     - name: Run from the command-line
       href: dma/dma-commandline.md
     - name: Configure settings
@@ -6105,8 +6103,8 @@ items:
         href: relational-databases/accelerated-database-recovery-concepts.md
       - name: Management
         href: relational-databases/accelerated-database-recovery-management.md
-      - name: Troubleshooting
-        href: relational-databases/accelerated-database-recovery-troubleshoot.md        
+      - name: Monitor and troubleshoot
+        href: relational-databases/accelerated-database-recovery-troubleshoot.md
     - name: Manage the Query Store
       href: relational-databases/performance/manage-the-query-store.md
     - name: Central Management Servers
@@ -6943,6 +6941,8 @@ items:
         - name: Administration, including Out of Memory
           href: relational-databases/in-memory-oltp/resolve-out-of-memory-issues.md
           items:
+          - name: App Control Managed Installer for In-Memory OLTP
+            href: relational-databases/in-memory-oltp/create-in-memory-oltp-app-control-managed-installer.md
           - name: Resource pool
             href: relational-databases/in-memory-oltp/bind-a-database-with-memory-optimized-tables-to-a-resource-pool.md
           - name: Restore a database to a pool

@@ -58,31 +58,25 @@ Descendants(Set_Expression [ , Distance [ ,Desc_Flag ] ] )
   
  If no level or distance is specified, the default value for the level used by the function is determined by calling the [Level](../mdx/level-mdx.md) function (<\<Member>>.Level) for the specified member (if a member is specified) or by calling the **Level** function for each member of the specified set (if a set is specified). If no level expression, distance or flags are specified, the function performs as if the following syntax were used:  
   
- `Descendants`  
-  
- `(`  
-  
- `Member_Expression ,`  
-  
- `Member_Expression.Level ,`  
-  
- `SELF_BEFORE_AFTER`  
-  
- `)`  
+```  
+Descendants  
+(  
+Member_Expression ,  
+Member_Expression.Level ,  
+SELF_BEFORE_AFTER  
+)  
+```  
   
  If a level is specified and a description flag is not specified, the function performs as if the following syntax were used.  
   
- `Descendants`  
-  
- `(`  
-  
- `Member_Expression ,`  
-  
- `Level_Expression,`  
-  
- `SELF`  
-  
- `)`  
+```  
+Descendants  
+(  
+Member_Expression ,  
+Level_Expression,  
+SELF  
+)  
+```  
   
  By changing the value of the description flag, you can include or exclude descendants at the specified level or distance, the children before or after the specified level or distance (until the leaf node), and the leaf children regardless of the specified level or distance. The following table describes the flags allowed in the *Desc_Flag* argument.  
   

@@ -4,7 +4,7 @@ description: Follow these steps when migrating from SQL Server, for a successful
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 01/08/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -200,10 +200,8 @@ For summary reporting across large estates, Data Migration Assistant assessments
 Typically, an application layer accesses user databases to persist and modify data. Data Migration Assistant can assess the data access layer of an application in two ways:
 
 - By using captured [extended events](/sql/relational-databases/extended-events/extended-events) or [SQL Server Profiler traces](/sql/tools/sql-server-profiler/create-a-trace-sql-server-profiler) of your user databases. You can also use the [Capture a trace in Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-capture-trace) to create a trace log that can also be used for A/B testing.
-- By using the [Data Access Migration Toolkit (preview)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit), which provides discovery and assessment of SQL queries within the code and is used to migrate application source code from one database platform to another. This tool supports popular file types like C#, Java, XML, and plain text. For a guide on how to perform a Data Access Migration Toolkit assessment, see the [Use Data Migration Assistant](https://techcommunity.microsoft.com/t5/microsoft-data-migration-blog/using-data-migration-assistant-to-assess-an-application-s-data/ba-p/990430) blog post.
 
-During the assessment of user databases, use Data Migration Assistant to [import](/sql/dma/dma-assesssqlonprem#add-databases-and-extended-events-trace-to-assess) captured trace files or Data Access Migration Toolkit files.
-
+During the assessment of user databases, use Data Migration Assistant to [import](/sql/dma/dma-assesssqlonprem#add-databases-and-extended-events-trace-to-assess) captured trace files.
 
 ## Related content
 

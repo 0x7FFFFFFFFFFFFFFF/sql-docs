@@ -47,7 +47,7 @@ The following table summarizes the prerequisites that you need before you can co
 
 The first task is to create a Windows Server failover cluster with both SQL Server VMs and a witness server:
 
-1. Use Remote Desktop Protocol (RDP) to connect to the first SQL Server VM. Use a domain account that's an administrator on both SQL Server VMs and the witness server.
+1. Use [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) to connect to the first SQL Server VM. Use a domain account that's an administrator on both SQL Server VMs and the witness server.
 
    > [!TIP]  
    > In the [prerequisites](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md), you created an account called **CORP\Install**. Use this account.
@@ -197,7 +197,7 @@ If you plan on adding a database to your availability group that uses [FILESTREA
 
 To [enable the FILESTREAM feature](/sql/relational-databases/blob/enable-and-configure-filestream), follow these steps:
 
-1. Launch the RDP file to the first SQL Server VM (such as **SQL-VM-1**) with a domain account that is a member of sysadmin fixed server role, such as the **CORP\Install** domain account created in the [prerequisites document](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)
+1. Connect to the first SQL Server VM (such as **SQL-VM-1**) with a domain account that is a member of sysadmin fixed server role, such as the **CORP\Install** domain account created in the [prerequisites document](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md)
 1. From the **Start** screen of one your SQL Server VMs, launch **SQL Server Configuration Manager**.
 1. In the browser tree, highlight **SQL Server Services**, right-click the **SQL Server (MSSQLSERVER)** service and select **Properties**.
 1. Select the **FILESTREAM** tab, then check the box to **Enable FILESTREAM for Transact-SQL access**:
@@ -238,7 +238,7 @@ On both SQL Server VMs, open the firewall for the TCP port for the database mirr
 
 ## Create a database on the first SQL Server instance
 
-1. Open the RDP file to the first SQL Server VM with a domain account that's a member of **sysadmin** fixed server role.
+1. Connect to the first SQL Server VM with a domain account that's a member of **sysadmin** fixed server role.
 1. Open SQL Server Management Studio (SSMS) and connect to the first SQL Server instance.
 1. In **Object Explorer**, right-click **Databases** and select **New Database**.
 1. In **Database name**, enter **MyDB1**, and then select **OK**.
@@ -558,7 +558,7 @@ You now have an availability group for SQL Server on Azure VMs running in Azure 
 
 To test the connection:
 
-1. Use RDP to connect to a SQL Server VM that's in the same virtual network but doesn't own the replica, such as the other replica.
+1. Use [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) to connect to a SQL Server VM that's in the same virtual network but doesn't own the replica, such as the other replica.
 
 1. Use the **sqlcmd** utility to test the connection. For example, the following script establishes a **sqlcmd** connection to the primary replica through the listener by using Windows authentication:
 

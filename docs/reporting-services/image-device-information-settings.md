@@ -1,8 +1,8 @@
 ---
 title: "Image device information settings"
 description: Learn about the various device information settings you can use to render in an image format in Reporting Services.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

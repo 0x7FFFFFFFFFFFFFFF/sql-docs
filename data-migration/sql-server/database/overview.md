@@ -4,7 +4,7 @@ description: Learn about the tools and options available to migrate your SQL Ser
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mathoma
-ms.date: 09/23/2024
+ms.date: 01/08/2025
 ms.service: azure-sql-database
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -186,5 +186,4 @@ The Data SQL Engineering team developed these resources. This team's core charte
 - [Azure Total Cost of Ownership Calculator](https://azure.microsoft.com/pricing/tco/calculator/)
 - [Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
 - [Best practices for costing and sizing workloads migrated to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
-- [Data Access Migration Toolkit (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
 - [Overview of Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview)

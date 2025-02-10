@@ -175,9 +175,7 @@ The following table shows the settings for these two machines:
 
 In the following steps, configure the **ad-primary-dc** machine as a domain controller for **corp.contoso.com**:
 
-1. In the portal, open the **SQL-HA-RG** resource group and select the **ad-primary-dc** machine. On **ad-primary-dc**, select **Connect** to open a Remote Desktop Protocol (RDP) file for remote desktop access.
-
-    :::image type="content" source="./media/availability-group-manually-configure-prerequisites-tutorial-single-subnet/20-connect-rdp.png" alt-text="Screenshot of the Azure portal that shows selections for connecting to a virtual machine.":::
+1. In the portal, open the **SQL-HA-RG** resource group and select the **ad-primary-dc** machine. On **ad-primary-dc**, select **Connect to Bastion** to open the **Bastion** page and deploy Bastion for remote desktop access.
 
 1. Sign in with your configured administrator account (**\DomainAdmin**) and password (**Contoso!0000**).
 1. By default, the **Server Manager** dashboard should be displayed. Select the **Add roles and features** link on the dashboard.
@@ -266,7 +264,7 @@ The preferred DNS server address [should not be updated](/azure/virtual-network/
 
 Next, join the **corp.contoso.com** domain. To do so, follow these steps:
 
-1. Remotely connect to the virtual machine using the **BUILTIN\DomainAdmin** account. This account is the same one used when [creating the domain controller virtual machines](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md?#create-virtual-machines-for-the-domain-controllers).
+1. Remotely connect to the virtual machine using [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) with the **BUILTIN\DomainAdmin** account. This account is the same one used when [creating the domain controller virtual machines](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md?#create-virtual-machines-for-the-domain-controllers).
 1. Open **Server Manager**, and select **Local Server**.
 1. Select **WORKGROUP**.
 1. In the **Computer Name** section, select **Change**.
@@ -279,7 +277,7 @@ Next, join the **corp.contoso.com** domain. To do so, follow these steps:
 
 Once your server has joined the domain, you can configure it as the second domain controller. To do so, follow these steps: 
 
-1. If you're not already connected, open an RDP session to your secondary domain controller, and open **Server Manager Dashboard** (which may be open by default).
+1. If you're not already connected, open a [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) session to your secondary domain controller, and open **Server Manager Dashboard** (which may be open by default).
 1. Select the **Add roles and features** link on the dashboard.
 
     :::image type="content" source="./media/availability-group-manually-configure-prerequisites-tutorial-multi-subnet/09-add-features.png" alt-text="Server Manager - Add roles":::
@@ -414,10 +412,10 @@ Add the installation account as an administrator on each VM, grant permission to
 
 After each virtual machine restarts as a member of the domain, add **CORP\Install** as a member of the local administrators group:
 
-1. Wait until the VM is restarted, and then open the RDP file again from the primary domain controller. Sign in to **sqlserver-0** by using the **CORP\DomainAdmin** account.
+1. Wait until the VM is restarted, and then open a Remote Desktop Connection (RDP) connection from the primary domain controller. Sign in to **sqlserver-0** by using the **CORP\DomainAdmin** account.
 
-   >[!TIP]
-   >Be sure to sign in with the domain administrator account. In the previous steps, you were using the **BUILTIN** administrator account. Now that the server is in the domain, use the domain account. In your RDP session, specify *DOMAIN*\\*username*.
+   > [!TIP]
+   > Be sure to sign in with the domain administrator account. In the previous steps, you were using the **BUILTIN** administrator account. Now that the server is in the domain, use the domain account. In your RDP session, specify *DOMAIN*\\*username*.
 
 1. In Server Manager, select **Tools**, and then select **Computer Management**.
 1. In the **Computer Management** window, expand **Local Users and Groups**, and then select **Groups**.
@@ -433,7 +431,7 @@ Use the installation account (**CORP\install**) to configure the availability gr
 
 The following steps create a sign-in for the installation account. Complete them on both SQL Server VMs.
 
-1. Connect to the server through RDP by using the **\<MachineName\>\DomainAdmin** account.
+1. Connect to the server through [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) by using the **\<MachineName\>\DomainAdmin** account.
 
 1. Open SQL Server Management Studio and connect to the local instance of SQL Server.
 
@@ -495,7 +493,7 @@ For SQL Server availability groups, each SQL Server VM needs to run as a domain 
 
 To add failover clustering features, complete the following steps on both SQL Server VMs:
 
-1. Connect to the SQL Server virtual machine through RDP by using the **CORP\install** account. Open the **Server Manager** dashboard.
+1. Connect to the SQL Server virtual machine through [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) by using the **CORP\install** account. Open the **Server Manager** dashboard.
 1. Select the **Add roles and features** link on the dashboard.
 
     :::image type="content" source="./media/availability-group-manually-configure-prerequisites-tutorial-single-subnet/22-add-features.png" alt-text="Screenshot of the link for adding roles and features on the Server Manager dashboard.":::

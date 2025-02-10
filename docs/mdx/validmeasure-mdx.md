@@ -55,13 +55,12 @@ FROM [Adventure Works]
   
  Similarly, the Sales Targets measure group has no relationship at all with the Promotion dimension, so below the All Member of any hierarchy on Promotion it will return null. Again, this behavior can be changed by using ValidMeasure:  
   
- `WITH MEMBER MEASURES.VTEST AS VALIDMEASURE([Measures].[Sales Amount Quota])`  
-  
- `SELECT {[Measures].[Sales Amount Quota], MEASURES.VTEST} ON 0,`  
-  
- `[Promotion].[Promotions].members ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.VTEST AS VALIDMEASURE([Measures].[Sales Amount Quota])  
+SELECT {[Measures].[Sales Amount Quota], MEASURES.VTEST} ON 0,  
+[Promotion].[Promotions].members ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

@@ -1,10 +1,10 @@
 ---
-title: Configure the time zone for SQL Server 2017 on Linux
+title: Configure the Time Zone for SQL Server 2017 on Linux
 description: In this article, learn how to configure the time zone on for SQL Server 2017 on Linux.
 author: ericjulien
 ms.author: ericjulien
 ms.reviewer: randolphwest
-ms.date: 03/17/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -28,7 +28,7 @@ This article describes how to configure the time zone for [!INCLUDE [sssql17-md]
    - the value `/etc/timezone`, if the file exists;
    - the `ZONE=` attribute from `/etc/sysconfig/clock`, if they exist.
 
-2. The resulting Linux time zone is then mapped to a corresponding Windows time zone via a fixed [Time zone mapping](#time-zone-mapping) table.
+1. The resulting Linux time zone is then mapped to a corresponding Windows time zone via a fixed [Time zone mapping](#time-zone-mapping) table.
 
 ## Time zone mapping
 
@@ -494,6 +494,6 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 
 ## Related content
 
-- [SQL Server on Linux](sql-server-linux-overview.md)
+- [What is SQL Server on Linux?](sql-server-linux-overview.md)
 - [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md)
 - [Install the SQL Server command-line tools sqlcmd and bcp on Linux](sql-server-linux-setup-tools.md)

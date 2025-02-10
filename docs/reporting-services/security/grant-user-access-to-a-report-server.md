@@ -1,8 +1,8 @@
 ---
 title: Grant users access to a report server
 description: See how to grant members of your organization access to your report server. Find out how to assign item-level and system-level roles to users and groups.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security

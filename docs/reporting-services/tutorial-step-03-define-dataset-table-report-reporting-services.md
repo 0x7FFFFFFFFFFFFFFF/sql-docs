@@ -1,8 +1,8 @@
 ---
 title: "Tutorial: Define a dataset for the table report"
 description: In this lesson, learn how to define a dataset for the Table Report (Reporting Services).
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

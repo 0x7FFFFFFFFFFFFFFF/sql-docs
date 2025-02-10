@@ -181,7 +181,7 @@ The preferred DNS server address [should not be updated](/azure/virtual-network/
 
 Next, join the **corp.contoso.com** domain. To do so, follow these steps: 
 
-1. Remotely connect to the virtual machine using the **BUILTIN\DomainAdmin** account.
+1. Remotely connect to the virtual machine with [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) by using the **BUILTIN\DomainAdmin** account.
 1. Open **Server Manager**, and select **Local Server**.
 1. Select **WORKGROUP**.
 1. In the **Computer Name** section, select **Change**.
@@ -194,7 +194,7 @@ Next, join the **corp.contoso.com** domain. To do so, follow these steps:
 
 Once your server has joined the domain, you can configure it as the second domain controller. To do so, follow these steps:
 
-1. If you're not already connected, open an RDP session to your secondary domain controller, and open **Server Manager Dashboard** (which may be open by default).
+1. If you're not already connected, open a [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) session to your secondary domain controller, and open **Server Manager Dashboard** (which may be open by default).
 1. Select the **Add roles and features** link on the dashboard.
 
     :::image type="content" source="./media/availability-group-manually-configure-prerequisites-tutorial-multi-subnet/09-add-features.png" alt-text="Server Manager - Add roles":::
@@ -211,10 +211,9 @@ Once your server has joined the domain, you can configure it as the second domai
 1. In **Select a domain from the forest**, choose your domain and then select **OK**.
 1. In **Domain Controller Options**, use the default values and set a DSRM password.
 
-    >[!NOTE]
-    >The **DNS Options** page might warn you that a delegation for this DNS server can't be created. You can ignore this warning in non-production environments.
-    >
-
+   > [!NOTE]
+   > The **DNS Options** page might warn you that a delegation for this DNS server can't be created. You can ignore this warning in non-production environments.
+   
 1. Select **Next** until the dialog reaches the **Prerequisites** check. Then select **Install**.
 
 After the server finishes the configuration changes, restart the server.
@@ -260,7 +259,7 @@ After the VM is fully provisioned, you need to join it to the **corp.contoso.com
 
 To join the VM to **corp.contoso.com**, use the following steps for the SQL Server VM:
 
-1. Remotely connect to the virtual machine by using **BUILTIN\DomainAdmin**.
+1. Remotely connect to the virtual machine with [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) by using the **BUILTIN\DomainAdmin** account.
 1. In **Server Manager**, select **Local Server**.
 1. Select the **WORKGROUP** link.
 1. In the **Computer Name** section, select **Change**.
@@ -277,7 +276,7 @@ The next task is to add the installation account as an administrator on the SQL 
 
 After the SQL Server virtual machine restarts as a member of the domain, add **CORP\Install** as a member of the local administrators group:
 
-1. Wait until the VM is restarted, and then open the RDP file again from the primary domain controller. Sign in to **sqlserver-2** by using the **CORP\DomainAdmin** account.
+1. Wait until the VM is restarted, and then open a Remote Desktop Protocol (RDP) connection from the primary domain controller. Sign in to **sqlserver-2** by using the **CORP\DomainAdmin** account.
 
    > [!TIP]
    > In earlier steps, you were using the **BUILTIN** administrator account. Now that the server is in the domain, make sure that you sign in with the domain administrator account. In your RDP session, specify *DOMAIN*\\*username*.
@@ -293,7 +292,7 @@ After the SQL Server virtual machine restarts as a member of the domain, add **C
 
 Use the installation account (**CORP\Install**) to configure the availability group. This account needs to be a member of the **sysadmin** fixed server role on each SQL Server VM. The following steps create a sign-in for the installation account. Complete them on both SQL Server VMs.
 
-1. Connect to the server through RDP by using the *\<MachineName\>\DomainAdmin* account.
+1. Connect to the server through [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) by using the *\<MachineName\>\DomainAdmin* account.
 
 1. Open SQL Server Management Studio and connect to the local instance of SQL Server.
 
@@ -469,7 +468,7 @@ To configure the load balancer, you need to create a backend pool, create a prob
 
 To add failover clustering features, complete the following steps on both SQL Server VMs:
 
-1. Connect to the SQL Server virtual machine through RDP by using the **CORP\Install** account. Open the **Server Manager** dashboard.
+1. Connect to the SQL Server virtual machine through [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) by using the **CORP\Install** account. Open the **Server Manager** dashboard.
 1. Select the **Add roles and features** link on the dashboard.
 
     :::image type="content" source="./media/availability-group-manually-configure-prerequisites-tutorial-single-subnet/22-add-features.png" alt-text="Screenshot of the Server Manager dashboard that shows the link for adding roles and features. ":::
@@ -479,7 +478,7 @@ To add failover clustering features, complete the following steps on both SQL Se
 1. Add any required features.
 1. Select **Install**.
 
->[!NOTE]
+> [!NOTE]
 > You can now automate this task, along with actually joining the SQL Server VMs to the failover cluster, by using the [Azure CLI](./availability-group-az-commandline-configure.md) and [Azure quickstart templates](availability-group-quickstart-template-configure.md).
 
 ### Tune network thresholds for a failover cluster
@@ -515,7 +514,7 @@ The new SQL Server VM needs to be [added to the Windows Server failover cluster]
 
 To add the SQL Server VM to the cluster:
 
-1. Use RDP to connect to a SQL Server VM in the existing cluster. Use a domain account that's an administrator on both SQL Server VMs and the witness server.
+1. Use [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) to connect to a SQL Server VM in the existing cluster. Use a domain account that's an administrator on both SQL Server VMs and the witness server.
 1. On the **Server Manager** dashboard, select **Tools**, and then select **Failover Cluster Manager**.
 1. On the left pane, right-click **Failover Cluster Manager**, and then select **Connect to Cluster**.
 1. In the **Select Cluster** window, under **Cluster name**, choose **\<Cluster on this server\>**. Then select **OK**.
@@ -526,8 +525,8 @@ To add the SQL Server VM to the cluster:
 
 1. On the **Confirmation** page, if you're using Storage Spaces, clear the **Add all eligible storage to the cluster** checkbox.
 
-   >[!WARNING]
-   >If you don't clear **Add all eligible storage to the cluster**, Windows detaches the virtual disks during the clustering process. As a result, they don't appear in Disk Manager or Explorer until the storage is removed from the cluster and reattached via PowerShell.
+   > [!WARNING]
+   > If you don't clear **Add all eligible storage to the cluster**, Windows detaches the virtual disks during the clustering process. As a result, they don't appear in Disk Manager or Explorer until the storage is removed from the cluster and reattached via PowerShell.
 
 1. Select **Next**.
 

@@ -1,8 +1,8 @@
 ---
 title: "Set report server properties (Management Studio)"
 description: Learn how to set report server system properties in SQL Server Management Studio to enable features or set server defaults.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

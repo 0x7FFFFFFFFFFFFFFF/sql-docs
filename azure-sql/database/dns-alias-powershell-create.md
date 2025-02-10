@@ -5,7 +5,7 @@ description: PowerShell and Azure CLI cmdlets enable you to redirect new client 
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma, amagarwa, maboja, vanto
-ms.date: 05/14/2019
+ms.date: 01/21/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: how-to
@@ -19,16 +19,11 @@ ms.devlang: powershell
 # PowerShell for DNS Alias to Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-This article provides a PowerShell script that demonstrates how you can manage a DNS alias for the [SQL server](logical-servers.md) hosting your Azure SQL Database.
-
-> [!NOTE]
-> This article has been updated to use either the Azure PowerShell Az module or Azure CLI. You can still use the AzureRM module, which will continue to receive bug fixes until at least December 2020.
->
-> To learn more about the Az module and AzureRM compatibility, see [Introducing the Azure PowerShell Az module](/powershell/azure/new-azureps-module-az). For installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps) or [Install Azure CLI](/cli/azure/install-azure-cli).
+This article provides Azure PowerShell Az module or Azure CLI scripts to demonstrate how you can manage a DNS alias for the [Azure SQL logical server](logical-servers.md) hosting your Azure SQL Database.
 
 ## DNS alias in connection string
 
-To connect a [logical SQL server](logical-servers.md), a client such as SQL Server Management Studio (SSMS) can provide the DNS alias name instead of the true server name. In the following example server string, the alias *any-unique-alias-name* replaces the first dot-delimited node in the four node server string:
+To connect a [logical SQL server](logical-servers.md), a client such as SQL Server Management Studio (SSMS) can provide [the DNS alias](./dns-alias-overview.md) name instead of the true server name. In the following example server string, the alias *any-unique-alias-name* replaces the first dot-delimited node in the four node server string:
 
    `<yourServer>.database.windows.net`
 
@@ -37,7 +32,8 @@ To connect a [logical SQL server](logical-servers.md), a client such as SQL Serv
 If you want to run the demo PowerShell script given in this article, the following prerequisites apply:
 
 - An Azure subscription and account, for free trial, see [Azure trials](https://azure.microsoft.com/free/)
-- Two servers
+- Two Azure SQL logical servers
+- Install the [Azure PowerShell module](/powershell/azure/install-az-ps) or the [Azure CLI](/cli/azure/install-azure-cli).
 
 ## Example
 
@@ -137,6 +133,6 @@ az sql server dns-alias delete –-resource-group $resourceGroupName2 --server $
 
 * * *
 
-## Next steps
+## Related content
 
-For a full explanation of the DNS alias feature for SQL Database, see [DNS alias for Azure SQL Database](./dns-alias-overview.md).
+- [DNS alias for Azure SQL Database](./dns-alias-overview.md)

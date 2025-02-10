@@ -52,7 +52,7 @@ Go to the [Azure portal](https://portal.azure.com)
 
 # [PowerShell](#tab/azure-powershell)
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/). Use [the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). Use [the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
 
 # [The Azure CLI](#tab/azure-cli)
 
@@ -82,7 +82,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 # [PowerShell](#tab/azure-powershell)
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 To enable automatic rotation for the TDE protector using PowerShell, see the following script. The `<keyVaultKeyId>` can be [retrieved from Key Vault](/azure/key-vault/keys/quick-create-portal#retrieve-a-key-from-key-vault).
 

@@ -22,9 +22,10 @@ ms.custom: mdx
   
  Cube expressions may appear in several places. In an MDX SELECT statement they specify the cube from which data is to be retrieved. In the following example query, the expression [Adventure Works] refers to the cube of that name:  
   
- `SELECT [Measures].[Internet Sales Amount] ON COLUMNS`  
-  
- `FROM [Adventure Works]`  
+```  
+SELECT [Measures].[Internet Sales Amount] ON COLUMNS  
+FROM [Adventure Works]  
+```  
   
  In the CREATE MEMBER statement, the cube expression specifies which cube the calculated member you are creating is to appear on. In the following example, the statement creates a calculated measure on the Measures dimension of the Adventure Works cube:  
   
@@ -39,27 +40,24 @@ ms.custom: mdx
 ## SubCube Expressions  
  A subcube expression can contain a subcube identifier or an MDX statement that returns a subcube. If the subcube expression contains a subcube identifier, it will be a simple expression. If it contains an MDX statement that returns a subcube, it is a complex statement. The MDX SELECT statement, for example, returns a subcube and can be used where subcube expressions are allowed, as shown in the following example:  
   
- `SELECT [Measures].MEMBERS ON COLUMNS,`  
-  
- `[Date].[Calendar Year].MEMBERS ON ROWS`  
-  
- `FROM`  
-  
- `(SELECT [Measures].[Internet Sales Amount] ON COLUMNS,`  
-  
- `[Date].[Calendar Year].&[2004] ON ROWS`  
-  
- `FROM [Adventure Works])`  
+```  
+SELECT [Measures].MEMBERS ON COLUMNS,  
+[Date].[Calendar Year].MEMBERS ON ROWS  
+FROM  
+(SELECT [Measures].[Internet Sales Amount] ON COLUMNS,  
+[Date].[Calendar Year].&[2004] ON ROWS  
+FROM [Adventure Works])  
+```  
   
  This use of a SELECT statement in the FROM clause is also referred to as a subselect.  
   
  Another common scenario where subcube expressions are encountered is when making scoped assignments in an MDX Script. In the following example, the SCOPE statement is used to limit an assignment to a subcube consisting of [Measures].[Internet Sales Amount]:  
   
- `SCOPE([Measures].[Internet Sales Amount]);`  
-  
- `This=1;`  
-  
- `END SCOPE;`  
+```  
+SCOPE([Measures].[Internet Sales Amount]);  
+This=1;  
+END SCOPE;  
+```  
   
  A subcube identifier appears as *Subcube_Name*. in BNF notation descriptions of MDX statements.  
   

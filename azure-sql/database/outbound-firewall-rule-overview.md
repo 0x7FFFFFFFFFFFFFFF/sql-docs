@@ -2,8 +2,8 @@
 title: Outbound firewall rules
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 description: Overview of the outbound firewall rules feature for Azure SQL Database and Azure Synapse Analytics.
-author: rohitnayakmsft
-ms.author: rohitna
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: wiassaf, vanto, mathoma
 ms.date: 05/16/2023
 ms.service: azure-sql-database
@@ -50,9 +50,11 @@ Outbound firewall rules limit network traffic from the Azure SQL [logical server
 ## Set outbound firewall rules using PowerShell
 
 > [!IMPORTANT]
-> Azure SQL Database still supports the PowerShell Azure Resource Manager module, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
+> The PowerShell Azure Resource Manager (AzureRM) module was deprecated on February 29, 2024. All future development should use the Az.Sql module. Users are advised to migrate from AzureRM to the Az PowerShell module to ensure continued support and updates. The AzureRM module is no longer maintained or supported. The arguments for the commands in the Az PowerShell module and in the AzureRM modules are substantially identical. For more about their compatibility, see [Introducing the new Az PowerShell module](/powershell/azure/new-azureps-module-az).
 
-The following PowerShell script shows how to change the outbound networking setting (using the **RestrictOutboundNetworkAccess** property):
+The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps). 
+
+The following PowerShell script shows how to change the outbound networking setting (using the `RestrictOutboundNetworkAccess` property):
 
 ```powershell
 # Get current settings for Outbound Networking

@@ -42,7 +42,7 @@ In this step, configure the DNS suffix for both servers. For example, `ag.wgclus
 
 To configure the DNS suffix, follow these steps:
 
-1. RDP in to your first node and open Server Manager. 
+1. [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) in to your first node and open Server Manager. 
 1. Select **Local Server** and then select the name of your virtual machine under **Computer name**. 
 1. Select **Change...** under **To rename this computer...**. 
 1. Change the name of the workgroup name to be something meaningful, such as `AGWORKGROUP`: 
@@ -67,7 +67,7 @@ Since there is no active directory, there is no way to authenticate Windows conn
 
 To edit the host file, follow these steps:
 
-1. RDP in to your virtual machine. 
+1. [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows) in to your virtual machine. 
 1. Use **File Explorer** to go to `c:\windows\system32\drivers\etc`. 
 1. Right-click the **hosts** file and open the file with **Notepad** (or any other text editor).
 1. At the end of the file, add an entry for each node, the availability group, and the listener in the form of `IP Address, DNS Suffix #comment` like: 

@@ -18,7 +18,7 @@ Azure SQL Database is an intelligent, scalable, relational database service buil
 This offer is still active for existing resources for 12 months after provisioning, providing a S0 database with 10 database transaction units and 250-GB storage for an [Azure free account](https://azure.microsoft.com/free/).
 
 > [!IMPORTANT]  
-> This free offer has been replaced by the Azure SQL Database free offer, see [Try Azure SQL Database for free](free-offer.md). Starting in September 2023, you can try Azure SQL Database free of charge and get 100,000 vCore seconds of compute every month, for the life of your subscription. This free offer provides a General Purpose database for the lifetime of your subscription.
+> This free offer has been replaced by the Azure SQL Database free offer, see [Deploy Azure SQL Database for free](free-offer.md). Starting in September 2023, you can try Azure SQL Database free of charge and get 100,000 vCore seconds of compute every month, for the life of your subscription. This free offer provides a General Purpose database for the lifetime of your subscription.
 
 ## Monitor and track service usage of previous free offer
 
@@ -61,4 +61,4 @@ To delete `myResourceGroup` and all its resources using the Azure portal:
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Try Azure SQL Database for free (preview)](free-offer.md)
+> [Deploy Azure SQL Database for free](free-offer.md)

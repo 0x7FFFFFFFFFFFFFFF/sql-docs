@@ -29,13 +29,12 @@ Error( [ Error_Text ] )
 ## Examples  
  The following query shows how to use the **Error** function inside a calculated measure:  
   
- `WITH MEMBER MEASURES.ERRORDEMO AS ERROR("THIS IS AN ERROR")`  
-  
- `SELECT`  
-  
- `MEASURES.ERRORDEMO ON 0`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.ERRORDEMO AS ERROR("THIS IS AN ERROR")  
+SELECT  
+MEASURES.ERRORDEMO ON 0  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

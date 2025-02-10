@@ -1,8 +1,8 @@
 ---
 title: "Control row & column headings in a paginated report"
 description: Learn how to use a table, matrix, or list data region in a paginated report, which lets you to span multiple pages horizontally or vertically in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

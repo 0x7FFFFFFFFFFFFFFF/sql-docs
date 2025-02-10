@@ -216,6 +216,21 @@
       "redirect_document_id": true
     },
     {
+      "source_path_from_root": "/azure-sql/database/sql-insights-alerts.md",
+      "redirect_url": "/azure/azure-sql/database/sql-insights-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/azure-sql/database/sql-insights-enable.md",
+      "redirect_url": "/azure/azure-sql/database/sql-insights-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/azure-sql/database/sql-insights-troubleshoot.md",
+      "redirect_url": "/azure/azure-sql/database/sql-insights-overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/azure-sql/virtual-machines/linux/sql/sql-server-linux-faq.md",
       "redirect_url": "/azure/azure-sql/virtual-machines/linux/frequently-asked-questions-faq",
       "redirect_document_id": false

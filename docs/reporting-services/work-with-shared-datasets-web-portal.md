@@ -1,8 +1,8 @@
 ---
 title: "Working with shared datasets (web portal)"
 description: View and manage the properties of a shared dataset within the web portal. Use the web portal to create or edit shared datasets in the Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

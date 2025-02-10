@@ -174,13 +174,13 @@ For information, see:
 - [Create an Enterprise Agreement subscription](/azure/cost-management-billing/manage/create-enterprise-subscription#create-an-ea-subscription).
 - The section "Licensing SQL Server for nonproduction use" in the [SQL Server licensing guide (download link)](https://download.microsoft.com/download/e/2/9/e29a9331-965d-4faa-bd2e-7c1db7cd8348/SQL_Server_2019_Licensing_guide.pdf).
 
-## Manage SQL Server ESU subscriptions on high-availability and disaster recovery replicas
+## <a id="manage-hadr"></a> Manage SQL Server ESU subscriptions on high-availability and disaster recovery replicas
 
-If your out-of-service [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance is a passive replica created as part of your high-availability or disaster recovery configuration, you're entitled to the failover benefits that are included if your license type is set to `Paid` or `PAYG`. For more information about the failover benefits, see the section "Licensing SQL Server for high availability and disaster recovery" in the [SQL Server licensing guide (download link)](https://download.microsoft.com/download/e/2/9/e29a9331-965d-4faa-bd2e-7c1db7cd8348/SQL_Server_2019_Licensing_guide.pdf).
+[!INCLUDE [manage-passive-instance](includes/manage-passive-instance.md)]
 
-To help you manage the failover benefits and remain compliant, Azure Extension for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] automatically detects the passive instances and reflects the use of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] software by emitting special $0 meters for disaster recovery, as long as you properly configured the `LicenseType` property. For more information, see [Metering software usage](manage-license-billing.md#usage-metering).
+[!INCLUDE [billing-after-failover](includes/billing-after-failover.md)]
 
-During the failovers, the extension is aware of the transition and automatically switches the ESU billing to the active replica without new bill-back charges.
+For additional information on passive replica detection logic, review [Manage passive license for high availability and disaster recovery](manage-license-billing.md#manage-passive-license-for-high-availability-and-disaster-recovery).
 
 ## <a id="server-cal"></a> Manage SQL Server instances that use a Server+CAL license
 
@@ -199,7 +199,7 @@ To properly manage this transition, use the following sequence of best practices
 1. Terminate the p-core ESU license if it's no longer financially beneficial, but keep the ESU subscription active on the individual VMs.
 
 > [!IMPORTANT]  
-> If the VMs in scope are configured to use a ESU subscription *while the p-core ESU license is active* (as described in step 1), after the p-core license termination, they automatically switch to billing for ESU based on the installed [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] edition and the v-core count of each VM. There are no additional bill-back charges.  
+> If the VMs in scope are configured to use an ESU subscription *while the p-core ESU license is active* (as described in step 1), after the p-core license termination, they automatically switch to billing for ESU based on the installed [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] edition and the v-core count of each VM. There are no additional bill-back charges.  
 >  
 > If the VM is configured to use the ESU subscription *after the p-core ESU license is terminated*, it's treated as a new subscription and the appropriate bill-back charges apply.
 

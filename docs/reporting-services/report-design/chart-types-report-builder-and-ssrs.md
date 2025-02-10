@@ -1,8 +1,8 @@
 ---
 title: "Chart types in a paginated report"
 description: Choose from unique chart characteristics to help you visualize your dataset and assist you in choosing an appropriate chart type in a paginated report in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

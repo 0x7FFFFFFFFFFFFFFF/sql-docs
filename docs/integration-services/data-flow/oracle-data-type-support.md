@@ -12,7 +12,10 @@ ms.topic: reference
 
 [!INCLUDE[sqlserver-ssis](../../includes/applies-to-version/sqlserver-ssis.md)]
 
-SSIS components for Oracle do not support all Oracle data types. Columns with unsupported data types will have a warning when designing packages in SSDT and will be deleted from mapping columns. Data cannot be loaded to a column with an unsupported data type.
+> [!IMPORTANT]
+> Microsoft Connector for Oracle is deprecated now. Details refer to [the announcement](https://www.microsoft.com/en-us/sql-server/blog/2025/01/21/sql-server-integration-services-ssis-microsoft-connector-for-oracle-deprecation/).
+
+SSIS components for Oracle don't support all Oracle data types. Columns with unsupported data types have a warning when designing packages in SSDT and will be deleted from mapping columns. Data can't be loaded to a column with an unsupported data type.
 
 ## Data type mapping
 
@@ -23,7 +26,7 @@ The following table shows the Oracle database data types and their default mappi
 |VARCHAR2|DT_STR||
 |NVARCHAR2|DT_WSTR||
 |CHAR|DT_STR||
-|NUMBER|DT_R8|This can be changed to DT_NUMERIC with specific precision and scale. Precision and scale are defined by user per the need. The output will be the column data as a number with fixed precision and scale.|
+|NUMBER|DT_R8|This can be changed to DT_NUMERIC with specific precision and scale. Precision and scale are defined by user per the need. The output is the column data as a number with fixed precision and scale.|
 |NUMBER(P, S)| When the scale is 0, according to the precision (P) <li> DT_I1 <Li> DT_I2 <Li> DT_I4 <Li> DT_NUMBERIC(P,0)||
 ||DT_NUMERIC(P,S)||
 |DATE|DT_DBTIMESTAMP||

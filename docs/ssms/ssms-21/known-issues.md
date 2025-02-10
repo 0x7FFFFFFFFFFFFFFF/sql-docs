@@ -4,7 +4,7 @@ description: Learn about known issues in SQL Server Management Studio (SSMS).
 author: erinstellato-ms
 ms.author: erinstellato
 ms.reviewer: randolphwest, maghan
-ms.date: 12/19/2024
+ms.date: 1/21/2025
 ms.service: sql
 ms.subservice: ssms
 ms.topic: troubleshooting-general
@@ -25,10 +25,7 @@ This page lists known issues for [!INCLUDE [ssms-21-md](../includes/ssms-21-md.m
 | Designers | The JSON data type isn't available for columns when creating or editing a table in Table Designer. See [SSMS 21.0 Preview 2.0 - Table Designer missing the "json" datatype](https://feedback.azure.com/d365community/idea/d2e6f106-9fb8-ef11-95f5-6045bdbfaf80).| Use T-SQL to add columns with the JSON data type, this functionality is planned for a later release. |
 | Designers | Unable to use SSMS after closing the **New View** pane when the **Add Table** dialog is left open. See [SSMS 21 Preview 1: New View window "Add Table" not aware I closed out of New View](https://feedback.azure.com/d365community/idea/8790c2c0-22a8-ef11-95f6-000d3a01397d). | Close the **Add Table** dialog before closing the view pane. |
 | Extended Events | The Specify Data Storage page is truncated in the Extended Events Wizard. See [Extended Events Wizard is cut off on Specify Data Storage page](https://feedback.azure.com/d365community/idea/e7de428c-76ab-ef11-95f6-000d3a01397d). | Use the **New Session...** option to create an Extended Events session. |
-| Find | The **Quick Find** option isn't available. Typically accessed through **Edit** > **Find and Replace** > **Quick Find**, or with **CTRL + F**, the full **Find and Replace** appears instead. See [SSMS 21.0 Preview 1.0 - "Quick Find" missing, instead "Find in files" pops up](https://feedback.azure.com/d365community/idea/76326fd1-57b6-ef11-95f6-000d3ae2b698). | There's currently no workaround in SSMS 21 Preview. |
 | Integration Services | There's currently no support for Integration Services in [!INCLUDE [ssms-21-md](../includes/ssms-21-md.md)]. | Use SSMS 20.2 to connect to Integration Services, we'll bring back Integration Services in a future preview. |
-| IntelliSense | Disabling IntelliSense by unchecking **Enable IntelliSense** in **Tools** > **Options** > **Text Editor** > **Transact-SQL** > **IntelliSense** does not persist between restarts of SSMS. | Use SSMS 20.2 if you need IntelliSense disabled. A fix is expected in a future preview. |
-| License | The "Microsoft Software License Terms" link in the Visual Studio Install splash screen doesn't access a valid URL. | Access the license for SSMS 21 from the "license" link within the Visual Studio Installer, available when customizing the SSMS 21 installation. |
 | Logins | Unable to map a credential for a login. See [SSMS v21 Preview 1 - Bug in Login Properties for Credentials](https://feedback.azure.com/d365community/idea/e0687671-dca3-ef11-95f6-000d3a059eeb). | Use T-SQL to map a login to a credential. |
 | Maintenance Plans | There's currently no support for creating or editing maintenance plans in [!INCLUDE [ssms-21-md](../includes/ssms-21-md.md)]. | Use SSMS 20.2 to create or edit maintenance plans, we'll bring back Integration Services in a future preview. |
 | Menu | Opening a folder from **File** > **Recent Projects and Solutions** generates one of the following errors: "System.InvalidOperationException: Can't enque project dependencies calculation before starting solution load" or "An exception of type NullReferenceException has been encountered." if opening the folder also opens one or more files that were open in the editor when the folder was last closed. | Closing the error allows work to continue. Alternatively, close all files in the editor before closing a folder. |
