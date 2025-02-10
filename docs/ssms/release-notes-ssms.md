@@ -4,7 +4,7 @@ description: Release notes for SQL Server Management Studio (SSMS).
 author: erinstellato-ms
 ms.author: erinstellato
 ms.reviewer: maghan, randolphwest
-ms.date: 07/09/2024
+ms.date: 02/11/2025
 ms.service: sql
 ms.subservice: ssms
 ms.topic: conceptual
@@ -103,7 +103,7 @@ Available languages:
 
 See [Known issues using Strict Encryption in 20.0](#known-issues-using-strict-encryption-in-200) for known issues using SSMS 20.x and Strict Encryption.
 
-You can reference [SQL user feedback](https://aka.ms/ssms-feedback) for other known issues (filter on **Tooling** under **Groups**) and to provide feedback to the product team.
+You can reference the [SSMS Developer Community](https://aka.ms/ssms-feedback) site for other known issues and to provide feedback to the product team.
 
 ## Previous SSMS releases
 

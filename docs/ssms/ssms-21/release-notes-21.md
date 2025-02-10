@@ -4,7 +4,7 @@ description: Release notes for SQL Server Management Studio 21 Preview (SSMS).
 author: erinstellato-ms
 ms.author: erinstellato
 ms.reviewer: maghan, randolphwest
-ms.date: 01/22/2025
+ms.date: 02/11/2025
 ms.service: sql
 ms.subservice: ssms
 ms.topic: whats-new
@@ -24,6 +24,32 @@ This article details updates, improvements, and bug fixes for the current and pr
 
 [!INCLUDE [ssms-21-md](../includes/ssms-21-md.md)] is the latest preview release of SSMS. If you need a previous version of SSMS, see [previous SSMS releases](../release-notes-ssms.md#previous-ssms-releases).
 
+### 21.0 Preview 4
+
+- Release number: 21.0 Preview 4
+- Build number: 21.0.85
+- Release date: February 11, 2025
+
+#### What's new in 21.0 Preview 4
+
+| Feature | Details |
+| --- | --- |
+| Account Authentication | Added theme support for Account picker. |
+| File | Reinstated the ability to create projects (**File > New > Project or Solution...**) and view recent projects (**File > Open > Project/Solution...**). |
+| Help | Enabled support for Developer Community feedback, accessed from **Help > Send Feedback > Report a Problem/Suggest a Feature/My Feedback**. |
+| IntelliSense | Added support for `JSON_CONTAINS` built-in functions. |
+| IntelliSense | Added support for `REGEXP_` functions. See [SSMS 21 Preview 2: REGEXP_ functions need to be color-coded](https://feedback.azure.com/d365community/idea/a53b6196-11d4-ef11-95f5-000d3ae46bae). |
+| Query Store | Added theme support for the search window and grid in the Tracked Queries report. |
+| Visual Studio | Updated to Visual Studio 17.14 Preview 1. |
+
+#### Bug fixes in 21.0 Preview 4
+
+| Feature | Details |
+| --- | --- |
+| Options | Removed localization of `ISOLATION LEVEL` option within **Tools > Options > Query Execution > SQL Server > Advanced**. |
+| IntelliSense | Corrected default IntelliSense toolbar icon state to be disabled when IntelliSense is disabled globally. |
+| Query Plans | Addressed an issue where cancelling a query while running a live query plan caused SSMS to crash. See [Live query statistics hangs waiting for plan and cancelling query kills SSMS](https://feedback.azure.com/d365community/idea/9e4420f1-afac-ee11-92bc-000d3ae54955). |
+| Query Plans | Addressed an issue where viewing live query statistics for a table with a geography data type caused an error. |
 
 ### 21.0 Preview 3
 
