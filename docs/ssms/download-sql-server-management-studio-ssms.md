@@ -4,7 +4,7 @@ description: Download the latest version of SQL Server Management Studio (SSMS) 
 author: erinstellato-ms
 ms.author: erinstellato
 ms.reviewer: maghan, randolphwest
-ms.date: 09/26/2024
+ms.date: 02/11/2025
 ms.service: sql
 ms.subservice: ssms
 ms.topic: overview
@@ -47,7 +47,7 @@ SSMS 20.2 is the latest generally available (GA) version. If you have a *preview
 - Build number: 20.2.30.0
 - Release date: July 9, 2024
 
-By using SQL Server Management Studio, you agree to its [license terms](/Legal/sql/sql-server-management-studio-license-terms) and [privacy statement](https://privacy.microsoft.com/privacystatement). If you have comments or suggestions or want to report issues, the best way to contact the SSMS team is at [SQL user feedback](https://aka.ms/ssms-feedback).
+By using SQL Server Management Studio, you agree to its [license terms](/Legal/sql/sql-server-management-studio-license-terms) and [privacy statement](https://privacy.microsoft.com/privacystatement). If you have comments or suggestions or want to report issues, the best way to contact the SSMS team is at the [SSMS Developer Community](https://aka.ms/ssms-feedback) site.
 
 The SSMS 20.x installation doesn't upgrade or replace SSMS 19.x and earlier versions. SSMS 20.x installs alongside previous versions, so both versions are available. However, if you have an earlier *preview* version of SSMS 20 installed, you must uninstall it before installing the latest release of SSMS 20. You can see if you have a preview version by going to the **Help > About** window.
 
