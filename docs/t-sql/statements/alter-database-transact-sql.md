@@ -478,10 +478,10 @@ Specifies the maximum size of the database. The maximum size must comply with th
 |400 GB|N/A| Yes | Yes | Yes | Yes |
 |500 GB|N/A| Yes | Yes | Yes (D)| Yes |
 |750 GB|N/A| Yes | Yes | Yes | Yes |
-|1024 GB|N/A| Yes | Yes | Yes | Yes (D)|
-|From 1024 GB up to 4096 GB in increments of 256 GB <sup>1</sup>|N/A|N/A|N/A|N/A| Yes |
+|1,024 GB|N/A| Yes | Yes | Yes | Yes (D)|
+|From 1,024 GB up to 4,096 GB in increments of 256 GB <sup>1</sup>|N/A|N/A|N/A|N/A| Yes |
 
-<sup>1</sup> P11 and P15 allow MAXSIZE up to 4 TB with 1024 GB being the default size. P11 and P15 can use up to 4 TB of included storage at no additional charge. In the Premium tier, MAXSIZE greater than 1 TB is currently available in the following regions: US East2, West US, US Gov Virginia, West Europe, Germany Central, South East Asia, Japan East, Australia East, Canada Central, and Canada East. For more details regarding resource limitations for the DTU model, see [DTU resource limits](/azure/sql-database/sql-database-dtu-resource-limits).
+<sup>1</sup> P11 and P15 allow MAXSIZE up to 4 TB with 1,024 GB being the default size. P11 and P15 can use up to 4 TB of included storage at no additional charge. In the Premium tier, MAXSIZE greater than 1 TB is currently available in the following regions: US East2, West US, US Gov Virginia, West Europe, Germany Central, South East Asia, Japan East, Australia East, Canada Central, and Canada East. For more details regarding resource limitations for the DTU model, see [DTU resource limits](/azure/sql-database/sql-database-dtu-resource-limits).
 
 The MAXSIZE value for the DTU model, if specified, has to be a valid value shown in the previous table for the service tier specified.
 
@@ -526,11 +526,11 @@ ALTER DATABASE <database_name>
 
 #### DATABASE_NAME
 
-Only for Azure SQL Database Hyperscale. The database name that will be created. Only used by Azure SQL Database Hyperscale named replicas, when `SECONDARY_TYPE` = NAMED. For more information, see [Hyperscale secondary replicas](/azure/azure-sql/database/service-tier-hyperscale-replicas).
+Only for Azure SQL Database Hyperscale. The database name that will be created. Only used by Azure SQL Database Hyperscale named replicas, when `SECONDARY_TYPE` = `NAMED`. For more information, see [Hyperscale secondary replicas](/azure/azure-sql/database/service-tier-hyperscale-replicas).
 
 #### SECONDARY_TYPE
 
-Only for Azure SQL Database Hyperscale. **GEO** specifies a geo-replica, **NAMED** specifies a named replica. Default is **GEO**. For more information, see [Hyperscale secondary replicas](/azure/azure-sql/database/service-tier-hyperscale-replicas).
+Only for Azure SQL Database Hyperscale. `GEO` specifies a geo-replica, `NAMED` specifies a named replica. Default is `GEO`. For more information, see [Hyperscale secondary replicas](/azure/azure-sql/database/service-tier-hyperscale-replicas).
 
 For service objective descriptions and more information about the size, editions, and the service objectives combinations, see [Compare vCore and DTU-based purchasing models of Azure SQL Database](/azure/azure-sql/database/purchasing-models), [DTU resource limits](/azure/sql-database/sql-database-dtu-resource-limits) and [vCore resource limits](/azure/sql-database/sql-database-dtu-resource-limits). Support for PRS service objectives has been removed. 
 
@@ -593,7 +593,7 @@ During a forced failover:
 1. If there are additional secondaries, they are automatically reconfigured to become secondaries of the new primary. This process is asynchronous and there might be a delay until this process completes. Until the reconfiguration has completed, the secondaries continue to be secondaries of the old primary.
 
 > [!IMPORTANT]
-> The user executing the `FORCE_FAILOVER_ALLOW_DATA_LOSS` command must be belong to the `dbmanager` role on both the primary server and the secondary server.
+> The user executing the `FORCE_FAILOVER_ALLOW_DATA_LOSS` command must be a member of the `dbmanager` role on both the primary server and the secondary server.
 
 #### MANUAL_CUTOVER
 
@@ -1309,7 +1309,7 @@ ALTER DATABASE CustomerSales
 
 ### C. Alter the maximum storage for distributed tables
 
- The following example sets the distributed table storage limit to 1000 GB (one terabyte) for the database `CustomerSales`. This is the combined storage limit across the appliance for all of the Compute nodes, not the storage limit per Compute node.
+ The following example sets the distributed table storage limit to 1,000 GB (1 terabyte) for the database `CustomerSales`. This is the combined storage limit across the appliance for all of the Compute nodes, not the storage limit per Compute node.
 
 ```sql
 ALTER DATABASE CustomerSales

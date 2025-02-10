@@ -15,7 +15,7 @@ monikerRange: "=azuresql || =azuresql-db"
 
 # Reverse migrate a database from Hyperscale
 
-You can migrate an existing Hyperscale database in Azure SQL Database to the General Purpos service tier using the Azure portal, the Azure CLI, PowerShell, or Transact-SQL.
+You can migrate an existing Hyperscale database in Azure SQL Database to the General Purpose service tier using the Azure portal, the Azure CLI, PowerShell, or Transact-SQL.
 
 Reverse migration to the General Purpose service tier allows customers who have recently converted an existing database in Azure SQL Database to Hyperscale to move back in an emergency, should Hyperscale not meet their needs. While reverse migration is initiated by a service tier change, it's essentially a size-of-data move between different architectures.
 
@@ -74,7 +74,7 @@ In this case, the only backups available would be from steps 5 and 6 of the time
 
 To reverse migrate an existing Hyperscale database in Azure SQL Database to the General Purpose service tier, first identify your target service objective in the General Purpose service tier and whether you wish to migrate to the provisioned or serverless compute tiers. Review [resource limits for single databases](resource-limits-vcore-single-databases.md) if you aren't sure which service objective is right for your database.
 
-If you wish to perform an additional service tier change after reverse migrating to General Purpose, identify your eventual target service objective as well and ensure that your database's allocated size is small enough to fit in that service objective.
+If you wish to perform an additional service tier change after reverse migrating to General Purpose, identify your eventual target service objective. Ensure that your database's allocated size is small enough to fit in that service objective.
 
 Select the tab for your preferred method to reverse migrate your database:
 
@@ -95,7 +95,7 @@ The Azure portal enables you to reverse migrate to the General Purpose service t
     1. Navigate to the database in the Azure portal.
     1. In the left navigation bar, select **Overview**.
     1. Review the **Notifications** section at the bottom of the right pane. If operations are ongoing, a notification box appears.
-    1. Select the notification box to view details.
+    1. To view details, select the notification box.
     1. The **Ongoing operations** pane opens. Review the details of the ongoing operations.
 
 # [Azure CLI](#tab/azure-cli)
@@ -131,7 +131,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName \
     --compute-model $computeModel --max-size $maxsize
 ```
 
-Monitor the ongoing operation with [az sql db op list](/cli/azure/sql/db/op#az-sql-db-op-list), to return recent or ongoing operations for a database in Azure SQL Database.
+Monitor the ongoing operation with [az sql db op list](/cli/azure/sql/db/op#az-sql-db-op-list). To return recent or ongoing operations for a database in Azure SQL Database:
 
 ```azurecli-interactive
 resourceGroupName="myResourceGroup"
