@@ -4,7 +4,7 @@ description: This article provides details about the configuration and use of th
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest, dfurman
-ms.date: 01/22/2025
+ms.date: 02/10/2025
 ms.service: sql
 ms.topic: conceptual
 ms.custom:
@@ -415,12 +415,16 @@ SET MEMORY_OPTIMIZED TEMPDB_METADATA = OFF;
 
   For more information, see [memory-optimized tempdb metadata (HkTempDB) out of memory errors](/troubleshoot/sql/admin/memory-optimized-tempdb-out-of-memory).
 
-- When you use [In-Memory OLTP](../in-memory-oltp/overview-and-usage-scenarios.md), a single transaction is not allowed to access memory-optimized tables in more than one database. Because of this, any transaction that involves a memory-optimized table in a user database can't also access `tempdb` system views in the same transaction. If this occurs, you receive the following error:
+- When you use [In-Memory OLTP](../in-memory-oltp/overview-and-usage-scenarios.md), a single transaction is not allowed to access memory-optimized tables in more than one database. Because of this, any read or write transaction that involves a memory-optimized table in a user database can't also access `tempdb` system views in the same transaction. If this occurs, you receive error 41317:
 
   ```output
   A user transaction that accesses memory optimized tables or natively compiled modules cannot access more than one user database or databases model and msdb, and it cannot write to master.
   ```
 
+  This limitation also applies to other scenarios where a single transaction attempts to access memory-optimized tables in more than one database.
+  
+  For example, you might get error 41317 if you query the [sys.stats](../system-catalog-views/sys-stats-transact-sql.md) catalog view in a user database that contains memory-optimized tables. This happens because the query attempts to access [statistics](../in-memory-oltp/statistics-for-memory-optimized-tables.md) data on a memory-optimized table in the user database and the memory-optimized metadata in `tempdb`.
+  
   The following example script produces this error when Memory-optimized TempDB metadata is enabled:
 
   ```sql
