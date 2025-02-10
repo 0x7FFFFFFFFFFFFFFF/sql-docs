@@ -2402,7 +2402,7 @@ namespace Microsoft.Samples.SqlServer.Replication.Rmo
 				// Enable Subscriber requested snapshot generation. 
 				publication.Attributes |= PublicationAttributes.AllowSubscriberInitiatedSnapshot;
 
-                // Enable anonymous access for Subscribers that cannot make a direct connetion 
+                // Enable anonymous access for Subscribers that cannot make a direct connection 
                 // to the Publisher. 
                 publication.Attributes |= PublicationAttributes.AllowAnonymous;
 

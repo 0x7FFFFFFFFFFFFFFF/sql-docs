@@ -7,13 +7,16 @@ ms.date: 07/29/2024
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: " >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current "
 ---
 # System-versioned temporal tables with memory-optimized tables
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdbmi](../../includes/applies-to-version/sqlserver2016-asdbmi.md)]
 
 System-versioned temporal tables for [memory-optimized tables](../in-memory-oltp/sample-database-for-in-memory-oltp.md) provide a cost-effective solution for scenarios where [data audit and point in time analysis](temporal-table-usage-scenarios.md) are required on top of data collected with In-Memory OLTP workloads.
+
+> [!NOTE]  
+> Memory-optimized temporal tables are only available in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)]. Memory-optimized tables and temporal tables are independently available in [!INCLUDE[ssazure-sqldb](../../includes/ssazure-sqldb.md)].
 
 ## Overview
 

@@ -7,16 +7,16 @@ ms.date: 07/29/2024
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Work with memory-optimized system-versioned temporal tables
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdbmi](../../includes/applies-to-version/sqlserver2016-asdbmi.md)]
 
 This article discusses how working with a memory-optimized system-versioned temporal table is different from working with a disk-based system-versioned temporal table.
 
 > [!NOTE]  
-> Memory-optimized temporal tables are only available in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)], and not [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
+> Memory-optimized temporal tables are only available in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)]. Memory-optimized tables and temporal tables are independently available in [!INCLUDE[ssazure-sqldb](../../includes/ssazure-sqldb.md)].
 
 ## Discover metadata
 

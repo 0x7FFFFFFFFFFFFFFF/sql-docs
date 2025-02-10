@@ -11,9 +11,11 @@ helpviewer_keywords:
   - "cursor data type"
 dev_langs:
   - "TSQL"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current ||=fabric"
 ---
 # cursor (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 A data type for variables or stored procedure OUTPUT parameters that contain a reference to a cursor.
   

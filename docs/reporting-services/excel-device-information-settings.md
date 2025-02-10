@@ -1,8 +1,8 @@
 ---
 title: "Excel device information settings"
 description: Learn details about the various device information settings for rendering in Microsoft Excel format.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

@@ -5,7 +5,7 @@ description: Learn how Azure SQL Database supports cloud business continuity and
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma
-ms.date: 01/05/2024
+ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: conceptual
@@ -80,7 +80,6 @@ From a database perspective, there are four major potential disruption scenarios
 | Rare datacenter or availability zone outage, possibly caused by a natural disaster event, configuration change, software bug or hardware component failure. | To mitigate datacenter or availability zone level outage, enable [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) for the database or elastic pool to use [Azure Availability Zones](/azure/reliability/availability-zones-overview) and provide redundancy across multiple physical zones within an Azure region. Enabling zone redundancy ensures the database or elastic pool is resilient to zonal failures with up to 99.995% high availability SLA. |
 | Rare _regional outage_ impacting all availability zones and the datacenters comprising it, possibly caused by catastrophic natural disaster event. | To mitigate a region-wide outage, enable disaster recovery using one of the options: </br> - Continuous data synchronization options like [failover groups (recommended)](failover-group-sql-db.md) or [active geo-replication](active-geo-replication-overview.md) that allow you to create replicas in a secondary region for failover. </br> - Setting backup storage redundancy to geo-redundant backup storage to use [geo-restore](recovery-using-backups.md#geo-restore).  | 
 
-
 ## RTO and RPO
 
 As you develop your business continuity plan, understand the maximum acceptable time before the application fully recovers after the disruptive event. The time required for an application to fully recover is known as the Recovery Time Objective (RTO). Also understand the maximum period of recent data updates (time interval) the application can tolerate losing when recovering from an unplanned disruptive event. The potential data loss is known as Recovery Point Objective (RPO).
@@ -91,8 +90,7 @@ The following table compares RPO and RTO of each business continuity option:
 | --- | --- | --- |
 | High Availability </br>(Using zone redundancy) | Typically less than 30 seconds | 0 |
 | Disaster Recovery </br>(Using failover groups with [customer managed failover policy](failover-group-sql-db.md#failover-policy) or active geo-replication ) | Typically less than 60 seconds | Equal to or greater than 0 </br> (Depends on data changes before the disruptive event that haven't been replicated) |
-| Disaster Recovery </br>(Using geo-restore) | Typically minutes or hours | Typically minutes or hours |
-
+| Disaster Recovery </br>(Using geo-restore) | Typically minutes or hours, dependent on Azure storage replication | Typically minutes or hours, dependent on size of database backup |
 
 ## Business continuity checklists
 
@@ -107,7 +105,7 @@ Regardless of which business continuity features you use, you must prepare the s
 
 ## Restore a database within the same Azure region
 
-You can use automatic database backups to restore a database to a point in time in the past. This way you can recover from data corruptions caused by human errors. Point-in-time restore (PITR) allows you to create a new database on the same server that represents the state of data prior to the corrupting event. For most databases, restore operations take less than 12 hours. It can take longer to recover a very large or very active database. For more information, see [database recovery time](recovery-using-backups.md#recovery-time).
+You can use automatic database backups to restore a database to a point in time in the past. This way you can recover from data corruptions caused by human errors. Point-in-time restore (PITR) allows you to create a new database on the same server that represents the state of data prior to the corrupting event. For recovery times, see [RTO and RPO](#rto-and-rpo).
 
 If the maximum supported backup retention period for point-in-time restore isn't sufficient for your application, you can extend it by configuring a long-term retention (LTR) policy for the database(s). For more information, see [Long-term backup retention](long-term-retention-overview.md).
 

@@ -1,8 +1,8 @@
 ---
 title: "Maps in a paginated report"
 description: Get acquainted with how to add a map to your paginated report showing business data against a geographical background in your paginated report in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

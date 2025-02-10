@@ -124,7 +124,7 @@ Use Premium SSD v2 when you deploy your SQL Server on Azure VM to an [Ebdsv5 or 
 Making performance value adjustments (such as to IOPS or throughput) for your Premium SSD v2 disks can currently only be done with the Azure CLI or PowerShell. Review [Adjust performance](/azure/virtual-machines/disks-deploy-premium-v2#adjust-disk-performance) to learn more. 
 
 > [!NOTE]
-> Since making changes to Premium SSD v2 disks for SQL Server VMs in the Azure portal is not currently supported, the [Storage Configuration](manage-sql-vm-portal.md#storage-configuration) page of the SQL virtual machines resource shows **Not extendable** for Premium SSD v2 disks. 
+> Since making changes to Premium SSD v2 disks for SQL Server VMs in the Azure portal is not currently supported, the [Storage Configuration](manage-sql-vm-portal.md#storage) page of the SQL virtual machines resource shows **Not extendable** for Premium SSD v2 disks. 
 
 If your Premium SSD v2 disks are in a storage pool, you can use PowerShell to adjust IOPS and throughput for all the disks in the pool. 
 

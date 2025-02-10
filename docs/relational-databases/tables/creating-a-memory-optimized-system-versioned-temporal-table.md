@@ -7,15 +7,18 @@ ms.date: 07/29/2024
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Create a memory-optimized system-versioned temporal table
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdbmi](../../includes/applies-to-version/sqlserver2016-asdbmi.md)]
 
 Similar to creating a disk-based history table, you can create a memory-optimized temporal table in several ways.
 
 To create memory-optimized tables, you must first create [the memory optimized filegroup](../in-memory-oltp/the-memory-optimized-filegroup.md).
+
+> [!NOTE]  
+> Memory-optimized temporal tables are only available in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)]. Memory-optimized tables and temporal tables are independently available in [!INCLUDE[ssazure-sqldb](../../includes/ssazure-sqldb.md)].
 
 ## Create a memory-optimized temporal table with default history table
 

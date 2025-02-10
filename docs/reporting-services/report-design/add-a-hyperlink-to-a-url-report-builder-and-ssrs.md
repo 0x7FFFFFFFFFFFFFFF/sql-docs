@@ -1,8 +1,8 @@
 ---
 title: "Add a hyperlink to a URL in a paginated report"
 description: Discover how to add hyperlink actions to text boxes, images, charts, and gauges in paginated reports in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

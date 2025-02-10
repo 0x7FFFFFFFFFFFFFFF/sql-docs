@@ -4,10 +4,10 @@ description: Learn guidance and best practices for using Azure SQL Database to p
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: wiassaf, mathoma
-ms.date: 12/18/2018
+ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Performing disaster recovery drills - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Depending on how you [designed your application for business continuity](busines
 
 ## Geo-restore
 
-To prevent the potential data loss when conducting a disaster recovery drill, perform the drill using a test environment by creating a copy of the production environment and using it to verify the application's failover workflow.
+To prevent the potential data loss when conducting a disaster recovery drill, perform the drill using a test environment by creating a copy of the production environment and using it to verify the application's failover workflow. For more information, see [Geo-restore for Azure SQL Database](recovery-using-backups.md#geo-restore).
 
 ### Outage simulation
 
@@ -61,12 +61,13 @@ To simulate the outage, you can disable the web application or virtual machine c
 
 Complete the drill by verifying the application integrity post recovery (including connectivity, basic functionality testing, or other validations required for the drill signoffs).
 
+## Planning for an outage
+
+- To learn about faster recovery options, see [Active geo-replication](active-geo-replication-overview.md) and [Failover groups](failover-group-sql-db.md).
+- Review [disaster recovery guidance](disaster-recovery-guidance.md) and the [high availability and disaster recovery checklist](high-availability-disaster-recovery-checklist.md). 
+
 ## Related content
 
-To learn more, review: 
-
-* [Continuity scenarios](business-continuity-high-availability-disaster-recover-hadr-overview.md).
-* [Automated backups](automated-backups-overview.md)
-* [Restore a database from the service-initiated backups](recovery-using-backups.md).
-* To learn about faster recovery options, see [Active geo-replication](active-geo-replication-overview.md) and [Failover groups](failover-group-sql-db.md).
-* Review [disaster recovery guidance](disaster-recovery-guidance.md) and the [high availability and disaster recovery checklist](high-availability-disaster-recovery-checklist.md). 
+- [Continuity scenarios](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- [Automated backups](automated-backups-overview.md)
+- [Geo-restore for Azure SQL Database](recovery-using-backups.md#geo-restore)

@@ -177,7 +177,7 @@ az sql db create \
 
 Create a server configured with user-assigned managed identity and cross-tenant customer-managed TDE using PowerShell.
 
-For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
+For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 Use the [New-AzSqlServer](/powershell/module/az.sql/New-AzSqlServer) cmdlet.
 

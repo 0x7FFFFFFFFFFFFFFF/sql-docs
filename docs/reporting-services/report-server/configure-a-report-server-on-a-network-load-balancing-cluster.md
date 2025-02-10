@@ -1,8 +1,8 @@
 ---
 title: "Configure a report server on a network load balancing cluster"
 description: Learn how to configure a report server scale-out to run on an NLB. Implement an NLB cluster solution to support a Reporting Services scale-out deployment.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
@@ -58,8 +58,10 @@ To run a scale-out deployment on an NLB cluster, you must configure view state v
     The following example provides an illustration of the value you must obtain. Don't copy the example into your configuration files; the key values aren't valid.  
   
     ```xml
-    <machineKey validationKey="123455555" decryptionKey="678999999" validation="SHA1" decryption="AES"/>  
-    ```  
+    <machineKey validationKey="[your key here]" decryptionKey="[your key here]" validation="SHA1" decryption="AES"/>  
+    ```
+
+    See [Appendix A: How to generate a \<machineKey> element](https://support.microsoft.com/en-us/topic/resolving-view-state-message-authentication-code-mac-errors-6c0e9fd3-f8a8-c953-8fbe-ce840446a9f3) for instructions on generating keys.
   
 1. Open the `Web.config` file for `Reportserver`, and in the `<system.web>` section paste the `<machineKey>` element that you generated. By default, the `Web.config` file is located in `\Program Files\Microsoft SQL Server\MSRS13.MSSQLSERVER\Reporting Services\Reportserver\Web.config`.  
   
@@ -77,8 +79,11 @@ To run a scale-out deployment on an NLB cluster, you must configure view state v
     The following example provides an illustration of the value you must obtain. Don't copy the example into your configuration files; the key values aren't valid. Report server requires the correct casing.
 
     ```xml
-    <MachineKey ValidationKey="123455555" DecryptionKey="678999999" Validation="SHA1" Decryption="AES"/>
+    <MachineKey ValidationKey="[your key here]" DecryptionKey="[your key here]" Validation="SHA1" Decryption="AES"/>
     ```
+
+    See [Appendix A: How to generate a \<machineKey> element](https://support.microsoft.com/en-us/topic/resolving-view-state-message-authentication-code-mac-errors-6c0e9fd3-f8a8-c953-8fbe-ce840446a9f3) for instructions on generating keys.
+  
 
 1. Open the `RSReportServer.config` file for `Reportserver`, and in the `<Configuration>` section paste the `<machineKey>` element that you generated. By default, the `RSReportServer.config` file is located in `\Program Files\Microsoft SQL Server Reporting Services\SSRS\ReportServer\RSReportServer.config` for Reporting Services. For Power BI Report Server, the file is located in `\Program Files\Microsoft Power BI Report Server\PBIRS\ReportServer\RSReportServer.config`.  
 

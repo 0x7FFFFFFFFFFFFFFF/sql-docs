@@ -17,6 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: "= azuresqldb-current"
+ms.collection: ce-skilling-ai-copilot
 ---
 # VECTOR_NORM (Transact-SQL) (Preview)
 

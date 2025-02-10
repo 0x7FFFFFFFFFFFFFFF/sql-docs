@@ -85,7 +85,7 @@ helpviewer_keywords:
 ***********************************************************************  
   
 ACCEPT ReplLogin CHAR PROMPT 'User to create for replication: ';  
-ACCEPT ReplPassword CHAR PROMPT 'Replication user passsword: ' HIDE;  
+ACCEPT ReplPassword CHAR PROMPT 'Replication user password: ' HIDE;  
 ACCEPT DefaultTableSpace CHAR DEFAULT 'SYSTEM' PROMPT 'Default tablespace: ';  
   
 -- Create the replication user account  

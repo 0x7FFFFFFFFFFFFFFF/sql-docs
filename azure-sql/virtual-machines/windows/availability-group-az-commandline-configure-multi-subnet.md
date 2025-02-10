@@ -196,7 +196,7 @@ If you have an even number of votes in the cluster, configure the [quorum soluti
 
 ## Validate cluster 
 
-For a failover cluster to be supported by Microsoft, it must pass cluster validation. Connect to the VM using your preferred method, such as Remote Desktop Protocol (RDP) and validate that your cluster passes validation before proceeding further. Failure to do so leaves your cluster in an unsupported state. 
+For a failover cluster to be supported by Microsoft, it must pass cluster validation. Connect to the VM using your preferred method, such as [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows), and validate that your cluster passes validation before proceeding further. Failure to do so leaves your cluster in an unsupported state. 
 
 You can validate the cluster using Failover Cluster Manager (FCM) or the following PowerShell command:
 

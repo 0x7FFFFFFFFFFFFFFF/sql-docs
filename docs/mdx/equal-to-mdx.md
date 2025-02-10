@@ -41,33 +41,22 @@ MDX_Expression = MDX_Expression
 ## Examples  
  The following query shows examples of these conditions:  
   
- `With`  
-  
- `--Returns true`  
-  
- `Member [Measures].bool1 as 1=1`  
-  
- `--Returns false`  
-  
- `Member [Measures].bool2 as 1=0`  
-  
- `--Returns true`  
-  
- `Member [Measures].bool3 as null=null`  
-  
- `--Returns true`  
-  
- `Member [Measures].bool4 as 0=null`  
-  
- `--Returns false`  
-  
- `Member [Measures].bool5 as 1=null`  
-  
- `Select {[Measures].bool1,[Measures].bool2,[Measures].bool3,[Measures].bool4,[Measures].bool5}`  
-  
- `On 0`  
-  
- `From [Adventure Works]`  
+```  
+With  
+--Returns true  
+Member [Measures].bool1 as 1=1  
+--Returns false  
+Member [Measures].bool2 as 1=0  
+--Returns true  
+Member [Measures].bool3 as null=null  
+--Returns true  
+Member [Measures].bool4 as 0=null  
+--Returns false  
+Member [Measures].bool5 as 1=null  
+Select {[Measures].bool1,[Measures].bool2,[Measures].bool3,[Measures].bool4,[Measures].bool5}  
+On 0  
+From [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Operator Reference &#40;MDX&#41;](../mdx/mdx-operator-reference-mdx.md)  

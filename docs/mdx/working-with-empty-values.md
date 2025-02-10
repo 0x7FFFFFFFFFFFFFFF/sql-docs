@@ -62,51 +62,35 @@ WHERE([Date].[Calendar].[Calendar Year].&[2001])
   
  To remove empty rows or columns from a query, you can use the NON EMPTY statement before the axis set definition. For example, the following query only returns the Product Category Bikes because that is the only Category that was sold in the Calendar Year 2001:  
   
- `SELECT`  
-  
- `{[Measures].[Internet Tax Amount]}`  
-  
- `ON COLUMNS,`  
-  
- `//Comment out the following line to display all the empty rows for other Categories`  
-  
- `NON EMPTY`  
-  
- `[Product].[Category].[Category].MEMBERS`  
-  
- `ON ROWS`  
-  
- `FROM [Adventure Works]`  
-  
- `WHERE([Date].[Calendar].[Calendar Year].&[2001])`  
+```  
+SELECT  
+{[Measures].[Internet Tax Amount]}  
+ON COLUMNS,  
+//Comment out the following line to display all the empty rows for other Categories  
+NON EMPTY  
+[Product].[Category].[Category].MEMBERS  
+ON ROWS  
+FROM [Adventure Works]  
+WHERE([Date].[Calendar].[Calendar Year].&[2001])  
+```  
   
  More generally, to remove empty tuples from a set you can use the NonEmpty function. The following query shows two calculated measures, one of which counts the number of Product Categories and the second shows the number of Product Categories which have values for the measure [Internet Tax Amount] and the Calendar Year 2001:  
   
- `WITH`  
-  
- `MEMBER MEASURES.CategoryCount AS`  
-  
- `COUNT([Product].[Category].[Category].MEMBERS)`  
-  
- `MEMBER MEASURES.NonEmptyCategoryCountFor2001 AS`  
-  
- `COUNT(`  
-  
- `NONEMPTY(`  
-  
- `[Product].[Category].[Category].MEMBERS`  
-  
- `,([Date].[Calendar].[Calendar Year].&[2001], [Measures].[Internet Tax Amount])`  
-  
- `))`  
-  
- `SELECT`  
-  
- `{MEASURES.CategoryCount,MEASURES.NonEmptyCategoryCountFor2001 }`  
-  
- `ON COLUMNS`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH  
+MEMBER MEASURES.CategoryCount AS  
+COUNT([Product].[Category].[Category].MEMBERS)  
+MEMBER MEASURES.NonEmptyCategoryCountFor2001 AS  
+COUNT(  
+NONEMPTY(  
+[Product].[Category].[Category].MEMBERS  
+,([Date].[Calendar].[Calendar Year].&[2001], [Measures].[Internet Tax Amount])  
+))  
+SELECT  
+{MEASURES.CategoryCount,MEASURES.NonEmptyCategoryCountFor2001 }  
+ON COLUMNS  
+FROM [Adventure Works]  
+```  
   
  For more information, see [NonEmpty &#40;MDX&#41;](../mdx/nonempty-mdx.md).  
   

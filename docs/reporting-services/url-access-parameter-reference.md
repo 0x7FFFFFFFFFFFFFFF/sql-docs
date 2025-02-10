@@ -1,8 +1,8 @@
 ---
 title: "URL access parameter reference"
 description: Learn how you can use parameters as part of a URL to configure the look and feel of your SQL Server Reporting Services (SSRS) reports.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

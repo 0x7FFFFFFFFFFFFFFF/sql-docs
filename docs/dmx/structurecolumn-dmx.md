@@ -121,7 +121,7 @@ FROM MyModel.CASES
  Note that you cannot return either the `ProductName` column or the `Quantity` column unless drillthrough is enabled on the mining model.  
   
 ### Sample Query 4: Filtering on and Returning Nested Table Columns  
- Thee following sample query returns the case and nested table columns that are included in the mining structure but not in the model. The model is already filtered on the presence of `OnSale` products, but this query adds a filter on the mining structure column, `Quantity`:  
+ The following sample query returns the case and nested table columns that are included in the mining structure but not in the model. The model is already filtered on the presence of `OnSale` products, but this query adds a filter on the mining structure column, `Quantity`:  
   
 ```  
 SELECT CustomerName, Age, StructureColumn('Occupation'),   

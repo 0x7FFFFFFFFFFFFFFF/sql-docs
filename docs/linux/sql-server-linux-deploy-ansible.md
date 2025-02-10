@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Deploy SQL Server on Linux using an Ansible playbook"
+title: "Quickstart: Deploy SQL Server on Linux Using an Ansible Playbook"
 description: Learn how to deploy SQL Server on Linux to several managed nodes using Ansible playbook.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh
-ms.date: 08/23/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -96,7 +96,7 @@ You'll need to configure a Secure Shell (SSH) connection between the controller 
 
 If SSH has already been configured, you can skip this step.
 
-Use the `ssh-keygen` command to generate SSH keys. When you run the command, you are prompted to accept the default values. When complete, you'll have a private and public key pair.
+Use the `ssh-keygen` command to generate SSH keys. When you run the command, you're prompted to accept the default values. When complete, you'll have a private and public key pair.
 
 ### Copy the public key to the managed nodes
 

@@ -73,6 +73,7 @@ The following features or tools still use previous version of drivers that don't
 - Database Mail
 - Linked Servers
 - Polybase connector to SQL Server
+- SQL VSS Writer
 
 ## Additional changes to connection string encryption properties
 

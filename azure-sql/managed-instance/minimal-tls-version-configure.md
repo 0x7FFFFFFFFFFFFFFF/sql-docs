@@ -12,6 +12,12 @@ ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ---
 # Configure minimal TLS version in Azure SQL Managed Instance
+> [!IMPORTANT]
+> **Upcoming retirement changes**
+> 
+> Azure has announced that support for older TLS versions (TLS 1.0, and 1.1) ends August 31, 2025. For more information, see [TLS 1.0 and 1.1 deprecation](https://azure.microsoft.com/updates/azure-support-tls-will-end-by-31-october-2024-2/).
+> Starting November 2024, you will no longer be able to set the minimal TLS version for Azure SQL Managed Instance client connections below TLS 1.2. 
+
 The Minimal [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) Version setting allows customers to control the version of TLS used by their Azure SQL Managed Instance.
 
 At present we support TLS 1.0, 1.1 and 1.2. Setting a Minimal TLS Version ensures that subsequent, newer TLS versions are supported. For example,  e.g.,  choosing  a TLS version greater than 1.1. means only connections with TLS 1.1 and 1.2 are accepted and TLS 1.0 is rejected. After testing to confirm your applications supports it, we recommend setting minimal TLS version to 1.2 since it includes fixes for vulnerabilities found in previous versions and is the highest version of TLS supported in Azure SQL Managed Instance.
@@ -33,8 +39,11 @@ Login failed with invalid TLS version
 ## Set minimal TLS version via PowerShell
 
 [!INCLUDE [updated-for-az](../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
+> The PowerShell Azure Resource Manager (AzureRM) module was deprecated on February 29, 2024. All future development should use the Az.Sql module. Users are advised to migrate from AzureRM to the Az PowerShell module to ensure continued support and updates. The AzureRM module is no longer maintained or supported. The arguments for the commands in the Az PowerShell module and in the AzureRM modules are substantially identical. For more about their compatibility, see [Introducing the new Az PowerShell module](/powershell/azure/new-azureps-module-az).
+
+The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
 
 The following PowerShell script shows how to `Get` and `Set` the **Minimal TLS Version** property at the instance level:
 

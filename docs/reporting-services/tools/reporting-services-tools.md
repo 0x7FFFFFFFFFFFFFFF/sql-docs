@@ -1,8 +1,8 @@
 ---
 title: SQL Server Reporting Services tools
 description: Find out about the tools for development, configuration, administration, and report viewing that are available in SQL Server Reporting Services.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/30/2024
 ms.service: reporting-services
 ms.subservice: tools

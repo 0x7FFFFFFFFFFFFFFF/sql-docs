@@ -1,8 +1,8 @@
 ---
 title: "Add gauges to mobile reports"
 description: You can add gauges to a Reporting Services mobile report. Gauges display a single value in a dataset by itself or compared to a goal.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: mobile-reports

@@ -7,11 +7,11 @@ ms.date: 07/29/2024
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current||=fabric"
 ---
 # Temporal table considerations and limitations
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 There are some considerations and limitations to be aware of when working with temporal tables, due to the nature of system-versioning:
 

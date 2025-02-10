@@ -23,10 +23,10 @@ Enabling the incoming trust-based authentication flow is one step in [setting up
 
 ## Permissions
 
-To complete the steps outlined in this article, you need:
+Have the credentials required to complete the steps in the scenario:
 
-- An on-premises Active Directory administrator username and password.
-- Microsoft Entra Global Administrator account username and password.
+- An Active Directory user who is a member of the Domain Admins group for a domain and a member of the Enterprise Admins group for a forest.
+- A Microsoft Entra user with the Hybrid Identity Administrators role.
 
 ## Prerequisites
 
@@ -96,7 +96,7 @@ Install-Module -Name AzureADHybridAuthenticationManagement -AllowClobber
     > If you wish to use your current Windows login account for your on-premises Active Directory access, you can skip the step where credentials are assigned to the `$domainCred` parameter. If you take this approach, don't include the `-DomainCredential` parameter in the PowerShell commands following this step.
 
     ```powershell
-    $domain = "your on-premesis domain name, for example contoso.com"
+    $domain = "your on-premises domain name, for example contoso.com"
 
     $domainCred = Get-Credential
 

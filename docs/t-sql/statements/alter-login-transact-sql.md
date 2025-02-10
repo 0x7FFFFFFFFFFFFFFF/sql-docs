@@ -1,9 +1,10 @@
 ---
 title: "ALTER LOGIN (Transact-SQL)"
-description: ALTER LOGIN (Transact-SQL)
+description: ALTER LOGIN changes the properties of a SQL Server login account.
 author: VanMSFT
 ms.author: vanto
-ms.date: 10/06/2021
+ms.reviewer: randolphwest
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -20,16 +21,15 @@ helpviewer_keywords:
   - "modifying login accounts"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # ALTER LOGIN (Transact-SQL)
 
-Changes the properties of a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login account.
+Changes the properties of a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login account.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 [!INCLUDE [entra-id](../../includes/entra-id.md)]
-
 
 [!INCLUDE [select-product](../includes/select-product.md)]
 
@@ -37,7 +37,7 @@ Changes the properties of a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md
 
 :::row:::
     :::column:::
-        **_\* SQL Server \*_** &nbsp;
+        ***\* SQL Server \**** &nbsp;
     :::column-end:::
     :::column:::
         [SQL Database](alter-login-transact-sql.md?view=azuresqldb-current&preserve-view=true)
@@ -57,15 +57,13 @@ Changes the properties of a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md
 
 ## SQL Server
 
-## Syntax
+### Syntax for SQL Server
 
 ```syntaxsql
--- Syntax for SQL Server
-
 ALTER LOGIN login_name
     {
     <status_option>
-    | WITH <set_option> [ ,... ]
+    | WITH <set_option> [ , ... ]
     | <cryptographic_credential_option>
     }
 [;]
@@ -77,7 +75,7 @@ ALTER LOGIN login_name
     PASSWORD = 'password' | hashed_password HASHED
     [
       OLD_PASSWORD = 'oldpassword'
-      | <password_option> [<password_option> ]
+      | <password_option> [ <password_option> ]
     ]
     | DEFAULT_DATABASE = database
     | DEFAULT_LANGUAGE = language
@@ -89,7 +87,7 @@ ALTER LOGIN login_name
 
 <password_option> ::=
     MUST_CHANGE | UNLOCK
-  
+
 <cryptographic_credentials_option> ::=
     ADD CREDENTIAL credential_name
   | DROP CREDENTIAL credential_name
@@ -97,86 +95,105 @@ ALTER LOGIN login_name
 
 ## Arguments
 
-*login_name*
-Specifies the name of the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login that is being changed. Domain logins must be enclosed in brackets in the format [domain\user].
+#### *login_name*
 
-ENABLE | DISABLE
-Enables or disables this login. Disabling a login does not affect the behavior of logins that are already connected. (Use the `KILL` statement to terminate an existing connections.) Disabled logins retain their permissions and can still be impersonated.
+Specifies the name of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login that is being changed. Domain logins must be enclosed in brackets in the format `[<domain>\<user>]`.
 
-PASSWORD **='**_password_**'**
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies the password for the login that is being changed. Passwords are case-sensitive.
+#### ENABLE | DISABLE
 
-PASSWORD **=**_hashed\_password_
+Enables or disables this login. Disabling a login doesn't affect the behavior of logins that are already connected. (Use the `KILL` statement to terminate an existing connection.) Disabled logins retain their permissions and can still be impersonated.
+
+#### PASSWORD = '*password*'
+
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies the password for the login that is being changed. Passwords are case-sensitive.
+
+#### PASSWORD = *hashed_password*
+
 Applies to the HASHED keyword only. Specifies the hashed value of the password for the login that is being created.
 
-> [!IMPORTANT]
-> When a login (or a contained database user) connects and is authenticated, the connection caches identity information about the login. For a Windows Authentication login, this includes information about membership in Windows groups. The identity of the login remains authenticated as long as the connection is maintained. To force changes in the identity, such as a password reset or change in Windows group membership, the login must logoff from the authentication authority (Windows or [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]), and log in again. A member of the **sysadmin** fixed server role or any login with the **ALTER ANY CONNECTION** permission can use the **KILL** command to end a connection and force a login to reconnect. [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] can reuse connection information when opening multiple connections to Object Explorer and Query Editor windows. Close all connections to force reconnection.
+> [!IMPORTANT]  
+> When a login (or a contained database user) connects and is authenticated, the connection caches identity information about the login. For a Windows Authentication login, this includes information about membership in Windows groups. The identity of the login remains authenticated as long as the connection is maintained. To force changes in the identity, such as a password reset or change in Windows group membership, the login must sign out from the authentication authority (Windows or [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]), and sign in again. A member of the **sysadmin** fixed server role or any login with the `ALTER ANY CONNECTION` permission can use the `KILL` command to end a connection and force a login to reconnect. [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] can reuse connection information when opening multiple connections to Object Explorer and Query Editor windows. Close all connections to force reconnection.
 
-HASHED
-Applies to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins only. Specifies that the password entered after the PASSWORD argument is already hashed. If this option is not selected, the password is hashed before being stored in the database. This option should only be used for login synchronization between two servers. Do not use the HASHED option to routinely change passwords.
+#### HASHED
 
-OLD_PASSWORD **='**_oldpassword_**'**
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. The current password of the login to which a new password will be assigned. Passwords are case-sensitive.
+Applies to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins only. Specifies that the password entered after the PASSWORD argument is already hashed. If this option isn't selected, the password is hashed before being stored in the database. This option should only be used for login synchronization between two servers. Don't use the HASHED option to routinely change passwords.
 
-MUST_CHANGE
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. If this option is included, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] will prompt for an updated password the first time the altered login is used.
+#### OLD_PASSWORD = '*old_password*'
 
-DEFAULT_DATABASE **=**_database_
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. The current password of the login to which a new password will be assigned. Passwords are case-sensitive.
+
+#### MUST_CHANGE
+
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. If this option is included, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] prompts for an updated password the first time the altered login is used.
+
+#### DEFAULT_DATABASE = *database*
+
 Specifies a default database to be assigned to the login.
 
-DEFAULT_LANGUAGE **=**_language_
-Specifies a default language to be assigned to the login. The default language for all SQL Database logins is English and cannot be changed. The default language of the `sa` login on [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] on Linux, is English but it can be changed.
+#### DEFAULT_LANGUAGE = *language*
 
-NAME = *login_name*
-The new name of the login that is being renamed. If this is a Windows login, the SID of the Windows principal corresponding to the new name must match the SID associated with the login in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The new name of a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login cannot contain a backslash character (\\).
+Specifies a default language to be assigned to the login. The default language for all SQL Database logins is English and can't be changed. The default language of the `sa` login on [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on Linux is English, but it can be changed.
 
-CHECK_EXPIRATION = { ON | **OFF** }
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies whether password expiration policy should be enforced on this login. The default value is OFF.
+#### NAME = *login_name*
 
-CHECK_POLICY **=** { **ON** | OFF }
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that the Windows password policies of the computer on which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running should be enforced on this login. The default value is ON.
+The new name of the login that is being renamed. If this is a Windows login, the SID of the Windows principal corresponding to the new name must match the SID associated with the login in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. The new name of a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login can't contain a backslash character (`\`).
 
-CREDENTIAL = *credential_name*
-The name of a credential to be mapped to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login. The credential must already exist in the server. For more information, see [Credentials](../../relational-databases/security/authentication-access/credentials-database-engine.md). A credential cannot be mapped to the sa login.
+#### CHECK_EXPIRATION = { ON | OFF }
 
-NO CREDENTIAL
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies whether password expiration policy should be enforced on this login. The default value is OFF.
+
+#### CHECK_POLICY = { ON | OFF }
+
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that the Windows password policies of the computer on which [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is running should be enforced on this login. The default value is ON.
+
+#### CREDENTIAL = *credential_name*
+
+The name of a credential to be mapped to a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login. The credential must already exist in the server. For more information, see [Credentials](../../relational-databases/security/authentication-access/credentials-database-engine.md). A credential can't be mapped to the sa login.
+
+#### NO CREDENTIAL
+
 Removes any existing mapping of the login to a server credential. For more information, see [Credentials](../../relational-databases/security/authentication-access/credentials-database-engine.md).
 
-UNLOCK
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that a login that is locked out should be unlocked.
+#### UNLOCK
 
-ADD CREDENTIAL
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that a login that is locked out should be unlocked.
+
+#### ADD CREDENTIAL
+
 Adds an Extensible Key Management (EKM) provider credential to the login. For more information, see [Extensible Key Management (EKM)](../../relational-databases/security/encryption/extensible-key-management-ekm.md).
 
-DROP CREDENTIAL
+#### DROP CREDENTIAL
+
 Removes an Extensible Key Management (EKM) provider credential from the login. For more information, see [Extensible Key Management (EKM)] (../.. /relational-databases/security/encryption/extensible-key-management-ekm.md).
 
 ## Remarks
 
-When CHECK_POLICY is set to ON, the HASHED argument cannot be used.
+When CHECK_POLICY is set to ON, the HASHED argument can't be used.
 
 When CHECK_POLICY is changed to ON, the following behavior occurs:
 
 - The password history is initialized with the value of the current password hash.
 
-  When CHECK_POLICY is changed to OFF, the following behavior occurs:
+When CHECK_POLICY is changed to OFF, the following behavior occurs:
 
 - CHECK_EXPIRATION is also set to OFF.
 - The password history is cleared.
 - The value of *lockout_time* is reset.
 
-If MUST_CHANGE is specified, CHECK_EXPIRATION and CHECK_POLICY must be set to ON. Otherwise, the statement will fail.
+If MUST_CHANGE is specified, CHECK_EXPIRATION and CHECK_POLICY must be set to ON. Otherwise, the statement fails.
 
-If CHECK_POLICY is set to OFF, CHECK_EXPIRATION cannot be set to ON. An ALTER LOGIN statement that has this combination of options will fail.
+If CHECK_POLICY is set to OFF, CHECK_EXPIRATION can't be set to ON. An ALTER LOGIN statement that has this combination of options fail.
 
-You cannot use ALTER LOGIN with the DISABLE argument to deny access to a Windows group. For example, ALTER LOGIN [*domain\group*] DISABLE will return the following error message:
+You can't use ALTER LOGIN with the DISABLE argument to deny access to a Windows group. For example, `ALTER LOGIN [<domain>\<group>] DISABLE` returns the following error message:
 
-`"Msg 15151, Level 16, State 1, Line 1
-"Cannot alter the login '*Domain\Group*', because it does not exist or you do not have permission."`
+```output
+"Msg 15151, Level 16, State 1, Line 1
+Cannot alter the login '*Domain\Group*', because it doesn't exist or you don't have permission.
+```
 
 This is by design.
-  
-In [!INCLUDE[ssSDS](../../includes/sssds-md.md)], login data required to authenticate a connection and server-level firewall rules are temporarily cached in each database. This cache is periodically refreshed. To force a refresh of the authentication cache and make sure that a database has the latest version of the logins table, execute [DBCC FLUSHAUTHCACHE](../../t-sql/database-console-commands/dbcc-flushauthcache-transact-sql.md).
+
+In [!INCLUDE [ssSDS](../../includes/sssds-md.md)], login data required to authenticate a connection and server-level firewall rules are temporarily cached in each database. This cache is periodically refreshed. To force a refresh of the authentication cache and make sure that a database has the latest version of the logins table, execute [DBCC FLUSHAUTHCACHE](../../t-sql/database-console-commands/dbcc-flushauthcache-transact-sql.md).
 
 ## Permissions
 
@@ -196,7 +213,7 @@ A principal can change the password, default language, and default database for 
 
 ## Examples
 
-### A. Enabling a disabled login
+### A. Enable a disabled login
 
 The following example enables the login `Mary5`.
 
@@ -204,7 +221,7 @@ The following example enables the login `Mary5`.
 ALTER LOGIN Mary5 ENABLE;
 ```
 
-### B. Changing the password of a login
+### B. Change the password of a login
 
 The following example changes the password of login `Mary5` to a strong password.
 
@@ -212,15 +229,15 @@ The following example changes the password of login `Mary5` to a strong password
 ALTER LOGIN Mary5 WITH PASSWORD = '<enterStrongPasswordHere>';
 ```
 
-### C. Changing the password of a login when logged in as the login
+### C. Change the password of a login when logged in as the login
 
-If you are attempting to change the password of the login that you're currently logged in with and you do not have the `ALTER ANY LOGIN` permission you must specify the `OLD_PASSWORD` option.
+If you're attempting to change the password of the login that you're currently logged in with, and you don't have the `ALTER ANY LOGIN` permission you must specify the `OLD_PASSWORD` option.
 
 ```sql
 ALTER LOGIN Mary5 WITH PASSWORD = '<enterStrongPasswordHere>' OLD_PASSWORD = '<oldWeakPasswordHere>';
 ```
 
-### D. Changing the name of a login
+### D. Change the name of a login
 
 The following example changes the name of login `Mary5` to `John2`.
 
@@ -228,7 +245,7 @@ The following example changes the name of login `Mary5` to `John2`.
 ALTER LOGIN Mary5 WITH NAME = John2;
 ```
 
-### E. Mapping a login to a credential
+### E. Map a login to a credential
 
 The following example maps the login `John2` to the credential `Custodian04`.
 
@@ -236,26 +253,25 @@ The following example maps the login `John2` to the credential `Custodian04`.
 ALTER LOGIN John2 WITH CREDENTIAL = Custodian04;
 ```
 
-### F. Mapping a login to an Extensible Key Management credential
+### F. Map a login to an Extensible Key Management credential
 
 The following example maps the login `Mary5` to the EKM credential `EKMProvider1`.
 
 ```sql
-ALTER LOGIN Mary5
-ADD CREDENTIAL EKMProvider1;
+ALTER LOGIN Mary5 ADD CREDENTIAL EKMProvider1;
 GO
 ```
 
-### F. Unlocking a login
+### F. Unlock a login
 
-To unlock a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login, execute the following statement, replacing \*\*\*\* with the desired account password.
+To unlock a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login, execute the following statement, replacing `****` with the desired account password.
 
 ```sql
-ALTER LOGIN [Mary5] WITH PASSWORD = '****' UNLOCK ;
+ALTER LOGIN [Mary5] WITH PASSWORD = '****' UNLOCK;
 GO
 ```
 
-To unlock a login without changing the password, turn the check policy off and then on again.
+To unlock a login without changing the password, turn off the check policy and then on again.
 
 ```sql
 ALTER LOGIN [Mary5] WITH CHECK_POLICY = OFF;
@@ -263,18 +279,16 @@ ALTER LOGIN [Mary5] WITH CHECK_POLICY = ON;
 GO
 ```
 
-
-### G. Changing the password of a login using HASHED
+### G. Change the password of a login using HASHED
 
 The following example changes the password of the `TestUser` login to an already hashed value.
 
 ```sql
-ALTER LOGIN TestUser WITH
-PASSWORD = 0x01000CF35567C60BFB41EBDE4CF700A985A13D773D6B45B90900 HASHED ;
+ALTER LOGIN TestUser WITH PASSWORD = 0x01000CF35567C60BFB41EBDE4CF700A985A13D773D6B45B90900 HASHED;
 GO
 ```
 
-## See Also
+## Related content
 
 - [Credentials](../../relational-databases/security/authentication-access/credentials-database-engine.md)
 - [CREATE LOGIN](../../t-sql/statements/create-login-transact-sql.md)
@@ -291,7 +305,7 @@ GO
         [SQL Server](alter-login-transact-sql.md?view=sql-server-ver15&preserve-view=true)
     :::column-end:::
     :::column:::
-        **_\* SQL Database \*_**
+        ***\* SQL Database \****
     :::column-end:::
     :::column:::
         [SQL Managed Instance](alter-login-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
@@ -308,17 +322,13 @@ GO
 
 ## SQL Database
 
-## SQL Server
-
-## Syntax
+### Syntax for Azure SQL Database
 
 ```syntaxsql
--- Syntax for Azure SQL Database
-
 ALTER LOGIN login_name
   {
       <status_option>
-    | WITH <set_option> [ ,.. .n ]
+    | WITH <set_option> [ , .. .n ]
   }
 [;]
 
@@ -326,38 +336,43 @@ ALTER LOGIN login_name
     ENABLE | DISABLE
 
 <set_option> ::=
-    PASSWORD ='password'
+    PASSWORD = 'password'
     [
-      OLD_PASSWORD ='oldpassword'
+      OLD_PASSWORD = 'oldpassword'
     ]
     | NAME = login_name
 ```
 
 ## Arguments
 
-*login_name*
-Specifies the name of the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login that is being changed. Domain logins must be enclosed in brackets in the format [domain\user].
+#### *login_name*
 
-ENABLE | DISABLE
-Enables or disables this login. Disabling a login does not affect the behavior of logins that are already connected. (Use the `KILL` statement to terminate an existing connections.) Disabled logins retain their permissions and can still be impersonated.
+Specifies the name of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login that is being changed. Domain logins must be enclosed in brackets in the format [domain\user].
 
-PASSWORD **='**_password_**'**
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies the password for the login that is being changed. Passwords are case-sensitive.
+#### ENABLE | DISABLE
 
-Continuously active connections to SQL Database require reauthorization (performed by the Database Engine) at least every 10 hours. The Database Engine attempts reauthorization using the originally submitted password and no user input is required. For performance reasons, when a password is reset in SQL Database, the connection will not be re-authenticated, even if the connection is reset due to connection pooling. This is different from the behavior of on-premises SQL Server. If the password has been changed since the connection was initially authorized, the connection must be terminated and a new connection made using the new password. A user with the KILL DATABASE CONNECTION permission can explicitly terminate a connection to SQL Database by using the KILL command. For more information, see [KILL](../../t-sql/language-elements/kill-transact-sql.md).
+Enables or disables this login. Disabling a login doesn't affect the behavior of logins that are already connected. (Use the `KILL` statement to terminate an existing connection.) Disabled logins retain their permissions and can still be impersonated.
 
-> [!IMPORTANT]
-> When a login (or a contained database user) connects and is authenticated, the connection caches identity information about the login. For a Windows Authentication login, this includes information about membership in Windows groups. The identity of the login remains authenticated as long as the connection is maintained. To force changes in the identity, such as a password reset or change in Windows group membership, the login must logoff from the authentication authority (Windows or [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]), and log in again. A member of the **sysadmin** fixed server role or any login with the **ALTER ANY CONNECTION** permission can use the **KILL** command to end a connection and force a login to reconnect. [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] can reuse connection information when opening multiple connections to Object Explorer and Query Editor windows. Close all connections to force reconnection.
+#### PASSWORD = '*password*'
 
-OLD_PASSWORD **='**_oldpassword_**'**
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. The current password of the login to which a new password will be assigned. Passwords are case-sensitive.
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies the password for the login that is being changed. Passwords are case-sensitive.
 
-NAME = *login_name*
-The new name of the login that is being renamed. If this is a Windows login, the SID of the Windows principal corresponding to the new name must match the SID associated with the login in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The new name of a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login cannot contain a backslash character (\\).
+Continuously active connections to SQL Database require reauthorization (performed by the Database Engine) at least every 10 hours. The Database Engine attempts reauthorization using the originally submitted password and no user input is required. For performance reasons, when a password is reset in SQL Database, the connection isn't reauthenticated, even if the connection is reset due to connection pooling. This is different from the behavior of on-premises SQL Server. If the password has changed since the connection was initially authorized, the connection must be terminated and a new connection made using the new password. A user with the KILL DATABASE CONNECTION permission can explicitly terminate a connection to SQL Database by using the KILL command. For more information, see [KILL](../../t-sql/language-elements/kill-transact-sql.md).
+
+> [!IMPORTANT]  
+> When a login (or a contained database user) connects and is authenticated, the connection caches identity information about the login. For a Windows Authentication login, this includes information about membership in Windows groups. The identity of the login remains authenticated as long as the connection is maintained. To force changes in the identity, such as a password reset or change in Windows group membership, the login must sign out from the authentication authority (Windows or [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]), and sign in again. A member of the **sysadmin** fixed server role or any login with the **ALTER ANY CONNECTION** permission can use the **KILL** command to end a connection and force a login to reconnect. [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] can reuse connection information when opening multiple connections to Object Explorer and Query Editor windows. Close all connections to force reconnection.
+
+#### OLD_PASSWORD = '*old_password*'
+
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. The current password of the login to which a new password will be assigned. Passwords are case-sensitive.
+
+#### NAME = *login_name*
+
+The new name of the login that is being renamed. If this is a Windows login, the SID of the Windows principal corresponding to the new name must match the SID associated with the login in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. The new name of a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login can't contain a backslash character (\\).
 
 ## Remarks
 
-In [!INCLUDE[ssSDS](../../includes/sssds-md.md)], login data required to authenticate a connection and server-level firewall rules are temporarily cached in each database. This cache is periodically refreshed. To force a refresh of the authentication cache and make sure that a database has the latest version of the logins table, execute [DBCC FLUSHAUTHCACHE](../../t-sql/database-console-commands/dbcc-flushauthcache-transact-sql.md).
+In [!INCLUDE [ssSDS](../../includes/sssds-md.md)], login data required to authenticate a connection and server-level firewall rules are temporarily cached in each database. This cache is periodically refreshed. To force a refresh of the authentication cache and make sure that a database has the latest version of the logins table, execute [DBCC FLUSHAUTHCACHE](../../t-sql/database-console-commands/dbcc-flushauthcache-transact-sql.md).
 
 ## Permissions
 
@@ -374,9 +389,9 @@ A principal can change the password for its own login.
 
 ## Examples
 
-These examples also include examples for using other SQL products. Please see which arguments are supported above.
+These examples also include examples for using other SQL products. See which previous arguments are supported.
 
-### A. Enabling a disabled login
+### A. Enable a disabled login
 
 The following example enables the login `Mary5`.
 
@@ -384,7 +399,7 @@ The following example enables the login `Mary5`.
 ALTER LOGIN Mary5 ENABLE;
 ```
 
-### B. Changing the password of a login
+### B. Change the password of a login
 
 The following example changes the password of login `Mary5` to a strong password.
 
@@ -392,7 +407,7 @@ The following example changes the password of login `Mary5` to a strong password
 ALTER LOGIN Mary5 WITH PASSWORD = '<enterStrongPasswordHere>';
 ```
 
-### C. Changing the name of a login
+### C. Change the name of a login
 
 The following example changes the name of login `Mary5` to `John2`.
 
@@ -400,7 +415,7 @@ The following example changes the name of login `Mary5` to `John2`.
 ALTER LOGIN Mary5 WITH NAME = John2;
 ```
 
-### D. Mapping a login to a credential
+### D. Map a login to a credential
 
 The following example maps the login `John2` to the credential `Custodian04`.
 
@@ -408,32 +423,29 @@ The following example maps the login `John2` to the credential `Custodian04`.
 ALTER LOGIN John2 WITH CREDENTIAL = Custodian04;
 ```
 
-### E. Mapping a login to an Extensible Key Management credential
+### E. Map a login to an Extensible Key Management credential
 
 The following example maps the login `Mary5` to the EKM credential `EKMProvider1`.
 
-
-**Applies to**: [!INCLUDE[sql2008-md](../../includes/sql2008-md.md)] and later.
+**Applies to**: [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and later.
 
 ```sql
-ALTER LOGIN Mary5
-ADD CREDENTIAL EKMProvider1;
+ALTER LOGIN Mary5 ADD CREDENTIAL EKMProvider1;
 GO
 ```
 
-### F. Changing the password of a login using HASHED
+### F. Change the password of a login using HASHED
 
 The following example changes the password of the `TestUser` login to an already hashed value.
 
-**Applies to**: [!INCLUDE[sql2008-md](../../includes/sql2008-md.md)] and later.
+**Applies to**: [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and later.
 
 ```sql
-ALTER LOGIN TestUser WITH
-PASSWORD = 0x01000CF35567C60BFB41EBDE4CF700A985A13D773D6B45B90900 HASHED ;
+ALTER LOGIN TestUser WITH PASSWORD = 0x01000CF35567C60BFB41EBDE4CF700A985A13D773D6B45B90900 HASHED;
 GO
 ```
 
-## See Also
+## Related content
 
 - [Credentials](../../relational-databases/security/authentication-access/credentials-database-engine.md)
 - [CREATE LOGIN](../../t-sql/statements/create-login-transact-sql.md)
@@ -453,7 +465,7 @@ GO
         [SQL Database](alter-login-transact-sql.md?view=azuresqldb-current&preserve-view=true)
     :::column-end:::
     :::column:::
-        **_\* SQL Managed Instance \*_**
+        ***\* SQL Managed Instance \****
     :::column-end:::
     :::column:::
         [Azure Synapse<br />Analytics](alter-login-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
@@ -467,27 +479,25 @@ GO
 
 ## Azure SQL Managed Instance
 
-## Syntax
+### Syntax for SQL Server and Azure SQL Managed Instance
 
 ```syntaxsql
--- Syntax for SQL Server and Azure SQL Managed Instance
-
 ALTER LOGIN login_name
     {
     <status_option>
-    | WITH <set_option> [ ,... ]
+    | WITH <set_option> [ , ... ]
     | <cryptographic_credential_option>
     }
 [;]
 
 <status_option> ::=
         ENABLE | DISABLE
-  
+
 <set_option> ::=
     PASSWORD = 'password' | hashed_password HASHED
     [
       OLD_PASSWORD = 'oldpassword'
-      | <password_option> [<password_option> ]
+      | <password_option> [ <password_option> ]
     ]
     | DEFAULT_DATABASE = database
     | DEFAULT_LANGUAGE = language
@@ -505,15 +515,13 @@ ALTER LOGIN login_name
   | DROP CREDENTIAL credential_name
 ```
 
-
 ```syntaxsql
 -- Syntax for Azure SQL Managed Instance using Microsoft Entra logins
-
 
 ALTER LOGIN login_name
   {
       <status_option>
-    | WITH <set_option> [ ,.. .n ]
+    | WITH <set_option> [ , .. .n ]
   }
 [;]
 
@@ -527,89 +535,104 @@ ALTER LOGIN login_name
 
 ## Arguments
 
-<a name='arguments-applicable-to-sql-and-azure-ad-logins'></a>
-
 ### Arguments applicable to SQL and Microsoft Entra logins
 
-*login_name*
-Specifies the name of the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login that is being changed. Microsoft Entra logins must be specified as user@domain. For example, john.smith@contoso.com, or as the Microsoft Entra group or application name. For Microsoft Entra logins, the *login_name* must correspond to an existing Microsoft Entra login created in the master database.
+#### *login_name*
 
-ENABLE | DISABLE
-Enables or disables this login. Disabling a login does not affect the behavior of logins that are already connected. (Use the `KILL` statement to terminate an existing connection.) Disabled logins retain their permissions and can still be impersonated.
+Specifies the name of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login that is being changed. Microsoft Entra logins must be specified as user@domain. For example, <john.smith@contoso.com>, or as the Microsoft Entra group or application name. For Microsoft Entra logins, the *login_name* must correspond to an existing Microsoft Entra login created in the `master` database.
 
-DEFAULT_DATABASE **=**_database_
+#### ENABLE | DISABLE
+
+Enables or disables this login. Disabling a login doesn't affect the behavior of logins that are already connected. (Use the `KILL` statement to terminate an existing connection.) Disabled logins retain their permissions and can still be impersonated.
+
+#### DEFAULT_DATABASE = *database*
+
 Specifies a default database to be assigned to the login.
 
-DEFAULT_LANGUAGE **=**_language_
-Specifies a default language to be assigned to the login. The default language for all SQL Database logins is English and cannot be changed. The default language of the `sa` login on [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] on Linux, is English but it can be changed.
+#### DEFAULT_LANGUAGE = *language*
+
+Specifies a default language to be assigned to the login. The default language for all SQL Database logins is English and can't be changed. The default language of the `sa` login on [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on Linux is English, but it can be changed.
 
 ### Arguments applicable only to SQL logins
 
-PASSWORD **='**_password_**'**
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies the password for the login that is being changed. Passwords are case-sensitive. Passwords also do not apply when used with external logins, like Microsoft Entra logins.
+#### PASSWORD = '*password*'
 
-Continuously active connections to SQL Database require reauthorization (performed by the Database Engine) at least every 10 hours. The Database Engine attempts reauthorization using the originally submitted password and no user input is required. For performance reasons, when a password is reset in SQL Database, the connection will not be re-authenticated, even if the connection is reset due to connection pooling. This is different from the behavior of on-premises SQL Server. If the password has been changed since the connection was initially authorized, the connection must be terminated and a new connection made using the new password. A user with the KILL DATABASE CONNECTION permission can explicitly terminate a connection to SQL Database by using the KILL command. For more information, see [KILL](../../t-sql/language-elements/kill-transact-sql.md).
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies the password for the login that is being changed. Passwords are case-sensitive. Passwords also don't apply when used with external logins, like Microsoft Entra logins.
 
-PASSWORD **=**_hashed\_password_
+Continuously active connections to SQL Database require reauthorization (performed by the Database Engine) at least every 10 hours. The Database Engine attempts reauthorization using the originally submitted password and no user input is required. For performance reasons, when a password is reset in SQL Database, the connection isn't reauthenticated, even if the connection is reset due to connection pooling. This is different from the behavior of on-premises SQL Server. If the password has changed since the connection was initially authorized, the connection must be terminated and a new connection made using the new password. A user with the KILL DATABASE CONNECTION permission can explicitly terminate a connection to SQL Database by using the KILL command. For more information, see [KILL](../../t-sql/language-elements/kill-transact-sql.md).
+
+#### PASSWORD = *hashed_password*
+
 Applies to the HASHED keyword only. Specifies the hashed value of the password for the login that is being created.
 
-HASHED
-Applies to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins only. Specifies that the password entered after the PASSWORD argument is already hashed. If this option is not selected, the password is hashed before being stored in the database. This option should only be used for login synchronization between two servers. Do not use the HASHED option to routinely change passwords.
+#### HASHED
 
-OLD_PASSWORD **='**_oldpassword_**'**
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. The current password of the login to which a new password will be assigned. Passwords are case-sensitive.
+Applies to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins only. Specifies that the password entered after the PASSWORD argument is already hashed. If this option isn't selected, the password is hashed before being stored in the database. This option should only be used for login synchronization between two servers. Don't use the HASHED option to routinely change passwords.
 
-MUST_CHANGE<br>
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. If this option is included, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] will prompt for an updated password the first time the altered login is used.
+#### OLD_PASSWORD = '*old_password*'
 
-NAME = *login_name*
-The new name of the login that is being renamed. If the login is a Windows login, the SID of the Windows principal corresponding to the new name must match the SID associated with the login in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The new name of a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login cannot contain a backslash character (\\).
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. The current password of the login to which a new password will be assigned. Passwords are case-sensitive.
 
-CHECK_EXPIRATION = { ON | **OFF** }
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies whether password expiration policy should be enforced on this login. The default value is OFF.
+#### MUST_CHANGE
 
-CHECK_POLICY **=** { **ON** | OFF }
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that the Windows password policies of the computer on which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running should be enforced on this login. The default value is ON.
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. If this option is included, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] prompts for an updated password the first time the altered login is used.
 
-CREDENTIAL = *credential_name*
-The name of a credential to be mapped to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login. The credential must already exist in the server. For more information, see [Credentials](../../relational-databases/security/authentication-access/credentials-database-engine.md). A credential cannot be mapped to the sa login.
+#### NAME = *login_name*
 
-NO CREDENTIAL
+The new name of the login that is being renamed. If the login is a Windows login, the SID of the Windows principal corresponding to the new name must match the SID associated with the login in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. The new name of a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login can't contain a backslash character (\\).
+
+#### CHECK_EXPIRATION = { ON | OFF }
+
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies whether password expiration policy should be enforced on this login. The default value is OFF.
+
+#### CHECK_POLICY = { ON | OFF }
+
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that the Windows password policies of the computer on which [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is running should be enforced on this login. The default value is ON.
+
+#### CREDENTIAL = *credential_name*
+
+The name of a credential to be mapped to a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login. The credential must already exist in the server. For more information, see [Credentials](../../relational-databases/security/authentication-access/credentials-database-engine.md). A credential can't be mapped to the sa login.
+
+#### NO CREDENTIAL
+
 Removes any existing mapping of the login to a server credential. For more information, see [Credentials](../../relational-databases/security/authentication-access/credentials-database-engine.md).
 
-UNLOCK
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that a login that is locked out should be unlocked.
+#### UNLOCK
 
-ADD CREDENTIAL
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that a login that is locked out should be unlocked.
+
+#### ADD CREDENTIAL
+
 Adds an Extensible Key Management (EKM) provider credential to the login. For more information, see [Extensible Key Management (EKM)](../../relational-databases/security/encryption/extensible-key-management-ekm.md).
 
-DROP CREDENTIAL
+#### DROP CREDENTIAL
+
 Removes an Extensible Key Management (EKM) provider credential from the login. For more information, see [Extensible Key Management (EKM)](../../relational-databases/security/encryption/extensible-key-management-ekm.md).
 
 ## Remarks
 
-When CHECK_POLICY is set to ON, the HASHED argument cannot be used.
+When CHECK_POLICY is set to ON, the HASHED argument can't be used.
 
 When CHECK_POLICY is changed to ON, the following behavior occurs:
 
 - The password history is initialized with the value of the current password hash.
 
-  When CHECK_POLICY is changed to OFF, the following behavior occurs:
+When CHECK_POLICY is changed to OFF, the following behavior occurs:
 
 - CHECK_EXPIRATION is also set to OFF.
 - The password history is cleared.
 - The value of *lockout_time* is reset.
 
-If MUST_CHANGE is specified, CHECK_EXPIRATION and CHECK_POLICY must be set to ON. Otherwise, the statement will fail.
+If MUST_CHANGE is specified, CHECK_EXPIRATION and CHECK_POLICY must be set to ON. Otherwise, the statement fails.
 
-If CHECK_POLICY is set to OFF, CHECK_EXPIRATION cannot be set to ON. An ALTER LOGIN statement that has this combination of options will fail.
+If CHECK_POLICY is set to OFF, CHECK_EXPIRATION can't be set to ON. An ALTER LOGIN statement that has this combination of options fail.
 
-You cannot use ALTER_LOGIN with the DISABLE argument to deny access to a Windows group. This is by design. For example, ALTER_LOGIN [*domain\group*] DISABLE will return the following error message:
+You can't use ALTER_LOGIN with the DISABLE argument to deny access to a Windows group. This is by design. For example, ALTER_LOGIN [*domain\group*] DISABLE returns the following error message:
 
 `"Msg 15151, Level 16, State 1, Line 1
-"Cannot alter the login '*Domain\Group*', because it does not exist or you do not have permission."`
+"Cannot alter the login '*Domain\Group*', because it doesn't exist or you don't have permission."`
 
-In [!INCLUDE[ssSDS](../../includes/sssds-md.md)], login data required to authenticate a connection and server-level firewall rules are temporarily cached in each database. This cache is periodically refreshed. To force a refresh of the authentication cache and make sure that a database has the latest version of the logins table, execute [DBCC FLUSHAUTHCACHE](../../t-sql/database-console-commands/dbcc-flushauthcache-transact-sql.md).
+In [!INCLUDE [ssSDS](../../includes/sssds-md.md)], login data required to authenticate a connection and server-level firewall rules are temporarily cached in each database. This cache is periodically refreshed. To force a refresh of the authentication cache and make sure that a database has the latest version of the logins table, execute [DBCC FLUSHAUTHCACHE](../../t-sql/database-console-commands/dbcc-flushauthcache-transact-sql.md).
 
 ## Permissions
 
@@ -631,9 +654,9 @@ Only a SQL principal with `sysadmin` privileges can execute an ALTER LOGIN comma
 
 ## Examples
 
-These examples also include examples for using other SQL products. Please see which arguments are supported above.
+These examples also include examples for using other SQL products. See which previous arguments are supported.
 
-### A. Enabling a disabled login
+### A. Enable a disabled login
 
 The following example enables the login `Mary5`.
 
@@ -641,7 +664,7 @@ The following example enables the login `Mary5`.
 ALTER LOGIN Mary5 ENABLE;
 ```
 
-### B. Changing the password of a login
+### B. Change the password of a login
 
 The following example changes the password of login `Mary5` to a strong password.
 
@@ -649,7 +672,7 @@ The following example changes the password of login `Mary5` to a strong password
 ALTER LOGIN Mary5 WITH PASSWORD = '<enterStrongPasswordHere>';
 ```
 
-### C. Changing the name of a login
+### C. Change the name of a login
 
 The following example changes the name of login `Mary5` to `John2`.
 
@@ -657,7 +680,7 @@ The following example changes the name of login `Mary5` to `John2`.
 ALTER LOGIN Mary5 WITH NAME = John2;
 ```
 
-### D. Mapping a login to a credential
+### D. Map a login to a credential
 
 The following example maps the login `John2` to the credential `Custodian04`.
 
@@ -665,59 +688,55 @@ The following example maps the login `John2` to the credential `Custodian04`.
 ALTER LOGIN John2 WITH CREDENTIAL = Custodian04;
 ```
 
-### E. Mapping a login to an Extensible Key Management credential
+### E. Map a login to an Extensible Key Management credential
 
 The following example maps the login `Mary5` to the EKM credential `EKMProvider1`.
 
-**Applies to**: [!INCLUDE[sql2008-md](../../includes/sql2008-md.md)] and later, and Azure SQL Managed Instance.
+**Applies to**: [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and later, and Azure SQL Managed Instance.
 
 ```sql
-ALTER LOGIN Mary5
-ADD CREDENTIAL EKMProvider1;
+ALTER LOGIN Mary5 ADD CREDENTIAL EKMProvider1;
 GO
 ```
 
-### F. Unlocking a login
+### F. Unlock a login
 
-To unlock a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login, execute the following statement, replacing \*\*\*\* with the desired account password.
+To unlock a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login, execute the following statement, replacing `****` with the desired account password.
 
 ```sql
-ALTER LOGIN [Mary5] WITH PASSWORD = '****' UNLOCK ;
-
+ALTER LOGIN [Mary5] WITH PASSWORD = '****' UNLOCK;
 GO
 ```
 
-To unlock a login without changing the password, turn the check policy off and then on again.
+To unlock a login without changing the password, turn off the check policy and then on again.
 
 ```sql
 ALTER LOGIN [Mary5] WITH CHECK_POLICY = OFF;
+
 ALTER LOGIN [Mary5] WITH CHECK_POLICY = ON;
 GO
 ```
 
-### G. Changing the password of a login using HASHED
+### G. Change the password of a login using HASHED
 
 The following example changes the password of the `TestUser` login to an already hashed value.
 
-**Applies to**: [!INCLUDE[sql2008-md](../../includes/sql2008-md.md)] and later, and Azure SQL Managed Instance.
+**Applies to**: [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and later, and Azure SQL Managed Instance.
 
 ```sql
-ALTER LOGIN TestUser WITH
-PASSWORD = 0x01000CF35567C60BFB41EBDE4CF700A985A13D773D6B45B90900 HASHED ;
+ALTER LOGIN TestUser WITH PASSWORD = 0x01000CF35567C60BFB41EBDE4CF700A985A13D773D6B45B90900 HASHED;
 GO
 ```
 
-<a name='h-disabling-the-login-of-an-azure-ad-user'></a>
+### H. Disable the login of a Microsoft Entra user
 
-### H. Disabling the login of a Microsoft Entra user
-
-The following example disables the login of a Microsoft Entra user, joe@contoso.com.
+The following example disables the login of a Microsoft Entra user, <joe@contoso.com>.
 
 ```sql
-ALTER LOGIN [joe@contoso.com] DISABLE
+ALTER LOGIN [joe@contoso.com] DISABLE;
 ```
 
-## See Also
+## Related content
 
 - [Credentials](../../relational-databases/security/authentication-access/credentials-database-engine.md)
 - [CREATE LOGIN](../../t-sql/statements/create-login-transact-sql.md)
@@ -740,7 +759,7 @@ ALTER LOGIN [joe@contoso.com] DISABLE
         [SQL Managed Instance](alter-login-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
     :::column-end:::
     :::column:::
-        **_\* Azure Synapse<br />Analytics \*_**
+        ***\* Azure Synapse<br />Analytics \****
     :::column-end:::
     :::column:::
         [Analytics Platform<br />System (PDW)](alter-login-transact-sql.md?view=aps-pdw-2016&preserve-view=true)
@@ -751,54 +770,57 @@ ALTER LOGIN [joe@contoso.com] DISABLE
 
 ## Azure Synapse Analytics
 
-## Syntax
+### Syntax for Azure Synapse
 
 ```syntaxsql
--- Syntax for Azure Synapse
-
 ALTER LOGIN login_name
   {
       <status_option>
-    | WITH <set_option> [ ,.. .n ]
+    | WITH <set_option> [ , .. .n ]
   }
 [;]
 
 <status_option> ::=
     ENABLE | DISABLE
-  
+
 <set_option> ::=
-    PASSWORD ='password'
+    PASSWORD = 'password'
     [
-      OLD_PASSWORD ='oldpassword'
+      OLD_PASSWORD = 'oldpassword'
     ]
     | NAME = login_name
 ```
 
 ## Arguments
 
-*login_name*
-Specifies the name of the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login that is being changed. Domain logins must be enclosed in brackets in the format [domain\user].
+#### *login_name*
 
-ENABLE | DISABLE
-Enables or disables this login. Disabling a login does not affect the behavior of logins that are already connected. (Use the `KILL` statement to terminate an existing connections.) Disabled logins retain their permissions and can still be impersonated.
+Specifies the name of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login that is being changed. Domain logins must be enclosed in brackets in the format [domain\user].
 
-PASSWORD **='**_password_**'**
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies the password for the login that is being changed. Passwords are case-sensitive.
+#### ENABLE | DISABLE
 
-Continuously active connections to SQL Database require reauthorization (performed by the Database Engine) at least every 10 hours. The Database Engine attempts reauthorization using the originally submitted password and no user input is required. For performance reasons, when a password is reset in SQL Database, the connection will not be re-authenticated, even if the connection is reset due to connection pooling. This is different from the behavior of on-premises SQL Server. If the password has been changed since the connection was initially authorized, the connection must be terminated and a new connection made using the new password. A user with the KILL DATABASE CONNECTION permission can explicitly terminate a connection to SQL Database by using the KILL command. For more information, see [KILL](../../t-sql/language-elements/kill-transact-sql.md).
+Enables or disables this login. Disabling a login doesn't affect the behavior of logins that are already connected. (Use the `KILL` statement to terminate an existing connection.) Disabled logins retain their permissions and can still be impersonated.
 
-> [!IMPORTANT]
-> When a login (or a contained database user) connects and is authenticated, the connection caches identity information about the login. For a Windows Authentication login, this includes information about membership in Windows groups. The identity of the login remains authenticated as long as the connection is maintained. To force changes in the identity, such as a password reset or change in Windows group membership, the login must logoff from the authentication authority (Windows or [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]), and log in again. A member of the **sysadmin** fixed server role or any login with the **ALTER ANY CONNECTION** permission can use the **KILL** command to end a connection and force a login to reconnect. [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] can reuse connection information when opening multiple connections to Object Explorer and Query Editor windows. Close all connections to force reconnection.
+#### PASSWORD = '*password*'
 
-OLD_PASSWORD **='**_oldpassword_**'**
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. The current password of the login to which a new password will be assigned. Passwords are case-sensitive.
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies the password for the login that is being changed. Passwords are case-sensitive.
 
-NAME = *login_name*
-The new name of the login that is being renamed. If this is a Windows login, the SID of the Windows principal corresponding to the new name must match the SID associated with the login in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The new name of a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login cannot contain a backslash character (\\).
+Continuously active connections to SQL Database require reauthorization (performed by the Database Engine) at least every 10 hours. The Database Engine attempts reauthorization using the originally submitted password and no user input is required. For performance reasons, when a password is reset in SQL Database, the connection isn't reauthenticated, even if the connection is reset due to connection pooling. This is different from the behavior of on-premises SQL Server. If the password has changed since the connection was initially authorized, the connection must be terminated and a new connection made using the new password. A user with the KILL DATABASE CONNECTION permission can explicitly terminate a connection to SQL Database by using the KILL command. For more information, see [KILL](../../t-sql/language-elements/kill-transact-sql.md).
+
+> [!IMPORTANT]  
+> When a login (or a contained database user) connects and is authenticated, the connection caches identity information about the login. For a Windows Authentication login, this includes information about membership in Windows groups. The identity of the login remains authenticated as long as the connection is maintained. To force changes in the identity, such as a password reset or change in Windows group membership, the login must sign out from the authentication authority (Windows or [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]), and sign in again. A member of the **sysadmin** fixed server role or any login with the **ALTER ANY CONNECTION** permission can use the **KILL** command to end a connection and force a login to reconnect. [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] can reuse connection information when opening multiple connections to Object Explorer and Query Editor windows. Close all connections to force reconnection.
+
+#### OLD_PASSWORD = '*old_password*'
+
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. The current password of the login to which a new password will be assigned. Passwords are case-sensitive.
+
+#### NAME = *login_name*
+
+The new name of the login that is being renamed. If this is a Windows login, the SID of the Windows principal corresponding to the new name must match the SID associated with the login in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. The new name of a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login can't contain a backslash character (\\).
 
 ## Remarks
 
-In [!INCLUDE[ssSDS](../../includes/sssds-md.md)], login data required to authenticate a connection and server-level firewall rules are temporarily cached in each database. This cache is periodically refreshed. To force a  refresh of the authentication cache and make sure that a database has the latest version of the logins table, execute [DBCC FLUSHAUTHCACHE](../../t-sql/database-console-commands/dbcc-flushauthcache-transact-sql.md).
+In [!INCLUDE [ssSDS](../../includes/sssds-md.md)], login data required to authenticate a connection and server-level firewall rules are temporarily cached in each database. This cache is periodically refreshed. To force a refresh of the authentication cache and make sure that a database has the latest version of the logins table, execute [DBCC FLUSHAUTHCACHE](../../t-sql/database-console-commands/dbcc-flushauthcache-transact-sql.md).
 
 ## Permissions
 
@@ -815,9 +837,9 @@ A principal can change the password for its own login.
 
 ## Examples
 
-These examples also include examples for using other SQL products. Please see which arguments are supported above.
+These examples also include examples for using other SQL products. See which previous arguments are supported.
 
-### A. Enabling a disabled login
+### A. Enable a disabled login
 
 The following example enables the login `Mary5`.
 
@@ -825,7 +847,7 @@ The following example enables the login `Mary5`.
 ALTER LOGIN Mary5 ENABLE;
 ```
 
-### B. Changing the password of a login
+### B. Change the password of a login
 
 The following example changes the password of login `Mary5` to a strong password.
 
@@ -833,7 +855,7 @@ The following example changes the password of login `Mary5` to a strong password
 ALTER LOGIN Mary5 WITH PASSWORD = '<enterStrongPasswordHere>';
 ```
 
-### C. Changing the name of a login
+### C. Change the name of a login
 
 The following example changes the name of login `Mary5` to `John2`.
 
@@ -841,7 +863,7 @@ The following example changes the name of login `Mary5` to `John2`.
 ALTER LOGIN Mary5 WITH NAME = John2;
 ```
 
-### D. Mapping a login to a credential
+### D. Map a login to a credential
 
 The following example maps the login `John2` to the credential `Custodian04`.
 
@@ -849,41 +871,38 @@ The following example maps the login `John2` to the credential `Custodian04`.
 ALTER LOGIN John2 WITH CREDENTIAL = Custodian04;
 ```
 
-### E. Mapping a login to an Extensible Key Management credential
+### E. Map a login to an Extensible Key Management credential
 
 The following example maps the login `Mary5` to the EKM credential `EKMProvider1`.
 
-**Applies to**: [!INCLUDE[sql2008-md](../../includes/sql2008-md.md)] and later.
+**Applies to**: [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and later.
 
 ```sql
-ALTER LOGIN Mary5
-ADD CREDENTIAL EKMProvider1;
+ALTER LOGIN Mary5 ADD CREDENTIAL EKMProvider1;
 GO
 ```
 
-### F. Unlocking a login
+### F. Unlock a login
 
-To unlock a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login, execute the following statement, replacing \*\*\*\* with the desired account password.
+To unlock a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login, execute the following statement, replacing `****` with the desired account password.
 
 ```sql
-ALTER LOGIN [Mary5] WITH PASSWORD = '****' UNLOCK ;
+ALTER LOGIN [Mary5] WITH PASSWORD = '****' UNLOCK;
 GO
 ```
 
-
-### G. Changing the password of a login using HASHED
+### G. Change the password of a login using HASHED
 
 The following example changes the password of the `TestUser` login to an already hashed value.
 
-**Applies to**: [!INCLUDE[sql2008-md](../../includes/sql2008-md.md)] and later.
+**Applies to**: [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and later.
 
 ```sql
-ALTER LOGIN TestUser WITH
-PASSWORD = 0x01000CF35567C60BFB41EBDE4CF700A985A13D773D6B45B90900 HASHED ;
+ALTER LOGIN TestUser WITH PASSWORD = 0x01000CF35567C60BFB41EBDE4CF700A985A13D773D6B45B90900 HASHED;
 GO
 ```
 
-## See Also
+## Related content
 
 - [Credentials](../../relational-databases/security/authentication-access/credentials-database-engine.md)
 - [CREATE LOGIN](../../t-sql/statements/create-login-transact-sql.md)
@@ -909,7 +928,7 @@ GO
         [Azure Synapse<br />Analytics](alter-login-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
     :::column-end:::
     :::column:::
-        **_\* Analytics<br />Platform System (PDW) \*_**
+        ***\* Analytics<br />Platform System (PDW) \****
     :::column-end:::
 :::row-end:::
 
@@ -917,24 +936,22 @@ GO
 
 ## Analytics Platform System
 
-## Syntax
+### Syntax for Analytics Platform System
 
 ```syntaxsql
--- Syntax for Analytics Platform System
-
 ALTER LOGIN login_name
     {
     <status_option>
-    | WITH <set_option> [ ,... ]
+    | WITH <set_option> [ , ... ]
     }
 
-<status_option> ::=ENABLE | DISABLE
+<status_option> ::= ENABLE | DISABLE
 
 <set_option> ::=
-    PASSWORD ='password'
+    PASSWORD = 'password'
     [
-      OLD_PASSWORD ='oldpassword'
-      | <password_option> [<password_option> ]
+      OLD_PASSWORD = 'oldpassword'
+      | <password_option> [ <password_option> ]
     ]
     | NAME = login_name
     | CHECK_POLICY = { ON | OFF }
@@ -946,60 +963,69 @@ ALTER LOGIN login_name
 
 ## Arguments
 
-*login_name*
-Specifies the name of the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login that is being changed. Domain logins must be enclosed in brackets in the format [domain\user].
+#### *login_name*
 
-ENABLE | DISABLE
-Enables or disables this login. Disabling a login does not affect the behavior of logins that are already connected. (Use the `KILL` statement to terminate an existing connection.) Disabled logins retain their permissions and can still be impersonated.
+Specifies the name of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login that is being changed. Domain logins must be enclosed in brackets in the format [domain\user].
 
-PASSWORD **='**_password_**'**
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies the password for the login that is being changed. Passwords are case-sensitive.
+#### ENABLE | DISABLE
 
-> [!IMPORTANT]
-> When a login (or a contained database user) connects and is authenticated, the connection caches identity information about the login. For a Windows Authentication login, this includes information about membership in Windows groups. The identity of the login remains authenticated as long as the connection is maintained. To force changes in the identity, such as a password reset or change in Windows group membership, the login must logoff from the authentication authority (Windows or [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]), and log in again. A member of the **sysadmin** fixed server role or any login with the **ALTER ANY CONNECTION** permission can use the **KILL** command to end a connection and force a login to reconnect. [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] can reuse connection information when opening multiple connections to Object Explorer and Query Editor windows. Close all connections to force reconnection.
+Enables or disables this login. Disabling a login doesn't affect the behavior of logins that are already connected. (Use the `KILL` statement to terminate an existing connection.) Disabled logins retain their permissions and can still be impersonated.
 
-OLD_PASSWORD **='**_oldpassword_**'**
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. The current password of the login to which a new password will be assigned. Passwords are case-sensitive.
+#### PASSWORD = '*password*'
 
-MUST_CHANGE
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. If this option is included, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] will prompt for an updated password the first time the altered login is used.
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies the password for the login that is being changed. Passwords are case-sensitive.
 
-NAME = *login_name*
-The new name of the login that is being renamed. If the login is a Windows login, the SID of the Windows principal corresponding to the new name must match the SID associated with the login in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The new name of a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login cannot contain a backslash character (\\).
+> [!IMPORTANT]  
+> When a login (or a contained database user) connects and is authenticated, the connection caches identity information about the login. For a Windows Authentication login, this includes information about membership in Windows groups. The identity of the login remains authenticated as long as the connection is maintained. To force changes in the identity, such as a password reset or change in Windows group membership, the login must sign out from the authentication authority (Windows or [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]), and sign in again. A member of the **sysadmin** fixed server role or any login with the **ALTER ANY CONNECTION** permission can use the **KILL** command to end a connection and force a login to reconnect. [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] can reuse connection information when opening multiple connections to Object Explorer and Query Editor windows. Close all connections to force reconnection.
 
-CHECK_EXPIRATION = { ON | **OFF** }
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies whether password expiration policy should be enforced on this login. The default value is OFF.
+#### OLD_PASSWORD = '*old_password*'
 
-CHECK_POLICY **=** { **ON** | OFF }
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that the Windows password policies of the computer on which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running should be enforced on this login. The default value is ON.
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. The current password of the login to which a new password will be assigned. Passwords are case-sensitive.
 
-UNLOCK
-Applies only to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that a login that is locked out should be unlocked.
+#### MUST_CHANGE
+
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. If this option is included, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] prompts for an updated password the first time the altered login is used.
+
+#### NAME = *login_name*
+
+The new name of the login that is being renamed. If the login is a Windows login, the SID of the Windows principal corresponding to the new name must match the SID associated with the login in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. The new name of a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login can't contain a backslash character (\\).
+
+#### CHECK_EXPIRATION = { ON | OFF }
+
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies whether password expiration policy should be enforced on this login. The default value is OFF.
+
+#### CHECK_POLICY = { ON | OFF }
+
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that the Windows password policies of the computer on which [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is running should be enforced on this login. The default value is ON.
+
+#### UNLOCK
+
+Applies only to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins. Specifies that a login that is locked out should be unlocked.
 
 ## Remarks
 
-When CHECK_POLICY is set to ON, the HASHED argument cannot be used.
+When CHECK_POLICY is set to ON, the HASHED argument can't be used.
 
 When CHECK_POLICY is changed to ON, the following behavior occurs:
 
 - The password history is initialized with the value of the current password hash.
 
-  When CHECK_POLICY is changed to OFF, the following behavior occurs:
+When CHECK_POLICY is changed to OFF, the following behavior occurs:
 
 - CHECK_EXPIRATION is also set to OFF.
 - The password history is cleared.
 - The value of *lockout_time* is reset.
 
-If MUST_CHANGE is specified, CHECK_EXPIRATION and CHECK_POLICY must be set to ON. Otherwise, the statement will fail.
+If MUST_CHANGE is specified, CHECK_EXPIRATION and CHECK_POLICY must be set to ON. Otherwise, the statement fails.
 
-If CHECK_POLICY is set to OFF, CHECK_EXPIRATION cannot be set to ON. An ALTER LOGIN statement that has this combination of options will fail.
+If CHECK_POLICY is set to OFF, CHECK_EXPIRATION can't be set to ON. An ALTER LOGIN statement that has this combination of options fail.
 
-You cannot use ALTER_LOGIN with the DISABLE argument to deny access to a Windows group. This is by design. For example, ALTER_LOGIN [*domain\group*] DISABLE will return the following error message:
+You can't use ALTER_LOGIN with the DISABLE argument to deny access to a Windows group. This is by design. For example, ALTER_LOGIN [*domain\group*] DISABLE returns the following error message:
 
 `"Msg 15151, Level 16, State 1, Line 1
-"Cannot alter the login '*Domain\Group*', because it does not exist or you do not have permission."`
+"Cannot alter the login '*Domain\Group*', because it doesn't exist or you don't have permission."`
 
-In [!INCLUDE[ssSDS](../../includes/sssds-md.md)], login data required to authenticate a connection and server-level firewall rules are temporarily cached in each database. This cache is periodically refreshed. To force a refresh of the authentication cache and make sure that a database has the latest version of the logins table, execute [DBCC FLUSHAUTHCACHE](../../t-sql/database-console-commands/dbcc-flushauthcache-transact-sql.md).
+In [!INCLUDE [ssSDS](../../includes/sssds-md.md)], login data required to authenticate a connection and server-level firewall rules are temporarily cached in each database. This cache is periodically refreshed. To force a refresh of the authentication cache and make sure that a database has the latest version of the logins table, execute [DBCC FLUSHAUTHCACHE](../../t-sql/database-console-commands/dbcc-flushauthcache-transact-sql.md).
 
 ## Permissions
 
@@ -1019,9 +1045,9 @@ A principal can change the password, default language, and default database for 
 
 ## Examples
 
-These examples also include examples for using other SQL products. Please see which arguments are supported above.
+These examples also include examples for using other SQL products. See which previous arguments are supported.
 
-### A. Enabling a disabled login
+### A. Enable a disabled login
 
 The following example enables the login `Mary5`.
 
@@ -1029,7 +1055,7 @@ The following example enables the login `Mary5`.
 ALTER LOGIN Mary5 ENABLE;
 ```
 
-### B. Changing the password of a login
+### B. Change the password of a login
 
 The following example changes the password of login `Mary5` to a strong password.
 
@@ -1037,7 +1063,7 @@ The following example changes the password of login `Mary5` to a strong password
 ALTER LOGIN Mary5 WITH PASSWORD = '<enterStrongPasswordHere>';
 ```
 
-### C. Changing the name of a login
+### C. Change the name of a login
 
 The following example changes the name of login `Mary5` to `John2`.
 
@@ -1045,7 +1071,7 @@ The following example changes the name of login `Mary5` to `John2`.
 ALTER LOGIN Mary5 WITH NAME = John2;
 ```
 
-### D. Mapping a login to a credential
+### D. Map a login to a credential
 
 The following example maps the login `John2` to the credential `Custodian04`.
 
@@ -1053,49 +1079,47 @@ The following example maps the login `John2` to the credential `Custodian04`.
 ALTER LOGIN John2 WITH CREDENTIAL = Custodian04;
 ```
 
-### E. Mapping a login to an Extensible Key Management credential
+### E. Map a login to an Extensible Key Management credential
 
 The following example maps the login `Mary5` to the EKM credential `EKMProvider1`.
 
-**Applies to**: [!INCLUDE[sql2008-md](../../includes/sql2008-md.md)] and later.
+**Applies to**: [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and later.
 
 ```sql
-ALTER LOGIN Mary5
-ADD CREDENTIAL EKMProvider1;
+ALTER LOGIN Mary5 ADD CREDENTIAL EKMProvider1;
 GO
 ```
 
-### F. Unlocking a login
+### F. Unlock a login
 
-To unlock a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login, execute the following statement, replacing \*\*\*\* with the desired account password.
+To unlock a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login, execute the following statement, replacing `****` with the desired account password.
 
 ```sql
-ALTER LOGIN [Mary5] WITH PASSWORD = '****' UNLOCK ;
-
+ALTER LOGIN [Mary5] WITH PASSWORD = '****' UNLOCK;
 GO
 ```
 
-To unlock a login without changing the password, turn the check policy off and then on again.
+To unlock a login without changing the password, turn off the check policy and then on again.
 
 ```sql
 ALTER LOGIN [Mary5] WITH CHECK_POLICY = OFF;
+
 ALTER LOGIN [Mary5] WITH CHECK_POLICY = ON;
 GO
 ```
 
-### G. Changing the password of a login using HASHED
+### G. Change the password of a login using HASHED
 
 The following example changes the password of the `TestUser` login to an already hashed value.
 
-**Applies to**: [!INCLUDE[sql2008-md](../../includes/sql2008-md.md)] and later.
+**Applies to**: [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and later.
 
 ```sql
-ALTER LOGIN TestUser WITH
-PASSWORD = 0x01000CF35567C60BFB41EBDE4CF700A985A13D773D6B45B90900 HASHED ;
+ALTER LOGIN TestUser WITH PASSWORD = 0x01000CF35567C60BFB41EBDE4CF700A985A13D773D6B45B90900 HASHED;
 GO
 ```
 
-## See Also
+## Related content
 
 - [Credentials](../../relational-databases/security/authentication-access/credentials-database-engine.md)
 - [CREATE LOGIN](../../t-sql/statements/create-login-transact-sql.md)

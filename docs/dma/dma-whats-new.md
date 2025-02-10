@@ -4,7 +4,7 @@ description: Learn about the new features in each release of Data Migration Assi
 author: ajithkr-ms
 ms.author: ajithkr
 ms.reviewer: randolphwest
-ms.date: 06/28/2024
+ms.date: 01/08/2025
 ms.service: sql
 ms.subservice: dma
 ms.topic: conceptual
@@ -99,7 +99,7 @@ The v5.0 release of the Data Migration Assistant provides support for:
 - SQL Server 2019 for Windows and SQL Server 2019 for Linux as targets for assessment and upgrade.
 - Saving and loading assessments, including support for saving and loading assessments created in earlier versions of the Data Migration Assistant.
 - Assessing SQL Server Integration Services (SSIS) projects hosted in SSISDB and SSIS packages hosted in package store for source to SQL Server versions earlier than 2019. Database Migration Assistant detects unsupported, partially supported or deprecated features and compatibility issues that are used in source packages and provides recommendations to help you address those issues.
-- Assessing SQL queries from external application, for example, SQL queries in C# source code. Users can use the Data Access Migration Toolkit to generate a full JSON report for the SQL queries used in C# source code and then upload the report to Data Migration Assistant.
+- Assessing SQL queries from external application, for example, SQL queries in C# source code.
 
 In addition, this release of Data Migration Assistant provides extra enhancements and bug fixes, and the tool is updated to .NET 4.7.2.
 
@@ -163,7 +163,7 @@ The v3.6 release of Data Migration Assistant introduces "Auto fix" for the schem
 This release provides autofix for the following migration blocker and behavior change issues:
 
 - The schema objects that use Unqualified Join syntax.
-- The schema objects that use the legacy RAISEERROR statement.
+- The schema objects that use the legacy RAISERROR statement.
 - SQL statements that use Order By Integer Literal.
 
 Data Migration Assistant performs automatic schema conversion for the objects affected by the listed issues and prompts the user for confirmation before proceeding with the schema conversion. Users can review the suggested code changes and then either accept or reject all conversions for any given database object.

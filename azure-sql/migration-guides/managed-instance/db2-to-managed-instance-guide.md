@@ -1,10 +1,10 @@
 ---
 title: "Db2 to Azure SQL Managed Instance: Migration guide"
 description: This guide teaches you to migrate your IBM Db2 databases to Azure SQL Managed Instance, by using SQL Server Migration Assistant for Db2.
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: mathoma
-ms.date: 05/14/2021
+author: nilabjaball
+ms.author: niball
+ms.reviewer: mathoma, randolphwest
+ms.date: 01/08/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -170,5 +170,4 @@ The Data SQL Engineering team developed these resources. This team's core charte
    -  [Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Best practices for costing and sizing workloads migrated to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
-- To assess the application access layer, see [Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - For details on how to perform data access layer A/B testing, see [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).

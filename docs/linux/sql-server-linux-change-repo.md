@@ -1,9 +1,9 @@
 ---
-title: Configure repositories for installing and upgrading SQL Server on Linux
+title: Configure Repositories for Installing and Upgrading SQL Server on Linux
 description: Check and configure source repositories for SQL Server on Linux. The source repository affects the version of SQL Server that is applied during installation and upgrade.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/17/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -30,7 +30,7 @@ This article describes how to configure the correct repository for [!INCLUDE [ss
 > [!TIP]  
 > [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] is now available! To try it, use this article to configure the `mssql-server-2022` repository. Then install using the instructions in the [installation guide](sql-server-linux-setup.md).
 
-## <a id="repositories"></a> Repositories
+## Repositories
 
 When you install SQL Server on Linux, you must configure a Microsoft repository. This repository is used to acquire the database engine package, **mssql-server**, and related SQL Server packages. There are currently three main repositories:
 

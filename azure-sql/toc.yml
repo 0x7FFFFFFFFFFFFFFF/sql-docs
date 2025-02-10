@@ -118,16 +118,6 @@
           href: ./database-watcher-faq.yml
       - name: SQL Analytics
         href: /azure/azure-monitor/insights/azure-sql?toc=/azure/azure-sql/toc.json
-      - name: SQL Insights (preview)
-        items:
-        - name: Overview
-          href: database/sql-insights-overview.md
-        - name: Enable
-          href: database/sql-insights-enable.md
-        - name: Alerts
-          href: database/sql-insights-alerts.md
-        - name: Troubleshoot
-          href: database/sql-insights-troubleshoot.md
       - name: Automatic tuning
         href: database/automatic-tuning-overview.md
       - name: Extended events
@@ -282,9 +272,9 @@
       href: database/sql-database-paas-overview.md
     - name: What's new?
       href: database/doc-changes-updates-release-notes-whats-new.md
-    - name: Try Azure SQL Database free
+    - name: Azure SQL Database free offer
       href: database/free-offer.md
-    - name: Try Azure SQL Database free FAQ
+    - name: Azure SQL Database free offer FAQ
       href: database/free-offer-faq.yml
     - name: Copilot in SQL Database
       href: copilot/copilot-azure-sql-overview.md
@@ -1617,6 +1607,8 @@
         href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
       - name: SQL IaaS Agent extension
         href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
+      - name: Modernization Advisor
+        href: virtual-machines/modernization-advisor.md
     - name: Quickstarts
       items:
       - name: Portal
@@ -1712,6 +1704,10 @@
           href: virtual-machines/windows/azure-key-vault-integration-configure.md
         - name: Migrate storage to Ultradisk
           href: virtual-machines/windows/storage-migrate-to-ultradisk.md
+        - name: Backup and restore using managed identities
+          href: virtual-machines/windows/backup-restore-to-url-using-managed-identities.md
+        - name: EKM with AKV using managed identities
+          href: virtual-machines/windows/managed-identity-extensible-key-management.md
         - name: SQL IaaS Agent extension
           displayName: resource provider, registration, sql vm rp
           items:

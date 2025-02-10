@@ -1,8 +1,8 @@
 ---
 title: "Register a Service Principal Name (SPN) for a report server"
 description: Learn how to create an SPN so that you can deploy Reporting Services in a network that uses the Kerberos protocol for mutual authentication.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

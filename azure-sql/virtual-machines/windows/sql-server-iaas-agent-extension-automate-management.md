@@ -4,7 +4,7 @@ description: This article describes how the SQL Server IaaS Agent extension help
 author: ebruersan
 ms.author: ebrue
 ms.reviewer: mathoma
-ms.date: 10/16/2023
+ms.date: 12/19/2024
 ms.service: azure-vm-sql-server
 ms.subservice: management
 ms.topic: conceptual
@@ -73,26 +73,28 @@ The following table details the benefits available through the SQL IaaS Agent ex
 
 By default, the SQL IaaS Agent extension uses the least privilege mode permission model. The least privilege permission model grants the minimum permissions required for each feature that you enable. Each feature that you use is assigned a custom role in SQL Server, and the custom role is only granted permissions that are required to perform actions related to the feature.
 
-SQL Server VMs deployed prior to October 2022 use the older sysadmin model where the SQL IaaS Agent extension takes sysadmin rights by default. For SQL Server VMs provisioned before October 2022, you can enable the least privilege permissions model by going to your [SQL virtual machines resource](manage-sql-vm-portal.md), choosing **Security Configuration** under **Security** and then checking the box next to **Enable least privilege mode**.
+The following table defines the SQL Server permissions and custom roles used by each feature of the extension:
+
+|Feature  |Permissions  |Custom role (Server / DB)  |
+|---------|---------|---------|
+|[Automated backups](automated-backup.md) |  Server permission - CONTROL SERVER  <br /> Database permission - `db_ddladmin` on `master`,  `db_backupoperator` on `msdb` | `SqlIaaSExtension_AutoBackup`|
+|[Availability group portal management](availability-group-azure-portal-configure.md) | `sysadmin` | |
+|[Azure Backup Service](/azure/backup/backup-azure-sql-database#set-vm-permissions) | `sysadmin` to account `NT SERVICE\AzureWLBackupPluginSvc`  | |
+|[Credential management](azure-key-vault-integration-configure.md)  | Server permission - CONTROL SERVER|`SqlIaaSExtension_CredentialMgmt` |
+|[I/O related best practices](sql-assessment-for-sql-vm.md) | Server permission - CONTROL SERVER | `SqlIaaSExtension_ThrottlingAssessment` | 
+|[SQL best practices assessment](sql-assessment-for-sql-vm.md) | Server permission - CONTROL SERVER | `SqlIaaSExtension_Assessment`   |
+|[SQL Server instance settings](manage-sql-vm-portal.md#license-and-edition)|Server permission - ALTER ANY LOGIN, ALTER SETTINGS | `SqlIaaSExtension_SqlInstanceSetting` |
+|[Storage configuration](storage-configuration.md)|Server permission - ALTER ANY DATABASE|`SqlIaaSExtension_StorageConfig`       |
+|[Status reporting](manage-sql-vm-portal.md#access-the-resource) |Server permission - VIEW ANY DEFINITION, VIEW SERVER STATE, ALTER ANY LOGIN, CONNECT SQL | `SqlIaaSExtension_StatusReporting` |
+
+SQL Server VMs deployed prior to October 2022 use the older `sysadmin` model where the SQL IaaS Agent extension takes `sysadmin` rights by default. For SQL Server VMs _provisioned before October 2022_, you can enable the least privilege permissions model manually. 
+
+> [!NOTE]
+> The option to enable least privilege mode is _only available_ for SQL Server VMs provisioned _before October 2022_. If this option is not visible in your environment, it's because your SQL Server VM already has least privilege mode enabled by default. 
 
 To enable the least privilege permissions model, go to your [SQL virtual machines resource](manage-sql-vm-portal.md), choose **Security Configuration** under **Security** and then check the box next to **Enable least privilege mode**: 
 
 :::image type="content" source="media/sql-server-iaas-agent-extension-automate-management/least-privilege.png" alt-text="Screenshot of the Azure portal SQL virtual machines resource, Security Configuration page, enable least privilege highlighted.":::
-
-The following table defines the permissions and custom roles used by each feature of the extension:
-
-|Feature  |Permissions  |Custom role (Server / DB)  |
-|---------|---------|---------|
-|[SQL best practices assessment](sql-assessment-for-sql-vm.md) | Server permission - CONTROL SERVER | SqlIaaSExtension_Assessment   |
-|[Automated backups](automated-backup.md) |  Server permission - CONTROL SERVER  <br /> Database permission - `db_ddladmin` on `master`,  `db_backupoperator` on `msdb` | SqlIaaSExtension_AutoBackup |
-|[Azure Backup Service](/azure/backup/backup-overview) | sysadmin | |
-|[Credential management](azure-key-vault-integration-configure.md)  | Server permission - CONTROL SERVER|SqlIaaSExtension_CredentialMgmt |
-|[Availability group portal management](manage-sql-vm-portal.md#high-availability) |sysadmin| |
-|[R Service](/sql/machine-learning/r/sql-server-r-services)| Server permission - ALTER SETTINGS        | SqlIaaSExtension_RService |
-|[SQL authentication](manage-sql-vm-portal.md#security-configuration) | sysadmin | |
-|[SQL Server instance settings](manage-sql-vm-portal.md#license-and-edition)|Server permission - ALTER ANY LOGIN, ALTER SETTINGS | SqlIaaSExtension_SqlInstanceSetting |
-|[Storage configuration](storage-configuration.md)|Server permission - ALTER ANY DATABASE|SqlIaaSExtension_StorageConfig       |
-|[Status reporting](manage-sql-vm-portal.md#access-the-resource) |Server permission - VIEW ANY DEFINITION, VIEW SERVER STATE, ALTER ANY LOGIN, CONNECT SQL | SqlIaaSExtension_StatusReporting |
 
 ## Installation
 

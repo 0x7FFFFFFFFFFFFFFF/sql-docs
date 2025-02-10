@@ -19,21 +19,16 @@ ms.custom: mdx
   
  The following query shows how to use the **IsLeaf** and **IsAncestor** functions:  
   
- `WITH`  
-  
- `//Returns true if the CurrentMember on Calendar is a leaf member, ie it has no children`  
-  
- `MEMBER MEASURES.[IsLeafDemo] AS IsLeaf([Date].[Calendar].CurrentMember)`  
-  
- `//Returns true if the CurrentMember on Calendar is an Ancestor of July 1st 2001`  
-  
- `MEMBER MEASURES.[IsAncestorDemo] AS IsAncestor([Date].[Calendar].CurrentMember, [Date].[Calendar].[Date].&[1])`  
-  
- `SELECT{MEASURES.[IsLeafDemo],MEASURES.[IsAncestorDemo] } ON 0,`  
-  
- `[Date].[Calendar].MEMBERS ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH  
+//Returns true if the CurrentMember on Calendar is a leaf member, ie it has no children  
+MEMBER MEASURES.[IsLeafDemo] AS IsLeaf([Date].[Calendar].CurrentMember)  
+//Returns true if the CurrentMember on Calendar is an Ancestor of July 1st 2001  
+MEMBER MEASURES.[IsAncestorDemo] AS IsAncestor([Date].[Calendar].CurrentMember, [Date].[Calendar].[Date].&[1])  
+SELECT{MEASURES.[IsLeafDemo],MEASURES.[IsAncestorDemo] } ON 0,  
+[Date].[Calendar].MEMBERS ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [Functions &#40;MDX Syntax&#41;](../mdx/functions-mdx-syntax.md)  

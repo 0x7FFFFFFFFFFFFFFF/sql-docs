@@ -8,7 +8,7 @@ Public Class EMBForm
         '<snippetemb_vb_showOKbutton>
         Try
             ' Do something that may generate an exception.
-            Throw New ApplicationException("An error has occured")
+            Throw New ApplicationException("An error has occurred")
         Catch ex As ApplicationException
             ' Define a new top-level error message.
             Dim str As String = "The action failed."
@@ -45,7 +45,7 @@ Public Class EMBForm
         '<snippetemb_vb_showcustombutton>
         Try
             ' Do something that may cause an exception.
-            Throw New ApplicationException("An error has occured")
+            Throw New ApplicationException("An error has occurred")
         Catch ex As ApplicationException
             Dim str As String = "Action failed. What do you want to do?"
             Dim exTop As ApplicationException = New ApplicationException(str, ex)
@@ -80,7 +80,7 @@ Public Class EMBForm
         '<snippetemb_vb_usecheckbox>
         Try
             ' Do something that may cause an exception.
-            Throw New ApplicationException("An error has occured.")
+            Throw New ApplicationException("An error has occurred.")
         Catch ex As ApplicationException
             Dim str As String = "The action failed."
             Dim exTop As ApplicationException = New ApplicationException(str, ex)
@@ -104,7 +104,7 @@ Public Class EMBForm
         '<snippetemb_vb_useregkey>
         Try
             ' Do something that could generate an exception.
-            Throw New ApplicationException("An error has occured.")
+            Throw New ApplicationException("An error has occurred.")
         Catch ex As ApplicationException
             Dim str As String = "The action failed. Do you want to continue?"
             Dim exTop As ApplicationException = New ApplicationException(str, ex)

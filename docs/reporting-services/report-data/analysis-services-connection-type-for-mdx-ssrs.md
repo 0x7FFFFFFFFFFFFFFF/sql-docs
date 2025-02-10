@@ -1,8 +1,8 @@
 ---
 title: "Analysis Services Connection Type for MDX"
 description: Learn details about the Analysis Services Connection type for MDX (SSRS) so you can retrieve metadata for use as report data.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

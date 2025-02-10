@@ -61,7 +61,7 @@ Base key: `HKEY_LOCAL_MACHINE`
 
 ## Group permissions
 
-`NT Service\SQLServerExtension` is added to Hybrid agent extension applications. Supports Azure Instance Metadata Service (IMDS) Handshake.
+`NT Service\SQLServerExtension` is added to Hybrid agent extension applications. This enables the Azure Instance Metadata Service (IMDS) handshake to retrieve the Machine resource managed identity token required to communicate to Azure data plane services such as the Data Processing Service (DPS) and the telemetry endpoint for billing usage, extension logs, and monitoring dashboard data collection.
 
 ## SQL permissions
 
@@ -72,60 +72,104 @@ Base key: `HKEY_LOCAL_MACHINE`
 
 The extension also grants permissions to instance and database objects as features are enabled. The table below provides details.
 
-| Feature | Permission | Level | Requirement |
-| --- | --- | --- | --- |
-| **Default** | `VIEW DATABASE STATE` | Server level | Essential |
-| | `VIEW SERVER STATE` | Server level | Essential |
-| | `CONNECT SQL` | Server level | Essential |
-| **Database as a resource** | Default public role | Server level (This is granted by default to newly added logins) | Essential |
-| **Best practices assessment** | `VIEW ANY DEFINITION` | Server level | Feature dependent |
-| | `VIEW ANY DATABASE` | Server level | Feature dependent |
-| | `SELECT` | `master` | Feature dependent |
-| | `SELECT` | `msdb` | Feature dependent |
-| | `EXECUTE ON sys.xp_enumerrorlogs` | `master` | Feature dependent |
-| | `EXECUTE ON sys.xp_readerrorlog` | `master` | Feature dependent |
-| **Backup** | `CREATE ANY DATABASE` | Server level | Feature dependent |
-| | **db_backupoperator** role | All databases | Feature dependent |
-| | **dbcreator** | Server role | Feature dependent |
-| **Azure Control Plane** | `CREATE TABLE` | `msdb` | Essential |
-| | `ALTER ANY SCHEMA` | `msdb` | Essential |
-| | `CREATE TYPE` | `msdb` | Essential |
-| | `EXECUTE` | `msdb` | Essential |
-| | **db_datawriter** role | `msdb` | Feature dependent |
-| | **db_datareader** role | `msdb` | Feature dependent |
-| **Availability group discovery** | `VIEW ANY DEFINITION` | Server level | Essential |
-| **Purview** | `SELECT` | All databases | Feature dependent |
-| | `EXECUTE` | All databases | Feature dependent |
-| | `CONNECT ANY DATABASE` | Server level | Feature dependent |
-| | `VIEW ANY DATABASE` | Server level | Feature dependent |
-| **Monitoring** | `SELECT dbo.sysjobactivity` | `msdb` | Essential |
-| | `SELECT dbo.sysjobs` | `msdb` | Essential |
-| | `SELECT dbo.syssessions` | `msdb` | Essential |
-| | `SELECT dbo.sysjobHistory` | `msdb` | Essential |
-| | `SELECT dbo.sysjobSteps` | `msdb` | Essential |
-| | `SELECT dbo.syscategories` | `msdb` | Essential |
-| | `SELECT dbo.sysoperators` | `msdb` | Essential |
-| | `SELECT dbo.suspectpages` | `msdb` | Essential |
-| | `SELECT dbo.backupset` | `msdb` | Essential |
-| | `SELECT dbo.backupmediaset` | `msdb` | Essential |
-| | `SELECT dbo.backupmediafamily` | `msdb` | Essential |
-| | `SELECT dbo.backupfile` | `msdb` | Essential |
-| | `CONNECT ANY DATABASE` | Server level | Essential |
-| | `VIEW ANY DATABASE` | Server level | Essential |
-| | `VIEW ANY DEFINITION` | Server level | Essential |
-| **Migration Assessment** | `EXECUTE dbo.agent_datetime` | `msdb` | Essential |
-| | `SELECT dbo.syscategories` | `msdb` | Essential |
-| | `SELECT dbo.sysjobHistory` | `msdb` | Essential |
-| | `SELECT dbo.sysjobs` | `msdb` | Essential |
-| | `SELECT dbo.sysjobSteps` | `msdb` | Essential |
-| | `SELECT dbo.sysmail_account` | `msdb` | Essential |
-| | `SELECT dbo.sysmail_profile` | `msdb` | Essential |
-| | `SELECT dbo.sysmail_profileaccount` | `msdb` | Essential |
-| | `SELECT dbo.syssubsystems` | `msdb` | Essential |
-| | `SELECT sys.sql_expression_dependencies` | All databases | Essential |
-
 > [!NOTE]  
 > Minimum permissions depend on enabled features. Permissions are updated when they are no longer necessary. Necessary permissions are granted when features are enabled.
+
+## SQL Privileges by Feature
+
+### Minimum System Requirements
+
+These permissions are required for the basic level of functionality provided by the Azure Extension for SQL Server and must be applied.
+
+| Object Type | Database or Object Name | Privilege                      |
+| ----------- | ---------------------- | ------------------------------ |
+| Database    | Master                 | `VIEW DATABASE STATE`          |
+| Database    | Msdb                    | `ALTER ANY SCHEMA`             |
+| Database    | Msdb                    | `CREATE TABLE`                 |
+| Database    | Msdb                    | `CREATE TYPE`                  |
+| Database    | Msdb                    | `DB DATA READER`               |
+| Database    | Msdb                    | `DB DATA WRITER`               |
+| Database    | Msdb                    | `EXECUTE`                      |
+| Database    | Msdb                    | `SELECT dbo.backupfile`        |
+| Database    | Msdb                    | `SELECT dbo.backupmediaset`    |
+| Database    | Msdb                    | `SELECT dbo.backupmediafamily` |
+| Database    | Msdb                    | `SELECT dbo.backupset`         |
+| Database    | Msdb                    | `SELECT dbo.syscategories`     |
+| Database    | Msdb                    | `SELECT dbo.sysjobactivity`    |
+| Database    | Msdb                    | `SELECT dbo.sysjobhistory`     |
+| Database    | Msdb                    | `SELECT dbo.sysjobs`           |
+| Database    | Msdb                    | `SELECT dbo.sysjobsteps`       |
+| Database    | Msdb                    | `SELECT dbo.syssessions`       |
+| Database    | Msdb                    | `SELECT dbo.sysoperators`      |
+| Database    | Msdb                    | `SELECT dbo.suspectpages`      |
+| Server      |                          | `CONNECT ANY DATABASE`         |
+| Server      |                          | `CONNECT SQL`                  |
+| Server      |                          | `VIEW ANY DATABASE`            |
+| Server      |                          | `VIEW ANY DEFINITION`          |
+| Server      |                          | `VIEW SERVER STATE`            |
+
+### Best Practices Assessment
+
+The best practices assessment is disabled by default. If it is enabled, these permissions will be automatically granted if they are not already granted.
+
+| Object Type     | Database or Object Name | Privilege             |
+| --------------- | ---------------------- | --------------------- |
+| Database        | Master                 | `SELECT`              |
+| Database        | Master                 | `VIEW DATABASE STATE` |
+| Database        | Msdb                    | `SELECT`              |
+| Server          |                          | `VIEW ANY DATABASE`   |
+| Server          |                          | `VIEW ANY DEFINITION` |
+| Server          |                          | `VIEW SERVER STATE`   |
+| StoredProcedure | EnumErrorLogsSP         | `EXECUTE`             |
+| StoredProcedure | ReadErrorLogsSP         | `EXECUTE`             |
+
+### Backup
+
+Automated backups are disabled by default. Backup permissions will be granted to any database that backups are enabled for. Enabling the backup feature also enables the point-in-time restore feature, so the permission to create a database is also granted.
+
+| Object Type | Database or Object Name | Privilege             |
+| ----------- | ---------------------- | --------------------- |
+| Database    | All Databases           | `DB BACKUP OPERATOR`  |
+| Server      |                          | `CREATE ANY DATABASE` |
+| Server      | Master                   | `DB CREATOR`          |
+
+### Availability Groups
+
+Availability Group discovery and management features such as failing over are enabled by default, but they can be disabled through the `AvailabilityGroupDiscovery` feature flag.
+
+| Object Type | Database or Object Name | Privilege                      |
+| ----------- | ---------------------- | ------------------------------ |
+| Server      |                          | `ALTER ANY AVAILABILITY GROUP` |
+| Server      |                          | `VIEW ANY DEFINITION`          |
+
+### Purview
+
+The Purview features are disabled by default.
+
+| Object Type | Database or Object Name | Privilege              |
+| ----------- | ---------------------- | ---------------------- |
+| Database    | All Databases           | `EXECUTE`              |
+| Database    | All Databases           | `SELECT`               |
+| Server      |                          | `CONNECT ANY DATABASE` |
+| Server      |                          | `VIEW ANY DATABASE`    |
+
+### Migration Assessment
+
+Migration Assessments are enabled by default. If the feature is disabled, the permissions below will be removed unless other enabled features require them.
+
+| Object Type | Database or Object Name | Privilege                              |
+| ----------- | ---------------------- | -------------------------------------- |
+| Database    | All Databases           | `SELECT sys.sqlexpressiondependencies` |
+| Database    | Msdb                    | `EXECUTE dbo.agentdatetime`            |
+| Database    | Msdb                    | `SELECT dbo.syscategories`             |
+| Database    | Msdb                    | `SELECT dbo.sysjobhistory`             |
+| Database    | Msdb                    | `SELECT dbo.sysjobs`                   |
+| Database    | Msdb                    | `SELECT dbo.sysjobsteps`               |
+| Database    | Msdb                    | `SELECT dbo.sysmailaccount`            |
+| Database    | Msdb                    | `SELECT dbo.sysmailprofile`            |
+| Database    | Msdb                    | `SELECT dbo.sysmailprofileaccount`     |
+| Database    | Msdb                    | `SELECT dbo.syssubsystems`             |
+
 
 ## Additional permissions
 

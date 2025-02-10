@@ -1,8 +1,8 @@
 ---
 title: "Change indicator icons and indicator sets in a paginated report"
 description: Learn how to change the indicator icons and sets in a paginated report to include different, more, or fewer indicator icons to depict data better in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

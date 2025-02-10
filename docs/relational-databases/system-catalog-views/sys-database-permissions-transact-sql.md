@@ -121,7 +121,24 @@ The following types of permissions are possible.
 |VWCM |VIEW ANY COLUMN MASTER KEY DEFINITION|DATABASE |  
 |VWCT|VIEW CHANGE TRACKING|TABLE, SCHEMA|  
 |VWDS|VIEW DATABASE STATE|DATABASE|  
-  
+
+## REVOKE and column-exception permissions
+
+In most cases, the REVOKE command will remove the GRANT or DENY entry from sys.database_permissions.
+
+However, it is possible to GRANT or DENY permissions on a object and then REVOKE that permission on a column. This column-exception permission will show up as REVOKE in sys.database_permissions. Consider the following example:
+
+```sql
+GRANT SELECT ON Person.Person TO [Sales];
+
+REVOKE SELECT ON Person.Person(AdditionalContactInfo) FROM [Sales];
+```
+
+These permissions will show up in sys.database_permissions as one GRANT (on the table) and one REVOKE (on the column).
+
+> [!IMPORTANT]  
+> REVOKE is different from DENY, as the `Sales` principal may still have access to the column through other permissions. Had we denied permissions rather than revoking them, `Sales` would not be able to view the contents of the column because DENY always supersedes GRANT. 
+
 ## Permissions
 
  Any user can see their own permissions. To see permissions for other users, requires VIEW DEFINITION, ALTER ANY USER, or any permission on a user. To see user-defined roles, requires ALTER ANY ROLE, or membership in the role (such as public).  

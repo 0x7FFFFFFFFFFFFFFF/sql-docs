@@ -1,9 +1,9 @@
 ---
-title: "SSMA: Automate migration to SQL Server on Linux"
+title: "SSMA: Automate Migration to SQL Server on Linux"
 description: Automate database migrations to SQL Server on Linux using SQL Server Migration Assistant (SSMA) for Microsoft Access, DB2, MySQL, Oracle and Sybase.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/16/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual

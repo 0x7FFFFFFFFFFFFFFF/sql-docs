@@ -13,11 +13,11 @@ helpviewer_keywords:
   - "dependencies [SQL Server], tables"
   - "displaying dependencies"
   - "viewing dependencies"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # View the dependencies of a table
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 You can view a table's dependencies in [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)], using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE [tsql](../../includes/tsql-md.md)].
 

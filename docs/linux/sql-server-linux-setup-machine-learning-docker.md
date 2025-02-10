@@ -5,26 +5,26 @@ description: "Learn how to install SQL Server Machine Learning Services (Python 
 author: rothja
 ms.author: jroth
 ms.reviewer: randolphwest
-ms.date: 06/14/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
 ms.custom:
   - intro-installation
   - linux-related-content
-monikerRange: "=sql-server-ver15||=sql-server-linux-ver15"
+monikerRange: "=sql-server-ver15 || =sql-server-linux-ver15"
 ---
 # Install SQL Server Machine Learning Services (Python and R) on Docker
 
 [!INCLUDE [SQL Server 2019 - Linux](../includes/applies-to-version/sqlserver2019-linux.md)]
 
-This article explains how to install [SQL Server Machine Learning Services](../machine-learning/sql-server-machine-learning-services.md) on Docker. You can use Machine Learning Services to execute Python and R scripts in-database. We do not provide pre-built containers with Machine Learning Services. You can create one from the SQL Server containers using [an example template available on GitHub](https://github.com/Microsoft/mssql-docker/tree/master/linux/preview/examples/mssql-mlservices).
+This article explains how to install [SQL Server Machine Learning Services](../machine-learning/sql-server-machine-learning-services.md) on Docker. You can use Machine Learning Services to execute Python and R scripts in-database. We don't provide pre-built containers with Machine Learning Services. You can create one from the SQL Server containers using [an example template available on GitHub](https://github.com/Microsoft/mssql-docker/tree/master/linux/preview/examples/mssql-mlservices).
 
 ## Prerequisites
 
 - Git command-line interface.
 
-- Docker Engine 1.8+ on any supported Linux distribution. For more information, see [Get Docker](https://docs.docker.com/get-docker/). SQL Server in containers are not supported on Windows or macOS for production use.
+- Docker Engine 1.8+ on any supported Linux distribution. For more information, see [Get Docker](https://docs.docker.com/get-docker/). SQL Server in containers aren't supported on Windows or macOS for production use.
 
 - See also the [system requirements for SQL Server on Linux](sql-server-linux-setup.md#system).
 
@@ -68,7 +68,7 @@ Complete the following steps to build the docker image:
    ```
 
    > [!NOTE]  
-   > Any of the following values can be used for MSSQL_PID: Developer (free), Express (free), Enterprise (paid), Standard (paid). If you are using a paid edition, please ensure that you have purchased a license. Replace (password) with your actual password. Volume mounting using -v is optional. Replace (directory on the host OS) with an actual directory where you want to mount the database data and log files.
+   > Any of the following values can be used for MSSQL_PID: Developer (free), Express (free), Enterprise (paid), Standard (paid). If you use a paid edition, ensure that you have purchased a license. Replace `<password>` with your actual password. Volume mounting using `-v` is optional. Replace `<directory on the host OS>` with an actual directory where you want to mount the database data and log files.
 
 1. Confirm by running the following command:
 
@@ -99,7 +99,7 @@ Complete the following steps to build the docker image:
    sudo docker ps -a
    ```
 
-1. If the **STATUS** column shows a status of **Up**, SQL Server is running  in the container and listening on the port specified in the **PORTS** column. If the **STATUS** column for your SQL Server container shows **Exited**, see the [Troubleshooting section of the configuration guide](./sql-server-linux-docker-container-troubleshooting.md).
+1. If the **STATUS** column shows a status of **Up**, SQL Server is running in the container and listening on the port specified in the **PORTS** column. If the **STATUS** column for your SQL Server container shows **Exited**, see the [Troubleshooting section of the configuration guide](./sql-server-linux-docker-container-troubleshooting.md).
 
     Output:
 
@@ -113,18 +113,13 @@ Complete the following steps to build the docker image:
 To enable Machine Learning Services, connect to your SQL Server instance and run the following T-SQL statement:
 
 ```sql
-EXEC sp_configure  'external scripts enabled', 1;
-RECONFIGURE WITH OVERRIDE
+EXECUTE sp_configure 'external scripts enabled', 1;
+RECONFIGURE WITH OVERRIDE;
 ```
 
 ## Related content
 
-Python developers can learn how to use Python with SQL Server by following these tutorials:
-
-- [Python tutorial: Predict ski rental with linear regression in SQL Server Machine Learning Services](../machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model.md)
-- [Python tutorial: Categorizing customers using k-means clustering with SQL Server Machine Learning Services](../machine-learning/tutorials/python-clustering-model.md)
-
-R developers can get started with some simple examples, and learn the basics of how R works with SQL Server. For your next step, see the following links:
-
-- [Quickstart: Run R in T-SQL](../machine-learning/tutorials/quickstart-r-create-script.md)
-- [Tutorial: In-database analytics for R developers](../machine-learning/tutorials/r-taxi-classification-introduction.md)
+- [Python Tutorial: Deploy a linear regression model with SQL machine learning](../machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model.md)
+- [Python tutorial: Categorizing customers using k-means clustering with SQL machine learning](../machine-learning/tutorials/python-clustering-model.md)
+- [Quickstart: Run simple R scripts with SQL machine learning](../machine-learning/tutorials/quickstart-r-create-script.md)
+- [R tutorial: Predict NYC taxi fares with binary classification](../machine-learning/tutorials/r-taxi-classification-introduction.md)

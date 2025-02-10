@@ -46,45 +46,32 @@ Set_Expression1 * Set_Expression2 [* ...n]
 ## Examples  
  The following query shows simple examples of the use of the Crossjoin function on the Columns and Rows axis of a query:  
   
- `SELECT`  
-  
- `[Customer].[Country].Members *`  
-  
- `[Customer].[State-Province].Members`  
-  
- `ON 0,`  
-  
- `Crossjoin(`  
-  
- `[Date].[Calendar Year].Members,`  
-  
- `[Product].[Category].[Category].Members)`  
-  
- `ON 1`  
-  
- `FROM [Adventure Works]`  
-  
- `WHERE Measures.[Internet Sales Amount]`  
+```  
+SELECT  
+[Customer].[Country].Members *  
+[Customer].[State-Province].Members  
+ON 0,  
+Crossjoin(  
+[Date].[Calendar Year].Members,  
+[Product].[Category].[Category].Members)  
+ON 1  
+FROM [Adventure Works]  
+WHERE Measures.[Internet Sales Amount]  
+```  
   
  The following example shows the automatic filtering that takes place when different hierarchies from the same dimension are crossjoined:  
   
- `SELECT`  
-  
- `Measures.[Internet Sales Amount]`  
-  
- `ON 0,`  
-  
- `//Only the dates in Calendar Years 2003 and 2004 will be returned here`  
-  
- `Crossjoin(`  
-  
- `{[Date].[Calendar Year].&[2003], [Date].[Calendar Year].&[2004]},`  
-  
- `[Date].[Date].[Date].Members)`  
-  
- `ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+SELECT  
+Measures.[Internet Sales Amount]  
+ON 0,  
+//Only the dates in Calendar Years 2003 and 2004 will be returned here  
+Crossjoin(  
+{[Date].[Calendar Year].&[2003], [Date].[Calendar Year].&[2004]},  
+[Date].[Date].[Date].Members)  
+ON 1  
+FROM [Adventure Works]  
+```  
   
  The following three examples return the same results - the Internet Sales Amount by state for states within the United States. The first two use the two cross join syntaxes and the third demonstrates the use of the WHERE clause to return the same information.  
   

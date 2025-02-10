@@ -3,8 +3,8 @@ title: "JSON_ARRAYAGG (Transact-SQL)"
 description: JSON_ARRAYAGG constructs a JSON array from an aggregation of SQL data or columns.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: umajay
-ms.date: 08/20/2024
+ms.reviewer: umajay, jovanpop
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -17,18 +17,18 @@ dev_langs:
   - "TSQL"
 ms.custom:
   - build-2024
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current ||=fabric"
 ---
 # JSON_ARRAYAGG (Transact-SQL)
 
-[!INCLUDE [asdb](../../includes/applies-to-version/asdb-asdbmi.md)]
+[!INCLUDE [asdb](../../includes/applies-to-version/asdb-asdbmi-fabricse-fabricdw.md)]
 
  Constructs a JSON array from an aggregation of SQL data or columns.
 
  To create a JSON object from an aggregate instead, use [JSON_OBJECTAGG](json-objectagg-transact-sql.md).
   
 > [!NOTE]
-> Both **json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` are currently in preview for Azure SQL Database and Azure SQL Managed Instance (configured with the [**Always-up-to-date** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)). . 
+> Both **json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` are currently in preview for Azure SQL Database, Azure SQL Managed Instance (configured with the [**Always-up-to-date** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)), and Microsoft Fabric Data Warehouse.  
 
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
   

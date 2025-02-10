@@ -13,6 +13,9 @@ ms.topic: reference
 
 [!INCLUDE[sqlserver-ssis](../../includes/applies-to-version/sqlserver-ssis.md)]
 
+> [!IMPORTANT]
+> Microsoft Connector for Oracle is deprecated now. Details refer to [the announcement](https://www.microsoft.com/en-us/sql-server/blog/2025/01/21/sql-server-integration-services-ssis-microsoft-connector-for-oracle-deprecation/).
+
 The Oracle source extracts data from Oracle Database with below modes:
 
 - A table or view.

@@ -37,15 +37,13 @@ IsGeneration(Member_Expression, Generation_Number)
 ## Example  
  The following example returns TRUE if [Date].[Fiscal].CurrentMember is part of the second generation:  
   
- `WITH MEMBER MEASURES.ISGENERATIONDEMO AS`  
-  
- `IsGeneration([Date].[Fiscal].CURRENTMEMBER, 2)`  
-  
- `SELECT {MEASURES.ISGENERATIONDEMO} ON 0,`  
-  
- `[Date].[Fiscal].MEMBERS ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.ISGENERATIONDEMO AS  
+IsGeneration([Date].[Fiscal].CURRENTMEMBER, 2)  
+SELECT {MEASURES.ISGENERATIONDEMO} ON 0,  
+[Date].[Fiscal].MEMBERS ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

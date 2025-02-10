@@ -50,15 +50,13 @@ WHERE
   
  **Ytd** is frequently used in combination with no parameters specified, meaning that the [CurrentMember &#40;MDX&#41;](../mdx/currentmember-mdx.md) function will display a running cumulative year-to-date total in a report, as shown in the following query:  
   
- `WITH MEMBER MEASURES.YTDDEMO AS`  
-  
- `AGGREGATE(YTD(), [Measures].[Internet Sales Amount])`  
-  
- `SELECT {[Measures].[Internet Sales Amount], MEASURES.YTDDEMO} ON 0,`  
-  
- `[Date].[Calendar].MEMBERS ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.YTDDEMO AS  
+AGGREGATE(YTD(), [Measures].[Internet Sales Amount])  
+SELECT {[Measures].[Internet Sales Amount], MEASURES.YTDDEMO} ON 0,  
+[Date].[Calendar].MEMBERS ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

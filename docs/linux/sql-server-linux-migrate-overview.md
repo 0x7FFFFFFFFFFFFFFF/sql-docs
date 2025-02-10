@@ -1,9 +1,9 @@
 ---
-title: Migrate databases to SQL Server on Linux
+title: Migrate Databases to SQL Server on Linux
 description: This article describes the different options for migrating databases and data to SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/23/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -46,5 +46,5 @@ There are also techniques for importing raw data. You might have structured data
 
 ## Related content
 
-- [Bulk copy data with bcp](sql-server-linux-migrate-bcp.md)
-- [Extract, transform, and load data for SQL Server on Linux with SSIS](sql-server-linux-migrate-ssis.md)
+- [Bulk copy data with bcp to SQL Server on Linux](sql-server-linux-migrate-bcp.md)
+- [Extract, transform, and load data on Linux with SSIS](sql-server-linux-migrate-ssis.md)

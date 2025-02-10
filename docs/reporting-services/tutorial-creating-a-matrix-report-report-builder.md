@@ -1,8 +1,8 @@
 ---
 title: "Tutorial: Create a matrix report (Report Builder)"
 description: Learn how to create a Reporting Services paginated report with a matrix of sample sales data in nested row and column groups.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

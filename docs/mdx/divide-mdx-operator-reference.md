@@ -59,39 +59,25 @@ WHERE
   
  Dividing a non-zero or non-null value by zero or null will return the value Infinity, which is displayed in query results as the value "1.#INF". In most cases, you should check for division by zero to avoid this situation. The following example shows you how:  
   
- `//Returns 1.#INF when Internet Sales Amount is zero or null`  
-  
- `Member [Measures].[Reseller to Internet Ratio] AS`  
-  
- `[Measures].[Reseller Sales Amount]`  
-  
- `/`  
-  
- `[Measures].[Internet Sales Amount]`  
-  
- `//Traps the division by zero scenario and returns null instead of 1.#INF`  
-  
- `Member [Measures].[Reseller to Internet Ratio With Error Handling] AS`  
-  
- `IIF([Measures].[Internet Sales Amount]=0, NULL,`  
-  
- `[Measures].[Reseller Sales Amount]`  
-  
- `/`  
-  
- `[Measures].[Internet Sales Amount])`  
-  
- `SELECT`  
-  
- `{[Measures].[Reseller to Internet Ratio],[Measures].[Reseller to Internet Ratio With Error Handling]} ON 0,`  
-  
- `[Product].[Category].[Category].Members ON 1`  
-  
- `FROM`  
-  
- `[Adventure Works]`  
-  
- `WHERE([Date].[Calendar].[Calendar Year].&[2001])`  
+```  
+//Returns 1.#INF when Internet Sales Amount is zero or null  
+Member [Measures].[Reseller to Internet Ratio] AS  
+[Measures].[Reseller Sales Amount]  
+/  
+[Measures].[Internet Sales Amount]  
+//Traps the division by zero scenario and returns null instead of 1.#INF  
+Member [Measures].[Reseller to Internet Ratio With Error Handling] AS  
+IIF([Measures].[Internet Sales Amount]=0, NULL,  
+[Measures].[Reseller Sales Amount]  
+/  
+[Measures].[Internet Sales Amount])  
+SELECT  
+{[Measures].[Reseller to Internet Ratio],[Measures].[Reseller to Internet Ratio With Error Handling]} ON 0,  
+[Product].[Category].[Category].Members ON 1  
+FROM  
+[Adventure Works]  
+WHERE([Date].[Calendar].[Calendar Year].&[2001])  
+```  
   
 ## See Also  
  [IIf &#40;MDX&#41;](../mdx/iif-mdx.md)   

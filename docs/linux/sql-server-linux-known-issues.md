@@ -4,7 +4,7 @@ description: This article contains the known issues for SQL Server running on Li
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 11/18/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -164,7 +164,7 @@ The following limitations apply to [!INCLUDE [ssManStudioFull](../includes/ssman
 
 **Applies to:** [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] only.
 
-When you run [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on RHEL 9 as a confined application with SELinux enabled, Pacemaker clustering might not work as expected. You must install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] as an unconfined application with SELinux turned on, to make use of Pacemaker clustering capabilities.
+When you run [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 16 and earlier versions, on RHEL 9 as a confined application with SELinux enabled, Pacemaker clustering might not work as expected. You must install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] as an unconfined application with SELinux turned on, to make use of Pacemaker clustering capabilities. This issue is resolved in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 17.
 
 ## Machine Learning Services
 

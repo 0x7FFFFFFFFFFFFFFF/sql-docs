@@ -1,8 +1,8 @@
 ---
 title: Reporting Services in SQL Server Data Tools (SSDT)
 description: See how to use the SQL Server Data Tools Report Designer authoring environment in Microsoft Visual Studio to create solutions for Reporting Services.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

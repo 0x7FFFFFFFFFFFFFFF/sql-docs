@@ -2,8 +2,8 @@
 title: Connectivity settings for Azure SQL Database and Azure Synapse Analytics
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 description: This article explains the Transport Layer Security (TLS) version choice and the Proxy versus Redirect settings for Azure SQL Database and Azure Synapse Analytics.
-author: rohitnayakmsft
-ms.author: rohitna
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: wiassaf, mathoma, vanto
 ms.service: azure-sql-database
 ms.date: 09/13/2024
@@ -57,7 +57,7 @@ Choose the **Private access** tab to configure a [private endpoint](private-endp
 It's possible to change public network access by using Azure PowerShell.
 
 > [!IMPORTANT]
-> Azure SQL Database still supports the PowerShell Azure Resource Manager module, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
+> The `Az` module replaces `AzureRM`. All future development is for the `Az.Sql` module. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
 
 The following PowerShell script shows how to `Get` and `Set` the **Public Network Access** property at the server level:
 
@@ -115,7 +115,7 @@ Ensure that **Public network access** is set to **Selected networks** to be able
 
 The minimum [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) version setting allows customers to choose which version of TLS their SQL database uses. It's possible to change the minimum TLS version by using the Azure portal, Azure PowerShell, and the Azure CLI.
 
-Currently, Azure SQL Database supports TLS 1.0, 1.1, 1.2, and 1.3. Setting a minimum TLS version ensures that newer TLS versions are supported. For example, choosing a TLS version 1.1 means only connections with TLS 1.1 and 1.2 are accepted, and connections with TLS 1.0 are rejected. After you test to confirm that your applications support it, we recommend setting the minimal TLS version to 1.2. This version includes fixes for vulnerabilities in previous versions and is the highest version of TLS that's supported in Azure SQL Database.
+Currently, Azure SQL Database supports TLS 1.0, 1.1, 1.2, and 1.3. Setting a minimum TLS version ensures that newer TLS versions are supported. For example, choosing a TLS version 1.1 means only connections with TLS 1.1 and 1.2 are accepted, and connections with TLS 1.0 are rejected. After you test to confirm that your applications support it, we recommend setting the minimal TLS version to 1.3. This version includes fixes for vulnerabilities in previous versions and is the highest version of TLS that's supported in Azure SQL Database.
 
 ### Upcoming retirement changes 
 
@@ -158,7 +158,7 @@ Login failed with invalid TLS version
 It's possible to change the minimum TLS version by using Azure PowerShell. 
 
 > [!IMPORTANT]
-> Azure SQL Database still supports the PowerShell Azure Resource Manager module, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
+> The `Az` module replaces `AzureRM`. All future development is for the `Az.Sql` module. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
 
 The following PowerShell script shows how to `Get` the **Minimal TLS Version** property at the logical server level:
 
@@ -209,7 +209,7 @@ You can use the Azure portal and SQL audit logs to identify clients that are con
 
 In the Azure portal, go to **Metrics** under **Monitoring** for your database resource, and then filter by *Successful connections*, and *TLS versions* = `1.0` and `1.1`:
 
-:::image type="content" source="media/connectivity-settings/connections-in-portal.png" alt-text="Screenshot of the montoring page for the database resource in the Azure portal with successful tls 1.0 and 1.1 connections filtered. "::: 
+:::image type="content" source="media/connectivity-settings/connections-in-portal.png" alt-text="Screenshot of the monitoring page for the database resource in the Azure portal with successful tls 1.0 and 1.1 connections filtered. "::: 
  
 You can also query [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) directly within your database to view the `client_tls_version_name` in the audit file: 
 
@@ -237,7 +237,7 @@ It's possible to change your connection policy for your logical server by using 
 It's possible to change the connection policy for your logical server by using Azure PowerShell.
 
 > [!IMPORTANT]
-> Azure SQL Database still supports the PowerShell Azure Resource Manager module, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
+> The `Az` module replaces `AzureRM`. All future development is for the `Az.Sql` module. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
 
 The following PowerShell script shows how to change the connection policy by using PowerShell:
 

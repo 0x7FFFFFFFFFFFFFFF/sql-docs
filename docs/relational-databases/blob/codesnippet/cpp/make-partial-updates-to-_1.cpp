@@ -105,7 +105,7 @@ BOOL WaitForIOToComplete(HANDLE srcHandle, OVERLAPPED *pOverLapped, LPDWORD pByt
         return TRUE;
 
     //If GetLastError() does not return EOF or IO PENDING then
-    //an error has occured.
+    //an error has occurred.
     if ( bError != ERROR_IO_PENDING )
         return FALSE;
 

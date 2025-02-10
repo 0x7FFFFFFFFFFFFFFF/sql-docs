@@ -1,16 +1,16 @@
 ---
-title: Configure persistent memory (PMEM) - Linux
+title: "Configure Persistent Memory (PMEM) - Linux"
 description: Learn how to configure persistent memory (PMEM) for SQL Server on Linux, and how to create namespaces for PMEM devices
 author: briancarrig
 ms.author: brcarrig
 ms.reviewer: randolphwest
-ms.date: 02/21/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
 ms.custom:
   - linux-related-content
-monikerRange: ">=sql-server-linux-ver15||>=sql-server-ver15"
+monikerRange: ">=sql-server-linux-ver15 || >=sql-server-ver15"
 ---
 
 # Configure persistent memory (PMEM) for SQL Server on Linux
@@ -39,7 +39,7 @@ In Linux, use the `ndctl` utility.
 ndctl create-namespace -f -e namespace0.0 --mode=fsdax --map=dev
 ```
 
-We have chosen `fsdax` mode and are using system memory to store per-page metadata. We recommend using `--map=dev`. This option stores the meta data on the namespace directly. Storing meta data in memory using `--map=mem` is experimental at this time.
+We have chosen `fsdax` mode and are using system memory to store per-page metadata. We recommend using `--map=dev`. This option stores the metadata on the namespace directly. Storing metadata in memory using `--map=mem` is experimental at this time.
 
 Use `ndctl` to verify the namespace.
 
@@ -120,5 +120,5 @@ For more information about the changes introduced in [!INCLUDE [sssql17-md](../i
 
 ## Related content
 
-- [SQL Server on Linux](sql-server-linux-overview.md)
-- [Performance Best Practices](sql-server-linux-performance-best-practices.md)
+- [What is SQL Server on Linux?](sql-server-linux-overview.md)
+- [Performance best practices and configuration guidelines for SQL Server on Linux](sql-server-linux-performance-best-practices.md)

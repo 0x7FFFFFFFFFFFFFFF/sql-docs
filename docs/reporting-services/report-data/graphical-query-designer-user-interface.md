@@ -1,8 +1,8 @@
 ---
 title: "Graphical Query Designer User Interface"
 description: Learn about the graphical query designer user interface so you can retrieve data from a relational database for a report dataset in Report Designer.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

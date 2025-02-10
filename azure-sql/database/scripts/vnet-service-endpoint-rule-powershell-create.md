@@ -1,10 +1,10 @@
 ---
 title: PowerShell for VNet endpoints and rules for single and pooled databases
 description: Provides PowerShell scripts to create and manage Virtual Service endpoints for your Azure SQL Database and Azure Synapse.
-author: rohitnayakmsft
-ms.author: rohitna
-ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 04/17/2019
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: rohitna, vanto, mathoma
+ms.date: 01/21/2025
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: conceptual
@@ -35,20 +35,20 @@ For more background, see [Virtual Service endpoints for Azure SQL Database][sql-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the [`Az.Sql` Cmdlets](/powershell/module/az.sql). For the older module, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> The PowerShell Azure Resource Manager (AzureRM) module was deprecated on February 29, 2024. All future development should use the Az.Sql module. Users are advised to migrate from AzureRM to the Az PowerShell module to ensure continued support and updates. The AzureRM module is no longer maintained or supported. The arguments for the commands in the Az PowerShell module and in the AzureRM modules are substantially identical. For more about their compatibility, see [Introducing the new Az PowerShell module](/powershell/azure/new-azureps-module-az).
 
 ## Major cmdlets
 
 This article emphasizes the [**New-AzSqlServerVirtualNetworkRule** cmdlet](/powershell/module/az.sql/new-azsqlservervirtualnetworkrule) that adds the subnet endpoint to the access control list (ACL) of your server, thereby creating a rule.
 
-The following list shows the sequence of other *major* cmdlets that you must run to prepare for your call to **New-AzSqlServerVirtualNetworkRule**. In this article, these calls occur in [script 3 "Virtual network rule"](#a-script-30):
+The following list shows the sequence of other *major* cmdlets that you must run to prepare for your call to `New-AzSqlServerVirtualNetworkRule`. In this article, these calls occur in [script 3 "Virtual network rule"](#a-script-30):
 
 1. [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig): Creates a subnet object.
 2. [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork): Creates your virtual network, giving it the subnet.
 3. [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): Assigns a Virtual Service endpoint to your subnet.
 4. [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork): Persists updates made to your virtual network.
 5. [New-AzSqlServerVirtualNetworkRule](/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): After your subnet is an endpoint, adds your subnet as a virtual network rule, into the ACL of your server.
-   - This cmdlet Offers the parameter **-IgnoreMissingVNetServiceEndpoint**, starting in Azure RM PowerShell Module version 5.1.1.
+   - This cmdlet Offers the parameter `-IgnoreMissingVNetServiceEndpoint`.
 
 ## Prerequisites for running PowerShell
 
@@ -188,7 +188,7 @@ Write-Host 'Completed script 2, the "Prerequisites".'
 
 ## Script 3: Create an endpoint and a rule
 
-This script creates a virtual network with a subnet. Then the script assigns the **Microsoft.Sql** endpoint type to your subnet. Finally the script adds your subnet to the access control list (ACL), thereby creating a rule.
+This script creates a virtual network with a subnet. Then the script assigns the `Microsoft.Sql` endpoint type to your subnet. Finally the script adds your subnet to the access control list (ACL), thereby creating a rule.
 
 ### PowerShell script 3 source code
 
@@ -276,7 +276,7 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".'
 
 This final script deletes the resources that the previous scripts created for the demonstration. However, the script asks for confirmation before it deletes the following:
 
-- Logical SQL server
+- Azure SQL logical server
 - Azure Resource Group
 
 You can run script 4 any time after script 1 completes.
@@ -354,11 +354,11 @@ Write-Host 'Completed script 4, the "Clean-Up".'
 
 ## Verify your subnet is an endpoint
 
-You might have a subnet that was already assigned the **Microsoft.Sql** type name, meaning it is already a Virtual Service endpoint. You could use the [Azure portal][http-azure-portal-link-ref-477t] to create a virtual network rule from the endpoint.
+You might have a subnet that was already assigned the `Microsoft.Sql` type name, meaning it is already a Virtual Service endpoint. You could use the [Azure portal][http-azure-portal-link-ref-477t] to create a virtual network rule from the endpoint.
 
-Or, you might be unsure whether your subnet has the **Microsoft.Sql** type name. You can run the following PowerShell script to take these actions:
+Or, you might be unsure whether your subnet has the `Microsoft.Sql` type name. You can run the following PowerShell script to take these actions:
 
-1. Ascertain whether your subnet has the **Microsoft.Sql** type name.
+1. Ascertain whether your subnet has the `Microsoft.Sql` type name.
 2. Optionally, assign the type name if it is absent.
     - The script asks you to *confirm*, before it applies the absent type name.
 
@@ -366,17 +366,17 @@ Or, you might be unsure whether your subnet has the **Microsoft.Sql** type name.
 
 Here are the phases of the PowerShell script:
 
-1. LOG into to your Azure account, needed only once per PS session.  Assign variables.
+1. Sign in to to your Azure account, needed only once per PowerShell session. Assign variables.
 2. Search for your virtual network, and then for your subnet.
-3. Is your subnet tagged as **Microsoft.Sql** endpoint server type?
-4. Add a Virtual Service endpoint of type name **Microsoft.Sql**, on your subnet.
+3. Is your subnet tagged as `Microsoft.Sql` endpoint server type?
+4. Add a Virtual Service endpoint of type name `Microsoft.Sql`, on your subnet.
 
 > [!IMPORTANT]
 > Before you run this script, you must edit the values assigned to the $-variables, near the top of the script.
 
 ### Direct PowerShell source code
 
-This PowerShell script does not update anything, unless you respond yes if is asks you for confirmation. The script can add the type name **Microsoft.Sql** to your subnet. But the script tries the add only if your subnet lacks the type name.
+This PowerShell script does not update anything, unless you respond yes if is asks you for confirmation. The script can add the type name `Microsoft.Sql` to your subnet. But the script tries the add only if your subnet lacks the type name.
 
 ```powershell
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.

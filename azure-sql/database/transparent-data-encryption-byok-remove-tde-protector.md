@@ -41,7 +41,7 @@ This how-to guide goes over the approach to render databases **inaccessible** af
 
 # [PowerShell](#tab/azure-powershell)
 
- For Az module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). For specific cmdlets, see [AzureRM.Sql](/powershell/module/AzureRM.Sql/). Use [the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+ For Az module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps). Use [the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
 
 # [The Azure CLI](#tab/azure-cli)
 
@@ -72,7 +72,7 @@ Alternatively, you can use PowerShell or the Azure CLI:
 
 # [PowerShell](#tab/azure-powershell)
 
-The PowerShell command `Get-AzureRmSqlServerKeyVaultKey` provides the thumbprint of the TDE Protector used in the query, so you can see which keys to keep and which keys to delete in AKV. Only keys no longer used by the database can be safely deleted from Azure Key Vault.
+The PowerShell command `Get-AzSqlServerKeyVaultKey` provides the thumbprint of the TDE Protector used in the query, so you can see which keys to keep and which keys to delete in AKV. Only keys no longer used by the database can be safely deleted from Azure Key Vault.
 
 # [The Azure CLI](#tab/azure-cli)
 

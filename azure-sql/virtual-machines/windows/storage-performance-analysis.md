@@ -23,6 +23,7 @@ Although various tools help you troubleshoot SQL Server performance problems, to
 Performance metrics that demonstrate the issue, and potential steps to address it, are available in the Azure portal, and queryable with the Azure CLI.
 
 The **Storage** pane of your [SQL virtual machines](manage-sql-vm-portal.md) resource in the Azure portal helps you:
+
 - [Manage your storage configuration](storage-configuration.md)
 - Identify I/O throttling 
 - Evaluate your system for I/O related best practices

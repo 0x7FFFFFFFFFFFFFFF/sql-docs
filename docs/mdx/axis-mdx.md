@@ -35,27 +35,23 @@ Axis(Axis_Number)
 ## Examples  
  The following example query shows how to use the Axis function:  
   
- `WITH MEMBER MEASURES.AXISDEMO AS`  
-  
- `SETTOSTR(AXIS(1))`  
-  
- `SELECT MEASURES.AXISDEMO ON 0,`  
-  
- `[Date].[Calendar Year].MEMBERS ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.AXISDEMO AS  
+SETTOSTR(AXIS(1))  
+SELECT MEASURES.AXISDEMO ON 0,  
+[Date].[Calendar Year].MEMBERS ON 1  
+FROM [Adventure Works]  
+```  
   
  The following example shows the use of the Axis function inside a calculated member:  
   
- `WITH MEMBER MEASURES.AXISDEMO AS`  
-  
- `SUM(AXIS(1), [Measures].[Internet Sales Amount])`  
-  
- `SELECT {[Measures].[Internet Sales Amount],MEASURES.AXISDEMO} ON 0,`  
-  
- `{[Date].[Calendar Year].&[2003], [Date].[Calendar Year].&[2004]} ON 1`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.AXISDEMO AS  
+SUM(AXIS(1), [Measures].[Internet Sales Amount])  
+SELECT {[Measures].[Internet Sales Amount],MEASURES.AXISDEMO} ON 0,  
+{[Date].[Calendar Year].&[2003], [Date].[Calendar Year].&[2004]} ON 1  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

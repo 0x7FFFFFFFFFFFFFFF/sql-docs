@@ -1,8 +1,8 @@
 ---
 title: "New User Role page (Management Studio)"
 description: Learn how to create an item-level role definition that enumerates the tasks a user can perform in the New User Role page in SQL Server Management Studio.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

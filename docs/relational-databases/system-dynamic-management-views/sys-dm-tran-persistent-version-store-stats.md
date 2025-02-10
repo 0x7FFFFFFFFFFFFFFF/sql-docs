@@ -3,8 +3,8 @@ title: "sys.dm_tran_persistent_version_store_stats (Transact-SQL)"
 description: sys.dm_tran_persistent_version_store_stats returns information for accelerated database recovery (ADR) persistent version store (PVS) metrics.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: wiassaf
-ms.date: 12/04/2024
+ms.reviewer: wiassaf, dfurman
+ms.date: 02/05/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,6 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current"
 ---
+
 # sys.dm_tran_persistent_version_store_stats (Transact-SQL)
 
 [!INCLUDE [SQL Server 2019, ASDB, ASDBMI](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi.md)]
@@ -28,27 +29,27 @@ Returns information for accelerated database recovery (ADR) persistent version s
 ## Table returned
 
 | Column name | Data type | Description |
-| --- | --- | --- |
+|:--|:--|:--|
 | `database_id` | **int** | The `database_id` of this row.<br /><br />In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], the values are unique within a single database or an elastic pool, but not within a logical server. |
 | `pvs_filegroup_id` | **smallint** | The filegroup that hosts PVS version store. |
-| `persistent_version_store_size_kb` | **bigint** | The PVS size in kilobytes. This value is used to determine current space used by PVS. |
-| `online_index_version_store_size_kb` | **bigint** | The special version store size, in kilobytes, used during online index rebuild. |
-| `current_aborted_transaction_count` | **bigint** | The number of abort transactions in the database. Detail of the abort transactions can be viewed in `sys.dm_tran_aborted_transactions`. |
+| `persistent_version_store_size_kb` | **bigint** | The size of the off-row versions in PVS, in kilobytes. Does not include the size of row versions stored in-row. For more information, see [Space used by the persistent version store (PVS)](../../relational-databases/sql-server-transaction-locking-and-row-versioning-guide.md#space-used-by-the-persistent-version-store-pvs). |
+| `online_index_version_store_size_kb` | **bigint** | The size of a special version store size used during online index rebuild, in kilobytes. |
+| `current_aborted_transaction_count` | **bigint** | The number of aborted transactions in the database. For more details, see `sys.dm_tran_aborted_transactions`. |
 | `oldest_active_transaction_id` | **bigint** | The transaction ID of the oldest active transaction. |
-| `oldest_aborted_transaction_id` | **bigint** | The transaction ID of the oldest abort transaction. If the PVS cleaner can't remove the aborted transaction, this value reflects the oldest value. |
+| `oldest_aborted_transaction_id` | **bigint** | The transaction ID of the oldest aborted transaction. If the PVS cleaner can't remove the aborted transaction, this value reflects the oldest value. |
 | `min_transaction_timestamp` | **bigint** | The minimum useful timestamp in the system from snapshot scans. |
-| `online_index_min_transaction_timestamp` | **bigint** | The minimum useful timestamp in the system to hold up the PVS cleanup. Corresponds to `online_index_version_store_size_kb`. |
-| `secondary_low_water_mark` | **bigint** | The low water mark aggregated for queries on readable secondaries. It's a transaction ID and can be used to compare with `oldest_active_transaction_id` and `oldest_aborted_transaction_id`. |
-| `offrow_version_cleaner_start_time` | **datetime2(7)** | The start time of the off-row PVS cleanup process. |
-| `offrow_version_cleaner_end_time` | **datetime2(7)** | The last end time of the off-row PVS cleanup process. |
-| `aborted_version_cleaner_start_time` | **datetime2(7)** | The start timestamp of a full sweep. |
-| `aborted_version_cleaner_end_time` | **datetime2(7)** | The end timestamp of last full sweep. If start time has value but the end time doesn't, it means PVS cleanup is ongoing on this database. |
-| `pvs_off_row_page_skipped_low_water_mark` | **bigint** | The number of pages skipped for reclaim due to hold up from secondary read queries. |
-| `pvs_off_row_page_skipped_transaction_not_cleaned` | **bigint** | The number of pages skipped for reclaim due to aborted transactions. Note this value doesn't reflect the PVS hold up from aborted transactions since the version cleaner uses a min threshold for aborted transaction version cleanup. Can be ignored for large PVS issue. |
-| `pvs_off_row_page_skipped_oldest_active_xdesid` | **bigint** | The number of pages skipped for reclaim due to the oldest active transaction. |
-| `pvs_off_row_page_skipped_min_useful_xts` | **bigint** | The number of pages skipped for reclaim due to a long snapshot scan. |
-| `pvs_off_row_page_skipped_oldest_snapshot` | **bigint** | The number of pages skipped for reclaim due to online index rebuild activities. This scenario isn't common for PVS usage. |
-| `pvs_off_row_page_skipped_oldest_aborted_xdesid` | **bigint** | The number of pages skipped for reclaim due to oldest aborted transactions. Reflects how many pages were skipped during cleanup because they contained row versions for aborted transactions.<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions. |
+| `online_index_min_transaction_timestamp` | **bigint** | The minimum useful timestamp in the system to hold up the PVS cleanup during online index builds. |
+| `secondary_low_water_mark` | **bigint** | The low water mark aggregated for queries on readable secondaries. The value is a transaction ID and can be matched with `oldest_active_transaction_id` and `oldest_aborted_transaction_id`. |
+| `offrow_version_cleaner_start_time` | **datetime2(7)** | The last start time of the off-row PVS cleanup process. |
+| `offrow_version_cleaner_end_time` | **datetime2(7)** | The last end time of the off-row PVS cleanup process. If start time has value but the end time doesn't, it means PVS cleanup is ongoing on this database. |
+| `aborted_version_cleaner_start_time` | **datetime2(7)** | The start timestamp of the last aborted transaction sweep. |
+| `aborted_version_cleaner_end_time` | **datetime2(7)** | The end timestamp of last aborted transaction sweep. If start time has value but the end time doesn't, it means PVS cleanup is ongoing on this database. |
+| `pvs_off_row_page_skipped_low_water_mark` | **bigint** | The number of pages skipped during cleanup due to hold up from secondary read queries. |
+| `pvs_off_row_page_skipped_transaction_not_cleaned` | **bigint** | The number of pages skipped during cleanup due to aborted transactions. Note this value doesn't reflect the PVS hold up from aborted transactions since the version cleaner uses a min threshold for aborted transaction version cleanup. Can be ignored when troubleshooting large PVS issues. |
+| `pvs_off_row_page_skipped_oldest_active_xdesid` | **bigint** | The number of pages skipped during cleanup due to the oldest active transaction. |
+| `pvs_off_row_page_skipped_min_useful_xts` | **bigint** | The number of pages skipped during cleanup due to a long snapshot scan. |
+| `pvs_off_row_page_skipped_oldest_snapshot` | **bigint** | The number of pages skipped during cleanup due to online index rebuild activities. |
+| `pvs_off_row_page_skipped_oldest_aborted_xdesid` | **bigint** | The number of pages skipped during cleanup due to oldest aborted transactions. Reflects how many pages were skipped during cleanup because they contained row versions for aborted transactions.<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions. |
 
 ## Permissions
 
@@ -59,6 +60,6 @@ On SQL Database **Basic**, **S0**, and **S1** service objectives, and for databa
 ## Related content
 
 - [Best practices for accelerated database recovery](../accelerated-database-recovery-concepts.md#best-practices-for-adr)
-- [Troubleshoot accelerated database recovery](../accelerated-database-recovery-troubleshoot.md)
+- [Monitor and troubleshoot accelerated database recovery](../accelerated-database-recovery-troubleshoot.md)
 - [Accelerated database recovery](../accelerated-database-recovery-concepts.md)
 - [Manage accelerated database recovery](../accelerated-database-recovery-management.md)

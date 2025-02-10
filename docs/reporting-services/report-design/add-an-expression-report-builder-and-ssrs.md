@@ -1,8 +1,8 @@
 ---
 title: "Add an expression to a paginated report"
 description: Find out about how to use expressions to define report item properties, filters, and parameter values in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

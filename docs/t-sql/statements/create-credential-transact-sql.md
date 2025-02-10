@@ -4,7 +4,7 @@ description: CREATE CREDENTIAL (Transact-SQL)
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf
-ms.date: 02/02/2024
+ms.date: 01/16/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -51,17 +51,19 @@ WITH IDENTITY = 'identity_name'
 ## Arguments
 
 #### *credential_name*
-Specifies the name of the credential being created. *credential_name* cannot start with the number (#) sign. System credentials start with ##.
+Specifies the name of the credential being created. *credential_name* can't start with the number (#) sign. System credentials start with ##.
 
 > [!IMPORTANT]
 > When using a shared access signature (SAS), this name must match the container path, start with https and must not contain a forward slash. See [example D](#d-creating-a-credential-using-a-sas-token).
 
-When used for backup/restore using a to external data platforms, such as Azure Blob Storage or S3-compatible platforms, the following table provides common paths:
+When used for backup/restore using external data platforms, such as Azure Blob Storage or S3-compatible platforms, the following table provides common paths:
 
 | External Data Source    | Location path                                         |  Example |
-| ----------------------- | --------------- | ----------------------------------------------------- |  :-- |  :-- |
-| Azure Blob Storage (V2) | `https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>` |  [Example D.](#d-creating-a-credential-using-a-sas-token) |
-| S3-compatible object storage | - S3-compatible storage: `s3://<server_name>:<port>/`<br />- AWS S3: `s3://<bucket_name>.S3.<region>.amazonaws.com[:port]/<folder>` </br>or `s3://s3.<region>.amazonaws.com[:port]/<bucket_name>/<folder>` | [Example F.](#f-create-a-credential-for-backuprestore-to-s3-compatible-storage) |
+| ----------------------- | --------------- | ----------------------------------------------------- |
+| Azure Blob Storage (V2) | `https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>` |  [Example D](#d-creating-a-credential-using-a-sas-token) |
+| Azure Key Vault | `<keyvaultname>.vault.azure.net` | [Example H](#h-create-a-managed-identity-credential-for-extensible-key-management-with-azure-key-vault) |
+| Azure Key Vault Managed Hardware Security Module (HSM) | `<akv-name>.managedhsm.azure.net` | [Example H](#h-create-a-managed-identity-credential-for-extensible-key-management-with-azure-key-vault) |
+| S3-compatible object storage | - S3-compatible storage: `s3://<server_name>:<port>/`<br />- AWS S3: `s3://<bucket_name>.S3.<region>.amazonaws.com[:port]/<folder>` </br>or `s3://s3.<region>.amazonaws.com[:port]/<bucket_name>/<folder>` | [Example F](#f-create-a-credential-for-backuprestore-to-s3-compatible-storage) |
 
 #### IDENTITY **='**_identity\_name_**'**
 
@@ -129,6 +131,7 @@ The following example creates a [!INCLUDE[ssNoVersion](../../includes/ssnoversio
 
 > [!IMPORTANT]
 > The **IDENTITY** argument of **CREATE CREDENTIAL** requires the key vault name. The **SECRET** argument of **CREATE CREDENTIAL** requires the *\<Client ID>* (without hyphens) and *\<Secret>* to be passed together without a space between them.
+> Managed identities are supported with EKM, and credentials can be used with managed identities. For an example, see [Example H](#h-create-a-managed-identity-credential-for-extensible-key-management-with-azure-key-vault).
 
 In the following example, the **Client ID** (`00001111-aaaa-2222-bbbb-3333cccc4444`) is stripped of the hyphens and entered as the string `11111111222233334444555555555555` and the **Secret** is represented by the string `SECRET_DBEngine`.
 
@@ -173,12 +176,14 @@ GO
 
 ### E. Creating a credential for Managed Identity
 
-The following example creates the credential that represent Managed Identity of Azure SQL or Azure Synapse service. Password and secret are not applicable in this case.
+The following example creates the credential that represents the managed identity of the Azure SQL or Azure Synapse service. Password and secret aren't applicable in this case.
 
 ```sql
 CREATE CREDENTIAL ServiceIdentity WITH IDENTITY = 'Managed Identity';
 GO
 ```
+
+For an example of creating a credential with a managed identity for SQL Server on Azure VM, see [Example G](#g-create-a-credential-to-access-azure-blob-storage-using-a-managed-identity) and [Example H](#h-create-a-managed-identity-credential-for-extensible-key-management-with-azure-key-vault). Server-level managed identity isn't supported for Linux.
 
 ### F. Create a credential for backup/restore to S3-compatible storage
 
@@ -277,6 +282,47 @@ There are multiple approaches to successfully creating a credential for AWS S3:
     , REPLACE, RESTORE_OPTIONS = '{"s3": {"region":"us-west-2"}}'; -- REGION AS PARAMETER)
     GO
     ```
+
+### G. Create a credential to access Azure Blob Storage using a managed identity
+
+Starting with SQL Server 2022 CU17, you can use managed identities with SQL Server credentials to back up to and restore SQL Server on Azure VM databases from Azure Blob storage. For more information, see [Backup and restore to URL using managed identities](/azure/azure-sql/virtual-machines/windows/backup-restore-to-url-using-managed-identities).
+
+To create a credential with a managed identity to use with the `BACKUP` and `RESTORE` operations, use the following example:
+
+```sql
+CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<container-name>] 
+    WITH IDENTITY = 'Managed Identity';
+```
+
+[Trace flag 4675](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf4675) can be used to check credentials created with a managed identity. If the `CREATE CREDENTIAL` statement was executed without trace flag 4675 enabled, no error message is issued if the primary managed identity isn't set for the server. To troubleshoot this scenario, the credential must be deleted and recreated again once the trace flag is enabled.
+
+### H. Create a managed identity credential for Extensible Key Management with Azure Key Vault
+
+Starting with SQL Server 2022 CU17, you can also use managed identities on SQL Server on Azure VMs for Extensible Key Management (EKM) with Azure Key Vault (AKV). For more information, see [Managed Identity support for Extensible Key Management with Azure Key Vault](/azure/azure-sql/virtual-machines/windows/managed-identity-extensible-key-management).
+
+To create a managed identity credential to use with EKM with AKV, use the following example:
+
+```sql
+CREATE CREDENTIAL [<akv-name>.vault.azure.net] 
+    WITH IDENTITY = 'Managed Identity'
+    FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov
+```
+
+For example:
+
+```sql
+CREATE CREDENTIAL [contoso.vault.azure.net] -- for Azure Key Vault
+    WITH IDENTITY = 'Managed Identity'
+    FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov
+```
+
+```sql
+CREATE CREDENTIAL [contoso.managedhsm.azure.net] -- for Azure Key Vault Managed HSM
+    WITH IDENTITY = 'Managed Identity'
+    FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov
+```
+
+[Trace flag 4675](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf4675) can be used to check credentials created with a managed identity. If the `CREATE CREDENTIAL` statement was executed without trace flag 4675 enabled, no error message is issued if the primary managed identity isn't set for the server. To troubleshoot this scenario, the credential must be deleted and recreated again once the trace flag is enabled.
 
 ## Related content
 

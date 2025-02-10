@@ -226,7 +226,7 @@ To learn more, see the [documentation about listener connection timeout in SQL S
 
 Test failover of the clustered resource to validate cluster functionality:
 
-1. Connect to one of the SQL Server cluster nodes by using Remote Desktop Protocol (RDP).
+1. Connect to one of the SQL Server cluster nodes by using [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows).
 1. Open **Failover Cluster Manager**. Select **Roles**. Notice which node owns the SQL Server FCI role.
 1. Right-click the SQL Server FCI role. 
 1. Select **Move**, and then select **Best Possible Node**.

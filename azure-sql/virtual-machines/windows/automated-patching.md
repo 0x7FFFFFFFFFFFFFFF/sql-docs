@@ -32,7 +32,7 @@ Automated Patching is supported starting with SQL Server 2012 on Windows Server 
 
 Additionally, consider the following:
 
-- There are also several other ways to enable automatic patching of Azure VMs, such as [Update Management](/azure/automation/update-management/overview) or [Automatic VM guest patching](/azure/virtual-machines/automatic-vm-guest-patching). Choose only one option to automatically update your VM as overlapping tools may lead to failed updates.
+- There are also several other ways to enable automatic patching of Azure VMs, such as [Update Manager](/azure/update-manager/assessment-options) or [Automatic VM guest patching](/azure/virtual-machines/automatic-vm-guest-patching). Choose only one option to automatically update your VM as overlapping tools may lead to failed updates.
 - If you want to receive [ESU updates](/sql/sql-server/end-of-support/sql-server-extended-security-updates) without using the automated patching feature, you can use the built-in Windows Update channel.
 - For SQL Server VMs in different availability zones that participate in an Always On availability group, configure the automated patching schedule so that availability replicas in different availability zones aren't patched at the same time.
 

@@ -1,8 +1,8 @@
 ---
 title: Set up the Oracle connection type with SSRS and a Power BI report server
 description: Learn how to build a data source with the Oracle connection type in your Reporting Services or Power BI report server.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

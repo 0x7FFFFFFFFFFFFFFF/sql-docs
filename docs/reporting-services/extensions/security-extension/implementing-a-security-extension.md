@@ -1,8 +1,8 @@
 ---
 title: "Implement a security extension"
 description: Accommodate custom security by using the Reporting Services API development platform to extend the Reporting Services security system.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

@@ -2017,7 +2017,7 @@ Class RMOTestEnv
                 Or PublicationAttributes.AllowSubscriberInitiatedSnapshot
 
             ' Enable anonymous access for Subscribers that cannot 
-            ' make a direct connetion to the Publisher. 
+            ' make a direct connection to the Publisher. 
             publication.Attributes = publication.Attributes _
                 Or PublicationAttributes.AllowAnonymous
 

@@ -1,8 +1,8 @@
 ---
 title: "Deploy the SQL Server Reporting Services Report Viewer web part on a SharePoint site"
 description: For SQL Server Reporting Services, you can manually add the Report Viewer custom web part to a SharePoint product.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint

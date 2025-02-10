@@ -3,7 +3,7 @@ title: "SET SHOWPLAN_XML (Transact-SQL)"
 description: SET SHOWPLAN_XML returns detailed information about how the statements are going to be executed in the form of a well-defined XML document.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 03/01/2023
+ms.date: 01/22/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -20,13 +20,15 @@ helpviewer_keywords:
   - "estimated execution information [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
 ---
 # SET SHOWPLAN_XML (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Synapse dedicated only](../../includes/applies-to-version/sql-asdb-asdbmi-asa-dedicated-poolonly.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Synapse dedicated only](../../includes/applies-to-version/sql-asdb-asdbmi-asa-dedicated-poolonly-fabricse-fabricdw.md)]
 
 Causes [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] not to execute [!INCLUDE[tsql](../../includes/tsql-md.md)] statements. Instead, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] returns detailed information about how the statements are going to be executed in the form of a well-defined XML document.
+
+In Fabric Data Warehouse and SQL analytics endpoint, SET SHOWPLAN_XML is a preview feature.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 

@@ -17,6 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: "= azuresqldb-current || = azuresqldb-mi-current"
+ms.collection: ce-skilling-ai-copilot
 ---
 # VECTOR_DISTANCE (Transact-SQL) (Preview)
 

@@ -37,29 +37,20 @@ Set_Expression.Current
 ## Examples  
  The following example shows how to use the **Current** function inside **Generate**:  
   
- `WITH`  
-  
- `//Creates a set of tuples consisting of all Calendar Years crossjoined with`  
-  
- `//all Product Categories`  
-  
- `SET MyTuples AS CROSSJOIN(`  
-  
- `[Date].[Calendar Year].[Calendar Year].MEMBERS,`  
-  
- `[Product].[Category].[Category].MEMBERS)`  
-  
- `//Iterates through each tuple in the set and returns the name of the Calendar`  
-  
- `//Year in each tuple`  
-  
- `MEMBER MEASURES.CURRENTDEMO AS`  
-  
- `GENERATE(MyTuples, MyTuples.CURRENT.ITEM(0).NAME, ", ")`  
-  
- `SELECT MEASURES.CURRENTDEMO ON 0`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH  
+//Creates a set of tuples consisting of all Calendar Years crossjoined with  
+//all Product Categories  
+SET MyTuples AS CROSSJOIN(  
+[Date].[Calendar Year].[Calendar Year].MEMBERS,  
+[Product].[Category].[Category].MEMBERS)  
+//Iterates through each tuple in the set and returns the name of the Calendar  
+//Year in each tuple  
+MEMBER MEASURES.CURRENTDEMO AS  
+GENERATE(MyTuples, MyTuples.CURRENT.ITEM(0).NAME, ", ")  
+SELECT MEASURES.CURRENTDEMO ON 0  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

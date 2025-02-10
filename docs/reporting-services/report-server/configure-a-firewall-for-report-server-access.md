@@ -1,8 +1,8 @@
 ---
 title: "Configure a firewall for report server access"
 description: "See how to manually configure Windows Firewall to allow access to Report Server applications and published reports by opening necessary ports."
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

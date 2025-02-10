@@ -12,6 +12,9 @@ ms.topic: how-to
 
 [!INCLUDE[sqlserver-ssis](../../includes/applies-to-version/sqlserver-ssis.md)]
 
+> [!IMPORTANT]
+> Microsoft Connector for Oracle is deprecated now. Details refer to [the announcement](https://www.microsoft.com/en-us/sql-server/blog/2025/01/21/sql-server-integration-services-ssis-microsoft-connector-for-oracle-deprecation/).
+
 An Oracle Connection Manager is used to enable a package to extract data from Oracle Databases and load data into Oracle Databases.
 
 The **ConnectionManagerType** property for the Oracle Connection Manager is set to **ORACLE**.
@@ -46,7 +49,7 @@ Input the name of the Oracle database you work with. The TNS service name could 
 
 - EzConnect format: [//]host[:port][/service_name]
 
-To use a tnsnames.ora file, you may need to add a system environment variable to the machine running the SSIS package. The TNS_Admin environment variable specifies the location of the folder that contains the tnsnames.ora file. This will be required if you have not installed an Oracle client. To add the environment variable in Windows 10, Windows 11 or Windows Server 2022: 
+To use a tnsnames.ora file, you may need to add a system environment variable to the machine running the SSIS package. The TNS_Admin environment variable specifies the location of the folder that contains the tnsnames.ora file. This is required if you haven't installed an Oracle client. To add the environment variable in Windows 10, Windows 11 or Windows Server 2022: 
 
 1. Right-click the Start icon and select **System**. 
 2. In the Settings window, select **Advanced System Settings**. 
@@ -69,15 +72,15 @@ Select one of the below options:
 
 > [!NOTE]
 >
->Windows Authentication is not supported for Oracle Server 18c.
+>Windows Authentication isn't supported for Oracle Server 18c.
 
 **Test Connection**
 
-Click **Test Connection** to verify if the information provided is correct. You will receive the message **Test connection succeeded**, if the information entered is able to connect to the Oracle database.
+Click **Test Connection** to verify if the information provided is correct. You'll receive the message **Test connection succeeded**, if the information entered is able to connect to the Oracle database.
 
 > [!NOTE]
 >
-> To specify **ConnectionString** directly, here is a sample with Oracle Authentication:
+> To specify **ConnectionString** directly, here's a sample with Oracle Authentication:
 >
 > `SERVER=\<YourOracleServerName or EzConnect format>;USERNAME=\<YourUserName>;PWD=\<YourPassword>;WINAUTH=0`
 
@@ -91,9 +94,9 @@ There are following custom connection manager properties in the Oracle connectio
 
 - **OracleHome64**: Specify 64-bit Oracle Home name or folder to be used by the connector when running in 64-bit mode. (Optional)
 
-Custom properties are not listed in Oracle Connection Manager Editor. To set the **OracleHome** and **OracleHome64** properties:
+Custom properties aren't listed in Oracle Connection Manager Editor. To set the **OracleHome** and **OracleHome64** properties:
 
-1. From the Connection Manager area, right-click the Oracle connection manager you are working with and select **Properties**.
+1. From the Connection Manager area, right-click the Oracle connection manager you're working with and select **Properties**.
 
 2. In the **Properties** pane, set the **OracleHome** or **OracleHome64** property with the full path to the Oracle home directory.
 

@@ -1,8 +1,8 @@
 ---
 title: "Report Parts (Report Builder)"
 description: Create tables, matrices, charts, and images to be published as separate report parts available so you can reuse them in other paginated reports in Report Builder.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

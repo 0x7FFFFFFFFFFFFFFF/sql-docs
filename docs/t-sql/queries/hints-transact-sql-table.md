@@ -4,7 +4,7 @@ description: Table hints override the default behavior of the query optimizer du
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 12/16/2024
+ms.date: 01/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -432,7 +432,7 @@ The query optimizer doesn't consider an index hint if the `SET` options don't ha
 
 ## Use NOEXPAND
 
-`NOEXPAND` applies only to *indexed views*. An indexed view is a view with a unique clustered index created on it. If a query contains references to columns that are present both in an indexed view and base tables, and the query optimizer determines that using the indexed view provides the best method for executing the query, the query optimizer uses the index on the view. This functionality is called *indexed view matching*. Before [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] with Service Pack 1, automatic use of an indexed view by the query optimizer is supported only in specific editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. In [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] with Service Pack 1 and later versions, all editions support automatic use of an indexed view. [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] also support automatic use of indexed views without specifying the `NOEXPAND` hint.
+`NOEXPAND` applies only to *indexed views*. An indexed view is a view with a unique clustered index created on it. If a query contains references to columns that are present both in an indexed view and base tables, and the query optimizer determines that using the indexed view provides the best method for executing the query, the query optimizer uses the index on the view. This functionality is called *indexed view matching*. Automatic use of an indexed view by the query optimizer is supported only in specific editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] also support automatic use of indexed views without specifying the `NOEXPAND` hint.
 
 For more information, see [Query processing architecture guide](../../relational-databases/query-processing-architecture-guide.md#use-hints-with-indexed-views).
 

@@ -21,12 +21,22 @@ This article briefly overviews the tools available to migrate to SQL Server and 
 
 ## Azure Database Migration Service (DMS)
 
-Azure Database Migration Service enables seamless migrations from multiple database sources to Azure Data platforms with minimal downtime. The Database Migration Service provides a resilient and reliable migration pipeline that requires minimal user involvement during the overall migration process.
+Azure Database Migration Service enables seamless migrations from SQL Server database sources to Azure SQL offerings with minimal downtime. The Database Migration Service provides a resilient and reliable migration pipeline that requires minimal user involvement during the overall migration process.
 
-Use the Database Migration Service in the following scenarios:
+With Azure Database Migration Service currently we offer two versions:
 
-- Migrate both databases to Azure SQL, especially at scale, and for extensive (in terms of number and size of databases) migrations.
-- Migrate databases to Azure Database.
+1. Azure Database Migration Service can be accessed via [Azure SQL Migration extension for Azure Data Studio](/azure/dms/migration-using-azure-data-studio), [Azure portal](https://portal.azure.com/#create/Microsoft.AzureDMS), PowerShell and Azure CLI.
+
+  Use the latest Azure Database Migration Service in the following scenarios:
+
+  - Migrate both databases to Azure SQL, especially at scale, and for extensive (in terms of number and size of databases) migrations.
+  - Migrate databases to Azure Database.
+
+2. Azure Database Migration Service (classic) can be accessed via Azure portal, PowerShell and Azure CLI. It is an older version of the Azure Database Migration Service that offers database modernization to Azure and support scenarios like - PostgreSQL, MySQL, and MongoDB.
+
+> [!NOTE]
+> DMS(classic) - SQL scenario are on the deprecation path. Refer [here](https://azure.microsoft.com/updates?id=retirement-azure-database-migration-service-classic-sql-server-scenarios-deprecation)
+
 
 For more information, visit [Azure Database Migration Service documentation](/azure/dms/).
 
@@ -44,25 +54,6 @@ Use Azure Migrate in the following scenarios:
 
 For more information, visit [Azure Migrate documentation](/azure/migrate/).
 
-## Azure SQL migration extension for Azure Data Studio
-
-Azure SQL Migration Extension for Azure Data Studio is a powerful tool that simplifies the process of migrating SQL Server databases to Azure SQL Database. This extension is designed to work with Azure Data Studio, a cross-platform database development tool that enables developers to work with SQL Server, Azure SQL Database, and other data platforms. The extension provides a streamlined user interface that guides users through the migration process, offering several options for customization and optimization.
-
-Use Azure Migrate in the following scenarios:
-
-- Easily migrate SQL Server databases to Azure SQL Database without the need for complex scripts or manual steps.
-- Migrate small or large databases.
-
-## Database Experimentation Assistant (DEA)
-
-Database Experimentation Assistant (DEA) is an experimentation solution for SQL Server upgrades. DEA can help you evaluate a targeted version of SQL Server for a specific workload. Customers upgrading from SQL Server 2005 and later versions, can use the analysis metrics that the tool provides.
-
-Use the Database Experimentation Assistant in the following scenario:
-
-- Capture the workload of a source SQL Server environment and evaluate the workload on a source SQL Server to prepare for migration.
-- Identify compatibility errors and possible degraded queries for your SQL Server migration scenario.
-
-For more information, visit [Database Experimentation Assistant documentation](../../dea/database-experimentation-assistant-overview.md).
 
 ## Data Migration Assistant (DMA)
 
@@ -91,16 +82,16 @@ For more information, visit [SQL Server Migration Assistant documentation](../..
 
 Use the following chart to compare capabilities of the SQL migration tools:
 
-| Capability | Azure Migrate | DMA | SSMA | DMS | DEA | Azure Data Studio extension |
+| Capability | Azure Migrate | DMA | SSMA | DMS(classic) | Azure Data Studio extension (DMS) |
 | ---------- | ------------- | --- | ---- | --- | --- | ----------------------------|
-| Discover and assess SQL data estate | At scale | Yes | No | No | No | Yes |
-| Migrate SQL Server objects to SQL Database or SQL Managed Instance | No | Yes | No | Yes | No | Yes |
-| Lift and shift SQL Server to SQL Server on Azure VM | Yes | No | No | No | No | No |
-| Migrate (and/or upgrade) SQL Server to SQL Server on Azure VM | No | Yes | No | No | No | No |
-| Migrate non-SQL objects<br />(Oracle, Access, DB2, and so on) | No | No | Yes | No | No | No |
-| Migrate open source databases<br />(MySQL, PostgreSQL, MariaDB, and so on) | No | No | No | Yes | No | No |
-| Compare workloads between source and target SQL Server | No | No | No | No | Yes | Yes |
+| Discover and assess SQL data estate | At scale | Yes | No | No | Yes |
+| Migrate SQL Server objects to SQL Database or SQL Managed Instance | No | Yes | No | NA (deprecated) | Yes |
+| Lift and shift SQL Server to SQL Server on Azure VM | Yes | No | No | No | No |
+| Migrate (and/or upgrade) SQL Server to SQL Server on Azure VM | No | Yes | No | No | Yes (Migrate only) |
+| Migrate non-SQL objects<br />(Oracle, Access, DB2, and so on) | No | No | Yes | No | No |
+| Migrate open source databases<br />(MySQL, PostgreSQL, MariaDB, and so on) | No | No | No | Yes | No |
 
 ## Next steps
 
 - Get started with migrating to [SQL Server](../../ssma/sql-server-migration-assistant.md) from another database engine, migrate to [Azure SQL](/azure/azure-sql/migration-guides/), or assess your SQL data estate with [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment).
+on

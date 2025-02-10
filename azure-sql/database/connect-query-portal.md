@@ -5,7 +5,7 @@ description: Learn how to connect to an Azure SQL database and use the Azure por
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ivujic, mathoma
-ms.date: 04/15/2024
+ms.date: 01/15/2025
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: quickstart
@@ -25,27 +25,21 @@ monikerRange: "=azuresql||=azuresql-db"
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-The Azure SQL Database [query editor](query-editor.md) (preview) is a tool to run SQL queries against Azure SQL Database in the Azure portal. In this quickstart, you connect to an Azure SQL database in the Azure portal and use query editor to run Transact-SQL (T-SQL) queries.
+In this quickstart, connect to an Azure SQL database in the Azure portal and use query editor to run Transact-SQL (T-SQL) queries. The Azure SQL Database query editor (preview) is a tool to run SQL queries against Azure SQL Database in the Azure portal. 
 
-- If you don't already have an Azure SQL Database created, visit [Quickstart: Create a single database](single-database-create-quickstart.md). Look for the option to use your offer to [try Azure SQL Database for free (preview)](free-offer.md).
+- If you don't already have an Azure SQL Database created, see [Quickstart: Create a single database](single-database-create-quickstart.md). Look for the option to use your offer to [Deploy Azure SQL Database for free](free-offer.md).
 
 ## Prerequisites
 
 ### Authentication
 
-You need an account with permissions to connect to the database and query editor. You can use SQL authentication or [Microsoft Entra ID](/entra/fundamentals/new-name)) authentication (recommended). For more information on creating and managing logins in Azure SQL database, visit [Authorize database access](logins-create-manage.md?view=azuresql-db&preserve-view=true).
-
-For more information about public network access, TLS version settings, and connection policy, see [Azure SQL connectivity settings](connectivity-settings.md?view=azuresql-db&preserve-view=true).
+You need an account with permissions to connect to the database and query editor. You can use SQL authentication or Microsoft Entra authentication (recommended). For more information on creating and managing logins in Azure SQL database, see [Authorize database access](logins-create-manage.md?view=azuresql-db&preserve-view=true).
 
 ### Firewall rule
 
-For public connections to the query editor, you need to [add your outbound IP address to the server's allowed firewall rules](firewall-create-server-level-portal-quickstart.md?view=azuresql-db&preserve-view=true) to access your databases.
+If you receive this error: *Cannot open server 'server-name' requested by the login. Client with IP address 'xx.xx.xx.xx' is not allowed to access the server. To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range. It may take up to five minutes for this change to take effect.*
 
-If you receive this error, use the following steps to resolve:
-
-   `Cannot open server 'server-name' requested by the login. Client with IP address 'xx.xx.xx.xx' is not allowed to access the server. To enable access, use the Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range. It may take up to five minutes for this change to take effect.`
-
-Follow the quick steps below, or for more information, see [add your outbound IP address to the server's allowed firewall rules](firewall-create-server-level-portal-quickstart.md).
+Follow these quick steps: 
 
 1. Return to the **Overview** page of your SQL database.
 1. Select the link for the Azure SQL logical server next to **Server name**.
@@ -57,7 +51,9 @@ Follow the quick steps below, or for more information, see [add your outbound IP
     - If necessary, identify your IPv4 address and provide it in the **Start** and **End** fields.
 1. Select **Save**.
 
+For more detail, see [add your outbound IP address to the server's allowed firewall rules](firewall-create-server-level-portal-quickstart.md?view=azuresql-db&preserve-view=true).
 For troubleshooting, see [Connection error troubleshooting](query-editor.md#connection-considerations).
+For more information about public network access, TLS version settings, and connection policy, see [Azure SQL connectivity settings](connectivity-settings.md?view=azuresql-db&preserve-view=true).
 
 ## Connect to the query editor
 
@@ -97,7 +93,7 @@ SELECT SYSDATETIMEOFFSET(), DB_NAME(), ORIGINAL_LOGIN();
 
 ### Query the AdventureWorksLT sample database
 
-This portion of quickstart uses the `AdventureWorksLT` sample database in an Azure SQL database. If you don't have one already, you can [create a database using sample data in Azure SQL Database](single-database-create-quickstart.md). Look for the option to use your offer to [try Azure SQL Database for free (preview)](free-offer.md).
+This portion of quickstart uses the `AdventureWorksLT` sample database in an Azure SQL database. If you don't have one already, you can [create a database using sample data in Azure SQL Database](single-database-create-quickstart.md). Look for the option to use your offer to [Deploy Azure SQL Database for free](free-offer.md).
 
 On the **Query editor (preview)** page, run the following example queries against your `AdventureWorksLT` sample database.
 

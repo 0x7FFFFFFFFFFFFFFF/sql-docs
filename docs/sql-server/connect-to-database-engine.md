@@ -3,7 +3,7 @@ title: Connect to the SQL Server Database Engine
 description: Learn how to connect to the Database Engine used by SQL Server and Azure SQL services
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/07/2023
+ms.date: 02/07/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -18,7 +18,6 @@ This article provides a high level overview for connecting to the [!INCLUDE [ssd
 - [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)]
 - [!INCLUDE [ssazurepdw_md](../includes/ssazurepdw_md.md)]
 - [!INCLUDE [ssazuresynapse-md](../includes/ssazuresynapse-md.md)]
-- [!INCLUDE [ssazurede-md](../includes/ssazurede-md.md)]
 
 ## Prerequisites
 
@@ -29,9 +28,9 @@ The following table describes some of the more common client tools.
 | Client tool | Type | Operating system |
 | --- | --- | --- |
 | **[SQL Server Management Studio](../ssms/sql-server-management-studio-ssms.md)** (SSMS) | GUI | Windows |
-| **[Azure Data Studio](/azure-data-studio/what-is-azure-data-studio)** (ADS) | GUI | Windows, macOS, Linux |
-| **[bcp](../tools/bcp-utility.md)** | CLI | Windows, macOS, Linux |
+| **[MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)** | GUI | Windows, macOS, Linux |
 | **[sqlcmd](../tools/sqlcmd/sqlcmd-utility.md)** | CLI | Windows, macOS, Linux |
+| **[bcp](../tools/bcp-utility.md)** | CLI | Windows, macOS, Linux |
 
 > [!NOTE]  
 > Client tools include at least one client library. For more information about connecting with a client library, see [Connection modules for Microsoft SQL Database](../connect/sql-connection-libraries.md).
@@ -44,7 +43,7 @@ When you connect to the [!INCLUDE [ssde-md](../includes/ssde-md.md)], you must p
 [<protocol>:]<instance>[,<port>]
 ```
 
-The protocol and port are optional because they have default values. Depending on the client tool and client library, they might be skipped.
+The protocol and port are optional because they have default values. Depending on the client tool and client library, they can be skipped.
 
 > [!NOTE]  
 > If you use a custom TCP port for connecting to the [!INCLUDE [ssde-md](../includes/ssde-md.md)], you must separate it with a comma (`,`), because the colon (`:`) is used to specify the protocol.
@@ -52,14 +51,14 @@ The protocol and port are optional because they have default values. Depending o
 | Setting | Values | Default | Details |
 | --- | --- | --- | --- |
 | **Protocol** | `tcp` (TCP/IP), `np` (named pipes), or `lpc` (shared memory). | `np` is the default when connecting to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].<br /><br />`tcp` is the default when connecting to Azure SQL services. | **Protocol** is optional, and is frequently excluded when connecting to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on the same computer as the client tool.<br /><br />For more information, see [Network protocol considerations](#network-protocol-considerations) in the next section. |
-| **Instance** | The name of the server or instance. For example, `MyServer` or `MyServer\MyInstance`. | `localhost` | If the [!INCLUDE [ssde-md](../includes/ssde-md.md)] is located on the same computer as the client tool, you may be able to connect using `localhost`, `127.0.0.1`, or even `.` (a single period).<br/><br/>If you're connecting to a named instance, you must specify the server name and the instance name, separated by a slash. For example, `MyServer\MyInstance`. A named instance on the local machine may be specified by `.\MyInstance`. [!INCLUDE [ssexpress-md](../includes/ssexpress-md.md)] uses `MyServer\SQLEXPRESS`. |
-| **Port** | Any TCP port. | `1433` | The default TCP port for connecting to the default instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is `1433`. However, your infrastructure team may configure custom ports.<br /><br />[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows, including [!INCLUDE [ssexpress-md](../includes/ssexpress-md.md)] edition, can be configured as a named instance and may also have a custom port.<br /><br />For connecting to Azure SQL services, see the [Connect to Azure SQL](#connect-to-azure-sql) section.<br /><br />For more information about custom ports with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see [SQL Server Configuration Manager](../relational-databases/sql-server-configuration-manager.md). |
+| **Instance** | The name of the server or instance. For example, `MyServer` or `MyServer\MyInstance`. | `localhost` | If the [!INCLUDE [ssde-md](../includes/ssde-md.md)] is located on the same computer as the client tool, you might be able to connect using `localhost`, `127.0.0.1`, or even `.` (a single period).<br /><br />If you're connecting to a named instance, you must specify the server name and the instance name, separated by a slash. For example, `MyServer\MyInstance`. A named instance on the local machine is specified by `.\MyInstance`. [!INCLUDE [ssexpress-md](../includes/ssexpress-md.md)] uses `MyServer\SQLEXPRESS`. |
+| **Port** | Any TCP port. | `1433` | The default TCP port for connecting to the default instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is `1433`. However, your infrastructure team might configure custom ports.<br /><br />[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows, including [!INCLUDE [ssexpress-md](../includes/ssexpress-md.md)] edition, can be configured as a named instance and might also have a custom port.<br /><br />For connecting to Azure SQL services, see the [Connect to Azure SQL](#connect-to-azure-sql) section.<br /><br />For more information about custom ports with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see [SQL Server Configuration Manager](../relational-databases/sql-server-configuration-manager.md). |
 
 ## Network protocol considerations
 
 For [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows, when you connect to an instance on the same machine as the client tool, and depending on which edition is installed, the default protocol can be configured with multiple protocols, including named pipes (`np`), TCP/IP (`tcp`), and shared memory (`lpc`). Use the shared memory protocol for troubleshooting when you suspect the other protocols are configured incorrectly.
 
-If you connect to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] over a TCP/IP network, make sure that TCP/IP is enabled on the server as well. TCP/IP may be disabled by default on installations of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. For more information, see [Default SQL Server Network Protocol Configuration](../database-engine/configure-windows/default-sql-server-network-protocol-configuration.md#default-configuration).
+If you connect to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] over a TCP/IP network, make sure that TCP/IP is enabled on the server as well. TCP/IP might be disabled by default on installations of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. For more information, see [Default SQL Server Network Protocol Configuration](../database-engine/configure-windows/default-sql-server-network-protocol-configuration.md#default-configuration).
 
 Connections to Azure SQL services, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, and [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in containers, all use TCP/IP.
 
@@ -165,6 +164,26 @@ In this example, the named instance is called `MyInstance`. Make sure the [!INCL
 - `tcp:MyServer\MyInstance`
 - `tcp:192.10.1.128\MyInstance`
 
+<a id="tsql"></a>
+
+## Run a Transact-SQL query
+
+Once you connect successfully to the [!INCLUDE [ssde-md](../includes/ssde-md.md)] using a client tool, you can execute a [!INCLUDE [tsql-md](../includes/tsql-md.md)] (T-SQL) query or script.
+
+> [!TIP]  
+> In SQL Server Management Studio and Visual Studio Code, paste or type the query into a new query window.
+
+For more information about running T-SQL queries in client tools, see:
+
+- [SQL Server Management Studio (SSMS)](../ssms/quickstarts/ssms-connect-query-sql-server.md)
+- [MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md)
+- [sqlcmd utility](../tools/sqlcmd/sqlcmd-run-transact-sql-script-files.md)
+- [Azure portal query editor (Azure SQL Database)](/azure/azure-sql/database/query-editor)
+- [SQL query editor (SQL database in Microsoft Fabric)](/fabric/database/sql/query-editor)
+
+> [!NOTE]  
+> Some tools require a *batch separator* to know that a query is ready to be executed. For example, you might need to put the `GO` separator at the end of a T-SQL query in **sqlcmd** to make sure that the T-SQL query runs.
+
 ## Get help
 
 - [Create a valid connection string using the shared memory protocol](../tools/configuration-manager/creating-a-valid-connection-string-using-shared-memory-protocol.md)
@@ -175,6 +194,6 @@ In this example, the named instance is called `MyInstance`. Make sure the [!INCL
 ## Related content
 
 - [What is SQL Server Management Studio (SSMS)?](../ssms/sql-server-management-studio-ssms.md)
-- [What is Azure Data Studio?](/azure-data-studio/what-is-azure-data-studio)
+- [What is the MSSQL extension for Visual Studio Code?](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)
 - [Configure Database Engine Instances (SQL Server)](../database-engine/configure-windows/configure-database-engine-instances-sql-server.md)
 - [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md)

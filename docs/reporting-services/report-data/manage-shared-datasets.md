@@ -1,8 +1,8 @@
 ---
 title: "Manage Shared Datasets"
 description: Learn how to manage shared datasets in Reporting Services so you can share a query to help provide a consistent set of data for multiple reports.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

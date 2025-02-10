@@ -31,7 +31,7 @@ Azure SQL Database is a relational database-as-a-service (DBaaS) in the Microsof
     - You can also follow this same tutorial using [Azure Data Studio (ADS)](design-first-database-azure-data-studio.md).
 - [BCP and SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433) (latest version).
 - If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-- If you don't already have an Azure SQL Database created, visit [Quickstart: Create a single database](single-database-create-quickstart.md). Look for the option to use your offer to [try Azure SQL Database for free (preview)](free-offer.md).
+- If you don't already have an Azure SQL Database created, visit [Quickstart: Create a single database](single-database-create-quickstart.md). Look for the option to use your offer to [Deploy Azure SQL Database for free](free-offer.md).
 
 ## Sign in to the Azure portal
 
@@ -87,7 +87,7 @@ Use [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) 
    | **Login** | The server admin account | If using SQL Server Authentication, the account that you specified when you created the server. |
    | **Password** | The password for your server admin account | If using SQL Server Authentication, the password that you specified when you created the server. |
 
-   :::image type="content" source="media\design-first-database-tutorial\connect.png" alt-text="Screenshot of the connect to an Azure SQL Database logical server server dialog box in SQL Server Management Studio (SSMS).":::
+   :::image type="content" source="media\design-first-database-tutorial\connect.png" alt-text="Screenshot of the Connect to Server dialog box in SQL Server Management Studio (SSMS).":::
 
 1. Select **Options** in the **Connect to server** dialog box. In the **Connect to database** section, enter *yourDatabase* to connect to this database.
 
@@ -248,7 +248,7 @@ This query joins all four tables and finds the courses in which 'Noe Coleman' ha
 ## Related content
 
 - [Tutorial: Design a relational database in Azure SQL Database using Azure Data Studio (ADS)](design-first-database-azure-data-studio.md)
-- [Try Azure SQL Database for free (preview)](free-offer.md)
+- [Deploy Azure SQL Database for free](free-offer.md)
 - [What's new in Azure SQL Database?](doc-changes-updates-release-notes-whats-new.md)
 - [Configure and manage content reference - Azure SQL Database](how-to-content-reference-guide.md)
 - [Plan and manage costs for Azure SQL Database](cost-management.md)

@@ -4,7 +4,7 @@ description: Release notes for SQL Server Management Studio 21 Preview (SSMS).
 author: erinstellato-ms
 ms.author: erinstellato
 ms.reviewer: maghan, randolphwest
-ms.date: 12/18/2024
+ms.date: 01/22/2025
 ms.service: sql
 ms.subservice: ssms
 ms.topic: whats-new
@@ -23,6 +23,40 @@ This article details updates, improvements, and bug fixes for the current and pr
 **[Download SQL Server Management Studio 21 Preview](https://aka.ms/ssms/21/preview/vs_SSMS.exe)**
 
 [!INCLUDE [ssms-21-md](../includes/ssms-21-md.md)] is the latest preview release of SSMS. If you need a previous version of SSMS, see [previous SSMS releases](../release-notes-ssms.md#previous-ssms-releases).
+
+
+### 21.0 Preview 3
+
+- Release number: 21.0 Preview 3
+- Build number: 21.0.83
+- Release date: January 22, 2025
+
+#### What's new in 21.0 Preview 3
+
+| Feature | Details |
+| --- | --- |
+| Always Encrypted | Introduced online encryption support in the Always Encrypted Wizard, which enables incremental copying, encrypting, decrypting, or re-encrypting of data. See [Configure column encryption using Always Encrypted Wizard in SSMS 21 Preview](../../relational-databases/security/encryption/always-encrypted-wizard-ssms-21.md). |
+| Azure SQL Managed Instance | Introduced new validation steps in the Failover Readiness Assessment dialog to assess the health status of the link before failover. |
+| Configuration | The default value for a firewall rule name created in SSMS uses the format `ClientIPAddress_YYYY-MM-DD_HH-MM-SS`. |
+| Find | Reinstated the **Quick Find** option, accessed through **Edit** > **Find and Replace** > **Quick Find**, or with **CTRL + F**. See [SSMS 21.0 Preview 1.0 - "Quick Find" missing, instead "Find in files" pops up](https://feedback.azure.com/d365community/idea/76326fd1-57b6-ef11-95f6-000d3ae2b698). |	
+| Installation | Updated the default Code Snippets folder location to be major-version specific (`%USERPROFILE%\Documents\SQL Server Management Studio 21\Code Snippets\SQL\My Code Snippets`). |
+| Query Store | Added theme support for Plan Id box and toolbar dropdown lists in Query Store reports. |
+| Intellisense | Added support for VECTOR data type. |
+| Visual Studio | Updated to Visual Studio 17.13 Preview 3. |
+
+#### Bug fixes in 21.0 Preview 3
+
+| Feature | Details |
+| --- | --- |
+| Always Encrypted | Addressed an issue where the default constraint was removed after performing in-place encryption in the Always Encrypted Wizard. |
+| Connection | Updated the database Connection Properties dialog to show the correct authentication  method. |
+| Intellisense | Disabling IntelliSense by unchecking **Enable IntelliSense** in **Tools** > **Options** > **Text Editor** > **Transact-SQL** > **IntelliSense** now persists between restarts of SSMS. See [Intellisense enabled for SSMS 21 despite being off in the settings](https://feedback.azure.com/d365community/idea/d7b6fb21-8aa3-ef11-95f6-000d3a01397d). |
+| License | Updated the "Microsoft Software License Terms" link in the Visual Studio Install splash screen to direct to the SSMS 21 license. |
+| Query Plans | Updated operator Property dialog to correctly display Columns With Stale Statistics warning. |
+| Query Store | Improved readability for Plan Id text in the Top Resource Consuming Queries report for High Contrast Mode. |
+| Security | Added the ability to assign a new user to a database login from the user properties dialog. |
+| Security | Corrected size of "Add" button on the Login Properties dialog. |
+| SQL Agent | Removed unsupported SQL Agent features for Azure SQL Managed Instance including targets, multi-server administration, and Operator pager options. |
 
 ### 21.0 Preview 2.1
 
@@ -51,7 +85,6 @@ This article details updates, improvements, and bug fixes for the current and pr
 | Always Encrypted | Improved performance of the New Column Master Key dialog. |
 | Azure Authentication | Introduced the ability to select a tenant within an Azure subscription. Tenant selection is available in dialogs such as creating a new firewall rule, using the Azure Storage browser, and selecting a container for backup to, or restore from, URL. |
 | Connection | Updated strict encryption label to **Strict (Minimum SQL 2022 or Azure SQL)** in the **Encryption** dropdown list on the connection dialog. |
-| Designers | Added support for SQL Server 2025 to Table Designer. |
 | Query Editor | Intellisense errors are updated to map to the IntelliSense dropdown list in the Error List pane. The Error List pane is available from the **View** > **Error List** menu or by selecting the error icon in the file health indicator, located in the bottom left of the Query Editor toolbar. |
 | Settings | Changed default startup option for SSMS back to **Open Object Explorer**, within **Tools** > **Options** > **Startup**. |
 | Settings | Removed the **Preview** entry from the **Tools** > **Options Experience (requires restart)** menu, as SSMS doesn't currently support Preview Unified settings. |

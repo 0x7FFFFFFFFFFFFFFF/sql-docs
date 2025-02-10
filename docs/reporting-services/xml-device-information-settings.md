@@ -1,8 +1,8 @@
 ---
 title: "XML device information settings"
 description: Learn details about the various device information settings you can use to render in XML format.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

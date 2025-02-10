@@ -1,26 +1,29 @@
 ---
-title: "SQL Server Connector maintenance & troubleshooting"
+title: "SQL Server Connector Maintenance & Troubleshooting"
 description: Learn about maintenance instructions and common troubleshooting steps for the SQL Server Connector.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: vanto, maghan
-ms.date: 09/24/2024
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
 helpviewer_keywords:
   - "SQL Server Connector, appendix, EKM"
+ms.custom: references_regions
 ---
 
 # SQL Server Connector Maintenance & Troubleshooting
 
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
 
-  Supplemental information about the [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] Connector is provided in this article. For more information about the [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] connector, see [Extensible Key Management Using Azure Key Vault (SQL Server)](../../../relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server.md), [Setup Steps for Extensible Key Management Using the Azure Key Vault](../../../relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault.md),  and [Use SQL Server Connector with SQL Encryption Features](../../../relational-databases/security/encryption/use-sql-server-connector-with-sql-encryption-features.md).
+  Supplemental information about the [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] Connector is provided in this article. For more information about the [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] connector, see [Extensible Key Management Using Azure Key Vault (SQL Server)](extensible-key-management-using-azure-key-vault-sql-server.md), [Set up SQL Server TDE Extensible Key Management by using Azure Key Vault](setup-steps-for-extensible-key-management-using-the-azure-key-vault.md),  and [Use SQL Server Connector with SQL Encryption Features](use-sql-server-connector-with-sql-encryption-features.md).
 
 [!INCLUDE [entra-id](../../../includes/entra-id-hard-coded.md)]
 
-## <a id="AppendixA"></a> A. Maintenance Instructions for [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] Connector
+<a id="AppendixA"></a>
+
+## A. Maintenance Instructions for [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] Connector
 
 ### Key Rotation
 
@@ -32,51 +35,57 @@ Versions 1.0.0.440 and older have been replaced and are no longer supported in p
 
 ### Upgrade
 
-1. Stop SQL Server service using SQL Server Configuration Manager
-1. Uninstall the old version using **Control Panel\Programs\Programs and Features**
+1. Stop SQL Server service using **SQL Server Configuration Manager**.
+1. Uninstall the old version using **Control Panel** > **Programs** > **Programs and Features**.
     1. Application name: SQL Server Connector for Microsoft Azure Key Vault
     1. Version: 15.0.300.96 (or older)
-    1. DLL file date: 01/30/2018 (or older)
-1. Install (upgrade) new SQL Server Connector for Microsoft Azure Key Vault
+    1. DLL file date: January 30 2018 (or older)
+1. Install (upgrade) new SQL Server Connector for Microsoft Azure Key Vault.
     1. Version: 15.0.2000.440
-    1. DLL file date: 09/11/2020
-1. Start SQL Server service
-1. Test encrypted databases are accessible
+    1. DLL file date: November 9 2024
+1. Start SQL Server service.
+1. Test encrypted databases are accessible.
 
 ### Rollback
 
-1. Stop SQL Server service using SQL Server Configuration Manager
+1. Stop SQL Server service using **SQL Server Configuration Manager**.
 
-1. Uninstall the new version using **Control Panel\Programs\Programs and Features**
+1. Uninstall the new version using **Control Panel** > **Programs** > **Programs and Features**.
     1. Application name: SQL Server Connector for Microsoft Azure Key Vault
     1. Version: 15.0.2000.440
-    1. DLL file date: 11/24/2020
+    1. DLL file date: November 9 2024
 
-1. Install old version of SQL Server Connector for Microsoft Azure Key Vault
+1. Install old version of SQL Server Connector for Microsoft Azure Key Vault.
     1. Version: 15.0.300.96
-    1. DLL file date: 01/30/2018
-1. Start SQL Server service
+    1. DLL file date: January 30 2018
+1. Start SQL Server service.
 
-1. Check that the databases using TDE are accessible
+1. Check that the databases using TDE are accessible.
 
-1. After validating that the update works, you can delete the old [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] Connector folder (if you chose to rename it instead of uninstalling in Step 3)
+1. After validating that the update works, you can delete the old [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] **Connector** folder (if you chose to rename it instead of uninstalling in Step 3).
 
 ### Older versions of the SQL Server Connector
 
 Deep links to older versions of the SQL Server Connector
 
-- Current: [1.0.5.0 (version 15.0.2000.440) – File date November 24, 2020](https://download.microsoft.com/download/8/0/9/809494f2-bac9-4388-ad07-7eaf9745d77b/1033_15.0.2000.440/SQLServerConnectorforMicrosoftAzureKeyVault.msi)
+- Current: [1.0.5.0 (version 15.0.2000.440) – File date November 09, 2024](https://www.microsoft.com/download/details.aspx?id=45344)
+- [1.0.5.0 (version 15.0.2000.440) – File date November 24, 2020](https://download.microsoft.com/download/8/0/9/809494f2-bac9-4388-ad07-7eaf9745d77b/1033_15.0.2000.440/SQLServerConnectorforMicrosoftAzureKeyVault.msi)
 - [1.0.5.0 (version 15.0.300.96) – File date January 30, 2018](https://download.microsoft.com/download/8/0/9/809494f2-bac9-4388-ad07-7eaf9745d77b/SQL%20Server%20Connector%20for%20Microsoft%20Azure%20Key%20Vault%201.0.5.0.msi)
 - [1.0.4.0: (version 13.0.811.168)](https://download.microsoft.com/download/8/0/9/809494f2-bac9-4388-ad07-7eaf9745d77b/SQL%20Server%20Connector%20for%20Microsoft%20Azure%20Key%20Vault%201.0.4.0.msi)
 
 ### Rolling the [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] service principal
 
-[!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] uses service principals created in Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) as credentials to access the Key Vault. The service principal has a Client ID and Authentication Key. A [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] credential is set up with the **VaultName**, **Client ID**, and **Authentication Key**. The **Authentication Key** is valid for a certain period of time (one or two years). Before the time period expires a new key must be generated in Microsoft Entra ID for the service principal. Then the credential has to be changed in [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. [!INCLUDE [ssManStudio](../../../includes/ssmanstudio-md.md)] maintains a cache for the credential in the current session, so when a credential is changed, [!INCLUDE [ssManStudio](../../../includes/ssmanstudio-md.md)] should be restarted.
+[!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] uses service principals created in Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) as credentials to access the Key Vault. The service principal has a Client ID and Authentication Key. A [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] credential is set up with the **VaultName**, **Client ID**, and **Authentication Key**. The **Authentication Key** is valid for a certain period of time (one or two years). Before the time period expires, a new key must be generated in Microsoft Entra ID for the service principal. Then the credential has to be changed in [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. [!INCLUDE [ssManStudio](../../../includes/ssmanstudio-md.md)] maintains a cache for the credential in the current session, so when a credential is changed, [!INCLUDE [ssManStudio](../../../includes/ssmanstudio-md.md)] should be restarted.
+
+### Managed Identity support for SQL Server on Azure VM
+
+Starting with SQL Server 2022 Cumulative Update 17 (CU17), Microsoft Entra managed identities are supported for Extensible Key Management (EKM) with Azure Key Vault (AKV) and Managed Hardware Security Modules (HSM) on SQL Server on Azure VMs (Windows only). For more information, see [Managed Identity support for Extensible Key Management with Azure Key Vault](/azure/azure-sql/virtual-machines/windows/managed-identity-extensible-key-management). To use managed identities with the SQL Server Connector, the connector version must be 1.0.5.0 November 2024 or later. Download the latest version from the [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45344).
 
 ### Key Backup and Recovery
 
 The Key vault should be regularly backed up. If an asymmetric key in the vault is lost, it can be restored from backup. The key must be restored using the same name as before, which the Restore PowerShell command does (see below steps).  
-If the vault has been lost, you'll need to recreate a vault and restore the asymmetric key to the vault using the same name as before. The vault name can be different (or the same as before). Set the access permissions on the new vault to grant to the SQL Server service principal the access that is needed for the SQL Server encryption scenarios, and then adjust the SQL Server credential so that the new vault name is reflected.
+
+If the vault has been lost, recreate a vault and restore the asymmetric key to the vault using the same name as before. The vault name can be different (or the same as before). Set the access permissions on the new vault to grant to the SQL Server service principal the access that is needed for the SQL Server encryption scenarios, and then adjust the SQL Server credential so that the new vault name is reflected.
 
 In summary, here are the steps:
 
@@ -88,23 +97,28 @@ In summary, here are the steps:
 
 Key backups can be restored across Azure regions, as long as they remain in the same geographic region or national cloud: USA, Canada, Japan, Australia, India, APAC, Europe Brazil, China, US Government, or Germany.
 
-## <a id="AppendixB"></a> B. Frequently Asked Questions
+<a id="AppendixB"></a>
+
+## B. Frequently Asked Questions
 
 ### On Azure Key Vault
 
 **How do key operations work with Azure Key Vault?**  
+
 The asymmetric key in the key vault is used to protect [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] encryption keys. Only the public portion of the asymmetric key ever leaves the vault; the private portion is never exported by the vault. All cryptographic operations using the asymmetric key are done within the Azure Key Vault service, and are protected by the service's security.
 
 **What is a Key URI?**  
+
 Every key in Azure Key Vault has a Uniform Resource Identifier (URI), which you can use to reference the key in your application. Use the format `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey` to get the current version, and use the format `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87` to get a specific version.
 
 ### On Configuring [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]
 
 **What are the endpoints that the SQL Server Connector needs access to?**
-The Connector talks to two endpoints, which need to be allowed. The only port required for outbound communication to these other services is 443 for Https:
 
-- login.microsoftonline.com/*:443
-- *.vault.azure.net/*:443
+The Connector talks to two endpoints, which need to be allowed. The only port required for outbound communication to these other services is 443 for HTTPS:
+
+- `login.microsoftonline.com/*:443`
+- `*.vault.azure.net/*:443`
 
 Additionally, checking the certificate revocation list might create HTTP traffic on port 80.
 
@@ -118,9 +132,10 @@ Additionally, checking the certificate revocation list might create HTTP traffic
   The latest build of SQL Server Connector supports Azure Key Vault keys of sizes 2048 and 3072.
 
 > [!NOTE]  
-> The "`sys.asymmetric_keys`" view reports the key size as 2048 even if key size 3072 is used. This is a known gap in this view and the SQL Server product team will address this in a future release.
+> The `sys.asymmetric_keys` system view returns the key size as 2048 even if key size 3072 is used.
 
-**What are the minimum permission levels required for each configuration step in [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]?**  
+**What are the minimum permission levels required for each configuration step in [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]?**
+ 
 Though you could perform all the configuration steps as a member of the sysadmin fixed server role, [!INCLUDE [msCoName](../../../includes/msconame-md.md)] encourages you to minimize the permissions you use. The following list defines the minimum permission level for each action.
 
 - To create a cryptographic provider, requires `CONTROL SERVER` permission or membership in the **sysadmin** fixed server role.
@@ -135,7 +150,7 @@ Though you could perform all the configuration steps as a member of the sysadmin
 
 **How do I change my default Microsoft Entra directory so my key vault is created in the same subscription and directory as the service principal I created for the [!INCLUDE [ssNoVersion_md](../../../includes/ssnoversion-md.md)] Connector?**
 
-:::image type="content" source="../../../relational-databases/security/encryption/media/sql-server-connector-maintenance-troubleshooting/azure-ad-change-default-directory-helpsteps.png" alt-text="Screenshot showing Microsoft Entra ID change default directory help steps.":::
+:::image type="content" source="media/sql-server-connector-maintenance-troubleshooting/azure-ad-change-default-directory-helpsteps.png" alt-text="Screenshot showing Microsoft Entra ID change default directory help steps.":::
 
 1. Go to the [Azure portal](https://portal.azure.com/).
 1. On the upper-right corner of the page, select the settings icon, or your user profile.
@@ -143,11 +158,13 @@ Though you could perform all the configuration steps as a member of the sysadmin
 1. You can change your **Startup directory**, or switch to a different directory if you have multiple directories.
 
     > [!NOTE]  
-    > You may not have permissions to actually change the default directory on your Azure subscription. In this case, create the Microsoft Entra service principal within your default directory so that it is in the same directory as the Azure Key Vault used later.
+    > You might not have permissions to actually change the default directory on your Azure subscription. In this case, create the Microsoft Entra service principal within your default directory so that it is in the same directory as the Azure Key Vault used later.
 
 To learn more about Microsoft Entra ID, read [How Azure subscriptions are related to Microsoft Entra ID.](/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory)
 
-## <a id="AppendixC"></a> C. Error Code Explanations for SQL Server Connector
+<a id="AppendixC"></a>
+
+## C. Error Code Explanations for SQL Server Connector
 
 [!INCLUDE [entra-id](../../../includes/entra-id-hard-coded.md)]
 
@@ -155,161 +172,161 @@ To learn more about Microsoft Entra ID, read [How Azure subscriptions are relate
 
 | Error code | Symbol  | Description
 -------------|---------|------------
-0 | scp_err_Success | The operation has succeeded.
-1 | scp_err_Failure | The operation has failed.
-2 | scp_err_InsufficientBuffer | This error tells engine to allocate more memory for the buffer.
-3 | scp_err_NotSupported | The operation is not supported. For example, the key type or algorithm specified isn't supported by the EKM provider.
-4 | scp_err_NotFound | The specified key or algorithm couldn't be found by the EKM provider.
-5 | scp_err_AuthFailure | The authentication has failed with EKM provider.
-6 | scp_err_InvalidArgument | The provided argument is invalid.
-7 | scp_err_ProviderError | There is an unspecified error happened in EKM provider that is caught by SQL engine.
-401 | acquireToken | Server responded 401 for the request. Make sure the client ID and secret are correct, and the credential string is a concatenation of AAD client ID and secret without hyphens.
-404 | getKeyByName | The server responded 404, because the key name was not found. Please make sure the key name exists in your vault.
-2049 | scp_err_KeyNameDoesNotFitThumbprint | The key name is too long to fit into SQL engine's thumbprint. The key name must not exceed 26 characters.
-2050 | scp_err_PasswordTooShort | The secret string that is the concatenation of AAD client ID and secret is shorter than 32 characters.
-2051 | scp_err_OutOfMemory | SQL engine has run out of memory and failed to allocate memory for EKM provider.
-2052 | scp_err_ConvertKeyNameToThumbprint | Failed to convert key name to thumbprint.
-2053 | scp_err_ConvertThumbprintToKeyName|  Failed to convert thumbprint to key name.
-2057 | scp_err_ThumbprintExistedInRegistry | The key thumbprint already exists in Windows registry mapped to a different key URI.
-2058 | scp_err_FailureInRegistry|  Failed to perform the operation in registry. SQL Server service account does not have permission to create the registry key.
-3000 | ErrorSuccess | The AKV operation has succeeded.
-3001 | ErrorUnknown | The AKV operation has failed with an unspecified error.
-3002 | ErrorHttpCreateHttpClientOutOfMemory | Cannot create an HttpClient for AKV operation due to out of memory.
-3003 | ErrorHttpOpenSession | Cannot open an Http session because of network error.
-3004 | ErrorHttpConnectSession | Cannot connect an Http session because of network error.
-3005 | ErrorHttpAttemptConnect | Cannot attempt a connect because of network error.
-3006 | ErrorHttpOpenRequest | Cannot open a request due to network error.
-3007 | ErrorHttpAddRequestHeader | Cannot add request header.
-3008 | ErrorHttpSendRequest | Cannot send a request due to network error.
-3009 | ErrorHttpGetResponseCode | Cannot get a response code due to network error.
-3010 | ErrorHttpResponseCodeUnauthorized | Server responded 401 for the request.
-3011 | ErrorHttpResponseCodeThrottled | Server has throttled the request.
-3012 | ErrorHttpResponseCodeClientError | The request sent from the connector is invalid. This usually means the key name is invalid or contains invalid characters.
-3013 | ErrorHttpResponseCodeServerError | Server responded a response code between 500 and 600.
-3014 | ErrorHttpQueryHeader | Cannot query for response header.
-3015 | ErrorHttpQueryHeaderOutOfMemoryCopyHeader | Cannot copy the response header due to out of memory.
-3016 | ErrorHttpQueryHeaderOutOfMemoryReallocBuffer | Cannot query the response header due to out of memory when reallocating a buffer.
-3017 | ErrorHttpQueryHeaderNotFound | Cannot find the query header in the response.
-3018 | ErrorHttpQueryHeaderUpdateBufferLength | Cannot update the buffer length when querying the response header.
-3019 | ErrorHttpReadData | Cannot read response data due to network error.
-3076 | ErrorHttpResourceNotFound | The server responded 404, because the key name was not found. Make sure the key name exists in your vault.
-3077 | ErrorHttpOperationForbidden | The server responded 403, because the user doesn't have proper permission to perform the action. Make sure you have the permission for the specified operation. At minimum, the connector requires 'get, list, wrapKey, unwrapKey' permissions to function properly.
-3100 | ErrorHttpCreateHttpClientOutOfMemory               | Cannot create a HttpClient for AKV operation due to out of memory.
-3101 | ErrorHttpOpenSession                               | Cannot open a Http session due to network error.
-3102 | ErrorHttpConnectSession                            | Cannot connect a Http session due to network error.
-3103 | ErrorHttpAttemptConnect                            | Cannot attempt a connect due to network error.
-3104 | ErrorHttpOpenRequest                               | Cannot open a request due to network error.
-3105 | ErrorHttpAddRequestHeader                          | Cannot add request header.
-3106 | ErrorHttpSendRequest                               | Cannot send a request due to network error.
-3107 | ErrorHttpGetResponseCode                           | Cannot get a response code due to network error.
-3108 | ErrorHttpResponseCodeUnauthorized                  | Server responded 401 for the request. Make sure the client Id and secret are correct, and the credential string is a concatenation of AAD client Id and secret without hyphens.
-3109 | ErrorHttpResponseCodeThrottled                     | Server has throttled the request.
-3110 | ErrorHttpResponseCodeClientError                    | The request is invalid. This usually means the key name is invalid or contains invalid characters.
-3111 | ErrorHttpResponseCodeServerError                   | Server responded a response code between 500 and 600.
-3112 | ErrorHttpResourceNotFound                          | The server responded 404, because the key name was not found. Please make sure the key name exists in your vault.
-3113 | ErrorHttpOperationForbidden                         | The server responded 403, because the user does not have proper permission to perform the action. Please make sure you have the permission for the specified operation. At minimum,'get, wrapKey, unwrapKey' permissions are required.
-3114 | ErrorHttpQueryHeader                               | Cannot query for response header.
-3115 | ErrorHttpQueryHeaderOutOfMemoryCopyHeader          | Cannot copy the response header due to out of memory.
-3116 | ErrorHttpQueryHeaderOutOfMemoryReallocBuffer       | Cannot query the response header due to out of memory when reallocating a buffer.
-3117 | ErrorHttpQueryHeaderNotFound                       | Cannot find the query header in the response.
-3118 | ErrorHttpQueryHeaderUpdateBufferLength             | Cannot update the buffer length when querying the response header.
-3119 | ErrorHttpReadData                                  | Cannot read response data due to network error.
-3120 | ErrorHttpGetResponseOutOfMemoryCreateTempBuffer    | Cannot get response body due to out of memory when creating a temp buffer.
-3121 | ErrorHttpGetResponseOutOfMemoryGetResultString     | Cannot get response body due to out of memory when get result string.
-3122 | ErrorHttpGetResponseOutOfMemoryAppendResponse      | Cannot get response body due to out of memory when appending response.
-3200 | ErrorGetAADValuesOutOfMemoryConcatPath | Cannot get Azure Active Directory challenge header values due to out of memory when concatenating the path.
-3201 | ErrorGetAADDomainUrlStartPosition | Cannot find the starting position for Azure Active Directory domain Url in malformatted response challenge header.
-3202 | ErrorGetAADDomainUrlStopPosition | Cannot find the ending position for Azure Active Directory domain Url in malformatted response challenge header.
-3203 | ErrorGetAADDomainUrlMalformatted | The Azure Active Directory response challenge header is malformatted and doesn't contain the AAD domain Url.
-3204 | ErrorGetAADDomainUrlOutOfMemoryAlloc | Out of memory when allocating buffer for Azure Active Directory domain Url.
-3205 | ErrorGetAADTenantIdOutOfMemoryAlloc | Out of memory when allocating buffer for Azure Active Directory tenantId.
-3206 | ErrorGetAKVResourceUrlStartPosition | Cannot find the starting position for Azure Key Vault resource Url in malformatted response challenge header.
-3207 | ErrorGetAKVResourceUrlStopPosition | Cannot find the ending position for Azure Key Vault resource Url in malformatted response challenge header.
-3208 | ErrorGetAKVResourceUrlOutOfMemoryAlloc | Out of memory when allocating buffer for Azure Key Vault resource Url.
-3300 | ErrorGetTokenOutOfMemoryConcatPath | Cannot get token due to out of memory when concatenating the request path.
-3301 | ErrorGetTokenOutOfMemoryConcatBody | Cannot get token due to out of memory when concatenating the response body.
-3302 | ErrorGetTokenOutOfMemoryConvertResponseString | Cannot get token due to out of memory when converting the response string.
-3303 | ErrorGetTokenBadCredentials | Cannot get token due to incorrect credentials. Make sure the credential string or certificate is valid.
-3304 | ErrorGetTokenFailedToGetToken | While the credentials are correct, the operation still failed to get a valid token.
-3305 | ErrorGetTokenRejected | The token is valid but is rejected by server.
-3306 | ErrorGetTokenNotFound | Cannot find the token in response.
-3307 | ErrorGetTokenJsonParser | Cannot parse the JSON response of server.
-3308 | ErrorGetTokenExtractToken | Cannot extract the token from the JSON response.
-3400 | ErrorGetKeyByNameOutOfMemoryConvertResponseString | Cannot get the key by name due to out of memory converting the response string.
-3401 | ErrorGetKeyByNameOutOfMemoryConcatPath | Cannot get the key by name due to out of memory when concatenating the path.
-3402 | ErrorGetKeyByNameOutOfMemoryConcatHeader | Cannot get the key by name due to out of memory when concatenating the header.
-3403 | ErrorGetKeyByNameNoResponse | Cannot get the key by name due to no response from server.
-3404 | ErrorGetKeyByNameJsonParser | Cannot get the key by name due to failed to parse the JSON response.
-3405 | ErrorGetKeyByNameExtractKeyNode | Cannot get the key by name due to failed to extract the key node from the response.
-3406 | ErrorGetKeyByNameExtractKeyId | Cannot get the key by name due to failed to extract the key Id from the response.
-3407 | ErrorGetKeyByNameExtractKeyType | Cannot get the key by name due to failed to extract the key type from the response.
-3408 | ErrorGetKeyByNameExtractKeyN | Cannot get the key by name due to failed to extract the key N from the response.
-3409 | ErrorGetKeyByNameBase64DecodeN | Cannot get the key by name due to failed to Base64 decode the N.
-3410 | ErrorGetKeyByNameExtractKeyE | Cannot get the key by name due to failed to extract the key E from the response.
-3411 | ErrorGetKeyByNameBase64DecodeE | Cannot get the key by name due to failed to Base64 decode the E.
-3412 | ErrorGetKeyByNameExtractKeyUri | Cannot extract the key Uri from the response.
-3500 | ErrorBackupKeyOutOfMemoryConvertResponseString | Cannot back up key due to out of memory when converting the response string.
-3501 | ErrorBackupKeyOutOfMemoryConcatPath | Cannot back up key due to out of memory when concatenating the path.
-3502 | ErrorBackupKeyOutOfMemoryConcatHeader | Cannot back up key due to out of memory when concatenating the request header.
-3503 | ErrorBackupKeyNoResponse | Cannot back up key due to no response from server.
-3504 | ErrorBackupKeyJsonParser | Cannot back up key due to failed to parse the JSON response.
-3505 | ErrorBackupKeyExtractValue | Cannot back up key due to failed to extract the value from JSON response.
-3506 | ErrorBackupKeyBase64DecodeValue | Cannot back up key due to failed to Base64 decode the value field.
-3600 | ErrorWrapKeyOutOfMemoryConvertResponseString | Cannot wrap key due to out of memory when converting response string.
-3601 | ErrorWrapKeyOutOfMemoryConcatPath | Cannot wrap key due to out of memory when concatenating the path.
-3602 | ErrorWrapKeyOutOfMemoryConcatHeader | Cannot wrap key due to out of memory when concatenating the header.
-3603 | ErrorWrapKeyOutOfMemoryConcatBody | Cannot wrap key due to out of memory when concatenating the body.
-3604 | ErrorWrapKeyOutOfMemoryConvertEncodedBody | Cannot wrap key due to out of memory when converting the encoded body.
-3605 | ErrorWrapKeyBase64EncodeKey | Cannot wrap key due to failed to Base64 encode the key.
-3606 | ErrorWrapKeyBase64DecodeValue | Cannot wrap key due to failed to Base64 decode the response value.
-3607 | ErrorWrapKeyJsonParser | Cannot wrap key due to failed to parse the JSON response.
-3608 | ErrorWrapKeyExtractValue | Cannot wrap key due to failed to extract value from response.
-3609 | ErrorWrapKeyNoResponse | Cannot wrap key due to no response from server.
-3700 | ErrorUnwrapKeyOutOfMemoryConvertResponseString | Cannot unwrap key due to out of memory when converting response string.
-3701 | ErrorUnwrapKeyOutOfMemoryConcatPath | Cannot unwrap key due to out of memory when concatenating the path.
-3702 | ErrorUnwrapKeyOutOfMemoryConcatHeader | Cannot unwrap key due to out of memory when concatenating the header.
-3703 | ErrorUnwrapKeyOutOfMemoryConcatBody | Cannot unwrap key due to out of memory when concatenating the body.
-3704 | ErrorUnwrapKeyOutOfMemoryConvertEncodedBody | Cannot unwrap key due to out of memory when converting the encoded body.
-3705 | ErrorUnwrapKeyBase64EncodeKey | Cannot unwrap key due to failed to Base64 encode the key.
-3706 | ErrorUnwrapKeyBase64DecodeValue | Cannot unwrap key due to failed to Base64 decode the response value.
-3707 | ErrorUnwrapKeyJsonParser | Cannot unwrap key due to failed to extract value from response.
-3708 | ErrorUnwrapKeyExtractValue | Cannot unwrap key due to failed to extract value from response.
-3709 | ErrorUnwrapKeyNoResponse | Cannot unwrap key due to no response from server.
-3800 | ErrorSecretAuthParamsGetRequestBody | Error creating request body using AAD clientId and secret.
-3801 | ErrorJWTTokenCreateHeader | Error creating JWT token header for authentication with AAD.
-3802 | ErrorJWTTokenCreatePayloadGUID | Error creating GUID for JWT token payload for authentication with AAD.
-3803 | ErrorJWTTokenCreatePayload | Error creating JWT token payload for authentication with AAD.
-3804 | ErrorJWTTokenCreateSignature | Error creating JWT token signature for authentication with AAD.
-3805 | ErrorJWTTokenSignatureHashAlg | Error getting SHA256 hash algorithm for authentication with AAD.
-3806 | ErrorJWTTokenSignatureHash | Error creating SHA256 hash for JWT token authentication with AAD.
-3807 | ErrorJWTTokenSignatureSignHash | Error signing JWT token hash for authentication with AAD.
-3808 | ErrorJWTTokenCreateToken | Error creating JWT token for authentication with AAD.
-3809 | ErrorPfxCertAuthParamsImportPfx | Error importing Pfx certificate for authentication with AAD.
-3810 | ErrorPfxCertAuthParamsGetThumbprint | Error getting thumbprint from Pfx certificate for authentication with AAD.
-3811 | ErrorPfxCertAuthParamsGetPrivateKey | Error getting private key from Pfx certificate for authentication with AAD.
-3812 | ErrorPfxCertAuthParamsSignAlg | Error getting RSA signing algorithm for Pfx certificate authentication with AAD.
-3813 | ErrorPfxCertAuthParamsImportForSign | Error importing Pfx private key for RSA signing for authentication with AAD.
-3814 | ErrorPfxCertAuthParamsCreateRequestBody | Error creating request body from Pfx certificate for authentication with AAD.
-3815 | ErrorPEMCertAuthParamsGetThumbprint | Error Base64 decoding Thumbprint for authentication with AAD.
-3816 | ErrorPEMCertAuthParamsGetPrivateKey | Error getting RSA private key from PEM for authentication with AAD.
-3817 | ErrorPEMCertAuthParamsSignAlg | Error getting RSA signing algorithm for PEM private key authentication with AAD.
-3818 | ErrorPEMCertAuthParamsImportForSign | Error importing PEM private key for RSA signing for authentication with AAD.
-3819 | ErrorPEMCertAuthParamsCreateRequestBody | Error creating request body from PEM private key for authentication with AAD.
-3820 | ErrorLegacyPrivateKeyAuthParamsSignAlg | Error getting RSA signing algorithm for Legacy private key authentication with AAD.
-3821 | ErrorLegacyPrivateKeyAuthParamsImportForSign | Error importing Legacy private key for RSA signing for authentication with AAD.
-3822 | ErrorLegacyPrivateKeyAuthParamsCreateRequestBody        | Error creating request body from Legacy private key for authentication with AAD.
-3900 | ErrorAKVDoesNotExist | Error internet name not resolved. This typically indicates the Azure Key Vault is deleted.
-4000 | ErrorCreateKeyVaultRetryManagerOutOfMemory | Cannot create a RetryManager for AKV operation due to out of memory.
+`0` | `scp_err_Success` | `The operation has succeeded.`
+`1` | `scp_err_Failure` | `The operation has failed.`
+`2` | `scp_err_InsufficientBuffer` | `This error tells engine to allocate more memory for the buffer.`
+`3` | `scp_err_NotSupported` | `The operation is not supported. For example, the key type or algorithm specified isn't supported by the EKM provider.`
+`4` | `scp_err_NotFound` | `The specified key or algorithm couldn't be found by the EKM provider.`
+`5` | `scp_err_AuthFailure` | `The authentication has failed with EKM provider.`
+`6` | `scp_err_InvalidArgument` | `The provided argument is invalid.`
+`7` | `scp_err_ProviderError` | `There is an unspecified error happened in EKM provider that is caught by SQL engine.`
+`401` | `acquireToken` | `Server responded 401 for the request. Make sure the client ID and secret are correct, and the credential string is a concatenation of AAD client ID and secret without hyphens.`
+`404` | `getKeyByName` | `The server responded 404, because the key name was not found. Please make sure the key name exists in your vault.`
+`2049` | `scp_err_KeyNameDoesNotFitThumbprint` | `The key name is too long to fit into SQL engine's thumbprint. The key name must not exceed 26 characters.`
+`2050` | `scp_err_PasswordTooShort` | `The secret string that is the concatenation of AAD client ID and secret is shorter than 32 characters.`
+`2051` | `scp_err_OutOfMemory` | `SQL engine has run out of memory and failed to allocate memory for EKM provider.`
+`2052` | `scp_err_ConvertKeyNameToThumbprint` | `Failed to convert key name to thumbprint.`
+`2053` | `scp_err_ConvertThumbprintToKeyName|  Failed to convert thumbprint to key name.`
+`2057` | `scp_err_ThumbprintExistedInRegistry` | `The key thumbprint already exists in Windows registry mapped to a different key URI.`
+`2058` | `scp_err_FailureInRegistry|  Failed to perform the operation in registry. SQL Server service account does not have permission to create the registry key.`
+`3000` | `ErrorSuccess` | `The AKV operation has succeeded.`
+`3001` | `ErrorUnknown` | `The AKV operation has failed with an unspecified error.`
+`3002` | `ErrorHttpCreateHttpClientOutOfMemory` | `Cannot create an HttpClient for AKV operation due to out of memory.`
+`3003` | `ErrorHttpOpenSession` | `Cannot open an Http session because of network error.`
+`3004` | `ErrorHttpConnectSession` | `Cannot connect an Http session because of network error.`
+`3005` | `ErrorHttpAttemptConnect` | `Cannot attempt a connect because of network error.`
+`3006` | `ErrorHttpOpenRequest` | `Cannot open a request due to network error.`
+`3007` | `ErrorHttpAddRequestHeader` | `Cannot add request header.`
+`3008` | `ErrorHttpSendRequest` | `Cannot send a request due to network error.`
+`3009` | `ErrorHttpGetResponseCode` | `Cannot get a response code due to network error.`
+`3010` | `ErrorHttpResponseCodeUnauthorized` | `Server responded 401 for the request.`
+`3011` | `ErrorHttpResponseCodeThrottled` | `Server has throttled the request.`
+`3012` | `ErrorHttpResponseCodeClientError` | `The request sent from the connector is invalid. This usually means the key name is invalid or contains invalid characters.`
+`3013` | `ErrorHttpResponseCodeServerError` | `Server responded a response code between 500 and 600.`
+`3014` | `ErrorHttpQueryHeader` | `Cannot query for response header.`
+`3015` | `ErrorHttpQueryHeaderOutOfMemoryCopyHeader` | `Cannot copy the response header due to out of memory.`
+`3016` | `ErrorHttpQueryHeaderOutOfMemoryReallocBuffer` | `Cannot query the response header due to out of memory when reallocating a buffer.`
+`3017` | `ErrorHttpQueryHeaderNotFound` | `Cannot find the query header in the response.`
+`3018` | `ErrorHttpQueryHeaderUpdateBufferLength` | `Cannot update the buffer length when querying the response header.`
+`3019` | `ErrorHttpReadData` | `Cannot read response data due to network error.`
+`3076` | `ErrorHttpResourceNotFound` | `The server responded 404, because the key name was not found. Make sure the key name exists in your vault.`
+`3077` | `ErrorHttpOperationForbidden` | `The server responded 403, because the user doesn't have proper permission to perform the action. Make sure you have the permission for the specified operation. At minimum, the connector requires 'get, list, wrapKey, unwrapKey' permissions to function properly.`
+`3100` | `ErrorHttpCreateHttpClientOutOfMemory              ` | `Cannot create a HttpClient for AKV operation due to out of memory.`
+`3101` | `ErrorHttpOpenSession                              ` | `Cannot open a Http session due to network error.`
+`3102` | `ErrorHttpConnectSession                           ` | `Cannot connect a Http session due to network error.`
+`3103` | `ErrorHttpAttemptConnect                           ` | `Cannot attempt a connect due to network error.`
+`3104` | `ErrorHttpOpenRequest                              ` | `Cannot open a request due to network error.`
+`3105` | `ErrorHttpAddRequestHeader                         ` | `Cannot add request header.`
+`3106` | `ErrorHttpSendRequest                              ` | `Cannot send a request due to network error.`
+`3107` | `ErrorHttpGetResponseCode                          ` | `Cannot get a response code due to network error.`
+`3108` | `ErrorHttpResponseCodeUnauthorized                 ` | `Server responded 401 for the request. Make sure the client Id and secret are correct, and the credential string is a concatenation of AAD client Id and secret without hyphens.`
+`3109` | `ErrorHttpResponseCodeThrottled                    ` | `Server has throttled the request.`
+`3110` | `ErrorHttpResponseCodeClientError                   ` | `The request is invalid. This usually means the key name is invalid or contains invalid characters.`
+`3111` | `ErrorHttpResponseCodeServerError                  ` | `Server responded a response code between 500 and 600.`
+`3112` | `ErrorHttpResourceNotFound                         ` | `The server responded 404, because the key name was not found. Please make sure the key name exists in your vault.`
+`3113` | `ErrorHttpOperationForbidden                        ` | `The server responded 403, because the user does not have proper permission to perform the action. Please make sure you have the permission for the specified operation. At minimum,'get, wrapKey, unwrapKey' permissions are required.`
+`3114` | `ErrorHttpQueryHeader                              ` | `Cannot query for response header.`
+`3115` | `ErrorHttpQueryHeaderOutOfMemoryCopyHeader         ` | `Cannot copy the response header due to out of memory.`
+`3116` | `ErrorHttpQueryHeaderOutOfMemoryReallocBuffer      ` | `Cannot query the response header due to out of memory when reallocating a buffer.`
+`3117` | `ErrorHttpQueryHeaderNotFound                      ` | `Cannot find the query header in the response.`
+`3118` | `ErrorHttpQueryHeaderUpdateBufferLength            ` | `Cannot update the buffer length when querying the response header.`
+`3119` | `ErrorHttpReadData                                 ` | `Cannot read response data due to network error.`
+`3120` | `ErrorHttpGetResponseOutOfMemoryCreateTempBuffer   ` | `Cannot get response body due to out of memory when creating a temp buffer.`
+`3121` | `ErrorHttpGetResponseOutOfMemoryGetResultString    ` | `Cannot get response body due to out of memory when get result string.`
+`3122` | `ErrorHttpGetResponseOutOfMemoryAppendResponse     ` | `Cannot get response body due to out of memory when appending response.`
+`3200` | `ErrorGetAADValuesOutOfMemoryConcatPath` | `Cannot get Azure Active Directory challenge header values due to out of memory when concatenating the path.`
+`3201` | `ErrorGetAADDomainUrlStartPosition` | `Cannot find the starting position for Azure Active Directory domain Url in malformatted response challenge header.`
+`3202` | `ErrorGetAADDomainUrlStopPosition` | `Cannot find the ending position for Azure Active Directory domain Url in malformatted response challenge header.`
+`3203` | `ErrorGetAADDomainUrlMalformatted` | `The Azure Active Directory response challenge header is malformatted and doesn't contain the AAD domain Url.`
+`3204` | `ErrorGetAADDomainUrlOutOfMemoryAlloc` | `Out of memory when allocating buffer for Azure Active Directory domain Url.`
+`3205` | `ErrorGetAADTenantIdOutOfMemoryAlloc` | `Out of memory when allocating buffer for Azure Active Directory tenantId.`
+`3206` | `ErrorGetAKVResourceUrlStartPosition` | `Cannot find the starting position for Azure Key Vault resource Url in malformatted response challenge header.`
+`3207` | `ErrorGetAKVResourceUrlStopPosition` | `Cannot find the ending position for Azure Key Vault resource Url in malformatted response challenge header.`
+`3208` | `ErrorGetAKVResourceUrlOutOfMemoryAlloc` | `Out of memory when allocating buffer for Azure Key Vault resource Url.`
+`3300` | `ErrorGetTokenOutOfMemoryConcatPath` | `Cannot get token due to out of memory when concatenating the request path.`
+`3301` | `ErrorGetTokenOutOfMemoryConcatBody` | `Cannot get token due to out of memory when concatenating the response body.`
+`3302` | `ErrorGetTokenOutOfMemoryConvertResponseString` | `Cannot get token due to out of memory when converting the response string.`
+`3303` | `ErrorGetTokenBadCredentials` | `Cannot get token due to incorrect credentials. Make sure the credential string or certificate is valid.`
+`3304` | `ErrorGetTokenFailedToGetToken` | `While the credentials are correct, the operation still failed to get a valid token.`
+`3305` | `ErrorGetTokenRejected` | `The token is valid but is rejected by server.`
+`3306` | `ErrorGetTokenNotFound` | `Cannot find the token in response.`
+`3307` | `ErrorGetTokenJsonParser` | `Cannot parse the JSON response of server.`
+`3308` | `ErrorGetTokenExtractToken` | `Cannot extract the token from the JSON response.`
+`3400` | `ErrorGetKeyByNameOutOfMemoryConvertResponseString` | `Cannot get the key by name due to out of memory converting the response string.`
+`3401` | `ErrorGetKeyByNameOutOfMemoryConcatPath` | `Cannot get the key by name due to out of memory when concatenating the path.`
+`3402` | `ErrorGetKeyByNameOutOfMemoryConcatHeader` | `Cannot get the key by name due to out of memory when concatenating the header.`
+`3403` | `ErrorGetKeyByNameNoResponse` | `Cannot get the key by name due to no response from server.`
+`3404` | `ErrorGetKeyByNameJsonParser` | `Cannot get the key by name due to failed to parse the JSON response.`
+`3405` | `ErrorGetKeyByNameExtractKeyNode` | `Cannot get the key by name due to failed to extract the key node from the response.`
+`3406` | `ErrorGetKeyByNameExtractKeyId` | `Cannot get the key by name due to failed to extract the key Id from the response.`
+`3407` | `ErrorGetKeyByNameExtractKeyType` | `Cannot get the key by name due to failed to extract the key type from the response.`
+`3408` | `ErrorGetKeyByNameExtractKeyN` | `Cannot get the key by name due to failed to extract the key N from the response.`
+`3409` | `ErrorGetKeyByNameBase64DecodeN` | `Cannot get the key by name due to failed to Base64 decode the N.`
+`3410` | `ErrorGetKeyByNameExtractKeyE` | `Cannot get the key by name due to failed to extract the key E from the response.`
+`3411` | `ErrorGetKeyByNameBase64DecodeE` | `Cannot get the key by name due to failed to Base64 decode the E.`
+`3412` | `ErrorGetKeyByNameExtractKeyUri` | `Cannot extract the key Uri from the response.`
+`3500` | `ErrorBackupKeyOutOfMemoryConvertResponseString` | `Cannot back up key due to out of memory when converting the response string.`
+`3501` | `ErrorBackupKeyOutOfMemoryConcatPath` | `Cannot back up key due to out of memory when concatenating the path.`
+`3502` | `ErrorBackupKeyOutOfMemoryConcatHeader` | `Cannot back up key due to out of memory when concatenating the request header.`
+`3503` | `ErrorBackupKeyNoResponse` | `Cannot back up key due to no response from server.`
+`3504` | `ErrorBackupKeyJsonParser` | `Cannot back up key due to failed to parse the JSON response.`
+`3505` | `ErrorBackupKeyExtractValue` | `Cannot back up key due to failed to extract the value from JSON response.`
+`3506` | `ErrorBackupKeyBase64DecodeValue` | `Cannot back up key due to failed to Base64 decode the value field.`
+`3600` | `ErrorWrapKeyOutOfMemoryConvertResponseString` | `Cannot wrap key due to out of memory when converting response string.`
+`3601` | `ErrorWrapKeyOutOfMemoryConcatPath` | `Cannot wrap key due to out of memory when concatenating the path.`
+`3602` | `ErrorWrapKeyOutOfMemoryConcatHeader` | `Cannot wrap key due to out of memory when concatenating the header.`
+`3603` | `ErrorWrapKeyOutOfMemoryConcatBody` | `Cannot wrap key due to out of memory when concatenating the body.`
+`3604` | `ErrorWrapKeyOutOfMemoryConvertEncodedBody` | `Cannot wrap key due to out of memory when converting the encoded body.`
+`3605` | `ErrorWrapKeyBase64EncodeKey` | `Cannot wrap key due to failed to Base64 encode the key.`
+`3606` | `ErrorWrapKeyBase64DecodeValue` | `Cannot wrap key due to failed to Base64 decode the response value.`
+`3607` | `ErrorWrapKeyJsonParser` | `Cannot wrap key due to failed to parse the JSON response.`
+`3608` | `ErrorWrapKeyExtractValue` | `Cannot wrap key due to failed to extract value from response.`
+`3609` | `ErrorWrapKeyNoResponse` | `Cannot wrap key due to no response from server.`
+`3700` | `ErrorUnwrapKeyOutOfMemoryConvertResponseString` | `Cannot unwrap key due to out of memory when converting response string.`
+`3701` | `ErrorUnwrapKeyOutOfMemoryConcatPath` | `Cannot unwrap key due to out of memory when concatenating the path.`
+`3702` | `ErrorUnwrapKeyOutOfMemoryConcatHeader` | `Cannot unwrap key due to out of memory when concatenating the header.`
+`3703` | `ErrorUnwrapKeyOutOfMemoryConcatBody` | `Cannot unwrap key due to out of memory when concatenating the body.`
+`3704` | `ErrorUnwrapKeyOutOfMemoryConvertEncodedBody` | `Cannot unwrap key due to out of memory when converting the encoded body.`
+`3705` | `ErrorUnwrapKeyBase64EncodeKey` | `Cannot unwrap key due to failed to Base64 encode the key.`
+`3706` | `ErrorUnwrapKeyBase64DecodeValue` | `Cannot unwrap key due to failed to Base64 decode the response value.`
+`3707` | `ErrorUnwrapKeyJsonParser` | `Cannot unwrap key due to failed to extract value from response.`
+`3708` | `ErrorUnwrapKeyExtractValue` | `Cannot unwrap key due to failed to extract value from response.`
+`3709` | `ErrorUnwrapKeyNoResponse` | `Cannot unwrap key due to no response from server.`
+`3800` | `ErrorSecretAuthParamsGetRequestBody` | `Error creating request body using AAD clientId and secret.`
+`3801` | `ErrorJWTTokenCreateHeader` | `Error creating JWT token header for authentication with AAD.`
+`3802` | `ErrorJWTTokenCreatePayloadGUID` | `Error creating GUID for JWT token payload for authentication with AAD.`
+`3803` | `ErrorJWTTokenCreatePayload` | `Error creating JWT token payload for authentication with AAD.`
+`3804` | `ErrorJWTTokenCreateSignature` | `Error creating JWT token signature for authentication with AAD.`
+`3805` | `ErrorJWTTokenSignatureHashAlg` | `Error getting SHA256 hash algorithm for authentication with AAD.`
+`3806` | `ErrorJWTTokenSignatureHash` | `Error creating SHA256 hash for JWT token authentication with AAD.`
+`3807` | `ErrorJWTTokenSignatureSignHash` | `Error signing JWT token hash for authentication with AAD.`
+`3808` | `ErrorJWTTokenCreateToken` | `Error creating JWT token for authentication with AAD.`
+`3809` | `ErrorPfxCertAuthParamsImportPfx` | `Error importing Pfx certificate for authentication with AAD.`
+`3810` | `ErrorPfxCertAuthParamsGetThumbprint` | `Error getting thumbprint from Pfx certificate for authentication with AAD.`
+`3811` | `ErrorPfxCertAuthParamsGetPrivateKey` | `Error getting private key from Pfx certificate for authentication with AAD.`
+`3812` | `ErrorPfxCertAuthParamsSignAlg` | `Error getting RSA signing algorithm for Pfx certificate authentication with AAD.`
+`3813` | `ErrorPfxCertAuthParamsImportForSign` | `Error importing Pfx private key for RSA signing for authentication with AAD.`
+`3814` | `ErrorPfxCertAuthParamsCreateRequestBody` | `Error creating request body from Pfx certificate for authentication with AAD.`
+`3815` | `ErrorPEMCertAuthParamsGetThumbprint` | `Error Base64 decoding Thumbprint for authentication with AAD.`
+`3816` | `ErrorPEMCertAuthParamsGetPrivateKey` | `Error getting RSA private key from PEM for authentication with AAD.`
+`3817` | `ErrorPEMCertAuthParamsSignAlg` | `Error getting RSA signing algorithm for PEM private key authentication with AAD.`
+`3818` | `ErrorPEMCertAuthParamsImportForSign` | `Error importing PEM private key for RSA signing for authentication with AAD.`
+`3819` | `ErrorPEMCertAuthParamsCreateRequestBody` | `Error creating request body from PEM private key for authentication with AAD.`
+`3820` | `ErrorLegacyPrivateKeyAuthParamsSignAlg` | `Error getting RSA signing algorithm for Legacy private key authentication with AAD.`
+`3821` | `ErrorLegacyPrivateKeyAuthParamsImportForSign` | `Error importing Legacy private key for RSA signing for authentication with AAD.`
+`3822` | `ErrorLegacyPrivateKeyAuthParamsCreateRequestBody       ` | `Error creating request body from Legacy private key for authentication with AAD.`
+`3900` | `ErrorAKVDoesNotExist` | `Error internet name not resolved. This typically indicates the Azure Key Vault is deleted.`
+`4000` | `ErrorCreateKeyVaultRetryManagerOutOfMemory` | `Cannot create a RetryManager for AKV operation due to out of memory.`
 
-If you don't see your error code in this table, here are some other reasons the error may be happening:
+If you don't see your error code in this table, here are some other reasons the error can happen:
 
-- You may not have Internet access and cannot access your Azure Key Vault. Check your Internet connection.
+- You might not have Internet access and cannot access your Azure Key Vault. Check your Internet connection.
 
-- The Azure Key Vault service may be down. Try again at another time.
+- The Azure Key Vault service could be down. Review [azure.status.microsoft](https://azure.status.microsoft/en-us/status). Try again at another time.
 
-- You may have dropped the asymmetric key from Azure Key Vault or [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. Restore the key.
+- You might have dropped the asymmetric key from Azure Key Vault or [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. Restore the key.
 
-- If you receive a "Cannot load library" error, make sure you have the appropriate version of the Visual Studio C++ redistributable installed based on the version of SQL Server that you're running. The table below specifies which version to install from the Microsoft Download Center.
+- If you receive a "Cannot load library" error, make sure you have the appropriate version of the Visual Studio C++ redistributable installed based on the version of SQL Server that you're running. The following table specifies which version to install from the Microsoft Download Center.
 
 The Windows event log also logs errors associated with the SQL Server Connector, which can help with additional context on why the error is actually happening. The source in the Windows Application Event Log will be "SQL Server Connector for Microsoft Azure Key Vault".
 
@@ -330,19 +347,19 @@ SQL Server Version  |Redistributable Install Link if using SQL Server Connector 
 
 More About Extensible Key Management:
 
-- [Extensible Key Management (EKM)](../../../relational-databases/security/encryption/extensible-key-management-ekm.md)
+- [Extensible Key Management (EKM)](extensible-key-management-ekm.md)
 
 SQL Encryptions supporting EKM:
 
-- [Enable TDE on SQL Server Using EKM](../../../relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm.md)
+- [Enable TDE on SQL Server Using EKM](enable-tde-on-sql-server-using-ekm.md)
 
-- [Backup Encryption](../../../relational-databases/backup-restore/backup-encryption.md)
+- [Backup encryption](../../backup-restore/backup-encryption.md)
 
-- [Create an Encrypted Backup](../../../relational-databases/backup-restore/create-an-encrypted-backup.md)
+- [Create an encrypted backup](../../backup-restore/create-an-encrypted-backup.md)
 
 Related [!INCLUDE [tsql](../../../includes/tsql-md.md)] Commands:
 
-- [sp_configure (Transact-SQL)](../../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md)
+- [sp_configure (Transact-SQL)](../../system-stored-procedures/sp-configure-transact-sql.md)
 
 - [CREATE CRYPTOGRAPHIC PROVIDER (Transact-SQL)](../../../t-sql/statements/create-cryptographic-provider-transact-sql.md)
 
@@ -362,13 +379,12 @@ Azure Key Vault documentation:
 
 - [Get Started with Azure Key Vault](/azure/key-vault/general/overview)
 
-- PowerShell [Azure Key Vault Cmdlets](/powershell/module/azurerm.keyvault/) reference
+- PowerShell [Azure Key Vault Cmdlets](/powershell/module/az.keyvault/) reference
 
 ## Related content
 
-- [Extensible Key Management Using Azure Key Vault](../../../relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server.md)
-- [Use SQL Server Connector with SQL Encryption Features](../../../relational-databases/security/encryption/use-sql-server-connector-with-sql-encryption-features.md)
-- [EKM provider enabled Server Configuration Option](../../../database-engine/configure-windows/ekm-provider-enabled-server-configuration-option.md)
-- [Setup Steps for Extensible Key Management Using the Azure Key Vault](../../../relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault.md)
-
+- [Extensible Key Management Using Azure Key Vault (SQL Server)](extensible-key-management-using-azure-key-vault-sql-server.md)
+- [Use SQL Server Connector with SQL Encryption Features](use-sql-server-connector-with-sql-encryption-features.md)
+- [EKM provider enabled (server configuration option)](../../../database-engine/configure-windows/ekm-provider-enabled-server-configuration-option.md)
+- [Set up SQL Server TDE Extensible Key Management by using Azure Key Vault](setup-steps-for-extensible-key-management-using-the-azure-key-vault.md)
 - For additional sample scripts, see the blog at [SQL Server Transparent Data Encryption and Extensible Key Management with Azure Key Vault](https://techcommunity.microsoft.com/t5/sql-server/intro-sql-server-transparent-data-encryption-and-extensible-key/ba-p/1427549)

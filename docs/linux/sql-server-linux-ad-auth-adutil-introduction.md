@@ -4,7 +4,7 @@ description: Overview of adutil, a utility for configuring and managing Active D
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2024
+ms.date: 01/23/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -17,7 +17,7 @@ monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-a
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-The **adutil** tool is a command-line interface (CLI) utility for configuring and managing Windows Active Directory domains for SQL Server on Linux and containers, without switching between Windows and Linux machines to manage Active Directory.
+The **adutil** tool is a command-line interface (CLI) utility for configuring and managing Windows Active Directory domains for SQL Server on Linux and containers, without switching between Windows and Linux machines to manage Active Directory. Make sure that you download **adutil** to a host that is already joined to an Active Directory domain.
 
 Support for **adutil** is limited for SQL Server use cases only.
 

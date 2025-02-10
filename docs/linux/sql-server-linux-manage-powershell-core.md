@@ -4,7 +4,7 @@ description: Learn about SQL Server PowerShell by walking through a couple of ex
 author: SQLvariant
 ms.author: aanelson
 ms.reviewer: vanto, randolphwest
-ms.date: 11/16/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -19,7 +19,7 @@ This article introduces [SQL Server PowerShell](/powershell/sql-server/sql-serve
 
 ## Cross-platform editor options
 
-All of the following steps for PowerShell Core work in a regular terminal, or you can run them from a terminal within Visual Studio Code or Azure Data Studio. Both VS Code and Azure Data Studio are available on macOS and Linux. For more information on Azure Data Studio, see [Quickstart: Use Azure Data Studio to connect and query SQL Server](/azure-data-studio/quickstart-sql-server). You may also want to consider using the [PowerShell Editor Support for Azure Data Studio](/azure-data-studio/extensions/powershell-extension).
+All of the following steps for PowerShell Core work in a regular terminal, or you can run them from a terminal within Visual Studio Code or Azure Data Studio. Both VS Code and Azure Data Studio are available on macOS and Linux. For more information on Azure Data Studio, see [Quickstart: Use Azure Data Studio to connect and query SQL Server](/azure-data-studio/quickstart-sql-server). You might also want to consider using the [PowerShell Editor Support for Azure Data Studio](/azure-data-studio/extensions/powershell-extension).
 
 ## Install PowerShell Core
 
@@ -77,6 +77,7 @@ Script     21.1.18102 SqlServer     {Add-SqlAvailabilityDatabase, Add-SqlAvailab
 The following steps use PowerShell Core to connect to your SQL Server instance on Linux and display a couple of server properties.
 
 Copy and paste the following commands at the PowerShell prompt. When you run these commands, PowerShell will:
+
 - Display a dialog that prompts you for the hostname or IP address of your instance
 - Display the *PowerShell credential request* dialog, which prompts you for the credentials. You can use your *SQL username* and *SQL password* to connect to your SQL Server instance on Linux
 - Use the **Get-SqlInstance** cmdlet to connect to the **Server** and display a few properties
@@ -95,7 +96,7 @@ Get-SqlInstance -ServerInstance $serverInstance -Credential $credential
 
 PowerShell should display information similar to the following output:
 
-```
+```output
 Instance Name                   Version    ProductLevel UpdateLevel  HostPlatform HostDistribution
 -------------                   -------    ------------ -----------  ------------ ----------------
 your_server_instance            14.0.3048  RTM          CU13         Linux        Ubuntu
@@ -178,6 +179,7 @@ tempdb               Normal       16.00 MB    5.49 MB Simple       140 sa
 The following steps use PowerShell Core to examine error logs connect on your SQL Server instance on Linux.
 
 Copy and paste the following commands at the PowerShell prompt. They might take a few minutes to run. These commands do the following steps:
+
 - Display a dialog that prompts you for the hostname or IP address of your instance
 - Display the *PowerShell credential request* dialog that prompts you for the credentials. You can use your *SQL username* and *SQL password* to connect to your SQL Server instance on Linux
 - Use the **Get-SqlErrorLog** cmdlet to connect to the SQL Server instance on Linux and retrieve error logs since **Yesterday**

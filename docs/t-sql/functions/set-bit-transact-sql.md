@@ -4,7 +4,7 @@ description: "Transact-SQL reference for the SET_BIT function."
 author: thesqlsith
 ms.author: derekw
 ms.reviewer: randolphwest
-ms.date: 07/26/2022
+ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -17,14 +17,15 @@ helpviewer_keywords:
   - "bit shifting [SQL Server], set bit"
 dev_langs:
   - "TSQL"
-monikerRange: ">= sql-server-ver16 || >= sql-server-linux-ver16 || = azuresqldb-mi-current ||= azuresqldb-current || =fabric"
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current ||=azuresqldb-current || =fabric"
 ---
 # SET_BIT (Transact SQL)
+
 [!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw.md)]
 
-SET_BIT returns *expression_value* offset by the bit defined by *bit_offset*. The bit value defaults to 1, or is set by *bit_value*.
+`SET_BIT` returns *expression_value* offset by the bit defined by *bit_offset*. The bit value defaults to 1, or is set by *bit_value*.
 
-:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
+:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
@@ -55,7 +56,11 @@ SET_BIT will throw an error if *bit_offset* is negative or greater than the last
 
 ## Remarks
 
-In the initial implementation, Distributed Query functionality for the bit manipulation functions within linked server or ad hoc queries (OPENQUERY) won't be supported.
+Distributed Query functionality for the bit manipulation functions within linked server or ad hoc queries (`OPENQUERY`) aren't supported.
+
+Large object (LOB) data types in the Database Engine can store data that exceeds 8,000 bytes. These data types store data on a [row-overflow](../../relational-databases/pages-and-extents-architecture-guide.md#row-overflow-considerations) data page. A LOB also encompasses data types that store data on dedicated LOB page structures, which use a text or an image pointer of in-row references to LOB data pages. For more information about data storage, see the [Pages and extents architecture guide](../../relational-databases/pages-and-extents-architecture-guide.md).
+
+The bit manipulation functions operate on the **tinyint**, **smallint**, **int**, **bigint**, **binary(*n*)**, and **varbinary(*n*)** data types. Large object (LOB) data types, such as **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **image**, **ntext**, **text**, **xml**, and common language runtime (CLR) BLOB types, aren't supported.
 
 ## Examples
 
@@ -79,7 +84,7 @@ SELECT SET_BIT ( 0xabcdef, 0, 0 ) as VARBIN2;
 
 The result is `0xABCDEE`. The *expression_value* is converted to binary, which is `1010 1011 1100 1101 1110 1111`. SET_BIT changes the first bit to a 0, and the result is returned in hexadecimal format.
 
-## See also
+## Related Content
 
 - [LEFT_SHIFT (Transact SQL)](left-shift-transact-sql.md)
 - [RIGHT_SHIFT (Transact SQL)](right-shift-transact-sql.md)

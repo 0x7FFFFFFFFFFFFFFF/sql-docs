@@ -1,8 +1,8 @@
 ---
 title: "Use an external dataset with Reporting Services"
 description: Create custom data processing extensions in Reporting Services so that you can integrate custom DataSet objects that external applications create.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

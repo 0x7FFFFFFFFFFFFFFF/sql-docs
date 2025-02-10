@@ -1,10 +1,10 @@
 ---
-title: SQL Server on Linux VDI client SDK specification
+title: SQL Server on Linux VDI Client SDK Specification
 description: Learn about the interfaces provided by the SQL Server on Linux virtual device interface (VDI) client SDK.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 08/23/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual

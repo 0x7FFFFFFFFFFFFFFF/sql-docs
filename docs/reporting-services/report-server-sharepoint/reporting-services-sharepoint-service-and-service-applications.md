@@ -1,8 +1,8 @@
 ---
 title: "Reporting Services SharePoint service and service applications"
 description: Creating a service application in SQL Server Reporting Services SharePoint mode makes the service available and generates the service application database.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint

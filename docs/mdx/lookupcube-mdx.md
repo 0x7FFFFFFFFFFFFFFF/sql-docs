@@ -51,13 +51,12 @@ LookupCube(Cube_Name, String_Expression )
 ## Examples  
  The following query demonstrates the use of LookupCube:  
   
- `WITH MEMBER MEASURES.LOOKUPCUBEDEMO AS`  
-  
- `LOOKUPCUBE("Adventure Works", "[Measures].[In" + "ternet Sales Amount]")`  
-  
- `SELECT MEASURES.LOOKUPCUBEDEMO  ON 0`  
-  
- `FROM [Adventure Works]`  
+```  
+WITH MEMBER MEASURES.LOOKUPCUBEDEMO AS  
+LOOKUPCUBE("Adventure Works", "[Measures].[In" + "ternet Sales Amount]")  
+SELECT MEASURES.LOOKUPCUBEDEMO  ON 0  
+FROM [Adventure Works]  
+```  
   
 ## See Also  
  [MDX Function Reference &#40;MDX&#41;](../mdx/mdx-function-reference-mdx.md)  

@@ -562,11 +562,11 @@ Instances in a pool have the following limitations:
 - The maximum possible number of instances in the pool is 40.
 - An instance pool can only be deleted after all instances in the pool are either deleted or moved out of the pool.
 - You can't use the Azure portal to move instances in and out of the pool. Use PowerShell or the Azure CLI instead.
+- Instance pools are not available in the [Azure Government](/azure/azure-government/documentation-government-welcome) cloud. 
 - The following SQL Managed Instance features aren't supported on instances in a pool:
     - [Failover groups](failover-group-sql-mi.md). [Failover rights](failover-group-standby-replica-how-to-configure.md) aren't available to instances in a pool.
     - [Start/Stop](instance-stop-start-how-to.md).
     - [Zone Redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability).
-    - [Azure Reservations](../database/reservations-discount-overview.md) instance pricing isn't available.
 
 ## Support requests
 

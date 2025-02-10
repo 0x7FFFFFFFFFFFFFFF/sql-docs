@@ -4,7 +4,7 @@ description: "This guide teaches you how to migrate your Oracle schemas to Micro
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 01/15/2024
+ms.date: 01/08/2025
 ms.service: sql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -203,8 +203,6 @@ After you successfully complete the *migration* stage, you need to complete a se
 ### Remediate applications
 
 After you migrate the data to the target environment, all the applications that formerly consumed the source need to start consuming the target. Accomplishing this step can require changes to the applications.
-
-The [Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) is an extension for Visual Studio Code with which you can analyze your Java source code and detect data-access API calls and queries. The toolkit gives you a single-pane view of the items to be addressed to support the new database back end. To learn more, see the [Migrate our Java application from Oracle](https://techcommunity.microsoft.com/t5/microsoft-data-migration-blog/migrate-your-java-applications-from-oracle-to-sql-server-with/ba-p/368727) blog.
 
 ### Perform tests
 

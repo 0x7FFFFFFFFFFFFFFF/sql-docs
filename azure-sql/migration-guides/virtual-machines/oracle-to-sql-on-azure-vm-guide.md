@@ -2,10 +2,10 @@
 title: "Oracle to SQL Server on Azure Virtual Machines: Migration guide"
 titleSuffix: SQL Server on Azure VMs
 description: This guide teaches you to migrate your Oracle schemas to SQL Server on Azure Virtual Machines by using SQL Server Migration Assistant for Oracle.
-author: croblesm
-ms.author: roblescarlos
+author: nilabjaball
+ms.author: niball
 ms.reviewer: mathoma, randolphwest
-ms.date: 05/24/2022
+ms.date: 01/08/2025
 ms.service: azure-vm-sql-server
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -203,8 +203,6 @@ After you complete the migration stage, you need to complete a series of post-mi
 ### Remediate applications
 
 After the data is migrated to the target environment, all the applications that previously consumed the source need to start consuming the target. Making those changes might require changes to the applications.
-
-[Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) is an extension for Visual Studio Code. It allows you to analyze your Java source code and detect data access API calls and queries. The toolkit provides a single-pane view of what needs to be addressed to support the new database back end. To learn more, see [Migrate your Java application from Oracle](https://techcommunity.microsoft.com/t5/microsoft-data-migration/migrate-your-java-applications-from-oracle-to-sql-server-with/ba-p/368727).
 
 ### Perform tests
 

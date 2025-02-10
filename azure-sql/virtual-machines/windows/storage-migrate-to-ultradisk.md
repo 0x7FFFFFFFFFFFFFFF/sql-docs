@@ -59,7 +59,7 @@ Connect to your virtual machine and format your ultra disk.
 
 To format your ultra disk, follow these steps:
 
-1. Connect to your VM by using Remote Desktop Protocol (RDP).
+1. Connect to your VM by using [Bastion](/azure/bastion/bastion-connect-vm-rdp-windows).
 1. Use [Disk Management](/windows-server/storage/disk-management/overview-of-disk-management) to format and partition your newly attached ultra disk. 
 
 

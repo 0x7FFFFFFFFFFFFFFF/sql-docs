@@ -3,13 +3,13 @@ title: Manage SQL Server on Linux
 description: This article provides links to common management tasks and tools for SQL Server running on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/23/2023
+ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
 ms.custom:
   - linux-related-content
-monikerRange: ">=sql-server-linux-2017||>=sql-server-2017"
+monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ---
 # Choose the right tool to manage SQL Server on Linux
 
@@ -27,7 +27,7 @@ Almost everything you can do in a client tool can also be accomplished with Tran
 
 ## Azure Data Studio
 
-The new Azure Data Studio is a cross-platform tool for managing [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. For more information, see [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio).
+The new Azure Data Studio is a cross-platform tool for managing [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. For more information, see [What is Azure Data Studio?](/azure-data-studio/what-is-azure-data-studio)
 
 ## Named Pipes
 
@@ -47,5 +47,5 @@ PowerShell provides a rich command-line environment to manage [!INCLUDE [ssnover
 
 ## Related content
 
-- [SQL Server on Linux](sql-server-linux-overview.md)
+- [What is SQL Server on Linux?](sql-server-linux-overview.md)
 - [Start, stop, and restart SQL Server services on Linux](sql-server-linux-start-stop-restart-sql-server-services.md)

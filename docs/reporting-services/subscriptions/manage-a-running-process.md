@@ -1,8 +1,8 @@
 ---
 title: "Manage a running process"
 description: Learn how to manage a running process, such as a user job or a system job. You can view a job, cancel a job, or manage a job programmatically.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions

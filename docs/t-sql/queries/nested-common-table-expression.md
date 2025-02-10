@@ -26,12 +26,9 @@ There are four types of CTE, including *standard*, *sequential*, *recursive*, an
 - A sequential CTE's definition can reference an existing CTE but can't define another CTE.
 - A recursive CTE references itself in its definition.
 
-Fabric Warehouse and SQL analytics endpoint both support *standard*, *sequential*, and *nested* CTEs (Preview). While standard and sequential CTEs are generally available in Microsoft Fabric, nested CTEs are currently a preview feature.
+Fabric Warehouse and SQL analytics endpoint both support *standard*, *sequential*, and *nested* CTEs. While standard and sequential CTEs are generally available in Microsoft Fabric, nested CTEs are currently a preview feature.
 
 For more information about common table expressions, see [WITH common_table_expression (Transact-SQL)](with-common-table-expression-transact-sql.md?view=fabric&preserve-view=true).
-
-> [!NOTE]
-> During preview, creation of nested CTE is supported by SQL Server Management Studio (SSMS) only. Intellisense in SSMS doesn't recognize nested CTE syntax but this doesn't block creating nested CTE. For best experience, limit nesting levels to 64.
 
 ## Syntax
 
@@ -68,6 +65,8 @@ In addition to guidelines for creating and using standard CTEs, here are extra g
 - Nested CTE can't be used in CREATE VIEW.
 - AS OF is not supported in the definition of a nested CTE.
 - Nested CTEs are supported in a CTE subquery definition, but not in a general subquery.
+- For best experience, limit nesting levels to 64.
+- Nested CTE can be created in Fabric Query Editor or SQL Server Management Studio (SSMS).  SSMS intellisense doesn't recognize nested CTE syntax but this doesn't block creating nested CTE.  
 
 ## Examples
 

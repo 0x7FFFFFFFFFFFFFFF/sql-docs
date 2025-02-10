@@ -1,8 +1,8 @@
 ---
 title: "Scripting and PowerShell with Reporting Services"
 description: Learn about the support for scripting and PowerShell cmdlets for SharePoint mode report servers in Reporting Services.
-author: maggiesMSFT
-ms.author: maggies
+author: kfollis
+ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
