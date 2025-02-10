@@ -394,7 +394,7 @@ For more information on text header types, refer to the [text type registry at I
 > [!NOTE]  
 > If you're testing invocation of the REST endpoint with other tools, like [cURL](https://curl.se/) or any modern REST client like [Insomnia](https://insomnia.rest/), make sure to include the same headers that are automatically injected by `sp_invoke_external_rest_endpoint` to have the same behavior and results.
 
-## Enabling External REST Endpoint Invocation in Azure SQL Managed Instance
+## Enabling sp_invoke_external_rest_endpoint in Azure SQL Managed Instance
 
 This feature is available in Azure SQL Managed Instance with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy?view=azuresql&tabs=azure-portal#always-up-to-date-update-policy&preserve-view=true) configured.
 
