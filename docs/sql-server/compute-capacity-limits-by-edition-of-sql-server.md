@@ -1,10 +1,10 @@
 ---
-title: Compute capacity limits by edition of SQL Server
+title: Compute Capacity Limits by Edition of SQL Server
 description: This article discusses compute capacity limits for SQL Server 2019 and how they differ in physical and virtualized environments with simultaneous multithreading (SMT) processors.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, derekw
-ms.date: 11/08/2024
+ms.date: 02/10/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
@@ -104,7 +104,9 @@ You can reduce the logical core count per NUMA node in an [Azure Virtual Machine
 
 ### Reduce logical core count on bare-metal instances
 
-The following tables describe how to reduce the logical core count on bare-metal instances of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+The following sections describe how to reduce the logical core count on bare-metal instances of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+
+#### Intel Xeon CPU
 
 On third, fourth, and fifth generation **Intel Xeon CPUs**, you can enable sub-NUMA clustering (SNC), formerly called Cluster-on-Die (CoD), resulting in two NUMA domains within a single physical socket.
 
@@ -118,11 +120,13 @@ On third, fourth, and fifth generation **Intel Xeon CPUs**, you can enable sub-N
 | SNC3 enabled <sup>2</sup> | Presents three NUMA nodes per socket. |
 | Intel VirtualNuma enabled <sup>3</sup> | Creates multiple virtual nodes within a single physical NUMA node. |
 
-<sup>1</sup> Default for third, fourth, and fifth generation Intel CPUs.
+<sup>1</sup> Default for third, fourth, and fifth generation Intel Xeon CPUs.
 
 <sup>2</sup> Default for sixth generation Intel Xeon CPUs and later.
 
 <sup>3</sup> Only available on sixth generation Intel Xeon CPUs and later. Use this setting for high core count CPUs, where the number of logical processors per NUMA node exceeds 64 when using the SNC defaults.
+
+#### AMD CPU
 
 On **AMD CPUs**, you can enable various Nodes per Socket (NPS) options.
 
