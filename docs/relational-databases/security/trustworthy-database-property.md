@@ -4,7 +4,7 @@ description: Learn about the TRUSTWORTHY database property, which indicates whet
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 08/15/2023
+ms.date: 02/10/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
