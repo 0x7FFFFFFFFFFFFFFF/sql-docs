@@ -411,11 +411,16 @@ To execute sp_configure to change a configuration option or to run the RECONFIGU
 > Enabling this feature allows for the transfer of data from your Azure SQL Managed Instance to an external entity.
 >
 > **Ways to mitigate risk of unauthorized access or transfer of data.**
+>
 >	 1. **Implement Strong Access Controls**: Ensure that only authorized users have access to sensitive data and REST API endpoints. Use the [principle of least privilege](/entra/identity-platform/secure-least-privileged-access) as well as database roles and privileges.
->	 2. **Proper Authentication and Authorization**: Ensure that all REST calls are authenticated and authorized to prevent unauthorized access.
->	 3. **Monitor and Audit Access**: Regularly monitor and audit access to the database and REST API calls to detect any suspicious activities.
->	 4. **Regular Security Assessments**: Conduct regular security assessments and vulnerability scans to identify and mitigate potential risks.
->  5. **Employee Training**: Educate employees about the risks of data exfiltration and the importance of following security protocols.
+>
+>	 1. **Proper Authentication and Authorization**: Ensure that all REST calls are authenticated and authorized to prevent unauthorized access.
+>
+>	 1. **Monitor and Audit Access**: Regularly monitor and audit access to the database and REST API calls to detect any suspicious activities.
+>
+>	 1. **Regular Security Assessments**: Conduct regular security assessments and vulnerability scans to identify and mitigate potential risks.
+>
+>  1. **Employee Training**: Educate employees about the risks of data exfiltration and the importance of following security protocols.
 
 ## Best practices
 
