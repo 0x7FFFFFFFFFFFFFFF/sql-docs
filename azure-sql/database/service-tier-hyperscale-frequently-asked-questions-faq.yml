@@ -231,7 +231,7 @@ sections:
 
           Get sample code to migrate existing Azure SQL Databases to Hyperscale in the Azure portal, Azure CLI, PowerShell, and Transact-SQL in [Migrate an existing database to Hyperscale](manage-hyperscale-database.md#migrate-an-existing-database-to-hyperscale).
 
-          Reverse migration to the General Purpose service tier allows customers who have recently migrated an existing database in Azure SQL Database to the Hyperscale service tier to move back, should Hyperscale not meet their needs. While reverse migration is initiated by a service tier change, it's essentially a size-of-data operation between different architectures. Similarly to migration to Hyperscale, reverse migration is faster if done during a period of low write activity. Learn the [limitations for reverse migration](manage-hyperscale-database.md#limitations-for-reverse-migration).
+          Reverse migration to the General Purpose service tier allows customers who have recently migrated an existing database in Azure SQL Database to the Hyperscale service tier to move back, should Hyperscale not meet their needs. While reverse migration is initiated by a service tier change, it's essentially a size-of-data operation between different architectures. Similarly to migration to Hyperscale, reverse migration is faster if done during a period of low write activity. For more information, see [Reverse migrate from Hyperscale](reverse-migrate-from-hyperscale.md).
 
       - question: |
           Can I move my Hyperscale databases to other service tiers?
@@ -240,7 +240,7 @@ sections:
 
           Databases created in the Hyperscale service tier can't be moved to other service tiers.
           
-          Learn [how to reverse migrate from Hyperscale](manage-hyperscale-database.md#reverse-migrate-from-hyperscale), including the [limitations for reverse migration](manage-hyperscale-database.md#limitations-for-reverse-migration) and impacted [backup policies](manage-hyperscale-database.md#backup-policies).
+          Learn [how to reverse migrate from Hyperscale](reverse-migrate-from-hyperscale.md), including the [limitations for reverse migration](reverse-migrate-from-hyperscale.md#limitations-for-reverse-migration) and impacted [backup policies](manage-hyperscale-database.md#backup-policies).
 
       - question: |
           Do I lose any functionality or capabilities after migration to the Hyperscale service tier?

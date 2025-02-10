@@ -4,7 +4,7 @@ description: ALTER DATABASE (Transact-SQL) syntax for SQL Server, Azure SQL Data
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf
-ms.date: 12/12/2024
+ms.date: 02/10/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -26,7 +26,7 @@ helpviewer_keywords:
   - "database mirroring [SQL Server], Transact-SQL"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-current||=azuresqldb-mi-current||=azure-sqldw-latest||>=aps-pdw-2016||=fabric"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-current || =azuresqldb-mi-current || =azure-sqldw-latest || >=aps-pdw-2016 || =fabric"
 ---
 
 # ALTER DATABASE (Transact-SQL)
@@ -345,6 +345,7 @@ ALTER DATABASE { database_name | CURRENT }
   | FAILOVER
   | FORCE_FAILOVER_ALLOW_DATA_LOSS
 }
+[WITH ( [MANUAL_CUTOVER] | [PERFORM_CUTOVER] )]
 [;]
 
 <edition_options> ::=
@@ -594,6 +595,18 @@ During a forced failover:
 > [!IMPORTANT]
 > The user executing the `FORCE_FAILOVER_ALLOW_DATA_LOSS` command must be belong to the `dbmanager` role on both the primary server and the secondary server.
 
+#### MANUAL_CUTOVER
+
+Start the conversion of the database to the Hyperscale service tier with the option to manually initiate the cutover when ready. Only applicable when the service tier is converting to Hyperscale. To initiate the cutover, use [PERFORM_CUTOVER](#perform_cutover). For more information, see [Convert an existing database to Hyperscale](/azure/azure-sql/database/convert-to-hyperscale?view=azuresql-db&preserve-view=true).
+
+Monitor the progress of the conversion to Hyperscale with [sys.dm_operation_status](../../relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database.md?view=azuresqldb-current&preserve-view=true). 
+
+#### PERFORM_CUTOVER
+
+Initiates the cutover when database conversion to Hyperscale tier is in WaitingForCutover state. Only applicable when the service tier is converting to Hyperscale that was started with the [MANUAL_CUTOVER](#manual_cutover) argument. 
+
+Monitor the progress of the conversion to Hyperscale with [sys.dm_operation_status](../../relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database.md?view=azuresqldb-current&preserve-view=true). For more information, see [Convert an existing database to Hyperscale](/azure/azure-sql/database/convert-to-hyperscale?view=azuresql-db&preserve-view=true).
+
 ## Remarks
 
 To remove a database, use [DROP DATABASE](drop-database-transact-sql.md).
@@ -613,7 +626,7 @@ You can use catalog views, system functions, and system stored procedures to ret
 
 To alter a database, a login must be either the server admin login (created when the Azure SQL Database logical server was provisioned), the Microsoft Entra admin of the server, a member of the dbmanager database role in `master`, a member of the db_owner database role in the current database, or `dbo` of the database. Microsoft Entra ID is ([formerly Azure Active Directory](/azure/active-directory/fundamentals/new-name)).
 
-To scale databases via T-SQL, ALTER DATABASE permissions are needed.  To scale databases via the Azure portal, PowerShell, Azure CLI, or REST API, Azure RBAC permissions are needed, specifically the Contributor, SQL DB Contributor role, or SQL Server Contributor Azure RBAC roles. For more information, visit [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
+To scale databases via T-SQL, ALTER DATABASE permissions are needed. To scale databases via the Azure portal, PowerShell, Azure CLI, or REST API, Azure RBAC permissions are needed, specifically the Contributor, SQL DB Contributor role, or SQL Server Contributor Azure RBAC roles. For more information, visit [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
 ## Examples
 
@@ -690,6 +703,38 @@ Updates the backup storage redundancy of a database to zone-redundant. All futur
 
 ```sql
 ALTER DATABASE db1 MODIFY BACKUP_STORAGE_REDUNDANCY = 'ZONE';
+```
+
+### I. Convert a database to Hyperscale service tier with manual cutover
+
+To [convert an existing database in Azure SQL Database to Hyperscale](/azure/azure-sql/database/convert-to-hyperscale?view=azuresql-db&preserve-view=true) with Transact-SQL, connect to the `master` database on your [logical SQL server](/azure/azure-sql/database/logical-servers?view=azuresql-db&preserve-view=true).
+
+You must specify both the edition and service objective in the `ALTER DATABASE` statement.
+
+By default, the database will perform a cutover to the Hyperscale database to finish the conversion as soon as the Hyperscale database is available. The `MANUAL_CUTOVER` argument instead starts the conversion that will end with a manually initiated cutover, at a time of your choice. This option is most useful to time the cutover for minimal business disruption. 
+
+This example statement converts a database named `mySampleDatabase` to the Hyperscale service tier with the `HS_Gen5_2` service objective. Replace the database name with the appropriate value before executing the statement. 
+
+```sql
+ALTER DATABASE [mySampleDatabase]
+   MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_2')
+   WITH MANUAL_CUTOVER;
+```
+
+To monitor operations for a Hyperscale database, connect to the `master` database and query [sys.dm_operation_status](../../relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database.md)?view=azuresqldb-current&preserve-view=true) to review operations on your logical server.
+
+```sql
+SELECT *
+FROM sys.dm_operation_status
+WHERE major_resource_id = 'mySampleDatabase'
+ORDER BY start_time DESC;
+GO
+```
+
+When ready, the `phase_code` will be `WaitingForCutover`. Use the `PERFORM_CUTOVER` argument to initiate the cutover:
+
+```sql
+ALTER DATABASE [mySampleDatabase] PERFORM_CUTOVER;
 ```
 
 ## Related content
@@ -909,6 +954,7 @@ Because of its length, the `ALTER DATABASE` syntax is separated into the multipl
 ## Syntax
 
 ### [Dedicated SQL pool](#tab/sqlpool)
+
 ```syntaxsql
 ALTER DATABASE { database_name | CURRENT }
 {
@@ -932,7 +978,9 @@ ALTER DATABASE { database_name | CURRENT }
           | 'DW7500c' | 'DW10000c' | 'DW15000c' | 'DW30000c'
       }
 ```
+
 ### [Serverless SQL pool](#tab/sqlod)
+
 ```syntaxsql
 ALTER DATABASE { database_name | Current } 
 { 

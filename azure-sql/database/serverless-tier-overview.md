@@ -352,7 +352,7 @@ CREATE DATABASE testdb
 
 A database can be moved between the provisioned compute tier and serverless compute tier.
 
-A serverless database can also be moved from the General Purpose service tier to the Hyperscale service tier. Review [Manage Hyperscale databases](manage-hyperscale-database.md#migrate-an-existing-database-to-hyperscale) to learn more. 
+A serverless database can also be moved from the General Purpose service tier to the Hyperscale service tier. Review [Manage Hyperscale databases](convert-to-hyperscale.md) to learn more. 
 
 When moving a database between compute tiers, specify the **compute model** parameter as either `Serverless` or `Provisioned` when using PowerShell or Azure CLI, or the **SERVICE_OBJECTIVE** when using T-SQL. Review [resource limits](resource-limits-vcore-single-databases.md) to identify the appropriate service objective. 
 

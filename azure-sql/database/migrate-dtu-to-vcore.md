@@ -217,7 +217,7 @@ Migrating from the DTU-based model to the vCore-based purchasing model is simila
 - When upgrading, you must upgrade the secondary database first, and then upgrade the primary.
 - When downgrading, reverse the order: you must downgrade the primary database first, and then downgrade the secondary.
 
-To migrate to the Hyperscale service tier, geo-replication should be temporarily removed. For more information, see [Migrate an existing database to Hyperscale](manage-hyperscale-database.md#migrate-an-existing-database-to-hyperscale).
+To convert a database to the Hyperscale service tier, geo-replication should be temporarily removed. For more information, see [Convert an existing database to Hyperscale](convert-to-hyperscale.md).
 
 When you use geo-replication between two elastic pools, we recommend that you designate one pool as the primary and the other as the secondary. In that case, when you migrate elastic pools you should use the same sequencing guidance. However, if you have elastic pools that contain both primary and secondary databases, treat the pool with the higher utilization as the primary and follow the sequencing rules accordingly.
 
