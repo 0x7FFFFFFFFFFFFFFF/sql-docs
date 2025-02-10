@@ -396,7 +396,7 @@ For more information on text header types, refer to the [text type registry at I
 
 ## Enabling External REST Endpoint Invocation in Azure SQL Managed Instance
 
-This feature is available in Azure SQL Managed Instance with the [Always-up-to-date update policy](azure/azure-sql/managed-instance/update-policy?view=azuresql&tabs=azure-portal#always-up-to-date-update-policy&preserve-view=true) configured.
+This feature is available in Azure SQL Managed Instance with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy?view=azuresql&tabs=azure-portal#always-up-to-date-update-policy&preserve-view=true) configured.
 
 To enable this feature in Azure SQL Managed Instance, run the following code: 
 
