@@ -5,7 +5,7 @@ metadata:
   author: erinstellato-ms
   ms.author: erinstellato
   ms.reviewer: maghan, randolphwest
-  ms.date: 11/12/2024
+  ms.date: 02/10/2025
   ms.service: sql
   ms.subservice: ssms
   ms.topic: faq
@@ -142,4 +142,4 @@ sections:
 
       - question: "Where do I report issues or feedback requests for SSMS 21?"
         answer: |
-          Use the [SQL feedback site](https://aka.ms/sqlfeedback).
+          Use the [SSMS Developer Community](https://aka.ms/ssms-feedback) site.
