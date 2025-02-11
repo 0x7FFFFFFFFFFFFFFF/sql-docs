@@ -905,7 +905,7 @@ The features supported in the current preview are summarized in the table:
 
 ## Examples
 
-### Read a parquet file from a Azure Blob Storage
+### Read a parquet file from Azure Blob Storage
 
 In the following example you can see how to read 100 rows from a Parquet file:
 
