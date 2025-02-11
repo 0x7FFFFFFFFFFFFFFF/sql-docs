@@ -1,11 +1,11 @@
 ---
-title: Server configuration options
+title: Server Configuration Options
 titleSuffix: SQL Server, Azure SQL Managed Instance
 description: Find out how to manage and optimize SQL Server and Azure SQL Managed Instance resources. View available configuration options, possible settings, default values, and restart requirements.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: mikeray
-ms.date: 09/12/2024
+ms.reviewer: mikeray, dfurman
+ms.date: 02/06/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -34,27 +34,27 @@ keywords: server configuration (SQL Server)
 
 You can manage and optimize [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] resources through configuration options by using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or the `sp_configure` system stored procedure. The most commonly used server configuration options are available through [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]; all configuration options are accessible through `sp_configure`. Consider the effects on your system carefully before setting these options. For more information, see [View or change server properties (SQL Server)](view-or-change-server-properties-sql-server.md).
 
-> [!IMPORTANT]  
-> Advanced options should be changed only by an experienced database administrator or certified SQL Server technician.
+> [!IMPORTANT]
+> Advanced options should be changed only by an experienced database administrator.
 
 ## Categories of configuration options
 
-If you don't see the effect of a configuration change, it might not be installed. Check to see that the `run_value` of the configuration option has changed.
+Configuration option changes take effect only after issuing the `RECONFIGURE` (or in some cases, `RECONFIGURE WITH OVERRIDE`) statement. If you don't see the effect of a configuration change, check to see that the **run value** of the configuration option has changed.
 
-Configuration options take effect immediately after setting the option and issuing the `RECONFIGURE` (or in some cases, `RECONFIGURE WITH OVERRIDE`) statement. Reconfiguring certain options invalidates plans in the plan cache, causing new plans to be compiled. For more information, see [DBCC FREEPROCCACHE](../../t-sql/database-console-commands/dbcc-freeproccache-transact-sql.md).
+You can use the `sys.configurations` catalog view to determine the **config value** (the `value` column) and the **run value** (the `value_in_use` column), and whether the configuration option requires a [!INCLUDE [ssde-md](../../includes/ssde-md.md)] restart (the `is_dynamic` column).
 
-You can use the `sys.configurations` catalog view to determine the `config_value` (the `value` column) and the `run_value` (the `value_in_use` column), and whether the configuration option requires a [!INCLUDE [ssde-md](../../includes/ssde-md.md)] restart (the `is_dynamic` column).
-
-If SQL Server needs to restart, options show the changed value only in the `value` column. After restart, the new value will appear in both the `value` column and the `value_in_use` column.
+If the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] needs to restart, options show the changed value only in the `value` column. After restart, the new value appears in both the `value` column and the `value_in_use` column.
 
 Some options require a server restart before the new configuration value takes effect. If you set the new value and run `sp_configure` before restarting the server, the new value appears in the `value` column of the `sys.configurations` catalog view, but not in the `value_in_use` column. When you restart the server, the new value appears in the `value_in_use` column.
 
-> [!NOTE]  
-> The `config_value` in the result set of `sp_configure` is equivalent to the `value` column of the `sys.configurations` catalog view, and the `run_value` is equivalent to the `value_in_use` column.
+> [!NOTE]
+> The `config_value` column in the result set of `sp_configure` is equivalent to the `value` column of the `sys.configurations` catalog view, and the `run_value` is equivalent to the `value_in_use` column.
+
+Reconfiguring certain options invalidates plans in the plan cache, causing new plans to be compiled. For more information, see [DBCC FREEPROCCACHE](../../t-sql/database-console-commands/dbcc-freeproccache-transact-sql.md).
 
 Self-configuring options are options that SQL Server adjusts according to the needs of the system. In most cases, this eliminates the need for setting the values manually. Examples include the **max worker threads** option and the **user connections** option.
 
-The following query can be used to determine if any configured values haven't been installed:
+The following query can be used to determine if any configured values have been configured but aren't in effect:
 
 ```sql
 SELECT *
@@ -72,10 +72,7 @@ There are two configuration options where the `value` and `value_in_use` might n
 
 The `is_dynamic` column can be used to determine if the configuration option requires a restart. A value of `1` in the `is_dynamic` column means that, when the `RECONFIGURE` command is run, the new value takes effect immediately. In some cases, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] might not evaluate the new value immediately, but does so in the normal course of its execution. A value of `0` in the `is_dynamic` column means that the changed configuration value doesn't take effect until the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] is restarted, even though the `RECONFIGURE` command was run.
 
-For a configuration option that isn't dynamic there's no way to tell if the `RECONFIGURE` command has been run to apply the configuration change. Before you restart SQL Server to apply the configuration change, run the `RECONFIGURE` command to ensure all configuration changes will take effect when SQL Server next restarts.
-
-> [!NOTE]
-> [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] was the last version available on a 32-bit operating system.
+For a configuration option that isn't dynamic there's no way to tell if the `RECONFIGURE` command has been run to apply the configuration change. Before you restart the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] to apply the configuration change, run the `RECONFIGURE` command to ensure all configuration changes take effect when the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] restarts.
 
 ## Configuration options
 
@@ -89,8 +86,8 @@ The following table lists all available configuration options, the range of poss
 
 - **SC** = Self-configuring options.
 
-> [!NOTE]  
-> [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] was the last version available on a 32-bit operating system.
+> [!NOTE]
+> [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] was the last version available on both a 32-bit and a 64-bit operating system. All later versions are available on 64-bit operating systems only.
 
 | Configuration&nbsp;option | Possible values | SQL&nbsp;Server | Azure&nbsp;SQL Managed Instance |
 | --- | --- | --- | --- |
@@ -98,7 +95,7 @@ The following table lists all available configuration options, the range of poss
 | [access check cache quota](access-check-cache-server-configuration-options.md) (A) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `0` | Yes | Yes |
 | [Ad Hoc Distributed Queries](ad-hoc-distributed-queries-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
 | [ADR cleaner retry timeout (min)](adr-cleaner-retry-timeout-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `32767`<br />**Default**: `120` | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions | Yes |
-| ADR Cleaner Thread Count (A) | **Minimum**: 1<br />**Maximum**: 32767<br />**Default**: 1 | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions | Yes |
+| [ADR Cleaner Thread Count (A)](adr-cleaner-thread-count-configuration-option.md) | **Minimum**: 1<br />**Maximum**: 32767<br />**Default**: 1 | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions | Yes |
 | [ADR Preallocation Factor](adr-preallocation-factor-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `32767`<br />**Default**: `4` | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions | Yes |
 | [affinity I/O mask](affinity-input-output-mask-server-configuration-option.md) (A, RR) | **Minimum**: `-2147483648`<br />**Maximum**: `2147483647`<br />**Default**: `0` | Yes (64-bit only) | No |
 | [affinity mask](affinity-mask-server-configuration-option.md) (A) | **Minimum**: `-2147483648`<br />**Maximum**: `2147483647`<br />**Default**: `0` | Yes (64-bit only) | Yes |
@@ -131,6 +128,7 @@ The following table lists all available configuration options, the range of poss
 | [disallow results from triggers](disallow-results-from-triggers-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
 | [EKM provider enabled](ekm-provider-enabled-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
 | [external scripts enabled](external-scripts-enabled-server-configuration-option.md) (SC) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions | Yes |
+| [external xtp dll gen util enabled](../../relational-databases/in-memory-oltp/create-in-memory-oltp-app-control-managed-installer.md#what-is-hkdllgen) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] CU 17 and later versions | Yes |
 | [filestream access level](filestream-access-level-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `2`<br />**Default**: `0` | Yes | No |
 | [fill factor (%)](configure-the-fill-factor-server-configuration-option.md) (A, RR) | **Minimum**: `0`<br />**Maximum**: `100`<br />**Default**: `0` | Yes | No |
 | [ft crawl bandwidth (max)](ft-crawl-bandwidth-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `32767`<br />**Default**: `100` | Yes | Yes |

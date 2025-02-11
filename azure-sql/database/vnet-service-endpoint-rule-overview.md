@@ -1,8 +1,8 @@
 ---
 title: Virtual network endpoints and rules for databases
 description: Mark a subnet as a virtual network service endpoint. Then add the endpoint as a virtual network rule to the ACL for your database. Your database then accepts communication from all virtual machines and other nodes on the subnet.
-author: rohitnayakmsft
-ms.author: rohitna
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: wiassaf, vanto, mathoma
 ms.date: 05/24/2024
 ms.service: azure-sql-database

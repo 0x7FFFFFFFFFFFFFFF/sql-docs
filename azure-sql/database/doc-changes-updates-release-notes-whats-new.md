@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 01/28/2025
+ms.date: 02/04/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -26,9 +26,9 @@ monikerRange: "=azuresql || =azuresql-db"
 This article summarizes the documentation changes associated with new features and improvements in the recent releases of [Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/). For more information about Azure SQL Database, see [What is Azure SQL Database?](sql-database-paas-overview.md)
 
 > [!TIP]
-> For more announcements, discussion, and community content, see the [Azure SQL Database blog](https://techcommunity.microsoft.com/t5/azure-sql-blog/bg-p/AzureSQLBlog).
+> [Deploy Azure SQL Database for free](free-offer.md), for the life of your Azure subscription. This free offer provides up to ten free General Purpose databases, each with 100,000 vCore seconds of compute, every month.
 
-[!INCLUDE [entra-id](../includes/entra-id.md)]
+For more announcements, discussion, and community content, see the [Azure SQL Database blog](https://techcommunity.microsoft.com/t5/azure-sql-blog/bg-p/AzureSQLBlog).
 
 ## Preview
 
@@ -45,16 +45,16 @@ The following table lists the features of Azure SQL Database that are currently 
 | **Degrees of Parallelism (DOP) feedback** | [DOP Feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback) is currently available as a limited preview. For more information and how to apply for the preview, see [Announcing Degree of Parallelism Feedback Limited Preview](https://techcommunity.microsoft.com/t5/azure-sql-blog/announcing-degree-of-parallelism-feedback-limited-preview/ba-p/3806924). |
 | **Elastic queries** | The [elastic queries](elastic-query-overview.md) feature allows for cross-database queries in Azure SQL Database. |
 | **Elastic transactions** | [Elastic transactions](elastic-transactions-overview.md) allow you to execute transactions distributed among cloud databases in Azure SQL Database. |
-| **Free Azure SQL Database** | [Try Azure SQL Database for free](free-offer.md), for the life of your subscription. This free offer provides a General Purpose database with 100,000 vCore seconds of compute every month. |
 | **Fixed server roles** | To simplify permission management, Azure SQL Database provides a set of [fixed server-level roles](security-server-roles.md) to help you manage the permissions on a logical server. | 
-| **Hyperscale increased log generation rate** | The transaction log generation rate in Azure SQL Database Hyperscale single databases is set to increase from 100 MiB/s to 150 MiB/s. The increased log generation rate is available as an opt-in preview feature. For more information and to opt-in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).|
-| **Hyperscale continuous priming** | [Continuous priming](service-tier-hyperscale.md#buffer-pool-resilient-buffer-pool-extension-and-continuous-priming) is an innovative new feature designed to optimize Hyperscale performance during failovers by priming high availability secondary compute replicas. Continuous priming is currently in a gated preview. For more information and to opt-in to continuous priming, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).|
+| **Hyperscale increased log generation rate** | The transaction log generation rate in Azure SQL Database Hyperscale single databases is set to increase from 100 MiB/s to 150 MiB/s. The increased log generation rate is available as an opt-in preview feature. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).|
+| **Hyperscale continuous priming** | [Continuous priming](service-tier-hyperscale.md#buffer-pool-resilient-buffer-pool-extension-and-continuous-priming) is an innovative new feature designed to optimize Hyperscale performance during failovers by priming high availability secondary compute replicas. Continuous priming is currently in a gated preview. For more information and to opt in to continuous priming, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).|
 | **Import and export using Private Link** | You can [import or export an Azure SQL Database using private link](database-import-export-private-link.md). Leave *Allow Access to Azure Services* off when you import or export a database using a service-managed endpoint. |
 | **JSON native data type** | The new [**json** data type and JSON aggregate functions](/sql/t-sql/data-types/json-data-type?view=azuresqldb-current&preserve-view=true) provide new capabilities for handling semistructured data in Azure SQL Database. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). |
 | **JSON aggregate functions** | Two new [**json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG`](/sql/relational-databases/json/json-data-sql-server?view=azuresqldb-current&preserve-view=true#json-data-from-aggregates) enable construction of JSON objects or arrays based on an aggregate from SQL data. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). |
 | **Microsoft Entra server principals** | The ability to [create server principals (logins) for Microsoft Entra identities](authentication-azure-ad-logins.md) in Azure SQL Database is in preview. |
 | **Network Security Perimeter** | [Azure Network Security Perimeter](network-security-perimeter.md) allows organizations to define a logical network isolation boundary for PaaS resources (for example, Azure Storage and SQL Database) that are deployed outside your organization's virtual networks. It restricts public network access to PaaS resources outside of the perimeter, and access can be exempted by using explicit access rules for public inbound and outbound. |
 | **Query editor in the Azure portal** | The [query editor in the Azure portal](query-editor.md) allows you to run queries against your Azure SQL Database directly from a web browser. |
+|**sys.dm_database_backups** | The [sys.dm_database_backups](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-backups-azure-sql-database) DMV returns information about backups of a database in a logical server for Azure SQL Database. | 
 | **UNISTR (Transact-SQL)** | Azure SQL Database now supports the `UNISTR` T-SQL syntax for Unicode string literals. For more information, see [UNISTR (Transact-SQL)](/sql/t-sql/functions/unistr-transact-sql).|
 | **Vector data type** | Working with vector data is now easier in Azure SQL Database with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type) and [functions](/sql/t-sql/functions/vector-functions-transact-sql). For more information, see [Intelligent applications with Azure SQL Database](ai-artificial-intelligence-intelligent-applications.md#vectors).|
 | **\|\| (String concatenation) and \|\|= (Compound assignment) syntax support** | Azure SQL Database now supports [\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql) and [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql) Transact-SQL syntax.|
@@ -65,6 +65,7 @@ The following table lists features of Azure SQL Database that have been made gen
 
 | Feature | GA Month | Details |
 | --- | --- | --- |
+| **Free Azure SQL Database** | January 2025 | Use [Azure SQL Database for free](free-offer.md), for the life of your subscription. This free offer provides up to ten free General Purpose databases, each with 100,000 vCore seconds of compute, every month. For more information, see [Blog: General availability of Azure SQL Database free offer](https://aka.ms/azuresqlfreedb).|
 | **Hyperscale support for database and file shrink**  | January 2025 | [Database and file shrink commands](file-space-manage.md) are now generally available for Azure SQL Database Hyperscale. For more information, see the [Shrink in Hyperscale Generally Available blog post](https://aka.ms/hs-shrink-ga).|
 | **Fabric mirrored databases** | November 2024 | With [Fabric Mirroring](/fabric/database/mirrored-database/overview), you can [mirror databases in Azure SQL Database to Microsoft Fabric](/fabric/database/mirrored-database/overview). You can continuously replicate your existing data estate directly into Fabric's OneLake, including data from Azure SQL Database.|
 | **Microsoft Entra nonunique name support** | November 2024 | The [CREATE USER](/sql/t-sql/statements/create-user-transact-sql) Transact-SQL (T-SQL) syntax has been extended to include `WITH OBJECT_ID` to [support creating Microsoft Entra logins and users in Azure SQL Database](authentication-microsoft-entra-create-users-with-nonunique-names.md) that have nonunique names. |
@@ -87,10 +88,17 @@ The following table lists features of Azure SQL Database that have been made gen
 
 Learn about significant changes to the Azure SQL Database documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
 
+### February 2025
+
+| Changes | Details |
+| --- | --- |
+| **Import bacpac file size increase** | The limit for an imported bacpac file size has been increased from 4 GB to 150 GB. For more information on importing a bacpac file generated from SqlPackage, see [Quickstart: Import a bacpac file to a database in Azure SQL Database](database-import.md).|
+
 ### January 2025
 
 | Changes | Details |
 | --- | --- |
+| **Free Azure SQL Database** | Use [Azure SQL Database for free](free-offer.md), for the life of your subscription. This free offer provides up to 10 free General Purpose databases, each with 100,000 vCore seconds of compute, every month. For more information, see [Blog: General availability of Azure SQL Database free offer](https://aka.ms/azuresqlfreedb).|
 | **Hyperscale support for database and file shrink** | [Database and file shrink commands](file-space-manage.md)  are now generally available for Azure SQL Database Hyperscale. For more information, see the [Shrink in Hyperscale Generally Available blog post](https://aka.ms/hs-shrink-ga).|
 | **SQL Insights retired** | [SQL Insights has been retired](https://azure.microsoft.com/updates/?id=sql-insights-retirement) and is no longer available. Use [database watcher](../database-watcher-overview.md) or another monitoring solution to monitor Azure SQL Database. |
 

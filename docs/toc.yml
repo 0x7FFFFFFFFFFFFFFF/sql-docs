@@ -6103,8 +6103,8 @@ items:
         href: relational-databases/accelerated-database-recovery-concepts.md
       - name: Management
         href: relational-databases/accelerated-database-recovery-management.md
-      - name: Troubleshooting
-        href: relational-databases/accelerated-database-recovery-troubleshoot.md        
+      - name: Monitor and troubleshoot
+        href: relational-databases/accelerated-database-recovery-troubleshoot.md
     - name: Manage the Query Store
       href: relational-databases/performance/manage-the-query-store.md
     - name: Central Management Servers
@@ -6941,6 +6941,8 @@ items:
         - name: Administration, including Out of Memory
           href: relational-databases/in-memory-oltp/resolve-out-of-memory-issues.md
           items:
+          - name: App Control Managed Installer for In-Memory OLTP
+            href: relational-databases/in-memory-oltp/create-in-memory-oltp-app-control-managed-installer.md
           - name: Resource pool
             href: relational-databases/in-memory-oltp/bind-a-database-with-memory-optimized-tables-to-a-resource-pool.md
           - name: Restore a database to a pool

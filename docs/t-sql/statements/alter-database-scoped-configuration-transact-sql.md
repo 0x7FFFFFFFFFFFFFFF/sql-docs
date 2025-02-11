@@ -5,7 +5,7 @@ description: Enable several database configuration settings at the individual da
 author: markingmyname
 ms.author: maghan
 ms.reviewer: derekw, jovanpop, wiassaf, mariyaali
-ms.date: 01/22/2025
+ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -540,6 +540,20 @@ Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)], in [!I
 - `DISABLE_BATCH_MODE_ADAPTIVE_JOINS` changed to `BATCH_MODE_ADAPTIVE_JOINS`
 
 In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], authentication is via Microsoft Entra ID passthrough, using `USER IDENTITY`.
+
+### Check the status of a database scoped configuration option
+
+To check if a configuration is enabled (1) or disabled (0) in a database, you can query [sys.database_scoped_configurations](../../relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql.md). For example, to check the value for `LEGACY_CARDINALITY_ESTIMATION` use a query like this:
+
+```sql
+USE <user_database>;
+SELECT 
+    name, 
+    value, 
+    value_for_secondary 
+FROM sys.database_scoped_configurations
+WHERE name = 'LEGACY_CARDINALITY_ESTIMATION';
+```
 
 ## Limitations
 

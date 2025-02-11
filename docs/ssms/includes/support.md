@@ -1,7 +1,7 @@
 ---
 author: erinstellato-ms
 ms.author: erinstellato
-ms.date: 11/12/2024
+ms.date: 02/10/2025
 ms.service: sql
 ms.subservice: ssms
 ms.topic: include
@@ -11,4 +11,4 @@ ms.topic: include
 
 Sometimes, things can go wrong. If your SSMS installation fails, see [Troubleshoot installation and upgrade issues for SQL Server Management Studio 21 Preview](../install/troubleshoot.md) for step-by-step guidance.
 
-You can reference [SQL user feedback](https://aka.ms/ssms-feedback) for other known issues (filter on **Tooling** under **Groups**) and to provide feedback to the product team.
+You can reference the [SSMS Developer Community](https://aka.ms/ssms-feedback) site for other known issues (filter on **Tooling** under **Groups**) and to provide feedback to the product team.

@@ -5,7 +5,7 @@ description: This article describes the Managed Instance link, which you can use
 author: djordje-jeremic
 ms.author: djjeremi
 ms.reviewer: mathoma, randolphwest
-ms.date: 10/09/2024
+ms.date: 02/04/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
 ms.topic: conceptual
@@ -54,7 +54,7 @@ The following table lists the functionality of the link feature and the minimum 
 | Initial primary version  | Operating system (OS)  | One-way replication |  Disaster recovery options |  Servicing update requirement |
 | --- | --- | --- | --- | --- |
 | Azure SQL Managed Instance | Windows Server and Linux | Generally available |  [Bi-directional](#disaster-recovery) |  - [SQL Server 2022 CU10 (KB5031778)](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate10): Creating a link from Azure SQL Managed Instance to SQL Server 2022 <sup>1</sup> <br /> - [SQL Server 2022 CU13 (KB5036432)](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate13): Failing over the link using [Transact-SQL](managed-instance-link-failover-how-to.md?tabs=tsql#fail-over-a-database) <br /> - Configuring a link from Azure SQL Managed Instance to SQL Server 2022 is only supported by instances configured with the [**SQL Server 2022 update policy**](update-policy.md#sql-server-2022-update-policy) | 
-| SQL Server 2022 (16.x) | Windows Server and Linux |  Generally available |  [Bi-directional](#disaster-recovery) |  SQL Server 2022 RTM | 
+| SQL Server 2022 (16.x) | Windows Server and Linux |  Generally available |  [Bi-directional](#disaster-recovery) |  - SQL Server 2022 RTM: Creating a link from SQL Server 2022 to Azure SQL Managed Instance <br /> - [SQL Server 2022 CU13 (KB5036432)](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate13): Failing over the link using [Transact-SQL](managed-instance-link-failover-how-to.md?tabs=tsql#fail-over-a-database) | 
 | SQL Server 2019 (15.x) | Windows Server only | Generally available | From SQL Server to SQL MI only | [SQL Server 2019 CU20 (KB5024276)](https://support.microsoft.com/topic/kb5024276-cumulative-update-20-for-sql-server-2019-4b282be9-b559-46ac-9b6a-badbd44785d2) |
 | SQL Server 2017 (14.x) | N/A | N/A | N/A| SQL Server 2017 is not currently supported. | 
 | SQL Server 2016 (13.x) | Windows Server only | Generally available | From SQL Server to SQL MI only| The most recent [SQL Server 2016 SP3](/troubleshoot/sql/releases/sqlserver-2016/build-versions#sql-server-2016-service-pack-3-sp3-cumulative-update-cu-builds) build and the matching [SQL Server 2016 Azure Connect pack](/troubleshoot/sql/releases/sqlserver-2016/build-versions#sql-server-2016-service-pack-3-sp3-azure-connect-pack-builds) build |

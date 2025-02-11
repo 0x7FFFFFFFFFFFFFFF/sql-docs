@@ -132,9 +132,6 @@ To get started, see [Configure failover cluster instance with Premium file share
 
 [Azure Elastic SAN](/azure/storage/elastic-san/elastic-san-introduction) is a network-attached storage offering that provides customers a flexible and scalable solution with the potential to reduce cost through storage consolidation. Azure Elastic SAN delivers a cost-effective, performant, and reliable block storage solution that connects to a variety of Azure compute services over the iSCSI protocol. Elastic SAN enables a seamless transition from an existing SAN storage estate to the cloud without having to refactor application architecture. 
 
-> [!NOTE]
-> Configuring your failover cluster instance with an Azure Elastic SAN is currently in preview for SQL Server on Azure VMs. 
-
 **Supported OS**: Windows Server 2019 and later   
 **Supported SQL version**: SQL Server 2022 and later
 

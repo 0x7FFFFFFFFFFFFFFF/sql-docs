@@ -274,9 +274,9 @@
       href: database/sql-database-paas-overview.md
     - name: What's new?
       href: database/doc-changes-updates-release-notes-whats-new.md
-    - name: Try Azure SQL Database free
+    - name: Azure SQL Database free offer
       href: database/free-offer.md
-    - name: Try Azure SQL Database free FAQ
+    - name: Azure SQL Database free offer FAQ
       href: database/free-offer-faq.yml
     - name: Copilot in SQL Database
       href: copilot/copilot-azure-sql-overview.md

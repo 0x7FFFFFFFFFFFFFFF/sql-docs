@@ -12,11 +12,11 @@ helpviewer_keywords:
   - "table-valued parameters, about table-valued parameters"
   - "parameters [SQL Server], table-valued"
   - "TVP See table-valued parameters"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
 ---
 # Use table-valued parameters (Database Engine)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Table-valued parameters are declared by using user-defined table types. You can use table-valued parameters to send multiple rows of data to a [!INCLUDE [tsql](../../includes/tsql-md.md)] statement or a routine, such as a stored procedure or function, without creating a temporary table or many parameters.
 

@@ -5,7 +5,7 @@ description: Learn how Azure SQL Database automatically backs up all databases a
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, danil, dinethi
-ms.date: 01/13/2025
+ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: conceptual
@@ -138,11 +138,11 @@ Automatic backups on secondary replicas:
 
 This table summarizes the capabilities and features of [point-in-time restore (PITR)](recovery-using-backups.md#point-in-time-restore), [geo-restore](recovery-using-backups.md#geo-restore), and [long-term retention](long-term-retention-overview.md).
 
+For information on recovery times, see [RTO and RPO](business-continuity-high-availability-disaster-recover-hadr-overview.md?view=azuresql-db&preserve-view=true#rto-and-rpo).
+
 | Backup property | PITR | Geo-restore | LTR |
 |---|---|---|---|
 | **Types of SQL backup** | Full, differential, log. | Most recent geo-replicated copies of PITR backups. | Only the full backups. |
-| **Recovery point objective (RPO)** | 10 minutes, based on compute size and amount of database activity. | Up to 1 hour, based on geo-replication. <sup>1</sup> | One week (or user's policy).|
-| **Recovery time objective (RTO)** | Restore usually takes less than 12 hours but could take longer, depending on size and activity. See [Recovery](recovery-using-backups.md#recovery-time). | Restore usually takes less than 12 hours but could take longer, depending on size and activity. See [Recovery](recovery-using-backups.md#recovery-time). | Restore usually takes less than 12 hours but could take longer, depending on size and activity. See [Recovery](recovery-using-backups.md#recovery-time). |
 | **Retention** | 7 days by default, configurable between 1 and 35 days (except Basic databases, which are configurable between 1 and 7 days). | Enabled by default, same as source.<sup>2</sup>| Not enabled by default. Retention is up to 10 years. |
 | **Azure Storage**  | Geo-redundant by default. You can optionally configure zone-redundant or locally redundant storage. | Available when PITR backup storage redundancy is set to geo-redundant. Not available when PITR backup storage is zone-redundant or locally redundant. | Geo-redundant by default. You can configure zone-redundant or locally redundant storage. |
 | **Configure backups as [immutable](/azure/storage/blobs/immutable-storage-overview)** | Not supported | Not supported | Not supported | 

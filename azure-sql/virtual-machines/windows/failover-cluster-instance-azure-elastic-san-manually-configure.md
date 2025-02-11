@@ -1,10 +1,10 @@
 ---
-title: Create an FCI with Azure Elastic SAN (Preview)
+title: Create an FCI with Azure Elastic SAN
 description: "Use Azure Elastic SAN to create a failover cluster instance (FCI) with SQL Server on Azure Virtual Machines."
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: mathoma
-ms.date: 08/05/2024
+ms.date: 02/03/2025
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: how-to
@@ -15,15 +15,12 @@ editor: monicar
 tags: azure-service-management
 ---
 
-# Create an FCI with Azure Elastic SAN (Preview) - SQL Server on Azure VMs
+# Create an FCI with Azure Elastic SAN - SQL Server on Azure VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 This article explains how to create a failover cluster instance (FCI) by using an Azure Elastic SAN volume with SQL Server on Azure Virtual Machines (VMs).
 
 To learn more, see an overview of [FCI with SQL Server on Azure VMs](failover-cluster-instance-overview.md) and [cluster best practices](hadr-cluster-best-practices.md).
-
-> [!NOTE]
-> Configuring your failover cluster instance with an Azure Elastic SAN is currently in preview for SQL Server on Azure VMs. 
 
 ## Prerequisites
 

@@ -56,6 +56,26 @@ Further, let's suppose that you plan to deploy the following within the next mon
 
 Also, let's suppose that you know that you will need these resources for at least 1 year. In this case, you should purchase a 32 (2x16) vCores 1-year reservation for single database/elastic pool General Purpose - standard-series (Gen5) and a 40 (2x4 + 32) vCore 1-year reservation for single database/elastic pool Business Critical - standard-series (Gen5).
 
+## Reservations for zone-redundant SQL managed instances
+
+When you enable [zone-redundancy](../managed-instance/high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) for Azure SQL Managed Instance, resources are made available in multiple availability zones to provide high availability and fault tolerance. 
+
+_Regular compute resources_ for the primary instance are charged separately to the _zone-redundant add-on_, and both are listed as separate entries on your bill. 
+
+Total compute is calculated by adding the _zone-redundant add-on_ to the _regular compute cost_. While it's possible to pay for reservations for only the regular compute cost, or the zone redundant add-on, to achieve full reservation coverage for zone-redundant instances, you must purchase two separate reservations.
+
+The following lists the compute charges for different reservation scenarios:
+- **No reservation**:   
+   `Regular price for regular compute` + `regular price for zone-redundant add-on`
+- **Full reservation**:   
+   `Discounted reservation for regular compute` + `discounted reservation for zone-redundant add-on`
+- **Reservation for only regular compute**:   
+   `Discounted reservation for regular compute` + `regular price for zone-redundant add-on`
+- **Reservation for only zone-redundant add-on**:   
+   `Regular price for regular compute` + `discounted reservation for zone-redundant add-on`
+
+Carefully evaluate your compute needs and reservation strategy to optimize costs and ensure efficient resource allocation.
+
 ## Buy reservations
 
 1. Sign in to the [Azure portal](https://portal.azure.com).

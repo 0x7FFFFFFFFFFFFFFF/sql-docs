@@ -4,7 +4,7 @@ description: This article describes the Hyperscale service tier in the vCore-bas
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf, mathoma, oslake, randolphwest
-ms.date: 01/21/2025
+ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: conceptual
@@ -115,7 +115,7 @@ Back up and restore operations for Hyperscale databases are file-snapshot based.
 
 ### Disaster recovery for Hyperscale databases
 
-If you need to restore a Hyperscale database in Azure SQL Database to a region other than the one it's currently hosted in, as part of a disaster recovery operation or drill, relocation, or any other reason, the primary method is to do a geo-restore of the database. Geo-restore is only available when geo-redundant storage (RA-GRS) has been chosen for storage redundancy.
+If you need to restore a Hyperscale database in Azure SQL Database to a region other than the one it's currently hosted in, as part of a disaster recovery operation or drill, relocation, or any other reason, the primary method is to do a [geo-restore](recovery-using-backups.md#geo-restore) of the database. Geo-restore is only available when geo-redundant storage (RA-GRS) has been chosen for storage redundancy.
 
 Learn more in [restoring a Hyperscale database to a different region](hyperscale-automated-backups-overview.md#restore-a-hyperscale-database-to-a-different-region).
 

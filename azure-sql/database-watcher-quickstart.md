@@ -5,7 +5,7 @@ description: Learn how to create a new database watcher to monitor an Azure SQL 
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: quickstart
@@ -65,7 +65,7 @@ Once the deployment completes, select **Go to resource** to open the new databas
 
     :::image type="content" source="media/database-watcher-quickstart/database-watcher-grant-access-sql-managed-instance.png" alt-text="Screenshot of the targets page of a database watcher, showing the T-SQL script that grants access to a database watcher on a SQL managed instance, and a button that copies it to the clipboard." lightbox="media/database-watcher-quickstart/database-watcher-grant-access-sql-managed-instance.png":::
 
-1. Open a new query window in SQL Server Management Studio or Azure Data Studio. Connect to the `master` database on the Azure SQL logical server or SQL managed instance you selected. Paste the T-SQL script, and select **Execute**.
+1. Open a new query window in SQL Server Management Studio or Visual Studio Code with the [SQL server mssql](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) extension. Connect to the `master` database on the Azure SQL logical server or SQL managed instance you selected. Paste the T-SQL script, and select **Execute**.
 
     The following screenshot shows the T-SQL script for Azure SQL databases and elastic pools.
 
