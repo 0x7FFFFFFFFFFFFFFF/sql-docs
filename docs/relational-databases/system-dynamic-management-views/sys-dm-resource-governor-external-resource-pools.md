@@ -33,7 +33,7 @@ Returns information about the current external resource pool state, the current 
 | `pool_version` | **int** | Internal version number. |
 | `max_cpu_percent` | **int** | The current configuration for the maximum average CPU bandwidth allowed for all requests in the resource pool when there is CPU contention. Not nullable. |
 | `max_processes` | **int** | Maximum number of concurrent external processes. The default value, 0, specifies no limit. Not nullable. |
-| `max_memory_percent` | **int** | The current configuration for the percentage of total server memory that can be used by requests in this resource pool. Not nullable |
+| `max_memory_percent` | **int** | The current configuration for the percentage of total server memory that can be used by requests in this resource pool. Not nullable. |
 | `statistics_start_time` | **datetime** | The time when statistics was reset for this pool. Not nullable. |
 | `peak_memory_kb` | **bigint** | The maximum amount of memory used, in kilobytes, for the resource pool. Not nullable. |
 | `write_io_count` | **int** | The total write IOs issued since the Resource Governor statistics were reset. Not nullable. |
