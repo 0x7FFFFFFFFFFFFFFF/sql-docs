@@ -12724,7 +12724,7 @@ items:
         href: relational-databases/system-catalog-views/syspolicy-policy-category-subscriptions-transact-sql.md
       - name: syspolicy_system_health_state
         href: relational-databases/system-catalog-views/syspolicy-system-health-state-transact-sql.md
-    - name: Resource Governor
+    - name: Resource governor
       href: relational-databases/system-catalog-views/resource-governor-catalog-views-transact-sql.md
       items:
       - name: sys.resource_governor_configuration
@@ -13507,7 +13507,7 @@ items:
         href: relational-databases/system-dynamic-management-views/sys-dm-repl-tranhash-transact-sql.md
       - name: sys.dm_repl_traninfo
         href: relational-databases/system-dynamic-management-views/sys-dm-repl-traninfo-transact-sql.md
-    - name: Resource Governor
+    - name: Resource governor
       href: relational-databases/system-dynamic-management-views/resource-governor-related-dynamic-management-views-transact-sql.md
       items:
       - name: sys.dm_resource_governor_configuration
