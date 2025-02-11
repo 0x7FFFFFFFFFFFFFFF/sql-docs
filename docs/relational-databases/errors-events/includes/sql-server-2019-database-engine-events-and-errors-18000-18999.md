@@ -1,7 +1,7 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/11/2024
+ms.date: 02/13/2025
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -185,6 +185,7 @@ ms.topic: include
 | 18597 | 16 | No | Your %.\*ls installation is either corrupt or has been tampered with (%hs). Please uninstall then re-run setup to correct this problem |
 | 18598 | 16 | No | %.\*ls could not find the default instance (%.\*ls) - error %d. Please specify the name of an existing instance on the invocation of sqlservr.exe.\n\nIf you believe that your installation is corrupt or has been tampered with, uninstall then re-run setup to correct this problem. |
 | 18599 | 16 | No | %.\*ls could not find the specified named instance (%.\*ls) - error %d. Please specify the name of an existing instance on the invocation of sqlservr.exe.\n\nIf you believe that your installation is corrupt or has been tampered with, uninstall then re-run setup to correct this problem. |
+| 18749 | 16 | No | MaxCmdsInTran parameter for log reader cannot be set with CDC enabled on the db |
 | 18750 | 16 | No | %ls: The parameter '%ls' is not valid. |
 | 18751 | 16 | No | %ls procedure was called with the wrong number of parameters. |
 | [18752](../mssqlserver-18752-database-engine-error.md) | 16 | No | Only one Log Reader Agent or log-related procedure (sp_repldone, sp_replcmds, and sp_replshowcmds) can connect to a database at a time. If you executed a log-related procedure, drop the connection with session ID %I64d over which the procedure was executed or execute sp_replflush over that connection before starting the Log Reader Agent or executing another log-related procedure. |
