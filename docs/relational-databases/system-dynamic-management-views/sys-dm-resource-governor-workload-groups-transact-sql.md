@@ -31,35 +31,35 @@ Returns workload group statistics and the current in-memory configuration of the
 
 | Column name | Data type | Description |
 |:--|:-|:--|
-| `group_id` | **int** | ID of the workload group. Is not nullable. |
-| `name` | **sysname** | Name of the workload group. Is not nullable. |
-| `pool_id` | **int** | ID of the resource pool. Is not nullable. |
-| `external_pool_id` | **int** | **Applies to**: Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)].<br /><br /> ID of the external resource pool. Is not nullable. |
-| `statistics_start_time` | **datetime** | The time when statistics collection for the workload group started. Is not nullable. |
-| `total_request_count` | **bigint** | Cumulative count of completed requests in the workload group. Is not nullable. |
-| `total_queued_request_count` | **bigint** | Cumulative count of requests queued after the `GROUP_MAX_REQUESTS` limit was reached. Is not nullable. |
-| `active_request_count` | **int** | Current request count. Is not nullable. |
-| `queued_request_count` | **int** | Current queued request count. Is not nullable. |
-| `total_cpu_limit_violation_count` | **bigint** | Cumulative count of requests exceeding the CPU limit. Is not nullable. |
-| `total_cpu_usage_ms` | **bigint** | Cumulative CPU usage, in milliseconds, by this workload group. Is not nullable. |
-| `max_request_cpu_time_ms` | **bigint** | Maximum CPU usage, in milliseconds, for a single request. Is not nullable.<br /><br /> **Note:** This is a measured value, unlike `request_max_cpu_time_sec`, which is a configurable setting. For more information, see [REQUEST_MAX_CPU_TIME_SEC](../../t-sql/statements/create-workload-group-transact-sql.md#request_max_cpu_time_sec--value). |
-| `blocked_task_count` | **int** | Current count of blocked tasks. Is not nullable. |
-| `total_lock_wait_count` | **bigint** | Cumulative count of lock waits that occurred. Is not nullable. |
-| `total_lock_wait_time_ms` | **bigint** | Cumulative sum of elapsed time, in milliseconds, that a lock is held. Is not nullable. |
-| `total_query_optimization_count` | **bigint** | Cumulative count of query optimizations in this workload group. Is not nullable. |
-| `total_suboptimal_plan_generation_count` | **bigint** | Cumulative count of suboptimal plan generations that occurred in this workload group due to memory pressure. Is not nullable. |
-| `total_reduced_memgrant_count` | **bigint** | Cumulative count of memory grants that reached the maximum limit on the per-request memory grant size. Is not nullable. |
-| `max_request_grant_memory_kb` | **bigint** | Maximum memory grant size, in kilobytes, of a single request since the statistics were reset. Is not nullable. |
-| `active_parallel_thread_count` | **bigint** | Current count of parallel thread usage. Is not nullable. |
-| `importance` | **sysname** |Current configuration value for the relative importance of a request in this workload group. Importance is one of the following, with `Medium` being the default: `Low`, `Medium`, or `High`.<br /><br /> Is not nullable.|
-| `request_max_memory_grant_percent` | **int** | Current setting for the maximum memory grant, as a percentage, for a single request. Is not nullable. |
-| `request_max_cpu_time_sec` | **int** | Current setting for maximum CPU use limit, in seconds, for a single request. Is not nullable. |
-| `request_memory_grant_timeout_sec` | **int** | Current setting for memory grant time-out, in seconds, for a single request. Is not nullable. |
-| `group_max_requests` | **int** | Current setting for the maximum number of concurrent requests in the workload group. Is not nullable. |
-| `max_dop` | **int** | Configured maximum degree of parallelism for the workload group. The default value, 0, uses global settings. Is not nullable. |
-| `effective_max_dop` | **int** | **Applies to**: Starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)].<br /><br />Effective maximum degree of parallelism for the workload group. Is not nullable. |
-| `total_cpu_usage_preemptive_ms` | **bigint** | **Applies to**: Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)].<br /><br />Total CPU time used while in preemptive mode scheduling for the workload group, measured in milliseconds. Is not nullable.<br /><br />To execute code that is outside the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] (for example, extended stored procedures and distributed queries), a thread has to execute outside the control of the non-preemptive scheduler. To do this, a worker switches to preemptive mode. |
-| `request_max_memory_grant_percent_numeric` | **float** |**Applies to**: [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] and starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)].<br /><br />Current setting for the maximum memory grant, as a percentage, for a single request. The value is similar to `request_max_memory_grant_percent`. However, unlike `request_max_memory_grant_percent` which returns an `integer` value, `request_max_memory_grant_percent_numeric` returns a `float` value. Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)], the parameter `REQUEST_MAX_MEMORY_GRANT_PERCENT` accepts values with a possible range of 0-100 and stores them as the `float` data type. Prior to [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)], `REQUEST_MAX_MEMORY_GRANT_PERCENT` is an `integer` with possible range of 1-100. For more information, see [CREATE WORKLOAD GROUP](../../t-sql/statements/create-workload-group-transact-sql.md).<br /><br />Is not nullable. |
+| `group_id` | **int** | ID of the workload group. Not nullable. |
+| `name` | **sysname** | Name of the workload group. Not nullable. |
+| `pool_id` | **int** | ID of the resource pool. Not nullable. |
+| `external_pool_id` | **int** | **Applies to**: Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)].<br /><br /> ID of the external resource pool. Not nullable. |
+| `statistics_start_time` | **datetime** | The time when statistics collection for the workload group started. Not nullable. |
+| `total_request_count` | **bigint** | Cumulative count of completed requests in the workload group. Not nullable. |
+| `total_queued_request_count` | **bigint** | Cumulative count of requests queued after the `GROUP_MAX_REQUESTS` limit was reached. Not nullable. |
+| `active_request_count` | **int** | Current request count. Not nullable. |
+| `queued_request_count` | **int** | Current queued request count. Not nullable. |
+| `total_cpu_limit_violation_count` | **bigint** | Cumulative count of requests exceeding the CPU limit. Not nullable. |
+| `total_cpu_usage_ms` | **bigint** | Cumulative CPU usage, in milliseconds, by this workload group. Not nullable. |
+| `max_request_cpu_time_ms` | **bigint** | Maximum CPU usage, in milliseconds, for a single request. Not nullable.<br /><br /> **Note:** This is a measured value, unlike `request_max_cpu_time_sec`, which is a configurable setting. For more information, see [REQUEST_MAX_CPU_TIME_SEC](../../t-sql/statements/create-workload-group-transact-sql.md#request_max_cpu_time_sec--value). |
+| `blocked_task_count` | **int** | Current count of blocked tasks. Not nullable. |
+| `total_lock_wait_count` | **bigint** | Cumulative count of lock waits that occurred. Not nullable. |
+| `total_lock_wait_time_ms` | **bigint** | Cumulative sum of elapsed time, in milliseconds, that a lock is held. Not nullable. |
+| `total_query_optimization_count` | **bigint** | Cumulative count of query optimizations in this workload group. Not nullable. |
+| `total_suboptimal_plan_generation_count` | **bigint** | Cumulative count of suboptimal plan generations that occurred in this workload group due to memory pressure. Not nullable. |
+| `total_reduced_memgrant_count` | **bigint** | Cumulative count of memory grants that reached the maximum limit on the per-request memory grant size. Not nullable. |
+| `max_request_grant_memory_kb` | **bigint** | Maximum memory grant size, in kilobytes, of a single request since the statistics were reset. Not nullable. |
+| `active_parallel_thread_count` | **bigint** | Current count of parallel thread usage. Not nullable. |
+| `importance` | **sysname** |Current configuration value for the relative importance of a request in this workload group. Importance is one of the following, with `Medium` being the default: `Low`, `Medium`, or `High`.<br /><br /> Not nullable.|
+| `request_max_memory_grant_percent` | **int** | Current setting for the maximum memory grant, as a percentage, for a single request. Not nullable. |
+| `request_max_cpu_time_sec` | **int** | Current setting for maximum CPU use limit, in seconds, for a single request. Not nullable. |
+| `request_memory_grant_timeout_sec` | **int** | Current setting for memory grant time-out, in seconds, for a single request. Not nullable. |
+| `group_max_requests` | **int** | Current setting for the maximum number of concurrent requests in the workload group. Not nullable. |
+| `max_dop` | **int** | Configured maximum degree of parallelism for the workload group. The default value, 0, uses global settings. Not nullable. |
+| `effective_max_dop` | **int** | **Applies to**: Starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)].<br /><br />Effective maximum degree of parallelism for the workload group. Not nullable. |
+| `total_cpu_usage_preemptive_ms` | **bigint** | **Applies to**: Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)].<br /><br />Total CPU time used while in preemptive mode scheduling for the workload group, measured in milliseconds. Not nullable.<br /><br />To execute code that is outside the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] (for example, extended stored procedures and distributed queries), a thread has to execute outside the control of the non-preemptive scheduler. To do this, a worker switches to preemptive mode. |
+| `request_max_memory_grant_percent_numeric` | **float** |**Applies to**: [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] and starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)].<br /><br />Current setting for the maximum memory grant, as a percentage, for a single request. The value is similar to `request_max_memory_grant_percent`. However, unlike `request_max_memory_grant_percent` which returns an `integer` value, `request_max_memory_grant_percent_numeric` returns a `float` value. Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)], the parameter `REQUEST_MAX_MEMORY_GRANT_PERCENT` accepts values with a possible range of 0-100 and stores them as the `float` data type. Prior to [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)], `REQUEST_MAX_MEMORY_GRANT_PERCENT` is an `integer` with possible range of 1-100. For more information, see [CREATE WORKLOAD GROUP](../../t-sql/statements/create-workload-group-transact-sql.md).<br /><br />Not nullable. |
 | `pdw_node_id` | **int** | **Applies to**: [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE[ssPDW](../../includes/sspdw-md.md)]<br /><br /> The identifier for the node that this distribution is on. |
 
 ## Remarks

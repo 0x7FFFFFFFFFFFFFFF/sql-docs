@@ -29,9 +29,9 @@ Returns CPU affinity information about the current external resource pool config
 
 | Column name | Data type | Description |
 |:--|:--|:--|
-| `pool_id` | **int** | The ID of the external resource pool. Is not nullable. |
-| `processor_group`| **smallint** | The ID of the Windows logical processor group. Is not nullable. |
-| `cpu_mask`| **bigint** | The binary mask representing the CPUs associated with this pool. Is not nullable. |
+| `pool_id` | **int** | The ID of the external resource pool. Not nullable. |
+| `processor_group`| **smallint** | The ID of the Windows logical processor group. Not nullable. |
+| `cpu_mask`| **bigint** | The binary mask representing the CPUs associated with this pool. Not nullable. |
 
 ## Remarks
 

@@ -27,15 +27,15 @@ Returns the stored resource pool configuration. Each row represents a resource p
 
 | Column name | Data type | Description |
 |:--|:--|:--|
-| `pool_id` | **int** | Unique ID of the resource pool. Is not nullable.|
-| `name` | **sysname** | Name of the resource pool. Is not nullable.|
-| `min_cpu_percent` | **int** | Guaranteed average CPU bandwidth for all requests in the resource pool when there is CPU contention. Is not nullable. |
-| `max_cpu_percent` | **int** | Maximum average CPU bandwidth allowed for all requests in the resource pool when there is CPU contention. Is not nullable. |
-| `min_memory_percent` | **int** | Guaranteed amount of query workspace memory for all requests in the resource pool. This is not shared with other resource pools. Is not nullable. |
-| `max_memory_percent` | **int** | Percentage of total query workspace memory that can be used by requests in this resource pool. Is not nullable. The effective maximum depends on the other pool minimums. For example, `max_memory_percent` can be set to 100, but the effective maximum might be lower. Is not nullable. |
-| `cap_cpu_percent` | **int** | **Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later.<br /><br /> Hard cap on the CPU bandwidth that all requests in the resource pool receive. Limits the maximum CPU bandwidth to the specified level. The allowed range for value is from 1 through 100. Is not nullable. |
-| `min_iops_per_volume` | **int** | **Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] and later.<br /><br /> The minimum I/O operations per second (IOPS) per volume setting for this pool. 0 = no reservation. Is not nullable. |
-| `max_iops_per_volume` | **int** | **Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] and later.<br /><br /> The maximum I/O operations per second (IOPS) per volume setting for this pool. 0 = unlimited. Is not nullable. |
+| `pool_id` | **int** | Unique ID of the resource pool. Not nullable.|
+| `name` | **sysname** | Name of the resource pool. Not nullable.|
+| `min_cpu_percent` | **int** | Guaranteed average CPU bandwidth for all requests in the resource pool when there is CPU contention. Not nullable. |
+| `max_cpu_percent` | **int** | Maximum average CPU bandwidth allowed for all requests in the resource pool when there is CPU contention. Not nullable. |
+| `min_memory_percent` | **int** | Guaranteed amount of query workspace memory for all requests in the resource pool. This is not shared with other resource pools. Not nullable. |
+| `max_memory_percent` | **int** | Percentage of total query workspace memory that can be used by requests in this resource pool. Not nullable. The effective maximum depends on the other pool minimums. For example, `max_memory_percent` can be set to 100, but the effective maximum might be lower. Not nullable. |
+| `cap_cpu_percent` | **int** | **Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later.<br /><br /> Hard cap on the CPU bandwidth that all requests in the resource pool receive. Limits the maximum CPU bandwidth to the specified level. The allowed range for value is from 1 through 100. Not nullable. |
+| `min_iops_per_volume` | **int** | **Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] and later.<br /><br /> The minimum I/O operations per second (IOPS) per volume setting for this pool. 0 = no reservation. Not nullable. |
+| `max_iops_per_volume` | **int** | **Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] and later.<br /><br /> The maximum I/O operations per second (IOPS) per volume setting for this pool. 0 = unlimited. Not nullable. |
 
 ## Remarks
 

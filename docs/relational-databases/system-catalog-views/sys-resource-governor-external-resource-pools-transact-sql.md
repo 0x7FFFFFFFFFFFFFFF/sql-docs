@@ -29,11 +29,11 @@ Returns the stored external resource pool configuration in [!INCLUDE[ssNoVersion
 
 | Column name | Data type | Description |
 |:--|:--|:--|
-| `external_pool_id` | **int** | Unique ID of the resource pool. Is not nullable. |
-| `name` | **sysname** | Name of the resource pool. Is not nullable. |
-| `max_cpu_percent` | **int** | Maximum average CPU bandwidth allowed for all requests in the resource pool when there is CPU contention. Is not nullable. |
-| `max_memory_percent` | **int** | Percentage of total server memory that can be used by requests in this resource pool. Is not nullable. The effective maximum depends on the pool minimums. For example, max_memory_percent can be set to 100, but the effective maximum is lower. |
-| `max_processes` | **int** | Maximum number of concurrent external processes. The default value, 0, specifies no limit. Is not nullable. |
+| `external_pool_id` | **int** | Unique ID of the resource pool. Not nullable. |
+| `name` | **sysname** | Name of the resource pool. Not nullable. |
+| `max_cpu_percent` | **int** | Maximum average CPU bandwidth allowed for all requests in the resource pool when there is CPU contention. Not nullable. |
+| `max_memory_percent` | **int** | Percentage of total server memory that can be used by requests in this resource pool. Not nullable. The effective maximum depends on the pool minimums. For example, max_memory_percent can be set to 100, but the effective maximum is lower. |
+| `max_processes` | **int** | Maximum number of concurrent external processes. The default value, 0, specifies no limit. Not nullable. |
 | `version` | **bigint** | Internal version number. |
 
 ## Permissions

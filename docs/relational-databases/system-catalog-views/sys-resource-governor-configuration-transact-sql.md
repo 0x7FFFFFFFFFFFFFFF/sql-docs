@@ -27,8 +27,8 @@ Returns the stored resource governor configuration.
 
 | Column name | Data type | Description |
 |:--|:--|:--|
-| `classifier_function_id` | **int** | The object ID of the classifier function in [sys.objects](sys-objects-transact-sql.md). Is not nullable.<br /><br /> **Note** This function is used to classify new sessions and uses rules to route the workload to the appropriate workload group. For more information, see [Resource governor](../../relational-databases/resource-governor/resource-governor.md). |
-| `is_enabled` | **bit** | Indicates the current state of resource governor:<br /><br /> 0 = is not enabled.<br /><br /> 1 = is enabled.<br /><br /> Is not nullable. |
+| `classifier_function_id` | **int** | The object ID of the classifier function in [sys.objects](../system-catalog-views/sys-objects-transact-sql.md). Not nullable.<br /><br /> **Note** This function is used to classify new sessions and uses rules to route the workload to the appropriate workload group. For more information, see [Resource governor](../../relational-databases/resource-governor/resource-governor.md). |
+| `is_enabled` | **bit** | Indicates the current state of resource governor:<br /><br /> 0 = is not enabled.<br /><br /> 1 = is enabled.<br /><br /> Not nullable. |
 | `max_outstanding_io_per_volume` | **int** | **Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] and later.<br /><br /> The maximum number of outstanding I/O requests per volume. |
 
 ## Remarks
