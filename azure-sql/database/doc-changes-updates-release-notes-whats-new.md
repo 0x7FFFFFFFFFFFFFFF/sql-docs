@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 02/04/2025
+ms.date: 02/11/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -51,6 +51,7 @@ The following table lists the features of Azure SQL Database that are currently 
 | **Import and export using Private Link** | You can [import or export an Azure SQL Database using private link](database-import-export-private-link.md). Leave *Allow Access to Azure Services* off when you import or export a database using a service-managed endpoint. |
 | **JSON native data type** | The new [**json** data type and JSON aggregate functions](/sql/t-sql/data-types/json-data-type?view=azuresqldb-current&preserve-view=true) provide new capabilities for handling semistructured data in Azure SQL Database. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). |
 | **JSON aggregate functions** | Two new [**json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG`](/sql/relational-databases/json/json-data-sql-server?view=azuresqldb-current&preserve-view=true#json-data-from-aggregates) enable construction of JSON objects or arrays based on an aggregate from SQL data. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). |
+| **Manually initiate cutover for conversion to Hyperscale** | When converting an Azure SQL Database to the Hyperscale service tier, you have a new [option to manually initiate the cutover](https://aka.ms/hs-conversion-v2-preview). For more information, see [Convert an existing database to Hyperscale](convert-to-hyperscale.md). |
 | **Microsoft Entra server principals** | The ability to [create server principals (logins) for Microsoft Entra identities](authentication-azure-ad-logins.md) in Azure SQL Database is in preview. |
 | **Network Security Perimeter** | [Azure Network Security Perimeter](network-security-perimeter.md) allows organizations to define a logical network isolation boundary for PaaS resources (for example, Azure Storage and SQL Database) that are deployed outside your organization's virtual networks. It restricts public network access to PaaS resources outside of the perimeter, and access can be exempted by using explicit access rules for public inbound and outbound. |
 | **Query editor in the Azure portal** | The [query editor in the Azure portal](query-editor.md) allows you to run queries against your Azure SQL Database directly from a web browser. |
@@ -92,6 +93,7 @@ Learn about significant changes to the Azure SQL Database documentation. For pre
 
 | Changes | Details |
 | --- | --- |
+| **Manually initiate cutover for conversion to Hyperscale** | When converting an Azure SQL Database to the Hyperscale service tier, [you have a new option to manually initiate the cutover](https://aka.ms/hs-conversion-v2-preview). For more information, see [Convert an existing database to Hyperscale](convert-to-hyperscale.md). This feature is currently in preview.|
 | **Import bacpac file size increase** | The limit for an imported bacpac file size has been increased from 4 GB to 150 GB. For more information on importing a bacpac file generated from SqlPackage, see [Quickstart: Import a bacpac file to a database in Azure SQL Database](database-import.md).|
 
 ### January 2025
