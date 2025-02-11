@@ -10,8 +10,8 @@ metadata:
   ms.topic: faq
   author: WilliamDAssafMSFT
   ms.author: wiassaf
-  ms.reviewer: dfurman, mathoma, dinethi
-  ms.date: 02/03/2025
+  ms.reviewer: dfurman, mathoma, dinethi, blakhani
+  ms.date: 02/10/2025
 title: Azure SQL Database Hyperscale FAQ
 summary: |
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -229,9 +229,9 @@ sections:
 
           The time required to move an existing database to Hyperscale consists of the time to copy data, and the time to replay the changes made in the source database while copying data. The data copy time is proportional to data size. The time to replay changes is shorter if the move is done during a period of low write activity.
 
-          Get sample code to migrate existing Azure SQL Databases to Hyperscale in the Azure portal, Azure CLI, PowerShell, and Transact-SQL in [Migrate an existing database to Hyperscale](manage-hyperscale-database.md#migrate-an-existing-database-to-hyperscale).
+          You can convert an existing Azure SQL Database to Hyperscale in the Azure portal, Azure CLI, PowerShell, and Transact-SQL. For more information, see [Convert an existing database to Hyperscale](convert-to-hyperscale.md).
 
-          Reverse migration to the General Purpose service tier allows customers who have recently migrated an existing database in Azure SQL Database to the Hyperscale service tier to move back, should Hyperscale not meet their needs. While reverse migration is initiated by a service tier change, it's essentially a size-of-data operation between different architectures. Similarly to migration to Hyperscale, reverse migration is faster if done during a period of low write activity. Learn the [limitations for reverse migration](manage-hyperscale-database.md#limitations-for-reverse-migration).
+          [Reverse migration](reverse-migrate-from-hyperscale.md) to the General Purpose service tier allows customers who have recently migrated an existing database in Azure SQL Database to the Hyperscale service tier to move back, should Hyperscale not meet their needs. While reverse migration is initiated by a service tier change, it's essentially a size-of-data operation between different architectures. Similarly to migration to Hyperscale, reverse migration is faster if done during a period of low write activity. For more information, see [Reverse migrate from Hyperscale](reverse-migrate-from-hyperscale.md).
 
       - question: |
           Can I move my Hyperscale databases to other service tiers?
@@ -240,7 +240,7 @@ sections:
 
           Databases created in the Hyperscale service tier can't be moved to other service tiers.
           
-          Learn [how to reverse migrate from Hyperscale](manage-hyperscale-database.md#reverse-migrate-from-hyperscale), including the [limitations for reverse migration](manage-hyperscale-database.md#limitations-for-reverse-migration) and impacted [backup policies](manage-hyperscale-database.md#backup-policies).
+          Learn [how to reverse migrate from Hyperscale](reverse-migrate-from-hyperscale.md), including the [limitations for reverse migration](reverse-migrate-from-hyperscale.md#limitations-for-reverse-migration) and impacted [backup policies](reverse-migrate-from-hyperscale.md#backup-policies).
 
       - question: |
           Do I lose any functionality or capabilities after migration to the Hyperscale service tier?
@@ -280,7 +280,17 @@ sections:
           Does Hyperscale support migration from other data sources such as Amazon Aurora, MySQL, PostgreSQL, Oracle, DB2, and other database platforms?
         answer: |
           Yes. [Azure Database Migration Service](/azure/dms/dms-overview) supports many migration scenarios.
-          
+
+      - question: |
+          When I convert a database to Hyperscale, when does Hyperscale billing begin?
+        answer: |
+          Hyperscale billing after a conversion begins only after the cutover is complete.
+
+      - question: |
+          When I convert to Hyperscale, can I control the disruption to my database?
+        answer: | 
+          Yes. Currently a preview feature, you have the ability to manually initiate the cutover when you [convert a database to Hyperscale](convert-to-hyperscale.md) via the Azure portal, PowerShell, Azure CLI, or T-SQL. You'll only experience a short period of downtime, generally less than a minute, during the final cutover to Hyperscale.
+
   - name: Business continuity and disaster recovery questions
     questions:
       - question: |
