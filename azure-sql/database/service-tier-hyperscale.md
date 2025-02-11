@@ -1,10 +1,10 @@
 ---
 title: What is the Hyperscale service tier?
 description: This article describes the Hyperscale service tier in the vCore-based purchasing model in Azure SQL Database and explains how it's different from the General Purpose and Business Critical service tiers.
-author: dimitri-furman
-ms.author: dfurman
-ms.reviewer: wiassaf, mathoma, oslake, randolphwest
-ms.date: 02/03/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: dfurman, mathoma, oslake, randolphwest, blakhani
+ms.date: 02/10/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: conceptual
@@ -170,8 +170,8 @@ You can create and manage Hyperscale databases using the Azure portal, Transact-
 | **Operation** | **Details** | **Learn more** |
 | :--- | :--- | :--- |
 | **Create a Hyperscale database** | Hyperscale databases are available only using the [vCore-based purchasing model](service-tiers-vcore.md). | Find examples to create a Hyperscale database in [Quickstart: Create a Hyperscale database in Azure SQL Database](hyperscale-database-create-quickstart.md). |
-| **Upgrade an existing database to Hyperscale** | Migrating an existing database in Azure SQL Database to the Hyperscale tier is a size of data operation. | Learn [how to migrate an existing database to Hyperscale](manage-hyperscale-database.md#migrate-an-existing-database-to-hyperscale). |
-| **Reverse migrate a Hyperscale database to the General Purpose service tier** | If you previously migrated an existing Azure SQL Database to the Hyperscale service tier, you can reverse migrate the database to the General Purpose service tier within 45 days of the original migration to Hyperscale.<br /><br />If you wish to migrate the database to another service tier, such as Business Critical, first reverse migrate to the General Purpose service tier, then change the service tier. | Learn [how to reverse migrate from Hyperscale](manage-hyperscale-database.md#reverse-migrate-from-hyperscale), including the [limitations for reverse migration](manage-hyperscale-database.md#limitations-for-reverse-migration). |
+| **Upgrade an existing database to Hyperscale** | Migrating an existing database in Azure SQL Database to the Hyperscale tier is a size of data operation. | Learn [how to migrate an existing database to Hyperscale](convert-to-hyperscale.md). |
+| **Reverse migrate a Hyperscale database to the General Purpose service tier** | If you previously migrated an existing Azure SQL Database to Hyperscale, you can reverse migrate the database to the General Purpose service tier within 45 days of the original migration to Hyperscale.<br /><br />If you wish to migrate the database to another service tier, such as Business Critical, first reverse migrate to the General Purpose service tier, then change the service tier. | Learn [how to reverse migrate from Hyperscale](reverse-migrate-from-hyperscale.md), including the [limitations for reverse migration](reverse-migrate-from-hyperscale.md#limitations-for-reverse-migration). |
 
 <a id="known-limitations"></a>
 
