@@ -3,7 +3,8 @@ title: "sys.dm_resource_governor_configuration (Transact-SQL)"
 description: sys.dm_resource_governor_configuration (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: "02/27/2023"
+ms.reviewer: dfurman
+ms.date: 02/11/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,53 +18,51 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
+
 # sys.dm_resource_governor_configuration (Transact-SQL)
-[!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-  Returns a row that contains the current in-memory configuration state of Resource Governor.  
-  
+[!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
-|Column name|Data type|Description|  
-|-----------------|---------------|-----------------|  
-|classifier_function_id|**int**|The ID of the classifier function that is currently used by Resource Governor. Returns a value of 0 if no function is being used. Is not nullable.<br /><br /> **Note:** This function is used to classify new requests and uses rules to route these requests to the appropriate workload group. For more information, see [Resource Governor](../../relational-databases/resource-governor/resource-governor.md).|  
-|is_reconfiguration_pending|**bit**|Indicates whether or not changes to a group or pool were made with the ALTER RESOURCE GOVERNOR RECONFIGURE statement but have not been applied to the in-memory configuration. The value returned is one of:<br /><br /> 0 - A reconfiguration statement is not required.<br /><br /> 1 - A reconfiguration statement or server restart is required in order for pending configuration changes to be applied.<br /><br /> **Note:** The value returned is always 0 when Resource Governor is disabled.<br /><br /> Is not nullable.|  
-|max_outstanding_io_per_volume|**int**|**Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] and later.<br /><br /> The maximum number of outstanding I/O per volume.|  
-  
-## Remarks  
- This dynamic management view shows the in-memory configuration. To see the stored configuration metadata, use the corresponding catalog view.  
-  
- The following example shows how to get and compare the stored metadata values and the in-memory values of the Resource Governor configuration.  
-  
-```  
-USE master;  
-go  
--- Get the stored metadata.  
-SELECT   
-object_schema_name(classifier_function_id) AS 'Classifier UDF schema in metadata',   
-object_name(classifier_function_id) AS 'Classifier UDF name in metadata'  
-FROM   
-sys.resource_governor_configuration;  
-go  
--- Get the in-memory configuration.  
-SELECT   
-object_schema_name(classifier_function_id) AS 'Active classifier UDF schema',   
-object_name(classifier_function_id) AS 'Active classifier UDF name'  
-FROM   
-sys.dm_resource_governor_configuration;  
-go  
-```  
-  
-## Permissions  
- Requires VIEW SERVER STATE permission.  
+Returns a row that contains the currently effective resource governor configuration.
+
+| Column name | Data type | Description |
+|:--|:--|:--|
+| `classifier_function_id` | **int** | The object ID of the currently used classifier function in [sys.objects](../system-catalog-views/sys-objects-transact-sql.md). Returns 0 if no classifier function is being used. Not nullable.<br /><br /> **Note:** This function is used to classify new requests and uses rules to route these requests to the appropriate workload group. For more information, see [Resource governor](../../relational-databases/resource-governor/resource-governor.md). |
+| `is_reconfiguration_pending` | **bit** | Indicates whether or not changes to resource governor configuration were made but have not been applied to the currently effective configuration using `ALTER RESOURCE GOVERNOR RECONFIGURE`. The changes that require resource governor reconfiguration include:<br /><br />- Create, modify, or delete a resource pool.<br />- Create, modify, or delete a workload group.<br />- Specify or remove a classifier function.<br />- Set or remove a limit on the maximum number of outstanding I/O operations per volume.<br /><br /> The value returned is one of:<br /><br /> 0 - A reconfiguration is not required.<br /><br /> 1 - A reconfiguration or server restart is required in order for pending configuration changes to be applied.<br /><br /> **Note:** The value returned is always 0 when resource governor is disabled.<br /><br /> Not nullable. |
+| `max_outstanding_io_per_volume` | **int** | **Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] and later.<br /><br /> The maximum number of outstanding I/O operations per volume. |
+
+## Remarks
+
+This dynamic management view shows the currently effective configuration. To see the stored configuration metadata, use [sys.resource_governor_configuration](../system-catalog-views/sys-resource-governor-configuration-transact-sql.md).
+
+## Examples
+
+The following example shows how to get and compare the stored metadata values and the currently effective values of resource governor configuration.
+
+```sql
+USE master;
+
+-- Get the stored metadata
+SELECT OBJECT_SCHEMA_NAME(classifier_function_id) AS classifier_function_schema_name,
+       OBJECT_NAME(classifier_function_id) AS classifier_function_name
+FROM sys.resource_governor_configuration;
+
+-- Get the currently effective configuration
+SELECT OBJECT_SCHEMA_NAME(classifier_function_id) AS classifier_function_schema_name,
+       OBJECT_NAME(classifier_function_id) AS classifier_function_name
+FROM sys.dm_resource_governor_configuration;
+```
+
+## Permissions
+
+Requires the `VIEW SERVER STATE` permission.
   
 ### Permissions for SQL Server 2022 and later
 
-Requires VIEW SERVER PERFORMANCE STATE permission on the server.
+Requires the `VIEW SERVER PERFORMANCE STATE` permission on the server.
 
-## See also  
- [Dynamic Management Views and Functions &#40;Transact-SQL&#41;](~/relational-databases/system-dynamic-management-views/system-dynamic-management-views.md)   
- [sys.resource_governor_configuration &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-resource-governor-configuration-transact-sql.md)   
- [Resource Governor](../../relational-databases/resource-governor/resource-governor.md)  
-  
-  
+## Related content
 
+- [Dynamic Management Views and Functions (Transact-SQL)](system-dynamic-management-views.md)
+- [sys.resource_governor_configuration (Transact-SQL)](../../relational-databases/system-catalog-views/sys-resource-governor-configuration-transact-sql.md)
+- [Resource governor](../../relational-databases/resource-governor/resource-governor.md)

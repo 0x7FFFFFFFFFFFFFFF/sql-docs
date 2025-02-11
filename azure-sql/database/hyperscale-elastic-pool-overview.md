@@ -113,7 +113,7 @@ Consider the following limitations:
 
 - Changing an existing non-Hyperscale elastic pool to the Hyperscale edition isn't supported. The [conversion section](#convert-non-hyperscale-databases-to-hyperscale-elastic-pools) provides some alternatives you can use.
 - Changing the edition of a Hyperscale elastic pool to a non-Hyperscale edition isn't supported.
-- In order to ["reverse migrate"](./manage-hyperscale-database.md#reverse-migrate-from-hyperscale) an eligible database, which is in a Hyperscale elastic pool, it must first be removed from the Hyperscale elastic pool. The standalone Hyperscale database can then be "reverse migrated" to a General Purpose standalone database.
+- In order to ["reverse migrate"](reverse-migrate-from-hyperscale.md) an eligible database, which is in a Hyperscale elastic pool, it must first be removed from the Hyperscale elastic pool. The standalone Hyperscale database can then be "reverse migrated" to a General Purpose standalone database.
 - For the Hyperscale service tier, zone redundancy support can only be specified during database or elastic pool creation and can't be modified once the resource is provisioned. For more information, see [Migrate Azure SQL Database to availability zone support](/azure/reliability/migrate-sql-database#downtime-requirements).
 - Adding a [named replica](./service-tier-hyperscale-replicas.md#named-replica) into a Hyperscale elastic pool isn't supported. Attempting to add a named replica of a Hyperscale database to a Hyperscale elastic pool results in an `UnsupportedReplicationOperation` error. Instead, create the named replica as a single Hyperscale database.
 
