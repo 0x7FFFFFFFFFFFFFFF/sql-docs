@@ -796,6 +796,9 @@ Parser version 1.0 is available for backward compatibility only, and should be u
 - If MATCH_COLUMN_COUNT is ON
   - The COPY command checks if the column count on each row in each file from the source matches the column count of the destination table
   - If there is a column count mismatch, the COPY command fails
+ 
+> [!NOTE]  
+> MATCH_COLUMN_COUNT works independently from MAXERRORS. A column count mismatch causes COPY INTO to fail regardless of MAXERRORS.
 
 ## Permissions
 
