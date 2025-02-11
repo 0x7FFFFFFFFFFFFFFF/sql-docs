@@ -4,7 +4,7 @@ description: Use Azure SQL Database from a GitHub Actions workflow
 author: juliakm
 ms.author: jukullam
 ms.reviewer: wiassaf, mathoma
-ms.date: 12/13/2023
+ms.date: 02/11/2025
 ms.service: azure-sql-database
 ms.subservice: connect
 ms.topic: quickstart
@@ -83,27 +83,6 @@ You'll set the connection string as a GitHub secret, `AZURE_SQL_CONNECTION_STRIN
 
 4. Rename your workflow `SQL for GitHub Actions` and add the checkout and login actions. These actions check out your site code and authenticate with Azure using the `AZURE_CREDENTIALS` GitHub secret you created earlier.
 
-    # [Service principal](#tab/userlevel)
-
-    ```yaml
-    name: SQL for GitHub Actions
-    
-    on:
-        push:
-            branches: [ main ]
-        pull_request:
-            branches: [ main ]
-    
-    jobs:
-        build:
-            runs-on: windows-latest
-            steps:
-             - uses: actions/checkout@v1
-             - uses: azure/login@v1
-               with:
-                creds: ${{ secrets.AZURE_CREDENTIALS }}
-    ```
-
     # [OpenID Connect](#tab/openid)
 
     ```yaml
@@ -120,11 +99,32 @@ You'll set the connection string as a GitHub secret, `AZURE_SQL_CONNECTION_STRIN
                 runs-on: windows-latest
                 steps:
                  - uses: actions/checkout@v1
-                 - uses: azure/login@v1
+                 - uses: azure/login@v2
                    with:
                     client-id: ${{ secrets.AZURE_CLIENT_ID }}
                     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
                     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    ```
+
+    # [Service principal](#tab/userlevel)
+
+    ```yaml
+    name: SQL for GitHub Actions
+    
+    on:
+        push:
+            branches: [ main ]
+        pull_request:
+            branches: [ main ]
+    
+    jobs:
+        build:
+            runs-on: windows-latest
+            steps:
+             - uses: actions/checkout@v1
+             - uses: azure/login@v2
+               with:
+                creds: ${{ secrets.AZURE_CREDENTIALS }}
     ```
   
   ---
@@ -141,37 +141,6 @@ You'll set the connection string as a GitHub secret, `AZURE_SQL_CONNECTION_STRIN
 
 6. Complete your workflow by adding an action to logout of Azure. Here's the completed workflow. The file appears in the `.github/workflows` folder of your repository.
 
-    # [Service principal](#tab/userlevel)
-
-    ```yaml
-    name: SQL for GitHub Actions
-    
-    on:
-        push:
-            branches: [ main ]
-        pull_request:
-            branches: [ main ]
-    
-    jobs:
-        build:
-            runs-on: windows-latest
-            steps:
-             - uses: actions/checkout@v1
-             - uses: azure/login@v1
-               with:
-                creds: ${{ secrets.AZURE_CREDENTIALS }}
-             - uses: azure/sql-action@v2
-               with:
-                connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-                path: './Database.dacpac'
-                action: 'Publish'
-
-                # Azure logout 
-             - name: logout
-               run: |
-                  az logout
-    ```
-
     # [OpenID Connect](#tab/openid)
 
     ```yaml
@@ -188,7 +157,7 @@ You'll set the connection string as a GitHub secret, `AZURE_SQL_CONNECTION_STRIN
                 runs-on: windows-latest
                 steps:
                  - uses: actions/checkout@v1
-                 - uses: azure/login@v1
+                 - uses: azure/login@v2
                    with:
                     client-id: ${{ secrets.AZURE_CLIENT_ID }}
                     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -198,6 +167,38 @@ You'll set the connection string as a GitHub secret, `AZURE_SQL_CONNECTION_STRIN
                    run: |
                      az logout
     ```
+
+    # [Service principal](#tab/userlevel)
+
+    ```yaml
+    name: SQL for GitHub Actions
+    
+    on:
+        push:
+            branches: [ main ]
+        pull_request:
+            branches: [ main ]
+    
+    jobs:
+        build:
+            runs-on: windows-latest
+            steps:
+             - uses: actions/checkout@v1
+             - uses: azure/login@v2
+               with:
+                creds: ${{ secrets.AZURE_CREDENTIALS }}
+             - uses: azure/sql-action@v2
+               with:
+                connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+                path: './Database.dacpac'
+                action: 'Publish'
+
+                # Azure logout 
+             - name: logout
+               run: |
+                  az logout
+    ```
+
 
     ---
 
