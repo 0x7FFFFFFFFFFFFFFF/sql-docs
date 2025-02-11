@@ -89,7 +89,7 @@ The `BULK INSERT` statement has different arguments and options in different pla
 | Data source | Local path, Network path (UNC), or Azure Storage | Azure Storage | Azure Storage | 
 | Source authentication | Windows authentication, SAS | Microsoft Entra ID, SAS token, managed identity | Microsoft Entra ID |
 | Unsupported options | `*` wildcards in path | `*` wildcards in path | `DATA_SOURCE`, `FORMATFILE_DATA_SOURCE`, `ERRORFILE`, `ERRORFILE_DATA_SOURCE` |
-| Enabled options but without effect | | | `KEEPIDENTITY`, `FIRE_TRIGGERS`, `CHECK_CONSTRAINTS`, `TABLOCK`, `ORDER`, `ROWS_PER_BATCH`, `KILOBYTES_PER_BATCH`, and `BATCHSIZE` are not applicable. They will not throw an syntax error, but they will not have any effect | 
+| Enabled options but without effect | | | `KEEPIDENTITY`, `FIRE_TRIGGERS`, `CHECK_CONSTRAINTS`, `TABLOCK`, `ORDER`, `ROWS_PER_BATCH`, `KILOBYTES_PER_BATCH`, and `BATCHSIZE` are not applicable. They will not throw a syntax error, but they will not have any effect | 
 
 #### *database_name*
 
@@ -251,7 +251,7 @@ The MAX_ERRORS option doesn't apply to constraint checks or to converting **mone
 
 #### ORDER ( { *column* [ ASC | DESC ] } [ ,... *n* ] )
 
-Specifies how the data in the data file is sorted. Bulk import performance is improved if the data being imported is sorted according to the clustered index on the table, if any. If the data file is sorted in a different order, that is other than the order of a clustered index key or if there's no clustered index on the table, the ORDER clause is ignored. The column names supplied must be valid column names in the destination table. By default, the bulk insert operation assumes the data file is unordered. For optimized bulk import, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] also validates that the imported data is sorted.
+Specifies how the data in the data file is sorted. Bulk import performance is improved if the data being imported is sorted according to the clustered index on the table, if any. If the data file is sorted in an order other than the order of a clustered index key, or if there's no clustered index on the table, the `ORDER` clause is ignored. The column names supplied must be valid column names in the destination table. By default, the bulk insert operation assumes the data file is unordered. For optimized bulk import, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] also validates that the imported data is sorted.
 
 *n* is a placeholder that indicates that multiple columns can be specified.
 
