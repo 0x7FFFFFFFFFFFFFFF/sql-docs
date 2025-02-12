@@ -669,8 +669,6 @@ items:
           href: database-engine/availability-groups/windows/availability-group-is-not-ready-for-automatic-failover.md
         - name: Availability replica does not have a healthy role
           href: database-engine/availability-groups/windows/availability-replica-does-not-have-a-healthy-role.md
-        - name: Availability replica is disconnected
-          href: database-engine/availability-groups/windows/availability-replica-is-disconnected.md
         - name: Availability replica is not joined
           href: database-engine/availability-groups/windows/availability-replica-is-not-joined.md
         - name: Data synchronization state of availability database is not healthy
@@ -11579,7 +11577,7 @@ items:
         href: relational-databases/system-catalog-views/syspolicy-policy-category-subscriptions-transact-sql.md
       - name: syspolicy_system_health_state
         href: relational-databases/system-catalog-views/syspolicy-system-health-state-transact-sql.md
-    - name: Resource Governor
+    - name: Resource governor
       href: relational-databases/system-catalog-views/resource-governor-catalog-views-transact-sql.md
       items:
       - name: sys.resource_governor_configuration
@@ -12054,7 +12052,7 @@ items:
         href: relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database.md
       - name: sys.dm_operation_status (Azure SQL Database)
         href: relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database.md
-      - name: sys.dm_resource_governor_workload_groups_history_ex (Azure SQL Database)
+      - name: sys.dm_resource_governor_workload_groups_history_ex
         href: relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database.md
     - name: Database Mirroring
       items:
@@ -12362,7 +12360,7 @@ items:
         href: relational-databases/system-dynamic-management-views/sys-dm-repl-tranhash-transact-sql.md
       - name: sys.dm_repl_traninfo
         href: relational-databases/system-dynamic-management-views/sys-dm-repl-traninfo-transact-sql.md
-    - name: Resource Governor
+    - name: Resource governor
       href: relational-databases/system-dynamic-management-views/resource-governor-related-dynamic-management-views-transact-sql.md
       items:
       - name: sys.dm_resource_governor_configuration
@@ -12375,7 +12373,7 @@ items:
         href: relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pool-affinity-transact-sql.md
       - name: sys.dm_resource_governor_resource_pools
         href: relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-transact-sql.md
-      - name: sys.dm_resource_governor_pools_history_ex (Azure SQL Database)
+      - name: sys.dm_resource_governor_pools_history_ex
         href: relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database.md
       - name: sys.dm_resource_governor_resource_pool_volumes
         href: relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pool-volumes-transact-sql.md

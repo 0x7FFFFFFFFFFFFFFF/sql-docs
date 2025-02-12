@@ -3,7 +3,7 @@ title: "sys.dm_resource_governor_external_resource_pool_affinity (Transact-SQL)"
 description: sys.dm_resource_governor_external_resource_pool_affinity (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: "02/27/2023"
+ms.date: 02/11/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -18,36 +18,36 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
+
 # sys.dm_resource_governor_external_resource_pool_affinity (Transact-SQL)
+
 [!INCLUDE [sqlserver2016](../../includes/applies-to-version/sqlserver2016.md)]
+
 **Applies to:** [!INCLUDE[sssql15-md](../../includes/sssql16-md.md)] [!INCLUDE[rsql-productname-md](../../includes/rsql-productname-md.md)] and [!INCLUDE[sssql17-md](../../includes/sssql17-md.md)] [!INCLUDE[rsql-productnamenew-md](../../includes/rsql-productnamenew-md.md)]
 
 Returns CPU affinity information about the current external resource pool configuration.
-  
-|Column name|Data type|Description|
-|----------------|---------------|-----------------|
-|pool_id|**int**|The ID of the external resource pool. Is not nullable.|
-|processor_group|**smallint**|The ID of the Windows logical processor group. Is not nullable.|
-|cpu_mask|**bigint**|The binary mask representing the CPUs associated with this pool. Is not nullable.|
-  
+
+| Column name | Data type | Description |
+|:--|:--|:--|
+| `pool_id` | **int** | The ID of the external resource pool. Not nullable. |
+| `processor_group`| **smallint** | The ID of the Windows logical processor group. Not nullable. |
+| `cpu_mask`| **bigint** | The binary mask representing the CPUs associated with this pool. Not nullable. |
+
 ## Remarks
 
-Pools that are created with an affinity of `AUTO` do not appear in this view because they have no affinity. For more information, see the [CREATE EXTERNAL RESOURCE POOL &#40;Transact-SQL&#41;](../../t-sql/statements/create-external-resource-pool-transact-sql.md) and [ALTER EXTERNAL RESOURCE POOL &#40;Transact-SQL&#41;](../../t-sql/statements/alter-external-resource-pool-transact-sql.md) statements.
+Pools that are created with an affinity of `AUTO` do not appear in this view because they have no affinity. For more information, see the [CREATE EXTERNAL RESOURCE POOL (Transact-SQL)](../../t-sql/statements/create-external-resource-pool-transact-sql.md) and [ALTER EXTERNAL RESOURCE POOL (Transact-SQL)](../../t-sql/statements/alter-external-resource-pool-transact-sql.md) statements.
 
 ## Permissions
 
-Requires `VIEW SERVER STATE` permission.
+Requires the `VIEW SERVER STATE` permission.
 
 ### Permissions for SQL Server 2022 and later
 
-Requires VIEW SERVER PERFORMANCE STATE permission on the server.
+Requires the `VIEW SERVER PERFORMANCE STATE` permission on the server.
 
-## See also
+## Related content
 
-[Resource governance for machine learning in SQL Server](../../machine-learning/administration/resource-governor.md)
-
-[sys.dm_resource_governor_resource_pool_affinity &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pool-affinity-transact-sql.md)
-
-[external scripts enabled Server Configuration Option](../../database-engine/configure-windows/external-scripts-enabled-server-configuration-option.md)
-
-[ALTER EXTERNAL RESOURCE POOL &#40;Transact-SQL&#41;](../../t-sql/statements/alter-external-resource-pool-transact-sql.md)
+- [Resource governance for machine learning in SQL Server](../../machine-learning/administration/resource-governor.md)
+- [sys.dm_resource_governor_resource_pool_affinity (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pool-affinity-transact-sql.md)
+- [external scripts enabled Server Configuration Option](../../database-engine/configure-windows/external-scripts-enabled-server-configuration-option.md)
+- [ALTER EXTERNAL RESOURCE POOL (Transact-SQL)](../../t-sql/statements/alter-external-resource-pool-transact-sql.md)

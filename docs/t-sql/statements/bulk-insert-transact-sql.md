@@ -3,8 +3,8 @@ title: "BULK INSERT (Transact-SQL)"
 description: Transact-SQL reference for the BULK INSERT statement.
 author: markingmyname
 ms.author: maghan
-ms.reviewer: randolphwest
-ms.date: 05/12/2022
+ms.reviewer: randolphwest, wiassaf
+ms.date: 02/12/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -24,12 +24,13 @@ helpviewer_keywords:
   - "file importing [SQL Server]"
 dev_langs:
   - "TSQL"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # BULK INSERT (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
-Imports a data file into a database table or view in a user-specified format in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+Imports a data file into a database table or view in a user-specified format in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -81,6 +82,15 @@ BULK INSERT
 
 ## Arguments
 
+The `BULK INSERT` statement has different arguments and options in different platforms. The differences are summarized in the following table:
+
+| Feature     | SQL Server | Azure SQL Database and Azure SQL Managed Instance | Fabric Warehouse |
+|---------------|------------|
+| Data source | Local path, Network path (UNC), or Azure Storage | Azure Storage | Azure Storage | 
+| Source authentication | Windows authentication, SAS | Microsoft Entra ID, SAS token, managed identity | Microsoft Entra ID |
+| Unsupported options | `*` wildcards in path | `*` wildcards in path | `DATA_SOURCE`, `FORMATFILE_DATA_SOURCE`, `ERRORFILE`, `ERRORFILE_DATA_SOURCE` |
+| Enabled options but without effect | | | `KEEPIDENTITY`, `FIRE_TRIGGERS`, `CHECK_CONSTRAINTS`, `TABLOCK`, `ORDER`, `ROWS_PER_BATCH`, `KILOBYTES_PER_BATCH`, and `BATCHSIZE` are not applicable. They will not throw a syntax error, but they will not have any effect | 
+
 #### *database_name*
 
 The database name in which the specified table or view resides. If not specified, *database_name* is the current database.
@@ -97,16 +107,33 @@ Specifies the name of the table or view to bulk import data into. Only views in 
 
 Specifies the full path of the data file that contains data to import into the specified table or view. BULK INSERT can import data from a disk or Azure Blob Storage (including network, floppy disk, hard disk, and so on).
 
+```sql
+BULK INSERT bing_covid_19_data
+FROM 'C:\\bing_covid-19_data\public\curated\covid-19\latest\bing_covid-19_data.csv';
+```
+
 *data_file* must specify a valid path from the server on which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running. If *data_file* is a remote file, specify the Universal Naming Convention (UNC) name. A UNC name has the form `\\SystemName\ShareName\Path\FileName`. For example:
 
 ```sql
-BULK INSERT Sales.Orders
-FROM '\\SystemX\DiskZ\Sales\data\orders.dat';
+BULK INSERT bing_covid_19_data
+FROM '\\ShareX\bing_covid-19_data\public\curated\covid-19\latest\bing_covid-19_data.csv';
 ```
 
-Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], the *data_file* can be in Azure Blob Storage. In that case, you need to specify **data_source_name** option. For an example, see [Import data from a file in Azure Blob Storage](#f-import-data-from-a-file-in-azure-blob-storage).
+Azure SQL Database and Fabric Warehouse support only reading from Azure Blob Storage.
 
-Azure SQL Database only supports reading from Azure Blob Storage.
+Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], the *data_file* can be in Azure Blob Storage. In that case, you need to specify `data_source_name` option as well. For an example, see [Import data from a file in Azure Blob Storage](#f-import-data-from-a-file-in-azure-blob-storage).
+
+Fabric Warehouse supports two different path styles for specifying source path:
+
+- `https://<storage account>.blob.core.windows.net/<container name>/<path to file>`
+- `abfss://<container name>@<storage account>.dfs.core.windows.net/<path to file>`
+
+Fabric Warehouse supports `*` wildcards that can match any character in the URI, and enable you to define a URI pattern for the files that should be imported. For example:
+
+```sql
+BULK INSERT bing_covid_19_data
+FROM 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/*.csv';
+```
 
 #### BATCHSIZE = *batch_size*
 
@@ -156,6 +183,15 @@ Specifies that BULK INSERT performs the import operation using the specified dat
 **Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and Azure SQL Database.
 
 Specifies a named external data source pointing to the Azure Blob Storage location of the file that will be imported. The external data source must be created using the `TYPE = BLOB_STORAGE` option added in [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]. For more information, see [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md). For an example, see [Import data from a file in Azure Blob Storage](#f-import-data-from-a-file-in-azure-blob-storage).
+
+```sql
+CREATE EXTERNAL DATA SOURCE pandemicdatalake
+WITH (LOCATION='https://pandemicdatalake.blob.core.windows.net/public/',TYPE=BLOB_STORAGE)
+GO
+BULK INSERT bing_covid_19_data
+FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (DATA_SOURCE='pandemicdatalake',FIRSTROW = 2,LASTROW = 100,FIELDTERMINATOR = ',');
+```
 
 #### ERRORFILE = '*error_file_path*'
 
@@ -215,7 +251,7 @@ The MAX_ERRORS option doesn't apply to constraint checks or to converting **mone
 
 #### ORDER ( { *column* [ ASC | DESC ] } [ ,... *n* ] )
 
-Specifies how the data in the data file is sorted. Bulk import performance is improved if the data being imported is sorted according to the clustered index on the table, if any. If the data file is sorted in a different order, that is other than the order of a clustered index key or if there's no clustered index on the table, the ORDER clause is ignored. The column names supplied must be valid column names in the destination table. By default, the bulk insert operation assumes the data file is unordered. For optimized bulk import, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] also validates that the imported data is sorted.
+Specifies how the data in the data file is sorted. Bulk import performance is improved if the data being imported is sorted according to the clustered index on the table, if any. If the data file is sorted in an order other than the order of a clustered index key, or if there's no clustered index on the table, the `ORDER` clause is ignored. The column names supplied must be valid column names in the destination table. By default, the bulk insert operation assumes the data file is unordered. For optimized bulk import, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] also validates that the imported data is sorted.
 
 *n* is a placeholder that indicates that multiple columns can be specified.
 
@@ -333,15 +369,15 @@ To bulk export or import SQLXML data, use one of the following data types in you
 
 |Data type|Effect|
 |---------------|------------|
-|SQLCHAR or SQLVARCHAR|The data is sent in the client code page or in the code page implied by the collation). The effect is the same as specifying the DATAFILETYPE **= 'char'** without specifying a format file.|
-|SQLNCHAR or SQLNVARCHAR|The data is sent as Unicode. The effect is the same as specifying the DATAFILETYPE **= 'widechar'** without specifying a format file.|
-|SQLBINARY or SQLVARBIN|The data is sent without any conversion.|
+| **SQLCHAR** or **SQLVARCHAR**|The data is sent in the client code page or in the code page implied by the collation). The effect is the same as specifying the DATAFILETYPE **= 'char'** without specifying a format file.|
+| **SQLNCHAR** or **SQLNVARCHAR** |The data is sent as Unicode. The effect is the same as specifying the `DATAFILETYPE = 'widechar'` without specifying a format file.|
+| **SQLBINARY** or **SQLVARBIN** |The data is sent without any conversion.|
 
 ## Remarks
 
-For a comparison of the BULK INSERT statement, the INSERT ... SELECT \* FROM OPENROWSET(BULK...) statement, and the **bcp** command, see [Bulk Import and Export of Data &#40;SQL Server&#41;](../../relational-databases/import-export/bulk-import-and-export-of-data-sql-server.md).
+For a comparison of the BULK INSERT statement, the `INSERT ... SELECT * FROM OPENROWSET(BULK...)` statement, and the `bcp` command, see [Bulk Import and Export of Data](../../relational-databases/import-export/bulk-import-and-export-of-data-sql-server.md).
 
-For information about preparing data for bulk import, see [Prepare Data for Bulk Export or Import &#40;SQL Server&#41;](../../relational-databases/import-export/prepare-data-for-bulk-export-or-import-sql-server.md).
+For information about preparing data for bulk import, see [Prepare Data for Bulk Export or Import](../../relational-databases/import-export/prepare-data-for-bulk-export-or-import-sql-server.md).
 
 The BULK INSERT statement can be executed within a user-defined transaction to import data into a table or view. Optionally, to use multiple matches for bulk importing data, a transaction can specify the BATCHSIZE clause in the BULK INSERT statement. If a multiple-batch transaction is rolled back, every batch that the transaction has sent to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is rolled back.
 
