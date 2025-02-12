@@ -5,7 +5,7 @@ description: An overview of database watcher for Azure SQL, a managed monitoring
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf
-ms.date: 01/23/2024
+ms.date: 02/12/2024
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -211,6 +211,7 @@ This section describes recent database watcher fixes, changes, and improvements.
 
 | Time period | Changes |
 |:--|:--|
+| February 2025 | - Add support for alerting. For more information, see [Database watcher alerts](database-watcher-alerts.md). |
 | January 2025 | - Fix to make database watcher deployments via Bicep or ARM templates idempotent.</br> - Fix a bug where SQL Agent job history details on the SQL Managed Instance detailed dashboard weren't displayed.</br> - Fix a bug when filtering data on the **Sessions** charts on the detailed dashboards would cause KQL query errors.</br> - Fix a bug where storage throughput values on the detailed dashboards were incorrect.</br> - Improve storage utilization charts on the detailed dashboards to include the maximum storage size.</br> - Improve to show the original and compressed size of collected data in the **Data store** section.</br> - Improve the message shown when a dashboard cannot connect to the data store to include suggestions for common problems.</br> - Add informational messages when there is no data shown on the **Top queries** dashboards for known reasons.</br> - Add Hyperscale log rate limit information in the **Replicas** dataset for Azure SQL databases.</br> - Add transaction start time and log bytes used to the **Active sessions** datasets. |
 | November 2024 | - Enable database watcher in the **Australia Central**, **Australia Southeast**, **Canada East**, **Central US**, **Germany West Central**, **Japan West**, **Korea Central**, and **North Central US** Azure regions.</br> - Increase the limit on the number of SQL targets per watcher from 50 to 100. |
 | October 2024 | - Fix bugs where the **Table metadata** dataset was not collected if there were any views with invalid table references, or any tables with multiple column check constraints.</br> - Add support for using a user assigned identity as the watcher identity. For more information, see [Modify watcher identity](database-watcher-manage.md#modify-watcher-identity).</br> - Automatically grant the watcher access to key vault secrets when adding a SQL target that uses SQL authentication.</br> - Automatically grant the watcher access to an Azure Data Explorer database when adding a data store to an existing watcher.</br> - Add the feedback button on the **Overview** page and other pages. |

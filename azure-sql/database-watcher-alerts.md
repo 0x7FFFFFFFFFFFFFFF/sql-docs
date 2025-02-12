@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: A detailed description of Azure Monitor Alerts in database watcher
 author: dimitri-furman
 ms.author: dfurman
-ms.date: 01/30/2025
+ms.date: 02/12/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -166,7 +166,7 @@ To create an alert rule from a database watcher template:
     > When creating an alert rule, make sure to select the SQL target type that matches the type of SQL targets you added to your watcher. If you monitor multiple types of SQL targets, you need to create separate alert rules for each SQL target type.
 1. Select **Create alert rule**.
 1. Select the Azure subscription, resource group, name, region, severity, and evaluation frequency for the alert rule. We recommend that the region of the alert rule matches the region of the Azure Data Explorer cluster used as the data store for the watcher.
-    > [!CAUTION]
+    > [!WARNING]
     >
     > If an alert rule with the same name already exists in the same subscription, resource group, and region, it is *replaced* by the alert rule created from the template. Any alert rule customizations you might have made are replaced with the template values.
 
