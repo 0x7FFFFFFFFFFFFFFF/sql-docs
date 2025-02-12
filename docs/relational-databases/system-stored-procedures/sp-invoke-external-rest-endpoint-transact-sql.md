@@ -4,7 +4,7 @@ description: The sp_invoke_external_rest_endpoint stored procedure invokes an HT
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 02/10/2025
+ms.date: 02/13/2025
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -25,6 +25,24 @@ monikerRange: "=fabric"
 [!INCLUDE [asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]
 
 The `sp_invoke_external_rest_endpoint` stored procedure invokes an HTTPS REST endpoint provided as an input argument to the procedure.
+
+> [!NOTE]
+> The `sp_invoke_external_rest_endpoint` stored procedure is in [preview](/azure/azure-sql/managed-instance/doc-changes-updates-release-notes-whats-new#preview) for Azure SQL Managed Instance.
+
+
+## Ways to mitigate risk of unauthorized access or transfer of data
+
+> [!CAUTION]  
+> Using the `sp_invoke_external_rest_endpoint` stored procedure allows for the transfer of data to an external entity.
+
+
+To mitigate the risk of unauthorized access or transfer of data, consider the following security best practices:
+
+- **Implement strong access controls**: Ensure that only authorized users have access to sensitive data and REST API endpoints. Use the [principle of least privilege](/entra/identity-platform/secure-least-privileged-access), as well as database roles and privileges.
+- **Proper authentication and authorization**: Ensure that all REST calls are authenticated and authorized to prevent unauthorized access.
+- **Monitor and audit access**: Regularly monitor and audit access to the database and REST API calls to detect any suspicious activities.
+- **Regular Security Assessments**: Conduct regular security assessments and vulnerability scans to identify and mitigate potential risks.
+- **Employee training**: Educate employees about the risks of data exfiltration and the importance of following security protocols.
 
 ## Syntax
 
@@ -394,11 +412,14 @@ For more information on text header types, refer to the [text type registry at I
 > [!NOTE]  
 > If you're testing invocation of the REST endpoint with other tools, like [cURL](https://curl.se/) or any modern REST client like [Insomnia](https://insomnia.rest/), make sure to include the same headers that are automatically injected by `sp_invoke_external_rest_endpoint` to have the same behavior and results.
 
-## Enabling sp_invoke_external_rest_endpoint in Azure SQL Managed Instance (Public Preview)
+## sp_invoke_external_rest_endpoint in Azure SQL Managed Instance
 
-This feature is available in Azure SQL Managed Instance with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy?view=azuresql&tabs=azure-portal#always-up-to-date-update-policy&preserve-view=true) configured.
+> [!NOTE]
+> The `sp_invoke_external_rest_endpoint` stored procedure is in [preview](/azure/azure-sql/managed-instance/doc-changes-updates-release-notes-whats-new#preview) for Azure SQL Managed Instance.
 
-To enable this feature in Azure SQL Managed Instance, run the following code: 
+The `sp_invoke_external_rest_endpoint` stored procedure is available in Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy). To use this stored procedure with your SQL managed instance, first use [sp_configure](sp-configure-transact-sql.md) to enable the `external rest endpoint enabled` option, which is enabled by default in Azure SQL Database and SQL database in Fabric. 
+
+To use the `sp_invoke_external_rest_endpoint` stored procedure in Azure SQL Managed Instance, run the following T-SQL code: 
 
 ``` SQL
 sp_configure 'external rest endpoint enabled', 1;
@@ -407,20 +428,6 @@ RECONFIGURE WITH OVERRIDE;
 
 To execute sp_configure to change a configuration option or to run the RECONFIGURE statement, a user must be granted the ALTER SETTINGS server-level permission. The ALTER SETTINGS permission is implicitly held by the sysadmin and serveradmin fixed server roles.
 
-> [!IMPORTANT]  
-> Enabling this feature allows for the transfer of data from your Azure SQL Managed Instance to an external entity.
->
-> **Ways to mitigate risk of unauthorized access or transfer of data.**
->
->	1. **Implement Strong Access Controls**: Ensure that only authorized users have access to sensitive data and REST API endpoints. Use the [principle of least privilege](/entra/identity-platform/secure-least-privileged-access) as well as database roles and privileges.
->
->	1. **Proper Authentication and Authorization**: Ensure that all REST calls are authenticated and authorized to prevent unauthorized access.
->
->	1. **Monitor and Audit Access**: Regularly monitor and audit access to the database and REST API calls to detect any suspicious activities.
->
->	1. **Regular Security Assessments**: Conduct regular security assessments and vulnerability scans to identify and mitigate potential risks.
->
-> 1. **Employee Training**: Educate employees about the risks of data exfiltration and the importance of following security protocols.
 
 ## Best practices
 
