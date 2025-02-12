@@ -3,7 +3,7 @@ title: "SQL Data Developer"
 description: "Use Microsoft's SQL data platform to create data-centric solutions across mobile devices and desktops for web servers, enterprise servers, and the cloud."
 author: David-Engel
 ms.author: davidengel
-ms.date: 11/01/2024
+ms.date: 02/11/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -14,13 +14,13 @@ ms.custom:
 Use Microsoft's SQL data platform to create data-centric solutions across mobile devices and desktops for web servers, enterprise servers, and the cloud.  
 
 ## SQL Data storage
-* [SQL Server Database Engine](../database-engine/install-windows/install-sql-server-database-engine.md): Use the  SQL Server Database Engine to create relational databases for online transaction processing or online analytical processing data. 
-* [Azure SQL](/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview): Use Azure SQL to move your database to the cloud 
+* [SQL Server Database Engine](../database-engine/install-windows/install-sql-server-database-engine.md): Use the SQL Server Database Engine to create relational databases for online transaction processing or online analytical processing data. 
+* [Azure SQL Database and Azure SQL Managed Instance](/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview): Use Azure SQL Database or Azure SQL Managed Instance to start development or move your database to the cloud.
+* [SQL database in Fabric](/fabric/database/sql/overview): Based on the same engine as Azure SQL Database and integrated in your Microsoft Fabric workspace, SQL database in Microsoft Fabric is a developer-friendly transactional database that allows you to easily create your operational database in Fabric. [Many features are common between SQL Server and Azure SQL Database and SQL database in Fabric](/fabric/database/sql/feature-comparison-sql-database-fabric).
 * [SQL Compact](https://www.microsoft.com/download/details.aspx?id=30709): Use SQL Server Compact to build standalone and occasionally connected applications for mobile devices, desktops, and Web clients.
 * [LocalDB](../database-engine/configure-windows/sql-server-express-localdb.md): Use LocalDB during development to write and test Transact-SQL code without having to manage a full server instance of SQL Server.
 
 ## SQL Data tools
-* [Azure Data Studio](/azure-data-studio/download-azure-data-studio): Use Azure Data Studio on Windows, macOS, and Linux to run SQL Server, Azure SQL Database, PostgreSQL, Jupyter Notebooks and more.
 * [mssql extension for Visual Studio Code](/sql/tools/visual-studio-code/mssql-extensions?view=fabric&preserve-view=true): Use the mssql extension in VS Code on Windows, macOS, and Linux to manage SQL Server, Azure SQL Database, SQL database in Fabric.
 * [SQL Server Data Tools](../ssdt/download-sql-server-data-tools-ssdt.md): Use SSDT inside Visual Studio to build relational databases, Azure SQL databases, Integration Services packages, Analysis Services data models, and Reporting Services reports.
 * [SQL Server Management Tools](../ssms/download-sql-server-management-studio-ssms.md):  Use SSMS on Windows to configure, monitor, and administer instances of SQL Server.
