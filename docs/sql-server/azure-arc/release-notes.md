@@ -27,7 +27,7 @@ Extension versions are cumulative. Higher extension versions include all of the 
 
 **Extension version**: `1.1.2914.231`
 
-Minor bug fixes. This release does not enable or introduce new features.## November 12, 2024
+Minor bug fixes. This release does not enable or introduce new features.
 
 ## November 12, 2024
 
