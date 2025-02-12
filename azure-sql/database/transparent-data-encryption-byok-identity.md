@@ -5,7 +5,7 @@ description: Bring Your Own Key (BYOK) support for transparent data encryption (
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, mathoma
-ms.date: 09/28/2023
+ms.date: 02/12/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: conceptual
@@ -57,7 +57,6 @@ In addition to the system-assigned managed identity that is already supported fo
 - If the key vault is behind a VNet that uses a firewall, the option to **Allow Trusted Microsoft Services to bypass this firewall** must be enabled in the key vault's **Networking** menu if you want to use a user-assigned managed identity or system-assigned managed identity. Once this option is enabled, available keys can't be listed in the SQL server TDE menu in the Azure portal. To set an individual CMK, a *key identifier* must be used. When the option to **Allow Trusted Microsoft Services to bypass this firewall** isn't enabled, the following error is returned:
   - `Failed to save Transparent Data Encryption settings for SQL resource: <ServerName>. Error message: The managed identity with ID '/subscriptions/subscriptionID/resourcegroups/resource_name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umi_name' requires the following Azure Key Vault permissions: 'Get, WrapKey, UnwrapKey' to the key 'https://keyvault_name/keys/key_name'. Please grant the missing permissions to the identity. Additionally ensure the key is not expired and is not disabled. For expired key, please extend the key expiry time so that SQL can use it to perform wrap and unwrap operations. If your key vault is behind a virtual network or firewall, ensure you select the 'Allow trusted Microsoft services to bypass this firewall' option. (https://aka.ms/sqltdebyokcreateserver).`
   - If you get the above error, check if the key vault is behind a virtual network or firewall, and make sure the option **Allow Trusted Microsoft Services to bypass this firewall** is enabled.
-- User Assigned Managed Identity for SQL Managed Instances is currently only supported on key vaults that have public access from all networks enabled. It is not supported when the AKV firewall is filtering specific virtual networks and IP addresses or using private endpoint connections.
 - When multiple user-assigned managed identities are assigned to the server or managed instance, if a single identity is removed from the server using the *Identity* pane of the Azure portal, the operation succeeds but the identity doesn't get removed from the server. Removing all user-assigned managed identities together from the Azure portal works successfully.
 - When the server or managed instance is configured with customer-managed TDE and both system-assigned and user-assigned managed identities are enabled on the server, removing the user-assigned managed identities from the server without first giving the system-assigned managed identity access to the key vault results in an *Unexpected error occurred* message. Ensure the system-assigned managed identity has been provided key vault access prior to removing the primary user-assigned managed identity (and any other user-assigned managed identities) from the server.
 
@@ -66,6 +65,6 @@ In addition to the system-assigned managed identity that is already supported fo
 > [!div class="nextstepaction"]
 > [Create Azure SQL database configured with user-assigned managed identity and customer-managed TDE](transparent-data-encryption-byok-create-server.md)
 
-## See also
+## Related content
 
 - [Create an Azure SQL Managed Instance with a user-assigned managed identity](../managed-instance/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance.md)
