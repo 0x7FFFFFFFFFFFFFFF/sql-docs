@@ -92,7 +92,7 @@ The `BULK INSERT` statement has different arguments and options in different pla
 | Enabled options but without effect | | | `KEEPIDENTITY`, `FIRE_TRIGGERS`, `CHECK_CONSTRAINTS`, `TABLOCK`, `ORDER`, `ROWS_PER_BATCH`, `KILOBYTES_PER_BATCH`, and `BATCHSIZE` are not applicable. They will not throw a syntax error, but they will not have any effect | 
 
 > [!NOTE]
-> The BULK INSERT statement is in [public preview in Fabric Data Warehouse](https://blog.fabric.microsoft.com/blog/bulk-insert-statement-in-fabric-datawarehouse).
+> The BULK INSERT statement is in [preview in Fabric Data Warehouse](https://blog.fabric.microsoft.com/blog/bulk-insert-statement-in-fabric-datawarehouse).
 
 #### *database_name*
 
