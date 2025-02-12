@@ -22,7 +22,7 @@ monikerRange: "=fabric"
 ---
 # sp_invoke_external_rest_endpoint (Transact-SQL)
 
-[!INCLUDE [asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
+[!INCLUDE [asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]
 
 The `sp_invoke_external_rest_endpoint` stored procedure invokes an HTTPS REST endpoint provided as an input argument to the procedure.
 
