@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: A detailed description of SQL monitoring data collected by database watcher
 author: dimitri-furman
 ms.author: dfurman
-ms.date: 11/11/2024
+ms.date: 12/20/2024
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -297,4 +297,5 @@ For example, the `sqldb_database_resource_utilization` dataset is derived from t
 - [Quickstart: Create a database watcher to monitor Azure SQL (preview)](database-watcher-quickstart.md)
 - [Create and configure a database watcher (preview)](database-watcher-manage.md)
 - [Analyze database watcher monitoring data (preview)](database-watcher-analyze.md)
+- [Database watcher alerts (preview)](database-watcher-alerts.md)
 - [Database watcher FAQ](database-watcher-faq.yml)
