@@ -669,8 +669,6 @@ items:
           href: database-engine/availability-groups/windows/availability-group-is-not-ready-for-automatic-failover.md
         - name: Availability replica does not have a healthy role
           href: database-engine/availability-groups/windows/availability-replica-does-not-have-a-healthy-role.md
-        - name: Availability replica is disconnected
-          href: database-engine/availability-groups/windows/availability-replica-is-disconnected.md
         - name: Availability replica is not joined
           href: database-engine/availability-groups/windows/availability-replica-is-not-joined.md
         - name: Data synchronization state of availability database is not healthy

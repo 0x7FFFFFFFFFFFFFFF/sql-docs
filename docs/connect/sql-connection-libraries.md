@@ -4,14 +4,16 @@ description: Provides download links for modules, which enable connection to Mic
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: vanto
-ms.date: 09/16/2024
+ms.date: 02/11/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: article
 ---
 # Connection modules for Microsoft SQL Database
 
-This article provides download links to connection modules or *drivers* that your client programs can use for interacting with [Databases](../relational-databases/databases/databases.md), [Azure SQL Database](/azure/sql-database/), and Azure SQL Managed Instance. Drivers are available for a variety of programming languages, running on the following operating systems:
+This article provides download links to connection modules or *drivers* that your client programs can use for interacting with [databases in SQL Server](../relational-databases/databases/databases.md), [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview?view=azuresql-db&preserve-view=true), [SQL database in Microsoft Fabric](/fabric/database/sql/overview), and [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview?view=azuresql-mi&preserve-view=true). 
+
+Drivers are available for a variety of programming languages, running on the following operating systems:
 
 - Linux
 - macOS

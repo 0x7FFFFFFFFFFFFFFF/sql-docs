@@ -5,7 +5,7 @@ description: An overview of database watcher for Azure SQL, a managed monitoring
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf
-ms.date: 01/23/2024
+ms.date: 02/12/2024
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -21,7 +21,7 @@ monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 
 Database watcher is a managed monitoring solution for database services in the Azure SQL family. It supports [Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/) and [Azure SQL Managed Instance](https://azure.microsoft.com/products/azure-sql/managed-instance/).
 
-Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Monitoring data from the databases, elastic pools, and SQL managed instances you select is [collected](database-watcher-data.md#data-collection) into a central data store in your Azure subscription. [Dashboards](#dashboards) in Azure portal provide a single-pane-of-glass view of your Azure SQL estate and a detailed view of each database, elastic pool, and SQL managed instance.
+Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Monitoring data from the databases, elastic pools, and SQL managed instances you select is [collected](database-watcher-data.md#data-collection) into a central data store in your Azure subscription. [Dashboards](#dashboards) in Azure portal provide a single-pane-of-glass view of your Azure SQL estate and a detailed view of each database, elastic pool, and SQL managed instance. [Alerts](database-watcher-alerts.md) send you notifications when database conditions across your Azure SQL estate might require attention.
 
 :::image type="content" border="false" source="media/database-watcher-overview/database-watcher-overview-diagram.svg" alt-text="Diagram showing database watcher components and data flow from monitored resources to watcher to data store to Azure portal dashboards.":::
 
@@ -56,12 +56,13 @@ Database watcher costs are incurred by its individual components, as follows:
 |:--|:--|:--|
 | Watchers | **Free** | |
 | Dashboards | **Free** | |
-| Azure Data Explorer cluster\* | [Pricing details](https://azure.microsoft.com/pricing/details/data-explorer) | The optimal cluster SKU depends on the number of monitoring targets and the cluster query workload. For cluster sizing considerations, see [Manage Azure Data Explorer cluster](database-watcher-manage.md#manage-data-store). |
+| Azure Data Explorer cluster <sup>1</sup> | [Pricing details](https://azure.microsoft.com/pricing/details/data-explorer) | The optimal cluster SKU depends on the number of monitoring targets and the cluster query workload. For cluster sizing considerations, see [Manage Azure Data Explorer cluster](database-watcher-manage.md#manage-data-store). |
 | Real-Time Analytics in Microsoft Fabric | Included in the Power BI Premium workspace consumption model. Billing per use. | Use either Azure Data Explorer or Real-Time Analytics. Only one of these offerings is required. |
 | A vault in Azure Key Vault | [Pricing details](https://azure.microsoft.com/pricing/details/key-vault/) | Required only if the optional SQL authentication is used instead of the default Microsoft Entra authentication. |
 | Azure network bandwidth | [Pricing details](https://azure.microsoft.com/pricing/details/bandwidth/) | Cost is not incurred if a watcher, its targets, and its data store are deployed in the same Azure region. |
+| Alerts | [Pricing details](https://azure.microsoft.com/pricing/details/monitor) | Database watcher uses Log Alerts. Monthly price is variable and depends on the number of alert rules you create, the number of SQL targets that have generated alerts during the month, and the evaluation frequency of each alert rule. |
 
-\*You can use a [free Azure Data Explorer cluster](/azure/data-explorer/start-for-free) when a service level agreement is not required and when query performance and storage requirements are satisfied by the free cluster capacity specifications. The free cluster trial period is for a year and can be extended automatically.
+<sup>1</sup> You can use a [free Azure Data Explorer cluster](/azure/data-explorer/start-for-free) when a service level agreement is not required and when query performance and storage requirements are satisfied by the free cluster capacity specifications. The free cluster trial period is for a year and can be extended automatically.
 
 There is no charge per monitored Azure SQL resource or per user, making database watcher an inexpensive monitoring solution for larger Azure SQL environments and larger teams.
 
@@ -149,6 +150,10 @@ Database watcher has separate dataset groups for databases, elastic pools, and S
 
 For more information, see [Database watcher data collection and datasets](database-watcher-data.md).
 
+## Alerts
+
+Database watcher provides a set of alert rule templates to let you easily create Azure Monitor alert rules. After an alert rule is created, you can customize it and manage it just like any other alert rule in Azure Monitor. For more information, see [Database watcher alerts](database-watcher-alerts.md).
+
 ## Network connectivity
 
 Database watcher uses a remote data collection agent that connects to targets, data store, and key vault over the network. Depending on your network security requirements and the configuration of your Azure resources, database watcher can use either private or public connectivity. You always fully control network connectivity from database watcher to your Azure resources.
@@ -206,6 +211,7 @@ This section describes recent database watcher fixes, changes, and improvements.
 
 | Time period | Changes |
 |:--|:--|
+| February 2025 | - Add support for alerting. For more information, see [Database watcher alerts](database-watcher-alerts.md). |
 | January 2025 | - Fix to make database watcher deployments via Bicep or ARM templates idempotent.</br> - Fix a bug where SQL Agent job history details on the SQL Managed Instance detailed dashboard weren't displayed.</br> - Fix a bug when filtering data on the **Sessions** charts on the detailed dashboards would cause KQL query errors.</br> - Fix a bug where storage throughput values on the detailed dashboards were incorrect.</br> - Improve storage utilization charts on the detailed dashboards to include the maximum storage size.</br> - Improve to show the original and compressed size of collected data in the **Data store** section.</br> - Improve the message shown when a dashboard cannot connect to the data store to include suggestions for common problems.</br> - Add informational messages when there is no data shown on the **Top queries** dashboards for known reasons.</br> - Add Hyperscale log rate limit information in the **Replicas** dataset for Azure SQL databases.</br> - Add transaction start time and log bytes used to the **Active sessions** datasets. |
 | November 2024 | - Enable database watcher in the **Australia Central**, **Australia Southeast**, **Canada East**, **Central US**, **Germany West Central**, **Japan West**, **Korea Central**, and **North Central US** Azure regions.</br> - Increase the limit on the number of SQL targets per watcher from 50 to 100. |
 | October 2024 | - Fix bugs where the **Table metadata** dataset was not collected if there were any views with invalid table references, or any tables with multiple column check constraints.</br> - Add support for using a user assigned identity as the watcher identity. For more information, see [Modify watcher identity](database-watcher-manage.md#modify-watcher-identity).</br> - Automatically grant the watcher access to key vault secrets when adding a SQL target that uses SQL authentication.</br> - Automatically grant the watcher access to an Azure Data Explorer database when adding a data store to an existing watcher.</br> - Add the feedback button on the **Overview** page and other pages. |
@@ -221,6 +227,10 @@ This section describes database watcher limitations. Workarounds are provided if
 
 | Limitation | Workaround |
 |:--|:--|
+| Alerts aren't available when the data store uses Real-Time Analytics in Microsoft Fabric, or a free Azure Data Explorer cluster. | In Real-Time Analytics, you can [create Activator alerts for a Real-Time Dashboard](/fabric/real-time-intelligence/data-activator/activator-get-data-real-time-dashboard). |
+| Azure log search alerts on Azure Data Explorer don't support 1-minute alert evaluation frequency. | None at this time. |
+| Azure log search alerts on Azure Data Explorer aren't supported when public access to the Azure Data Explorer cluster is disabled. | None at this time. |
+| Because of a security restriction in Azure Monitor, you can't modify alert rule queries in the Azure portal if you connect from an IP address associated with a virtual network where private endpoints exist. | You can modify an alert rule using Azure CLI, PowerShell, REST API, or ARM templates. For more information, see [Create a new alert rule using the CLI, PowerShell, or an ARM template](/azure/azure-monitor/alerts/alerts-create-rule-cli-powershell-arm) and [Manage alert rules](/azure/azure-monitor/alerts/alerts-manage-alert-rules). |
 | If using smaller Azure Data Explorer SKUs such as **Dev/test** or **Extra small**, some dashboard queries might intermittently fail to execute with an "aborted due to throttling" error. | Reload the dashboard, or [scale up the Azure Data Explorer cluster](database-watcher-manage.md#scale-azure-data-explorer-cluster) to the next higher SKU. |
 | If you create a free Azure Data Explorer cluster from the database watcher UI in Azure portal, you might get a "Could not connect to cluster, 403-Forbidden" error if you try to access the cluster in the Azure Data Explorer [web UI](https://dataexplorer.azure.com/). | This issue doesn't occur if you create the free cluster using <https://aka.ms/kustofree>. </br></br>If you have already created a free cluster from Azure portal, follow these steps: </br></br>In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select your profile name in the main bar to open the account manager, and select **Switch directory**. Select the directory *other than* **Microsoft Account**, and select **Switch**. You should now see the free Azure Data Explorer cluster you created. </br></br>Alternatively, you can edit the cluster connection in the Azure Data Explorer web UI using the edit (pencil) button, and similarly switch the directory. |
 | If CPU consumption for a database, elastic pool, or a SQL managed instance persists near 100%, remaining CPU resources might be insufficient for database watcher data collection queries, causing gaps in the collected data. | If you observe data gaps that correlate with high CPU utilization in the database, elastic pool, or a SQL managed instance, consider tuning your application workload to reduce CPU consumption, or increase the number of vCores or DTUs to enable reliable monitoring. |
@@ -238,6 +248,7 @@ During preview, database watcher has the following known issues.
 | If you create a managed private endpoint for a watcher to connect to a SQL managed instance that is stopped, the provisioning state of the private endpoint is reported as **Failed**, and the watcher cannot connect to the instance. | Delete the managed private endpoint with the **Failed** provisioning state and [start](./managed-instance/instance-stop-start-how-to.md) the SQL managed instance. Once the failed private endpoint is deleted and the instance is running, [re-create](database-watcher-manage.md#create-a-managed-private-endpoint) the managed private endpoint. |
 | Data is not collected if you use a database in Real-Time Analytics as the data store, and the **OneLake availability** option is enabled. | Disable the **OneLake availability** option and restart the watcher to resume data collection. |
 | Because of a known issue in Azure SQL Database, data in the **Backup history** dataset for Azure SQL databases is not collected if the database catalog collation is other than the default `SQL_Latin1_General_CP1_CI_AS`. | None at this time. |
+| Because of a known issue in Azure Monitor Alerts, if you edit an alert rule created from a database watcher template, the scope of any fired alert will be set to the Azure Data Explorer cluster used as the watcher data store instead of the SQL target that the alert applies to. | Edit the alert rule programmatically, for example using Bicep or an ARM template, and set the `resourceIdColumn` property to the value `resource_id`. For more information, see [Resource Manager template samples for log search alert rules in Azure Monitor](/azure/azure-monitor/alerts/resource-manager-alerts-log). |
 
 ## Troubleshoot
 
@@ -307,4 +318,5 @@ For technical support or help solving a problem with database watcher, [open a s
 - [Create and configure a database watcher (preview)](database-watcher-manage.md)
 - [Database watcher data collection and datasets (preview)](database-watcher-data.md)
 - [Analyze database watcher monitoring data (preview)](database-watcher-analyze.md)
+- [Database watcher alerts (preview)](database-watcher-alerts.md)
 - [Database watcher FAQ](database-watcher-faq.yml)
