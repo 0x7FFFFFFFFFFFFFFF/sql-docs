@@ -114,6 +114,8 @@
           href: ./database-watcher-data.md
         - name: Analyze monitoring data
           href: ./database-watcher-analyze.md
+        - name: Alerts
+          href: ./database-watcher-alerts.md
         - name: FAQ
           href: ./database-watcher-faq.yml
       - name: SQL Analytics
