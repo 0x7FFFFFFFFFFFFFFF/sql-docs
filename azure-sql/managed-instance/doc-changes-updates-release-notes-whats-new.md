@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, mathoma
-ms.date: 01/28/2025
+ms.date: 02/13/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -47,6 +47,7 @@ The following table lists the features of Azure SQL Managed Instance that are cu
 |[Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) | An architectural upgrade of the General Purpose service tier that uses managed disks for greater resource flexibility, and improved performance while maintaining the same baseline cost as the General Purpose service tier.  |
 |[SDK-style SQL project](/sql/azure-data-studio/extensions/sql-database-project-extension-sdk-style-projects) | Use [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql) for SDK-style SQL projects in the SQL Database Projects extension in Azure Data Studio or Visual Studio Code. SDK-style SQL projects are especially advantageous for applications shipped through pipelines or built in cross-platform environments.|
 |[Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) | Support for cross-instance message exchange using Service Broker between instances of Azure SQL Managed Instance, and between SQL Server and Azure SQL Managed Instance. |
+|[Invoke an HTTPS REST endpoint SP](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) | Use the `sp_invoke_external_rest_endpoint` stored procedure to invoke an HTTPS REST endpoint provided as an input argument to the procedure. | 
 |[Threat detection](threat-detection-configure.md) | Threat detection notifies you of security threats detected to your database. |
 |[Zone redundancy for General Purpose](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) |  Deploy your General Purpose SQL Managed Instance to multiple availability zones to improve the availability of your instance in the event of a disaster. | 
 
@@ -94,6 +95,12 @@ The features available in the wave are:
 ## Documentation changes
 
 Learn about significant changes to the Azure SQL Managed Instance documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
+
+### February 2025
+
+| Changes | Details |
+| --- | --- |
+|**Invoke an HTTPS REST endpoint SP preview** | Use the [sp_invoke_external_rest_endpoint](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) stored procedure to invoke an HTTPS REST endpoint provided as an input argument to the procedure. This stored procedure is currently in preview for Azure SQL Managed Instance.  | 
 
 ### January 2025
 
