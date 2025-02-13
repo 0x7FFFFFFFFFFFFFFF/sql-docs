@@ -11,22 +11,26 @@ ms.topic: troubleshooting-general
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
-Use Azure Resource Graph to identify the state the Azure extension for SQL Server on your Azure Arc-enabled servers. This article demonstrates queries that identify unhealthy extensions.
+This article describes ways to identify unhealthy extensions that are not installed correctly, running properly, or not connected to Azure.
+
+## Identify unhealthy extensions
+
+### Use the built-in extension health dashboard in the Azure portal
+
+You can use the [built-in extension health dashboard](https://ms.portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/sqlServerHealthDashboard) in the Azure portal to show the health for all deployed Azure extensions for SQL Server.
+
+> [!TIP]
+> Create your own custom dashboard with this file from the sql-server-samples GitHub repository: [Arc-enabled SQL Server Health.json](https://github.com/microsoft/sql-server-samples/blob/master/samples/features/azure-arc/dashboard/Arc-enabled%20SQL%20Server%20Health.json).
+
+### Query unhealthy extensions using Azure Resource Graph
+
+Use Azure Resource Graph to identify the state the Azure extension for SQL Server on your Azure Arc-enabled servers. 
 
 > [!TIP] 
 > If you're not already familiar, learn about Azure Resource Graph:
 > 
 > - [What is Azure Resource Graph](/azure/governance/resource-graph/overview)
 > - [Quickstart: Run Resource Graph query using Azure portal](/azure/governance/resource-graph/first-query-portal)
-
-## Identify unhealthy extensions
-
-You can create a dashboard in Azure portal to show the health for all deployed Azure extensions for SQL Server.
-
-> [!TIP]
-> Create your own dashboard with this file from the sql-server-samples GitHub repository: [Arc-enabled SQL Server Health.json](https://github.com/microsoft/sql-server-samples/blob/master/samples/features/azure-arc/dashboard/Arc-enabled%20SQL%20Server%20Health.json).
-
-### Query unhealthy extensions
 
 This query returns instances of SQL Server on servers with extensions installed, but not healthy.
 
