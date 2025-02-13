@@ -1,6 +1,6 @@
 ---
 title: Automatic Tuning Overview
-titleSuffix: Azure SQL Database & Azure SQL Managed Instance
+titleSuffix: Azure SQL & SQL database in Fabric
 description: Automatic tuning analyzes SQL query and automatically adapts to user workload.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
@@ -14,7 +14,7 @@ ms.custom:
   - ignite-2024
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabric"
 ---
-# Automatic tuning in Azure SQL Database and Azure SQL Managed Instance
+# Automatic database tuning
 
 [!INCLUDE[appliesto-sqldb-sqlmi-fabricsqldb](../includes/appliesto-sqldb-sqlmi-fabricsqldb.md)]
 
