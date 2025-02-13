@@ -1,10 +1,10 @@
 ---
 title: "sys.dm_database_backups"
 description: Returns information about backups of a database in an Azure SQL Database logical server and in Fabric SQL database.
-author: SudhirRaparla
-ms.author: nvraparl
-ms.reviewer: randolphwest
-ms.date: 10/31/2024
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: randolphwest, nvraparl
+ms.date: 02/10/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
 ms.custom:
@@ -27,9 +27,6 @@ monikerRange: "=azuresqldb-current || =fabric"
 
 Returns information about backups of a database in an [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] logical server and in [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
 
-> [!NOTE]  
-> The `sys.dm_database_backups` DMV is currently in preview and is available for all Azure SQL Database service tiers except the Hyperscale tier. Since the Hyperscale service tier relies on snapshots for backups, running this DMV in the Hyperscale service tier returns no results.
-
 | Column name | Data type | Description |
 | --- | --- | --- |
 | `backup_file_id` | **uniqueidentifier** | ID of the generated backup file. Not null. |
@@ -51,6 +48,8 @@ In Fabric SQL database, a user must be granted VIEW DATABASE STATE in the databa
 ## Remarks
 
 Backups retained and shown in the backup history view depend on configured backup retention. Some backups older than the retention period (`in_retention = 0`) are also shown in the `sys.dm_database_backups` view. They're needed to do point in time restore within the configured retention.
+
+Since the Hyperscale service tier relies on snapshots for backups, running this DMV in the Hyperscale service tier returns no results.
 
 ## Example
 

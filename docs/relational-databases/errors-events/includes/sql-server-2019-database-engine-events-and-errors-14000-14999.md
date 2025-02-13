@@ -1,7 +1,7 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/12/2024
+ms.date: 02/13/2025
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -120,8 +120,8 @@ ms.topic: include
 | 14126 | 16 | No | You do not have the required permissions to complete the operation. |
 | 14128 | 16 | No | Invalid @subscription_type parameter value. Valid options are 'push' or 'pull'. |
 | 14129 | 16 | No | The @status parameter value must be NULL for 'automatic' sync_type when you add subscriptions to an immediate_sync publication. |
-| 14130 | 10 | No | WARNING: The database '%s' does not contain database master key. Create a database master key and then update all replication secrets in this database. |
-| 14131 | 16 | No | The database '%s' does not contain database master key. Create database master key and repeat the procedure. |
+| 14130 | 10 | No | WARNING: The database '%s' does not contain database master key. Create a database master key and then update all replication secrets in this database. For more information, see https://aka.ms/sql-tr-dmk-warning-troubleshooting. |
+| 14131 | 16 | No | The database '%s' does not contain database master key. Create database master key and repeat the procedure. For more information, see https://aka.ms/sql-tr-dmk-error-troubleshooting. |
 | 14135 | 16 | No | There is no subscription on Publisher '%s', publisher database '%s', publication '%s'. |
 | 14136 | 16 | No | The keyword 'all' is reserved by replication stored procedures. |
 | 14137 | 16 | No | The @value parameter value must be either 'true' or 'false'. |
