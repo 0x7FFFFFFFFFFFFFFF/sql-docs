@@ -11,7 +11,7 @@ ms.topic: troubleshooting-general
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
-This article describes ways identify unhealthy extensions that are not installed correctly, running properly, or not connected to Azure.
+This article describes ways to identify unhealthy extensions that are not installed correctly, running properly, or not connected to Azure.
 
 ## Identify unhealthy extensions
 
