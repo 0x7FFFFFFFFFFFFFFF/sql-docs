@@ -1,10 +1,10 @@
 ---
-title: "SQL Server Browser service"
+title: "SQL Server Browser Service"
 description: Learn how to use SQL Server Browser, a service that listens for requests for SQL Server resources and provides information about installed SQL Server instances.
 author: markingmyname
 ms.author: maghan
-ms.reviewer: vanto
-ms.date: 09/11/2024
+ms.reviewer: vanto, randolphwest
+ms.date: 02/13/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: conceptual
@@ -56,7 +56,7 @@ Upon startup, the SQL Server Browser starts and claims UDP port 1434. SQL Server
 
 When SQL Server clients request SQL Server resources, the client network library sends a UDP message to the server using port 1434. SQL Server Browser responds with the TCP/IP port or named pipe of the requested instance. The network library on the client application then completes the connection by sending a request to the server using the port or named pipe of the desired instance.
 
-Learn how to start and stop the SQL Server Browser service in the article [Start, stop, pause, resume, restart SQL Server services](../../database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services.md).
+For more information on starting and stopping the SQL Server Browser service, see [Start, stop, pause, resume, and restart SQL Server services](../../database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services.md).
 
 ## Use SQL Server Browser
 
@@ -65,33 +65,38 @@ If the SQL Server Browser service isn't running, you can still connect to the SQ
 However, if the SQL Server Browser service isn't running, the following connections don't work:
 
 - Any component that tries to connect to a named instance without fully specifying all the parameters (such as the TCP/IP port or named pipe).
-- Any component that generates or passes server\instance information that other components could later use to reconnect.
-- Connecting to a named instance without providing the port number or pipe.
-- [DAC](../../database-engine/configure-windows/diagnostic-connection-for-database-administrators.md) to a named instance or the default instance if not using TCP/IP port 1433.
-- The Online Analytical Processing (OLAP) redirector service.
-- Enumerating servers in [SQL Server Management Studio](../../ssms/menu-help/about-sql-server-management-studio.md) or [Azure Data Studio](/azure-data-studio/download-azure-data-studio).
 
-Suppose you're using SQL Server in a client-server scenario (for example, when your application is accessing SQL Server across a network). If you stop or disable the SQL Server Browser service, you must assign a specific port number to each instance and write your client application code to use that port number. This approach has the following problems:
+- Any component that generates or passes `<server>\<instance>` information that other components could later use to reconnect.
+
+- Connecting to a named instance without providing the port number or pipe.
+
+- [Diagnostic connection for database administrators](../../database-engine/configure-windows/diagnostic-connection-for-database-administrators.md) to a named instance or the default instance if not using TCP/IP port 1433.
+
+- The Online Analytical Processing (OLAP) redirector service.
+
+- Enumerating servers in [SQL Server Management Studio](../../ssms/menu-help/about-sql-server-management-studio.md).
+
+Suppose you're using SQL Server in a client-server scenario (for example, when your application is accessing SQL Server across a network). If you stop or disable the SQL Server Browser service, you must assign a specific port number to each instance and configure your client application code to use that port number. This approach has the following problems:
 
 - You must update and maintain client application code to ensure it's connecting to the proper port.
-- The port you choose for each instance might be used by another service or application on the server, causing the instance of SQL Server to be unavailable.
+
+- The port you choose for each instance could be used by another service or application on the server, causing the instance of SQL Server to be unavailable.
 
 ## Clusters and SQL Server Browser
 
 SQL Server Browser isn't a clustered resource and doesn't support failover from one cluster node to the other. Therefore, if there's a cluster, SQL Server Browser should be installed and turned on for each cluster node. On clusters, the SQL Server Browser listens on `IP_ANY`.
 
-> [!NOTE]  
-> When listening on IP_ANY, when you enable listening on specific IPs, the user must configure the same TCP port on each IP because SQL Server Browser returns the first IP/port pair it encounters.
+When the SQL Server Browser listens on `IP_ANY` and you enable listening on specific IP addresses, you must configure the same TCP/IP port on each IP address, because SQL Server Browser returns the first IP address and port pair it encounters.
 
 ## Install, uninstall, and run from the command line
 
-By default, the SQL Server Browser program is installed at *C:\Program Files (x86)\Microsoft SQL Server\90\Shared\sqlbrowser.exe*.
+By default, the SQL Server Browser program is installed at `<drive>:\Program Files (x86)\Microsoft SQL Server\<nn>\Shared\sqlbrowser.exe`.
 
 The SQL Server Browser service is uninstalled when the last instance of SQL Server is removed.
 
-SQL Server Browser can be started from the command prompt for troubleshooting by using the **-c** switch:
+SQL Server Browser can be started from the command prompt for troubleshooting by using the `-c` switch:
 
-```dos
+```cmd
 <drive>\<path>\sqlbrowser.exe -c
 ```
 
@@ -102,9 +107,12 @@ The SQL Server Browser Service is crucial in facilitating network communication 
 Security measures for SQL Server Browser Service include:
 
 - Configuring firewalls to allow its traffic.
+
 - Restricting access to trusted IP addresses.
+
 - Regularly applying updates to patch vulnerabilities.
-- Additionally, it's essential to implement strong authentication and authorization policies to prevent unauthorized access and maintain the integrity of your SQL Server environment.
+
+- Additionally, you must implement strong authentication and authorization policies to prevent unauthorized access and maintain the integrity of your SQL Server environment.
 
 ### Account privileges
 
@@ -124,8 +132,8 @@ The minimum user rights for SQL Server Browser are:
 Setup configures SQL Server Browser to use the account selected for services during setup. Other possible accounts include:
 
 - Any **domain\local** account.
-- The **local service** account.
-- The **local system** account (not recommended as it has unnecessary privileges).
+- The **Local Service** account.
+- The **Local System** account (not recommended as it has unnecessary privileges).
 
 ### Hide SQL Server
 
