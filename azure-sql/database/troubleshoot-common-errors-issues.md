@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot common connection issues
-titleSuffix: Azure SQL Database & Azure SQL Managed Instance
+titleSuffix: Azure SQL & SQL database in Fabric
 description: Provides steps to troubleshoot connection issues and resolve other connectivity issues in Azure SQL Database, Fabric SQL database, or Azure SQL Managed Instance.
 author: suresh-kandoth
 ms.author: sureshka
