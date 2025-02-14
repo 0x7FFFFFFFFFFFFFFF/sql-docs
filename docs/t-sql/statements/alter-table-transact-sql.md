@@ -4,7 +4,7 @@ description: ALTER TABLE modifies a table definition by altering, adding, or dro
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 02/11/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -64,13 +64,16 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 # ALTER TABLE (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
 Modifies a table definition by altering, adding, or dropping columns and constraints. ALTER TABLE also reassigns and rebuilds partitions, or disables and enables constraints and triggers.
 
 ::: moniker range="=fabric"
+
 > [!NOTE]
-> Currently, `ALTER TABLE` in Fabric Warehouse is only supported for constraints and adding nullable columns. See [Syntax for Warehouse in Fabric](#syntax-for-warehouse-in-fabric).
+> Currently, `ALTER TABLE` in Fabric Warehouse is only supported for constraints and adding nullable columns. See [Syntax for [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]](#syntax-for-warehouse-in-fabric).
+> Currently, memory-optimized tables are not available in [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
+
 ::: moniker-end
 
 > [!IMPORTANT]  
@@ -78,12 +81,13 @@ Modifies a table definition by altering, adding, or dropping columns and constra
 > 
 > - Disk-based tables:
 >  
-> - [Syntax](#syntax-for-disk-based-tables)
-> - [Examples](#Example_Top)
+>    - [Syntax](#syntax-for-disk-based-tables)
+>    - [Examples](#Example_Top)
+>
 > - Memory-optimized tables
 >  
-> - [Syntax](#syntax-for-memory-optimized-tables)
-> - [Examples](../../relational-databases/in-memory-oltp/altering-memory-optimized-tables.md)
+>    - [Syntax](#syntax-for-memory-optimized-tables)
+>    - [Examples](../../relational-databases/in-memory-oltp/altering-memory-optimized-tables.md)
 
 For more information about the syntax conventions, see [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md).
 
@@ -629,6 +633,9 @@ Specifies that the PERSISTED property is added to or dropped from the specified 
 
 Any computed column that's used as a partitioning column of a partitioned table must be explicitly marked PERSISTED.
 
+> [!NOTE]
+> In Fabric SQL database, computed columns are allowed but currently will not be mirrored to Fabric OneLake.
+
 #### DROP NOT FOR REPLICATION
 
 **Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] ([!INCLUDE[sql2008-md](../../includes/sql2008-md.md)] and later) and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
@@ -693,7 +700,7 @@ If you don't want to verify new CHECK or FOREIGN KEY constraints against existin
 
 Specifies that the bucket count for *index_name* is to be changed or altered.
 
-The syntax ALTER TABLE ... ADD/DROP/ALTER INDEX is supported only for memory-optimized tables.
+The syntax `ALTER TABLE ... ADD/DROP/ALTER INDEX` is supported only for memory-optimized tables.
 
 > [!IMPORTANT]  
 > Without using an ALTER TABLE statement, the statements [CREATE INDEX](create-index-transact-sql.md), [DROP INDEX](drop-index-transact-sql.md), [ALTER INDEX](alter-index-transact-sql.md), and [PAD_INDEX](alter-table-index-option-transact-sql.md) are not supported for indexes on memory-optimized tables.
