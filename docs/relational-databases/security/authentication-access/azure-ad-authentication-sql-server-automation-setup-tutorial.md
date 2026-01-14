@@ -44,14 +44,14 @@ We'll also go over the updated functionality to set up a Microsoft Entra admin f
 
 ## Preparation before setting the Microsoft Entra admin
 
-The following permissions are necessary to set up Microsoft Entra admin in the **SQL Server – Azure Arc** and **Key vault** resources.
+The following permissions are necessary to set up Microsoft Entra admin in the **SQL Server - Azure Arc** and **Key vault** resources.
 
 ### Configure permissions for Azure Arc
 
-Follow the guide to make sure your [SQL Server is connected to Azure Arc](../../../sql-server/azure-arc/connect.md). The user setting up Microsoft Entra admin for the **SQL Server – Azure Arc** resource should have the **Contributor** role for the server.
+Follow the guide to make sure your [SQL Server is connected to Azure Arc](../../../sql-server/azure-arc/connect.md). The user setting up Microsoft Entra admin for the **SQL Server - Azure Arc** resource should have the **Contributor** role for the server.
 
 1. Go to the [Azure portal](https://portal.azure.com)
-1. Select **SQL Server – Azure Arc**, and select the instance for your SQL Server host.
+1. Select **SQL Server - Azure Arc**, and select the instance for your SQL Server host.
 1. Select **Access control (IAM)**.
 1. Select **Add** > **Add role assignment** to add the **Contributor** role to the user setting up the Microsoft Entra admin.
 
@@ -122,7 +122,7 @@ Use the Azure portal to set up a Microsoft Entra admin, create an Azure Key Vaul
 
 ## Setting up Microsoft Entra admin using the Azure portal
 
-1. Go to the [Azure portal](https://portal.azure.com), and select **SQL Server – Azure Arc**. Select the instance for your SQL Server host.
+1. Go to the [Azure portal](https://portal.azure.com), and select **SQL Server - Azure Arc**. Select the instance for your SQL Server host.
 
 1. Check the status of your **SQL Server - Azure Arc** resource and see if it's connected by going to the **Properties** menu. For more information, see [Validate your Arc-enabled SQL Server resources](../../../sql-server/azure-arc/connect.md#validate-your-arc-enabled-sql-server-resources).
 
@@ -169,7 +169,7 @@ The following input parameters are used for the Azure CLI script:
 - `<certSubjectName>` - Certificate name that will be created
 - `<keyVaultName>` - Your key vault name. This key vault must be created before running the script
 - `<machineName>` - Machine name of your SQL Server host
-- `<resourceGroupName>` - Resource group name that contains your **SQL Server – Azure Arc** instance
+- `<resourceGroupName>` - Resource group name that contains your **SQL Server - Azure Arc** instance
 - `<adminAccountName>` - Microsoft Entra admin account that you want to set for your SQL Server
 - `<instanceName>` - Optional parameter for SQL Server named instances. Use this parameter when you have a named instance. If omitted, the default name of `MSSQLSERVER` is used
 - `<tenantId>` - Optional parameter for tenant ID. The tenant ID can be found by going to the [Azure portal](https://portal.azure.com), and going to your **Microsoft Entra ID** resource. In the **Overview** pane, you should see your **Tenant ID**. If omitted, the default tenant ID is used as a parameter
@@ -610,7 +610,7 @@ $certSubjectName="<certSubjectName>" # Your existing certificate name
 $applicationName="<applicationName>" # Your existing application name 
 $adminAccountName="<adminAccountName>"
 $adminAccountSid="<adminID>"  # Use object ID for the Azure AD user and group, or client ID for the Azure AD application 
-$adminAccountType= 0  # 0 – for Azure AD user and application, 1 for Azure AD group 
+$adminAccountType= 0  # 0 - for Azure AD user and application, 1 for Azure AD group 
 
 # Helper function
 #
@@ -751,7 +751,7 @@ The following input parameters are used for the PowerShell script:
 - `<certSubjectName>` - Certificate name that will be created
 - `<keyVaultName>` - Your key vault name. This key vault must be created before running the script
 - `<machineName>` - Machine name of your SQL Server host
-- `<resourceGroupName>` - Resource group name that contains your **SQL Server – Azure Arc** instance
+- `<resourceGroupName>` - Resource group name that contains your **SQL Server - Azure Arc** instance
 - `<adminAccountName>` - Microsoft Entra admin account that you want to set for your SQL Server
 - `<instanceName>` - Optional parameter for SQL Server named instances. Use this parameter when you have a named instance. If omitted, the default name of `MSSQLSERVER` is used
 - `<tenantId>` - Optional parameter for tenant ID. The tenant ID can be found by going to the [Azure portal](https://portal.azure.com), and going to your **Microsoft Entra ID** resource. In the **Overview** pane, you should see your **Tenant ID**. If omitted, the default tenant ID is used as a parameter
@@ -1143,7 +1143,7 @@ $certSubjectName="<certSubjectName>" # Your existing certificate name
 $applicationName="<applicationName>" # Your existing application name 
 $adminAccountName="<adminAccountName>"
 $adminAccountSid="<adminID>"  # Use object ID for the Microsoft Entra user and group, or client ID for the Microsoft Entra application 
-$adminAccountType= 0  # 0 – for Microsoft Entra user and application, 1 for Microsoft Entra group 
+$adminAccountType= 0  # 0 - for Microsoft Entra user and application, 1 for Microsoft Entra group 
 
 $keyVault = Get-AzKeyVault -VaultName $keyVaultName
 if (!$keyVault)
@@ -1270,7 +1270,7 @@ The following ARM template sets up a Microsoft Entra admin using an existing Azu
 The following input parameters are used for the ARM template:
 
 - `<machineName>` - Machine name of your SQL Server host
-- `<Location>` - Location of your **SQL Server – Azure Arc** resource group, such as `West US`, or `Central US`
+- `<Location>` - Location of your **SQL Server - Azure Arc** resource group, such as `West US`, or `Central US`
 - `<tenantId>` - The tenant ID can be found by going to the [Azure portal](https://portal.azure.com), and going to your **Microsoft Entra ID** resource. In the **Overview** pane, you should see your **Tenant ID**
 - `<instanceName>` - SQL Server instance name. The default instance name of SQL Server is `MSSQLSERVER`
 - `<certSubjectName>` - Certificate name that you created

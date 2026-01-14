@@ -340,4 +340,4 @@ Depending on your SQL managed instance configuration, you can expect significant
 - [In-memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization?view=azuresqlmi-current&preserve-view=true)
 - [Columnstore indexes](/sql/relational-databases/indexes/columnstore-indexes-overview?view=azuresqlmi-current&preserve-view=true)
 - [Real-time operational analytics with columnstore indexes](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics?view=azuresqlmi-current&preserve-view=true)
-- [Technical article: In-memory OLTP – Common Workload Patterns and Migration Considerations in SQL Server 2014](/previous-versions/dn673538(v=msdn.10))
+- [Technical article: In-memory OLTP - Common Workload Patterns and Migration Considerations in SQL Server 2014](/previous-versions/dn673538(v=msdn.10))

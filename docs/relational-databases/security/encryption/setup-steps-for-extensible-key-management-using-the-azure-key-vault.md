@@ -67,7 +67,7 @@ To grant your SQL Server instance access permissions to your Azure key vault, yo
 
    - Select **More services** and then, in the **All services** pane, type **Microsoft Entra ID**.
 
-1. Register an application with Microsoft Entra ID by doing the following. For detailed step-by-step instructions, see the **Get an identity for the application** section of the Azure Key Vault blog post, [Azure Key Vault – Step by Step](/archive/blogs/kv/azure-key-vault-step-by-step#get-an-identity-for-the-application).
+1. Register an application with Microsoft Entra ID by doing the following. For detailed step-by-step instructions, see the **Get an identity for the application** section of the Azure Key Vault blog post, [Azure Key Vault - Step by Step](/archive/blogs/kv/azure-key-vault-step-by-step#get-an-identity-for-the-application).
 
    1. On the **Manage** section of your **Microsoft Entra ID** resource, select **App registrations**.
 

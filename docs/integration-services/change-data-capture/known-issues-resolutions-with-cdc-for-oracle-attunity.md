@@ -32,12 +32,12 @@ Before spending too much time troubleshooting, it is important to use the latest
 ### SQL Server 2016
 
 **Version 4.0.107** contains these fixes:
-- Bug Fixes – Oracle CDC Designer fails with "Incorrect syntax near the keyword 'KEY'" error when adding an Oracle Table.
-- Improvement – Improved support for RAC, this includes better handling when a RAC node is restarted.
-- Bug Fixes – The CDC is not working with Oracle 10.2 due to requesting NEXT_CHANGE# from the v$log.
+- Bug Fixes - Oracle CDC Designer fails with "Incorrect syntax near the keyword 'KEY'" error when adding an Oracle Table.
+- Improvement - Improved support for RAC, this includes better handling when a RAC node is restarted.
+- Bug Fixes - The CDC is not working with Oracle 10.2 due to requesting NEXT_CHANGE# from the v$log.
 
 **Version 4.0.0.95** contains these fixes: 
-- Bug Fixes – Oracle CDC Designer fails with "Incorrect syntax near the keyword 'KEY'" error when adding an Oracle Table.
+- Bug Fixes - Oracle CDC Designer fails with "Incorrect syntax near the keyword 'KEY'" error when adding an Oracle Table.
 
 **Version 4.0.0.88** contains these fixes:
 -  Properties added in the Advanced options of the Attunity CDC instance are removed when a table is added or removed from CDC. 
@@ -46,9 +46,9 @@ Before spending too much time troubleshooting, it is important to use the latest
 ### SQL Server 2014 
 
 **Version 2.0.0.114** contains these fixes:
-- Bug Fixes – Oracle CDC Designer fails with "Incorrect syntax near the keyword 'KEY'" error when adding an Oracle Table.
-- Improvement – Improved support for RAC, this includes better handling when a RAC node is restarted.
-- Bug Fixes – The CDC is not working with Oracle 10.2 due to requesting NEXT_CHANGE# from the v$log.
+- Bug Fixes - Oracle CDC Designer fails with "Incorrect syntax near the keyword 'KEY'" error when adding an Oracle Table.
+- Improvement - Improved support for RAC, this includes better handling when a RAC node is restarted.
+- Bug Fixes - The CDC is not working with Oracle 10.2 due to requesting NEXT_CHANGE# from the v$log.
 
 **Version 2.0.0.92** contains these fixes: 
 - Properties added in the Advanced options of the Attunity CDC instance are removed when a table is added or removed from CDC. Attunity CDC stops working after applying SQL fix that adds __$command_id column

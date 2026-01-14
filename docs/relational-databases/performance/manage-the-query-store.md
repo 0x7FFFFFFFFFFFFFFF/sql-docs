@@ -21,7 +21,7 @@ This article outlines the management of the [!INCLUDE [ssNoVersion](../../includ
 - For more information on configuring and administering with the Query Store, see [Monitoring performance by using the Query Store](monitoring-performance-by-using-the-query-store.md).
 
 > [!NOTE]  
-> In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], Query Store is now enabled by default for all newly created SQL Server databases to help better track performance history, troubleshoot query plan–related issues, and enable new query processor capabilities.
+> In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], Query Store is now enabled by default for all newly created SQL Server databases to help better track performance history, troubleshoot query plan-related issues, and enable new query processor capabilities.
 
 ### <a id="QueryStoreOptions"></a> Query Store defaults in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
 

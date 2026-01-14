@@ -146,7 +146,7 @@ WITH COMPRESSION;
 
 ### Maximum length of URL
 
-The total URL length is limited to 259 bytes by the Backup and Restore engine. This means that `s3://hostname/objectkey` shouldn't exceed 259 characters. Leaving aside `s3://` the user can input the path length (hostname + object key) to be 259 – 5 = 254 characters. Refer to [SQL Server Backup to URL - SQL Server](sql-server-backup-to-url.md). The backup T-SQL syntax statement throws the following error message:
+The total URL length is limited to 259 bytes by the Backup and Restore engine. This means that `s3://hostname/objectkey` shouldn't exceed 259 characters. Leaving aside `s3://` the user can input the path length (hostname + object key) to be 259 - 5 = 254 characters. Refer to [SQL Server Backup to URL - SQL Server](sql-server-backup-to-url.md). The backup T-SQL syntax statement throws the following error message:
 
 ```
 SQL Server has a maximum limit of 259 characters for a backup device name. The BACKUP TO URL consumes 36 characters for the required elements used to specify the URL - 'https://.blob.core.windows.net//.bak', leaving 223 characters for account, container, and blob names put together'

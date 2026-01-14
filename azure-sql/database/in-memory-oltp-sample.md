@@ -331,4 +331,4 @@ In a database using the P2 service objective, you can expect about nine times th
 - [In-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization?view=azuresqldb-current&preserve-view=true)
 - [Columnstore indexes](/sql/relational-databases/indexes/columnstore-indexes-overview?view=azuresqldb-current&preserve-view=true)
 - [Real-time operational analytics with columnstore indexes](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics?view=azuresqldb-current&preserve-view=true)
-- [Technical article: In-Memory OLTP – Common Workload Patterns and Migration Considerations in SQL Server 2014](/previous-versions/dn673538(v=msdn.10))
+- [Technical article: In-Memory OLTP - Common Workload Patterns and Migration Considerations in SQL Server 2014](/previous-versions/dn673538(v=msdn.10))

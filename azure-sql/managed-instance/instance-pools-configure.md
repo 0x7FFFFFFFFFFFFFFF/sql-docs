@@ -326,7 +326,7 @@ $instancePool| Get-AzSqlInstancePoolUsage
 You can add the -ExpandChildren parameter to get a detailed overview of the pool and instances inside it:
 
 ```csv
-$instancePool | Get-AzSqlInstancePoolUsage –ExpandChildren
+$instancePool | Get-AzSqlInstancePoolUsage -ExpandChildren
 ```
 
 To list the databases in an instance, use [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase):

@@ -194,7 +194,7 @@ The steps in Azure portal do not apply to [!INCLUDE [sssql25-md](sssql25-md.md)]
 > - [PowerShell](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md?tabs=azure-powershell#setting-up-the-azure-ad-admin-for-the-sql-server)
 > - [ARM template](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md?tabs=arm-template#setting-up-the-azure-ad-admin-for-the-sql-server)
 
-1. Go to the [Azure portal](https://portal.azure.com), and select **SQL Server – Azure Arc**, and select the instance for your SQL Server host.
+1. Go to the [Azure portal](https://portal.azure.com), and select **SQL Server - Azure Arc**, and select the instance for your SQL Server host.
 
 1. Check the status of your **SQL Server - Azure Arc** resource and see if it's connected by going to the **Properties** menu. For more information, see [Validate the SQL Server - Azure Arc resources](../sql-server/azure-arc/connect.md?#validate-your-arc-enabled-sql-server-resources).
 

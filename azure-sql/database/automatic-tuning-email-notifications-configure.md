@@ -101,7 +101,7 @@ Follow these steps to create a new Azure Automation runbook:
 
 1. Access the Azure Automation account you created in the previous step.
 1. Once in the automation account pane, select the **Runbooks** menu item on the left-hand side to create a new Azure Automation runbook with the PowerShell script. To learn more about creating automation runbooks, see [Create a new runbook](/azure/automation/manage-runbooks#create-a-runbook).
-1. To add a new runbook, select the **+Add a runbook** menu option, and then select the **Quick create – Create a new runbook**.
+1. To add a new runbook, select the **+Add a runbook** menu option, and then select the **Quick create - Create a new runbook**.
 1. In the Runbook pane, type in the name of your runbook (in this example, **AutomaticTuningEmailAutomation** is used), select the type of runbook as **PowerShell** and write a description of this runbook to describe its purpose.
 1. Select **Create** to finish creating a new runbook.
 
@@ -124,7 +124,7 @@ In the case of several subscriptions, you can add them as comma-delimited to the
 #
 # Microsoft Azure SQL Database team, 2018-01-22.
 
-# Set subscriptions : IMPORTANT – REPLACE <SUBSCRIPTION_ID_WITH_DATABASES> WITH YOUR SUBSCRIPTION ID
+# Set subscriptions : IMPORTANT - REPLACE <SUBSCRIPTION_ID_WITH_DATABASES> WITH YOUR SUBSCRIPTION ID
 $subscriptions = ("<SUBSCRIPTION_ID_WITH_DATABASES>", "<SECOND_SUBSCRIPTION_ID_WITH_DATABASES>", "<THIRD_SUBSCRIPTION_ID_WITH_DATABASES>")
 
 # Get credentials
@@ -214,9 +214,9 @@ With the above steps, the PowerShell script to retrieve automatic tuning recomme
 
 To complete the solution, as the final step, create an automation flow in Microsoft Power Automate consisting of three actions (jobs):
 
-- **Azure Automation - Create job** – used to execute the PowerShell script to retrieve automatic tuning recommendations inside the Azure Automation runbook.
-- **Azure Automation - Get job output** – used to retrieve output from the executed PowerShell script.
-- **Office 365 Outlook – Send an email** – used to send out email. E-mails are sent out using the work or school account of the individual creating the flow.
+- **Azure Automation - Create job** - used to execute the PowerShell script to retrieve automatic tuning recommendations inside the Azure Automation runbook.
+- **Azure Automation - Get job output** - used to retrieve output from the executed PowerShell script.
+- **Office 365 Outlook - Send an email** - used to send out email. E-mails are sent out using the work or school account of the individual creating the flow.
 
 To learn more about Microsoft Power Automate capabilities, see [Getting started with Microsoft Power Automate](/power-automate/getting-started).
 
@@ -233,14 +233,14 @@ The next step is to add three jobs (create, get output, and send email) to the n
 1. Create action to execute PowerShell script to retrieve tuning recommendations
 
    1. Select **+New step**, followed by **Add an action** inside the Recurrence flow pane.
-   1. In the search field, type **automation** and select **Azure Automation – Create job** from the search results.
+   1. In the search field, type **automation** and select **Azure Automation - Create job** from the search results.
    1. In the Create job pane, configure the job properties. For this configuration, you need details of your Azure subscription ID, Resource Group, and Automation Account **previously recorded** at the **Automation Account pane**. To learn more about options available in this section, see [Azure Automation - Create Job](/connectors/azureautomation/#create-job).
    1. Select **Save flow**.
 
 1. Create an action to retrieve output from the executed PowerShell script.
 
    1. Select **+New step**, followed by **Add an action** inside the Recurrence flow pane
-   1. In the search field, type **automation** and select **Azure Automation – Get job output** from the search results. To learn more about options available in this section, see [Azure Automation – Get job output](/connectors/azureautomation/#get-job-output).
+   1. In the search field, type **automation** and select **Azure Automation - Get job output** from the search results. To learn more about options available in this section, see [Azure Automation - Get job output](/connectors/azureautomation/#get-job-output).
    1. Populate fields required (similar to creating the previous job) - populate your Azure subscription ID, Resource Group, and Automation Account (as entered in the Automation Account pane).
    1. Select inside the field **Job ID** for the **Dynamic content** menu to show up. From within this menu, select the option **Job ID**.
    1. Select **Save flow**.
@@ -248,7 +248,7 @@ The next step is to add three jobs (create, get output, and send email) to the n
 1. Create an action to send out email using Office 365 integration
 
    1. Select **+New step**, followed by **Add an action** inside the Recurrence flow pane.
-   1. In the search field, type **send an email** and select **Office 365 Outlook – Send an email** from the search results.
+   1. In the search field, type **send an email** and select **Office 365 Outlook - Send an email** from the search results.
    1. In the **To** field, type in the email address to which you need to send the notification email.
    1. In the **Subject** field, type in the subject of your email, for example "Automatic tuning recommendations email notification".
    1. Select inside the field **Body** for the **Dynamic content** menu to show up. From within this menu, under **Get job output**, select **Content**.

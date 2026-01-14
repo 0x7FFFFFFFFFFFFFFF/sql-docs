@@ -287,7 +287,7 @@ Backup storage cost is calculated differently for Hyperscale databases. For more
 
 For single databases, a backup storage amount equal to 100 percent of the maximum data storage size for the database is provided at no extra charge.  The following equation is used to calculate the total billable backup storage usage:
 
-`Total billable backup storage size = (size of full backups + size of differential backups + size of log backups) – maximum data storage`
+`Total billable backup storage size = (size of full backups + size of differential backups + size of log backups) - maximum data storage`
 
 For elastic pools, a backup storage amount equal to 100 percent of the maximum data storage for the pool storage size is provided at no extra charge. For pooled databases, the total size of billable backup storage is aggregated at the pool level and is calculated as follows:
 

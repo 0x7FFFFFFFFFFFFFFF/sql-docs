@@ -199,7 +199,7 @@ Pass-through authorization relies on Active Directory Federation Service (ADFS) 
 - Register SQL Server as a [relying party trust](/windows-server/identity/ad-fs/operations/create-a-relying-party-trust).
     * Provide a unique identifier.
     * Set claims rules for JWT (JSON Web Token).
-<!--    * Sub – SQL Server login name.-->
+<!--    * Sub - SQL Server login name.-->
 - Custom claims - These claims can be added by customers if these are needed to determine access policy on the storage side.
 - For more vendor-specific information, check with your S3-compatible platform provider.
 

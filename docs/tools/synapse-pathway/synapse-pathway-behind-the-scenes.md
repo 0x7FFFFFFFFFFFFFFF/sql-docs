@@ -24,7 +24,7 @@ Each of the stages preserves and augments the knowledge of the source including 
 
 :::image type="content" source="./media/synapse-pathway-behind-the-scenes/azure-synapse-pathway-behind-the-scenes.svg" alt-text="Diagram explaining the Azure Synapse Pathway source, translation, and output ":::
 
-## Stage 1 – Lexing and parsing
+## Stage 1 - Lexing and parsing
 
 SQL Language parsing is a problem that has been solved many times over. There are many commercial and open-source parsers that help with the underlying process of taking a source statement, breaking it down into logical tokens and then executing against a set or parser rules to ensure language consistency. 
 
@@ -50,7 +50,7 @@ ABS ( numeric_expression )
 
 In this simple case, Synapse Pathway understands that the conversion in Synapse SQL from float to numeric is an implicit [conversion](../../t-sql/functions/cast-and-convert-transact-sql.md?view=azure-sqldw-latest&preserve-view=true#implicit-conversions) and requires no further type casting. Simple, clean, and effective code translation.
 
-Keeping this meta-information about the source statements and fragments helps the structural differences between platforms – conversions in opt-out logic for search condition predicates in a WHERE clause for example.
+Keeping this meta-information about the source statements and fragments helps the structural differences between platforms - conversions in opt-out logic for search condition predicates in a WHERE clause for example.
 
 ## Stage 3 - Syntax generation
 
@@ -64,7 +64,7 @@ INSERT INTO staging.table1...
 FROM staging.table2;
 ```
 
-Synapse SQL has an optimized path for this scenario – a [CREATE TABLE AS SELECT](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas). The CTAS statement is a batch-based operation and minimally logged driving high performance by using all the compute infrastructure available. Without this insight about Synapse SQL, tools often produce a truncate and INSERT/SELECT statement.
+Synapse SQL has an optimized path for this scenario - a [CREATE TABLE AS SELECT](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas). The CTAS statement is a batch-based operation and minimally logged driving high performance by using all the compute infrastructure available. Without this insight about Synapse SQL, tools often produce a truncate and INSERT/SELECT statement.
 
 ```sql  
 TRUNCATE TABLE staging.table1;

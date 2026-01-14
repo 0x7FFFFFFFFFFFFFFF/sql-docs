@@ -130,8 +130,8 @@ The Microsoft SqlClient Data Provider for SQL Server supports additional schema 
 |COLUMN_DEFAULT|String|Default value of the column|  
 |IS_NULLABLE|String|Nullability of the column. If this column allows NULL, this column returns YES. Otherwise, No is returned.|  
 |DATA_TYPE|String|System-supplied data type.|  
-|CHARACTER_MAXIMUM_LENGTH|Int32 – Sql8, Int16 – Sql7|Maximum length, in characters, for binary data, character data, or text and image data. Otherwise, NULL is returned.|  
-|CHARACTER_OCTET_LENGTH|Int32 – SQL8, Int16 – Sql7|Maximum length, in bytes, for binary data, character data, or text and image data. Otherwise, NULL is returned.|  
+|CHARACTER_MAXIMUM_LENGTH|Int32 - Sql8, Int16 - Sql7|Maximum length, in characters, for binary data, character data, or text and image data. Otherwise, NULL is returned.|  
+|CHARACTER_OCTET_LENGTH|Int32 - SQL8, Int16 - Sql7|Maximum length, in bytes, for binary data, character data, or text and image data. Otherwise, NULL is returned.|  
 |NUMERIC_PRECISION|Unsigned Byte|Precision of approximate numeric data, exact numeric data, integer data, or monetary data. Otherwise, NULL is returned.|  
 |NUMERIC_PRECISION_RADIX|Int16|Precision radix of approximate numeric data, exact numeric data, integer data, or monetary data. Otherwise, NULL is returned.|  
 |NUMERIC_SCALE|Int32|Scale of approximate numeric data, exact numeric data, integer data, or monetary data. Otherwise, NULL is returned.|  

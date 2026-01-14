@@ -255,7 +255,7 @@ Assign only the necessary [permissions](/sql/relational-databases/security/permi
 
 The following best practices are optional but will result in better manageability and supportability of your security strategy:
 
-- If possible, start with the least possible set of permissions and start adding permissions one by one if there's a real necessity (and justification) – as opposed to the opposite approach: taking permissions away step by step.
+- If possible, start with the least possible set of permissions and start adding permissions one by one if there's a real necessity (and justification) - as opposed to the opposite approach: taking permissions away step by step.
 
 - Refrain from assigning permissions to individual users. Use roles (database or server roles) consistently instead. Roles helps greatly with reporting and troubleshooting permissions. (Azure RBAC only supports permission assignment via roles.)
 
@@ -313,7 +313,7 @@ Separation of Duties, also called Segregation of Duties describes the requiremen
 
 - In cases where the use of Always Encrypted isn't feasible, or at least not without major costs and efforts that might even render the system near unusable, compromises can be made and mitigated through the use of compensating controls such as:
   - Human intervention in processes.
-  - Audit trails – for more information on Auditing, see, [Audit critical security events](#audit-critical-security-events).
+  - Audit trails - for more information on Auditing, see, [Audit critical security events](#audit-critical-security-events).
 
 **Best practices**
 
@@ -321,7 +321,7 @@ Separation of Duties, also called Segregation of Duties describes the requiremen
 
 - Refrain from assigning permissions to individual users. Use roles (database or server roles) consistently instead. Having roles helps greatly with reporting and troubleshooting permissions.
 
-- Use built-in roles when the permissions match exactly the needed permissions – if the union of all permissions from multiple built-in roles leads to a 100% match, you can assign multiple roles concurrently as well.
+- Use built-in roles when the permissions match exactly the needed permissions - if the union of all permissions from multiple built-in roles leads to a 100% match, you can assign multiple roles concurrently as well.
 
 - Create and use user-defined roles when built-in roles grant too many permissions or insufficient permissions.
 
@@ -599,8 +599,8 @@ In SQL Managed Instance:
 - Ensure that all VMs are associated with a specific virtual network and subnet.
 
 - Evaluate if you need the default route 0.0.0.0/Internet per the guidance at [about forced tunneling](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm#about-forced-tunneling).
-  - If yes – for example, front-end subnet - then keep the default route.
-  - If no – for example, middle tier or back-end subnet – then enable force tunneling so no traffic goes over Internet to reach on-premises (a.k.a cross-premises).
+  - If yes - for example, front-end subnet - then keep the default route.
+  - If no - for example, middle tier or back-end subnet - then enable force tunneling so no traffic goes over Internet to reach on-premises (a.k.a cross-premises).
 
 - Implement [optional default routes](/azure/virtual-network/virtual-networks-udr-overview#optional-default-routes) if you're using peering or connecting to on-premises.
 

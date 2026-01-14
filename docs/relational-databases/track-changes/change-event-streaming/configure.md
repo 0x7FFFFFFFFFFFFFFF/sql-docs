@@ -384,7 +384,7 @@ CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Password>'
 
 CREATE DATABASE SCOPED CREDENTIAL <CredentialName>
     WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
-    SECRET = '<Event Hubs Namespace – Primary or Secondary connection string>'
+    SECRET = '<Event Hubs Namespace - Primary or Secondary connection string>'
 
 EXEC sys.sp_enable_event_stream
 

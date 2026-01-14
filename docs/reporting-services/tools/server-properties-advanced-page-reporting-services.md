@@ -128,7 +128,7 @@ The below example shows how to set the HSTS and other custom headers for URLs wi
 
 The first header in the above XML adds `Strict-Transport-Security: max-age=86400; includeSubDomains=true` header to the matched requests.
 - http://adventureworks/Reports/mobilereport/New%20Mobile%20Report - Regex matched and sets HSTS header
-- http://adventureworks/ReportServer/mobilereport/New%20Mobile%20Report – Match Failed
+- http://adventureworks/ReportServer/mobilereport/New%20Mobile%20Report - Match Failed
 
 The second header in the previous XML example adds `Embed: True` header for the URL that contains `/reports/` and `rs:embed=true` query parameter.
 - https://adventureworks/reports/mobilereport/New%20Mobile%20Report?rs:embed=true - Match

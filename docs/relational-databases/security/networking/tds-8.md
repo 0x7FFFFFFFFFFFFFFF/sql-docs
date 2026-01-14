@@ -50,7 +50,7 @@ TCP handshake :arrow_right: TLS handshake :arrow_right: TDS prelogin (encrypted)
 
 You can enable both TLS 1.2 and TLS 1.3 versions at the OS level, which allows client connections to SQL Server to use multiple TDS protocol versions (TDS 7.x and 8.0). Depending on the OS version, TLS 1.2 and TLS 1.3 might be enabled by default. 
 
-Only TDS 7.x supports non-encrypted (optional) communication, TDS 8.0 doesn't support this. TDS 7.x supports encryption using TLS up to version 1.2. TDS 8.0 requires encryption – everything is always encrypted with TDS 8.0 (Encrypt=Strict). TDS 8.0 has no minimum TLS version requirement and supports TLS 1.3.
+Only TDS 7.x supports non-encrypted (optional) communication, TDS 8.0 doesn't support this. TDS 7.x supports encryption using TLS up to version 1.2. TDS 8.0 requires encryption - everything is always encrypted with TDS 8.0 (Encrypt=Strict). TDS 8.0 has no minimum TLS version requirement and supports TLS 1.3.
 TLS 1.3 support is dependent on the operating system version. The following table summarizes various scenarios with the encryption options and the corresponding TLS and TDS versions.
 
 

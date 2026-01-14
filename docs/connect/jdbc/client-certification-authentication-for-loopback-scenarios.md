@@ -19,7 +19,7 @@ A new stored procedure called sp_execute_external_script (SPEES) was added in SQ
 
 The JDBC driver adds three connection properties for this feature:
 
-* clientCertificate – specifies the certificate to be used for authentication. The JDBC driver will support PFX, PEM, DER, and CER file extensions.
+* clientCertificate - specifies the certificate to be used for authentication. The JDBC driver will support PFX, PEM, DER, and CER file extensions.
 
   Format
 
@@ -29,7 +29,7 @@ The JDBC driver adds three connection properties for this feature:
 
 The driver uses a certificate file. For certificates in PEM, DER, and CER formats clientKey attribute is required. File location can be either relative or absolute.
 
-* clientKey – specifies a file location of the private key for PEM, DER, and CER certificates specified by the clientCertificate attribute.
+* clientKey - specifies a file location of the private key for PEM, DER, and CER certificates specified by the clientCertificate attribute.
 
   Format
 
@@ -39,7 +39,7 @@ The driver uses a certificate file. For certificates in PEM, DER, and CER format
 
 Specifies location of the private key file. In case if private key file is password protected then password keyword is required. File location can be either relative or absolute.
 
-* clientKeyPassword – optional password string provided to access the clientKey file's private key.
+* clientKeyPassword - optional password string provided to access the clientKey file's private key.
 
   This feature is only officially supported for loopback authentication scenarios against Linux SQL Server 2019 and up.
 

@@ -66,7 +66,7 @@ To set up the Trusted Domain Object, first install the Azure AD Hybrid Authentic
     - Installs the PowerShellGet module.
     - Installs the Azure AD Hybrid Authentication Management PowerShell module.
         - The Azure AD Hybrid Authentication Management PowerShell uses the AzureADPreview module, which provides advanced Microsoft Entra management feature.
-        - To protect against unnecessary installation conflicts with the Azure AD PowerShell module, this command includes the –AllowClobber option flag.
+        - To protect against unnecessary installation conflicts with the Azure AD PowerShell module, this command includes the -AllowClobber option flag.
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12

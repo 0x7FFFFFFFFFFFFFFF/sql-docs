@@ -32,7 +32,7 @@ azdata bdc gateway settings set [--resources -r]
 ### Examples
 Set the socket timeout for httpclient to 100s for gateway resource.
 ```bash
-azdata bdc gateway settings set --settings gateway-site.gateway.httpclient.socketTimeout=100s –resources gateway
+azdata bdc gateway settings set --settings gateway-site.gateway.httpclient.socketTimeout=100s -resources gateway
 ```
 ### Optional Parameters
 #### `--resources -r`
@@ -75,7 +75,7 @@ azdata bdc gateway settings show --settings gateway-site.gateway.httpclient.sock
 ```
 Show the pending settings changes for the Gateway resource..
 ```bash
-azdata bdc gateway settings show --filter-options=pending –-resource gateway
+azdata bdc gateway settings show --filter-options=pending --resource gateway
 ```
 ### Optional Parameters
 #### `--resources -r`

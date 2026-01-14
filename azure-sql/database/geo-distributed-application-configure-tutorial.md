@@ -77,8 +77,8 @@ New-AzSqlServer -ResourceGroupName $resourceGroup -ServerName $drServer `
     -ArgumentList $admin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 
 # create a failover group between the servers
-New-AzSqlDatabaseFailoverGroup –ResourceGroupName $resourceGroup -ServerName $server `
-    -PartnerServerName $drServer –FailoverGroupName $failoverGroup –FailoverPolicy Automatic -GracePeriodWithDataLossHours 2
+New-AzSqlDatabaseFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server `
+    -PartnerServerName $drServer -FailoverGroupName $failoverGroup -FailoverPolicy Automatic -GracePeriodWithDataLossHours 2
 
 # add the database to the failover group
 Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -DatabaseName $database | `

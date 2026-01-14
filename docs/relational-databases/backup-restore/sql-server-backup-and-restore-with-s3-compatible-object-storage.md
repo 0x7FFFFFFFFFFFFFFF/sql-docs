@@ -33,7 +33,7 @@ The `BACKUP TO URL` and `RESTORE FROM URL` syntax support the S3 connector. For 
 
 - [SQL Server back up to URL for Microsoft Azure Blob Storage best practices and troubleshooting](sql-server-backup-to-url-best-practices-and-troubleshooting.md)
 
-- [Blog: SQL Server Backup to URL – a cheat sheet](https://techcommunity.microsoft.com/blog/azuresqlblog/sql-server-backup-to-url-%E2%80%93-a-cheat-sheet/346358)
+- [Blog: SQL Server Backup to URL - a cheat sheet](https://techcommunity.microsoft.com/blog/azuresqlblog/sql-server-backup-to-url-%E2%80%93-a-cheat-sheet/346358)
 
 ## Providers of S3-compatible object storage
 

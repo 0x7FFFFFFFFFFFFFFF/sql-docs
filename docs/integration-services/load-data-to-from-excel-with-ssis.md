@@ -193,7 +193,7 @@ To ensure reliability in production and automated ETL pipelines, Microsoft recom
 
 - **OLE DB or ODBC connections** - Use when the source data can be placed in a supported database or exposed via an OLE DB/ODBC provider.
 
-- **OpenXML or ADO.NET–based approaches** - Suitable when Excel files must be consumed directly without relying on Office automation or ACE.
+- **OpenXML or ADO.NET-based approaches** - Suitable when Excel files must be consumed directly without relying on Office automation or ACE.
 
 These options do not depend on Office binaries and provide predictable, reliable behavior in server environments.
 

@@ -22,7 +22,7 @@ This article describes how to connect your application to Azure SQL Managed Inst
 
 Today you have multiple choices when deciding how and where you host your application. You might choose to host an application in the cloud by using Azure App Service or some of Azure's virtual network integrated options. Such as, Azure App Service Environment, Azure Virtual Machines, and Virtual Machine Scale Sets. You can also take the hybrid ("mixed") cloud approach and keep your applications on-premises. Whatever choice you make, your application can connect to Azure SQL Managed Instance in many different application scenarios inside or between Azure virtual networks.
 
-You can also enable data access to your SQL managed instance from outside a virtual network – for example, from multitenant Azure services like Power BI and Azure App Service, or from an on-premises network not connected to your virtual networks via VPN. To accomplish these and similar scenarios, refer to [Configure public endpoint in Azure SQL Managed Instance](public-endpoint-configure.md).
+You can also enable data access to your SQL managed instance from outside a virtual network - for example, from multitenant Azure services like Power BI and Azure App Service, or from an on-premises network not connected to your virtual networks via VPN. To accomplish these and similar scenarios, refer to [Configure public endpoint in Azure SQL Managed Instance](public-endpoint-configure.md).
 
 :::image type="content" source="media/connect-application-instance/application-deployment-topologies.png" alt-text="Diagram demonstrating High availability." lightbox="media/connect-application-instance/application-deployment-topologies.png":::
 

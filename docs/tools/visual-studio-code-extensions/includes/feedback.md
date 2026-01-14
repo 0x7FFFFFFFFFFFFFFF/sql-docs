@@ -18,10 +18,10 @@ To help us refine and improve GitHub Copilot for the MSSQL extension, use the fo
 
 When submitting feedback, consider including:
 
-- **Scenarios tested** – Let us know which areas you focused on, for example, schema creation, query generation, security, localization.
+- **Scenarios tested** - Let us know which areas you focused on, for example, schema creation, query generation, security, localization.
 
-- **What worked well** – Describe any experiences that felt smooth, helpful, or exceeded your expectations.
+- **What worked well** - Describe any experiences that felt smooth, helpful, or exceeded your expectations.
 
-- **Issues or bugs** – Include any problems, inconsistencies, or confusing behaviors. Screenshots or screen recordings are especially helpful.
+- **Issues or bugs** - Include any problems, inconsistencies, or confusing behaviors. Screenshots or screen recordings are especially helpful.
 
-- **Suggestions for improvement** – Share ideas for improving usability, expanding coverage, or enhancing the GitHub Copilot's responses.
+- **Suggestions for improvement** - Share ideas for improving usability, expanding coverage, or enhancing the GitHub Copilot's responses.

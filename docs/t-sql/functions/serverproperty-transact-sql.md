@@ -162,8 +162,8 @@ Consider you have a server named as `server01`, with a [!INCLUDE [ssnoversion-md
 | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] release | SERVERPROPERTY('ServerName') | Additional information |
 | --- | --- | --- |
 | RTM | `SERVER01\INST1` | Returns the `ServerName` property in uppercase |
-| CU 1 – CU 8 | `server01\INST1` | Returns the `ServerName` property as is, without changing to uppercase |
-| CU 9 – CU 12 | `SERVER01\INST1` | Returns the `ServerName` property in uppercase |
+| CU 1 - CU 8 | `server01\INST1` | Returns the `ServerName` property as is, without changing to uppercase |
+| CU 9 - CU 12 | `SERVER01\INST1` | Returns the `ServerName` property in uppercase |
 | CU 13 and later versions | `server01\INST1` | Returns the `ServerName` property as-is, without changing to uppercase |
 
 ### Version properties

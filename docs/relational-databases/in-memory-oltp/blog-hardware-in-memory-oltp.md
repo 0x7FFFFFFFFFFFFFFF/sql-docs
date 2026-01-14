@@ -27,7 +27,7 @@ We recommend turning on simultaneous multithreading (SMT) with In-Memory OLTP. W
 
 ## Memory
 
-All memory-optimized tables reside fully in memory. Therefore, you must have enough physical memory for the tables themselves and to sustain the workload running against the database – how much memory you actually need really depends on the workload, but as a starting point you need enough available memory for about twice the data size. You also need enough memory for the buffer pool in case the workload also operates on traditional disk-based tables.
+All memory-optimized tables reside fully in memory. Therefore, you must have enough physical memory for the tables themselves and to sustain the workload running against the database - how much memory you actually need really depends on the workload, but as a starting point you need enough available memory for about twice the data size. You also need enough memory for the buffer pool in case the workload also operates on traditional disk-based tables.
 
 To determine how much memory a given memory-optimized table uses, run the following query:
 
@@ -55,7 +55,7 @@ Persistence of memory-optimized tables using checkpoint files uses streaming I/O
 
 The biggest factor in determining the speed requirement is your RTO [Recovery Time Objective] on server restart. During database recovery, all data in the memory-optimized tables needs to be read from disk, into memory. Database recovery happens at the sequential read speed of your I/O subsystem; disk is the bottleneck.
 
-To meet strict RTO requirements, we recommend spreading the checkpoint files over multiple disks, by adding multiple containers to the MEMORY_OPTIMIZED_DATA filegroup. SQL Server supports parallel load of checkpoint files from multiple drives – recovery happens at the aggregate speed of the drives.
+To meet strict RTO requirements, we recommend spreading the checkpoint files over multiple disks, by adding multiple containers to the MEMORY_OPTIMIZED_DATA filegroup. SQL Server supports parallel load of checkpoint files from multiple drives - recovery happens at the aggregate speed of the drives.
 
 In terms of disk capacity, we recommend having 2 - 3 times the size of the memory-optimized tables available.
 

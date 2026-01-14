@@ -73,7 +73,7 @@ If you want the wizard to encrypt or re-encrypt one or more columns using a new 
 To decrypt a column that is currently encrypted, select **Plaintext** for the encryption type.
 
 > [!NOTE]  
-> If you want to use in-place encryption and you're using existing keys, make sure you select enclave-enabled keys – annotated with **(enclave-enabled)**.
+> If you want to use in-place encryption and you're using existing keys, make sure you select enclave-enabled keys - annotated with **(enclave-enabled)**.
 
 > [!NOTE]  
 > The wizard doesn't support cryptographic operations on temporal and in-memory tables. You can create empty temporal or in-memory tables using Transact-SQL and insert data using your application.

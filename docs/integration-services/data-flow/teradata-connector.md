@@ -71,7 +71,7 @@ To design the SSIS package in SSDT *targeting SQL Server 2017 and below*, you ne
 
 - Teradata Source/Destination Editor: Mapping step doesn't work when type `\<database>.<table/view>`. As work-around, type `\<database>.<table/view>`, then select the drop-down button.
 
-- Teradata Source Editor: view can't be displayed when Data access mode is "Table Name – TPT Export." As work-around, use Advanced Editor of Teradata Source.
+- Teradata Source Editor: view can't be displayed when Data access mode is "Table Name - TPT Export." As work-around, use Advanced Editor of Teradata Source.
 
 - Teradata Destination: attribute "PackMaximum" can't be set to "True." Otherwise, error occurs.
 

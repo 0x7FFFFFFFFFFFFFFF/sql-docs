@@ -78,8 +78,8 @@ This schema collection exposes information about the data types that are support
 |IsUnsigned|`bool`|`true` - The data type is unsigned.<br /><br /> `false` - The data type is signed.<br /><br /> `DBNull.Value` - Not applicable to data type.|
 |MaximumScale|`short`|If the type indicator is a numeric type, this value is the maximum number of digits allowed to the right of the decimal point. Otherwise, this value is `DBNull.Value`.|
 |MinimumScale|`short`|If the type indicator is a numeric type, this value is the minimum number of digits allowed to the right of the decimal point. Otherwise, this value is `DBNull.Value`.|
-|IsConcurrencyType|`bool`|`true` – The data type is updated by the database every time the row is changed and the value of the column is different from all previous values.<br /><br /> `false` – The data type is note updated by the database every time the row is changed.<br /><br /> `DBNull.Value` – The database doesn't support this data type.|
-|IsLiteralSupported|`bool`|`true` – The data type can be expressed as a literal.<br /><br /> `false` – The data type can't be expressed as a literal.|
+|IsConcurrencyType|`bool`|`true` - The data type is updated by the database every time the row is changed and the value of the column is different from all previous values.<br /><br /> `false` - The data type is note updated by the database every time the row is changed.<br /><br /> `DBNull.Value` - The database doesn't support this data type.|
+|IsLiteralSupported|`bool`|`true` - The data type can be expressed as a literal.<br /><br /> `false` - The data type can't be expressed as a literal.|
 |LiteralPrefix|`string`|The prefix applied to a given literal.|
 |LiteralSuffix|`string`|The suffix applied to a given literal.|
 

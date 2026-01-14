@@ -85,7 +85,7 @@ To validate the cluster by using the UI, follow these steps:
 To validate the cluster by using PowerShell, run the following script from an administrator PowerShell session on one of the virtual machines:
 
 ```powershell
-Test-Cluster –Node ("<node1>","<node2>") –Include "Cluster Configuration", "Inventory", "Network", "Storage", "System Configuration"
+Test-Cluster -Node ("<node1>","<node2>") -Include "Cluster Configuration", "Inventory", "Network", "Storage", "System Configuration"
 ```
 
 After your cluster has been validated, use the **Disks** page for your cluster in **Failover Cluster Manager** to bring your Elastic SAN volume back online.

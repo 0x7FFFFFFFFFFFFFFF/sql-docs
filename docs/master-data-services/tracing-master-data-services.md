@@ -265,7 +265,7 @@ As shown in the example above, each error includes the following data properties
 |Context.Identifier |The identifier of the object involved in the error |
 |Context.Identifier.Id |The unique GUID of the object, if specified or available |
 |Context.Identifier.Name |The name of the object, if specified or available |
-|Context.Identifier.InternalId|Deprecated – don't use |
+|Context.Identifier.InternalId|Deprecated - don't use |
 
 ## Tracing MDS database creation issues
 

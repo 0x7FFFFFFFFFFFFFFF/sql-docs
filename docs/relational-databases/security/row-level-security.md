@@ -600,7 +600,7 @@ INSERT INTO Sample.Sales VALUES (6, 'Seat', 5);
 SELECT * FROM Sample.Sales;
 ```
 
-Create a table to hold the lookup data – in this case a relationship between `Salesrep` and `Product`.
+Create a table to hold the lookup data - in this case a relationship between `Salesrep` and `Product`.
 
 ```sql
 CREATE TABLE Sample.Lk_Salesman_Product

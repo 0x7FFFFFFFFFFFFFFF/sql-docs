@@ -96,7 +96,7 @@ If you delete all rows in a table by using the `DELETE` statement or use the `TR
 
 If you drop a table that contains a `varbinary(max)` column with the `FILESTREAM` attribute, any data stored in the file system isn't removed.
 
-When a ledger table is dropped, its dependent objects (the history table and the ledger view) are also dropped. A history table or a ledger view can't be dropped directly. The system enforces a *soft-delete* semantics when dropping ledger tables and its dependent objects – they aren't actually dropped, but instead they're marked as dropped in system catalog views and renamed. For more information, see [Ledger considerations and limitations](../../relational-databases/security/ledger/ledger-limits.md).
+When a ledger table is dropped, its dependent objects (the history table and the ledger view) are also dropped. A history table or a ledger view can't be dropped directly. The system enforces a *soft-delete* semantics when dropping ledger tables and its dependent objects - they aren't actually dropped, but instead they're marked as dropped in system catalog views and renamed. For more information, see [Ledger considerations and limitations](../../relational-databases/security/ledger/ledger-limits.md).
 
 > [!IMPORTANT]
 > `DROP TABLE` and `CREATE TABLE` shouldn't be executed on the same table in the same batch. Otherwise an unexpected error may occur.

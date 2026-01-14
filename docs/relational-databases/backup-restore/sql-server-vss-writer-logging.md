@@ -105,7 +105,7 @@ In order of appearance, we can see the following information is logged:
 
 - An explicit mention of the `OnIdentify` VSS event.
 - A list of all active (running) [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances, along with their instance name, major version, and Edition.
-- The indication we didn't attempt to list "User Instances" – a specific [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] feature also known as [LocalDB](../../database-engine/configure-windows/sql-server-express-localdb.md) and typically not involved on enterprise database servers.
+- The indication we didn't attempt to list "User Instances" - a specific [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] feature also known as [LocalDB](../../database-engine/configure-windows/sql-server-express-localdb.md) and typically not involved on enterprise database servers.
 
 ### Successful component-mode VSS backup
 

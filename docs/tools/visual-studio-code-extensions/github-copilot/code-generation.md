@@ -126,11 +126,11 @@ Generate a full-stack app using Azure SQL bindings for Functions and Blazor WebA
 
    - Configure SQL Bindings to automatically read and write data from the `SalesLT.Customer` table.
    - Implement HTTP-triggered functions with the following endpoints:
-     - `GET /api/customers` – Fetch all customers.
-     - `GET /api/customers/{id}` – Get a specific customer by ID.
-     - `POST /api/customers` – Create a new customer.
-     - `PUT /api/customers/{id}` – Update an existing customer.
-     - `DELETE /api/customers/{id}` – Delete a customer.
+     - `GET /api/customers` - Fetch all customers.
+     - `GET /api/customers/{id}` - Get a specific customer by ID.
+     - `POST /api/customers` - Create a new customer.
+     - `PUT /api/customers/{id}` - Update an existing customer.
+     - `DELETE /api/customers/{id}` - Delete a customer.
    - Use `Dependency Injection` for database connections and logging.
    - Include an `appsettings.json` file to store database connection strings and environment variables.
    - Use `Azure Functions Core Tools` to run and test the functions locally.
@@ -157,11 +157,11 @@ Generate a REST API using Node.js with Express that connects to my local SQL Dat
 
    - Establish a database connection using Prisma with Tedious as the SQL Server driver.
    - Implement API routes for `SalesLT.Customer` with the following endpoints:
-     - `GET /customers` – Fetch all customers.
-     - `GET /customers/:id` – Get a specific customer by ID.
-     - `POST /customers` – Create a new customer.
-     - `PUT /customers/:id` – Update an existing customer.
-     - `DELETE /customers/:id` – Delete a customer.
+     - `GET /customers` - Fetch all customers.
+     - `GET /customers/:id` - Get a specific customer by ID.
+     - `POST /customers` - Create a new customer.
+     - `PUT /customers/:id` - Update an existing customer.
+     - `DELETE /customers/:id` - Delete a customer.
    - Configure `Prisma` to map the `SalesLT.Customer` table and generate database migrations using `prisma migrate dev`.
    - Use `dotenv` for environment variables (database credentials, ports, etc.).
    - Add `Jest` for testing the API endpoints.
@@ -185,11 +185,11 @@ The following example is a detailed prompt you can provide in GitHub Copilot Cha
 Scaffold a Django backend with Django REST Framework for the `SalesLT.Customer` table. Follow these steps:
 
 - Implement API routes using Django's `ModelViewSet` with the following endpoints:
-  - `GET /customers` – Fetch all customers.
-  - `GET /customers/{id}` – Get a specific customer by ID.
-  - `POST /customers` – Create a new customer.
-  - `PUT /customers/{id}` – Update an existing customer.
-  - `DELETE /customers/{id}` – Delete a customer.
+  - `GET /customers` - Fetch all customers.
+  - `GET /customers/{id}` - Get a specific customer by ID.
+  - `POST /customers` - Create a new customer.
+  - `PUT /customers/{id}` - Update an existing customer.
+  - `DELETE /customers/{id}` - Delete a customer.
 
 - Add instructions for generating database migrations with `python manage.py makemigrations` and `migrate`.
 ```

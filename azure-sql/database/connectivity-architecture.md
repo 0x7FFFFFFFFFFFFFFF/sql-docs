@@ -47,7 +47,7 @@ Logical SQL servers support the following three options for the server's connect
 - **Redirect (recommended):** Clients establish connections directly to the node hosting the database, leading to reduced latency and improved throughput. For connections to use this mode, clients need to:
    - Allow outbound communication from the client to all Azure SQL IP addresses in the region on ports in the range of 11000 to 11999. Use the Service Tags for SQL to make this easier to manage. If you are using Private Link, see [Use Redirect connection policy with private endpoints](private-endpoint-overview.md#use-redirect-connection-policy-with-private-endpoints) for the port ranges to allow.
    - Allow outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
-   - When using the Redirect connection policy, refer to the [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) for a list of your region's IP addresses to allow.
+   - When using the Redirect connection policy, refer to the [Azure IP Ranges and Service Tags - Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) for a list of your region's IP addresses to allow.
 - **Proxy:** In this mode, all connections are proxied via the Azure SQL Database gateways, leading to increased latency and reduced throughput. For connections to use this mode, clients need to allow outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
    - When using the Proxy connection policy, refer to the [Gateway IP addresses](#gateway-ip-addresses) list later in this article for your region's IP addresses to allow.
 - **Default:** This is the connection policy in effect on all servers after creation unless you explicitly alter the connection policy to either `Proxy` or `Redirect`. The default policy is:
@@ -91,4 +91,4 @@ Clients connecting to private endpoints don't need connectivity to any of these 
 
 - For information about Azure SQL Database connection behavior for clients that use ADO.NET 4.5 or a later version, see [Ports beyond 1433 for ADO.NET 4.5](adonet-v12-develop-direct-route-ports.md).
 - For general application development overview information, see [SQL Database Application Development Overview](develop-overview.md).
-- Refer to [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519).
+- Refer to [Azure IP Ranges and Service Tags - Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519).

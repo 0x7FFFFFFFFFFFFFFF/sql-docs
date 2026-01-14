@@ -94,7 +94,7 @@ To validate the cluster by using the UI, do the following on one of the virtual 
 To validate the cluster by using PowerShell, run the following script from an administrator PowerShell session on one of the virtual machines:
 
 ```powershell
-Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+Test-Cluster -Node ("<node1>","<node2>") -Include "Inventory", "Network", "System Configuration"
 ```
 
 ## Test cluster failover

@@ -47,12 +47,12 @@ For more information about how enterprise customers and pay-as-you-go customers 
 The size of reservation should be based on the total amount of compute used by the existing or soon-to-be-deployed database or managed instance within a specific region and using the same performance tier and hardware configuration.
 
 For example, let's suppose that you are running:
-- 1 General Purpose, standard-series (Gen5) – 16 vCore elastic pool and 
-- 2 Business Critical standard-series (Gen5) – 4 vCore single databases. 
+- 1 General Purpose, standard-series (Gen5) - 16 vCore elastic pool and 
+- 2 Business Critical standard-series (Gen5) - 4 vCore single databases. 
 
 Further, let's suppose that you plan to deploy the following within the next month: 
-- 1 additional General Purpose standard-series (Gen5) – 16 vCore elastic pool and 
-- 1 business critical standard-series (Gen5) – 32 vCore elastic pool. 
+- 1 additional General Purpose standard-series (Gen5) - 16 vCore elastic pool and 
+- 1 business critical standard-series (Gen5) - 32 vCore elastic pool. 
 
 Also, let's suppose that you know that you will need these resources for at least 1 year. In this case, you should purchase a 32 (2x16) vCores 1-year reservation for single database/elastic pool General Purpose - standard-series (Gen5) and a 40 (2x4 + 32) vCore 1-year reservation for single database/elastic pool Business Critical - standard-series (Gen5).
 

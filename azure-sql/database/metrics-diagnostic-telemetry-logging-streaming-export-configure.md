@@ -41,7 +41,7 @@ You can export various performance metrics and additional database logs. The fol
 | [Deadlocks](#deadlocks-dataset): Contains information about deadlock events on a database. | Yes | No |
 | [AutomaticTuning](#automatic-tuning-dataset): Contains information about automatic tuning recommendations for a database. | Yes | No |
 | [SQLInsights](#intelligent-insights-dataset): Contains Intelligent Insights into performance for a database. To learn more, see [Intelligent Insights](intelligent-insights-overview.md). | Yes | Yes |
-| Workload Management: *Available for Azure Synapse only* For more information, see [Azure Synapse Analytics – Workload Management Portal Monitoring](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) | No | No |
+| Workload Management: *Available for Azure Synapse only* For more information, see [Azure Synapse Analytics - Workload Management Portal Monitoring](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) | No | No |
 
 > [!NOTE]  
 > In Azure SQL Managed Instance, diagnostic settings cannot be configured for **system databases** such as `master`, `msdb`, `model`, resource and `tempdb` databases.

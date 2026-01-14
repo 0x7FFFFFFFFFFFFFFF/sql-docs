@@ -59,7 +59,7 @@ You can configure your [maintenance window](maintenance-window.md?view=azuresql-
 
 ### Planned maintenance
 
-The Azure infrastructure periodically performs planned maintenance – the upgrade of hardware or software components in the datacenter. While the database undergoes maintenance, Azure SQL may terminate some existing connections and refuse new ones. The login failures experienced during planned maintenance are typically transient, and [retry logic for occasional network errors](../database/troubleshoot-common-connectivity-issues.md?view=azuresql-mi&preserve-view=true#retry-logic-for-transient-errors) helps reduce the impact. If you continue to experience login errors, contact support.
+The Azure infrastructure periodically performs planned maintenance - the upgrade of hardware or software components in the datacenter. While the database undergoes maintenance, Azure SQL may terminate some existing connections and refuse new ones. The login failures experienced during planned maintenance are typically transient, and [retry logic for occasional network errors](../database/troubleshoot-common-connectivity-issues.md?view=azuresql-mi&preserve-view=true#retry-logic-for-transient-errors) helps reduce the impact. If you continue to experience login errors, contact support.
 
 ### Reconfiguration
 

@@ -228,7 +228,7 @@ The following sample script breaks the link and ends replication between your re
 # POWERSHELL SCRIPT TO FAIL OVER OR MIGRATE DATABASE TO AZURE
 # ===== Enter user variables here ====
 
-# Enter your managed instance name – for example, "sqlmi1"
+# Enter your managed instance name - for example, "sqlmi1"
 $ManagedInstanceName = "<ManagedInstanceName>"
 $LinkName = "<DAGName>"
 

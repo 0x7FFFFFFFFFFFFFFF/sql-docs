@@ -112,8 +112,8 @@ This action installs:
 
    > [!NOTE]
    > - A SQL Server instance looks like `xxxxxxx.xxxxxxx.database.windows.net`.
-   > - For a managed instance, choose from **"SQL Server Account"** and **"Current User – Active Directory Integrated"** authentication types.
-   > - If you select **Current User – Active Directory Integrated** as the authentication type, the **User name** field is read-only and displays the currently signed-on Windows user account. If you are running SQL Server 2019 [!INCLUDE[ssMDSshort_md](../includes/ssmdsshort-md.md)] on an Azure Virtual Machine (VM), the **User name** field displays the VM name and the user name for the local administrator account on the VM.
+   > - For a managed instance, choose from **"SQL Server Account"** and **"Current User - Active Directory Integrated"** authentication types.
+   > - If you select **Current User - Active Directory Integrated** as the authentication type, the **User name** field is read-only and displays the currently signed-on Windows user account. If you are running SQL Server 2019 [!INCLUDE[ssMDSshort_md](../includes/ssmdsshort-md.md)] on an Azure Virtual Machine (VM), the **User name** field displays the VM name and the user name for the local administrator account on the VM.
 
    Your authentication must contain the **"sysadmin"** rule for managed instances.
 

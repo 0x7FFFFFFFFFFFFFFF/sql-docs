@@ -77,9 +77,9 @@ Restart the SQL Server service after modifying the cryptographic provider.
 
 Deep links to older versions of the SQL Server Connector
 
-- Current: [1.0.5.0 (version 15.0.2000.440) – File date November 09, 2024](https://www.microsoft.com/download/details.aspx?id=45344)
-- [1.0.5.0 (version 15.0.2000.440) – File date November 24, 2020](https://download.microsoft.com/download/8/0/9/809494f2-bac9-4388-ad07-7eaf9745d77b/1033_15.0.2000.440/SQLServerConnectorforMicrosoftAzureKeyVault.msi)
-- [1.0.5.0 (version 15.0.300.96) – File date January 30, 2018](https://download.microsoft.com/download/8/0/9/809494f2-bac9-4388-ad07-7eaf9745d77b/SQL%20Server%20Connector%20for%20Microsoft%20Azure%20Key%20Vault%201.0.5.0.msi)
+- Current: [1.0.5.0 (version 15.0.2000.440) - File date November 09, 2024](https://www.microsoft.com/download/details.aspx?id=45344)
+- [1.0.5.0 (version 15.0.2000.440) - File date November 24, 2020](https://download.microsoft.com/download/8/0/9/809494f2-bac9-4388-ad07-7eaf9745d77b/1033_15.0.2000.440/SQLServerConnectorforMicrosoftAzureKeyVault.msi)
+- [1.0.5.0 (version 15.0.300.96) - File date January 30, 2018](https://download.microsoft.com/download/8/0/9/809494f2-bac9-4388-ad07-7eaf9745d77b/SQL%20Server%20Connector%20for%20Microsoft%20Azure%20Key%20Vault%201.0.5.0.msi)
 - [1.0.4.0: (version 13.0.811.168)](https://download.microsoft.com/download/8/0/9/809494f2-bac9-4388-ad07-7eaf9745d77b/SQL%20Server%20Connector%20for%20Microsoft%20Azure%20Key%20Vault%201.0.4.0.msi)
 
 ### Rolling the [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] service principal

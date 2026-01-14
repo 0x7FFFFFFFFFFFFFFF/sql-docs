@@ -39,7 +39,7 @@ Specify the `-zone-redundant parameter` to enable zone redundancy for your Hyper
 To enable zone redundancy using the Azure CLI, use the following example command:
 
 ```azurecli
-az sql db create -g mygroup -s myserver -n mydb -e Hyperscale -f Gen5 –-ha-replicas 1 –-zone-redundant -–backup-storage-redundancy Zone --capacity 2
+az sql db create -g mygroup -s myserver -n mydb -e Hyperscale -f Gen5 --ha-replicas 1 --zone-redundant --backup-storage-redundancy Zone --capacity 2
 ```
 
 ---
@@ -65,7 +65,7 @@ Specify the `-zone-redundant parameter` to enable zone redundancy for your Hyper
 To enable zone redundancy using the Azure CLI, use the following example command:
 
 ```azurecli
-az sql db replica create -g mygroup -s myserver -n originalDb --partner-server newDb -–ha-replicas 1 -–zone-redundant -–backup-storage-redundancy Zone
+az sql db replica create -g mygroup -s myserver -n originalDb --partner-server newDb --ha-replicas 1 --zone-redundant --backup-storage-redundancy Zone
 ```
 
 ---
@@ -91,7 +91,7 @@ Specify the `-zone-redundant parameter` to enable zone redundancy for your Hyper
 To enable zone redundancy using the Azure CLI, use the following example command:
 
 ```azurecli
-az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myResourceGroup" --dest-server $targetserver --name "<databaseName>" --resource-group "<resourceGroup>" --server $sourceserver -–ha-replicas 1 -–zone-redundant -–backup-storage-redundancy Zone
+az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myResourceGroup" --dest-server $targetserver --name "<databaseName>" --resource-group "<resourceGroup>" --server $sourceserver --ha-replicas 1 --zone-redundant --backup-storage-redundancy Zone
 ```
 
 ---

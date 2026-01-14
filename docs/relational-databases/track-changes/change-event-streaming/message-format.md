@@ -109,7 +109,7 @@ When applicable, the descriptions in this section are taken from [CloudEvent spe
 }
 ```
 
-### JSON message example – updated
+### JSON message example - updated
 
 ```json
 {

@@ -61,7 +61,7 @@ For more information, see [Extension management with Azure Arc](/azure/azure-arc
 
 Explore security anomalies and threats in Azure Security Center.
 
-1. Open your SQL Server – Azure Arc resource and select **Microsoft Defender for Cloud** in the **Settings** section of the left menu. to see the recommendations and alerts for that SQL Server instance.
+1. Open your SQL Server - Azure Arc resource and select **Microsoft Defender for Cloud** in the **Settings** section of the left menu. to see the recommendations and alerts for that SQL Server instance.
 
    :::image type="content" source="media/configure-advanced-data-security/security-heading-sql-server-arc.png" alt-text="Screenshot showing how to select security heading.":::
 

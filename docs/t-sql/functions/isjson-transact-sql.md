@@ -60,7 +60,7 @@ If the *json_type_constraint* is specified then the function checks for the JSON
 |`VALUE`|Tests for a valid JSON value. This can be a JSON object, array, number, string or one of the three literal values (false, true, null)|
 |`ARRAY`|Tests for a valid JSON array|
 |`OBJECT`|Tests for a valid JSON object|
-|`SCALAR`|Tests for a valid JSON scalar – number or string|
+|`SCALAR`|Tests for a valid JSON scalar - number or string|
 
  The **json_type_constraint** value SCALAR can be used to test for IETF RFC 8259 conformant JSON document that contains only a JSON scalar value at top level. A JSON document that doesn't contain a JSON scalar value at top level conforms with IETF RFC 4627.
 

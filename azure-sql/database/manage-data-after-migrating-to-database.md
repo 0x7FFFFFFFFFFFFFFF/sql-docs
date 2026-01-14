@@ -15,7 +15,7 @@ ms.custom:
   - sqldbrb=1
   - sfi-image-nochange
 ---
-# New DBA in the cloud – Managing Azure SQL Database after migration
+# New DBA in the cloud - Managing Azure SQL Database after migration
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
@@ -181,7 +181,7 @@ There are key management options for both Always Encrypted (client-side encrypti
 
 #### Transparent data encryption (TDE)
 
-There's a two-key hierarchy in TDE – the data in each user database is encrypted by a symmetric AES-256 database-unique database encryption key (DEK), which in turn is encrypted by a server-unique asymmetric RSA 2048 master key. The master key can be managed either:
+There's a two-key hierarchy in TDE - the data in each user database is encrypted by a symmetric AES-256 database-unique database encryption key (DEK), which in turn is encrypted by a server-unique asymmetric RSA 2048 master key. The master key can be managed either:
 
 - Automatically by Azure SQL Database
 - Or by you using [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) as the key store
@@ -283,7 +283,7 @@ You can query the [sys.dm_db_resource_stats](/sql/relational-databases/system-dy
 
 A major portion of the troubleshooting techniques you would use for diagnosing query and database performance issues remain the same: the same database engine powers the cloud. Azure SQL Database can help you troubleshoot and diagnose performance issues even more easily. It can also perform some of these corrective actions on your behalf and in some cases, proactively fix them automatically.
 
-Your approach toward troubleshooting performance issues can significantly benefit by using intelligent features such as [Query Performance Insight](query-performance-insight-use.md) (QPI) and [Database Advisor](database-advisor-implement-performance-recommendations.md) in conjunction and so the difference in methodology differs in that respect – you no longer need to do the manual work of grinding out the essential details that might help you troubleshoot the issue at hand. The platform does the hard work for you. One example of that is QPI. With QPI, you can drill all the way down to the query level and look at the historical trends and figure out when exactly the query regressed. The Database Advisor gives you recommendations on things that might help you improve your overall performance in general, such as missing indexes, dropping indexes, parameterizing your queries, etc.
+Your approach toward troubleshooting performance issues can significantly benefit by using intelligent features such as [Query Performance Insight](query-performance-insight-use.md) (QPI) and [Database Advisor](database-advisor-implement-performance-recommendations.md) in conjunction and so the difference in methodology differs in that respect - you no longer need to do the manual work of grinding out the essential details that might help you troubleshoot the issue at hand. The platform does the hard work for you. One example of that is QPI. With QPI, you can drill all the way down to the query level and look at the historical trends and figure out when exactly the query regressed. The Database Advisor gives you recommendations on things that might help you improve your overall performance in general, such as missing indexes, dropping indexes, parameterizing your queries, etc.
 
 With performance troubleshooting, it's important to identify whether it's just the application or the database backing it, that's affecting your application performance. Often the performance problem lies in the application layer. It could be the architecture or the data access pattern. For example, consider you have a chatty application that's sensitive to network latency. In this case, your application suffers because there would be many short requests going back and forth ("chatty") between the application and the server and on a congested network, and these roundtrips add up fast. To improve the performance in this case, you can use [Batch Queries](performance-guidance.md#batch-queries), which help to reduce roundtrip latency and improve your application's performance.
 

@@ -175,7 +175,7 @@ For example, as a pay-as-you-go customer, if you have 16 vCores assigned to the 
 
 In another example, if you have 16 Azure Hybrid Benefit licenses and your secondary SQL managed instance uses 8 vCores, after you designate the secondary instance for hybrid failover, 8 vCores are returned to your license pool for you to use with other Azure SQL deployments.
 
-For precise terms and conditions of the Hybrid failover rights benefit, see the SQL Server licensing terms online in the [SQL Server – Fail-over Rights](https://www.microsoft.com/licensing/terms/productoffering/SQLServer/EAEAS) section.
+For precise terms and conditions of the Hybrid failover rights benefit, see the SQL Server licensing terms online in the [SQL Server - Fail-over Rights](https://www.microsoft.com/licensing/terms/productoffering/SQLServer/EAEAS) section.
 
 ## Limitations
 

@@ -137,7 +137,7 @@ dagName = "<DAGName>" # distributed availability group name
 rgName = "<RGName>" # the resource group for the linked SQL Managed Instance  
 
 # Print link state details 
-az sql mi link show –-resource-group $rgName –-instance-name $managedInstanceName –-name $dagName  
+az sql mi link show --resource-group $rgName --instance-name $managedInstanceName --name $dagName  
 ```
 
 ---

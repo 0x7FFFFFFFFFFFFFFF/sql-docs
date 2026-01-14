@@ -36,7 +36,7 @@ azdata bdc hdfs settings set --settings hdfs-site dfs.datanode.provided.volume.r
 ```
 Set the default block replication factor to 3 for the Storage Pool.
 ```bash
-azdata bdc hdfs settings set --settings hdfs-site.dfs.replication=3 –resources storage-0
+azdata bdc hdfs settings set --settings hdfs-site.dfs.replication=3 -resources storage-0
 ```
 ### Optional Parameters
 #### `--resources -r`

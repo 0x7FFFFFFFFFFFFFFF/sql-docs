@@ -62,19 +62,19 @@ For the following section, let's assume there's a server that consists of three 
 
 `Key1` is configured as the customer-managed key at the logical server level. All databases under this server inherit the same key.
 
-- Server    – `Key1` set as CMK
-- `Database1` – `Key1` used as CMK
-- `Database2` – `Key1` used as CMK
-- `Database3` – `Key1` used as CMK
+- Server    - `Key1` set as CMK
+- `Database1` - `Key1` used as CMK
+- `Database2` - `Key1` used as CMK
+- `Database3` - `Key1` used as CMK
 
 ### New supported scenario: Logical server configured with customer-managed key
 
 `Key1` is configured as the customer-managed key at the logical server level. A different customer-managed key (`Key2`) can be configured at the database level.
 
-- Server    – `Key1` set as CMK
-- `Database1` – `Key2` used as CMK
-- `Database2` – `Key1` used as CMK
-- `Database3` – `Key1` used as CMK
+- Server    - `Key1` set as CMK
+- `Database1` - `Key2` used as CMK
+- `Database2` - `Key1` used as CMK
+- `Database3` - `Key1` used as CMK
 
 > [!NOTE]
 > If the logical server is configured with customer-managed keys for TDE, an individual database in this logical server can't be opted in to use service-managed key for transparent data encryption.
@@ -84,9 +84,9 @@ For the following section, let's assume there's a server that consists of three 
 Logical server is configured with serviced-managed key (SMK) for TDE. A different customer-managed key (`Key2`) can be configured at the database level.
 
 - Server    - Service-managed key set as the TDE protector
-- `Database1` – `Key2` set as CMK
-- `Database2` – Service-managed key set as the TDE protector
-- `Database3` – Service-managed key set as the TDE protector
+- `Database1` - `Key2` set as CMK
+- `Database2` - Service-managed key set as the TDE protector
+- `Database3` - Service-managed key set as the TDE protector
 
 ### Reverting to server level encryption
 

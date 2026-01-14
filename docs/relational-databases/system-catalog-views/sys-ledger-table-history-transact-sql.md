@@ -27,7 +27,7 @@ For more information on database ledger, see [Ledger](/azure/azure-sql/database/
 |**table_name**|**sysname**|The name of the ledger table. If the operation has changed the table name, this column captures the new table name.|
 |**ledger_view_schema_name**|**sysname**|The name of the schema containing the ledger view for the ledger table. If the operation has changed the schema name, this column captures the new schema name.|
 |**ledger_view_name**|**sysname**|The name of the ledger view for the ledger table. If the operation has changed the view name, this column captures the new view name.|
-|**operation_type**|**tinyint**|The numeric value indicating the type of the operation<br/><br/>0 = CREATE – creating a ledger table.<br/>1 = DROP – dropping a ledger table.<br/>2 = RENAME - renaming a ledger table. <br/>3 = RENAME_VIEW - renaming the ledger view for a ledger table.|
+|**operation_type**|**tinyint**|The numeric value indicating the type of the operation<br/><br/>0 = CREATE - creating a ledger table.<br/>1 = DROP - dropping a ledger table.<br/>2 = RENAME - renaming a ledger table. <br/>3 = RENAME_VIEW - renaming the ledger view for a ledger table.|
 |**operation_type_desc**|**nvarchar(60)**|Textual description of the value of operation_type.|
 |**transaction_id**|**bigint**|The transaction of the ID that included the operation on the ledger table. It identifies a row in [sys.database_ledger_transactions](sys-database-ledger-transactions-transact-sql.md).|
 |**sequence_number**|**bigint**|The sequence number of the operation within the transaction.|

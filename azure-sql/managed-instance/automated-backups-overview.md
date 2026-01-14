@@ -241,7 +241,7 @@ For pricing, review the [Azure SQL Managed Instance pricing](https://azure.micro
 
 For managed instances, the total size of billable backup storage is aggregated at the instance level and is calculated as follows:
 
-`Total billable backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
+`Total billable backup storage size = (total size of full backups + total size of differential backups + total size of log backups) - maximum instance data storage`
 
 Total billable backup storage, if any, is charged in gigabytes per month for each region, according to the rate of the backup storage redundancy that you've used. Backup storage consumption depends on the workload and size of individual databases and managed instances. Heavily modified databases have larger differential and log backups, because the size of these backups is proportional to the amount of changed data. Therefore, such databases will have higher backup charges.
 

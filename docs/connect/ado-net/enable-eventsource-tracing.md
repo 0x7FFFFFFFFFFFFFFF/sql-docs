@@ -177,7 +177,7 @@ On Linux, macOS, or Windows, dotnet-trace can be used to capture traces. The dot
    dotnet-trace ps
    8734  MyApplication  /home/appuser/MyApplication/MyApplication
 
-   dotnet-trace collect -–process-id 8734 --providers Microsoft.Data.SqlClient.EventSource:1FFF:4
+   dotnet-trace collect --process-id 8734 --providers Microsoft.Data.SqlClient.EventSource:1FFF:4
    ```
 
    Run the application separately and let it run as long as needed to reproduce the issue. If it's a high CPU issue, 5-10 seconds is usually enough.

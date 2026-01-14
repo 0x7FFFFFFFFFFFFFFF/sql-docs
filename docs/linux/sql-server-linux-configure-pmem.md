@@ -94,7 +94,7 @@ ndctl create-namespace -f -e namespace0.0 --mode=fsdax --map=dev
 Before you set the map option in the preceding command, keep the following points in mind:
 
 - For best performance at accessing and updating these NVDIMM page entries for this device, it's preferable to use `-map=mem`
-- If the capacity of the NVDIMM is too large (greater than 512 GB), set the `–map=dev`, which would impact the IO throughput and stymie the performance
+- If the capacity of the NVDIMM is too large (greater than 512 GB), set the `-map=dev`, which would impact the IO throughput and stymie the performance
 
 For [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] log files on PMEM devices, con the PMEM device(s) to use sector/Block Translation Table (BTT). This provides the needed sector atomicity for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] logs files for this technology of storage devices. We also recommend that you perform workload performance validations. You can compare the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] log performance for your workload between this solution and best-in-class NVMe SSDs, and then select the solution that best meets your needs and provides better performance.
 

@@ -54,7 +54,7 @@ The elastic pool (`elasticPoolName_s`) property indicates which elastic pool the
 "elasticPoolName_s" : "", // resource elastic pool (if applicable)
 "databaseName_s" : "db_name", // database name
 "issueId_d" : 1525, // unique ID of the issue detected
-"status_s" : "Active" // status of the issue – possible values: "Active", "Verifying", and "Complete"
+"status_s" : "Active" // status of the issue - possible values: "Active", "Verifying", and "Complete"
 ```
 
 ## Detected issues
@@ -124,7 +124,7 @@ The unit of measurement for each metric reported is provided under the `metric` 
 The `DurationIncreaseSeconds` property provides the unit of measurement in seconds. The `CriticalErrorCount` unit of measurement is a number that represents an error count.
 
 ```json
-"metric" : "DurationIncreaseSeconds", // issue metric type – possible values: DurationIncreaseSeconds, CriticalErrorCount, WaitingSeconds
+"metric" : "DurationIncreaseSeconds", // issue metric type - possible values: DurationIncreaseSeconds, CriticalErrorCount, WaitingSeconds
 "value" : 102 // value of the measured metric (in this case seconds)
 ```
 

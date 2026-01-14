@@ -251,23 +251,23 @@ This is an XML document created by a writer (the SQL writer in this case) using 
 
 - Writer Level Information - VSS_APP_BACK_END
 
-- Restore Method Specification – VSS_RME_RESTORE_IF_CAN_REPLACE.
+- Restore Method Specification - VSS_RME_RESTORE_IF_CAN_REPLACE.
 
 - Supported Backup schema (IVssCreateWriterMetadata::SetBackupSchema API)
-  - VSS_BS_DIFFERENTIAL – differential backup
-  - VSS_BS_TIMESTAMPED – Timestamp based – for full-text catalog files.
-  - VSS_BS_LAST_MODIFY –Differential backup based on last modify time,
-  - VSS_BS_WRITER_SUPPORTS_NEW_TARGET – supports new target location option.
-  - VSS_BS_WRITER_SUPPORTS_RESTORE_WITH_MOVE – supports restore "with move"
-  - VSS_BS_COPY – supports "copy-only" backup option.
+  - VSS_BS_DIFFERENTIAL - differential backup
+  - VSS_BS_TIMESTAMPED - Timestamp based - for full-text catalog files.
+  - VSS_BS_LAST_MODIFY -Differential backup based on last modify time,
+  - VSS_BS_WRITER_SUPPORTS_NEW_TARGET - supports new target location option.
+  - VSS_BS_WRITER_SUPPORTS_RESTORE_WITH_MOVE - supports restore "with move"
+  - VSS_BS_COPY - supports "copy-only" backup option.
 
 - Component Level Information (contains component level-specific information provided by the SQL writer)
 
   - **Type** - VSS_CT_FILEGROUP
   - **Name** - name of the component (database name)
-  - **Logical path** – of the server instance (in the form of "server\instance-name" for named instances and "server" for default instance.)
+  - **Logical path** - of the server instance (in the form of "server\instance-name" for named instances and "server" for default instance.)
   - **Component Flags**
-  - **VSS_CF_APP_ROLLBACK_RECOVERY** – indicates that SQL Server snapshots always require a "recovery" phase to make the files consistent and useable for non-backup (that is, app-rollback) scenarios.
+  - **VSS_CF_APP_ROLLBACK_RECOVERY** - indicates that SQL Server snapshots always require a "recovery" phase to make the files consistent and useable for non-backup (that is, app-rollback) scenarios.
   - Selectable - True
   - Selectable for Restore - True
   - Restore methods supported - VSS_RME_RESTORE_IF_CAN_REPLACE

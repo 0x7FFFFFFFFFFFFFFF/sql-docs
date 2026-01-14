@@ -25,7 +25,7 @@ Run the following PowerShell command as Administrator on Windows Server hosting 
 ```powershell
 # Run as Administrator in PowerShell on Windows Server OS hosting the SQL Server
 # This installs WSFC module on the host OS
-Install-WindowsFeature -Name Failover-Clustering –IncludeManagementTools
+Install-WindowsFeature -Name Failover-Clustering -IncludeManagementTools
 ```
 
 Alternatively, you can also use Server Manager to install WSFC module using the graphical user interface.

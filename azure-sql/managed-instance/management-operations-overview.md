@@ -63,14 +63,14 @@ Conversely, the **Business Critical** service tier, designed for high-performanc
 Whether or not seeding is triggered depends on the particular scenario and service tier, such as: 
 
 - **General Purpose and [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md)** service tiers:  
-   - *Changing to the Business Critical service tier* – data must be transferred from the remote storage to the local storage used in the General Purpose service tier.
-   - *Enabling or disabling [zone redundancy](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy)* – data must be copied to or from the zone redundant regions.
+   - *Changing to the Business Critical service tier* - data must be transferred from the remote storage to the local storage used in the General Purpose service tier.
+   - *Enabling or disabling [zone redundancy](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy)* - data must be copied to or from the zone redundant regions.
 - **Business Critical** service tier: 
    - *Scaling storage*: Since storage is physically attached to the local machine, every storage change requires creating a new VM group, so data must be transferred from the old machine to the new machine (on all 4 replicas). 
    - *Scaling vCores*: Every compute scaling operation requires creating a new VM group, so data must be copied from the old machine to the new machine (on all 4 replicas).
    - *Changing hardware or maintenance window*: If a VM group already exists within the subnet with a matching configuration, that VM group is resized. If this is a new configuration, then a new VM group is created. Data must be copied from the old VM group to the new VM group (on all 4 replicas).
    - *Changing service tier*: Data must be copied from local storage to the remote storage used in the General Purpose service tier.
-   - *Enabling or disabling [zone redundancy](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy)* – data must be copied to or from the zone redundant regions.
+   - *Enabling or disabling [zone redundancy](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy)* - data must be copied to or from the zone redundant regions.
 
 ### Seeding speeds
 

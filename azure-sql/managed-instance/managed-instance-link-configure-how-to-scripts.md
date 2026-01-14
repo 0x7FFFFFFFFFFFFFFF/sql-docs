@@ -247,13 +247,13 @@ Fill out necessary user information, copy it, paste it, and then run the script.
 # POWERSHELL SCRIPT TO IMPORT SQL SERVER PUBLIC CERTIFICATE TO SQL MANAGED INSTANCE
 # ===== Enter user variables here ====
 
-# Enter the name for the server SQLServerCertName certificate – for example, "Cert_sqlserver1_endpoint"
+# Enter the name for the server SQLServerCertName certificate - for example, "Cert_sqlserver1_endpoint"
 $CertificateName = "<SQLServerCertName>"
 
-# Insert the certificate public key blob that you got from SQL Server – for example, "0x1234567..."
+# Insert the certificate public key blob that you got from SQL Server - for example, "0x1234567..."
 $PublicKeyEncoded = "<SQLServerPublicKey>"
 
-# Enter your managed instance short name – for example, "sqlmi"
+# Enter your managed instance short name - for example, "sqlmi"
 $ManagedInstanceName = "<ManagedInstanceName>"
 
 # ==== Do not customize the below cmdlets====
@@ -287,7 +287,7 @@ Run the following script. Replace:
 # POWERSHELL SCRIPT TO EXPORT MANAGED INSTANCE PUBLIC CERTIFICATE
 # ===== Enter user variables here ====
 
-# Enter your managed instance short name – for example, "sqlmi"
+# Enter your managed instance short name - for example, "sqlmi"
 $ManagedInstanceName = "<ManagedInstanceName>"
 
 # ==== Do not customize the following cmdlet ====
@@ -722,7 +722,7 @@ To simplify the process, sign in to the Azure portal and run the following scrip
 # Instructs Managed Instance to join distributed availability group on SQL Server
 # ===== Enter user variables here ====
 
-# Enter your managed instance name – for example, "sqlmi1"
+# Enter your managed instance name - for example, "sqlmi1"
 $ManagedInstanceName = "<ManagedInstanceName>"
 
 # Enter the availability group name that was created on SQL Server
@@ -772,7 +772,7 @@ To simplify the process, sign in to the Azure portal and run the following scrip
 # Instructs Managed Instance to join distributed availability group on SQL Server 
 # ===== Enter user variables here ====  
 
-# Enter your managed instance name – for example, "sqlmi1" 
+# Enter your managed instance name - for example, "sqlmi1" 
 $ManagedInstanceName = "<ManagedInstanceName>" 
 
 # Enter the availability group name that was created on SQL Server

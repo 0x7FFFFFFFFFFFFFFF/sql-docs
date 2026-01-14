@@ -150,7 +150,7 @@ Select the method for selecting data from the source. The options are shown in t
 |Option|Description|
 |:-|:-|
 |Table Name - TPT Stream|Incremental mode using the TPT Stream operator. <br>**Name of the table or the vie**: Select an existing table or view from the list. This list only shows the first 1000 tables. You can type table name prefix or use any part of the name with the (*) wildcard to list the table or tables you want to use.|
-|Table Name – TPL Load|Fast (Direct Path) load mode using the TPT API Load operator (Teradata FastLoad protocol), which requires target table to be empty. <br>**Name of the table or the view**: Select an existing table or view from the list. This list only shows the first 1000 tables. You can type table name prefix or use any part of the name with the (*) wildcard to list the table or tables you want to use.|
+|Table Name - TPL Load|Fast (Direct Path) load mode using the TPT API Load operator (Teradata FastLoad protocol), which requires target table to be empty. <br>**Name of the table or the view**: Select an existing table or view from the list. This list only shows the first 1000 tables. You can type table name prefix or use any part of the name with the (*) wildcard to list the table or tables you want to use.|
 
 **Data encryption**
 Check box to enable data encryption. Default is not selected.

@@ -27,7 +27,7 @@ Built-in pattern matching provides a versatile tool for string comparisons. The 
 |-----------------------------|-------------------------|  
 |`?`|Any single character|  
 |`*`|Zero or more characters|  
-|`#`|Any single digit (0–9)|  
+|`#`|Any single digit (0-9)|  
 |`[charlist]`|Any single character in `charlist`|  
 |`[!charlist]`|Any single character not in `charlist`|  
 

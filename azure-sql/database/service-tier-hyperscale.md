@@ -55,7 +55,7 @@ The Hyperscale service tier is intended for all customers who require higher per
 ## Hyperscale pricing model
 
 > [!NOTE]
-> Simplified pricing for Azure SQL Database Hyperscale has arrived! Review the [new pricing tier for Azure SQL Database Hyperscale announcement](https://aka.ms/hsignite2023), and for pricing change details, see [Azure SQL Database Hyperscale – lower, simplified pricing!](https://techcommunity.microsoft.com/t5/azure-sql-blog/azure-sql-database-hyperscale-lower-simplified-pricing/ba-p/3982209).
+> Simplified pricing for Azure SQL Database Hyperscale has arrived! Review the [new pricing tier for Azure SQL Database Hyperscale announcement](https://aka.ms/hsignite2023), and for pricing change details, see [Azure SQL Database Hyperscale - lower, simplified pricing!](https://techcommunity.microsoft.com/t5/azure-sql-blog/azure-sql-database-hyperscale-lower-simplified-pricing/ba-p/3982209).
 
 Hyperscale service tier is only available in [vCore model](service-tiers-vcore.md). To align with the new architecture, the pricing model is slightly different from General Purpose or Business Critical service tiers:
 
@@ -138,7 +138,7 @@ The vCore-based service tiers are differentiated based on database availability,
 | **Best for** | Offers budget-oriented balanced compute and storage options. | OLTP applications with high transaction rate and low I/O latency. Offers high resilience to failures and fast failovers using multiple hot standby replicas. | The widest variety of workloads. Autoscaling storage size up to 128 TB, fast vertical and horizontal compute scaling, fast database restore. |
 | **Compute size** | 2 to 128 vCores | 2 to 128 vCores | 2 to 128 vCores |
 | **Storage type** | Premium remote storage (per instance) | Super-fast local SSD storage (per instance) | Decoupled storage with local SSD cache (per compute replica) |
-| **Storage size** | 1 GB – 4 TB | 1 GB – 4 TB | 10 GB – 128 TB |
+| **Storage size** | 1 GB - 4 TB | 1 GB - 4 TB | 10 GB - 128 TB |
 | **Max IOPS** | 320 IOPS per vCore with 16,000 maximum IOPS | 4,000 IOPS per vCore with 327,680 maximum IOPS | 5,500 IOPS per vCore with 544,000 maximum local SSD IOPS.<br />Hyperscale is a multi-tiered architecture with caching at multiple levels. Effective IOPS depend on the workload. |
 | **Memory/vCore** | 5.1 GB | 5.1 GB | 5.1 GB or 10.2 GB |
 | **Availability** | One replica, no read scale-out, zone-redundant HA | Three replicas, one read scale-out, zone-redundant HA | Multiple replicas, up to four read scale-out, zone-redundant HA |

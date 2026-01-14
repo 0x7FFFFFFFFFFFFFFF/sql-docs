@@ -132,7 +132,7 @@ azdata bdc settings show --recursive
 ```
 Show all pending settings in the BDC at all scopes.
 ```bash
-azdata bdc settings show –filter-option=pending --recursive
+azdata bdc settings show -filter-option=pending --recursive
 ```
 ### Optional Parameters
 #### `--settings -s`

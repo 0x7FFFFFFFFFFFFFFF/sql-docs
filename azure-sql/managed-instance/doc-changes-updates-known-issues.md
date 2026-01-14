@@ -167,7 +167,7 @@ In case you've encountered this error message, select it, and follow the step-by
 
 ### Wrong error returned while trying to remove a file that isn't empty
 
-SQL Server and SQL Managed Instance [don't allow a user to drop a file that isn't empty](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). If you try to remove a nonempty data file using an `ALTER DATABASE REMOVE FILE` statement, the error `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` isn't immediately returned. SQL Managed Instance will keep trying to drop the file, and the operation will fail after 30 minutes with `Internal server error`.
+SQL Server and SQL Managed Instance [don't allow a user to drop a file that isn't empty](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). If you try to remove a nonempty data file using an `ALTER DATABASE REMOVE FILE` statement, the error `Msg 5042 - The file '<file_name>' cannot be removed because it is not empty` isn't immediately returned. SQL Managed Instance will keep trying to drop the file, and the operation will fail after 30 minutes with `Internal server error`.
 
 ### Change service tier and create instance operations are blocked by ongoing database restore
 

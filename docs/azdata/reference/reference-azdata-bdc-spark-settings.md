@@ -36,7 +36,7 @@ azdata bdc spark settings set --settings spark-defaults-conf.spark.driver.cores=
 ```
 Set the default number of executor cores to 1 for the Storage Pool.
 ```bash
-azdata bdc spark settings set --settings spark-defaults-conf.spark.executor.cores=1 –resources storage-0
+azdata bdc spark settings set --settings spark-defaults-conf.spark.executor.cores=1 -resources storage-0
 ```
 ### Optional Parameters
 #### `--resources -r`

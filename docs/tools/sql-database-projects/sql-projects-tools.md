@@ -58,9 +58,9 @@ These tools provide a graphical interface for SQL projects, a T-SQL editor, and 
 | [Schema comparison](concepts/schema-comparison.md) project to database | Yes | Yes | Yes |
 | [Schema comparison](concepts/schema-comparison.md) database to project | Yes | Yes | No |
 | Graphical table designer | No | Yes | Yes |
-| [Code analysis](concepts/sql-code-analysis/sql-code-analysis.md) – enable/disable rules GUI | No | Yes | No |
-| Project properties – build output settings | No | Yes | Yes |
-| Project properties – database settings GUI | No | Yes | No |
+| [Code analysis](concepts/sql-code-analysis/sql-code-analysis.md) - enable/disable rules GUI | No | Yes | No |
+| Project properties - build output settings | No | Yes | Yes |
+| Project properties - database settings GUI | No | Yes | No |
 | Project run [code analysis](concepts/sql-code-analysis/sql-code-analysis.md) | Yes | Yes | No |
 | Object renaming and refactoring | No | Yes | No |
 | Intellisense provided in database files from project model | No | Yes | No |

@@ -51,7 +51,7 @@ You can adjust the window for maintenance updates to a time suitable to your Azu
 - **Weekday** window: 10:00 PM to 6:00 AM local time, Monday - Thursday
 - **Weekend** window: 10:00 PM to 6:00 AM local time, Friday - Sunday
 
-Maintenance window days listed indicate the starting day of each eight-hour maintenance window. For example, "10:00 PM to 6:00 AM local time, Monday – Thursday" means that the maintenance windows start at 10:00 PM local time on each day (Monday through Thursday) and complete at 6:00 AM local time the following day (Tuesday through Friday).
+Maintenance window days listed indicate the starting day of each eight-hour maintenance window. For example, "10:00 PM to 6:00 AM local time, Monday - Thursday" means that the maintenance windows start at 10:00 PM local time on each day (Monday through Thursday) and complete at 6:00 AM local time the following day (Tuesday through Friday).
 
 Once the maintenance window selection is made and service configuration completed, planned maintenance occurs only during the window of your choice. While maintenance events typically complete within a single window, some of them might span two or more adjacent windows.
 

@@ -96,7 +96,7 @@ The following figure shows four nodes in standard architectural model with the s
 
 In the architectural model for the General Purpose service tier, there are two layers:
 
-- A stateless compute layer that is running the `sqlservr.exe` process and contains only transient and cached data (for example – plan cache, buffer pool, columnstore pool). This stateless node is operated by Azure Service Fabric that initializes process, controls health of the node, and performs failover to another place if necessary.
+- A stateless compute layer that is running the `sqlservr.exe` process and contains only transient and cached data (for example - plan cache, buffer pool, columnstore pool). This stateless node is operated by Azure Service Fabric that initializes process, controls health of the node, and performs failover to another place if necessary.
 - A stateful data layer with database files (.mdf/.ldf) that are stored in Azure Blob storage. Azure Blob storage guarantees that there will be no data loss of any record that is placed in any database file. Azure Storage has built-in data availability/redundancy that ensures that every record in log file or page in data file will be preserved even if the process crashes.
 
 Whenever the database engine or operating system is upgraded, some part of underlying infrastructure fails, or if some critical issue is detected in the `sqlservr.exe` process, Azure Service Fabric will move the stateless process to another stateless compute node. There is a set of spare nodes that is waiting to run new compute service if a failover of the primary node happens in order to minimize failover time. Data in Azure storage layer is not affected, and data/log files are attached to newly initialized process. This process guarantees 99.99% availability by default. There can be performance impacts to heavy workloads that are in-flight due to transition time and the fact the new node starts with cold cache.
@@ -123,7 +123,7 @@ Both the SQL Server database engine process and underlying .mdf/.ldf files are p
 
 Every instance is a cluster of database engine nodes that contain copies of all the databases on an instance, with a primary database accessible for customer workloads, and three secondary databases containing copies of the data, ready for failover. The primary node constantly pushes changes to the secondary nodes in order to ensure the data is available on secondary replicas if the primary node fails for any reason. 
 
-Failover is handled by the SQL Server database engine – one secondary replica becomes the primary node and a new secondary replica is created to ensure there are enough nodes in the cluster. The workload is automatically redirected to the new primary node.
+Failover is handled by the SQL Server database engine - one secondary replica becomes the primary node and a new secondary replica is created to ensure there are enough nodes in the cluster. The workload is automatically redirected to the new primary node.
 
 In addition, the Business Critical cluster has a built-in [Read Scale-Out](../database/read-scale-out.md) capability that provides a free-of charge read-only replica used to run read-only queries (such as reports) that won't affect the performance of the workload on your primary replica.
 
@@ -133,7 +133,7 @@ The Business Critical service tier is designed for applications that require low
 
 The key reasons why you should choose Business Critical service tier instead of General Purpose tier are:
 
--  **Low I/O latency requirements** – workloads that need a fast response from the storage layer (1-2 milliseconds in average) should use Business Critical tier. 
+-  **Low I/O latency requirements** - workloads that need a fast response from the storage layer (1-2 milliseconds in average) should use Business Critical tier. 
 -  **Workload with reporting and analytic queries** that can be redirected to the free-of-charge secondary read-only replica.
 - **Higher resiliency and faster recovery from failures**. In case there is system failure, the databases on the primary instance are taken offline, and one of the secondary replicas will immediately become the new read-write primary instance, ready to process queries.  There is no need for the database engine to analyze and redo transactions from the log file or load data into memory buffers.
 - **Advanced data corruption protection**. Since the Business Critical tier uses databases replicas behind the scenes, the service leverages automatic page repair available with [mirroring and availability groups](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring) to help mitigate data corruption. If a replica can't read a page due to a data integrity issue, a fresh copy of the page is retrieved from another replica, replacing the unreadable page without data loss or customer downtime. This functionality is available in  the General Purpose tier if the managed instance has geo-secondary replica.
